@@ -4,7 +4,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 remove_action( 'genesis_loop_else', 'genesis_do_noposts' );
 remove_action( 'genesis_loop', 'genesis_do_loop' );
-add_action( 'genesis_loop', 'bfg_404' );
+add_action( 'genesis_loop', 'hc_404' );
 /**
  * Better default 404 text.
  *
@@ -12,7 +12,7 @@ add_action( 'genesis_loop', 'bfg_404' );
  *
  * @since 2.3.2
  */
-function bfg_404() {
+function hc_404() {
 
 	global $wp_query;
 

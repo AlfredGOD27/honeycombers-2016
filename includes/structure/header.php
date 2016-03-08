@@ -22,7 +22,7 @@ remove_action( 'wp_head', 'rest_output_link_wp_head' );
 remove_action( 'template_redirect', 'rest_output_link_header', 11, 0 );
 
 remove_action( 'genesis_doctype', 'genesis_do_doctype' );
-add_action( 'genesis_doctype', 'bfg_do_doctype' );
+add_action( 'genesis_doctype', 'hc_do_doctype' );
 /**
  * Overrides the default Genesis doctype with IE and JS identifier classes.
  *
@@ -30,7 +30,7 @@ add_action( 'genesis_doctype', 'bfg_do_doctype' );
  *
  * @since 2.2.4
  */
-function bfg_do_doctype() {
+function hc_do_doctype() {
 
 	if( genesis_html5() ) {
 ?>
@@ -47,7 +47,7 @@ function bfg_do_doctype() {
 
 }
 
-add_action( 'wp_head', 'bfg_fetch_dns', 1 );
+add_action( 'wp_head', 'hc_fetch_dns', 1 );
 /**
  * Prefetch the DNS for external resource domains. Better browser support than preconnect.
  *
@@ -55,7 +55,7 @@ add_action( 'wp_head', 'bfg_fetch_dns', 1 );
  *
  * @since 2.3.19
  */
-function bfg_fetch_dns() {
+function hc_fetch_dns() {
 
 	$hrefs = array(
 		'//ajax.googleapis.com',
@@ -69,7 +69,7 @@ function bfg_fetch_dns() {
 
 remove_action( 'genesis_meta', 'genesis_load_stylesheet' );
 remove_action( 'wp_enqueue_scripts', 'genesis_register_scripts' );
-add_action( 'wp_enqueue_scripts', 'bfg_load_assets' );
+add_action( 'wp_enqueue_scripts', 'hc_load_assets' );
 /**
  * Overrides the default Genesis stylesheet with child theme specific CSS and JS.
  *
@@ -77,19 +77,19 @@ add_action( 'wp_enqueue_scripts', 'bfg_load_assets' );
  *
  * @since 2.0.0
  */
-function bfg_load_assets() {
+function hc_load_assets() {
 
-	$use_production_assets = genesis_get_option('bfg_production_on');
+	$use_production_assets = genesis_get_option('hc_production_on');
 	$use_production_assets = !empty($use_production_assets);
 
-	$assets_version = genesis_get_option('bfg_assets_version');
+	$assets_version = genesis_get_option('hc_assets_version');
 	$assets_version = !empty($assets_version) ? absint($assets_version) : null;
 
 	$stylesheet_dir = get_stylesheet_directory_uri();
 
 	// Main theme stylesheet
 	$src = $use_production_assets ? '/build/css/style.min.css' : '/build/css/style.css';
-	wp_enqueue_style( 'bfg', $stylesheet_dir . $src, array(), $assets_version );
+	wp_enqueue_style( 'hc', $stylesheet_dir . $src, array(), $assets_version );
 
 	// Disable the 'Open Sans' loaded by the admin bar
 	// https://wordpress.org/support/topic/remove-open-sans-and-add-custom-fonts
@@ -116,13 +116,13 @@ function bfg_load_assets() {
 	wp_deregister_script( 'jquery' );
 	$src = $use_production_assets ? '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js' : '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js';
 	wp_register_script( 'jquery', $src, array(), null, true );
-	add_filter( 'script_loader_src', 'bfg_jquery_local_fallback', 10, 2 );
+	add_filter( 'script_loader_src', 'hc_jquery_local_fallback', 10, 2 );
 
 	// Main script file (in footer)
 	$src = $use_production_assets ? '/build/js/scripts.min.js' : '/build/js/scripts.js';
-	wp_enqueue_script( 'bfg', $stylesheet_dir . $src, array('jquery'), $assets_version, true );
+	wp_enqueue_script( 'hc', $stylesheet_dir . $src, array('jquery'), $assets_version, true );
 	wp_localize_script(
-		'bfg',
+		'hc',
 		'grunticon_paths',
 		array(
 			'svg'      => $stylesheet_dir . '/build/svgs/icons.data.svg.css',
@@ -130,23 +130,23 @@ function bfg_load_assets() {
 			'fallback' => $stylesheet_dir . '/build/svgs/icons.fallback.css',
 		)
 	);
-	// wp_localize_script( 'bfg', 'ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	// wp_localize_script( 'hc', 'ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
 }
 
-add_filter( 'script_loader_tag', 'bfg_ie_script_conditionals', 10, 3 );
+add_filter( 'script_loader_tag', 'hc_ie_script_conditionals', 10, 3 );
 /**
  * Conditionally load jQuery v1 on old IE.
  *
  * @since 2.3.1
  */
-function bfg_ie_script_conditionals( $tag, $handle, $src ) {
+function hc_ie_script_conditionals( $tag, $handle, $src ) {
 
 	if( 'jquery' === $handle ) {
 		$output = '<!--[if !IE]> -->' . "\n" . $tag . '<!-- <![endif]-->' . "\n";
 		$output .= '<!--[if gt IE 8]>' . "\n" . $tag . '<![endif]-->' . "\n";
 
-		$use_production_assets = genesis_get_option('bfg_production_on');
+		$use_production_assets = genesis_get_option('hc_production_on');
 		$use_production_assets = !empty($use_production_assets);
 		$src                   = $use_production_assets ? '//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' : '//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js';
 		$fallback_script       = '<script type="text/javascript" src="' . $src . '"></script>';
@@ -166,8 +166,8 @@ function bfg_ie_script_conditionals( $tag, $handle, $src ) {
  *
  * @since 2.0.20
  */
-add_action( 'wp_head', 'bfg_jquery_local_fallback' );
-function bfg_jquery_local_fallback( $src, $handle = null ) {
+add_action( 'wp_head', 'hc_jquery_local_fallback' );
+function hc_jquery_local_fallback( $src, $handle = null ) {
 
 	static $add_jquery_fallback = false;
 
@@ -184,20 +184,20 @@ function bfg_jquery_local_fallback( $src, $handle = null ) {
 
 }
 
-// add_filter( 'genesis_pre_load_favicon', 'bfg_pre_load_favicon' );
+// add_filter( 'genesis_pre_load_favicon', 'hc_pre_load_favicon' );
 /**
  * Simple favicon override to specify your favicon's location.
  *
  * @since 2.0.0
  */
-function bfg_pre_load_favicon() {
+function hc_pre_load_favicon() {
 
 	return get_stylesheet_directory_uri() . '/images/favicon.ico';
 
 }
 
 // remove_action( 'wp_head', 'genesis_load_favicon' );
-// add_action( 'wp_head', 'bfg_load_favicons' );
+// add_action( 'wp_head', 'hc_load_favicons' );
 /**
  * Show the best favicon, within reason.
  *
@@ -205,7 +205,7 @@ function bfg_pre_load_favicon() {
  *
  * @since 2.0.4
  */
-function bfg_load_favicons() {
+function hc_load_favicons() {
 
 	$stylesheet_dir     = get_stylesheet_directory_uri();
 	$favicon_path       = $stylesheet_dir . '/images/favicons';

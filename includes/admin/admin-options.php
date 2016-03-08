@@ -2,7 +2,7 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// add_action( 'genesis_theme_settings_metaboxes', 'bfg_remove_theme_settings_metaboxes' );
+// add_action( 'genesis_theme_settings_metaboxes', 'hc_remove_theme_settings_metaboxes' );
 /**
  * Remove some or all of the options metaboxes in Dashboard > Genesis > Theme Settings.
  *
@@ -10,7 +10,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 2.0.0
  */
-function bfg_remove_theme_settings_metaboxes( $_genesis_theme_settings_pagehook ) {
+function hc_remove_theme_settings_metaboxes( $_genesis_theme_settings_pagehook ) {
 
 	// remove_meta_box( 'genesis-theme-settings-version', $_genesis_theme_settings_pagehook, 'main' );			// Information
 	remove_meta_box( 'genesis-theme-settings-feeds', $_genesis_theme_settings_pagehook, 'main' );				// Custom Feeds
@@ -25,16 +25,16 @@ function bfg_remove_theme_settings_metaboxes( $_genesis_theme_settings_pagehook 
 
 }
 
-add_filter( 'genesis_theme_settings_defaults', 'bfg_theme_settings_defaults' );
+add_filter( 'genesis_theme_settings_defaults', 'hc_theme_settings_defaults' );
 /**
  * Set default values for custom theme options.
  *
  * @since 2.3.0
  */
-function bfg_theme_settings_defaults( $defaults ) {
+function hc_theme_settings_defaults( $defaults ) {
 
-	$defaults['bfg_production_on']         = false;
-	$defaults['bfg_assets_version']        = null;
+	$defaults['hc_production_on']          = false;
+	$defaults['hc_assets_version']         = null;
 	$defaults['content_archive']           = 'excerpts';
 	$defaults['content_archive_thumbnail'] = 1;
 	$defaults['image_size']                = 'thumbnail';
@@ -44,19 +44,19 @@ function bfg_theme_settings_defaults( $defaults ) {
 
 }
 
-add_action( 'genesis_settings_sanitizer_init', 'bfg_settings_sanitizer' );
+add_action( 'genesis_settings_sanitizer_init', 'hc_settings_sanitizer' );
 /**
  * Set filters for custom theme options.
  *
  * @since 2.3.0
  */
-function bfg_settings_sanitizer() {
+function hc_settings_sanitizer() {
 
 	genesis_add_option_filter(
 		'one_zero',
 		GENESIS_SETTINGS_FIELD,
 		array(
-			'bfg_production_on',
+			'hc_production_on',
 		)
 	);
 
@@ -64,24 +64,24 @@ function bfg_settings_sanitizer() {
 		'absint',
 		GENESIS_SETTINGS_FIELD,
 		array(
-			'bfg_assets_version',
+			'hc_assets_version',
 		)
 	);
 
 }
 
-add_action( 'genesis_theme_settings_metaboxes', 'bfg_theme_settings_metaboxes' );
+add_action( 'genesis_theme_settings_metaboxes', 'hc_theme_settings_metaboxes' );
 /**
  * Add meta boxes for custom theme options.
  *
  * @since 2.3.0
  */
-function bfg_theme_settings_metaboxes( $pagehook ) {
+function hc_theme_settings_metaboxes( $pagehook ) {
 
 	add_meta_box(
-		'bfg-environment-settings',
+		'hc-environment-settings',
 		__( 'Environment', CHILD_THEME_TEXT_DOMAIN ),
-		'bfg_environment_settings_box',
+		'hc_environment_settings_box',
 		$pagehook,
 		'main',
 		'high'
@@ -94,7 +94,7 @@ function bfg_theme_settings_metaboxes( $pagehook ) {
  *
  * @since 2.3.0
  */
-function bfg_environment_settings_box() {
+function hc_environment_settings_box() {
 
 	?>
 	<table class="form-table">
@@ -105,8 +105,8 @@ function bfg_environment_settings_box() {
 				</th>
 				<td>
 					<p>
-						<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[bfg_production_on]">
-							<input type="checkbox" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[bfg_production_on]" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[bfg_production_on]" value="1" <?php checked( genesis_get_option('bfg_production_on'), 1 ); ?>>
+						<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[hc_production_on]">
+							<input type="checkbox" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[hc_production_on]" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[hc_production_on]" value="1" <?php checked( genesis_get_option('hc_production_on'), 1 ); ?>>
 							<?php _e( 'Enable?', CHILD_THEME_TEXT_DOMAIN ); ?>
 						</label>
 					</p>
@@ -115,13 +115,13 @@ function bfg_environment_settings_box() {
 
 			<tr valign="top">
 				<th scope="row">
-					<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[bfg_assets_version]">
+					<label for="<?php echo GENESIS_SETTINGS_FIELD; ?>[hc_assets_version]">
 						<?php _e( 'Assets Version Number:', CHILD_THEME_TEXT_DOMAIN ); ?>
 					</label>
 				</th>
 				<td>
 					<p>
-						<input type="text" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[bfg_assets_version]" value="<?php echo esc_attr( genesis_get_option('bfg_assets_version') ); ?>" class="regular-text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[bfg_assets_version]">
+						<input type="text" name="<?php echo GENESIS_SETTINGS_FIELD; ?>[hc_assets_version]" value="<?php echo esc_attr( genesis_get_option('hc_assets_version') ); ?>" class="regular-text" id="<?php echo GENESIS_SETTINGS_FIELD; ?>[hc_assets_version]">
 					</p>
 
 					<p>

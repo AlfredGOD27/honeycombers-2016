@@ -2,19 +2,19 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// add_filter( 'genesis_footer_output', 'bfg_footer_creds_text' );
+// add_filter( 'genesis_footer_output', 'hc_footer_creds_text' );
 /**
  * Custom footer 'creds' text.
  *
  * @since 2.0.0
  */
-function bfg_footer_creds_text() {
+function hc_footer_creds_text() {
 
 	 return '<p>' . __( 'Copyright', CHILD_THEME_TEXT_DOMAIN ) . ' [footer_copyright] [footer_childtheme_link] &middot; [footer_genesis_link] [footer_studiopress_link] &middot; [footer_wordpress_link] &middot; [footer_loginout]</p>';
 
 }
 
-// add_action( 'wp_footer', 'bfg_disable_pointer_events_on_scroll', 99 );
+// add_action( 'wp_footer', 'hc_disable_pointer_events_on_scroll', 99 );
 /**
  * Disable pointer events when scrolling. Be careful using this with CSS :hover-enabled menus.
  *
@@ -22,7 +22,7 @@ function bfg_footer_creds_text() {
  *
  * @since 2.0.20
  */
-function bfg_disable_pointer_events_on_scroll() {
+function hc_disable_pointer_events_on_scroll() {
 
 	ob_start();
 	?><script>
@@ -50,7 +50,7 @@ function bfg_disable_pointer_events_on_scroll() {
 
 }
 
-// add_action( 'wp_footer', 'bfg_ie_font_face_fix', 99 );
+// add_action( 'wp_footer', 'hc_ie_font_face_fix', 99 );
 /**
  * Forces the main stylesheet to reload on document ready for IE8 and below.
  * This redraws any @font-face fonts, fixing the IE8 font loading bug.
@@ -59,7 +59,7 @@ function bfg_disable_pointer_events_on_scroll() {
  *
  * @since 2.0.13
  */
-function bfg_ie_font_face_fix() {
+function hc_ie_font_face_fix() {
 
 	ob_start();
 	?><!--[if lt IE 9]>

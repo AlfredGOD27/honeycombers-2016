@@ -2,31 +2,31 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-add_filter( 'login_headerurl', 'bfg_login_headerurl' );
+add_filter( 'login_headerurl', 'hc_login_headerurl' );
 /**
  * Makes the login screen's logo link to your homepage, instead of to WordPress.org.
  *
  * @since 2.0.0
  */
-function bfg_login_headerurl() {
+function hc_login_headerurl() {
 
 	return home_url();
 
 }
 
-add_filter( 'login_headertitle', 'bfg_login_headertitle' );
+add_filter( 'login_headertitle', 'hc_login_headertitle' );
 /**
  * Makes the login screen's logo title attribute your site title, instead of 'WordPress'.
  *
  * @since 2.0.0
  */
-function bfg_login_headertitle() {
+function hc_login_headertitle() {
 
 	return get_bloginfo( 'name' );
 
 }
 
-// add_action( 'login_enqueue_scripts', 'bfg_replace_login_logo' );
+// add_action( 'login_enqueue_scripts', 'hc_replace_login_logo' );
 /**
  * Replaces the login screen's WordPress logo with the 'login-logo.png' in your child theme images folder.
  *
@@ -37,7 +37,7 @@ function bfg_login_headertitle() {
  *
  * @since 2.0.0
  */
-function bfg_replace_login_logo() {
+function hc_replace_login_logo() {
 
 	?><style type="text/css">
 		.login h1 a {
@@ -53,19 +53,19 @@ function bfg_replace_login_logo() {
 
 }
 
-add_filter( 'wp_mail_from_name', 'bfg_mail_from_name' );
+add_filter( 'wp_mail_from_name', 'hc_mail_from_name' );
 /**
  * Makes WordPress-generated emails appear 'from' your WordPress site name, instead of from 'WordPress'.
  *
  * @since 2.0.0
  */
-function bfg_mail_from_name() {
+function hc_mail_from_name() {
 
 	return get_option( 'blogname' );
 
 }
 
-// add_filter( 'wp_mail_from', 'bfg_wp_mail_from' );
+// add_filter( 'wp_mail_from', 'hc_wp_mail_from' );
 /**
  * Makes WordPress-generated emails appear 'from' your WordPress admin email address.
  *
@@ -73,13 +73,13 @@ function bfg_mail_from_name() {
  *
  * @since 2.0.0
  */
-function bfg_wp_mail_from() {
+function hc_wp_mail_from() {
 
 	return get_option( 'admin_email' );
 
 }
 
-// add_filter( 'mandrill_payload', 'bfg_force_mandrill_payload_to_html' );
+// add_filter( 'mandrill_payload', 'hc_force_mandrill_payload_to_html' );
 /**
  * Mandrill sends all emails as HTML. Wrap all plaintext content in <p> tags.
  *
@@ -87,7 +87,7 @@ function bfg_wp_mail_from() {
  *
  * @since 2.2.24
  */
-function bfg_force_mandrill_payload_to_html( $message ) {
+function hc_force_mandrill_payload_to_html( $message ) {
 
 	$message['html'] = wpautop($message['html']);
 
@@ -95,19 +95,19 @@ function bfg_force_mandrill_payload_to_html( $message ) {
 
 }
 
-add_filter( 'retrieve_password_message', 'bfg_cleanup_retrieve_password_message' );
+add_filter( 'retrieve_password_message', 'hc_cleanup_retrieve_password_message' );
 /**
  * Remove the brackets from the retreive PW link, since they get hidden on HTML.
  *
  * @since 2.2.24
  */
-function bfg_cleanup_retrieve_password_message( $message ) {
+function hc_cleanup_retrieve_password_message( $message ) {
 
 	return preg_replace( '/<(.+?)>/', '$1', $message );
 
 }
 
-add_action( 'wp_before_admin_bar_render', 'bfg_remove_wp_icon_from_admin_bar' );
+add_action( 'wp_before_admin_bar_render', 'hc_remove_wp_icon_from_admin_bar' );
 /**
  * Removes the WP icon from the admin bar.
  *
@@ -115,14 +115,14 @@ add_action( 'wp_before_admin_bar_render', 'bfg_remove_wp_icon_from_admin_bar' );
  *
  * @since 2.0.0
  */
-function bfg_remove_wp_icon_from_admin_bar() {
+function hc_remove_wp_icon_from_admin_bar() {
 
 	global $wp_admin_bar;
 	$wp_admin_bar->remove_menu('wp-logo');
 
 }
 
-// add_filter( 'admin_footer_text', 'bfg_admin_footer_text' );
+// add_filter( 'admin_footer_text', 'hc_admin_footer_text' );
 /**
  * Modify the admin footer text.
  *
@@ -130,7 +130,7 @@ function bfg_remove_wp_icon_from_admin_bar() {
  *
  * @since 2.0.0
  */
-function bfg_admin_footer_text() {
+function hc_admin_footer_text() {
 
 	$text = __( 'Built by <a href="%s" target="_blank">Cooper Dukes @INNEO</a>', CHILD_THEME_TEXT_DOMAIN );
 	$text = sprintf(

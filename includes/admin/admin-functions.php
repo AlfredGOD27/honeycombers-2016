@@ -2,27 +2,27 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// add_action( 'admin_enqueue_scripts', 'bfg_load_admin_assets' );
+// add_action( 'admin_enqueue_scripts', 'hc_load_admin_assets' );
 /**
  * Enqueue admin CSS and JS files.
  *
  * @since 2.3.2
  */
-function bfg_load_admin_assets() {
+function hc_load_admin_assets() {
 
 	$stylesheet_dir        = get_stylesheet_directory_uri();
-	$use_production_assets = genesis_get_option('bfg_production_on');
+	$use_production_assets = genesis_get_option('hc_production_on');
 	$use_production_assets = !empty($use_production_assets);
 
 	$src = $use_production_assets ? '/build/css/admin.min.css' : '/build/css/admin.css';
-	wp_enqueue_style( 'bfg-admin', $stylesheet_dir . $src, array(), null );
+	wp_enqueue_style( 'hc-admin', $stylesheet_dir . $src, array(), null );
 
 	$src = $use_production_assets ? '/build/js/admin.min.js' : '/build/js/admin.js';
-	wp_enqueue_script( 'bfg-admin', $stylesheet_dir . $src, array('jquery'), null, true );
+	wp_enqueue_script( 'hc-admin', $stylesheet_dir . $src, array('jquery'), null, true );
 
 }
 
-add_action( 'pre_ping', 'bfg_disable_self_pings' );
+add_action( 'pre_ping', 'hc_disable_self_pings' );
 /**
  * Prevent the child theme from being overwritten by a WordPress.org theme with the same name.
  *
@@ -30,7 +30,7 @@ add_action( 'pre_ping', 'bfg_disable_self_pings' );
  *
  * @since 2.0.0
  */
-function bfg_disable_self_pings( &$links ) {
+function hc_disable_self_pings( &$links ) {
 
 	foreach ( $links as $l => $link )
 		if ( 0 === strpos( $link, home_url() ) )
@@ -56,7 +56,7 @@ function bfg_disable_self_pings( &$links ) {
  */
 // add_image_size( 'desktop-size', 1024, 768, array( 'left', 'top' ) ); // Crop positions are: top, left, right, bottom, center
 
-// add_filter( 'image_size_names_choose', 'bfg_image_size_names_choose' );
+// add_filter( 'image_size_names_choose', 'hc_image_size_names_choose' );
 /**
  * Add new image sizes to media size selection menu.
  *
@@ -64,7 +64,7 @@ function bfg_disable_self_pings( &$links ) {
  *
  * @since 2.0.0
  */
-function bfg_image_size_names_choose( $sizes ) {
+function hc_image_size_names_choose( $sizes ) {
 
 	$sizes['desktop-size'] = __( 'Desktop', CHILD_THEME_TEXT_DOMAIN );
 
@@ -79,7 +79,7 @@ function bfg_image_size_names_choose( $sizes ) {
  *
  * @since 2.2.24
  */
-function bfg_get_image_sizes( $size = '' ) {
+function hc_get_image_sizes( $size = '' ) {
 
 	global $_wp_additional_image_sizes;
 
@@ -117,8 +117,8 @@ function bfg_get_image_sizes( $size = '' ) {
  *
  * @since 2.3.6
  */
-// add_filter( 'wp_generate_attachment_metadata', 'bfg_downsize_uploaded_image', 99 );
-function bfg_downsize_uploaded_image( $image_data ) {
+// add_filter( 'wp_generate_attachment_metadata', 'hc_downsize_uploaded_image', 99 );
+function hc_downsize_uploaded_image( $image_data ) {
 
 	$max_image_size_name = 'large';
 
@@ -164,8 +164,8 @@ function bfg_downsize_uploaded_image( $image_data ) {
  *
  * @since 2.2.3
  */
-add_filter( 'xmlrpc_methods', 'bfg_remove_xmlrpc_pingback_ping' );
-function bfg_remove_xmlrpc_pingback_ping( $methods ) {
+add_filter( 'xmlrpc_methods', 'hc_remove_xmlrpc_pingback_ping' );
+function hc_remove_xmlrpc_pingback_ping( $methods ) {
 
 	unset($methods['pingback.ping']);
 
@@ -187,8 +187,8 @@ if( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) exit;
  *
  * @since 2.2.26
  */
-add_action( '_core_updated_successfully', 'bfg_remove_files_on_upgrade' );
-function bfg_remove_files_on_upgrade() {
+add_action( '_core_updated_successfully', 'hc_remove_files_on_upgrade' );
+function hc_remove_files_on_upgrade() {
 
 	if( file_exists(ABSPATH . 'readme.html') )
 		unlink(ABSPATH . 'readme.html');

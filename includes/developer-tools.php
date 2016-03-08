@@ -2,13 +2,13 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-add_action( 'admin_bar_menu', 'bfg_clear_transients_node', 99 );
+add_action( 'admin_bar_menu', 'hc_clear_transients_node', 99 );
 /**
  * Clear all transients with one click.
  *
  * @since 2.2.9
  */
-function bfg_clear_transients_node( $wp_admin_bar ) {
+function hc_clear_transients_node( $wp_admin_bar ) {
 
 	if( !is_admin() || !current_user_can('manage_options') )
 		return;
@@ -34,13 +34,13 @@ function bfg_clear_transients_node( $wp_admin_bar ) {
 
 }
 
-// add_action( 'admin_bar_menu', 'bfg_cron_count_node', 99 );
+// add_action( 'admin_bar_menu', 'hc_cron_count_node', 99 );
 /**
  * Show the length of the scheduled cron task list.
  *
  * @since 2.3.15
  */
-function bfg_cron_count_node( $wp_admin_bar ) {
+function hc_cron_count_node( $wp_admin_bar ) {
 
 	if( !is_admin() || !current_user_can('manage_options') )
 		return;

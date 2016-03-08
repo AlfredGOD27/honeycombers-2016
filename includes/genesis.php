@@ -20,7 +20,7 @@ add_theme_support( 'html5', array('comment-list', 'comment-form', 'search-form',
  */
 add_theme_support( 'genesis-accessibility', array('headings', 'drop-down-menu', 'search-form', 'skip-links', 'rems') );
 
-/**
+/*
  * Adds <meta> tags for mobile responsiveness.
  *
  * See: http://www.briangardner.com/code/add-viewport-meta-tag/
@@ -76,8 +76,8 @@ add_theme_support( 'genesis-responsive-viewport' );
 // add_theme_support(
 // 	'genesis-style-selector',
 // 	array(
-// 		'bfg-red' => 'Red',
-// 		'bfg-orange' => 'Orange'
+// 		'hc-red' => 'Red',
+// 		'hc-orange' => 'Orange'
 // 	)
 // );
 
@@ -125,13 +125,13 @@ add_theme_support( 'genesis-responsive-viewport' );
 // 	)
 // );
 
-// add_action( 'widgets_init', 'bfg_remove_genesis_widgets', 20 );
+// add_action( 'widgets_init', 'hc_remove_genesis_widgets', 20 );
 /**
  * Disable some or all of the default Genesis widgets.
  *
  * @since 2.0.0
  */
-function bfg_remove_genesis_widgets() {
+function hc_remove_genesis_widgets() {
 
 	unregister_widget( 'Genesis_Featured_Page' );									// Featured Page
 	unregister_widget( 'Genesis_User_Profile_Widget' );								// User Profile
@@ -139,13 +139,13 @@ function bfg_remove_genesis_widgets() {
 
 }
 
-// add_action( 'init', 'bfg_remove_layout_meta_boxes' );
+// add_action( 'init', 'hc_remove_layout_meta_boxes' );
 /**
  * Remove the Genesis 'Layout Settings' meta box for posts and/or pages.
  *
  * @since 2.0.0
  */
-function bfg_remove_layout_meta_boxes() {
+function hc_remove_layout_meta_boxes() {
 
 	remove_post_type_support( 'post', 'genesis-layouts' );							// Posts
 	remove_post_type_support( 'page', 'genesis-layouts' );							// Pages
@@ -159,13 +159,13 @@ function bfg_remove_layout_meta_boxes() {
  */
 remove_theme_support( 'genesis-archive-layouts' );
 
-// add_action( 'init', 'bfg_remove_scripts_meta_boxes' );
+// add_action( 'init', 'hc_remove_scripts_meta_boxes' );
 /**
  * Remove the Genesis 'Scripts' meta box for posts and/or pages.
  *
  * @since 2.0.12
  */
-function bfg_remove_scripts_meta_boxes() {
+function hc_remove_scripts_meta_boxes() {
 
 	remove_post_type_support( 'post', 'genesis-scripts' );							// Posts
 	remove_post_type_support( 'page', 'genesis-scripts' );							// Pages
@@ -178,8 +178,8 @@ function bfg_remove_scripts_meta_boxes() {
  * @since 2.0.22
  */
 remove_action( 'after_setup_theme', 'genesis_seo_compatibility_check' );
-add_action( 'after_setup_theme', 'bfg_maybe_disable_genesis_seo', 8 );
-function bfg_maybe_disable_genesis_seo() {
+add_action( 'after_setup_theme', 'hc_maybe_disable_genesis_seo', 8 );
+function hc_maybe_disable_genesis_seo() {
 
 	genesis_disable_seo();
 

@@ -7,14 +7,14 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 2.0.0
  */
-add_filter( 'show_admin_bar', 'bfg_maybe_hide_admin_bar', 99 );
-function bfg_maybe_hide_admin_bar( $default ) {
+add_filter( 'show_admin_bar', 'hc_maybe_hide_admin_bar', 99 );
+function hc_maybe_hide_admin_bar( $default ) {
 
 	return current_user_can( 'edit_posts' ) ? $default : false;
 
 }
 
-add_action( 'admin_menu', 'bfg_remove_dashboard_widgets' );
+add_action( 'admin_menu', 'hc_remove_dashboard_widgets' );
 /**
  * Disable some or all of the default admin dashboard widgets.
  *
@@ -22,7 +22,7 @@ add_action( 'admin_menu', 'bfg_remove_dashboard_widgets' );
  *
  * @since 1.x
  */
-function bfg_remove_dashboard_widgets() {
+function hc_remove_dashboard_widgets() {
 
 	// remove_meta_box( 'dashboard_right_now', 'dashboard', 'core' );				// Right Now
 	// remove_meta_box( 'dashboard_activity', 'dashboard', 'core' );				// Activity
@@ -37,13 +37,13 @@ function bfg_remove_dashboard_widgets() {
 
 }
 
-add_action('widgets_init', 'bfg_unregister_default_widgets');
+add_action('widgets_init', 'hc_unregister_default_widgets');
 /**
  * Disable some or all of the default widgets.
  *
  * @since 2.0.0
  */
-function bfg_unregister_default_widgets() {
+function hc_unregister_default_widgets() {
 
 	// unregister_widget( 'WP_Widget_Pages' );
 	// unregister_widget( 'WP_Widget_Calendar' );
@@ -60,13 +60,13 @@ function bfg_unregister_default_widgets() {
 
 }
 
-add_filter( 'default_hidden_meta_boxes', 'bfg_hidden_meta_boxes', 2 );
+add_filter( 'default_hidden_meta_boxes', 'hc_hidden_meta_boxes', 2 );
 /**
  * Change which meta boxes are hidden by default on the post and page edit screens.
  *
  * @since 2.0.0
  */
-function bfg_hidden_meta_boxes( $hidden ) {
+function hc_hidden_meta_boxes( $hidden ) {
 
 	global $current_screen;
 	if( 'post' === $current_screen->id ) {
@@ -81,8 +81,8 @@ function bfg_hidden_meta_boxes( $hidden ) {
 
 }
 
-// add_action( 'admin_footer-post-new.php', 'bfg_media_manager_default_view' );
-// add_action( 'admin_footer-post.php', 'bfg_media_manager_default_view' );
+// add_action( 'admin_footer-post-new.php', 'hc_media_manager_default_view' );
+// add_action( 'admin_footer-post.php', 'hc_media_manager_default_view' );
 /**
  * Change the media manager default view to 'upload', instead of 'library'.
  *
@@ -90,7 +90,7 @@ function bfg_hidden_meta_boxes( $hidden ) {
  *
  * @since 2.0.11
  */
-function bfg_media_manager_default_view() {
+function hc_media_manager_default_view() {
 
 	?>
 	<script type="text/javascript">
@@ -102,7 +102,7 @@ function bfg_media_manager_default_view() {
 
 }
 
-// add_filter( 'posts_where', 'bfg_restrict_attachment_viewing' );
+// add_filter( 'posts_where', 'hc_restrict_attachment_viewing' );
 /**
  * Prevent authors and contributors from seeing media that isn't theirs.
  *
@@ -110,7 +110,7 @@ function bfg_media_manager_default_view() {
  *
  * @since 2.0.20
  */
-function bfg_restrict_attachment_viewing( $where ) {
+function hc_restrict_attachment_viewing( $where ) {
 
 	global $current_user;
 	if(
@@ -126,22 +126,22 @@ function bfg_restrict_attachment_viewing( $where ) {
 
 }
 
-// add_action( 'admin_init', 'bfg_add_editor_style' );
+// add_action( 'admin_init', 'hc_add_editor_style' );
 /*
  * Add a stylesheet for TinyMCE
  *
  * @since 2.0.0
  */
-function bfg_add_editor_style() {
+function hc_add_editor_style() {
 
-	$use_production_assets = genesis_get_option('bfg_production_on');
+	$use_production_assets = genesis_get_option('hc_production_on');
 	$use_production_assets = !empty($use_production_assets);
 	$src                   = $use_production_assets ? '/build/css/editor-style.min.css' : '/build/css/editor-style.css';
 	add_editor_style( get_stylesheet_directory_uri() . $src );
 
 }
 
-add_filter( 'tiny_mce_before_init', 'bfg_tiny_mce_before_init' );
+add_filter( 'tiny_mce_before_init', 'hc_tiny_mce_before_init' );
 /**
  * Modifies the TinyMCE settings array.
  *
@@ -149,7 +149,7 @@ add_filter( 'tiny_mce_before_init', 'bfg_tiny_mce_before_init' );
  *
  * @since 2.0.0
  */
-function bfg_tiny_mce_before_init( $options ) {
+function hc_tiny_mce_before_init( $options ) {
 
 	$options['element_format']   = 'html'; // See: http://www.tinymce.com/wiki.php/Configuration:element_format
 	$options['schema']           = 'html5-strict'; // Only allow the elements that are in the current HTML5 specification. See: http://www.tinymce.com/wiki.php/Configuration:schema
@@ -160,20 +160,20 @@ function bfg_tiny_mce_before_init( $options ) {
 
 }
 
-add_filter( 'mce_buttons', 'bfg_tinymce_buttons' );
+add_filter( 'mce_buttons', 'hc_tinymce_buttons' );
 /**
  * Enables some commonly used formatting buttons in TinyMCE. A good resource on customizing TinyMCE: http://www.wpexplorer.com/wordpress-tinymce-tweaks/.
  *
  * @since 2.0.15
  */
-function bfg_tinymce_buttons( $buttons ) {
+function hc_tinymce_buttons( $buttons ) {
 
 	$buttons[] = 'wp_page';															// Post pagination
 	return $buttons;
 
 }
 
-add_filter( 'user_contactmethods', 'bfg_user_contactmethods' );
+add_filter( 'user_contactmethods', 'hc_user_contactmethods' );
 /**
  * Updates the user profile contact method fields for today's popular sites.
  *
@@ -181,7 +181,7 @@ add_filter( 'user_contactmethods', 'bfg_user_contactmethods' );
  *
  * @since 2.0.0
  */
-function bfg_user_contactmethods( $fields ) {
+function hc_user_contactmethods( $fields ) {
 
 	// $fields['facebook'] = 'Facebook';												// Add Facebook
 	// $fields['twitter'] = 'Twitter';												// Add Twitter
@@ -193,13 +193,13 @@ function bfg_user_contactmethods( $fields ) {
 
 }
 
-// add_action( 'admin_menu', 'bfg_remove_dashboard_menus' );
+// add_action( 'admin_menu', 'hc_remove_dashboard_menus' );
 /**
  * Remove default admin dashboard menus.
  *
  * @since 2.0.0
  */
-function bfg_remove_dashboard_menus() {
+function hc_remove_dashboard_menus() {
 
 	remove_menu_page('index.php'); // Dashboard tab
 	remove_menu_page('edit.php'); // Posts
@@ -215,7 +215,7 @@ function bfg_remove_dashboard_menus() {
 
 }
 
-add_filter( 'login_errors', 'bfg_login_errors' );
+add_filter( 'login_errors', 'hc_login_errors' );
 /**
  * Prevent the failed login notice from specifying whether the username or the password is incorrect.
  *
@@ -223,13 +223,13 @@ add_filter( 'login_errors', 'bfg_login_errors' );
  *
  * @since 2.0.0
  */
-function bfg_login_errors() {
+function hc_login_errors() {
 
 	return __( 'Invalid username or password.', CHILD_THEME_TEXT_DOMAIN );
 
 }
 
-add_action( 'admin_head', 'bfg_hide_admin_help_button' );
+add_action( 'admin_head', 'hc_hide_admin_help_button' );
 /**
  * Hide the top-right help pull-down button by adding some CSS to the admin <head>.
  *
@@ -237,7 +237,7 @@ add_action( 'admin_head', 'bfg_hide_admin_help_button' );
  *
  * @since 2.0.0
  */
-function bfg_hide_admin_help_button() {
+function hc_hide_admin_help_button() {
 
 	?><style type="text/css">
 		#contextual-help-link-wrap {
@@ -255,8 +255,8 @@ function bfg_hide_admin_help_button() {
  *
  * @since 2.2.8
  */
-// add_filter( 'theme_page_templates', 'bfg_deregister_page_templates' );
-function bfg_deregister_page_templates( $templates ) {
+// add_filter( 'theme_page_templates', 'hc_deregister_page_templates' );
+function hc_deregister_page_templates( $templates ) {
 
 	unset($templates['page_archive.php']);
 	unset($templates['page_blog.php']);
@@ -265,13 +265,13 @@ function bfg_deregister_page_templates( $templates ) {
 
 }
 
-add_action( 'admin_bar_menu', 'bfg_admin_menu_plugins_node' );
+add_action( 'admin_bar_menu', 'hc_admin_menu_plugins_node' );
 /**
  * Add a plugins link to the appearance admin bar menu.
  *
  * @since 2.2.9
  */
-function bfg_admin_menu_plugins_node( $wp_admin_bar ) {
+function hc_admin_menu_plugins_node( $wp_admin_bar ) {
 
 	if( !current_user_can('install_plugins') )
 		return;
