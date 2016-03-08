@@ -1,0 +1,65 @@
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'icons';
+	src: url('../../fonts/icons.eot?flyea3');
+	src: url('../../fonts/icons.eot?flyea3#iefix') format('embedded-opentype'),
+	url('../../fonts/icons.ttf?flyea3') format('truetype'),
+	url('../../fonts/icons.woff?flyea3') format('woff'),
+	url('../../fonts/icons.svg?flyea3#icons') format('svg');
+}
+
+[class^='ico-'],
+[class*=' ico-'] {
+	text-transform: none;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icons' !important;
+	line-height: 1;
+	speak: none;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.ico-share:before {
+	content: '\e907';
+}
+
+.ico-instagram:before {
+	content: '\e905';
+}
+
+.ico-exit:before {
+	content: '\e901';
+}
+
+.ico-arrow-up:before {
+	content: '\e903';
+}
+
+.ico-arrow-down:before {
+	content: '\e900';
+}
+
+.ico-facebook:before {
+	content: '\e902';
+}
+
+.ico-heart:before {
+	content: '\e904';
+}
+
+.ico-search:before {
+	content: '\e906';
+}
+
+.ico-twitter:before {
+	content: '\e908';
+}
+
+.ico-youtube:before {
+	content: '\e909';
+}
