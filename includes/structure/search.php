@@ -2,7 +2,7 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// add_filter( 'genesis_search_text', 'hc_search_text' );
+add_filter( 'genesis_search_text', 'hc_search_text' );
 /**
  * Customize the search form input box text.
  *
@@ -12,7 +12,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 function hc_search_text() {
 
-	return esc_attr( __( 'Search Text Goes Here...', CHILD_THEME_TEXT_DOMAIN ) );
+	return esc_attr( __( 'Getting the munchies?', CHILD_THEME_TEXT_DOMAIN ) );
 
 }
 
@@ -65,5 +65,38 @@ function hc_only_search_posts( $query ) {
 	}
 
 	return $query;
+
+}
+
+remove_filter( 'get_search_form', 'genesis_search_form' );
+add_filter( 'get_search_form', 'hv_search_form' );
+function hv_search_form() {
+
+	$search_text = get_search_query() ? apply_filters( 'the_search_query', get_search_query() ) : apply_filters( 'genesis_search_text', __( 'Search this website', 'genesis' ) . ' &#x02026;' );
+
+	$button_text = apply_filters( 'genesis_search_button_text', esc_attr__( 'Search', 'genesis' ) );
+
+	$value_or_placeholder = ( get_search_query() === '' ) ? 'placeholder' : 'value';
+
+	$label = apply_filters( 'genesis_search_form_label', '' );
+	if( empty($label) )
+		$label = apply_filters( 'genesis_search_text', __( 'Search this website', 'genesis' ) );
+
+	$form_id = uniqid( 'searchform-' );
+
+	$form = sprintf( '<form %s>', genesis_attr( 'search-form' ) );
+
+	$form .= sprintf(
+		'<meta itemprop="target" content="%s"><label class="search-form-label screen-reader-text" for="%s">%s</label><i class="ico-search"></i><input itemprop="query-input" type="search" name="s" id="%s" %s="%s" /><input type="submit" value="%s" /></form>',
+		home_url( '/?s={s}' ),
+		esc_attr( $form_id ),
+		esc_html( $label ),
+		esc_attr( $form_id ),
+		$value_or_placeholder,
+		esc_attr( $search_text ),
+		esc_attr( $button_text )
+	);
+
+	return apply_filters( 'genesis_search_form', $form, $search_text, $button_text, $label );
 
 }

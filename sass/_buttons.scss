@@ -1,10 +1,16 @@
 .btn {
 	display: inline-block;
+	padding: .85em 1.65em;
 	width: auto;
 	border: none;
 	border-radius: 0;
+	background-color: $orange;
+	color: $white;
 	text-align: center;
+	text-transform: uppercase;
 	white-space: nowrap;
+	font-size: .95em;
+	font-family: $heading;
 	line-height: 1;
 	cursor: pointer;
 	transition: all .1s ease-in-out;

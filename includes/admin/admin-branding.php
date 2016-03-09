@@ -26,7 +26,7 @@ function hc_login_headertitle() {
 
 }
 
-// add_action( 'login_enqueue_scripts', 'hc_replace_login_logo' );
+add_action( 'login_enqueue_scripts', 'hc_replace_login_logo' );
 /**
  * Replaces the login screen's WordPress logo with the 'login-logo.png' in your child theme images folder.
  *
@@ -41,11 +41,11 @@ function hc_replace_login_logo() {
 
 	?><style type="text/css">
 		.login h1 a {
-			background-image: url(<?php echo get_stylesheet_directory_uri() ?>/images/login-logo.svg);
+			background-image: url(<?php echo get_stylesheet_directory_uri() ?>/build/images/login-logo.svg);
 
 			/* Adjust to the dimensions of your logo. WP Default: 80px 80px */
-			background-size: 80px 80px;
-			width: 80px;
+			background-size: 70px 80px;
+			width: 70px;
 			height: 80px;
 		}
 	</style>
@@ -122,7 +122,7 @@ function hc_remove_wp_icon_from_admin_bar() {
 
 }
 
-// add_filter( 'admin_footer_text', 'hc_admin_footer_text' );
+add_filter( 'admin_footer_text', 'hc_admin_footer_text' );
 /**
  * Modify the admin footer text.
  *
@@ -132,10 +132,10 @@ function hc_remove_wp_icon_from_admin_bar() {
  */
 function hc_admin_footer_text() {
 
-	$text = __( 'Built by <a href="%s" target="_blank">Cooper Dukes @INNEO</a>', CHILD_THEME_TEXT_DOMAIN );
+	$text = __( 'Built by <a href="%s" target="_blank">Nomadic Multimedia</a>', CHILD_THEME_TEXT_DOMAIN );
 	$text = sprintf(
 		$text,
-		'https://inneosg.com'
+		'http://www.nomadicmultimedia.com/'
 	);
 
 	return $text;

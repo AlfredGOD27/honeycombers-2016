@@ -59,7 +59,7 @@ function hc_fetch_dns() {
 
 	$hrefs = array(
 		'//ajax.googleapis.com',
-		// '//fonts.googleapis.com'
+		'//fonts.googleapis.com',
 	);
 
 	foreach( $hrefs as $href )
@@ -91,26 +91,17 @@ function hc_load_assets() {
 	$src = $use_production_assets ? '/build/css/style.min.css' : '/build/css/style.css';
 	wp_enqueue_style( 'hc', $stylesheet_dir . $src, array(), $assets_version );
 
-	// Disable the 'Open Sans' loaded by the admin bar
-	// https://wordpress.org/support/topic/remove-open-sans-and-add-custom-fonts
-	wp_deregister_style( 'open-sans' );
-	wp_register_style( 'open-sans', false );
-
 	// Google Fonts
 	// Consider async loading: https://github.com/typekit/webfontloader
- 	// wp_enqueue_style(
- 	// 	'google-fonts',
- 	// 	'//fonts.googleapis.com/css?family=Open+Sans:300,400,700%7CLato',		// Open Sans (light, normal, and bold) and Lato regular, for example
- 	// 	array(),
- 	// 	null
- 	// );
+	wp_enqueue_style(
+		'google-fonts',
+		'//fonts.googleapis.com/css?family=Montserrat%7COpen+Sans:400,400italic,600,700%7CNoto+Serif:400italic',
+		array(),
+		null
+	);
 
  	// Dequeue comment-reply if no active comments on page
-	if( ( is_single() || is_page() || is_attachment() ) && comments_open() & (int) get_option( 'thread_comments' ) === 1 && !is_front_page() ) {
-		wp_enqueue_script( 'comment-reply' );
-	} else {
-		wp_dequeue_script( 'comment-reply' );
-	}
+	wp_dequeue_script( 'comment-reply' );
 
 	// Override WP default self-hosted jQuery with version from Google's CDN
 	wp_deregister_script( 'jquery' );
@@ -196,8 +187,8 @@ function hc_pre_load_favicon() {
 
 }
 
-// remove_action( 'wp_head', 'genesis_load_favicon' );
-// add_action( 'wp_head', 'hc_load_favicons' );
+remove_action( 'wp_head', 'genesis_load_favicon' );
+add_action( 'wp_head', 'hc_load_favicons' );
 /**
  * Show the best favicon, within reason.
  *
@@ -212,7 +203,7 @@ function hc_load_favicons() {
 	$favicon_build_path = $stylesheet_dir . '/build/images/favicons';
 
 	// Set to false to disable, otherwise set to a hex color
-	$color = false;
+	$color = '#fe862c';
 
 	// Use a 192px X 192px PNG for the homescreen for Chrome on Android
 	echo '<link rel="icon" type="image/png" href="' . $favicon_build_path . '/favicon-192.png" sizes="192x192">';
@@ -228,10 +219,10 @@ function hc_load_favicons() {
 
 	if( false !== $color ) {
 		// Windows icon background color
-		echo '<meta name="msapplication-TileColor" content="' . $color . '">';
+		echo '<meta name="msapplication-TileColor" content="#ffffff">';
 
 		// Chrome for Android taskbar color
-		echo '<meta name="theme-color" content="' . $color . '">';
+		echo '<meta name="theme-color" content="#ffffff">';
 
 		// Safari 9 pinned tab color
 		echo '<link rel="mask-icon" href="' . $favicon_build_path . '/favicon.svg" color="' . $color . '">';
@@ -254,3 +245,34 @@ function hc_load_favicons() {
 // remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
 // remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
 
+add_action( 'genesis_before', 'hc_site_top' );
+function hc_site_top() {
+
+	?>
+	<section class="site-top">
+		<div class="wrap">
+			<div class="left">
+				<nav class="sites-nav">
+					<a href="#" class="current">Singapore</a>
+					<a href="#">Bali</a>
+					<a href="#">Jakarta</a>
+					<a href="#">Kids</a>
+					<a href="#">Brides</a>
+				</nav>
+			</div>
+
+			<div class="right">
+				<a href="#">Sign In <i class="ico-exit"></i></a>
+			</div>
+		</div>
+	</section>
+	<?php
+
+}
+
+add_action( 'genesis_site_title', 'hc_site_logo' );
+function hc_site_logo() {
+
+	echo '<a href="' . trailingslashit( home_url() ) . '" title="' . get_bloginfo( 'name' ) . '" class="site-logo"><img src="' . get_stylesheet_directory_uri() . '/build/images/logo.svg" alt="' . get_bloginfo( 'name' ) . '" width="319" height="57"></a>';
+
+}

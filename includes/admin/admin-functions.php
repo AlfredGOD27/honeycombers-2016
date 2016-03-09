@@ -38,7 +38,7 @@ function hc_disable_self_pings( &$links ) {
 
 }
 
-/**
+/*
  * Change WP JPEG compression (WP default is 90%).
  *
  * See: http://wpmu.org/how-to-change-jpeg-compression-in-wordpress/
@@ -47,14 +47,14 @@ function hc_disable_self_pings( &$links ) {
  */
 // add_filter( 'jpeg_quality', create_function( '', 'return 80;' ) );
 
-/**
+/*
  * Add new image sizes.
  *
  * See: http://wptheming.com/2014/04/features-wordpress-3-9/
  *
  * @since 2.0.0
  */
-// add_image_size( 'desktop-size', 1024, 768, array( 'left', 'top' ) ); // Crop positions are: top, left, right, bottom, center
+add_image_size( 'featured', 790, 550, true ); // Crop positions are: top, left, right, bottom, center
 
 // add_filter( 'image_size_names_choose', 'hc_image_size_names_choose' );
 /**

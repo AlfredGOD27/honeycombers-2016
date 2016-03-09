@@ -2,7 +2,7 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// add_action( 'genesis_theme_settings_metaboxes', 'hc_remove_theme_settings_metaboxes' );
+add_action( 'genesis_theme_settings_metaboxes', 'hc_remove_theme_settings_metaboxes' );
 /**
  * Remove some or all of the options metaboxes in Dashboard > Genesis > Theme Settings.
  *
@@ -18,9 +18,9 @@ function hc_remove_theme_settings_metaboxes( $_genesis_theme_settings_pagehook )
 	remove_meta_box( 'genesis-theme-settings-header', $_genesis_theme_settings_pagehook, 'main' );				// Header
 	remove_meta_box( 'genesis-theme-settings-nav', $_genesis_theme_settings_pagehook, 'main' );					// Navigation
 	remove_meta_box( 'genesis-theme-settings-breadcrumb', $_genesis_theme_settings_pagehook, 'main' );			// Breadcrumbs
-	// remove_meta_box( 'genesis-theme-settings-comments', $_genesis_theme_settings_pagehook, 'main' );			// Comments and Trackbacks
+	remove_meta_box( 'genesis-theme-settings-comments', $_genesis_theme_settings_pagehook, 'main' );			// Comments and Trackbacks
 	// remove_meta_box( 'genesis-theme-settings-posts', $_genesis_theme_settings_pagehook, 'main' );			// Content Archives
-	// remove_meta_box( 'genesis-theme-settings-blogpage', $_genesis_theme_settings_pagehook, 'main' );			// Blog Page Template
+	remove_meta_box( 'genesis-theme-settings-blogpage', $_genesis_theme_settings_pagehook, 'main' );			// Blog Page Template
 	// remove_meta_box( 'genesis-theme-settings-scripts', $_genesis_theme_settings_pagehook, 'main' );			// Header and Footer Scripts
 
 }

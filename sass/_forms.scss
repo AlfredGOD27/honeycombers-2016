@@ -10,10 +10,13 @@ input[type='email'],
 input[type='url'],
 input[type='number'],
 textarea {
+	padding: .5em;
 	max-width: 100%;
 	width: 100%;
+	border: 1px solid $orange;
 	border-radius: 0;		 // Removes the border radius on iOS
 	color: $black;
+	font-size: .85em;
 	-webkit-appearance: none; // Removes the shadow on iOS
 	-moz-appearance: none;
 }
@@ -38,11 +41,17 @@ select {
 }
 
 .placeholder {
+	color: $grey-light;
 	text-overflow: ellipsis;
+	font-style: italic;
+	font-family: $meta;
 }
 
 ::placeholder {
+	color: $grey-light;
 	text-overflow: ellipsis;
+	font-style: italic;
+	font-family: $meta;
 }
 
 button,
@@ -60,20 +69,39 @@ input[type='search'] {
 .post-password-form {
 	display: flex;
 	align-items: center;
-
-	input[type='submit'] {
-		margin-left: .25em;
-	}
+	max-width: 28em;
+	width: 100%;
+	border: 1px solid transparent;
 }
 
 .search-form {
+	position: relative;
+
+	i {
+		position: absolute;
+		top: 50%;
+		left: .5em;
+		color: $orange;
+		transform: translateY(-50%);
+	}
+
 	input[type='search'] {
 		flex: 1;
+		padding-left: 2em;
+	}
+
+	input[type='submit'] {
+		margin-left: 1px;
+		padding: .65em 1em;
 	}
 }
 
 .post-password-form {
 	input[type='password'] {
 		flex: 1;
+	}
+
+	input[type='submit'] {
+		margin-left: .25em;
 	}
 }

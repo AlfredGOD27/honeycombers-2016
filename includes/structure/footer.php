@@ -2,7 +2,7 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-// add_filter( 'genesis_footer_output', 'hc_footer_creds_text' );
+add_filter( 'genesis_footer_output', 'hc_footer_creds_text' );
 /**
  * Custom footer 'creds' text.
  *
@@ -10,11 +10,11 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 function hc_footer_creds_text() {
 
-	 return '<p>' . __( 'Copyright', CHILD_THEME_TEXT_DOMAIN ) . ' [footer_copyright] [footer_childtheme_link] &middot; [footer_genesis_link] [footer_studiopress_link] &middot; [footer_wordpress_link] &middot; [footer_loginout]</p>';
+	 return '<p>&copy; Honeycombers Pte Ltd ' . date('Y') . ' All Rights Reserved</p>';
 
 }
 
-// add_action( 'wp_footer', 'hc_disable_pointer_events_on_scroll', 99 );
+add_action( 'wp_footer', 'hc_disable_pointer_events_on_scroll', 99 );
 /**
  * Disable pointer events when scrolling. Be careful using this with CSS :hover-enabled menus.
  *
@@ -50,7 +50,7 @@ function hc_disable_pointer_events_on_scroll() {
 
 }
 
-// add_action( 'wp_footer', 'hc_ie_font_face_fix', 99 );
+add_action( 'wp_footer', 'hc_ie_font_face_fix', 99 );
 /**
  * Forces the main stylesheet to reload on document ready for IE8 and below.
  * This redraws any @font-face fonts, fixing the IE8 font loading bug.

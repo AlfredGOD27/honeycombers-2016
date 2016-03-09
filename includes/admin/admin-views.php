@@ -26,11 +26,11 @@ function hc_remove_dashboard_widgets() {
 
 	// remove_meta_box( 'dashboard_right_now', 'dashboard', 'core' );				// Right Now
 	// remove_meta_box( 'dashboard_activity', 'dashboard', 'core' );				// Activity
-	// remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' );			// Comments
+	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'core' );			// Comments
 	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'core' );				// Incoming Links
 	remove_meta_box( 'dashboard_plugins', 'dashboard', 'core' );					// Plugins
-	// remove_meta_box( 'dashboard_quick_press', 'dashboard', 'core' );				// Quick Press
-	// remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'core' );			// Recent Drafts
+	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'core' );				// Quick Press
+	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'core' );				// Recent Drafts
 	remove_meta_box( 'dashboard_primary', 'dashboard', 'core' );					// WordPress Blog
 	remove_meta_box( 'dashboard_secondary', 'dashboard', 'core' );					// Other WordPress News
 	remove_meta_box( 'yoast_db_widget', 'dashboard', 'normal' );					// WordPress SEO by Yoast
@@ -45,17 +45,17 @@ add_action('widgets_init', 'hc_unregister_default_widgets');
  */
 function hc_unregister_default_widgets() {
 
-	// unregister_widget( 'WP_Widget_Pages' );
-	// unregister_widget( 'WP_Widget_Calendar' );
-	// unregister_widget( 'WP_Widget_Archives' );
+	unregister_widget( 'WP_Widget_Pages' );
+	unregister_widget( 'WP_Widget_Calendar' );
+	unregister_widget( 'WP_Widget_Archives' );
 	unregister_widget( 'WP_Widget_Meta' );
 	// unregister_widget( 'WP_Widget_Search' );
 	// unregister_widget( 'WP_Widget_Text' );
-	// unregister_widget( 'WP_Widget_Categories' );
-	// unregister_widget( 'WP_Widget_Recent_Posts' );
-	// unregister_widget( 'WP_Widget_Recent_Comments' );
-	// unregister_widget( 'WP_Widget_RSS' );
-	// unregister_widget( 'WP_Widget_Tag_Cloud' );
+	unregister_widget( 'WP_Widget_Categories' );
+	unregister_widget( 'WP_Widget_Recent_Posts' );
+	unregister_widget( 'WP_Widget_Recent_Comments' );
+	unregister_widget( 'WP_Widget_RSS' );
+	unregister_widget( 'WP_Widget_Tag_Cloud' );
 	// unregister_widget( 'WP_Nav_Menu_Widget' );
 
 }
@@ -248,14 +248,14 @@ function hc_hide_admin_help_button() {
 
 }
 
-/**
+/*
  * Deregister Genesis parent theme page templates.
  *
  * See: http://wptheming.com/2014/04/features-wordpress-3-9/
  *
  * @since 2.2.8
  */
-// add_filter( 'theme_page_templates', 'hc_deregister_page_templates' );
+add_filter( 'theme_page_templates', 'hc_deregister_page_templates' );
 function hc_deregister_page_templates( $templates ) {
 
 	unset($templates['page_archive.php']);

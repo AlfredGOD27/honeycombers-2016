@@ -149,7 +149,7 @@ function hc_password_form( $post = 0 ) {
 
 }
 
-add_filter( 'the_content', 'hc_highlight_non_breaking_spaces' );
+// add_filter( 'the_content', 'hc_highlight_non_breaking_spaces' );
 /*
  * Highlight non-breaking spaces in drafts to give the author a chance to correct them
  *
