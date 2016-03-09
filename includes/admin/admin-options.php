@@ -136,3 +136,6 @@ function hc_environment_settings_box() {
 	<?php
 
 }
+
+if( function_exists('acf_add_options_page') )
+	acf_add_options_page('Site Options');
