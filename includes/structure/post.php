@@ -51,7 +51,7 @@ function hc_truncated_excerpt_link() {
 }
 
 // remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
-// add_filter( 'genesis_post_info', 'hc_post_info' );
+add_filter( 'genesis_post_info', 'hc_post_info' );
 /**
  * Customize the post info text.
  *
@@ -61,7 +61,7 @@ function hc_truncated_excerpt_link() {
  */
 function hc_post_info() {
 
-	return '[post_date] ' . __( 'by', CHILD_THEME_TEXT_DOMAIN ) . ' [post_author_posts_link] [post_comments] [post_edit]';
+	return '[post_date] ' . __( 'By', CHILD_THEME_TEXT_DOMAIN ) . ' [post_author_posts_link] [post_comments] [post_edit]';
 	// Friendly note: use [post_author] to return the author's name, without an archive link
 
 }

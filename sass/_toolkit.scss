@@ -27,12 +27,12 @@
 }
 
 %type {
-	margin-bottom: 1.5em;
+	margin-bottom: 2em;
 	text-overflow: ellipsis;
 	word-wrap: break-word;
 	hyphens: auto;
 	letter-spacing: .01rem;
-	line-height: 1.5;
+	line-height: 1.75;
 
 	&:last-child {
 		margin-bottom: 0;

@@ -11,6 +11,7 @@
 
 .content-sidebar-wrap {
 	@extend %clearfix;
+	@extend %wrap;
 }
 
 .content {
@@ -20,4 +21,16 @@
 }
 
 .sidebar-secondary {
+}
+
+.content-sidebar {
+	.content {
+		float: left;
+		width: 62%;
+	}
+
+	.sidebar-primary {
+		float: right;
+		width: 36%;
+	}
 }
