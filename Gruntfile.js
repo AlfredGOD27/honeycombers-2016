@@ -84,9 +84,12 @@ module.exports = function(grunt) {
 					'bower_components/jquery-placeholder/jquery.placeholder.js',
 					'bower_components/jquery.fitvids/jquery.fitvids.js',
 					'bower_components/js-cookie/src/js.cookie.js',
+					'bower_components/magnific-popup/dist/jquery.magnific-popup.js',
+					'bower_components/slick-carousel/slick/slick.js',
 					'bower_components/superfish/dist/js/superfish.js',
 					'bower_components/svgeezy/svgeezy.js',
 					'build/svgs/grunticon.loader.js',
+					'js/_components.js',
 					'js/scripts.js'
 				],
 				dest: 'build/js/scripts.js',
@@ -98,6 +101,13 @@ module.exports = function(grunt) {
 				],
 				dest: 'build/js/admin.js',
 				nonull: true
+			},
+			admin: {
+				src: [
+					'js/tinymce.js'
+				],
+				dest: 'build/js/tinymce.js',
+				nonull: true
 			}
 		},
 
@@ -108,7 +118,8 @@ module.exports = function(grunt) {
 			build: {
 				files: {
 					'build/js/scripts.min.js': 'build/js/scripts.js',
-					'build/js/admin.min.js': 'build/js/admin.js'
+					'build/js/admin.min.js': 'build/js/admin.js',
+					'build/js/tinymce.min.js': 'build/js/tinymce.js'
 				}
 			}
 		},

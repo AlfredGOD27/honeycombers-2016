@@ -9,6 +9,10 @@
 @import '../bower_components/include-media-export/dist/_include-media-export';
 @import 'variables';
 
+// Libraries
+@import '../bower_components/Magnific-Popup/src/css/main.scss';
+@import '../bower_components/slick-carousel/slick/slick';
+
 // Normalize, Clearfix, & Toolkit
 @import '../bower_components/normalize-scss/normalize.scss';
 @import 'clearfix';

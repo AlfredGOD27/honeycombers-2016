@@ -169,7 +169,21 @@ add_filter( 'mce_buttons', 'hc_tinymce_buttons' );
 function hc_tinymce_buttons( $buttons ) {
 
 	$buttons[] = 'wp_page';															// Post pagination
+	$buttons[] = 'hc_component';
+
 	return $buttons;
+
+}
+
+add_filter( 'mce_external_plugins', 'hc_add_tinymce_buttons' );
+function hc_add_tinymce_buttons( $plugin_array ) {
+
+	$use_production_assets    = genesis_get_option('hc_production_on');
+	$use_production_assets    = !empty($use_production_assets);
+	$src                      = $use_production_assets ? '/build/js/tinymce.min.js' : '/build/js/tinymce.js';
+	$plugin_array['hc_admin'] = get_stylesheet_directory_uri() . $src;
+
+	return $plugin_array;
 
 }
 

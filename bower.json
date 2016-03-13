@@ -17,6 +17,8 @@
     "js-cookie": "js-cookie/js-cookie",
     "normalize-scss": "*",
     "superfish": "*",
-    "svgeezy": "*"
+    "svgeezy": "*",
+    "magnific-popup": "dimsemenov/Magnific-Popup",
+    "slick-carousel": "*"
   }
 }
