@@ -1,6 +1,6 @@
 .breadcrumbs {
 	margin-bottom: .5em;
-	color: $grey-light;
+	color: $grey-lighter;
 
 	> span {
 		font-size: .9em;
@@ -17,29 +17,27 @@
 }
 
 .entry-header {
-	margin-bottom: .75em;
+	margin-bottom: .5em;
 
-	.entry-meta {
+	.left {
+		float: left;
 		font-style: italic;
-		font-family: $heading;
+		font-family: $meta;
+
+		p {
+			font-size: .9em;
+		}
 	}
 
-	.entry-time {
-		display: block;
-		margin-bottom: 1.5em;
-		color: $orange;
-		font-style: normal;
-		font-size: 1.1em;
+	.right {
+		float: right;
 	}
 
-	.entry-author {
-		color: $orange;
-		text-transform: uppercase;
-		font-style: normal;
+	button {
+		margin-left: 1em;
 
-		a {
-			color: inherit;
-			text-decoration: none;
+		&:first-child {
+			margin-left: 0;
 		}
 	}
 }
@@ -63,7 +61,71 @@
 .archive-title {
 }
 
+.date-row {
+	margin-bottom: 1.75em;
+	font-family: $heading;
+}
+
+.entry-time {
+	color: $orange;
+	font-size: 1.1em;
+}
+
+.author-share-row {
+}
+
+.entry-author {
+	color: $orange;
+	text-transform: uppercase;
+	font-style: normal;
+	font-family: $heading;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+.featured-image-container {
+	position: relative;
+	margin-bottom: 1em;
+
+	img {
+		max-width: none;
+		width: 100%;
+	}
+}
+
+.spon-tag {
+	position: absolute;
+	right: 1em;
+	bottom: 1.25em;
+	z-index: 5;
+	padding: .5em 1.25em;
+	background-color: $white;
+	color: $black;
+	text-transform: uppercase;
+	font-size: .85em;
+	line-height: 1;
+	opacity: .8;
+}
+
+.entry-excerpt {
+	margin-bottom: .75em;
+	color: $grey-light;
+	font-style: italic;
+	font-family: $meta;
+
+	p {
+		font-size: 1.1em;
+	}
+}
+
 .entry-content {
+	.entry & {
+		margin-bottom: 1.5em;
+	}
+
 	p {
 		@extend %type;
 	}
@@ -110,22 +172,101 @@
 	white-space: nowrap;
 }
 
-.entry-pagination {
-	@extend %type;
+.entry-subscribe {
+	margin-bottom: 2em;
+	padding: 1.25em 1.75em 1.75em;
+	border: 1px solid $orange;
+
+	h2 {
+		margin-bottom: .25em;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 1.25em;
+	}
+
+	p {
+		margin-bottom: 1em;
+		color: #999;
+		text-align: center;
+		font-weight: 600;
+	}
+
+	form {
+	}
+
+	label {
+	}
+
+	input[type='email'] {
+		margin-bottom: 2em;
+	}
+
+	.btn {
+	}
 }
 
-.entry-meta {
-	clear: both;
+.author-box {
+	margin-bottom: 2em;
 
-	.entry-header & {
+	.left {
+		float: left;
 	}
 
-	.entry-footer & {
+	figure {
 	}
 
-	.entry-categories,
-	.entry-tags {
+	img {
+		display: block;
+		margin-bottom: 1em;
+		border: 2px solid $orange;
+		border-radius: 50%;
 	}
+
+	figcaption {
+		color: #c7c7c7;
+		font-size: .85em;
+	}
+
+	.right {
+		float: right;
+		padding-top: 1em;
+	}
+
+	.author-box-title {
+		margin-bottom: .75em;
+		font-style: italic;
+		font-size: .95em;
+		font-family: $meta;
+
+		span {
+			color: $orange;
+			text-transform: uppercase;
+			font-style: normal;
+			font-size: 1.1em;
+			font-family: $heading;
+		}
+	}
+
+	.entry-content {
+	}
+
+	p {
+		color: #4f4f4f;
+		font-size: .9em;
+		line-height: 1.4;
+	}
+
+	.read-more {
+		color: $grey-lighter;
+		text-align: right;
+		font-style: $meta;
+		font-style: italic;
+		font-size: .95em;
+	}
+}
+
+.entry-pagination {
+	@extend %type;
 }
 
 .archive-pagination {

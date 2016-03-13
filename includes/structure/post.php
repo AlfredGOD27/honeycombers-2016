@@ -50,23 +50,44 @@ function hc_truncated_excerpt_link() {
 
 }
 
-// remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
-add_filter( 'genesis_post_info', 'hc_post_info' );
-/**
- * Customize the post info text.
- *
- * See:http://www.briangardner.com/code/customize-post-info/
- *
- * @since 2.0.0
- */
+remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
+add_action( 'genesis_entry_header', 'hc_post_info', 12 );
 function hc_post_info() {
 
-	return '[post_date] ' . __( 'By', CHILD_THEME_TEXT_DOMAIN ) . ' [post_author_posts_link] [post_comments] [post_edit]';
-	// Friendly note: use [post_author] to return the author's name, without an archive link
+	global $post;
+
+	?>
+	<div class="entry-meta">
+		<div class="date-row">
+			<?php echo do_shortcode('[post_date]'); ?>
+		</div>
+
+		<div class="author-share-row clearfix">
+			<div class="left">
+				<?php
+
+				$lines   = array();
+				$lines[] = do_shortcode( __( 'By', CHILD_THEME_TEXT_DOMAIN ) . ' [post_author_posts_link]' );
+
+				$title = HC()->users->get_title( $post->post_author );
+				if( !empty($title) )
+					$lines[] = $title;
+
+				echo '<p>' . implode( ', ', $lines ) . '</p>';
+				?>
+			</div>
+
+			<div class="right">
+				<?php HC()->favorites->display( $post->ID ); ?>
+				<?php HC()->share->display( $post->ID ); ?>
+			</div>
+		</div>
+	</div>
+	<?php
 
 }
 
-// remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 // add_filter( 'genesis_post_meta', 'hc_post_meta' );
 /**
  * Customize the post meta text.
@@ -170,5 +191,66 @@ function hc_highlight_non_breaking_spaces( $content ) {
 
 	// Highlight non-breaking spaces
 	return str_replace('&nbsp;', '<mark title="' . __( 'Non-breaking space', CHILD_THEME_TEXT_DOMAIN ) . '">&nbsp;</mark>', $content);
+
+}
+
+add_action( 'genesis_entry_content', 'hc_do_post_top', 8 );
+function hc_do_post_top() {
+
+	global $post;
+
+	if( !is_singular() )
+		return;
+
+	?>
+	<div class="featured-image-container">
+		<?php
+		$atts          = genesis_parse_attr( 'entry-image', array('alt' => get_the_title()) );
+		$atts['class'] = 'alignnone';
+
+		echo genesis_get_image(
+			array(
+				'format' => 'html',
+				'size'   => 'featured',
+				'attr'   => $atts,
+			)
+		);
+
+		$sponsored = get_post_meta( $post->ID, '_hc_post_is_sponsored', true );
+		if( !empty($sponsored) ) {
+			?>
+			<span class="spon-tag">Sponsored</span>
+			<?php
+		}
+		?>
+	</div>
+	<?php
+
+	if( !empty($post->post_excerpt) ) {
+		?>
+		<div class="entry-excerpt">
+			<?php the_excerpt(); ?>
+		</div>
+		<?php
+	}
+
+}
+
+add_action( 'genesis_after_entry', 'hc_entry_subscribe_form', 6 );
+function hc_entry_subscribe_form() {
+
+	?>
+	<section class="entry-subscribe">
+		<h2>Want More From Honeycombers?</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pretium turpis.</p>
+
+		<form>
+			<label for="subscribe-email">Email</label>
+			<input id="subscribe-email" type="email">
+
+			<button type="submit" class="btn">Sign Up</button>
+		</form>
+	</section>
+	<?php
 
 }

@@ -54,7 +54,8 @@ function hc_disable_self_pings( &$links ) {
  *
  * @since 2.0.0
  */
-add_image_size( 'featured', 790, 550, true ); // Crop positions are: top, left, right, bottom, center
+add_image_size( 'featured', 790, 550, true );
+add_image_size( 'avatar', 120, 120, true );
 
 // add_filter( 'image_size_names_choose', 'hc_image_size_names_choose' );
 /**

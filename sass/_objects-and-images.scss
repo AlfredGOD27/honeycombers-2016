@@ -58,15 +58,18 @@ img.alignright,
 .wp-caption {
 	width: auto !important;
 
-	p {
-		margin-bottom: 0;
+	img {
+		display: block;
+		margin-bottom: .5em;
 	}
-}
 
-.wp-caption-text {
-	@extend %type;
-	margin: 0;
-	text-align: center;
+	.wp-caption-text {
+		@extend %type;
+		color: $grey-light;
+		text-align: center;
+		font-weight: 600;
+		font-size: .85em;
+	}
 }
 
 img.alignleft,
