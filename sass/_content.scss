@@ -172,6 +172,14 @@
 	white-space: nowrap;
 }
 
+.entry-footer {
+	margin-bottom: 1.25em;
+
+	&:empty {
+		display: none;
+	}
+}
+
 .entry-subscribe {
 	margin-bottom: 2em;
 	padding: 1.25em 1.75em 1.75em;

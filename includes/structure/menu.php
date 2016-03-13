@@ -27,28 +27,7 @@ function hc_nav_close() {
 	?>
 			</div>
 			<div class="right">
-				<?php
-				$sites = array(
-					'facebook'  => 'Facebook',
-					'youtube'   => 'YouTube',
-					'instagram' => 'Instagram',
-					'twitter'   => 'Twitter',
-				);
-				?>
-
-				<div class="social">
-					<?php
-					foreach( $sites as $slug => $name ) {
-						$url = get_field( '_hc_' . $slug . '_url', 'option' );
-						if( empty($url) )
-							continue;
-
-						?>
-						<a href="<?php echo esc_url($url); ?>" title="<?php echo $name; ?>"><i class="ico-<?php echo $slug; ?>"></i></a>
-						<?php
-					}
-					?>
-				</div>
+				<?php hc_do_social(); ?>
 			</div>
 		</div>
 	</div>

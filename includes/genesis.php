@@ -121,6 +121,7 @@ add_theme_support(
 	'genesis-menus',
 	array(
 		'primary' => 'Primary Menu',
+		'footer'  => 'Footer Menu',
 	)
 );
 

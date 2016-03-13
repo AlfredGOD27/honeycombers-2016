@@ -2,15 +2,38 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-add_filter( 'genesis_footer_output', 'hc_footer_creds_text' );
-/**
- * Custom footer 'creds' text.
- *
- * @since 2.0.0
- */
-function hc_footer_creds_text() {
+remove_action( 'genesis_footer', 'genesis_do_footer' );
+add_action( 'genesis_footer', 'hc_do_footer' );
+function hc_do_footer() {
 
-	 return '<p>&copy; Honeycombers Pte Ltd ' . date('Y') . ' All Rights Reserved</p>';
+	?>
+	<div class="footer-social-row clearfix">
+		<div class="column">
+			<i class="ico-instagram-logo"></i>
+			<a href="https://www.instagram.com/honeycombers/" class="instagram-link">@honeycombers</a>
+
+			<h4>Connect With Us</h4>
+			<?php hc_do_social(); ?>
+		</div>
+
+	</div>
+
+	<div class="favicon-row">
+		<i class="ico-favicon"></i>
+	</div>
+	<?php
+
+	wp_nav_menu(
+		array(
+			'menu_class'     => 'footer-menu',
+			'theme_location' => 'footer',
+			'depth'          => 1,
+		)
+	);
+
+	?>
+	<p>&copy; Honeycombers Pte Ltd <?php echo date('Y'); ?> All Rights Reserved</p>
+	<?php
 
 }
 

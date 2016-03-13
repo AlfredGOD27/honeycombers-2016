@@ -88,17 +88,12 @@ function hc_post_info() {
 }
 
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
-// add_filter( 'genesis_post_meta', 'hc_post_meta' );
-/**
- * Customize the post meta text.
- *
- * See:http://www.briangardner.com/code/customize-post-meta/
- *
- * @since 2.0.0
- */
-function hc_post_meta() {
+add_action( 'genesis_entry_footer', 'hc_entry_footer' );
+function hc_entry_footer() {
 
-	return '[post_categories before="' . __( 'Filed Under: ', CHILD_THEME_TEXT_DOMAIN ) . '"] [post_tags before="' . __( 'Tagged: ', CHILD_THEME_TEXT_DOMAIN ) . '"]';
+	global $post;
+
+	HC()->favorites->display( $post->ID );
 
 }
 

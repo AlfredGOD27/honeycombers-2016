@@ -1,15 +1,88 @@
-.footer-widgets {
+.site-footer {
+	padding-top: 3em;
+	padding-bottom: 2.5em;
+	background-color: $black;
+	color: $white;
+	text-align: center;
+
 	> .wrap {
+		@extend %wrap;
 	}
 
-	.widget {
-	}
-
-	.widgettitle {
+	p {
+		text-transform: uppercase;
+		font-size: .85em;
 	}
 }
 
-.site-footer {
-	> .wrap {
+.footer-social-row {
+	margin-bottom: 2.5em;
+
+	.column {
+		float: left;
+		width: (100% / 8);
+	}
+
+	.ico-instagram-logo {
+		display: block;
+		margin-bottom: .1em;
+		font-size: 2em;
+	}
+
+	.instagram-link {
+		display: block;
+		margin-bottom: 2.5em;
+		text-decoration: none;
+		font-style: italic;
+		font-size: 1.1em;
+		font-family: $meta;
+	}
+
+	h4 {
+		margin-bottom: .5em;
+		text-transform: uppercase;
+		font-size: .9em;
+	}
+
+	.social {
+		a {
+			color: inherit;
+		}
+	}
+}
+
+.favicon-row {
+	margin-bottom: 2em;
+	height: 1px;
+	background-color: $white;
+
+	i {
+		display: inline-block;
+		padding: 0 .25em;
+		background-color: $black;
+		font-size: 2.75em;
+		transform: translateY(-50%);
+	}
+}
+
+.footer-menu {
+	margin-bottom: 2em;
+	font-family: $heading;
+
+	li {
+		display: inline-block;
+		margin-left: 2.5em;
+		vertical-align: middle;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+			text-transform: uppercase;
+			font-size: .9em;
+		}
 	}
 }

@@ -24,6 +24,14 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.ico-instagram-logo:before {
+	content: '\e90d';
+}
+
+.ico-favicon:before {
+	content: '\e90c';
+}
+
 .ico-share:before {
 	content: '\e907';
 }
