@@ -8,7 +8,7 @@ function hc_do_footer() {
 
 	?>
 	<div class="footer-social-row clearfix">
-		<div class="column">
+		<div class="left">
 			<i class="ico-instagram-logo"></i>
 			<a href="https://www.instagram.com/honeycombers/" class="instagram-link">@honeycombers</a>
 
@@ -16,6 +16,65 @@ function hc_do_footer() {
 			<?php hc_do_social(); ?>
 		</div>
 
+		<div class="right clearfix">
+			<?php
+			$user_id = get_field( '_hc_instagram_user_id', 'option' );
+
+			$transient_key = '_hc_instagram_' . $user_id;
+			$transient_key = md5($transient_key);
+			$images        = get_transient( $transient_key );
+			if( false === $images ) {
+				$user_id      = sanitize_text_field($user_id);
+				$access_token = get_field( '_hc_instagram_access_token', 'option' );
+
+				if( !empty($user_id) && !empty($access_token) ) {
+					$url = add_query_arg(
+						array(
+							'access_token' => $access_token,
+							'count'        => 7,
+						),
+						'https://api.instagram.com/v1/users/' . $user_id . '/media/recent'
+
+					);
+
+					$response = wp_remote_get( $url );
+					if( !is_wp_error($response) &&
+						isset($response['response']['code']) &&
+						200 === $response['response']['code']
+					) {
+						$body = json_decode($response['body'], true);
+
+						$images = array();
+						foreach( $body['data'] as $data ) {
+							$image          = array();
+							$image['url']   = esc_url($data['link']);
+							$image['src']   = esc_url($data['images']['low_resolution']['url']);
+							$image['title'] = esc_attr( sanitize_text_field($data['caption']['text']) );
+							$images[]       = $image;
+						}
+
+						set_transient( $transient_key, $images, HOUR_IN_SECONDS * 3 );
+					}
+				}
+			}
+
+			if( !empty($images) ) {
+				?>
+				<div class="images clearfix">
+					<?php
+					foreach( $images as $image ) {
+						echo '<div>';
+							echo '<a href="' . $image['url'] . '" target="_blank" rel="nofollow">';
+								echo '<img src="' . $image['src'] . '" title="' . $image['title'] . '" alt="' . $image['title'] . '">';
+							echo '</a>';
+						echo '</div>';
+					}
+					?>
+				</div>
+				<?php
+			}
+			?>
+		</div>
 	</div>
 
 	<div class="favicon-row">

@@ -18,8 +18,9 @@
 .footer-social-row {
 	margin-bottom: 2.5em;
 
-	.column {
+	.left {
 		float: left;
+		padding-right: .75em;
 		width: (100% / 8);
 	}
 
@@ -47,6 +48,17 @@
 	.social {
 		a {
 			color: inherit;
+		}
+	}
+
+	.right {
+		float: right;
+		padding-left: .75em;
+		width: (100% / 8 * 7);
+
+		img {
+			float: left;
+			width: (100% / 7);
 		}
 	}
 }
