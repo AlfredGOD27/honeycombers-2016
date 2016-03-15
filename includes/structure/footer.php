@@ -46,11 +46,13 @@ function hc_do_footer() {
 
 						$images = array();
 						foreach( $body['data'] as $data ) {
-							$image          = array();
-							$image['url']   = esc_url($data['link']);
-							$image['src']   = esc_url($data['images']['low_resolution']['url']);
-							$image['title'] = esc_attr( sanitize_text_field($data['caption']['text']) );
-							$images[]       = $image;
+							$image           = array();
+							$image['url']    = esc_url($data['link']);
+							$image['src']    = esc_url($data['images']['low_resolution']['url']);
+							$image['title']  = esc_attr( sanitize_text_field($data['caption']['text']) );
+							$image['width']  = absint($data['images']['low_resolution']['width']);
+							$image['height'] = absint($data['images']['low_resolution']['height']);
+							$images[]        = $image;
 						}
 
 						set_transient( $transient_key, $images, HOUR_IN_SECONDS * 3 );
@@ -59,19 +61,13 @@ function hc_do_footer() {
 			}
 
 			if( !empty($images) ) {
-				?>
-				<div class="images clearfix">
-					<?php
-					foreach( $images as $image ) {
-						echo '<div>';
-							echo '<a href="' . $image['url'] . '" target="_blank" rel="nofollow">';
-								echo '<img src="' . $image['src'] . '" title="' . $image['title'] . '" alt="' . $image['title'] . '">';
-							echo '</a>';
-						echo '</div>';
-					}
-					?>
-				</div>
-				<?php
+				foreach( $images as $image ) {
+					echo '<div>';
+						echo '<a href="' . $image['url'] . '" target="_blank" rel="nofollow">';
+							echo '<img src="' . $image['src'] . '" title="' . $image['title'] . '" alt="' . $image['title'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '">';
+						echo '</a>';
+					echo '</div>';
+				}
 			}
 			?>
 		</div>

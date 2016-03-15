@@ -16,12 +16,16 @@
 }
 
 .footer-social-row {
+	display: flex;
 	margin-bottom: 2.5em;
 
 	.left {
+		flex-grow: 0;
+		flex-shrink: 0;
 		float: left;
 		padding-right: .75em;
 		width: (100% / 8);
+		width: ($site-width / 8);
 	}
 
 	.ico-instagram-logo {
@@ -52,13 +56,20 @@
 	}
 
 	.right {
+		display: flex;
+		flex-grow: 1;
+		flex-shrink: 1;
 		float: right;
 		padding-left: .75em;
 		width: (100% / 8 * 7);
 
-		img {
+		> div {
 			float: left;
 			width: (100% / 7);
+		}
+
+		img {
+			display: block;
 		}
 	}
 }
