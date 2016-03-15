@@ -197,36 +197,53 @@ function hc_do_post_top() {
 	if( !is_singular() )
 		return;
 
-	?>
-	<div class="featured-image-container">
-		<?php
-		$atts          = genesis_parse_attr( 'entry-image', array('alt' => get_the_title()) );
-		$atts['class'] = 'alignnone';
-
-		echo genesis_get_image(
-			array(
-				'format' => 'html',
-				'size'   => 'featured',
-				'attr'   => $atts,
-			)
-		);
-
-		$sponsored = get_post_meta( $post->ID, '_hc_post_is_sponsored', true );
-		if( !empty($sponsored) ) {
+	$header_type = get_post_meta( $post->ID, '_hc_post_header_type', true );
+	switch( $header_type ) {
+		case 'slideshow':
+			break;
+		case 'video':
+			$video_url = get_post_meta( $post->ID, '_hc_post_video_url', true );
 			?>
-			<span class="spon-tag">Sponsored</span>
+			<div class="entry-video">
+				<?php echo wp_oembed_get( $video_url ); ?>
+			</div>
 			<?php
-		}
-		?>
-	</div>
-	<?php
+			break;
+		case 'default':
+			?>
+			<div class="featured-image-container">
+				<?php
+				$atts          = genesis_parse_attr( 'entry-image', array('alt' => get_the_title()) );
+				$atts['class'] = 'alignnone';
 
-	if( !empty($post->post_excerpt) ) {
-		?>
-		<div class="entry-excerpt">
-			<?php the_excerpt(); ?>
-		</div>
-		<?php
+				echo genesis_get_image(
+					array(
+						'format' => 'html',
+						'size'   => 'featured',
+						'attr'   => $atts,
+					)
+				);
+
+				$sponsored = get_post_meta( $post->ID, '_hc_post_is_sponsored', true );
+				if( !empty($sponsored) ) {
+					?>
+					<span class="spon-tag">Sponsored</span>
+					<?php
+				}
+				?>
+			</div>
+			<?php
+
+			if( !empty($post->post_excerpt) ) {
+				?>
+				<div class="entry-excerpt">
+					<?php the_excerpt(); ?>
+				</div>
+				<?php
+			}
+			break;
+		default:
+			return;
 	}
 
 }
