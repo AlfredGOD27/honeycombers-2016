@@ -46,4 +46,13 @@
 	if( typeof grunticon === 'function')
 		grunticon([grunticon_paths.svg, grunticon_paths.png, grunticon_paths.fallback]);
 
+	// Entry header slideshow
+	$('.entry-slideshow').slick({
+		prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
+		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
+		centerMode: true,
+		slidesToShow: 1,
+		variableWidth: true
+	});
+
 })( window.jQuery );

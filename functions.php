@@ -9,6 +9,7 @@ final class HC {
 
 	private static $classes_init = array(
 		'components',
+		'entry',
 		'favorites',
 		'share',
 		'users',

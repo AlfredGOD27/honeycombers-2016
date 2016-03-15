@@ -16,6 +16,12 @@
 	}
 }
 
+.entry-slideshow {
+	position: relative;
+	margin-top: -1.5em;
+	margin-bottom: 1.5em;
+}
+
 .entry-header {
 	margin-bottom: .5em;
 
@@ -128,6 +134,12 @@
 .entry-content {
 	.entry & {
 		margin-bottom: 1.5em;
+	}
+
+	h2 {
+		margin-bottom: .2em;
+		color: $orange;
+		font-size: 1.1em;
 	}
 
 	p {
