@@ -1,7 +1,7 @@
 /*********************
 SIZES
 *********************/
-$spacer: 1.5em;
+$spacer: 1.25em;
 $site-width: 80em; // Useful for fixed width sites, as well as for limiting the max-width of fluid sites
 
 /*********************
@@ -14,6 +14,7 @@ COLORS
 *********************/
 $black: #252525;
 $grey-dark: #5a5a5a;
+$grey-border: #d7d7d7;
 $grey-light: #919191;
 $grey-lighter: #c7c7c7;
 $grey: $gray;

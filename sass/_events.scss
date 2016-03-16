@@ -1,0 +1,54 @@
+.single-event {
+	.nav-primary-wrapper {
+		margin-bottom: 2.5em;
+	}
+
+	.entry-header {
+		margin-bottom: 1.25em;
+		padding-bottom: 1.25em;
+		border-bottom: 1px solid $grey-border;
+	}
+
+	.entry-title {
+		margin-bottom: .25em;
+	}
+
+	.entry-meta {
+		font-style: italic;
+		font-size: .95em;
+		font-family: $meta;
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+}
+
+.event-data {
+	padding-bottom: 1.25em;
+	border-bottom: 1px solid $grey-border;
+
+	dt,
+	dd {
+		display: inline-block;
+		margin: 0 0 .5em;
+		vertical-align: middle;
+	}
+
+	dt {
+		width: 12%;
+		text-transform: uppercase;
+		font-size: .65em;
+	}
+
+	dd {
+		width: 88%;
+		font-size: .95em;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+}

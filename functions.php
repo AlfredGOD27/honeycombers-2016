@@ -10,7 +10,10 @@ final class HC {
 	private static $classes_init = array(
 		'components',
 		'entry',
+		'events',
 		'favorites',
+		'formatting',
+		'schemas',
 		'share',
 		'users',
 	);
@@ -79,7 +82,6 @@ final class HC {
 		require_once CHILD_DIR . '/includes/structure/loops.php';
 		require_once CHILD_DIR . '/includes/structure/menu.php';
 		require_once CHILD_DIR . '/includes/structure/post.php';
-		require_once CHILD_DIR . '/includes/structure/schema.php';
 		require_once CHILD_DIR . '/includes/structure/search.php';
 		require_once CHILD_DIR . '/includes/structure/sidebar.php';
 		require_once CHILD_DIR . '/includes/structure/social.php';
