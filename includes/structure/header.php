@@ -121,6 +121,11 @@ function hc_load_assets() {
 			'fallback' => $stylesheet_dir . '/build/svgs/icons.fallback.css',
 		)
 	);
+	wp_localize_script(
+		'hc',
+		'hc_spinner_html',
+		'<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>'
+	);
 	// wp_localize_script( 'hc', 'ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
 }

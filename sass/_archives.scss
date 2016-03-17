@@ -33,14 +33,44 @@
 }
 
 .infinite-scroll {
-	&.loading-content {
-	}
-
-	&.loaded-all-content {
-	}
-
 	.pagination {
 		display: none;
+	}
+}
+
+.il-load-more {
+	clear: both;
+	margin-top: 2em;
+	padding: 0 .25em;
+	width: 100%;
+	height: 2px;
+	background-color: $grey-dark;
+	color: $grey-dark;
+
+	&:focus {
+		outline: none;
+	}
+
+	span {
+		display: inline-block;
+		background-color: $white;
+		transform: translateY(-25%);
+	}
+
+	i {
+		display: block;
+		margin-bottom: 1.25em;
+		font-size: 1.25em;
+	}
+
+	label {
+		display: block;
+		margin-bottom: 0;
+		color: inherit;
+		text-transform: none;
+		font-style: italic;
+		font-size: 1em;
+		font-family: $meta;
 	}
 }
 

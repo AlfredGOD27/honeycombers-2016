@@ -20,6 +20,7 @@
     "svgeezy": "*",
     "magnific-popup": "dimsemenov/Magnific-Popup",
     "slick-carousel": "*",
-    "waypoints": "imakewebthings/waypoints"
+    "waypoints": "imakewebthings/waypoints",
+    "imagesloaded": "desandro/imagesloaded"
   }
 }
