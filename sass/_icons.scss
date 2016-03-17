@@ -24,6 +24,18 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.ico-star-half-empty:before {
+	content: '\e90f';
+}
+
+.ico-star-o:before {
+	content: '\e910';
+}
+
+.ico-star:before {
+	content: '\e911';
+}
+
 .ico-calendar:before {
 	content: '\e90e';
 }

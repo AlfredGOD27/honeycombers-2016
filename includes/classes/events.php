@@ -197,32 +197,14 @@ class HC_Events {
 
 				// Website
 				$website = get_post_meta( $post->ID, '_hc_event_website', true );
-				if( !empty($website) ) {
-					$website_label = str_replace(
-						array(
-							'http://',
-							'https://',
-						),
-						array(
-							'',
-							'',
-						),
-						$website
-					);
-					$lines['Website'] = '<a href="' . esc_url($website) . '">' . sanitize_text_field($website_label) . '</a>';
-				}
+				if( !empty($website) )
+					$lines['Website'] = HC()->formatting->get_linked_url( $website );
 
-				if( count($lines) > 0 ) {
-					echo '<dl class="event-data clearfix">';
-						foreach( $lines as $label => $text ) {
-							echo '<dt>' . $label . '</dt>';
-							echo '<dd>' . $text . '</dd>';
-						}
-					echo '</dl>';
-				}
+				if( count($lines) > 0 )
+					HC()->formatting->display_data_list($lines);
 				?>
 
-				<div class="event-action-row">
+				<div class="item-action-row">
 					<?php HC()->favorites->display( $post->ID ); ?>
 					<?php HC()->share->display( $post->ID ); ?>
 
@@ -266,31 +248,8 @@ class HC_Events {
 					the_post_thumbnail( 'featured', array('class' => 'aligncenter') );
 
 				$map_address = get_post_meta( $post->ID, '_hc_event_map_address', true );
-				if( !empty($map_address) ) {
-					$url = add_query_arg(
-						array(
-							'q' => urlencode($map_address),
-						),
-						'http://maps.google.com/'
-					);
-
-					$src = add_query_arg(
-						array(
-							'size'    => '630x300',
-							'scale'   => 2,
-							'zoom'    => 12,
-							'maptype' => 'roadmap',
-							'markers' => 'color:0xfe862c|' . urlencode($map_address),
-						),
-						'https://maps.googleapis.com/maps/api/staticmap'
-					);
-
-					?>
-					<a href="<?php echo esc_url($url); ?>" target="_blank">
-						<img src="<?php echo esc_url($src); ?>" alt="<?php echo esc_attr($map_address); ?>">
-					</a>
-					<?php
-				}
+				if( !empty($map_address) )
+					HC()->formatting->display_map($map_address, 630, 300);
 				?>
 			</div>
 		</article>

@@ -14,6 +14,7 @@ final class HC {
 		'events',
 		'favorites',
 		'formatting',
+		'listings',
 		'schemas',
 		'share',
 		'users',

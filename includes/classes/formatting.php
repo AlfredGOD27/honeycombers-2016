@@ -50,6 +50,63 @@ class HC_Formatting {
 
 	}
 
+	public function get_linked_url( $website ) {
+
+		$website_label = str_replace(
+			array(
+				'http://',
+				'https://',
+			),
+			array(
+				'',
+				'',
+			),
+			$website
+		);
+
+		return '<a href="' . esc_url($website) . '">' . sanitize_text_field($website_label) . '</a>';
+
+	}
+
+	public function display_data_list( $lines ) {
+
+		echo '<dl class="item-data clearfix">';
+			foreach( $lines as $label => $text ) {
+				echo '<dt>' . $label . '</dt>';
+				echo '<dd>' . $text . '</dd>';
+			}
+		echo '</dl>';
+
+	}
+
+	public function display_map( $map_address, $width, $height ) {
+
+		$url = add_query_arg(
+			array(
+				'q' => urlencode($map_address),
+			),
+			'http://maps.google.com/'
+		);
+
+		$src = add_query_arg(
+			array(
+				'size'    => $width . 'x' . $height,
+				'scale'   => 2,
+				'zoom'    => 12,
+				'maptype' => 'roadmap',
+				'markers' => 'color:0xfe862c|' . urlencode($map_address),
+			),
+			'https://maps.googleapis.com/maps/api/staticmap'
+		);
+
+		?>
+		<a href="<?php echo esc_url($url); ?>" target="_blank">
+			<img src="<?php echo esc_url($src); ?>" alt="<?php echo esc_attr($map_address); ?>">
+		</a>
+		<?php
+
+	}
+
 }
 
 return new HC_Formatting();
