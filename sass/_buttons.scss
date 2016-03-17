@@ -7,6 +7,7 @@
 	background-color: $orange;
 	color: $white;
 	text-align: center;
+	text-decoration: none;
 	text-transform: uppercase;
 	white-space: nowrap;
 	font-size: .95em;
@@ -19,5 +20,29 @@
 
 	&:hover,
 	&:focus {
+	}
+}
+
+.btn-icon {
+	padding: 0;
+	background-color: transparent;
+
+	i,
+	share {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	i {
+		color: $orange;
+		font-size: 1.5em;
+	}
+
+	span {
+		margin-left: .25em;
+		color: $text;
+		text-transform: lowercase;
+		font-size: .9em;
+		font-family: $heading;
 	}
 }

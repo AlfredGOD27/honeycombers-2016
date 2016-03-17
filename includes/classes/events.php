@@ -76,6 +76,45 @@ class HC_Events {
 
 	}
 
+	private function get_event_date_info( $post_id ) {
+
+		$info = array();
+
+		$all_day         = get_post_meta( $post_id, '_hc_event_all_day', true );
+		$info['all_day'] = !empty($all_day);
+
+		$start_date         = get_post_meta( $post_id, '_hc_event_start_date', true );
+		$info['start_date'] = !empty($start_date) ? strtotime($start_date) : false;
+
+		if( !$info['all_day'] ) {
+			$start_time         = get_post_meta( $post_id, '_hc_event_start_time', true );
+			$info['start_time'] = !empty($start_time) ? strtotime($start_time) : false;
+		}
+
+		if( !$info['all_day'] && false !== $info['start_time'] ) {
+			$info['start_datetime'] = strtotime( $start_date . ' ' . $start_time );
+		} else {
+			$info['start_datetime'] = $info['start_date'];
+		}
+
+		$end_date         = get_post_meta( $post_id, '_hc_event_end_date', true );
+		$info['end_date'] = !empty($end_date) ? strtotime($end_date) : false;
+
+		if( !$info['all_day'] ) {
+			$end_time         = get_post_meta( $post_id, '_hc_event_end_time', true );
+			$info['end_time'] = !empty($end_time) ? strtotime($end_time) : false;
+		}
+
+		if( !$info['all_day'] && false !== $info['end_time'] ) {
+			$info['end_datetime'] = strtotime( $end_date . ' ' . $end_time );
+		} else {
+			$info['end_datetime'] = $info['end_date'];
+		}
+
+		return $info;
+
+	}
+
 	public function do_single_event() {
 
 		global $post;
@@ -103,51 +142,40 @@ class HC_Events {
 				$lines = array();
 
 				// Date
-				$start_date = get_post_meta( $post->ID, '_hc_event_start_date', true );
-				$end_date   = get_post_meta( $post->ID, '_hc_event_end_date', true );
-				if( !empty($start_date) && !empty($end_date) ) {
-					$start_date = strtotime($start_date);
-					$start_date = date( 'l, F j', $start_date );
+				$date = $this->get_event_date_info( $post->ID );
+				if( false !== $date['start_date'] && false !== $date['end_date'] ) {
+					$start_date = date( 'l, F j', $date['start_date'] );
+					$end_date   = date( 'l, F j', $date['end_date'] );
 
-					$end_date = strtotime($end_date);
-					$end_date = date( 'l, F j', $end_date );
-
-					$lines['Date'] = $start_date . ' - ' . $end_date;
-				} elseif( !empty($start_date) ) {
-					$start_date = strtotime($start_date);
-					$start_date = date( 'l, F j', $start_date );
-
+					if( $start_date !== $end_date ) {
+						$lines['Date'] = $start_date . ' - ' . $end_date;
+					} else {
+						$lines['Date'] = $start_date;
+					}
+				} elseif( false !== $date['start_date'] ) {
+					$start_date    = date( 'l, F j', $date['start_date'] );
 					$lines['Date'] = $start_date;
-				} elseif( !empty($end_date) ) {
-					$end_date = strtotime($end_date);
-					$end_date = date( 'l, F j', $end_date );
-
+				} elseif( false !== $date['end_date'] ) {
+					$end_date      = date( 'l, F j', $date['end_date'] );
 					$lines['Date'] = $end_date;
 				}
 
 				// Time
-				$all_day = get_post_meta( $post->ID, '_hc_event_all_day', true );
-				$all_day = !empty($all_day);
-				if( !$all_day ) {
-					$start_time = get_post_meta( $post->ID, '_hc_event_start_time', true );
-					$end_time   = get_post_meta( $post->ID, '_hc_event_end_time', true );
-					if( !empty($start_time) && !empty($end_time) ) {
-						$start_time = strtotime($start_time);
-						$start_time = date( 'ga', $start_time );
+				if( !$date['all_day'] ) {
+					if( false !== $date['start_time'] && false !== $date['end_time'] ) {
+						$start_time = date( 'ga', $date['start_time'] );
+						$end_time   = date( 'ga', $date['end_time'] );
 
-						$end_time = strtotime($end_time);
-						$end_time = date( 'ga', $end_time );
-
-						$lines['Time'] = $start_time . ' - ' . $end_time;
-					} elseif( !empty($start_time) ) {
-						$start_time = strtotime($start_time);
-						$start_time = date( 'ga', $start_time );
-
+						if( $start_time !== $end_time ) {
+							$lines['Time'] = $start_time . ' - ' . $end_time;
+						} else {
+							$lines['Time'] = $start_time;
+						}
+					} elseif( false !== $date['start_time'] ) {
+						$start_time    = date( 'ga', $date['start_time'] );
 						$lines['Time'] = $start_time;
-					} elseif( !empty($end_time) ) {
-						$end_time = strtotime($end_time);
-						$end_time = date( 'ga', $end_time );
-
+					} elseif( false !== $date['end_time'] ) {
+						$end_time      = date( 'ga', $date['end_time'] );
 						$lines['Time'] = $end_time;
 					}
 				}
@@ -194,7 +222,38 @@ class HC_Events {
 				}
 				?>
 
-				fav/share/calendar
+				<div class="event-action-row">
+					<?php HC()->favorites->display( $post->ID ); ?>
+					<?php HC()->share->display( $post->ID ); ?>
+
+					<?php
+					$start = date( 'Ymd', $date['start_datetime'] );
+					$start .= 'T';
+					$start .= date( 'His', $date['start_datetime'] );
+
+					if( !$date['all_day'] || $date['start_datetime'] !== $date['end_datetime'] ) {
+						$end = date( 'Ymd', $date['end_datetime'] );
+						$end .= 'T';
+						$end .= date( 'His', $date['end_datetime'] );
+					} else {
+						$end = date( 'Ymd', $date['end_datetime'] + DAY_IN_SECONDS );
+						$end .= 'T';
+						$end .= date( 'His', $date['end_datetime'] );
+					}
+
+					$url = add_query_arg(
+						array(
+							'action'   => 'TEMPLATE',
+							'text'     => urlencode( $post->post_title ),
+							'details'  => urlencode( $post->post_excerpt ),
+							'location' => $venue,
+							'dates'    => $start . '/' . $end,
+						),
+						'http://www.google.com/calendar/event'
+					);
+					?>
+					<a href="<?php echo $url; ?>" class="calendar-button btn btn-icon" target="_blank"><i class="ico-calendar"></i> <span>+ Calendar</span></a>
+				</div>
 
 				<?php printf( '<div %s>', genesis_attr( 'entry-content' ) ); ?>
 					<?php the_content(); ?>

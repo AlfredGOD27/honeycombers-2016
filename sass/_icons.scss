@@ -24,6 +24,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.ico-calendar:before {
+	content: '\e90e';
+}
+
 .ico-instagram-logo:before {
 	content: '\e90d';
 }

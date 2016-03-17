@@ -6,7 +6,7 @@ class HC_Share {
 	public function display( $post_id ) {
 
 		?>
-		<button class="share-button"><i class="ico-share"></i> <span>Share</span></button>
+		<button class="share-button btn btn-icon"><i class="ico-share"></i> <span>Share</span></button>
 		<?php
 
 
