@@ -32,6 +32,18 @@
 	}
 }
 
+.infinite-scroll {
+	&.loading-content {
+	}
+
+	&.loaded-all-content {
+	}
+
+	.pagination {
+		display: none;
+	}
+}
+
 .archive-description {
 	> .wrap {
 		@extend %wrap;

@@ -88,8 +88,10 @@ module.exports = function(grunt) {
 					'bower_components/slick-carousel/slick/slick.js',
 					'bower_components/superfish/dist/js/superfish.js',
 					'bower_components/svgeezy/svgeezy.js',
+					'bower_components/waypoints/lib/jquery.waypoints.js',
 					'build/svgs/grunticon.loader.js',
 					'js/_components.js',
+					'js/_infinite-scroll.js',
 					'js/scripts.js'
 				],
 				dest: 'build/js/scripts.js',

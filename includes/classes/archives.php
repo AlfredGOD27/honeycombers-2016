@@ -19,6 +19,8 @@ class HC_Archives {
 		if( !is_search() )
 			return;
 
+		add_action( 'body_class', array($this, 'body_class') );
+
 		add_action( 'genesis_after_header', array($this, 'do_search_title'), 14 );
 
 		remove_action( 'genesis_before_loop', 'hc_do_breadcrumbs' );
@@ -26,6 +28,14 @@ class HC_Archives {
 		add_action( 'post_class', array($this, 'post_class') );
 		remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 		add_action( 'genesis_entry_content', array($this, 'do_excerpt') );
+
+	}
+
+	public function body_class( $classes ) {
+
+		$classes[] = 'infinite-scroll';
+
+		return $classes;
 
 	}
 

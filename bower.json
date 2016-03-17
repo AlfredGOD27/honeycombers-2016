@@ -19,6 +19,7 @@
     "superfish": "*",
     "svgeezy": "*",
     "magnific-popup": "dimsemenov/Magnific-Popup",
-    "slick-carousel": "*"
+    "slick-carousel": "*",
+    "waypoints": "imakewebthings/waypoints"
   }
 }
