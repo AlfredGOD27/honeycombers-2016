@@ -90,7 +90,7 @@ class HC_Entry {
 			return;
 
 		?>
-		<div class="entry-excerpt">
+		<div class="entry-excerpt" itemprop="description">
 			<?php the_excerpt(); ?>
 		</div>
 		<?php

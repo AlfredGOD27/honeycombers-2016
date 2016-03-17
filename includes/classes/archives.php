@@ -69,7 +69,7 @@ class HC_Archives {
 		global $post;
 
 		?>
-		<div class="entry-excerpt">
+		<div class="entry-excerpt" itemprop="description">
 			<?php
 			echo HC()->formatting->get_excerpt( $post, 140 );
 			?>
