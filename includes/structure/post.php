@@ -56,6 +56,9 @@ function hc_post_info() {
 
 	global $post;
 
+	if( !is_singular() )
+		return;
+
 	?>
 	<div class="entry-meta">
 		<div class="date-row">
@@ -92,6 +95,9 @@ add_action( 'genesis_entry_footer', 'hc_entry_footer' );
 function hc_entry_footer() {
 
 	global $post;
+
+	if( !is_singular() )
+		return;
 
 	HC()->favorites->display( $post->ID );
 
@@ -191,6 +197,9 @@ function hc_highlight_non_breaking_spaces( $content ) {
 
 add_action( 'genesis_after_entry', 'hc_entry_subscribe_form', 6 );
 function hc_entry_subscribe_form() {
+
+	if( !is_singular() )
+		return;
 
 	?>
 	<section class="entry-subscribe">
