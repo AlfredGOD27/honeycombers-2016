@@ -71,8 +71,9 @@
 
 	}
 
-	$('.content').on( 'click', '.il-load-more', load_next_page );
-
-	queue_next_page();
+	if( $('.pagination .pagination-next a').length > 0 ) {
+		$('.content').on( 'click', '.il-load-more', load_next_page );
+		queue_next_page();
+	}
 
 })( window.jQuery );
