@@ -49,6 +49,7 @@ class HC_Archives {
 			case 'infinite':
 				break;
 			case 'sub-sections':
+				add_action( 'genesis_after_header', array($this, 'slider'), 16 );
 				remove_action( 'genesis_loop', 'genesis_do_loop' );
 				add_action( 'genesis_loop', array($this, 'subcategory_sections') );
 				break;
@@ -146,6 +147,110 @@ class HC_Archives {
 
 		if( !empty($headline) || !empty($intro_text) )
 			printf( '<div %s><div class="wrap">%s</div></div>', genesis_attr( 'taxonomy-archive-description' ), $headline . $intro_text );
+
+	}
+
+	public function slider() {
+
+		$args = array(
+			'post_type' => 'any',
+			'tax_query' => array(
+				array(
+					'taxonomy' => $this->term->taxonomy,
+					'field'    => 'term_id',
+					'terms'    => $this->term->term_id,
+				),
+			),
+			'meta_query' => array(
+				'relation' => 'AND',
+				array(
+					'key'     => '_thumbnail_id',
+					'compare' => 'EXISTS',
+				),
+				array(
+					'key'     => '_thumbnail_id',
+					'value'   => '',
+					'compare' => '!=',
+				),
+			),
+			'fields' => 'ids',
+		);
+
+		$slider_mode = get_field( '_hc_category_slider_type', $this->term );
+		switch( $slider_mode ) {
+			case 'manual':
+				$args['post__in'] = get_field( '_hc_category_slider_post_ids', $this->term );
+				$args['orderby']  = 'post__in';
+				break;
+			case 'recent':
+				$post_count             = get_field( '_hc_category_slider_post_count', $this->term );
+				$args['posts_per_page'] = absint($post_count);
+				break;
+			default:
+				return;
+		}
+
+		$posts = get_posts( $args );
+		if( empty($posts) )
+			return;
+
+		?>
+		<section class="archive-slider-container hide-no-js">
+			<div class="wrap">
+				<div class="slider-for">
+					<?php
+					foreach( $posts as $post_id ) {
+						?>
+						<div>
+							<?php echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide' ); ?>
+						</div>
+						<?php
+					}
+					?>
+				</div>
+
+				<div class="slider-nav">
+					<?php
+					foreach( $posts as $post_id ) {
+						?>
+						<div>
+							<div class="outer">
+								<?php echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide-thumbnail' ); ?>
+
+								<div class="inner">
+									<?php
+									$terms = false;
+									switch( get_post_type($post_id) ) {
+										case 'post':
+											$terms = wp_get_object_terms( $post_id, 'category' );
+											break;
+										case 'event':
+											$terms = wp_get_object_terms( $post_id, 'event-category' );
+											break;
+										case 'listing':
+											$terms = wp_get_object_terms( $post_id, 'listing-category' );
+											break;
+									}
+
+									$icon = false;
+									if( !empty($terms) )
+										$icon = get_field( '_hc_category_icon', $terms[0] );
+
+									if( !empty($icon) )
+										echo '<i class="ico-' . $icon . '"></i>';
+
+									echo '<span>' . get_the_title( $post_id ) . '</span>';
+									?>
+								</div>
+							</div>
+						</div>
+						<?php
+					}
+					?>
+				</div>
+			</div>
+		</section>
+		<?php
 
 	}
 

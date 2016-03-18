@@ -94,6 +94,7 @@ module.exports = function(grunt) {
 					'js/_archives.js',
 					'js/_components.js',
 					'js/_infinite-scroll.js',
+					'js/_slider.js',
 					'js/scripts.js'
 				],
 				dest: 'build/js/scripts.js',
