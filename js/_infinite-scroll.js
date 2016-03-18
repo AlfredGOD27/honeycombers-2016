@@ -3,14 +3,12 @@
 	if( !$('body').hasClass('infinite-scroll') )
 		return;
 
-	var update_urls = !!(window.history && window.history.pushState),
-		more_html = '<button type="button" class="il-load-more"><span><i class="ico-arrow-down"></i><label>more stories</label></span></button>',
-		loading_html = '<div class="il-loading">' + hc_spinner_html + '</div>';
+	var update_urls = !!(window.history && window.history.pushState);
 
 	function queue_next_page() {
 
 		$('.content').imagesLoaded( function() {
-			$('.content').append( more_html );
+			$('.content').append( hc_strings.more_button );
 
 			$('.content').waypoint(
 				function( direction ) {
@@ -32,7 +30,7 @@
 		$('body').addClass('il-loading-content');
 
 		$('.content .il-load-more').remove();
-		$('.content').append( loading_html );
+		$('.content').append( hc_strings.loading );
 
 		$.ajax({
 			url: href,

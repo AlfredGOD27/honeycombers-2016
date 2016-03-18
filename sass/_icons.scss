@@ -24,6 +24,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.ico-circle:before {
+	content: '\e913';
+}
+
 .ico-star-half-empty:before {
 	content: '\e90f';
 }
@@ -38,6 +42,10 @@
 
 .ico-calendar:before {
 	content: '\e90e';
+}
+
+.ico-arrow-right-circle:before {
+	content: '\e912';
 }
 
 .ico-instagram-logo:before {

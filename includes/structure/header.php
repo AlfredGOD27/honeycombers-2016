@@ -121,12 +121,19 @@ function hc_load_assets() {
 			'fallback' => $stylesheet_dir . '/build/svgs/icons.fallback.css',
 		)
 	);
+
+	$spinner = '<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>';
 	wp_localize_script(
 		'hc',
-		'hc_spinner_html',
-		'<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>'
+		'hc_strings',
+		array(
+			'spinner'     => $spinner,
+			'more_button' => '<button type="button" class="il-load-more"><span><i class="ico-arrow-down"></i><label>more stories</label></span></button>',
+			'loading'     => '<div class="il-loading">' . $spinner . '</div>',
+		)
+
 	);
-	// wp_localize_script( 'hc', 'ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	wp_localize_script( 'hc', 'ajax_object', array('ajaxurl' => admin_url( 'admin-ajax.php' )) );
 
 }
 

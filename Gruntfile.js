@@ -91,6 +91,7 @@ module.exports = function(grunt) {
 					'bower_components/svgeezy/svgeezy.js',
 					'bower_components/waypoints/lib/jquery.waypoints.js',
 					'build/svgs/grunticon.loader.js',
+					'js/_archives.js',
 					'js/_components.js',
 					'js/_infinite-scroll.js',
 					'js/scripts.js'

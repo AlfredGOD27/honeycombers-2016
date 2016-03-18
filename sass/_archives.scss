@@ -1,4 +1,4 @@
-.search {
+.two-columns-archive {
 	&.content-sidebar {
 		.content {
 			width: 74%;
@@ -87,4 +87,41 @@
 	color: $orange;
 	text-transform: uppercase;
 	font-size: 1.5em;
+}
+
+.subcategory {
+	margin-bottom: 2em;
+}
+
+.subcategory-description {
+	margin-bottom: 1.5em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid $grey-border;
+
+	a {
+		display: inline-block;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.ico-circle,
+	.archive-title,
+	.ico-arrow-right-circle {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.ico-circle {
+		color: $orange;
+		font-size: 3em;
+	}
+
+	.archive-title {
+		margin-right: .5em;
+		margin-left: .5em;
+	}
+
+	.ico-arrow-right-circle {
+		font-size: 1.5em;
+	}
 }
