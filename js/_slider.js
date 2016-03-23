@@ -1,7 +1,11 @@
 (function($) {
 
-	if( !$('body').hasClass('archive-sub-sections') )
+	if( !$('body').hasClass('archive-has-slider') )
 		return;
+
+	$('.slider-for').on( 'init', function() {
+		$(this).fitVids();
+	});
 
 	$('.slider-for').slick({
 		adaptiveHeight: true,

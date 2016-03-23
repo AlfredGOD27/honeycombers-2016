@@ -19,19 +19,41 @@ class HC_Archives {
 
 	public function init() {
 
-		$this->mode = false;
+		$this->mode       = false;
+		$this->has_slider = false;
 		if( is_search() ) {
+			// If search, set to infinite mode and fix title
 			add_action( 'genesis_after_header', array($this, 'do_search_title'), 14 );
 			$this->mode = 'infinite';
 		} elseif( is_archive() ) {
 			add_action( 'genesis_after_header', array($this, 'do_taxonomy_title_description'), 14 );
 
 			$this->term = get_queried_object();
+
+			// If archive, check for slider settings. If present, show slider. Otherwise, show archive title.
+			$this->slider_mode = get_field( '_hc_category_slider_type', $this->term );
+			$page              = get_query_var( 'paged', 0 );
+			if(
+				in_array( $this->slider_mode, array('manual', 'recent'), true ) &&
+				0 === $page
+			) {
+				$this->has_slider = true;
+				add_action( 'genesis_after_header', array($this, 'slider'), 16 );
+			}
+
+			// If is top level category with subcategories, show sections. Otherwise, show infinite.
 			if( !empty($this->term->parent) ) {
 				$this->mode = 'infinite';
 			} else {
-				remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
-				$this->mode = 'sub-sections';
+				$args = array(
+					'parent' => $this->term->term_id,
+				);
+				$this->subcategories = get_terms( $this->term->taxonomy, $args );
+				if( count($this->subcategories) <= 1 ) {
+					$this->mode = 'infinite';
+				} else {
+					$this->mode = 'sub-sections';
+				}
 			}
 		}
 
@@ -49,9 +71,9 @@ class HC_Archives {
 			case 'infinite':
 				break;
 			case 'sub-sections':
-				add_action( 'genesis_after_header', array($this, 'slider'), 16 );
 				remove_action( 'genesis_loop', 'genesis_do_loop' );
 				add_action( 'genesis_loop', array($this, 'subcategory_sections') );
+				remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 				break;
 		}
 
@@ -115,6 +137,9 @@ class HC_Archives {
 		if( 'sub-sections' === $this->mode )
 			$classes[] = 'archive-sub-sections';
 
+		if( $this->has_slider )
+			$classes[] = 'archive-has-slider';
+
 		return $classes;
 
 	}
@@ -176,8 +201,7 @@ class HC_Archives {
 			'fields' => 'ids',
 		);
 
-		$slider_mode = get_field( '_hc_category_slider_type', $this->term );
-		switch( $slider_mode ) {
+		switch( $this->slider_mode ) {
 			case 'manual':
 				$args['post__in'] = get_field( '_hc_category_slider_post_ids', $this->term );
 				$args['orderby']  = 'post__in';
@@ -202,7 +226,19 @@ class HC_Archives {
 					foreach( $posts as $post_id ) {
 						?>
 						<div>
-							<?php echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide' ); ?>
+							<?php
+							$header_type = get_post_meta( $post_id, '_hc_post_header_type', true );
+							switch( $header_type ) {
+								case 'video':
+									$video_url = get_post_meta( $post_id, '_hc_post_video_url', true );
+									if( !empty($video_url) )
+										echo wp_oembed_get($video_url);
+									break;
+								default:
+									echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide' );
+									break;
+							}
+							?>
 						</div>
 						<?php
 					}
@@ -215,7 +251,9 @@ class HC_Archives {
 						?>
 						<div>
 							<div class="outer">
-								<?php echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide-thumbnail' ); ?>
+								<?php
+								echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide-thumbnail' );
+								?>
 
 								<div class="inner">
 									<?php
@@ -273,14 +311,7 @@ class HC_Archives {
 
 		global $wp_query;
 
-		$args = array(
-			'parent' => $this->term->term_id,
-		);
-		$subcategories = get_terms( $this->term->taxonomy, $args );
-		if( empty($subcategories) )
-			return;
-
-		foreach( $subcategories as $category ) {
+		foreach( $this->subcategories as $category ) {
 			$args = array(
 				'posts_per_page' => 4,
 				'post_type'      => 'any',

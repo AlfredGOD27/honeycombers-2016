@@ -99,6 +99,8 @@ class HC_Entry {
 
 	public function display_video() {
 
+		global $post;
+
 		$video_url = get_post_meta( $post->ID, '_hc_post_video_url', true );
 		if( empty($video_url) )
 			return;
