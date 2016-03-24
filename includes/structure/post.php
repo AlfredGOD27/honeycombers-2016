@@ -50,46 +50,6 @@ function hc_truncated_excerpt_link() {
 
 }
 
-remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
-add_action( 'genesis_entry_header', 'hc_post_info', 12 );
-function hc_post_info() {
-
-	global $post;
-
-	if( !is_singular() )
-		return;
-
-	?>
-	<div class="entry-meta">
-		<div class="date-row">
-			<?php echo do_shortcode('[post_date]'); ?>
-		</div>
-
-		<div class="author-share-row clearfix">
-			<div class="left">
-				<?php
-
-				$lines   = array();
-				$lines[] = do_shortcode( __( 'By', CHILD_THEME_TEXT_DOMAIN ) . ' [post_author_posts_link]' );
-
-				$title = HC()->users->get_title( $post->post_author );
-				if( !empty($title) )
-					$lines[] = $title;
-
-				echo '<p>' . implode( ', ', $lines ) . '</p>';
-				?>
-			</div>
-
-			<div class="right">
-				<?php HC()->favorites->display( $post->ID ); ?>
-				<?php HC()->share->display( $post->ID ); ?>
-			</div>
-		</div>
-	</div>
-	<?php
-
-}
-
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 add_action( 'genesis_entry_footer', 'hc_entry_footer' );
 function hc_entry_footer() {

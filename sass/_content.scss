@@ -25,20 +25,6 @@
 .entry-header {
 	margin-bottom: .5em;
 
-	.left {
-		float: left;
-		font-style: italic;
-		font-family: $meta;
-
-		p {
-			font-size: .9em;
-		}
-	}
-
-	.right {
-		float: right;
-	}
-
 	button {
 		margin-left: 1em;
 
@@ -103,6 +89,92 @@
 	}
 }
 
+
+.header-default,
+.header-video {
+	.entry-header {
+		.left {
+			float: left;
+			font-style: italic;
+			font-family: $meta;
+
+			p {
+				font-size: .9em;
+			}
+		}
+
+		.right {
+			float: right;
+		}
+	}
+}
+
+.header-slideshow {
+	.entry-header {
+		margin-bottom: 2.5em;
+
+		.inner {
+			display: flex;
+		}
+	}
+
+	.header-right {
+		border-left: 1px solid $grey-border;
+	}
+
+	.header-top {
+		display: flex;
+		align-items: center;
+		padding: 1em 2em 1.75em;
+	}
+
+	.header-bottom {
+		padding: 2em;
+		border-top: 1px solid $grey-border;
+
+		.btn {
+			display: block;
+			margin-top: 2em;
+			margin-left: 0;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+
+	.author-left {
+		float: left;
+
+		img {
+			display: block;
+			border: 2px solid $orange;
+			border-radius: 50%;
+		}
+	}
+
+	.author-right {
+		float: right;
+		margin-left: .5em;
+		text-align: center;
+
+		.entry-author {
+			display: block;
+			margin-bottom: .75em;
+			color: $orange;
+			text-transform: uppercase;
+			font-size: 1.05em;
+			font-family: $heading;
+		}
+
+		p {
+			font-style: italic;
+			font-size: .95em;
+			font-family: $meta;
+		}
+	}
+}
+
 .spon-tag {
 	position: absolute;
 	right: 1em;
@@ -124,7 +196,9 @@
 	font-family: $meta;
 
 	p {
+		@extend %type;
 		font-size: 1.1em;
+		line-height: 1.5;
 	}
 }
 
