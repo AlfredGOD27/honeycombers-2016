@@ -5,6 +5,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HC_Entry {
 	public function __construct() {
 
+		remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 		add_action( 'wp', array($this, 'init') );
 
 	}
@@ -20,10 +21,10 @@ class HC_Entry {
 
 		remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
 
-		remove_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 		add_action( 'genesis_entry_header', array($this, 'display_header'), 12 );
 
 		$this->header_type = get_post_meta( $post->ID, '_hc_post_header_type', true );
+		$this->header_type = !empty($this->header_type) ? $this->header_type : 'default';
 		switch( $this->header_type ) {
 			case 'default':
 				add_action( 'genesis_entry_content', array($this, 'display_image'), 8 );
@@ -41,7 +42,15 @@ class HC_Entry {
 
 	public function body_class( $classes ) {
 
-		$classes[] = 'header-' . $this->header_type;
+		switch( $this->header_type ) {
+			case 'default':
+			case 'video':
+				$classes[] = 'header-default';
+				break;
+			case 'slideshow':
+				$classes[] = 'header-' . $this->header_type;
+				break;
+		}
 
 		return $classes;
 

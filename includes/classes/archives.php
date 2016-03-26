@@ -7,6 +7,7 @@ class HC_Archives {
 
 		$this->count = 0;
 
+		remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 );
 		remove_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 );
 		remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
 		add_action( 'genesis_entry_header', 'genesis_do_post_image', 8 );
@@ -21,10 +22,16 @@ class HC_Archives {
 
 		$this->mode       = false;
 		$this->has_slider = false;
+		$this->post_style = 'half';
 		if( is_search() ) {
 			// If search, set to infinite mode and fix title
 			add_action( 'genesis_after_header', array($this, 'do_search_title'), 14 );
 			$this->mode = 'infinite';
+		} elseif( is_author() ) {
+			// If search, set to infinite mode and fix title
+			add_action( 'genesis_after_header', array($this, 'do_author_box'), 14 );
+			$this->mode       = 'infinite';
+			$this->post_style = 'full';
 		} elseif( is_archive() ) {
 			add_action( 'genesis_after_header', array($this, 'do_taxonomy_title_description'), 14 );
 
@@ -65,7 +72,14 @@ class HC_Archives {
 		remove_action( 'genesis_before_loop', 'hc_do_breadcrumbs' );
 		add_action( 'post_class', array($this, 'post_class') );
 		remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
+
 		add_action( 'genesis_entry_content', array($this, 'do_excerpt') );
+		if( 'full' === $this->post_style ) {
+			remove_action( 'genesis_entry_header', 'genesis_do_post_image', 8 );
+			add_action( 'genesis_entry_header', array($this, 'full_width_markup_open'), 4 );
+			add_action( 'genesis_entry_footer', array($this, 'full_width_markup_close'), 16 );
+
+		}
 
 		switch( $this->mode ) {
 			case 'infinite':
@@ -129,7 +143,13 @@ class HC_Archives {
 
 	public function body_class( $classes ) {
 
-		$classes[] = 'two-columns-archive';
+		$classes[] = 'hc-archive';
+
+		if( 'half' === $this->post_style )
+			$classes[] = 'two-columns-archive';
+
+		if( 'full' === $this->post_style )
+			$classes[] = 'one-column-archive';
 
 		if( 'infinite' === $this->mode )
 			$classes[] = 'infinite-scroll';
@@ -154,6 +174,16 @@ class HC_Archives {
 			$wp_query->found_posts,
 			_n( 'result', 'results', $wp_query->found_posts )
 		);
+
+	}
+
+	public function do_author_box() {
+
+		$page = get_query_var( 'paged', 0 );
+		if( !empty($page) )
+			return;
+
+		HC()->users->do_author_box( 'archive' );
 
 	}
 
@@ -296,9 +326,15 @@ class HC_Archives {
 
 		global $post;
 
-		++$this->count;
+		if( 'half' === $this->post_style ) {
+			++$this->count;
 
-		$classes[] = 1 === $this->count % 2 ? 'one-half first' : 'one-half';
+			$classes[] = 1 === $this->count % 2 ? 'one-half first post-half' : 'one-half post-half';
+		}
+
+		if( 'full' === $this->post_style ) {
+//			$classes[] = 1 === $this->count % 2 ? 'one-half first' : 'one-half';
+		}
 
 		// Add entry class for AJAX fetch
 		$classes[] = 'entry';
@@ -357,7 +393,42 @@ class HC_Archives {
 			?>
 		</div>
 
-		<a href="<?php echo get_permalink(); ?>" class="more-link">Read more ></a>
+		<div class="read-more-share-bar">
+			<a href="<?php echo get_permalink(); ?>" class="more-link">Read more ></a>
+
+			<?php
+			if( 'full' === $this->post_style ) {
+				?>
+				<div class="share">
+					<?php HC()->favorites->display( $post->ID ); ?>
+					<?php HC()->share->display( $post->ID ); ?>
+				</div>
+				<?php
+			}
+			?>
+		</div>
+		<?php
+
+	}
+
+	public function full_width_markup_open() {
+
+		?>
+		<div class="one-half first">
+			<?php
+			genesis_do_post_image();
+			?>
+		</div>
+
+		<div class="one-half">
+		<?php
+
+	}
+
+	public function full_width_markup_close() {
+
+		?>
+		</div>
 		<?php
 
 	}

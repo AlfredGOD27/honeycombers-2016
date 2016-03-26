@@ -90,8 +90,7 @@
 }
 
 
-.header-default,
-.header-video {
+.header-default {
 	.entry-header {
 		.left {
 			float: left;
@@ -311,10 +310,6 @@
 .author-box {
 	margin-bottom: 2em;
 
-	.left {
-		float: left;
-	}
-
 	figure {
 	}
 
@@ -331,7 +326,6 @@
 	}
 
 	.right {
-		float: right;
 		padding-top: 1em;
 	}
 
@@ -342,6 +336,7 @@
 		font-family: $meta;
 
 		span {
+			margin-right: .5em;
 			color: $orange;
 			text-transform: uppercase;
 			font-style: normal;

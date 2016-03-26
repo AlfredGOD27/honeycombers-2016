@@ -57,16 +57,14 @@ class HC_Users {
 
 	}
 
-	private function do_author_box( $context, $echo = true ) {
+	public function do_author_box( $context, $echo = true ) {
 
 		global $authordata;
 
 		$user_id = get_the_author_meta( 'ID' );
 
-		$gravatar_size = apply_filters( 'genesis_author_box_gravatar_size', 120, $context );
-		$authordata    = is_object( $authordata ) ? $authordata : get_userdata( get_query_var( 'author' ) );
-		$gravatar      = get_avatar( get_the_author_meta( 'email' ), $gravatar_size );
-		$description   = wpautop( get_the_author_meta( 'description' ) );
+		$authordata  = is_object( $authordata ) ? $authordata : get_userdata( get_query_var( 'author' ) );
+		$description = wpautop( get_the_author_meta( 'description' ) );
 
 		$title     = '<span itemprop="name">' . get_the_author() . '</span>';
 		$job_title = $this->get_title( $user_id );
@@ -75,36 +73,53 @@ class HC_Users {
 
 		$title = apply_filters( 'genesis_author_box_title', $title, $context );
 
-		if( 'single' === $context && !genesis_get_seo_option( 'semantic_headings' ) ) {
-			$heading_element = 'h4';
-		} elseif( genesis_a11y( 'headings' ) || get_the_author_meta( 'headline', (int) get_query_var( 'author' ) ) ) {
-			$heading_element = 'h4';
-		} else {
-			$heading_element = 'h1';
-		}
-
 		$html = sprintf( '<section %s>', genesis_attr( 'author-box' ) );
-			$html .= '<div class="clearfix">';
-				$html .= '<div class="left one-fourth first">';
-					$html .= '<figure>';
-						$html .= $gravatar;
+			switch( $context ) {
+				case 'single':
+					$gravatar = get_avatar( get_the_author_meta( 'email' ), 120 );
 
-						$caption = get_user_meta( $user_id, '_hc_profile_image_caption', true );
-						if( !empty($caption) )
-							$html .= '<figcaption>' . sanitize_text_field($caption) . '</figcaption>';
-					$html .= '</figure>';
-				$html .= '</div>';
+					$html .= '<div class="clearfix">';
+						$html .= '<div class="left one-fourth first">';
+							$html .= '<figure>';
+								$html .= $gravatar;
 
-				$html .= '<div class="right three-fourths">';
-					$html .= '<' . $heading_element . ' class="author-box-title">' . $title . '</' . $heading_element . '>';
-					$html .= '<div class="author-box-content entry-content" itemprop="description">';
-						$html .= $description;
+								$caption = get_user_meta( $user_id, '_hc_profile_image_caption', true );
+								if( !empty($caption) )
+									$html .= '<figcaption>' . sanitize_text_field($caption) . '</figcaption>';
+							$html .= '</figure>';
+						$html .= '</div>';
 
-						if( 'single' === $context )
-							$html .= '<p class="read-more">Read more from <a href="' . get_the_author_meta('url') . '">' . get_the_author() . '</a></p>';
+						$html .= '<div class="right three-fourths">';
+							$html .= '<h4 class="author-box-title">' . $title . '</h4>';
+							$html .= '<div class="author-box-content entry-content" itemprop="description">';
+								$html .= $description;
+
+								$html .= '<p class="read-more">Read more from <a href="' . get_the_author_meta('url') . '">' . get_the_author() . '</a></p>';
+							$html .= '</div>';
+						$html .= '</div>';
 					$html .= '</div>';
-				$html .= '</div>';
-			$html .= '</div>';
+					break;
+				case 'archive':
+					$gravatar = get_avatar( get_the_author_meta( 'email' ), 150 );
+
+					$html .= '<div class="wrap">';
+						$html .= '<div class="inner clearfix">';
+							$html .= '<div class="left">';
+								$html .= '<figure>';
+									$html .= $gravatar;
+								$html .= '</figure>';
+							$html .= '</div>';
+
+							$html .= '<div class="right">';
+								$html .= '<h4 class="author-box-title">' . $title . '</h4>';
+								$html .= '<div class="author-box-content entry-content" itemprop="description">';
+									$html .= $description;
+								$html .= '</div>';
+							$html .= '</div>';
+						$html .= '</div>';
+					$html .= '</div>';
+					break;
+			}
 		$html .= '</section>';
 
 		if( $echo ) {
