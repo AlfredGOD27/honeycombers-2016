@@ -7,6 +7,7 @@ class HC_Events {
 
 		add_action( 'init', array($this, 'register') );
 		add_action( 'wp', array($this, 'init') );
+		add_action( 'pre_get_posts', array($this, 'filter_events_query') );
 
 	}
 
@@ -66,13 +67,68 @@ class HC_Events {
 
 	public function init() {
 
-		if( !is_singular('event') )
+		if( is_singular('event') ) {
+			add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+			remove_action( 'genesis_before_loop', 'hc_do_breadcrumbs' );
+			remove_action( 'genesis_loop', 'genesis_do_loop' );
+			add_action( 'genesis_loop', array($this, 'do_single_event') );
+		} else {
+			if( 'page_templates/page_calendar.php' === get_page_template_slug() ) {
+				add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+				remove_action( 'genesis_before_loop', 'hc_do_breadcrumbs' );
+				remove_action( 'genesis_loop', 'genesis_do_loop' );
+				add_action( 'genesis_loop', array($this, 'do_calendar') );
+			}
+		}
+
+	}
+
+	private function get_date_query_args( $direction = 'future' ) {
+
+		$args = array(
+			'post_type'      => 'event',
+			'orderby'        => 'meta_value_num',
+			'meta_key'       => '_hc_event_start_date',
+			'posts_per_page' => -1,
+		);
+
+		if( 'past' === $direction ) {
+			$args['order']      = 'DESC';
+			$args['meta_query'] = array(
+				array(
+					'key'     => '_hc_event_end_date',
+					'value'   => date('Ymd'),
+					'compare' => '<',
+				),
+			);
+		} else {
+			$args['order']      = 'ASC';
+			$args['meta_query'] = array(
+				array(
+					'key'     => '_hc_event_end_date',
+					'value'   => (date('Ymd') - 1),
+					'compare' => '>=',
+				),
+			);
+		}
+
+		return $args;
+
+	}
+
+	public function filter_events_query( $query ) {
+
+		// Stop if not event category
+		if( !$query->is_tax('event-category') )
 			return;
 
-		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-		remove_action( 'genesis_before_loop', 'hc_do_breadcrumbs' );
-		remove_action( 'genesis_loop', 'genesis_do_loop' );
-		add_action( 'genesis_loop', array($this, 'do_single_event') );
+		// Stop if not main query
+		if( !$query->is_main_query() )
+			return;
+
+		$args = $this->get_date_query_args();
+		foreach( $args as $key => $value )
+			$query->set( $key, $value );
 
 	}
 
@@ -254,6 +310,136 @@ class HC_Events {
 			</div>
 		</article>
 		<?php
+
+	}
+
+	public function do_calendar() {
+
+		// Slider
+
+		$terms = get_terms( 'event-category' );
+		if( empty($terms) )
+			return;
+
+		?>
+		<section class="calendar-search-bar">
+			<div class="wrap">
+
+
+				<form class="clearfix">
+					<div class="head">
+						<h2>Search Events</h2>
+					</div>
+
+					<div class="search">
+						<label for="calendar-search">Search</label>
+						<input id="calendar-search" type="search" name="search" placeholder="What's happening this Friday night...">
+					</div>
+
+					<div class="one">
+						<label for="calendar-category">Date</label>
+						<select id="calendar-category" name="category" class="styled">
+							<option value="">Category</option>
+							<?php
+							foreach( $terms as $term ) {
+								?>
+								<option value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
+								<?php
+							}
+							?>
+						</select>
+						<i class="ico-arrow-down"></i>
+					</div>
+
+					<div class="one">
+						<label for="calendar-date">Date</label>
+						<input id="calendar-date" type="text" name="date" class="datepicker" placeholder="Date">
+						<i class="ico-arrow-down"></i>
+					</div>
+
+					<div class="one">
+						<button type="submit" class="btn">Search</button>
+					</div>
+
+					<div class="post">
+						<a href="#" class="btn">Post an Event</a>
+					</div>
+				</form>
+			</div>
+		</section>
+		<?php
+
+		foreach( $terms as $term ) {
+			$args                   = $this->get_date_query_args();
+			$args['posts_per_page'] = -1;
+			$args['tax_query']      = array(
+				array(
+					'taxonomy' => $term->taxonomy,
+					'field'    => 'term_id',
+					'terms'    => $term->term_id,
+				),
+			);
+			$events = get_posts( $args );
+			if( empty($events) )
+				continue;
+
+			?>
+			<section class="subcategory">
+				<div class="wrap">
+					<div class="subcategory-description">
+						<a href="<?php echo get_term_link($term); ?>">
+							<i class="ico-circle"></i>
+							<h2 class="archive-title"><?php echo $term->name; ?></h2>
+							<i class="ico-arrow-right-circle"></i>
+						</a>
+					</div>
+
+					<div class="events-slider hide-no-js">
+						<?php
+						foreach( $events as $event ) {
+							if( !has_post_thumbnail($event->ID) )
+								continue;
+
+							$text = $event->post_title . ' ' . $event->post_content;
+							$text = sanitize_text_field($text);
+							$text = strtolower($text);
+
+							$category_ids = array();
+							$categories   = wp_get_object_terms( $event->ID, 'event-category' );
+							foreach( $categories as $category )
+								$category_ids[] = $category->term_id;
+
+							$date = $this->get_event_date_info( $event->ID );
+
+							?>
+							<div class="event-slide" data-text="<?php echo esc_attr($text); ?>" data-category_ids="<?php echo implode( ',', $category_ids ); ?>" data-start_date="<?php echo $date['start_datetime']; ?>" data-end_date="<?php echo $date['end_datetime']; ?>">
+								<a href="<?php echo get_permalink($event->ID); ?>">
+									<?php
+									echo wp_get_attachment_image( get_post_thumbnail_id($event->ID), 'event-thumbnail' );
+									?>
+
+									<div class="inner">
+										<span class="title"><?php echo $event->post_title; ?></span>
+										<span class="date">
+											<?php
+											if( date( 'Ymd', $date['start_date'] ) !== date( 'Ymd', $date['end_date'] ) ) {
+												echo date( 'M j', $date['start_date'] ) . ' - ' . date( 'M j', $date['end_date'] );
+											} else {
+												echo date( 'M j', $date['start_date'] );
+											}
+											?>
+										</span>
+									</div>
+								</a>
+							</div>
+							<?php
+						}
+						?>
+					</div>
+				</div>
+			</section>
+			<?php
+		}
 
 	}
 

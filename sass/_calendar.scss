@@ -1,0 +1,161 @@
+.page-template-page_calendar {
+	.content-sidebar-wrap {
+		padding-right: 0;
+		padding-left: 0;
+		max-width: none;
+	}
+
+	.subcategory {
+		margin-bottom: 2.5em;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		> .wrap {
+			@extend %wrap;
+		}
+	}
+
+	.subcategory-description {
+		margin-bottom: .5em;
+		padding-bottom: 0;
+		border-bottom: none;
+
+		.ico-circle {
+			font-size: 2.5em;
+		}
+
+		.archive-title {
+			color: inherit;
+		}
+	}
+
+	.slick-slide {
+		margin: 0 .25em;
+	}
+
+	.slick-list {
+		margin: 0 -.25em;
+	}
+}
+
+.calendar-search-bar {
+	margin-bottom: 2.5em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	background-color: #fad9bd;
+
+	> .wrap {
+		@extend %wrap;
+	}
+
+	h2 {
+		text-transform: uppercase;
+		font-size: 1.1em;
+	}
+
+	form {
+		display: flex;
+		align-items: center;
+		padding-right: 1em;
+		padding-left: 1em;
+
+		> div {
+			float: left;
+			margin-left: .75%;
+
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+
+		.head {
+			width: 12.5%;
+		}
+
+		.search {
+			width: 31.5%;
+		}
+
+		.one {
+			position: relative;
+			width: 10.5%;
+		}
+
+		select {
+			padding-right: 2.5em;
+		}
+
+		.datepicker {
+			padding-right: 2.5em;
+		}
+
+		.post {
+			width: 20.75%;
+		}
+
+		.ico-arrow-down {
+			position: absolute;
+			top: 50%;
+			right: 1em;
+			font-size: .75em;
+			transform: translateY(-50%);
+			pointer-events: none;
+		}
+	}
+
+	label {
+		@extend %visuallyhidden;
+	}
+
+	input[type='search'],
+	input[type='text'] {
+		border: none;
+	}
+
+	.btn {
+		padding: .5em;
+		width: 100%;
+	}
+}
+
+.events-slider {
+}
+
+.event-slide {
+	position: relative;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	img {
+	}
+
+	.inner {
+		position: absolute;
+		right: .5em;
+		bottom: .5em;
+		left: .5em;
+		padding: .5em;
+		background-color: $white;
+		background-color: rgba( $white, .9 );
+		text-align: center;
+	}
+
+	.title,
+	.date {
+		display: block;
+		font-size: .9em;
+	}
+
+	.title {
+		text-transform: uppercase;
+		font-family: $heading;
+	}
+
+	.date {
+	}
+}

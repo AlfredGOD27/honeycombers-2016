@@ -47,6 +47,17 @@ textarea {
 
 select {
 	width: 100%;
+
+	&.styled {
+		padding: .5em;
+		border: none;
+		border-radius: 0;
+		background-color: $white;
+		color: $black;
+		font-size: .85em;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+	}
 }
 
 .placeholder {

@@ -21,6 +21,8 @@
     "magnific-popup": "dimsemenov/Magnific-Popup",
     "slick-carousel": "*",
     "waypoints": "imakewebthings/waypoints",
-    "imagesloaded": "desandro/imagesloaded"
+    "imagesloaded": "desandro/imagesloaded",
+    "pikaday": "dbushell/Pikaday",
+    "moment": "moment/moment"
   }
 }
