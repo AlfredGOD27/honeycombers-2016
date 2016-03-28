@@ -315,7 +315,100 @@ class HC_Events {
 
 	public function do_calendar() {
 
-		// Slider
+		global $post;
+
+		$event_ids = get_post_meta( $post->ID, '_hc_calendar_slider_events', true );
+		if( !empty($event_ids) ) {
+			$args = array(
+				'post_type'      => 'event',
+				'post__in'       => $event_ids,
+				'orderby'        => 'post__in',
+				'posts_per_page' => -1,
+				'meta_query'     => array(
+					'relation' => 'AND',
+					array(
+						'key'     => '_thumbnail_id',
+						'compare' => 'EXISTS',
+					),
+					array(
+						'key'     => '_thumbnail_id',
+						'value'   => '',
+						'compare' => '!=',
+					),
+				),
+				'fields' => 'ids',
+			);
+
+			$events = get_posts( $args );
+			if( !empty($events) ) {
+				?>
+				<section class="archive-slider-container hide-no-js">
+					<div class="wrap">
+						<div class="slider-for">
+							<?php
+							foreach( $events as $post_id ) {
+								?>
+								<div>
+									<?php
+									echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide' );
+									?>
+								</div>
+								<?php
+							}
+							?>
+						</div>
+
+						<div class="slider-nav">
+							<?php
+							foreach( $events as $post_id ) {
+								$date = $this->get_event_date_info( $post_id );
+								?>
+								<div>
+									<div class="outer">
+										<?php
+										echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide-thumbnail' );
+										?>
+
+										<div class="inner">
+											<div class="info">
+												<?php
+												if( date( 'Ymd', $date['start_date'] ) === date( 'Ymd', $date['end_date'] ) ) {
+													?>
+													<span class="m"><?php echo date('M', $date['start_date']); ?></span>
+													<span class="d"><?php echo date('j', $date['start_date']); ?></span>
+													<?php
+												} else {
+													if( time() < $date['start_datetime'] ) {
+														?>
+														<span class="starts">Starts</span>
+														<span class="m"><?php echo date('M', $date['start_date']); ?></span>
+														<span class="d"><?php echo date('j', $date['start_date']); ?></span>
+														<?php
+													} elseif( time() > $date['start_datetime'] && time() < $date['end_datetime'] ) {
+														?>
+														<span class="ends">Ends</span>
+														<span class="m"><?php echo date('M', $date['end_date']); ?></span>
+														<span class="d"><?php echo date('j', $date['end_date']); ?></span>
+														<?php
+													}
+												}
+												?>
+											</div>
+											<?php
+											echo '<span>' . get_the_title( $post_id ) . '</span>';
+											?>
+										</div>
+									</div>
+								</div>
+								<?php
+							}
+							?>
+						</div>
+					</div>
+				</section>
+				<?php
+			}
+		}
 
 		$terms = get_terms( 'event-category' );
 		if( empty($terms) )

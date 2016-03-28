@@ -1,6 +1,6 @@
 (function($) {
 
-	if( !$('body').hasClass('archive-has-slider') )
+	if( !$('body').hasClass('archive-has-slider') && !$('body').hasClass('page-template-page_calendar') )
 		return;
 
 	$('.slider-for').on( 'init', function() {
