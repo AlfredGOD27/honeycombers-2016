@@ -97,6 +97,7 @@ module.exports = function(grunt) {
 					'js/_archives.js',
 					'js/_calendar.js',
 					'js/_components.js',
+					'js/_directory.js',
 					'js/_infinite-scroll.js',
 					'js/_slider.js',
 					'js/scripts.js'

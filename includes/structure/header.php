@@ -154,7 +154,9 @@ function hc_ie_script_conditionals( $tag, $handle, $src ) {
 		$src                   = $use_production_assets ? '//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js' : '//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js';
 		$fallback_script       = '<script type="text/javascript" src="' . $src . '"></script>';
 		$output .= '<!--[if lte IE 8]>' . "\n" . $fallback_script . '<![endif]-->' . "\n";
-	} else {
+	} elseif( 'hc-google-maps' === $handle ) {
+		$output = str_replace( '<script ', '<script async defer ', $tag );
+	}else {
 		$output = $tag;
 	}
 

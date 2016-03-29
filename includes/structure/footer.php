@@ -92,7 +92,7 @@ function hc_do_footer() {
 
 }
 
-add_action( 'wp_footer', 'hc_disable_pointer_events_on_scroll', 99 );
+// add_action( 'wp_footer', 'hc_disable_pointer_events_on_scroll', 99 );
 /**
  * Disable pointer events when scrolling. Be careful using this with CSS :hover-enabled menus.
  *

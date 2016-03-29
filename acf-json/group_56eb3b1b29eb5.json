@@ -3,36 +3,15 @@
     "title": "Listing Options",
     "fields": [
         {
-            "key": "field_56eb3b1b30163",
-            "label": "Address",
-            "name": "_hc_listing_address",
+            "key": "field_56fae18484051",
+            "label": "Address (Text)",
+            "name": "_hc_listing_address_text",
             "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 50,
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
-            "key": "field_56eb3b1b30179",
-            "label": "Map Address",
-            "name": "_hc_listing_map_address",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": 50,
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -122,6 +101,24 @@
             "maxlength": "",
             "readonly": 0,
             "disabled": 0
+        },
+        {
+            "key": "field_56facc5bac092",
+            "label": "Address (Map)",
+            "name": "_hc_listing_address_map",
+            "type": "google_map",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "center_lat": "",
+            "center_lng": "",
+            "zoom": "",
+            "height": ""
         }
     ],
     "location": [
@@ -141,5 +138,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1458257217
+    "modified": 1459282396
 }

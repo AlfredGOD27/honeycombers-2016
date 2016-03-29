@@ -1,0 +1,151 @@
+$directory-height: 50em;
+
+.page-template-page_directory {
+	.nav-primary-wrapper {
+		margin-bottom: 0;
+	}
+
+	.content-sidebar-wrap {
+		padding-right: 0;
+		padding-left: 0;
+		max-width: 100%;
+	}
+
+	.content {
+		display: flex;
+		max-height: $directory-height;
+	}
+}
+
+.directory-map-container {
+	flex-grow: 1;
+	flex-shrink: 1;
+	float: left;
+}
+
+.directory-map {
+	width: 100%;
+	height: $directory-height;
+}
+
+.result-title,
+.result-category {
+	display: block;
+	text-align: center;
+}
+
+.result-title {
+	color: $orange;
+	text-transform: uppercase;
+	font-size: .9em;
+	font-family: $heading;
+}
+
+.result-category {
+	font-style: italic;
+	font-size: .8em;
+	font-family: $meta;
+}
+
+.directory-search {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	flex-shrink: 0;
+	float: right;
+	max-width: 42em;
+
+	h2 {
+		text-transform: uppercase;
+		font-size: 1.25em;
+	}
+}
+
+.directory-search-form {
+	flex-grow: 0;
+	flex-shrink: 0;
+	margin-bottom: 1em;
+	padding: 1em 2em .25em;
+	background-color: $orange-light;
+
+	> div {
+		margin-bottom: .75em;
+	}
+
+	.row {
+		display: flex;
+		align-items: center;
+	}
+
+	.select-container {
+		position: relative;
+	}
+
+	.ico-arrow-down {
+		position: absolute;
+		top: 50%;
+		right: 1em;
+		font-size: .75em;
+		transform: translateY(-50%);
+		pointer-events: none;
+	}
+
+	label {
+		@extend %visuallyhidden;
+	}
+
+	input[type='search'],
+	input[type='text'] {
+		border: none;
+	}
+
+	.btn {
+		padding: .5em;
+		width: 100%;
+	}
+}
+
+.directory-search-results {
+	flex-grow: 1;
+	flex-shrink: 1;
+	overflow-y: scroll;
+	padding: 1.5em;
+
+	h2 {
+		margin-bottom: .5em;
+	}
+}
+
+.listing-result {
+	margin-bottom: 2.5em;
+
+	img {
+		display: block;
+		margin-bottom: .75em;
+		border-bottom: .25em solid $orange;
+	}
+
+	h3 {
+		text-transform: uppercase;
+		font-size: 1em;
+	}
+
+	span {
+		display: block;
+		margin-bottom: .5em;
+		color: $orange;
+		text-transform: uppercase;
+		font-size: .85em;
+	}
+
+	p {
+		@extend %type;
+		margin-bottom: 0;
+		font-size: .75em;
+		line-height: 1.5;
+	}
+
+	.more-link {
+		font-size: .85em;
+	}
+}
