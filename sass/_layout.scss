@@ -6,9 +6,6 @@
 // .sidebar-content
 // .full-width-content
 
-.site-container {
-}
-
 .content-sidebar-wrap {
 	@extend %clearfix;
 	@extend %wrap;
@@ -16,12 +13,6 @@
 
 .content {
 	margin-bottom: 3em;
-}
-
-.sidebar-primary {
-}
-
-.sidebar-secondary {
 }
 
 .content-sidebar {

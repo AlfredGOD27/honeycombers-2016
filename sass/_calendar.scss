@@ -180,18 +180,12 @@
 	}
 }
 
-.events-slider {
-}
-
 .event-slide {
 	position: relative;
 
 	a {
 		color: inherit;
 		text-decoration: none;
-	}
-
-	img {
 	}
 
 	.inner {
@@ -214,8 +208,5 @@
 	.title {
 		text-transform: uppercase;
 		font-family: $heading;
-	}
-
-	.date {
 	}
 }

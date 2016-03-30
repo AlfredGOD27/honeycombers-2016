@@ -18,6 +18,7 @@ final class HC {
 		'schemas',
 		'share',
 		'users',
+		'widgets',
 	);
 
 	public static function instance() {

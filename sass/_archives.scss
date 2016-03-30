@@ -16,10 +16,6 @@
 			width: 74%;
 		}
 
-		.left,
-		.right {
-		}
-
 		.left {
 			flex-shrink: 0;
 			margin-right: 2.25em;
@@ -58,7 +54,6 @@
 			width: 23.5%;
 		}
 	}
-
 
 	.entry {
 		.entry-title {
@@ -107,9 +102,6 @@
 		> a {
 			flex-grow: 1;
 			flex-shrink: 0;
-		}
-
-		.share {
 		}
 
 		.btn {

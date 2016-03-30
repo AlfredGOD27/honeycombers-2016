@@ -59,11 +59,6 @@
 			}
 		}
 
-		&.current-menu-item {
-			> a {
-			}
-		}
-
 		> a {
 			text-transform: uppercase;
 		}
@@ -83,9 +78,6 @@
 			> a {
 				position: relative;
 			}
-		}
-
-		.sub-menu {
 		}
 	}
 }

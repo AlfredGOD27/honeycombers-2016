@@ -30,9 +30,6 @@ img.aligncenter,
 	margin: 0 auto $spacer auto;
 }
 
-img.alignnone {
-}
-
 .alignleft {
 	float: left;
 	text-align: left;
@@ -70,9 +67,4 @@ img.alignright,
 		font-weight: 600;
 		font-size: .85em;
 	}
-}
-
-img.alignleft,
-img.alignright,
-img.aligncenter {
 }
