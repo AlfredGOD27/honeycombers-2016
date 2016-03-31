@@ -56,23 +56,15 @@
 .pika-next {
 	position: relative;
 	display: block;
-	overflow: hidden;
-	padding: 0;
-	width: 20px;
-	height: 30px;
+	padding: .5em 0;
 	outline: none;
 	border: 0;
 	background-color: transparent;
-	background-position: center center;
-	background-size: 75% 75%;
-	background-repeat: no-repeat;
-	text-indent: 20px;
-	white-space: nowrap;
-	opacity: .5;
+	color: $text;
 	cursor: pointer;
 
-	&:hover {
-		opacity: 1;
+	&:before {
+		@extend %ico;
 	}
 
 	&.is-disabled {
@@ -83,12 +75,18 @@
 
 .pika-prev {
 	float: left;
-	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAUklEQVR42u3VMQoAIBADQf8Pgj+OD9hG2CtONJB2ymQkKe0HbwAP0xucDiQWARITIDEBEnMgMQ8S8+AqBIl6kKgHiXqQqAeJepBo/z38J/U0uAHlaBkBl9I4GwAAAABJRU5ErkJggg==');
+
+	&:before {
+		@extend .ico-arrow-left:before;
+	}
 }
 
 .pika-next {
 	float: right;
-	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAAU0lEQVR42u3VOwoAMAgE0dwfAnNjU26bYkBCFGwfiL9VVWoO+BJ4Gf3gtsEKKoFBNTCoCAYVwaAiGNQGMUHMkjGbgjk2mIONuXo0nC8XnCf1JXgArVIZAQh5TKYAAAAASUVORK5CYII=');
+
+	&:before {
+		@extend .ico-arrow-right:before;
+	}
 }
 
 .pika-select {
