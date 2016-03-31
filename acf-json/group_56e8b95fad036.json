@@ -24,7 +24,7 @@
             "name": "_hc_event_start_date",
             "type": "date_picker",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": 50,
@@ -70,7 +70,7 @@
             "name": "_hc_event_end_date",
             "type": "date_picker",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": 50,
@@ -116,7 +116,7 @@
             "name": "_hc_event_venue",
             "type": "text",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": 50,
@@ -227,5 +227,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1458092843
+    "modified": 1459457288
 }

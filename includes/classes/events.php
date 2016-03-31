@@ -235,11 +235,20 @@ class HC_Events {
 						$lines['Time'] = $end_time;
 					}
 				}
+				?>
+				<meta itemprop="startDate" content="<?php echo date('c', $date['start_datetime']); ?>">
+				<meta itemprop="endDate" content="<?php echo date('c', $date['end_datetime']); ?>">
+				<?php
 
 				// Venue
 				$venue = get_post_meta( $post->ID, '_hc_event_venue', true );
-				if( !empty($venue) )
-					$lines['Venue'] = sanitize_text_field($venue);
+				if( !empty($venue) ) {
+					$venue = sanitize_text_field($venue);
+					?>
+					<meta itemprop="location" content="<?php echo esc_attr($venue); ?>">
+					<?php
+					$lines['Venue'] = $venue;
+				}
 
 				// Price
 				$price = get_post_meta( $post->ID, '_hc_event_price', true );
