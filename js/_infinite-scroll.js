@@ -5,6 +5,9 @@
 
 	var update_urls = !!(window.history && window.history.pushState);
 
+	// Force off for now
+	update_urls = false;
+
 	function queue_next_page() {
 
 		$('.content').imagesLoaded( function() {
