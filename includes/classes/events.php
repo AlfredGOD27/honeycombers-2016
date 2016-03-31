@@ -450,10 +450,6 @@ class HC_Events {
 						<i class="ico-arrow-down"></i>
 					</div>
 
-					<div class="one">
-						<button type="submit" class="btn">Search</button>
-					</div>
-
 					<div class="post">
 						<a href="#" class="btn">Post an Event</a>
 					</div>
