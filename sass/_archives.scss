@@ -1,3 +1,5 @@
+$slider-height: 25em;
+
 .author {
 	.author-box {
 		margin-bottom: 1em;
@@ -160,16 +162,17 @@
 .archive-slider-container {
 	overflow: hidden;
 	margin-bottom: 2.5em;
-	max-height: 25em;
 
 	> .wrap {
 		@extend %wrap;
 		position: relative;
+		height: $slider-height;
 	}
 }
 
 .slider-for {
 	width: 67.5%;
+	height: 100%;
 
 	img {
 		max-width: none;
@@ -180,8 +183,9 @@
 .slider-nav {
 	position: absolute;
 	top: 0;
-	right: 0;
+	right: .75em;
 	width: 35.5%;
+	height: 100%;
 	color: $white;
 
 	.slick-slide {
@@ -197,6 +201,7 @@
 	.outer {
 		position: relative;
 		margin-left: 2em;
+		height: $slider-height / 4;
 		transition: margin-left .1s ease-in-out;
 
 		&:before,
