@@ -387,13 +387,14 @@ class HC_Events {
 													<span class="d"><?php echo date('j', $date['start_date']); ?></span>
 													<?php
 												} else {
-													if( time() < $date['start_datetime'] ) {
+													$current_time = current_time( 'timestamp' );
+													if( $current_time < $date['start_datetime'] ) {
 														?>
 														<span class="starts">Starts</span>
 														<span class="m"><?php echo date('M', $date['start_date']); ?></span>
 														<span class="d"><?php echo date('j', $date['start_date']); ?></span>
 														<?php
-													} elseif( time() > $date['start_datetime'] && time() < $date['end_datetime'] ) {
+													} else {
 														?>
 														<span class="ends">Ends</span>
 														<span class="m"><?php echo date('M', $date['end_date']); ?></span>
