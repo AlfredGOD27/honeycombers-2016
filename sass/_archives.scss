@@ -46,6 +46,21 @@ $slider-height: 25em;
 	}
 }
 
+@include media('<=phone') {
+	.author {
+		.author-box {
+			.inner {
+				display: block;
+				width: 100%;
+			}
+
+			.left {
+				margin-right: 1em;
+			}
+		}
+	}
+}
+
 .hc-archive {
 	.entry {
 		.entry-title {
@@ -98,6 +113,18 @@ $slider-height: 25em;
 
 		.btn {
 			margin-left: 1em;
+		}
+	}
+}
+
+@include media('<=phone') {
+	.one-column-archive {
+		.entry {
+			display: block;
+
+			.first {
+				margin-bottom: .5em;
+			}
 		}
 	}
 }
@@ -166,7 +193,17 @@ $slider-height: 25em;
 	> .wrap {
 		@extend %wrap;
 		position: relative;
+		padding-right: 0;
+		padding-left: 0;
 		height: $slider-height;
+	}
+}
+
+@include media('<=phone') {
+	.archive-slider-container {
+		> .wrap {
+			height: auto;
+		}
 	}
 }
 
@@ -177,6 +214,13 @@ $slider-height: 25em;
 	img {
 		max-width: none;
 		width: 100%;
+	}
+}
+
+@include media('<=phone') {
+	.slider-for {
+		width: 100%;
+		height: auto;
 	}
 }
 
@@ -278,6 +322,12 @@ $slider-height: 25em;
 				color: $text;
 			}
 		}
+	}
+}
+
+@include media('<=phone') {
+	.slider-nav {
+		display: none;
 	}
 }
 

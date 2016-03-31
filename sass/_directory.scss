@@ -17,10 +17,25 @@ $directory-height: 50em;
 	}
 }
 
+@include media('<=phone') {
+	.page-template-page_directory {
+		.content {
+			display: block;
+			max-height: none;
+		}
+	}
+}
+
 .directory-map-container {
 	flex-grow: 1;
 	flex-shrink: 1;
 	float: left;
+}
+
+@include media('<=phone') {
+	.directory-map-container {
+		display: none;
+	}
 }
 
 .directory-map {
@@ -58,6 +73,14 @@ $directory-height: 50em;
 	h2 {
 		text-transform: uppercase;
 		font-size: 1.25em;
+	}
+}
+
+@include media('<=phone') {
+	.directory-search {
+		display: block;
+		float: none;
+		max-width: none;
 	}
 }
 
@@ -102,6 +125,43 @@ $directory-height: 50em;
 	.btn {
 		padding: .5em;
 		width: 100%;
+	}
+}
+
+@include media('<=phone') {
+	.directory-search-form {
+		padding: 1em;
+
+		> div {
+			margin-bottom: .5em;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		.row {
+			display: block;
+
+			> div {
+				margin-bottom: 0;
+			}
+
+			.select-container {
+				float: left;
+				margin-bottom: .5em;
+				width: 50%;
+
+				&:nth-of-type(odd) {
+					padding-right: .25em;
+				}
+
+				&:nth-of-type(even) {
+					clear: none;
+					padding-left: .25em;
+				}
+			}
+		}
 	}
 }
 

@@ -100,6 +100,14 @@
 	}
 }
 
+@include media('<=phone') {
+	.page-template-page_calendar {
+		.slider-nav {
+			display: none;
+		}
+	}
+}
+
 .calendar-search-bar {
 	margin-bottom: 2.5em;
 	padding-top: 1em;
@@ -177,6 +185,48 @@
 	.btn {
 		padding: .5em;
 		width: 100%;
+	}
+}
+
+@include media('<=phone') {
+	.calendar-search-bar {
+		form {
+			display: block;
+			padding-right: 0;
+			padding-left: 0;
+
+			> div {
+				margin-left: 0;
+			}
+
+			.head {
+				float: none;
+				margin-bottom: .5em;
+				width: 100%;
+			}
+
+			.search {
+				float: none;
+				margin-bottom: .5em;
+				width: 100%;
+			}
+
+			.one {
+				width: 50%;
+
+				&:nth-of-type(odd) {
+					padding-right: .25em;
+				}
+
+				&:nth-of-type(even) {
+					padding-left: .25em;
+				}
+			}
+
+			.post {
+				display: none;
+			}
+		}
 	}
 }
 

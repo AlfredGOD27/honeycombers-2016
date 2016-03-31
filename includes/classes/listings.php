@@ -366,7 +366,7 @@ class HC_Listings {
 						<h2>Search the Directory</h2>
 					</div>
 
-					<div class="two-fifths">
+					<div class="two-fifths hide-phone">
 						<a href="" class="btn">Submit A Listing</a>
 					</div>
 				</div>

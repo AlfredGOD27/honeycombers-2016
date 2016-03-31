@@ -49,20 +49,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		grunticon: {
-			options: {
-				compressPNG: true
-			},
-			build: {
-				files: [{
-					expand: true,
-					cwd: 'svgs/',
-					src: ['*.svg', '*.png'],
-					dest: 'build/svgs/'
-				}]
-			}
-		},
-
 		jshint: {
 			options: {
 				globals: {
@@ -90,10 +76,8 @@ module.exports = function(grunt) {
 					'bower_components/pikaday/pikaday.js',
 					'bower_components/pikaday/plugins/pikaday.jquery.js',
 					'bower_components/slick-carousel/slick/slick.js',
-					'bower_components/superfish/dist/js/superfish.js',
 					'bower_components/svgeezy/svgeezy.js',
 					'bower_components/waypoints/lib/jquery.waypoints.js',
-					'build/svgs/grunticon.loader.js',
 					'js/_archives.js',
 					'js/_calendar.js',
 					'js/_components.js',
@@ -195,14 +179,6 @@ module.exports = function(grunt) {
 				options: {
 					spawn: false
 				}
-			},
-
-			svgs: {
-				files: ['svgs/**/*'],
-				tasks: ['newer:grunticon'],
-				options: {
-					spawn: false
-				}
 			}
 		}
 
@@ -219,11 +195,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-csscomb');
 	grunt.loadNpmTasks('grunt-csso');
-	grunt.loadNpmTasks('grunt-grunticon');
 	grunt.loadNpmTasks('grunt-newer');
 	grunt.loadNpmTasks('grunt-notify');
 
-	grunt.registerTask('default', ['clean', 'sass', 'grunticon', 'concat', 'imagemin', 'autoprefixer', 'watch']);
-	grunt.registerTask('build', ['clean', 'csscomb', 'sass', 'grunticon', 'jshint', 'concat', 'uglify', 'imagemin', 'autoprefixer', 'csso']);
+	grunt.registerTask('default', ['clean', 'sass', 'concat', 'imagemin', 'autoprefixer', 'watch']);
+	grunt.registerTask('build', ['clean', 'csscomb', 'sass', 'jshint', 'concat', 'uglify', 'imagemin', 'autoprefixer', 'csso']);
 
 };

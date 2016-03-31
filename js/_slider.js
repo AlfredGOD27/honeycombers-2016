@@ -7,22 +7,31 @@
 		$(this).fitVids();
 	});
 
-	$('.slider-for').slick({
-		adaptiveHeight: true,
-		arrows: false,
-		asNavFor: '.slider-nav',
-		fade: true,
-		slidesToScroll: 1,
-		slidesToShow: 1
-	});
+	if( !im.lessThan('tablet') ) {
+		$('.slider-for').slick({
+			adaptiveHeight: true,
+			arrows: false,
+			asNavFor: '.slider-nav',
+			fade: true,
+			slidesToScroll: 1,
+			slidesToShow: 1
+		});
 
-	$('.slider-nav').slick({
-		arrows: false,
-		asNavFor: '.slider-for',
-		focusOnSelect: true,
-		slidesToScroll: 1,
-		slidesToShow: 4,
-		vertical: true
-	});
+		$('.slider-nav').slick({
+			arrows: false,
+			asNavFor: '.slider-for',
+			focusOnSelect: true,
+			slidesToScroll: 1,
+			slidesToShow: 4,
+			vertical: true,
+		});
+	} else {
+		$('.slider-for').slick({
+			adaptiveHeight: true,
+			arrows: false,
+			slidesToScroll: 1,
+			slidesToShow: 1
+		});
+	}
 
 })( window.jQuery );

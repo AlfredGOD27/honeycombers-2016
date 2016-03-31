@@ -11,3 +11,11 @@
 		}
 	}
 }
+
+@include media('<=phone') {
+	.social {
+		a {
+			font-size: 1.25em;
+		}
+	}
+}

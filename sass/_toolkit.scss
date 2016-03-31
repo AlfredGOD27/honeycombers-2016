@@ -26,6 +26,12 @@
 	list-style: none;
 }
 
+@include media('<=phone') {
+	.hide-phone {
+		display: none;
+	}
+}
+
 %type {
 	margin-bottom: 2em;
 	text-overflow: ellipsis;
@@ -37,5 +43,11 @@
 
 	&:last-child {
 		margin-bottom: 0;
+	}
+}
+
+@include media('<=phone') {
+	%type {
+		margin-bottom: 1.5em;
 	}
 }

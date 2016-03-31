@@ -9,7 +9,16 @@
 		slidesToShow: 5,
 		centerPadding: '8px',
 		prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>'
+		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
+		responsive: [
+			{
+				breakpoint: im.getValue('tablet', true),
+				settings: {
+					slidesToScroll: 1,
+					slidesToShow: 2,
+				}
+			}
+		]
 	});
 
 	$('.datepicker').pikaday({

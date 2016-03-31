@@ -96,6 +96,21 @@
 	}
 }
 
+@include media('<=phone') {
+	.header-default {
+		.entry-header {
+			.left {
+				float: none;
+				margin-bottom: 1.5em;
+			}
+
+			.right {
+				float: none;
+			}
+		}
+	}
+}
+
 .header-slideshow {
 	.entry-header {
 		margin-bottom: 2.5em;
@@ -158,6 +173,35 @@
 			font-style: italic;
 			font-size: .95em;
 			font-family: $meta;
+		}
+	}
+}
+
+@include media('<=phone') {
+	.header-slideshow {
+		.entry-header {
+			.inner {
+				display: block;
+			}
+		}
+
+		.header-right {
+			display: flex;
+			align-items: center;
+			border-left: none;
+		}
+
+		.header-top {
+			flex-grow: 1;
+			flex-shrink: 1;
+			padding: 0 1em 0 0;
+		}
+
+		.header-bottom {
+			flex-grow: 0;
+			flex-shrink: 0;
+			padding: 0;
+			border-top: none;
 		}
 	}
 }
@@ -330,6 +374,30 @@
 		font-style: $meta;
 		font-style: italic;
 		font-size: .95em;
+	}
+}
+
+@include media('<=phone') {
+	.author-box {
+		margin-bottom: 2em;
+
+		.left {
+			float: left;
+			margin-right: .75em;
+			margin-bottom: 1em;
+			max-width: 7.5em;
+			text-align: center;
+		}
+
+		img {
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		.right {
+			clear: none;
+			padding-top: 0;
+		}
 	}
 }
 

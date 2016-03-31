@@ -16,7 +16,8 @@ function hc_directory_maps() {
 			disableDefaultUI: true,
 			scrollwheel: false,
 			center: new google.maps.LatLng( hc_directory_coords.lat, hc_directory_coords.lng )
-		};
+		},
+		use_map = !im.lessThan('tablet');
 
 	function reset() {
 
@@ -42,7 +43,10 @@ function hc_directory_maps() {
 
 		loading = true;
 		els.results.html( hc_strings.loading );
-		map.setCenter( map_settings.center );
+
+		if( use_map )
+			map.setCenter( map_settings.center );
+
 		els.form.find('input[type="search"]').prop( 'readonly', true );
 		els.form.find('button[type="submit"], select').prop( 'disabled', true );
 
@@ -116,27 +120,31 @@ function hc_directory_maps() {
 
 						// Add each marker
 						$.each( data.items, function(_, item) {
-							// Add to map
-							marker = add_marker(
-								item.name,
-								item.info_window_html,
-								item.lat,
-								item.lng
-							);
+							if( use_map ) {
+								// Add to map
+								marker = add_marker(
+									item.name,
+									item.info_window_html,
+									item.lat,
+									item.lng
+								);
 
-							// Add to array
-							markers.push( marker );
+								// Add to array
+								markers.push( marker );
 
-							// Note position for later centering
-							bounds.extend( marker.getPosition() );
+								// Note position for later centering
+								bounds.extend( marker.getPosition() );
+							}
 
 							// Add to results list
 							els.results.append( item.result_html );
 						});
 
 						// Set new center, based on results
-						map.setCenter( bounds.getCenter() );
-						map.fitBounds( bounds );
+						if( use_map ) {
+							map.setCenter( bounds.getCenter() );
+							map.fitBounds( bounds );
+						}
 						break;
 				}
 
@@ -147,7 +155,8 @@ function hc_directory_maps() {
 	}
 
 	// Activate map
-	map = new google.maps.Map( els.map[0], map_settings );
+	if( use_map )
+		map = new google.maps.Map( els.map[0], map_settings );
 
 	// Update on search
 	els.form.on( 'submit', search );

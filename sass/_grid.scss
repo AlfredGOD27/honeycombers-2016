@@ -74,3 +74,32 @@
 	clear: both;
 	margin-left: 0;
 }
+
+@include media('<=phone') {
+	.five-sixths,
+	.four-sixths,
+	.one-fourth,
+	.one-half,
+	.one-sixth,
+	.one-third,
+	.one-fifth,
+	.two-fifths,
+	.three-fifths,
+	.four-fifths,
+	.three-fourths,
+	.three-sixths,
+	.two-fourths,
+	.two-sixths,
+	.two-thirds {
+		float: none;
+		clear: both;
+		margin-bottom: 1.5em;
+		margin-left: 0;
+		min-height: 0;
+		width: 100%;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

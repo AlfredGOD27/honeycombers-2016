@@ -33,18 +33,8 @@
 	// SVG fallbacks
 	svgeezy.init( 'svg-no-check', 'png' );
 
-	// IE8 fallbacks
-	if( $('html').hasClass('lt-ie9') ) {
-		// Superfish for main navigation
-		$('.menu-primary').superfish();
-	}
-
 	// Support for HTML5 placeholders
 	$('input, textarea').placeholder();
-
-	// Grunticon
-	if( typeof grunticon === 'function')
-		grunticon([grunticon_paths.svg, grunticon_paths.png, grunticon_paths.fallback]);
 
 	// Entry header slideshow
 	$('.entry-slideshow').slick({
@@ -52,7 +42,7 @@
 		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
 		centerMode: true,
 		slidesToShow: 1,
-		variableWidth: true
+		variableWidth: true,
 	});
 
 })( window.jQuery );
