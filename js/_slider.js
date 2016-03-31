@@ -19,10 +19,9 @@
 	$('.slider-nav').slick({
 		arrows: false,
 		asNavFor: '.slider-for',
-		centerMode: true,
 		focusOnSelect: true,
 		slidesToScroll: 1,
-		slidesToShow: 3,
+		slidesToShow: 4,
 		vertical: true
 	});
 
