@@ -460,7 +460,10 @@ class HC_Events {
 					</div>
 
 					<div class="post">
-						<a href="#" class="btn">Post an Event</a>
+						<?php
+						$page_id = get_option( 'options__hc_post_event_page_id' );
+						?>
+						<a href="<?php echo get_permalink($page_id); ?>" class="btn">Post an Event</a>
 					</div>
 				</form>
 			</div>
