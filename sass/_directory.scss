@@ -13,7 +13,7 @@ $directory-height: 50em;
 
 	.content {
 		display: flex;
-		max-height: $directory-height;
+		height: $directory-height;
 	}
 }
 
@@ -21,7 +21,7 @@ $directory-height: 50em;
 	.page-template-page_directory {
 		.content {
 			display: block;
-			max-height: none;
+			height: auto;
 		}
 	}
 }
@@ -30,17 +30,19 @@ $directory-height: 50em;
 	flex-grow: 1;
 	flex-shrink: 1;
 	float: left;
+	height: 100%;
 }
 
 @include media('<=phone') {
 	.directory-map-container {
 		display: none;
+		height: auto;
 	}
 }
 
 .directory-map {
 	width: 100%;
-	height: $directory-height;
+	height: 100%;
 }
 
 .result-title,
@@ -69,6 +71,7 @@ $directory-height: 50em;
 	flex-shrink: 0;
 	float: right;
 	max-width: 42em;
+	height: 100%;
 
 	h2 {
 		text-transform: uppercase;
@@ -81,6 +84,7 @@ $directory-height: 50em;
 		display: block;
 		float: none;
 		max-width: none;
+		height: auto;
 	}
 }
 

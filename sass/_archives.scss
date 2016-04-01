@@ -188,6 +188,7 @@ $slider-height: 25em;
 
 .archive-slider-container {
 	overflow: hidden;
+	margin-top: -1.5em;
 	margin-bottom: 2.5em;
 
 	> .wrap {
@@ -332,10 +333,6 @@ $slider-height: 25em;
 }
 
 .archive-has-slider {
-	.nav-primary-wrapper {
-		margin-bottom: 0;
-	}
-
 	.archive-description {
 		@extend %visuallyhidden;
 	}
