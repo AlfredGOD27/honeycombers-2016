@@ -25,24 +25,48 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.ico-circle:before {
-	content: '\e913';
-}
-
-.ico-star-half-empty:before {
-	content: '\e90f';
-}
-
-.ico-star-o:before {
-	content: '\e910';
-}
-
-.ico-star:before {
-	content: '\e911';
-}
-
 .ico-calendar:before {
 	content: '\e90e';
+}
+
+.ico-pin:before {
+	content: '\e91c';
+}
+
+.ico-play:before {
+	content: '\e91d';
+}
+
+.ico-circle-art:before {
+	content: '\e914';
+}
+
+.ico-circle-beauty:before {
+	content: '\e915';
+}
+
+.ico-circle-fashion:before {
+	content: '\e916';
+}
+
+.ico-circle-food:before {
+	content: '\e917';
+}
+
+.ico-circle-mail:before {
+	content: '\e918';
+}
+
+.ico-circle-music:before {
+	content: '\e919';
+}
+
+.ico-hexagon:before {
+	content: '\e91a';
+}
+
+.ico-menu:before {
+	content: '\e91b';
 }
 
 .ico-arrow-right-circle:before {
@@ -103,4 +127,20 @@
 
 .ico-youtube:before {
 	content: '\e909';
+}
+
+.ico-circle:before {
+	content: '\e913';
+}
+
+.ico-star-half-empty:before {
+	content: '\e90f';
+}
+
+.ico-star-o:before {
+	content: '\e910';
+}
+
+.ico-star:before {
+	content: '\e911';
 }
