@@ -14,9 +14,11 @@ final class HC {
 		'events',
 		'favorites',
 		'formatting',
+		'home',
 		'listings',
 		'schemas',
 		'share',
+		'sliders',
 		'users',
 		'widgets',
 	);
