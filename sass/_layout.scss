@@ -11,8 +11,9 @@
 	@extend %wrap;
 }
 
-.content {
-	margin-bottom: 3em;
+.content,
+.sidebar-primary {
+	margin-bottom: 1em;
 }
 
 .content-sidebar {

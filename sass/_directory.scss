@@ -186,7 +186,7 @@ $directory-height: 50em;
 	img {
 		display: block;
 		margin-bottom: .75em;
-		border-bottom: .25em solid $orange;
+		border-bottom: $border-width solid $orange;
 	}
 
 	h3 {
