@@ -31,4 +31,4 @@ class HC_ACF {
 
 }
 
-new HC_ACF();
+return new HC_ACF();

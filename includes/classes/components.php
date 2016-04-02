@@ -110,4 +110,4 @@ class HC_Components {
 
 }
 
-new HC_Components();
+return new HC_Components();

@@ -132,7 +132,7 @@ class HC_Events {
 
 	}
 
-	private function get_event_date_info( $post_id ) {
+	public function get_event_date_info( $post_id ) {
 
 		$info = array();
 
@@ -547,4 +547,4 @@ class HC_Events {
 
 }
 
-new HC_Events();
+return new HC_Events();

@@ -118,4 +118,4 @@ class HC_Home {
 
 }
 
-new HC_Home();
+return new HC_Home();

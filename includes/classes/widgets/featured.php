@@ -64,6 +64,44 @@ class HC_Featured_Widget extends WP_Widget {
 
 			switch( $post_type ) {
 				case 'event':
+					?>
+					<div class="featured-event-widget hide-no-js">
+						<?php
+						foreach( $post_ids as $post_id ) {
+							$date = HC()->events->get_event_date_info( $post_id );
+
+							?>
+							<div>
+								<?php
+								if( has_post_thumbnail($post_id) )
+									echo wp_get_attachment_image( get_post_thumbnail_id($post_id), 'event-thumbnail' );
+								?>
+
+								<div class="bottom">
+									<div class="left">
+										<span class="m"><?php echo date('M', $date['start_date']); ?></span>
+										<span class="d"><?php echo date('j', $date['start_date']); ?></span>
+									</div>
+
+									<div class="right clearfix">
+										<?php
+										$terms = wp_get_object_terms( $post_id, 'event-category' );
+										if( !empty($terms) ) {
+											?>
+											<p><?php echo $terms[0]->name; ?></p>
+											<?php
+										}
+										?>
+
+										<h5><a href="<?php echo get_permalink($post_id); ?>"><?php echo get_the_title($post_id); ?></a></h5>
+									</div>
+								</div>
+							</div>
+							<?php
+						}
+						?>
+					</div>
+					<?php
 					break;
 				case 'listing':
 				case 'post':
