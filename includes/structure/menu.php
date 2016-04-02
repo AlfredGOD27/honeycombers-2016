@@ -148,6 +148,11 @@ function hc_do_nav() {
 			}
 			?>
 		</ul>
+
+		<div class="show-phone mobile-social-nav">
+			<span><span>Follow Us</span></span>
+			<?php hc_do_social(); ?>
+		</div>
 		<?php
 		$nav = ob_get_clean();
 

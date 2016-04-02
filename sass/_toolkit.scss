@@ -32,6 +32,16 @@
 	}
 }
 
+.show-phone {
+	display: none;
+}
+
+@include media('<=phone') {
+	.show-phone {
+		display: block;
+	}
+}
+
 %type {
 	margin-bottom: 2em;
 	text-overflow: ellipsis;

@@ -90,9 +90,9 @@
 
 @include media('<=phone') {
 	.title-area {
+		flex-grow: 0;
 		order: 1;
 		padding: .5em 1.5em;
-		width: 50%;
 	}
 }
 
@@ -161,10 +161,11 @@
 
 .mobile-header-right {
 	display: none;
+	flex-grow: 1;
+	flex-shrink: 0;
 	order: 2;
 	float: right;
 	padding: .5em 1.5em;
-	width: 50%;
 	text-align: right;
 
 	.btn {
