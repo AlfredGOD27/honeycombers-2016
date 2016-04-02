@@ -64,6 +64,17 @@ function hc_do_nav() {
 
 		ob_start();
 		?>
+		<div class="show-phone mobile-icon-nav">
+			<?php $page_id = get_field( '_hc_calendar_page_id', 'option' ); ?>
+			<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-calendar"></i> <span>Calendar</span></a>
+
+			<?php $page_id = get_field( '_hc_directory_page_id', 'option' ); ?>
+			<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-pin"></i> <span>Directory</span></a>
+
+			<?php $page_id = get_field( '_hc_video_page_id', 'option' ); ?>
+			<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-play"></i> <span>Video</span></a>
+		</div>
+
 		<ul class="main-menu clearfix">
 			<?php
 			foreach( $menu as $top_item ) {
