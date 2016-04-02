@@ -8,6 +8,7 @@ final class HC {
 	private static $_instance = null;
 
 	private static $classes_init = array(
+		'acf',
 		'archives',
 		'components',
 		'entry',
