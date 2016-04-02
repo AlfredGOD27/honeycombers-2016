@@ -287,6 +287,25 @@ function hc_site_top() {
 add_action( 'genesis_site_title', 'hc_site_logo' );
 function hc_site_logo() {
 
-	echo '<a href="' . trailingslashit( home_url() ) . '" title="' . get_bloginfo( 'name' ) . '" class="site-logo"><img src="' . get_stylesheet_directory_uri() . '/build/images/logo.svg" alt="' . get_bloginfo( 'name' ) . '" width="319" height="57"></a>';
+	echo '<a href="' . trailingslashit( home_url() ) . '" title="' . get_bloginfo( 'name' ) . '" class="site-logo"><img src="' . get_stylesheet_directory_uri() . '/build/images/logo.svg" alt="' . get_bloginfo( 'name' ) . '" width="319" height="57"><i class="ico-favicon"></i></a>';
+
+}
+
+add_action( 'genesis_header', 'hc_mobile_menu_toggle', 8 );
+function hc_mobile_menu_toggle() {
+
+	?>
+	<div class="mobile-header-right">
+		<a href="#" class="btn btn-bordered">Login</a>
+		<button type="button" class="btn toggle-nav" title="Toggle Menu"><i class="ico-menu"></i></button>
+	</div>
+	<?php
+
+}
+
+add_action( 'genesis_header_right', 'hc_header_right' );
+function hc_header_right() {
+
+	echo get_search_form( false );
 
 }

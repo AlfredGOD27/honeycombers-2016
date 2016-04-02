@@ -107,7 +107,7 @@ genesis_unregister_layout( 'sidebar-content-sidebar' );
  *
  * @since 1.x
  */
-// unregister_sidebar( 'header-right' );
+unregister_sidebar( 'header-right' );
 unregister_sidebar( 'sidebar-alt' );
 // unregister_sidebar( 'sidebar' );
 

@@ -16,7 +16,7 @@ function hc_do_footer() {
 			<?php hc_do_social(); ?>
 		</div>
 
-		<div class="right clearfix">
+		<div class="right hide-no-js clearfix">
 			<?php
 			$user_id = get_field( '_hc_instagram_user_id', 'option' );
 
@@ -64,7 +64,7 @@ function hc_do_footer() {
 				foreach( $images as $image ) {
 					echo '<div>';
 						echo '<a href="' . $image['url'] . '" target="_blank" rel="nofollow">';
-							echo '<img src="' . $image['src'] . '" title="' . $image['title'] . '" alt="' . $image['title'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '">';
+							echo '<img data-src="' . $image['src'] . '" title="' . $image['title'] . '" alt="' . $image['title'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '">';
 						echo '</a>';
 					echo '</div>';
 				}
@@ -76,18 +76,21 @@ function hc_do_footer() {
 	<div class="favicon-row">
 		<i class="ico-favicon"></i>
 	</div>
-	<?php
 
-	wp_nav_menu(
-		array(
-			'menu_class'     => 'footer-menu',
-			'theme_location' => 'footer',
-			'depth'          => 1,
-		)
-	);
+	<div class="footer-bottom">
+		<?php
 
-	?>
-	<p>&copy; Honeycombers Pte Ltd <?php echo date('Y'); ?> All Rights Reserved</p>
+		wp_nav_menu(
+			array(
+				'menu_class'     => 'footer-menu',
+				'theme_location' => 'footer',
+				'depth'          => 1,
+			)
+		);
+
+		?>
+		<p>&copy; Honeycombers Pte Ltd <?php echo date('Y'); ?> All Rights Reserved</p>
+	</div>
 	<?php
 
 }

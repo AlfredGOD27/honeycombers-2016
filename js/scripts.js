@@ -45,4 +45,20 @@
 		variableWidth: true,
 	});
 
+	// Footer IG images
+	var ig_images_to_show = !im.lessThan('tablet') ? 7 : 3,
+		i = 1;
+	$('.footer-social-row .right > div').each( function() {
+		var self = $(this),
+			img = self.find('img');
+
+		if( i <= ig_images_to_show ) {
+			img.attr( 'src', img.data('src') );
+		} else {
+			self.remove();
+		}
+
+		i++;
+	});
+
 })( window.jQuery );

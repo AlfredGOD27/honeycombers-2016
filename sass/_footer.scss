@@ -15,6 +15,13 @@
 	}
 }
 
+@include media('<=phone') {
+	.site-footer {
+		padding-top: 1.5em;
+		padding-bottom: 1.5em;
+	}
+}
+
 .footer-social-row {
 	display: flex;
 	margin-bottom: 2.5em;
@@ -74,6 +81,39 @@
 	}
 }
 
+@include media('<=phone') {
+	.footer-social-row {
+		flex-direction: column-reverse;
+		align-items: center;
+
+		.left {
+			float: none;
+			padding-right: 0;
+			width: 100%;
+		}
+
+		.ico-instagram-logo {
+			margin-bottom: 0;
+		}
+
+		.instagram-link {
+			margin-bottom: 1em;
+		}
+
+		.right {
+			display: block;
+			float: none;
+			padding-left: 0;
+			width: 100%;
+
+			> div {
+				margin-bottom: .75em;
+				width: 33.33%;
+			}
+		}
+	}
+}
+
 .favicon-row {
 	margin-bottom: 2em;
 	height: 1px;
@@ -85,6 +125,18 @@
 		background-color: $black;
 		font-size: 2.75em;
 		transform: translateY(-50%);
+	}
+}
+
+@include media('<=phone') {
+	.footer-bottom {
+		display: flex;
+		flex-direction: column-reverse;
+		align-items: center;
+
+		p {
+			margin-bottom: 2.5em;
+		}
 	}
 }
 
@@ -106,6 +158,21 @@
 			text-decoration: none;
 			text-transform: uppercase;
 			font-size: .9em;
+		}
+	}
+}
+
+@include media('<=phone') {
+	.footer-menu {
+		li {
+			display: block;
+			margin-bottom: 1em;
+			margin-left: 0;
+			text-align: center;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
 		}
 	}
 }
