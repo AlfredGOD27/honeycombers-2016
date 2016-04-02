@@ -46,19 +46,15 @@
 	});
 
 	// Footer IG images
-	var ig_images_to_show = !im.lessThan('tablet') ? 7 : 3,
-		i = 1;
-	$('.footer-social-row .right > div').each( function() {
-		var self = $(this),
-			img = self.find('img');
+	var exclude_mobile_images = im.lessThan('tablet');
+	$('.async-load-image').each( function() {
+		var img = $(this);
 
-		if( i <= ig_images_to_show ) {
-			img.attr( 'src', img.data('src') );
+		if( exclude_mobile_images && img.hasClass('skip-image-on-mobile') ) {
+
 		} else {
-			self.remove();
+			img.attr( 'src', img.data('src') );
 		}
-
-		i++;
 	});
 
 })( window.jQuery );

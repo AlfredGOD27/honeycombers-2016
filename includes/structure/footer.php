@@ -61,12 +61,15 @@ function hc_do_footer() {
 			}
 
 			if( !empty($images) ) {
+				$i = 1;
 				foreach( $images as $image ) {
-					echo '<div>';
+					$class = $i > 3 ? 'skip-image-on-mobile' : '';
+					echo $i > 3 ? '<div class="hide-phone">' : '<div>';
 						echo '<a href="' . $image['url'] . '" target="_blank" rel="nofollow">';
-							echo '<img data-src="' . $image['src'] . '" title="' . $image['title'] . '" alt="' . $image['title'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '">';
+							echo '<img class="async-load-image ' . $class . '" data-src="' . $image['src'] . '" title="' . $image['title'] . '" alt="' . $image['title'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '">';
 						echo '</a>';
 					echo '</div>';
+					++$i;
 				}
 			}
 			?>

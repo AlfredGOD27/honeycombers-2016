@@ -72,7 +72,7 @@ function hc_do_nav() {
 
 					if( !empty($top_item['columns']) ) {
 						echo '<a href="' . get_permalink($top_item['item_id']) . '" class="menu-item-link">' . $label . '</a>';
-						echo '<button type="button" class="inactive-link">' . $label . '</button>';
+						echo '<button type="button" class="inactive-link"><span>' . $label . '</span> <i class="ico-arrow-down"></i> <i class="ico-arrow-up"></i></button>';
 
 						echo '<ul class="sub-menu clearfix">';
 							$column_count = count($top_item['columns']);
@@ -98,11 +98,11 @@ function hc_do_nav() {
 									switch( $column['type'] ) {
 										case 'links':
 											?>
-											<div class="one-half first">
+											<div class="one-half first left">
 												<i class="ico-<?php echo $column['icon']; ?>"></i>
 											</div>
 
-											<div class="one-half">
+											<div class="one-half right">
 												<ul>
 													<?php
 													foreach( $column['item_ids'] as $item_id ) {
@@ -131,7 +131,7 @@ function hc_do_nav() {
 											<div class="two-thirds">
 												<?php
 												if( has_post_thumbnail($column['item_id']) )
-													echo wp_get_attachment_image( get_post_thumbnail_id($column['item_id']), 'event-thumbnail' );
+													echo wp_get_attachment_image( get_post_thumbnail_id($column['item_id']), 'event-thumbnail', '', array('class' => 'async-load-image skip-image-on-mobile') );
 												?>
 											</div>
 											<?php

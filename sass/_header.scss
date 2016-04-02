@@ -70,6 +70,8 @@
 
 @include media('<=phone') {
 	.site-header {
+		margin-bottom: 1.5em;
+
 		> .wrap {
 			flex-wrap: wrap;
 			padding-right: 0;
