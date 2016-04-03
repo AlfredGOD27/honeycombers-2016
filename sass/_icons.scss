@@ -25,6 +25,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.ico-pin-filled:before {
+	content: '\e91e';
+}
+
 .ico-calendar:before {
 	content: '\e90e';
 }
