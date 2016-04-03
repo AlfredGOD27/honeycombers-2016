@@ -304,7 +304,7 @@ class HC_Archives {
 		?>
 		<div class="entry-excerpt" itemprop="description">
 			<?php
-			echo HC()->formatting->get_excerpt( $post, 140 );
+			echo '<p>' . HC()->formatting->get_excerpt( $post, 140 ) . '</p>';
 			?>
 		</div>
 
