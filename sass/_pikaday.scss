@@ -140,7 +140,7 @@
 	}
 
 	.is-disabled & {
-		color: #999;
+		color: $grey;
 		opacity: .3;
 		cursor: default;
 		pointer-events: none;

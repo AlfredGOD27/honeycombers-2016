@@ -181,7 +181,10 @@ $directory-height: 50em;
 }
 
 .listing-result {
+	display: block;
 	margin-bottom: 2.5em;
+	color: inherit;
+	text-decoration: none;
 
 	img {
 		display: block;
@@ -194,7 +197,7 @@ $directory-height: 50em;
 		font-size: 1em;
 	}
 
-	span {
+	.meta {
 		display: block;
 		margin-bottom: .5em;
 		color: $orange;

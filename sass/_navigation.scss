@@ -38,7 +38,7 @@
 			z-index: 99;
 			display: block;
 			margin-top: -1.5em;
-			background-color: #252525;
+			background-color: $black;
 			color: $white;
 
 			> .left {
@@ -185,7 +185,7 @@
 
 		span {
 			margin-bottom: .5em;
-			color: #4f4f4f;
+			color: $grey-dark;
 			font-style: italic;
 			font-size: .95em;
 			font-family: $meta;
@@ -211,7 +211,7 @@
 
 		.menu-item {
 			display: block;
-			border-top: 1px solid #494949;
+			border-top: 1px solid $grey-border;
 
 			&:first-child {
 				border-top: none;
@@ -357,7 +357,7 @@
 			z-index: -1;
 			width: 100%;
 			height: 1px;
-			background-color: #494949;
+			background-color: $grey-border;
 			content: '';
 			transform: translateY(-50%);
 		}

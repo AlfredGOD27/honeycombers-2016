@@ -75,7 +75,7 @@ $slider-height: 25em;
 
 	.entry-excerpt {
 		margin-bottom: 1em;
-		color: #4f4f4f;
+		color: $grey-dark;
 		font-size: .95em;
 		line-height: 1.45;
 	}
@@ -195,7 +195,6 @@ $slider-height: 25em;
 		@extend %wrap;
 		position: relative;
 		padding-right: 0;
-		padding-left: 0;
 		height: $slider-height;
 	}
 }
