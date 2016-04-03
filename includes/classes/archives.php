@@ -265,6 +265,7 @@ class HC_Archives {
 			$args = array(
 				'posts_per_page' => 4,
 				'post_type'      => 'any',
+				'no_found_rows'  => true,
 				'tax_query'      => array(
 					array(
 						'taxonomy' => $category->taxonomy,
