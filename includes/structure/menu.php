@@ -142,7 +142,7 @@ function hc_do_nav() {
 											<div class="two-thirds">
 												<?php
 												if( has_post_thumbnail($column['item_id']) )
-													echo wp_get_attachment_image( get_post_thumbnail_id($column['item_id']), 'event-thumbnail', '', array('class' => 'async-load-image skip-image-on-mobile') );
+													echo wp_get_attachment_image( get_post_thumbnail_id($column['item_id']), 'archive-small', '', array('class' => 'async-load-image skip-image-on-mobile') );
 												?>
 											</div>
 											<?php

@@ -216,18 +216,6 @@ class HC_Archives {
 					'terms'    => $this->term->term_id,
 				),
 			),
-			'meta_query' => array(
-				'relation' => 'AND',
-				array(
-					'key'     => '_thumbnail_id',
-					'compare' => 'EXISTS',
-				),
-				array(
-					'key'     => '_thumbnail_id',
-					'value'   => '',
-					'compare' => '!=',
-				),
-			),
 			'fields' => 'ids',
 		);
 

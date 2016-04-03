@@ -26,7 +26,9 @@ class HC_Sliders {
 										echo wp_oembed_get($video_url);
 									break;
 								default:
-									echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide' );
+									echo '<a href="' . get_permalink($post_id) . '">';
+										echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide' );
+									echo '</a>';
 									break;
 							}
 							?>

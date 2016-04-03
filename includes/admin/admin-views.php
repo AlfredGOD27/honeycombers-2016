@@ -302,3 +302,10 @@ function hc_admin_menu_plugins_node( $wp_admin_bar ) {
 	$wp_admin_bar->add_node( $node );
 
 }
+
+add_action( 'init', 'hc_remove_post_thumbnail_support' );
+function hc_remove_post_thumbnail_support() {
+
+	remove_post_type_support( 'post', 'thumbnail' );
+
+}

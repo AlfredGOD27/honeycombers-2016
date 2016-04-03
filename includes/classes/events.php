@@ -34,7 +34,7 @@ class HC_Events {
 				'capability_type' => 'post',
 				'hierarchical'    => false,
 				'menu_icon'       => 'dashicons-calendar-alt',
-				'supports'        => array('title', 'thumbnail', 'editor'),
+				'supports'        => array('title', 'editor'),
 			)
 		);
 
@@ -333,19 +333,7 @@ class HC_Events {
 				'post__in'       => $event_ids,
 				'orderby'        => 'post__in',
 				'posts_per_page' => -1,
-				'meta_query'     => array(
-					'relation' => 'AND',
-					array(
-						'key'     => '_thumbnail_id',
-						'compare' => 'EXISTS',
-					),
-					array(
-						'key'     => '_thumbnail_id',
-						'value'   => '',
-						'compare' => '!=',
-					),
-				),
-				'fields' => 'ids',
+				'fields'         => 'ids',
 			);
 
 			$events = get_posts( $args );
@@ -359,7 +347,9 @@ class HC_Events {
 								?>
 								<div>
 									<?php
-									echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide' );
+									echo '<a href="' . get_permalink($post_id) . '">';
+										echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide' );
+									echo '</a>';
 									?>
 								</div>
 								<?php
@@ -517,7 +507,7 @@ class HC_Events {
 							<div class="event-slide" data-text="<?php echo esc_attr($text); ?>" data-category_ids="<?php echo implode( ',', $category_ids ); ?>" data-start_date="<?php echo $date['start_datetime']; ?>" data-end_date="<?php echo $date['end_datetime']; ?>">
 								<a href="<?php echo get_permalink($event->ID); ?>">
 									<?php
-									echo wp_get_attachment_image( get_post_thumbnail_id($event->ID), 'event-thumbnail' );
+									echo wp_get_attachment_image( get_post_thumbnail_id($event->ID), 'archive-small' );
 									?>
 
 									<div class="inner">

@@ -38,7 +38,7 @@ class HC_Listings {
 				'capability_type' => 'post',
 				'hierarchical'    => false,
 				'menu_icon'       => 'dashicons-building',
-				'supports'        => array('title', 'thumbnail', 'editor'),
+				'supports'        => array('title', 'editor'),
 			)
 		);
 

@@ -66,7 +66,7 @@ class HC_Home {
 				<a href="<?php echo get_permalink($post_id); ?>" class="other-pick">
 					<?php
 					if( has_post_thumbnail($post_id) )
-						echo get_the_post_thumbnail($post_id, 'event-thumbnail' );
+						echo get_the_post_thumbnail($post_id, 'archive-small' );
 					?>
 
 					<h3><?php echo get_the_title($post_id); ?></h3>
@@ -104,7 +104,7 @@ class HC_Home {
 						<a href="<?php echo get_permalink($main_post_id); ?>" class="main-pick">
 							<?php
 							if( has_post_thumbnail($main_post_id) )
-								echo get_the_post_thumbnail($main_post_id, 'slide' );
+								echo get_the_post_thumbnail($main_post_id, 'archive-large' );
 							?>
 
 							<div class="bottom clearfix">
@@ -190,7 +190,9 @@ class HC_Home {
 								?>
 								<div>
 									<?php
-									echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'archive' );
+									echo '<a href="' . get_permalink($post_id) . '">';
+										echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'archive' );
+									echo '</a>';
 									?>
 								</div>
 								<?php

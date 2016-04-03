@@ -54,11 +54,15 @@ function hc_disable_self_pings( &$links ) {
  *
  * @since 2.0.0
  */
-add_image_size( 'slide', 820, 400, true );
-add_image_size( 'slide-thumbnail', 425, 100, true );
-add_image_size( 'event-thumbnail', 300, 250, true );
-add_image_size( 'featured', 930, 550, true );
+add_image_size( 'slide', 850, 400, true );
+add_image_size( 'slide-thumbnail', 420, 100, true );
+
+add_image_size( 'archive-small', 300, 250, true );
 add_image_size( 'archive', 460, 315, true );
+add_image_size( 'archive-large', 620, 375, true );
+
+add_image_size( 'featured', 930, 550, true );
+
 add_image_size( 'avatar', 120, 120, true );
 
 // add_filter( 'image_size_names_choose', 'hc_image_size_names_choose' );
