@@ -423,4 +423,4 @@ class HC_Listings {
 
 }
 
-new HC_Listings();
+return new HC_Listings();
