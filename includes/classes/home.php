@@ -151,7 +151,7 @@ class HC_Home {
 		?>
 		<section class="home-section home-section-watch-tables">
 			<div class="wrap">
-				<div class="two-fifths first left">
+				<div class="left">
 					<?php
 					$heading = get_post_meta( $post->ID, '_hc_home_watch_this_heading', true );
 					echo '<h2>' . sanitize_text_field($heading) . '</h2>';
@@ -165,7 +165,7 @@ class HC_Home {
 					?>
 				</div>
 
-				<div class="three-fifths right hide-no-js">
+				<div class="right hide-no-js">
 					<?php
 					$heading = get_post_meta( $post->ID, '_hc_home_tables_heading', true );
 					echo '<h2>' . sanitize_text_field($heading) . '</h2>';
@@ -212,7 +212,7 @@ class HC_Home {
 											</div>
 
 											<div class="right">
-												<i class="ico-pin"></i>
+												<i class="ico-pin-filled"></i>
 											</div>
 										</div>
 									</div>
@@ -220,7 +220,7 @@ class HC_Home {
 									<div class="listing-slide-active">
 										<div class="inner">
 											<div class="left">
-												<i class="ico-pin"></i>
+												<i class="ico-pin-filled"></i>
 											</div>
 
 											<div class="right">

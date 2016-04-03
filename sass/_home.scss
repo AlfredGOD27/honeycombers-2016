@@ -29,7 +29,7 @@
 	.bottom {
 		display: flex;
 		align-items: center;
-		padding: .75em;
+		padding: .5em .75em;
 		border-top: $border-width solid $orange;
 	}
 
@@ -39,9 +39,8 @@
 		float: left;
 
 		p {
-			color: #4f4f4f;
+			color: $grey-dark;
 			font-style: italic;
-			font-size: .95em;
 			font-family: $meta;
 		}
 	}
@@ -98,18 +97,27 @@
 	}
 }
 
-.home-section-watch-tables {
-	.open-video-link {
-		display: block;
+$listing-slider-height: 18.75em;
 
-		img {
-			max-width: none;
-			width: 100%;
+.home-section-watch-tables {
+	> .wrap {
+		> .left {
+			float: left;
+			width: 37%;
+		}
+
+		> .right {
+			float: right;
+			padding-left: 1.25em;
+			width: 63%;
 		}
 	}
-}
 
-$lising-slider-height: 18.75em;
+	img {
+		max-height: $listing-slider-height;
+		width: auto;
+	}
+}
 
 .listings-slider {
 	position: relative;
@@ -118,12 +126,7 @@ $lising-slider-height: 18.75em;
 
 .listing-slider-for {
 	width: 62.5%;
-	height: $lising-slider-height;
-
-	img {
-		max-height: $lising-slider-height;
-		width: auto;
-	}
+	height: $listing-slider-height;
 }
 
 @include media('<=phone') {
@@ -137,8 +140,8 @@ $lising-slider-height: 18.75em;
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 45%;
-	height: $lising-slider-height * .8;
+	width: 47.5%;
+	height: $listing-slider-height * .8;
 
 	.slick-slide {
 		position: relative;
@@ -176,7 +179,7 @@ $lising-slider-height: 18.75em;
 .listing-slide-default {
 	margin-left: 1.5em;
 	padding-left: 1em;
-	height: $lising-slider-height * .2;
+	height: $listing-slider-height * .2;
 	border-right: $border-width solid $orange;
 	border-left: 1px solid $orange;
 	background-color: $white;
@@ -208,7 +211,7 @@ $lising-slider-height: 18.75em;
 
 .listing-slide-active {
 	display: none;
-	height: $lising-slider-height * .2;
+	height: $listing-slider-height * .2;
 	border-bottom: 1px solid $orange;
 	border-left: 1px solid $orange;
 	background-color: $white;
@@ -262,8 +265,8 @@ $lising-slider-height: 18.75em;
 	right: 0;
 	bottom: 0;
 	padding-left: 1.5em;
-	width: 45%;
-	height: $lising-slider-height * .2;
+	width: 47.5%;
+	height: $listing-slider-height * .2;
 	border-right: $border-width solid $orange;
 
 	.inner {
