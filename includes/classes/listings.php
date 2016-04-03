@@ -310,9 +310,9 @@ class HC_Listings {
 			$info_window_html = '<span class="result-title">' . $listing->post_title . '</span>';
 			$info_window_html .= '<span class="result-category">' . HC()->formatting->build_comma_separated_list( $categories ) . '</span>';
 
-			$result_html = 1 === $i % 2 ? '<div class="listing-result one-half first">' : '<div class="listing-result one-half">';
+			$result_html = 1 === $i % 2 ? '<a href="' . get_permalink( $listing->ID ) . '" class="listing-result one-half first">' : '<a href="' . get_permalink( $listing->ID ) . '" class="listing-result one-half">';
 				if( has_post_thumbnail($listing->ID) )
-					$result_html .= wp_get_attachment_image( get_post_thumbnail_id($listing->ID), 'event-thumbnail' );
+					$result_html .= get_the_post_thumbnail($listing->ID, 'archive-small' );
 
 				$result_html .= '<h3>' . $listing->post_title . '</h3>';
 
@@ -325,11 +325,11 @@ class HC_Listings {
 					$meta[] = sanitize_text_field($contact);
 
 				if( !empty($meta) )
-					$result_html .= '<span>' . implode( ' | ', $meta ) . '</span>';
+					$result_html .= '<span class="meta">' . implode( ' | ', $meta ) . '</span>';
 
 				$result_html .= wpautop( HC()->formatting->get_excerpt( $listing, 100) );
 
-				$result_html .= '<a href="' . get_permalink( $listing->ID ) . '" class="more-link">Read more ></a>';
+				$result_html .= '<span class="more-link">Read more ></span>';
 			$result_html .= '</div>';
 
 			$output['items'][] = array(

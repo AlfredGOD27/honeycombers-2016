@@ -191,7 +191,7 @@ class HC_Home {
 								<div>
 									<?php
 									echo '<a href="' . get_permalink($post_id) . '">';
-										echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'archive' );
+										echo get_the_post_thumbnail( $post_id, 'archive' );
 									echo '</a>';
 									?>
 								</div>

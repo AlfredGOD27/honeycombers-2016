@@ -348,7 +348,7 @@ class HC_Events {
 								<div>
 									<?php
 									echo '<a href="' . get_permalink($post_id) . '">';
-										echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide' );
+										echo get_the_post_thumbnail( $post_id, 'slide' );
 									echo '</a>';
 									?>
 								</div>
@@ -365,7 +365,7 @@ class HC_Events {
 								<div>
 									<div class="outer">
 										<?php
-										echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide-thumbnail' );
+										echo get_the_post_thumbnail( $post_id, 'slide-thumbnail' );
 										?>
 
 										<div class="inner">
@@ -507,7 +507,7 @@ class HC_Events {
 							<div class="event-slide" data-text="<?php echo esc_attr($text); ?>" data-category_ids="<?php echo implode( ',', $category_ids ); ?>" data-start_date="<?php echo $date['start_datetime']; ?>" data-end_date="<?php echo $date['end_datetime']; ?>">
 								<a href="<?php echo get_permalink($event->ID); ?>">
 									<?php
-									echo wp_get_attachment_image( get_post_thumbnail_id($event->ID), 'archive-small' );
+									echo get_the_post_thumbnail($event->ID, 'archive-small' );
 									?>
 
 									<div class="inner">

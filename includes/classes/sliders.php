@@ -27,7 +27,7 @@ class HC_Sliders {
 									break;
 								default:
 									echo '<a href="' . get_permalink($post_id) . '">';
-										echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide' );
+										echo get_the_post_thumbnail( $post_id, 'slide' );
 									echo '</a>';
 									break;
 							}
@@ -45,7 +45,7 @@ class HC_Sliders {
 						<div>
 							<div class="outer">
 								<?php
-								echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'slide-thumbnail' );
+								echo get_the_post_thumbnail( $post_id, 'slide-thumbnail' );
 								?>
 
 								<div class="inner">

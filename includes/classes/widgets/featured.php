@@ -74,7 +74,7 @@ class HC_Featured_Widget extends WP_Widget {
 							<div>
 								<?php
 								if( has_post_thumbnail($post_id) )
-									echo wp_get_attachment_image( get_post_thumbnail_id($post_id), 'archive-small' );
+									echo get_the_post_thumbnail( $post_id, 'archive-small' );
 								?>
 
 								<div class="bottom">
@@ -111,7 +111,7 @@ class HC_Featured_Widget extends WP_Widget {
 							<a href="<?php echo get_permalink($post_id); ?>">
 								<?php
 								if( has_post_thumbnail($post_id) )
-									echo wp_get_attachment_image( get_post_thumbnail_id($post_id), 'archive-small' );
+									echo get_the_post_thumbnail($post_id, 'archive-small' );
 								?>
 
 								<div class="inner">
