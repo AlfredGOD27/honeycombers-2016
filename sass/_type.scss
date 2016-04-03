@@ -28,7 +28,7 @@ ul {
 }
 
 p {
-	margin: 0;
+	@extend %type;
 }
 
 strong {

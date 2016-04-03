@@ -227,7 +227,6 @@
 	font-family: $meta;
 
 	p {
-		@extend %type;
 		font-size: 1.1em;
 		line-height: 1.5;
 	}
@@ -249,7 +248,7 @@
 	}
 
 	p {
-		@extend %type;
+		line-height: 1.75;
 	}
 
 	ol,
@@ -257,6 +256,7 @@
 		@extend %type;
 		overflow: hidden;
 		padding-left: 2.5em;
+		line-height: 1.75;
 
 		ol,
 		ul {
@@ -363,7 +363,7 @@
 	}
 
 	p {
-		color: #4f4f4f;
+		color: $grey-dark;
 		font-size: .9em;
 		line-height: 1.4;
 	}
@@ -403,12 +403,4 @@
 
 .entry-pagination {
 	@extend %type;
-}
-
-.archive-pagination {
-	clear: both;
-
-	li {
-		display: inline;
-	}
 }

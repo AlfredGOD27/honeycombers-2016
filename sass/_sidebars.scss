@@ -45,12 +45,10 @@
 		}
 
 		p {
-			@extend %type;
 			color: $orange;
 			font-style: italic;
 			font-size: .85em;
 			font-family: $meta;
-			line-height: 1.2;
 		}
 	}
 }
@@ -149,10 +147,6 @@
 		margin-bottom: .75em;
 	}
 
-	p {
-		@extend %type;
-	}
-
 	.above-text {
 		margin-bottom: 1em;
 		color: $orange;
@@ -172,7 +166,6 @@
 			font-style: italic;
 			font-size: .9em;
 			font-family: $meta;
-			line-height: 1.2;
 		}
 	}
 }
@@ -219,18 +212,13 @@
 		margin-bottom: 1em;
 	}
 
-	p {
-		@extend %type;
-	}
-
 	.above-text {
 		margin-bottom: 1em;
 
 		p {
-			color: #999;
+			color: $grey;
 			font-style: italic;
 			font-family: $meta;
-			line-height: 1.4;
 
 			em {
 				color: $orange;

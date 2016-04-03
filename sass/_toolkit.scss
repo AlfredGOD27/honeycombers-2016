@@ -44,8 +44,12 @@
 
 %type {
 	margin-bottom: 2em;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	hyphens: auto;
+	letter-spacing: .01rem;
 	font-size: .95em;
-	line-height: 1.75;
+	line-height: 1.35;
 
 	&:last-child {
 		margin-bottom: 0;

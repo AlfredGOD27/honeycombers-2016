@@ -76,8 +76,10 @@ $slider-height: 25em;
 	.entry-excerpt {
 		margin-bottom: 1em;
 		color: $grey-dark;
-		font-size: .95em;
-		line-height: 1.45;
+
+		p {
+			line-height: 1.45;
+		}
 	}
 }
 
