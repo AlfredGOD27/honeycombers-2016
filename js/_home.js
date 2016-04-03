@@ -1,22 +1,21 @@
 (function($) {
 
-	$('.slider-for').on( 'init', function() {
-		$(this).fitVids();
-	});
+	if( !$('body').hasClass('page-template-page_home') )
+		return;
 
 	if( !im.lessThan('tablet') ) {
-		$('.slider-for').slick({
+		$('.listing-slider-for').slick({
 			adaptiveHeight: true,
 			arrows: false,
-			asNavFor: '.slider-nav',
+			asNavFor: '.listing-slider-nav',
 			fade: true,
 			slidesToScroll: 1,
 			slidesToShow: 1
 		});
 
-		$('.slider-nav').slick({
+		$('.listing-slider-nav').slick({
 			arrows: false,
-			asNavFor: '.slider-for',
+			asNavFor: '.listing-slider-for',
 			focusOnSelect: true,
 			slidesToScroll: 1,
 			slidesToShow: 4,
@@ -24,7 +23,7 @@
 			vertical: true,
 		});
 	} else {
-		$('.slider-for').slick({
+		$('.listing-slider-for').slick({
 			adaptiveHeight: true,
 			arrows: false,
 			slidesToScroll: 1,

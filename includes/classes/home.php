@@ -46,14 +46,98 @@ class HC_Home {
 
 	}
 
+	private function display_editors_pick_other_posts( $post_ids ) {
+
+		global $post;
+
+		$ad_code = get_post_meta( $post->ID, '_hc_home_picks_ad_code', true );
+
+		$i = 1;
+		foreach( $post_ids as $post_id ) {
+			echo 1 === $i % 2 ? '<div class="one-half first ">' : '<div class="one-half">';
+				if( 2 === $i && !empty($ad_code) ) {
+						echo $ad_code;
+					echo '</div>';
+					++$i;
+					echo 1 === $i % 2 ? '<div class="one-half first ">' : '<div class="one-half">';
+				}
+
+				?>
+				<a href="<?php echo get_permalink($post_id); ?>" class="other-pick">
+					<?php
+					if( has_post_thumbnail($post_id) )
+						echo get_the_post_thumbnail($post_id, 'event-thumbnail' );
+					?>
+
+					<h3><?php echo get_the_title($post_id); ?></h3>
+				</a>
+				<?php
+			echo '</div>';
+			++$i;
+		}
+
+	}
+
 	public function do_editors_pick() {
 
 		global $post;
 
+		$main_post_id = get_post_meta( $post->ID, '_hc_home_picks_main_post_id', true );
+		$post_ids     = get_post_meta( $post->ID, '_hc_home_picks_post_ids', true );
+
+		if( empty($main_post_id) && empty($post_ids) )
+			return;
+
 		?>
 		<section class="home-section home-section-editors-pick">
 			<div class="wrap">
+				<?php
+				$heading = get_post_meta( $post->ID, '_hc_home_picks_heading', true );
+				echo '<h2>' . sanitize_text_field($heading) . '</h2>';
+				?>
 
+				<?php
+				if( !empty($main_post_id) ) {
+					$main_post = get_post( $main_post_id );
+					?>
+					<div class="one-half first">
+						<a href="<?php echo get_permalink($main_post_id); ?>" class="main-pick">
+							<?php
+							if( has_post_thumbnail($main_post_id) )
+								echo get_the_post_thumbnail($main_post_id, 'slide' );
+							?>
+
+							<div class="bottom clearfix">
+								<div class="left">
+									<h3><?php echo $main_post->post_title; ?></h3>
+
+									<?php
+									if( !empty($main_post->post_excerpt) )
+										echo '<p>' . $main_post->post_excerpt . '</p>';
+									?>
+								</div>
+
+								<div class="right">
+									<?php echo get_avatar( $main_post->post_author, 90 ); ?>
+
+									<?php
+									$user = get_user_by( 'id', $main_post->post_author );
+									echo '<p>' . $user->display_name . '</p>';
+									?>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="one-half">
+						<?php
+						$this->display_editors_pick_other_posts( $post_ids );
+						?>
+					</div>
+					<?php
+				} else {
+					$this->display_editors_pick_other_posts( $post_ids );
+				}
+				?>
 			</div>
 		</section>
 		<?php
@@ -67,7 +151,117 @@ class HC_Home {
 		?>
 		<section class="home-section home-section-watch-tables">
 			<div class="wrap">
+				<div class="two-fifths first left">
+					<?php
+					$heading = get_post_meta( $post->ID, '_hc_home_watch_this_heading', true );
+					echo '<h2>' . sanitize_text_field($heading) . '</h2>';
 
+					$image_id = get_post_meta( $post->ID, '_hc_home_watch_this_video_thumbnail_id', true );
+					$src      = get_post_meta( $post->ID, '_hc_home_watch_this_video_url', true );
+					$src      = esc_url($src);
+					echo '<a href="' . $src . '" class="open-video-link">';
+						echo wp_get_attachment_image( $image_id, 'event' );
+					echo '</a>';
+					?>
+				</div>
+
+				<div class="three-fifths right hide-no-js">
+					<?php
+					$heading = get_post_meta( $post->ID, '_hc_home_tables_heading', true );
+					echo '<h2>' . sanitize_text_field($heading) . '</h2>';
+					?>
+
+					<?php
+					$listing_ids = get_post_meta( $post->ID, '_hc_home_tables_listing_ids', true );
+					$args        = array(
+						'post_type'      => 'listing',
+						'post__in'       => $listing_ids,
+						'orderby'        => 'post__in',
+						'posts_per_page' => -1,
+						'fields'         => 'ids',
+					);
+
+					$listings = get_posts( $args );
+					?>
+					<div class="listings-slider">
+						<div class="listing-slider-for">
+							<?php
+							foreach( $listings as $post_id ) {
+								?>
+								<div>
+									<?php
+									echo wp_get_attachment_image( get_post_thumbnail_id( $post_id ), 'archive' );
+									?>
+								</div>
+								<?php
+							}
+							?>
+						</div>
+
+						<div class="listing-slider-nav">
+							<?php
+							foreach( $listings as $post_id ) {
+								?>
+								<div>
+									<div class="listing-slide-default">
+										<div class="inner">
+											<div class="left">
+												<h3><?php echo get_the_title( $post_id ); ?></h3>
+											</div>
+
+											<div class="right">
+												<i class="ico-pin"></i>
+											</div>
+										</div>
+									</div>
+
+									<div class="listing-slide-active">
+										<div class="inner">
+											<div class="left">
+												<i class="ico-pin"></i>
+											</div>
+
+											<div class="right">
+												<div class="address">
+													<?php
+													$address = get_post_meta( $post_id, '_hc_listing_address_text', true );
+													if( !empty($address) )
+														echo sanitize_text_field($address);
+													?>
+												</div>
+
+												<div class="contact">
+													<?php
+													$contact = get_post_meta( $post_id, '_hc_listing_contact', true );
+													if( !empty($contact) )
+														echo sanitize_text_field($contact);
+													?>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<?php
+							}
+							?>
+						</div>
+
+						<div class="listings-more">
+							<?php
+							$page_id = get_field( '_hc_directory_page_id', 'option' );
+							?>
+							<a href="<?php echo get_permalink($page_id); ?>" class="inner">
+								<div class="left">
+									<h3>More Restaurants</h3>
+								</div>
+
+								<div class="right">
+									<i class="ico-arrow-right"></i>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 		<?php

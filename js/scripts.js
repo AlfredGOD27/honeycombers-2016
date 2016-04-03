@@ -36,6 +36,12 @@
 	// Support for HTML5 placeholders
 	$('input, textarea').placeholder();
 
+	// MFP Video Popup
+	$('.open-video-link').magnificPopup({
+		type: 'iframe',
+		midClick: true
+	});
+
 	// Entry header slideshow
 	$('.entry-slideshow').slick({
 		prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
