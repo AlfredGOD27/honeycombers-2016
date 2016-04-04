@@ -1968,7 +1968,7 @@ input[type='search'] {
 .sites-nav li:first-child {
   margin-left: 0;
 }
-.sites-nav li.current a {
+.sites-nav li.active a {
   border-bottom-color: #FFFFFF;
 }
 
