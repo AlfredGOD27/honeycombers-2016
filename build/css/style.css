@@ -2501,6 +2501,7 @@ input[type='search'] {
 }
 
 .entry-title {
+  clear: both;
   overflow: hidden;
   margin-bottom: .5em;
   word-wrap: break-word;
