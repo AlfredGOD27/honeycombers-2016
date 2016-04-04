@@ -62,10 +62,10 @@ class HC_Listings {
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
-			'rewrite'           => array('slug' => 'listing-category'),
+			'rewrite'           => array('slug' => 'directories'),
 		);
 
-		register_taxonomy( 'listing-category', array('listing'), $args );
+		register_taxonomy( 'directories', array('listing'), $args );
 
 		$labels = array(
 			'name'              => _x( 'Listing Locations', 'taxonomy general name' ),
@@ -91,7 +91,7 @@ class HC_Listings {
 			'public'            => false,
 		);
 
-		register_taxonomy( 'listing-location', array('listing'), $args );
+		register_taxonomy( 'locations', array('listing'), $args );
 
 	}
 
@@ -125,7 +125,7 @@ class HC_Listings {
 				genesis_entry_header_markup_open();
 					genesis_do_post_title();
 
-					$categories = wp_get_object_terms( $post->ID, 'listing-category' );
+					$categories = wp_get_object_terms( $post->ID, 'directories' );
 					if( !empty($categories) ) {
 						$category_links = array();
 
@@ -210,7 +210,7 @@ class HC_Listings {
 			array(
 				'callback' => 'hc_directory_maps',
 				'v'        => '3.23',
-				'key'      => get_field( '_hc_google_maps_api_key', 'option' ),
+// 				'key'      => get_field( '_hc_google_maps_api_key', 'option' ),
 			),
 			'//maps.googleapis.com/maps/api/js'
 		);
@@ -274,7 +274,7 @@ class HC_Listings {
 
 		if( !empty($location_id) ) {
 			$args['tax_query'][] = array(
-				'taxonomy' => 'listing-location',
+				'taxonomy' => 'locations',
 				'field'    => 'term_id',
 				'terms'    => $location_id,
 			);
@@ -282,7 +282,7 @@ class HC_Listings {
 
 		if( !empty($category_id) ) {
 			$args['tax_query'][] = array(
-				'taxonomy' => 'listing-category',
+				'taxonomy' => 'directories',
 				'field'    => 'term_id',
 				'terms'    => $category_id,
 			);
@@ -301,12 +301,12 @@ class HC_Listings {
 		$i                = 1;
 		foreach( $listings as $listing ) {
 			$categories = array();
-			$terms      = wp_get_object_terms( $listing->ID, 'listing-category' );
+			$terms      = wp_get_object_terms( $listing->ID, 'directories' );
 			foreach( $terms as $term )
 				$categories[] = $term->name;
 
 			$locations = array();
-			$terms     = wp_get_object_terms( $listing->ID, 'listing-location' );
+			$terms     = wp_get_object_terms( $listing->ID, 'locations' );
 			foreach( $terms as $term )
 				$locations[] = $term->name;
 
@@ -372,7 +372,10 @@ class HC_Listings {
 					</div>
 
 					<div class="two-fifths hide-phone">
-						<a href="" class="btn">Submit A Listing</a>
+						<?php
+						$page_id = get_option( 'options__hc_claim_listing_page_id' );
+						?>
+						<a href="<?php echo get_permalink($page_id); ?>" class="btn">Submit A Listing</a>
 					</div>
 				</div>
 
@@ -387,7 +390,7 @@ class HC_Listings {
 						<select id="directory-location" name="location" class="styled" required>
 							<option value="">Location</option>
 							<?php
-							$terms = get_terms( 'listing-location' );
+							$terms = get_terms( 'locations' );
 							foreach( $terms as $term ) {
 								?>
 								<option value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
@@ -403,7 +406,7 @@ class HC_Listings {
 						<select id="directory-category" name="category" class="styled">
 							<option value="">Category</option>
 							<?php
-							$terms = get_terms( 'listing-category' );
+							$terms = get_terms( 'directories' );
 							foreach( $terms as $term ) {
 								?>
 								<option value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>

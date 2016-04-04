@@ -59,7 +59,7 @@ class HC_Sliders {
 											$terms = wp_get_object_terms( $post_id, 'event-category' );
 											break;
 										case 'listing':
-											$terms = wp_get_object_terms( $post_id, 'listing-category' );
+											$terms = wp_get_object_terms( $post_id, 'directories' );
 											break;
 									}
 
