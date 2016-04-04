@@ -129,6 +129,9 @@ class HC_Archives {
 		);
 		$wp_query = new WP_Query( $args );
 
+		$this->mode       = 'sub-sections';
+		$this->post_style = 'half';
+
 		add_action( 'post_class', array($this, 'post_class') );
 		remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 		add_action( 'genesis_entry_content', array($this, 'do_excerpt') );
@@ -266,7 +269,6 @@ class HC_Archives {
 			$args = array(
 				'posts_per_page' => 4,
 				'post_type'      => $this->post_types,
-				'no_found_rows'  => true,
 				'tax_query'      => array(
 					array(
 						'taxonomy' => $category->taxonomy,
