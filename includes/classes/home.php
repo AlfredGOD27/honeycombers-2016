@@ -234,7 +234,7 @@ class HC_Home {
 
 												<div class="contact">
 													<?php
-													$contact = get_post_meta( $post_id, '_hc_listing_contact', true );
+													$contact = get_post_meta( $post_id, '_hc_listing_phone', true );
 													if( !empty($contact) )
 														echo sanitize_text_field($contact);
 													?>

@@ -25,8 +25,8 @@
         },
         {
             "key": "field_56eb3b1b301b2",
-            "label": "Contact",
-            "name": "_hc_listing_contact",
+            "label": "Phone",
+            "name": "_hc_listing_phone",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -43,6 +43,24 @@
             "maxlength": "",
             "readonly": 0,
             "disabled": 0
+        },
+        {
+            "key": "field_57028475f376b",
+            "label": "Email",
+            "name": "_hc_listing_email",
+            "type": "email",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_56eb3b1b301be",
@@ -138,5 +156,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1459714287
+    "modified": 1459782789
 }

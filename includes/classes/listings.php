@@ -155,10 +155,15 @@ class HC_Listings {
 				if( !empty($hours) )
 					$lines['Hours'] = sanitize_text_field($hours);
 
-				// Contact
-				$contact = get_post_meta( $post->ID, '_hc_listing_contact', true );
-				if( !empty($contact) )
-					$lines['Contact'] = sanitize_text_field($contact);
+				// Phone
+				$phone = get_post_meta( $post->ID, '_hc_listing_phone', true );
+				if( !empty($phone) )
+					$lines['Phone'] = sanitize_text_field($phone);
+
+				// Email
+				$email = get_post_meta( $post->ID, '_hc_listing_email', true );
+				if( !empty($email) )
+					$lines['Email'] = '<a href="mailto:' . sanitize_email($email) . '">' . sanitize_text_field($email) . '</a>';
 
 				// Website
 				$website = get_post_meta( $post->ID, '_hc_listing_website', true );
