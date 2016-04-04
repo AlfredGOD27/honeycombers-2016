@@ -120,7 +120,7 @@ function hc_directory_maps() {
 
 						// Add each marker
 						$.each( data.items, function(_, item) {
-							if( use_map ) {
+							if( use_map && item.lat && item.lng ) {
 								// Add to map
 								marker = add_marker(
 									item.name,
