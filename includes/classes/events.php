@@ -293,8 +293,8 @@ class HC_Events {
 							'action'   => 'TEMPLATE',
 							'text'     => urlencode( $post->post_title ),
 							'details'  => urlencode( $post->post_excerpt ),
-							'location' => $venue,
-							'dates'    => $start . '/' . $end,
+							'location' => urlencode( $venue ),
+							'dates'    => urlencode( $start . '/' . $end ),
 						),
 						'http://www.google.com/calendar/event'
 					);
