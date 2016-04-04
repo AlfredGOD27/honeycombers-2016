@@ -156,7 +156,7 @@
             "key": "field_56e8baa8a4fe5",
             "label": "Price",
             "name": "_hc_event_price",
-            "type": "number",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -169,9 +169,7 @@
             "placeholder": "",
             "prepend": "",
             "append": "",
-            "min": 0,
-            "max": "",
-            "step": ".01",
+            "maxlength": "",
             "readonly": 0,
             "disabled": 0
         },
@@ -227,5 +225,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1459609752
+    "modified": 1459788459
 }

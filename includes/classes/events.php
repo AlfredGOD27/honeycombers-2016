@@ -252,8 +252,8 @@ class HC_Events {
 
 				// Price
 				$price = get_post_meta( $post->ID, '_hc_event_price', true );
-				if( strlen($price) > 0 )
-					$lines['Price'] = !empty($price) ? number_format( (float) $price ) : 'Free';
+				if( !empty($price) )
+					$lines['Price'] = sanitize_text_field($price);
 
 				// Contact
 				$contact = get_post_meta( $post->ID, '_hc_event_contact', true );
