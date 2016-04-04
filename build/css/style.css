@@ -1790,6 +1790,9 @@ select.styled {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+select.styled::-ms-expand {
+  display: none;
+}
 
 .placeholder {
   color: #c7c7c7;
@@ -3444,6 +3447,7 @@ input[type='search'] {
   position: relative;
   margin-left: 2em;
   height: 6.25em;
+  background-color: #252525;
   -webkit-transition: margin-left .1s ease-in-out;
           transition: margin-left .1s ease-in-out;
 }
@@ -3493,7 +3497,6 @@ input[type='search'] {
 }
 .slider-nav .inner span {
   text-transform: uppercase;
-  font-size: 1.25em;
   font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
 }
 .slider-nav .slick-current {
@@ -4091,6 +4094,11 @@ input[type='search'] {
 .page-template-page_home .archive-slider-container {
   margin-bottom: 1em;
 }
+.page-template-page_home .content-sidebar-wrap {
+  padding-right: 0;
+  padding-left: 0;
+  max-width: none;
+}
 
 .home-section h2 {
   margin-bottom: .5em;
@@ -4099,7 +4107,7 @@ input[type='search'] {
 
 .main-pick {
   display: block;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.25em;
   border: 1px solid #fe862c;
   color: inherit;
   text-decoration: none;
@@ -4165,7 +4173,7 @@ input[type='search'] {
 .other-pick {
   position: relative;
   display: block;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.25em;
   color: inherit;
   text-decoration: none;
 }
@@ -4185,6 +4193,9 @@ input[type='search'] {
   font-size: 1em;
 }
 
+.home-section-watch-tables {
+  margin-bottom: 1em;
+}
 .home-section-watch-tables > .wrap > .left {
   float: left;
   width: 37%;
@@ -4422,6 +4433,51 @@ input[type='search'] {
 .listings-more i {
   color: #fe862c;
   font-size: 1.5em;
+}
+
+.home-section-events-join {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background-color: #fad9bd;
+}
+
+.home-section-trending {
+  margin-bottom: 1.25em;
+  padding-bottom: 1em;
+  background-color: #fad9bd;
+}
+.home-section-trending a {
+  position: relative;
+  display: block;
+  float: left;
+  width: 20%;
+  color: #FFFFFF;
+}
+.home-section-trending img {
+  display: block;
+  margin: 0 auto;
+}
+.home-section-trending i,
+.home-section-trending span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  line-height: 1;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+.home-section-trending i {
+  display: block;
+  font-size: 6.5em;
+}
+.home-section-trending span {
+  display: block;
+  font-size: 3em;
+  font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
+}
+
+.home-section-posts .banner {
+  margin: 0 auto 1.25em;
 }
 
 @media print {

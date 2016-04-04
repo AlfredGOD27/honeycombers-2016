@@ -11585,7 +11585,7 @@ function hc_directory_maps() {
 					this.destroy();
 				},
 				{
-					offset: 'bottom-in-view'
+					offset: '50%'
 				}
 			);
 		});
