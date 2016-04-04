@@ -58,6 +58,10 @@ select {
 		cursor: pointer;
 		-webkit-appearance: none;
 		-moz-appearance: none;
+
+		&::-ms-expand {
+			display: none;
+		}
 	}
 }
 
