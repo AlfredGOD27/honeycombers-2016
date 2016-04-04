@@ -144,6 +144,10 @@
 		background-color: $white;
 		opacity: 0;
 		transition: opacity .4s ease-in-out;
+
+		ul {
+			@extend %wrap;
+		}
 	}
 
 	.menu-col {

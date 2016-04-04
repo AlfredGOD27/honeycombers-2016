@@ -1012,7 +1012,7 @@ th {
   clear: both;
 }
 
-.content-sidebar-wrap, .site-top > .wrap, .site-header > .wrap, .nav-primary-wrapper > .wrap, .site-footer > .wrap, .author .author-box > .wrap, .archive-description > .wrap, .archive-slider-container > .wrap, .page-template-page_calendar .subcategory > .wrap, .calendar-search-bar > .wrap, .home-section > .wrap {
+.content-sidebar-wrap, .site-top > .wrap, .site-header > .wrap, .nav-primary-wrapper > .wrap, .main-menu .sub-menu ul, .site-footer > .wrap, .author .author-box > .wrap, .archive-description > .wrap, .archive-slider-container > .wrap, .page-template-page_calendar .subcategory > .wrap, .calendar-search-bar > .wrap, .home-section > .wrap {
   margin: 0 auto;
   padding-right: .75em;
   padding-left: .75em;
