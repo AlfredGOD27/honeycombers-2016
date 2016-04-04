@@ -2,7 +2,6 @@
 .sass-cache
 node_modules
 bower_components
-build
 preview.html
 grunticon.loader.js
 
