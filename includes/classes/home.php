@@ -288,10 +288,34 @@ class HC_Home {
 
 		global $post;
 
+		$post_ids = get_post_meta( $post->ID, '_hc_home_trending_post_ids', true );
+
 		?>
 		<section class="home-section home-section-trending">
 			<div class="wrap">
+				<h2>Trending</h2>
 
+				<div class="clearfix">
+					<?php
+					$i = 1;
+					foreach( $post_ids as $post_id ) {
+						if( !has_post_thumbnail($post_id) )
+							continue;
+
+						?>
+						<a href="<?php echo get_permalink($post_id); ?>">
+							<?php
+							echo get_the_post_thumbnail( $post_id, 'archive-small' );
+							?>
+
+							<i class="ico-hexagon"></i>
+							<span><?php echo $i; ?></span>
+						</a>
+						<?php
+						++$i;
+					}
+					?>
+				</div>
 			</div>
 		</section>
 		<?php
@@ -305,6 +329,11 @@ class HC_Home {
 		?>
 		<section class="home-section home-section-posts">
 			<div class="wrap">
+				<?php
+				$ad = get_post_meta( $post->ID, '_hc_home_banner_ad', true );
+				if( !empty($ad) )
+					echo '<div class="banner">' . $ad . '</div>';
+				?>
 
 			</div>
 		</section>

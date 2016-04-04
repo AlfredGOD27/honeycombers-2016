@@ -248,6 +248,7 @@ $slider-height: 25em;
 		position: relative;
 		margin-left: 2em;
 		height: $slider-height / 4;
+		background-color: $black;
 		transition: margin-left .1s ease-in-out;
 
 		&:before,
@@ -295,7 +296,6 @@ $slider-height: 25em;
 
 		span {
 			text-transform: uppercase;
-			font-size: 1.25em;
 			font-family: $heading;
 		}
 	}

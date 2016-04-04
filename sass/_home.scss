@@ -2,6 +2,12 @@
 	.archive-slider-container {
 		margin-bottom: 1em;
 	}
+
+	.content-sidebar-wrap {
+		padding-right: 0;
+		padding-left: 0;
+		max-width: none;
+	}
 }
 
 .home-section {
@@ -17,7 +23,7 @@
 
 .main-pick {
 	display: block;
-	margin-bottom: 1.5em;
+	margin-bottom: 1.25em;
 	border: 1px solid $orange;
 	color: inherit;
 	text-decoration: none;
@@ -75,7 +81,7 @@
 .other-pick {
 	position: relative;
 	display: block;
-	margin-bottom: 1.5em;
+	margin-bottom: 1.25em;
 	color: inherit;
 	text-decoration: none;
 
@@ -100,6 +106,8 @@
 $listing-slider-height: 18.75em;
 
 .home-section-watch-tables {
+	margin-bottom: 1em;
+
 	> .wrap {
 		> .left {
 			float: left;
@@ -303,5 +311,56 @@ $listing-slider-height: 18.75em;
 	i {
 		color: $orange;
 		font-size: 1.5em;
+	}
+}
+
+.home-section-events-join {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	background-color: $orange-light;
+}
+
+.home-section-trending {
+	margin-bottom: 1.25em;
+	padding-bottom: 1em;
+	background-color: $orange-light;
+
+	a {
+		position: relative;
+		display: block;
+		float: left;
+		width: 20%;
+		color: $white;
+	}
+
+	img {
+		display: block;
+		margin: 0 auto;
+	}
+
+	i,
+	span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		line-height: 1;
+		transform: translateX(-50%) translateY(-50%);
+	}
+
+	i {
+		display: block;
+		font-size: 6.5em;
+	}
+
+	span {
+		display: block;
+		font-size: 3em;
+		font-family: $heading;
+	}
+}
+
+.home-section-posts {
+	.banner {
+		margin: 0 auto 1.25em;
 	}
 }
