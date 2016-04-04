@@ -309,3 +309,8 @@ function hc_remove_post_thumbnail_support() {
 	remove_post_type_support( 'post', 'thumbnail' );
 
 }
+
+remove_action( 'show_user_profile', 'genesis_user_options_fields' );
+remove_action( 'edit_user_profile', 'genesis_user_options_fields' );
+remove_action( 'show_user_profile', 'genesis_user_archive_fields' );
+remove_action( 'edit_user_profile', 'genesis_user_archive_fields' );
