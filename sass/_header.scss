@@ -45,15 +45,19 @@
 }
 
 .sites-nav {
-	a {
+	li {
+		display: inline-block;
 		margin-left: 1.5em;
+		vertical-align: middle;
 
 		&:first-child {
 			margin-left: 0;
 		}
 
 		&.current {
-			border-bottom-color: $white;
+			a {
+				border-bottom-color: $white;
+			}
 		}
 	}
 }

@@ -1960,13 +1960,15 @@ input[type='search'] {
     display: none;
   }
 }
-.sites-nav a {
+.sites-nav li {
+  display: inline-block;
   margin-left: 1.5em;
+  vertical-align: middle;
 }
-.sites-nav a:first-child {
+.sites-nav li:first-child {
   margin-left: 0;
 }
-.sites-nav a.current {
+.sites-nav li.current a {
   border-bottom-color: #FFFFFF;
 }
 

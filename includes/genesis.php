@@ -120,8 +120,8 @@ remove_theme_support( 'genesis-menus' );
 add_theme_support(
 	'genesis-menus',
 	array(
-		'primary' => 'Primary Menu',
-		'footer'  => 'Footer Menu',
+		'top'    => 'Top Menu',
+		'footer' => 'Footer Menu',
 	)
 );
 

@@ -266,13 +266,15 @@ function hc_site_top() {
 	<section class="site-top">
 		<div class="wrap">
 			<div class="left">
-				<nav class="sites-nav">
-					<a href="#" class="current">Singapore</a>
-					<a href="#">Bali</a>
-					<a href="#">Jakarta</a>
-					<a href="#">Kids</a>
-					<a href="#">Brides</a>
-				</nav>
+				<?php
+				wp_nav_menu(
+					array(
+						'menu_class'     => 'sites-nav',
+						'theme_location' => 'top',
+						'depth'          => 1,
+					)
+				);
+				?>
 			</div>
 
 			<div class="right">
