@@ -17,6 +17,7 @@ final class HC {
 		'formatting',
 		'home',
 		'listings',
+		'migration',
 		'schemas',
 		'share',
 		'sliders',
