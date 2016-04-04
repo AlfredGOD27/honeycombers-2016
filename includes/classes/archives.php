@@ -5,7 +5,8 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HC_Archives {
 	public function __construct() {
 
-		$this->count = 0;
+		$this->count      = 0;
+		$this->post_types = array('page', 'post', 'event', 'listing');
 
 		remove_action( 'genesis_before_loop', 'genesis_do_author_title_description', 15 );
 		remove_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 );
@@ -116,7 +117,7 @@ class HC_Archives {
 
 		$args = array(
 			'posts_per_page' => 4,
-			'post_type'      => 'any',
+			'post_type'      => $this->post_types,
 			'offset'         => $offset,
 			'tax_query'      => array(
 				array(
@@ -208,7 +209,7 @@ class HC_Archives {
 	public function slider() {
 
 		$args = array(
-			'post_type' => 'any',
+			'post_type' => $this->post_types,
 			'tax_query' => array(
 				array(
 					'taxonomy' => $this->term->taxonomy,
@@ -264,7 +265,7 @@ class HC_Archives {
 		foreach( $this->subcategories as $category ) {
 			$args = array(
 				'posts_per_page' => 4,
-				'post_type'      => 'any',
+				'post_type'      => $this->post_types,
 				'no_found_rows'  => true,
 				'tax_query'      => array(
 					array(
