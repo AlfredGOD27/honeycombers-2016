@@ -18,9 +18,7 @@
 			url: ajax_object.ajaxurl,
 			type: 'POST',
 			data: {
-				action: 'hc_get_next_page_html',
-				term_id: container.data('term_id'),
-				taxonomy: container.data('taxonomy'),
+				action: 'hc_get_home_next_page_html',
 				offset: offset
 			},
 			dataType: 'html',

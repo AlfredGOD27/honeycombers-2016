@@ -7,6 +7,9 @@ class HC_Home {
 
 		add_action( 'wp', array($this, 'init') );
 
+		add_action( 'wp_ajax_hc_get_home_next_page_html', array($this, 'get_next_page_html') );
+		add_action( 'wp_ajax_nopriv_hc_get_home_next_page_html', array($this, 'get_next_page_html') );
+
 	}
 
 	public function init() {
@@ -274,10 +277,84 @@ class HC_Home {
 
 		global $post;
 
+		$events = get_post_meta( $post->ID, '_hc_home_featured_event_ids', true );
+
 		?>
 		<section class="home-section home-section-events-join">
 			<div class="wrap">
+				<h2>Featured Events</h2>
 
+				<div class="three-fourths first left hide-no-js">
+					<div class="event-slider-for">
+						<?php
+						foreach( $events as $post_id ) {
+							?>
+							<div>
+								<?php
+								echo '<a href="' . get_permalink($post_id) . '">';
+									echo get_the_post_thumbnail( $post_id, 'slide' );
+								echo '</a>';
+								?>
+							</div>
+							<?php
+						}
+						?>
+					</div>
+
+					<div class="event-slider-nav">
+						<?php
+						foreach( $events as $post_id ) {
+							$date = HC()->events->get_event_date_info( $post_id );
+							?>
+							<div>
+								<div class="outer">
+									<?php
+									echo get_the_post_thumbnail( $post_id, 'slide-thumbnail' );
+									?>
+
+									<div class="inner">
+										<div class="info">
+											<span class="m"><?php echo date('M', $date['start_date']); ?></span>
+											<span class="d"><?php echo date('j', $date['start_date']); ?></span>
+										</div>
+
+										<div class="name">
+											<?php
+											$categories = wp_get_object_terms( $post_id, 'event-category' );
+											if( !empty($categories) )
+												echo '<span class="cat">' . $categories[0]->name . '</span>';
+
+											echo '<span class="title">' . get_the_title( $post_id ) . '</span>';
+											?>
+										</div>
+
+										<?php
+										if( !empty($categories) ) {
+											$icon = get_field( '_hc_category_icon', $categories[0] );
+											if( !empty($icon) )
+												echo '<i class="ico-' . $icon . '"></i>';
+										}
+										?>
+									</div>
+								</div>
+							</div>
+							<?php
+						}
+						?>
+					</div>
+				</div>
+
+				<div class="one-fourth right join">
+					<i class="ico-circle-mail"></i>
+
+					<h3>JOIN THE HONEYCOMBERS</h3>
+
+					<p class="top">“What was that bar again?”</p>
+
+					<a href="#" class="btn">Sign Up <i class="ico-exit"></i></a>
+
+					<p class="bottom">Save all the new spots you have to try and stories for when you have the time.</p>
+				</div>
 			</div>
 		</section>
 		<?php
@@ -322,9 +399,59 @@ class HC_Home {
 
 	}
 
+	private function display_posts( $offset = 0 ) {
+
+		$args = array(
+			'posts_per_page' => 8,
+			'offset'         => $offset,
+			'post_type'      => 'post',
+			'fields'         => 'ids',
+		);
+		$posts = get_posts( $args );
+
+		$i = 1;
+		foreach( $posts as $post_id ) {
+			echo 1 === $i % 4 ? '<div class="one-fourth first">' : '<div class="one-fourth">';
+				?>
+				<a href="<?php echo get_permalink( $post_id ); ?>">
+					<?php
+					if( has_post_thumbnail($post_id) )
+						echo get_the_post_thumbnail( $post_id, 'archive-small' );
+					?>
+
+					<h3><?php echo get_the_title( $post_id ); ?></h3>
+				</a>
+				<?php
+			echo '</div>';
+			++$i;
+		}
+
+	}
+
+	public function get_next_page_html() {
+
+		global $wp_query;
+
+		if( !isset($_POST['offset']))
+			wp_die();
+
+		$offset = absint($_POST['offset']);
+		$this->display_posts( $offset );
+
+		wp_die();
+
+	}
+
 	public function do_latest_posts() {
 
 		global $post;
+
+		$args = array(
+			'posts_per_page' => -1,
+			'post_type'      => 'post',
+			'fields'         => 'ids',
+		);
+		$posts = get_posts( $args );
 
 		?>
 		<section class="home-section home-section-posts">
@@ -335,6 +462,18 @@ class HC_Home {
 					echo '<div class="banner">' . $ad . '</div>';
 				?>
 
+				<h2>
+					<a href="#">
+						<span>Latest Stories</span>
+						<i class="ico-arrow-right-circle"></i>
+					</a>
+				</h2>
+
+				<div class="block clearfix" data-offset="8" data-total="<?php echo count($posts); ?>">
+					<?php
+					$this->display_posts();
+					?>
+				</div>
 			</div>
 		</section>
 		<?php
