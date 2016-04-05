@@ -62,16 +62,15 @@
 	}
 
 	.bottom {
-		display: flex;
-		align-items: center;
 		overflow: hidden;
-		max-height: 5em;
+		height: 5em;
 	}
 
 	.left {
 		float: left;
 		padding: 1em;
 		width: 25%;
+		height: 100%;
 		background-color: $orange;
 		color: $white;
 		text-align: center;
@@ -95,6 +94,7 @@
 		float: left;
 		padding: .25em 1em;
 		width: 64%;
+		height: 100%;
 
 		p {
 			margin-bottom: .25em;

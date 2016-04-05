@@ -1418,6 +1418,10 @@ a {
           transition: all .1s ease-in-out;
 }
 
+p {
+  margin-top: 0;
+}
+
 strong {
   font-weight: 700;
 }
@@ -2890,21 +2894,14 @@ input[type='search'] {
   border-bottom: 1px solid #fe862c;
 }
 .featured-event-widget .bottom {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
   overflow: hidden;
-  max-height: 5em;
+  height: 5em;
 }
 .featured-event-widget .left {
   float: left;
   padding: 1em;
   width: 25%;
+  height: 100%;
   background-color: #fe862c;
   color: #FFFFFF;
   text-align: center;
@@ -2924,6 +2921,7 @@ input[type='search'] {
   float: left;
   padding: .25em 1em;
   width: 64%;
+  height: 100%;
 }
 .featured-event-widget .right p {
   margin-bottom: .25em;
