@@ -67,10 +67,10 @@ $directory-height: 50em;
 .directory-search {
 	display: flex;
 	flex-direction: column;
-	flex-grow: 1;
+	flex-grow: 0;
 	flex-shrink: 0;
 	float: right;
-	max-width: 42em;
+	width: 42em;
 	height: 100%;
 
 	h2 {
