@@ -19,7 +19,7 @@
             "min": "",
             "max": "",
             "layout": "block",
-            "button_label": "Add Column",
+            "button_label": "Add Item",
             "sub_fields": [
                 {
                     "key": "field_562b23ccce6b0",
@@ -251,5 +251,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1459609804
+    "modified": 1459815072
 }
