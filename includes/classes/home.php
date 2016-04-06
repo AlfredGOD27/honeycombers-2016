@@ -147,125 +147,142 @@ class HC_Home {
 
 		global $post;
 
+		$enable_video    = get_post_meta( $post->ID, '_hc_home_enable_featured_video', true );
+		$enable_listings = get_post_meta( $post->ID, '_hc_home_enable_featured_listings', true );
+		if( empty($enable_video) && empty($enable_listings) )
+			return;
+
 		?>
 		<section class="home-section home-section-featured-video-listings">
 			<div class="wrap">
-				<div class="left">
-					<?php
-					$heading = get_post_meta( $post->ID, '_hc_home_watch_this_heading', true );
-					echo '<h2>' . sanitize_text_field($heading) . '</h2>';
-
-					$image_id = get_post_meta( $post->ID, '_hc_home_watch_this_video_thumbnail_id', true );
-					$src      = get_post_meta( $post->ID, '_hc_home_watch_this_video_url', true );
-					$src      = esc_url($src);
-					echo '<a href="' . $src . '" class="open-video-link">';
-						echo wp_get_attachment_image( $image_id, 'event' );
-					echo '</a>';
+				<?php
+				if( !empty($enable_video) ) {
 					?>
-				</div>
+					<div class="left">
+						<?php
+						$heading = get_post_meta( $post->ID, '_hc_home_watch_this_heading', true );
+						echo '<h2>' . sanitize_text_field($heading) . '</h2>';
 
-				<div class="right hide-no-js">
+						$image_id = get_post_meta( $post->ID, '_hc_home_watch_this_video_thumbnail_id', true );
+						$src      = get_post_meta( $post->ID, '_hc_home_watch_this_video_url', true );
+						$src      = esc_url($src);
+						echo '<a href="' . $src . '" class="open-video-link">';
+							echo wp_get_attachment_image( $image_id, 'event' );
+						echo '</a>';
+						?>
+					</div>
 					<?php
-					$heading = get_post_meta( $post->ID, '_hc_home_tables_heading', true );
-					echo '<h2>' . sanitize_text_field($heading) . '</h2>';
-					?>
+				}
+				?>
 
-					<?php
-					$listing_ids = get_post_meta( $post->ID, '_hc_home_tables_listing_ids', true );
-					$args        = array(
-						'post_type'      => 'listing',
-						'post__in'       => $listing_ids,
-						'orderby'        => 'post__in',
-						'posts_per_page' => -1,
-						'fields'         => 'ids',
-					);
-
-					$listings = get_posts( $args );
+				<?php
+				if( !empty($enable_listings) ) {
 					?>
-					<div class="listings-slider">
-						<div class="listing-slider-for">
-							<?php
-							foreach( $listings as $post_id ) {
-								?>
-								<div>
-									<?php
-									echo '<a href="' . get_permalink($post_id) . '">';
-										echo get_the_post_thumbnail( $post_id, 'archive' );
-									echo '</a>';
-									?>
-								</div>
+					<div class="right hide-no-js">
+						<?php
+						$heading = get_post_meta( $post->ID, '_hc_home_tables_heading', true );
+						echo '<h2>' . sanitize_text_field($heading) . '</h2>';
+						?>
+
+						<?php
+						$listing_ids = get_post_meta( $post->ID, '_hc_home_tables_listing_ids', true );
+						$args        = array(
+							'post_type'      => 'listing',
+							'post__in'       => $listing_ids,
+							'orderby'        => 'post__in',
+							'posts_per_page' => -1,
+							'fields'         => 'ids',
+						);
+
+						$listings = get_posts( $args );
+						?>
+						<div class="listings-slider">
+							<div class="listing-slider-for">
 								<?php
-							}
-							?>
-						</div>
-
-						<div class="listing-slider-nav">
-							<?php
-							foreach( $listings as $post_id ) {
-								?>
-								<div>
-									<div class="listing-slide-default">
-										<div class="inner">
-											<div class="left">
-												<h3><?php echo get_the_title( $post_id ); ?></h3>
-											</div>
-
-											<div class="right">
-												<i class="ico-pin-filled"></i>
-											</div>
-										</div>
+								foreach( $listings as $post_id ) {
+									?>
+									<div>
+										<?php
+										echo '<a href="' . get_permalink($post_id) . '">';
+											echo get_the_post_thumbnail( $post_id, 'archive' );
+										echo '</a>';
+										?>
 									</div>
+									<?php
+								}
+								?>
+							</div>
 
-									<div class="listing-slide-active">
-										<div class="inner">
-											<div class="left">
-												<i class="ico-pin-filled"></i>
-											</div>
-
-											<div class="right">
-												<div class="address">
-													<?php
-													$address = get_post_meta( $post_id, '_hc_listing_address_text', true );
-													if( !empty($address) )
-														echo sanitize_text_field($address);
-													?>
+							<div class="listing-slider-nav">
+								<?php
+								foreach( $listings as $post_id ) {
+									?>
+									<div>
+										<div class="listing-slide-default">
+											<div class="inner">
+												<div class="left">
+													<h3><?php echo get_the_title( $post_id ); ?></h3>
 												</div>
 
-												<div class="contact">
-													<?php
-													$contact = get_post_meta( $post_id, '_hc_listing_phone', true );
-													if( !empty($contact) )
-														echo sanitize_text_field($contact);
-													?>
+												<div class="right">
+													<i class="ico-pin-filled"></i>
 												</div>
 											</div>
 										</div>
+
+										<div class="listing-slide-active">
+											<div class="inner">
+												<div class="left">
+													<i class="ico-pin-filled"></i>
+												</div>
+
+												<div class="right">
+													<div class="address">
+														<?php
+														$address = get_post_meta( $post_id, '_hc_listing_address_text', true );
+														if( !empty($address) )
+															echo sanitize_text_field($address);
+														?>
+													</div>
+
+													<div class="contact">
+														<?php
+														$contact = get_post_meta( $post_id, '_hc_listing_phone', true );
+														if( !empty($contact) )
+															echo sanitize_text_field($contact);
+														?>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
-								</div>
-								<?php
-							}
-							?>
-						</div>
-
-						<div class="listings-more">
-							<?php
-							$page_id = get_field( '_hc_directory_page_id', 'option' );
-							?>
-							<a href="<?php echo get_permalink($page_id); ?>" class="inner">
-								<div class="left">
 									<?php
-									$heading = get_post_meta( $post->ID, '_hc_home_more_listings_label', true );
-									?>
-									<h3><?php echo $heading; ?></h3>
-								</div>
+								}
+								?>
+							</div>
 
-								<div class="right">
-									<i class="ico-arrow-right"></i>
-								</div>
-							</a>
+							<div class="listings-more">
+								<?php
+								$page_id = get_field( '_hc_directory_page_id', 'option' );
+								?>
+								<a href="<?php echo get_permalink($page_id); ?>" class="inner">
+									<div class="left">
+										<?php
+										$heading = get_post_meta( $post->ID, '_hc_home_more_listings_label', true );
+										?>
+										<h3><?php echo $heading; ?></h3>
+									</div>
+
+									<div class="right">
+										<i class="ico-arrow-right"></i>
+									</div>
+								</a>
+							</div>
 						</div>
 					</div>
-				</div>
+					<?php
+				}
+				?>
 			</div>
 		</section>
 		<?php
@@ -349,19 +366,25 @@ class HC_Home {
 
 				<?php
 				if( !is_user_logged_in() ) {
-					?>
-					<div class="one-fourth right join">
-						<i class="ico-circle-mail"></i>
+					$enable = get_post_meta( $post->ID, '_hc_home_join_enable', true );
+					if( !empty($enable) ) {
+						$heading = get_post_meta( $post->ID, '_hc_home_join_heading', true );
+						$top     = get_post_meta( $post->ID, '_hc_home_join_top_text', true );
+						$bottom  = get_post_meta( $post->ID, '_hc_home_join_bottom_text', true );
+						?>
+						<div class="one-fourth right join">
+							<i class="ico-circle-mail"></i>
 
-						<h3>JOIN THE HONEYCOMBERS</h3>
+							<h3><?php echo $heading; ?></h3>
 
-						<p class="top">“What was that bar again?”</p>
+							<p class="top"><?php echo sanitize_text_field($top); ?></p>
 
-						<a href="<?php echo HC()->utilities->get_page_link('_hc_login_page_id'); ?>" class="btn">Sign Up <i class="ico-exit"></i></a>
+							<a href="<?php echo HC()->utilities->get_page_link('_hc_login_page_id'); ?>" class="btn">Sign Up <i class="ico-exit"></i></a>
 
-						<p class="bottom">Save all the new spots you have to try and stories for when you have the time.</p>
-					</div>
-					<?php
+							<p class="bottom"><?php echo sanitize_text_field($bottom); ?></p>
+						</div>
+						<?php
+					}
 				}
 				?>
 			</div>
