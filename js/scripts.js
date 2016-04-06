@@ -30,12 +30,6 @@
 	// Enable FitVids on the content area
 	$('.content').fitVids();
 
-	// SVG fallbacks
-	svgeezy.init( 'svg-no-check', 'png' );
-
-	// Support for HTML5 placeholders
-	$('input, textarea').placeholder();
-
 	// MFP Video Popup
 	$('.open-video-link').magnificPopup({
 		type: 'iframe',

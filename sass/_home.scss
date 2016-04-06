@@ -1,6 +1,6 @@
 .page-template-page_home {
 	.archive-slider-container {
-		margin-bottom: 1em;
+		margin-bottom: 1.25em;
 	}
 
 	.content-sidebar-wrap {
@@ -106,7 +106,7 @@
 $listing-slider-height: 18.75em;
 
 .home-section-watch-tables {
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
 
 	> .wrap {
 		> .left {
@@ -152,13 +152,7 @@ $listing-slider-height: 18.75em;
 	height: $listing-slider-height * .8;
 
 	.slick-slide {
-		position: relative;
-		border: none;
 		cursor: pointer;
-
-		&:focus {
-			outline: none;
-		}
 	}
 
 	i {
@@ -317,8 +311,8 @@ $listing-slider-height: 18.75em;
 $slider-height: 25em;
 
 .home-section-events-join {
-	padding-top: 1em;
-	padding-bottom: 1em;
+	padding-top: 1.25em;
+	padding-bottom: 1.25em;
 	background-color: $orange-light;
 
 	.left {
@@ -351,7 +345,7 @@ $slider-height: 25em;
 		}
 
 		.btn {
-			margin-bottom: 2.5em;
+			margin-bottom: 2.75em;
 			border: 1px solid $white;
 		}
 
@@ -389,13 +383,7 @@ $slider-height: 25em;
 	color: $white;
 
 	.slick-slide {
-		position: relative;
-		border: none;
 		cursor: pointer;
-
-		&:focus {
-			outline: none;
-		}
 	}
 
 	.outer {
@@ -554,7 +542,7 @@ $slider-height: 25em;
 
 .home-section-trending {
 	margin-bottom: 1.25em;
-	padding-bottom: 1em;
+	padding-bottom: 1.5em;
 	background-color: $orange-light;
 
 	a {
@@ -626,7 +614,7 @@ $slider-height: 25em;
 
 		img {
 			display: block;
-			margin-bottom: .25em;
+			margin-bottom: .5em;
 			border-bottom: $border-width solid $orange;
 		}
 
@@ -635,5 +623,9 @@ $slider-height: 25em;
 			text-transform: uppercase;
 			font-size: 1em;
 		}
+	}
+
+	.il-load-more {
+		margin-top: 1em;
 	}
 }

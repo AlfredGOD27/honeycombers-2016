@@ -135,6 +135,12 @@ function hc_load_assets() {
 	);
 	wp_localize_script( 'hc', 'ajax_object', array('ajaxurl' => admin_url( 'admin-ajax.php' )) );
 
+	$page_template_slug = get_page_template_slug();
+	if( 'page_templates/page_calendar.php' === $page_template_slug ) {
+		$src = $use_production_assets ? '/build/js/calendar.min.js' : '/build/js/calendar.js';
+		wp_enqueue_script( 'hc-calendar', $stylesheet_dir . $src, array('jquery', 'hc'), $assets_version, true );
+	}
+
 }
 
 add_filter( 'script_loader_tag', 'hc_ie_script_conditionals', 10, 3 );

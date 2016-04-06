@@ -235,13 +235,7 @@ $slider-height: 25em;
 	color: $white;
 
 	.slick-slide {
-		position: relative;
-		border: none;
 		cursor: pointer;
-
-		&:focus {
-			outline: none;
-		}
 	}
 
 	.outer {

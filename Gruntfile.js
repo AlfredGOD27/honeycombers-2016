@@ -68,15 +68,10 @@ module.exports = function(grunt) {
 					'bower_components/imagesloaded/imagesloaded.pkgd.js',
 					'bower_components/include-media-export/include-media.js',
 					'bower_components/iOS-Orientationchange-Fix/ios-orientationchange-fix.js',
-					'bower_components/jquery-placeholder/jquery.placeholder.js',
 					'bower_components/jquery.fitvids/jquery.fitvids.js',
-					'bower_components/js-cookie/src/js.cookie.js',
+					// 'bower_components/js-cookie/src/js.cookie.js',
 					'bower_components/magnific-popup/dist/jquery.magnific-popup.js',
-					'bower_components/moment/moment.js',
-					'bower_components/pikaday/pikaday.js',
-					'bower_components/pikaday/plugins/pikaday.jquery.js',
 					'bower_components/slick-carousel/slick/slick.js',
-					'bower_components/svgeezy/svgeezy.js',
 					'bower_components/waypoints/lib/jquery.waypoints.js',
 					'js/_archives.js',
 					'js/_calendar.js',
@@ -90,6 +85,16 @@ module.exports = function(grunt) {
 					'js/scripts.js'
 				],
 				dest: 'build/js/scripts.js',
+				nonull: true
+			},
+			calendar: {
+				src: [
+					'bower_components/moment/moment.js',
+					'bower_components/pikaday/pikaday.js',
+					'bower_components/pikaday/plugins/pikaday.jquery.js',
+					'js/calendar.js',
+				],
+				dest: 'build/js/calendar.js',
 				nonull: true
 			},
 			admin: {
@@ -115,6 +120,7 @@ module.exports = function(grunt) {
 			build: {
 				files: {
 					'build/js/scripts.min.js': 'build/js/scripts.js',
+					'build/js/calendar.min.js': 'build/js/calendar.js',
 					'build/js/admin.min.js': 'build/js/admin.js',
 					'build/js/tinymce.min.js': 'build/js/tinymce.js'
 				}

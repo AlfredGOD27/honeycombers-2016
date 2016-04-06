@@ -12,6 +12,7 @@
 // Libraries
 @import '../bower_components/Magnific-Popup/src/css/main.scss';
 @import '../bower_components/slick-carousel/slick/slick';
+@import 'pikaday';
 
 // Normalize, Clearfix, & Toolkit
 @import '../bower_components/normalize-scss/normalize.scss';
@@ -31,20 +32,20 @@ html {
 }
 
 // Sitewide Styles
-@import 'grid';
 @import 'icons';
+@import 'grid';
 @import 'layout';
 @import 'type';
 @import 'headings';
 @import 'objects-and-images';
-@import 'spinner';
 @import 'buttons';
-@import 'pikaday';
+@import 'spinner';
 @import 'forms';
-@import 'social';
-@import 'share';
+@import 'slides-general';
 @import 'components';
 @import 'favorites';
+@import 'share';
+@import 'social';
 
 // Module Styles
 @import 'header';
