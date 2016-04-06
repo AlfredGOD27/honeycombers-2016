@@ -141,6 +141,11 @@ function hc_load_assets() {
 		wp_enqueue_script( 'hc-calendar', $stylesheet_dir . $src, array('jquery', 'hc'), $assets_version, true );
 	}
 
+	if( !is_singular('post') ) {
+		wp_dequeue_style( 'sliderpro-plugin-style' );
+		wp_dequeue_style( 'sliderpro-plugin-custom-style' );
+	}
+
 }
 
 add_filter( 'script_loader_tag', 'hc_ie_script_conditionals', 10, 3 );
