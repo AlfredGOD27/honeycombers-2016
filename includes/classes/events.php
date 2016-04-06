@@ -432,7 +432,7 @@ class HC_Events {
 					<div class="one">
 						<label for="calendar-category">Date</label>
 						<select id="calendar-category" name="category" class="styled">
-							<option value="">Category</option>
+							<option value="">Select a Category</option>
 							<?php
 							foreach( $terms as $term ) {
 								?>
@@ -451,10 +451,7 @@ class HC_Events {
 					</div>
 
 					<div class="post">
-						<?php
-						$page_id = get_option( 'options__hc_post_event_page_id' );
-						?>
-						<a href="<?php echo get_permalink($page_id); ?>" class="btn">Post an Event</a>
+						<a href="<?php echo HC()->utilities->get_page_link('_hc_post_event_page_id'); ?>" class="btn">Post an Event</a>
 					</div>
 				</form>
 			</div>

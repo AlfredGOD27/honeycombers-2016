@@ -372,10 +372,7 @@ class HC_Listings {
 					</div>
 
 					<div class="two-fifths hide-phone">
-						<?php
-						$page_id = get_option( 'options__hc_claim_listing_page_id' );
-						?>
-						<a href="<?php echo get_permalink($page_id); ?>" class="btn">Submit A Listing</a>
+						<a href="<?php echo HC()->utilities->get_page_link('_hc_claim_listing_page_id'); ?>" class="btn">Submit A Listing</a>
 					</div>
 				</div>
 

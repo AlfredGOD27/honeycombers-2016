@@ -230,8 +230,11 @@
 	position: relative;
 	padding-top: 1em;
 	padding-bottom: 1em;
-	border: 1px solid $white;
 	transition: transform .15s;
+
+	.slick-sliders & {
+		border: 1px solid $white;
+	}
 
 	&:hover,
 	&:focus {

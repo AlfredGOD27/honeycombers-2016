@@ -5904,7 +5904,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 			url: ajax_object.ajaxurl,
 			type: 'POST',
 			data: {
-				action: 'hc_get_home_next_page_html',
+				action: 'hc_get_next_page_html',
+				term_id: container.data('term_id'),
+				taxonomy: container.data('taxonomy'),
 				offset: offset
 			},
 			dataType: 'html',
@@ -5933,7 +5935,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 		maybe_add_load_more_button( self );
 	});
 
-	$('body').on( 'click', '.subcategory', load_next_page );
+	$('.subcategory').on( 'click', '.il-load-more', load_next_page );
 
 })( window.jQuery );
 
@@ -6236,7 +6238,7 @@ function hc_directory_maps() {
 					this.destroy();
 				},
 				{
-					offset: '50%'
+					offset: '75%'
 				}
 			);
 		});

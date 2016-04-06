@@ -59,9 +59,8 @@ $directory-height: 50em;
 }
 
 .result-category {
-	font-style: italic;
+	@include meta-font;
 	font-size: .8em;
-	font-family: $meta;
 }
 
 .directory-search {

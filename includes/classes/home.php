@@ -344,17 +344,23 @@ class HC_Home {
 					</div>
 				</div>
 
-				<div class="one-fourth right join">
-					<i class="ico-circle-mail"></i>
+				<?php
+				if( !is_user_logged_in() ) {
+					?>
+					<div class="one-fourth right join">
+						<i class="ico-circle-mail"></i>
 
-					<h3>JOIN THE HONEYCOMBERS</h3>
+						<h3>JOIN THE HONEYCOMBERS</h3>
 
-					<p class="top">“What was that bar again?”</p>
+						<p class="top">“What was that bar again?”</p>
 
-					<a href="#" class="btn">Sign Up <i class="ico-exit"></i></a>
+						<a href="<?php echo HC()->utilities->get_page_link('_hc_login_page_id'); ?>" class="btn">Sign Up <i class="ico-exit"></i></a>
 
-					<p class="bottom">Save all the new spots you have to try and stories for when you have the time.</p>
-				</div>
+						<p class="bottom">Save all the new spots you have to try and stories for when you have the time.</p>
+					</div>
+					<?php
+				}
+				?>
 			</div>
 		</section>
 		<?php
@@ -463,7 +469,7 @@ class HC_Home {
 				?>
 
 				<h2>
-					<a href="#">
+					<a href="<?php echo HC()->utilities->get_page_link('_hc_blog_page_id'); ?>">
 						<span>Latest Stories</span>
 						<i class="ico-arrow-right-circle"></i>
 					</a>

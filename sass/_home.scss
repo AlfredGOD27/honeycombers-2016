@@ -45,9 +45,8 @@
 		float: left;
 
 		p {
+			@include meta-font;
 			color: $grey-dark;
-			font-style: italic;
-			font-family: $meta;
 		}
 	}
 
@@ -245,9 +244,8 @@ $listing-slider-height: 18.75em;
 
 	.address,
 	.contact {
-		font-style: italic;
+		@include meta-font;
 		font-size: .75em;
-		font-family: $meta;
 	}
 
 	.address {
@@ -339,14 +337,13 @@ $slider-height: 25em;
 		}
 
 		.top {
+			@include meta-font;
 			margin-bottom: 2.5em;
-			font-style: italic;
-			font-family: $meta;
 		}
 
 		.btn {
 			margin-bottom: 2.75em;
-			border: 1px solid $white;
+			border: 2px solid $white;
 		}
 
 		.bottom {
@@ -476,10 +473,9 @@ $slider-height: 25em;
 	}
 
 	.cat {
+		@include meta-font;
 		margin-bottom: .25em;
-		font-style: italic;
 		font-size: .95em;
-		font-family: $meta;
 	}
 
 	.title {

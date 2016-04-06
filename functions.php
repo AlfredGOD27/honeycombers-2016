@@ -22,6 +22,7 @@ final class HC {
 		'share',
 		'sliders',
 		'users',
+		'utilities',
 		'widgets',
 	);
 

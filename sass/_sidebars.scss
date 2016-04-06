@@ -45,10 +45,9 @@
 		}
 
 		p {
+			@include meta-font;
 			color: $orange;
-			font-style: italic;
 			font-size: .85em;
-			font-family: $meta;
 		}
 	}
 }
@@ -97,11 +96,10 @@
 		height: 100%;
 
 		p {
+			@include meta-font;
 			margin-bottom: .25em;
 			color: $grey-dark;
-			font-style: italic;
 			font-size: .9em;
-			font-family: $meta;
 		}
 
 		h5 {
@@ -148,10 +146,9 @@
 	}
 
 	.above-text {
+		@include meta-font;
 		margin-bottom: 1em;
 		color: $orange;
-		font-style: italic;
-		font-family: $meta;
 	}
 
 	.btn {
@@ -162,10 +159,9 @@
 
 	.below-text {
 		p {
+			@include meta-font;
 			color: $grey-lighter;
-			font-style: italic;
 			font-size: .9em;
-			font-family: $meta;
 		}
 	}
 }
@@ -216,9 +212,8 @@
 		margin-bottom: 1em;
 
 		p {
+			@include meta-font;
 			color: $grey;
-			font-style: italic;
-			font-family: $meta;
 
 			em {
 				color: $orange;

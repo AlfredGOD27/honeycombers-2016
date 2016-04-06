@@ -284,7 +284,7 @@ function hc_site_top() {
 			</div>
 
 			<div class="right">
-				<a href="#">Sign In <i class="ico-exit"></i></a>
+				<a href="<?php echo HC()->utilities->get_page_link('_hc_login_page_id'); ?>">Sign In <i class="ico-exit"></i></a>
 			</div>
 		</div>
 	</section>
@@ -304,7 +304,7 @@ function hc_mobile_menu_toggle() {
 
 	?>
 	<div class="mobile-header-right">
-		<a href="#" class="btn btn-bordered">Login</a>
+		<a href="<?php echo HC()->utilities->get_page_link('_hc_login_page_id'); ?>" class="btn btn-bordered">Login</a>
 		<button type="button" class="btn toggle-nav" title="Toggle Menu"><i class="ico-menu"></i></button>
 	</div>
 	<?php

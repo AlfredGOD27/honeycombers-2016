@@ -42,12 +42,11 @@
 	}
 
 	.instagram-link {
+		@include meta-font;
 		display: block;
 		margin-bottom: 2.5em;
 		text-decoration: none;
-		font-style: italic;
 		font-size: 1.1em;
-		font-family: $meta;
 	}
 
 	h4 {

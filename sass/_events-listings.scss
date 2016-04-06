@@ -16,9 +16,8 @@
 	}
 
 	.entry-meta {
-		font-style: italic;
+		@include meta-font;
 		font-size: .95em;
-		font-family: $meta;
 
 		a {
 			color: inherit;

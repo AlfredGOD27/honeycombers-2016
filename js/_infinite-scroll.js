@@ -19,7 +19,7 @@
 					this.destroy();
 				},
 				{
-					offset: '50%'
+					offset: '75%'
 				}
 			);
 		});

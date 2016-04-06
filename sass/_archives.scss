@@ -163,13 +163,12 @@ $slider-height: 25em;
 	}
 
 	label {
+		@include meta-font;
 		display: block;
 		margin-bottom: 0;
 		color: inherit;
 		text-transform: none;
-		font-style: italic;
 		font-size: 1em;
-		font-family: $meta;
 	}
 }
 

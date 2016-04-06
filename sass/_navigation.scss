@@ -188,11 +188,10 @@
 		}
 
 		span {
+			@include meta-font;
 			margin-bottom: .5em;
 			color: $grey-dark;
-			font-style: italic;
 			font-size: .95em;
-			font-family: $meta;
 		}
 
 		a {
