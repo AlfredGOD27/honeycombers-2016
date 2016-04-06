@@ -13,6 +13,14 @@ class HC_Utilities {
 
 	}
 
+	public function get_category_icon_html( $category ) {
+
+		$icon = get_field( '_hc_category_icon', $category );
+		if( !empty($icon) )
+			return '<i class="ico-' . $icon . '"></i>';
+
+	}
+
 }
 
 return new HC_Utilities();

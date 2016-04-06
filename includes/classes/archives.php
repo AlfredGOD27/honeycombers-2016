@@ -283,7 +283,9 @@ class HC_Archives {
 			<section class="subcategory clearfix" data-offset="8" data-total="<?php echo $wp_query->found_posts; ?>" data-term_id="<?php echo $category->term_id; ?>" data-taxonomy="<?php echo $category->taxonomy; ?>">
 				<div class="subcategory-description">
 					<a href="<?php echo get_term_link($category); ?>">
-						<i class="ico-circle"></i>
+						<?php
+						echo HC()->utilities->get_category_icon_html( $category );
+						?>
 						<h2 class="archive-title"><?php echo $category->name; ?></h2>
 						<i class="ico-arrow-right-circle"></i>
 					</a>

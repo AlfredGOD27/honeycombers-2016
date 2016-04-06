@@ -477,7 +477,9 @@ class HC_Events {
 				<div class="wrap">
 					<div class="subcategory-description">
 						<a href="<?php echo get_term_link($term); ?>">
-							<i class="ico-circle"></i>
+							<?php
+							echo HC()->utilities->get_category_icon_html( $term );
+							?>
 							<h2 class="archive-title"><?php echo $term->name; ?></h2>
 							<i class="ico-arrow-right-circle"></i>
 						</a>
