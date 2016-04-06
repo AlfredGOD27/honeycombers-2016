@@ -6,7 +6,7 @@
             "key": "field_56f8987cf7202",
             "label": "Slider Events",
             "name": "_hc_calendar_slider_events",
-            "type": "post_object",
+            "type": "relationship",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -19,10 +19,16 @@
                 "event"
             ],
             "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 1,
-            "return_format": "id",
-            "ui": 1
+            "filters": [
+                "search",
+                "taxonomy"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "min": 4,
+            "max": "",
+            "return_format": "id"
         }
     ],
     "location": [
@@ -44,5 +50,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1459609601
+    "modified": 1459952443
 }

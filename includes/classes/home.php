@@ -22,9 +22,9 @@ class HC_Home {
 
 		remove_action( 'genesis_loop', 'genesis_do_loop' );
 		add_action( 'genesis_loop', array($this, 'do_slider') );
-		add_action( 'genesis_loop', array($this, 'do_editors_pick') );
-		add_action( 'genesis_loop', array($this, 'do_watch_and_tables') );
-		add_action( 'genesis_loop', array($this, 'do_events_and_join') );
+		add_action( 'genesis_loop', array($this, 'do_featured_posts') );
+		add_action( 'genesis_loop', array($this, 'do_featured_video_and_listings') );
+		add_action( 'genesis_loop', array($this, 'do_featured_events_and_join') );
 		add_action( 'genesis_loop', array($this, 'do_trending') );
 		add_action( 'genesis_loop', array($this, 'do_latest_posts') );
 
@@ -34,9 +34,11 @@ class HC_Home {
 
 		global $post;
 
-		$post_ids = get_post_meta( $post->ID, '_hc_home_slider_post_ids', true );
-		if( empty($post_ids) )
+		$enable = get_post_meta( $post->ID, '_hc_home_enable_slider', true );
+		if( empty($enable) )
 			return;
+
+		$post_ids = get_post_meta( $post->ID, '_hc_home_slider_post_ids', true );
 
 		$args = array(
 			'post_type' => 'post',
@@ -81,78 +83,72 @@ class HC_Home {
 
 	}
 
-	public function do_editors_pick() {
+	public function do_featured_posts() {
 
 		global $post;
 
-		$main_post_id = get_post_meta( $post->ID, '_hc_home_picks_main_post_id', true );
-		$post_ids     = get_post_meta( $post->ID, '_hc_home_picks_post_ids', true );
-
-		if( empty($main_post_id) && empty($post_ids) )
+		$enable = get_post_meta( $post->ID, '_hc_home_enable_featured_posts', true );
+		if( empty($enable) )
 			return;
 
+		$main_post_ids = get_post_meta( $post->ID, '_hc_home_picks_main_post_id', true );
+		$main_post_id  = $main_post_ids[0];
+		$post_ids      = get_post_meta( $post->ID, '_hc_home_picks_post_ids', true );
+
 		?>
-		<section class="home-section home-section-editors-pick">
+		<section class="home-section home-section-featured-posts">
 			<div class="wrap">
 				<?php
 				$heading = get_post_meta( $post->ID, '_hc_home_picks_heading', true );
 				echo '<h2>' . sanitize_text_field($heading) . '</h2>';
+
+				$main_post = get_post( $main_post_id );
 				?>
-
-				<?php
-				if( !empty($main_post_id) ) {
-					$main_post = get_post( $main_post_id );
-					?>
-					<div class="one-half first">
-						<a href="<?php echo get_permalink($main_post_id); ?>" class="main-pick">
-							<?php
-							if( has_post_thumbnail($main_post_id) )
-								echo get_the_post_thumbnail($main_post_id, 'archive-large' );
-							?>
-
-							<div class="bottom clearfix">
-								<div class="left">
-									<h3><?php echo $main_post->post_title; ?></h3>
-
-									<?php
-									if( !empty($main_post->post_excerpt) )
-										echo '<p>' . $main_post->post_excerpt . '</p>';
-									?>
-								</div>
-
-								<div class="right">
-									<?php echo get_avatar( $main_post->post_author, 90 ); ?>
-
-									<?php
-									$user = get_user_by( 'id', $main_post->post_author );
-									echo '<p>' . $user->display_name . '</p>';
-									?>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="one-half">
+				<div class="one-half first">
+					<a href="<?php echo get_permalink($main_post_id); ?>" class="main-pick">
 						<?php
-						$this->display_editors_pick_other_posts( $post_ids );
+						if( has_post_thumbnail($main_post_id) )
+							echo get_the_post_thumbnail($main_post_id, 'archive-large' );
 						?>
-					</div>
+
+						<div class="bottom clearfix">
+							<div class="left">
+								<h3><?php echo $main_post->post_title; ?></h3>
+
+								<?php
+								if( !empty($main_post->post_excerpt) )
+									echo '<p>' . $main_post->post_excerpt . '</p>';
+								?>
+							</div>
+
+							<div class="right">
+								<?php echo get_avatar( $main_post->post_author, 90 ); ?>
+
+								<?php
+								$user = get_user_by( 'id', $main_post->post_author );
+								echo '<p>' . $user->display_name . '</p>';
+								?>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="one-half">
 					<?php
-				} else {
 					$this->display_editors_pick_other_posts( $post_ids );
-				}
-				?>
+					?>
+				</div>
 			</div>
 		</section>
 		<?php
 
 	}
 
-	public function do_watch_and_tables() {
+	public function do_featured_video_and_listings() {
 
 		global $post;
 
 		?>
-		<section class="home-section home-section-watch-tables">
+		<section class="home-section home-section-featured-video-listings">
 			<div class="wrap">
 				<div class="left">
 					<?php
@@ -257,7 +253,10 @@ class HC_Home {
 							?>
 							<a href="<?php echo get_permalink($page_id); ?>" class="inner">
 								<div class="left">
-									<h3>More Restaurants</h3>
+									<?php
+									$heading = get_post_meta( $post->ID, '_hc_home_more_listings_label', true );
+									?>
+									<h3><?php echo $heading; ?></h3>
 								</div>
 
 								<div class="right">
@@ -273,16 +272,23 @@ class HC_Home {
 
 	}
 
-	public function do_events_and_join() {
+	public function do_featured_events_and_join() {
 
 		global $post;
+
+		$enable = get_post_meta( $post->ID, '_hc_home_enable_featured_events', true );
+		if( empty($enable) )
+			return;
 
 		$events = get_post_meta( $post->ID, '_hc_home_featured_event_ids', true );
 
 		?>
 		<section class="home-section home-section-events-join">
 			<div class="wrap">
-				<h2>Featured Events</h2>
+				<?php
+				$heading = get_post_meta( $post->ID, '_hc_home_featured_events_heading', true );
+				echo '<h2>' . sanitize_text_field($heading) . '</h2>';
+				?>
 
 				<div class="three-fourths first left hide-no-js">
 					<div class="event-slider-for">
@@ -329,11 +335,8 @@ class HC_Home {
 										</div>
 
 										<?php
-										if( !empty($categories) ) {
-											$icon = get_field( '_hc_category_icon', $categories[0] );
-											if( !empty($icon) )
-												echo '<i class="ico-' . $icon . '"></i>';
-										}
+										if( !empty($categories) )
+											echo HC()->utilities->get_category_icon_html( $categories[0] );
 										?>
 									</div>
 								</div>
@@ -371,16 +374,22 @@ class HC_Home {
 
 		global $post;
 
-		$post_ids = get_post_meta( $post->ID, '_hc_home_trending_post_ids', true );
+		$enable = get_post_meta( $post->ID, '_hc_home_enable_trending', true );
+		if( empty($enable) )
+			return;
 
 		?>
 		<section class="home-section home-section-trending">
 			<div class="wrap">
-				<h2>Trending</h2>
+				<?php
+				$heading = get_post_meta( $post->ID, '_hc_home_trending_heading', true );
+				echo '<h2>' . sanitize_text_field($heading) . '</h2>';
+				?>
 
 				<div class="clearfix">
 					<?php
-					$i = 1;
+					$i        = 1;
+					$post_ids = get_post_meta( $post->ID, '_hc_home_trending_post_ids', true );
 					foreach( $post_ids as $post_id ) {
 						if( !has_post_thumbnail($post_id) )
 							continue;
@@ -452,6 +461,10 @@ class HC_Home {
 
 		global $post;
 
+		$enable = get_post_meta( $post->ID, '_hc_home_enable_slider_latest_posts', true );
+		if( empty($enable) )
+			return;
+
 		$args = array(
 			'posts_per_page' => -1,
 			'post_type'      => 'post',
@@ -460,7 +473,7 @@ class HC_Home {
 		$posts = get_posts( $args );
 
 		?>
-		<section class="home-section home-section-posts">
+		<section class="home-section home-section-latest-posts">
 			<div class="wrap">
 				<?php
 				$ad = get_post_meta( $post->ID, '_hc_home_banner_ad', true );
@@ -470,7 +483,11 @@ class HC_Home {
 
 				<h2>
 					<a href="<?php echo HC()->utilities->get_page_link('_hc_blog_page_id'); ?>">
-						<span>Latest Stories</span>
+						<?php
+						$heading = get_post_meta( $post->ID, '_hc_home_latest_posts_heading', true );
+						echo '<span>' . sanitize_text_field($heading) . '</span>';
+						?>
+
 						<i class="ico-arrow-right-circle"></i>
 					</a>
 				</h2>
