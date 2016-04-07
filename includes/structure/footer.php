@@ -66,7 +66,13 @@ function hc_do_footer() {
 					$class = $i > 3 ? 'skip-image-on-mobile' : '';
 					echo $i > 3 ? '<div class="hide-phone">' : '<div>';
 						echo '<a href="' . $image['url'] . '" target="_blank" rel="nofollow">';
-							echo '<img class="async-load-image ' . $class . '" data-src="' . $image['src'] . '" title="' . $image['title'] . '" alt="' . $image['title'] . '" width="' . $image['width'] . '" height="' . $image['height'] . '">';
+							$atts = array(
+								'src'    => $image['src'],
+								'alt'    => $image['title'],
+								'width'  => $image['width'],
+								'height' => $image['height'],
+							);
+							echo HC()->utilities->get_async_image_placeholder( $atts, $class );
 						echo '</a>';
 					echo '</div>';
 					++$i;

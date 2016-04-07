@@ -48,12 +48,23 @@
 	// Footer IG images
 	var exclude_mobile_images = im.lessThan('tablet');
 	$('.async-load-image').each( function() {
-		var img = $(this);
+		var placeholder = $(this),
+			data,
+			el;
 
-		if( exclude_mobile_images && img.hasClass('skip-image-on-mobile') ) {
+		if( exclude_mobile_images && placeholder.hasClass('skip-image-on-mobile') ) {
 
 		} else {
-			img.attr( 'src', img.data('src') );
+			data = placeholder.data();
+			console.log(data);
+			el = document.createElement('img');
+			$.each( data, function(att, value) {
+				att = att.replace( 'data-', '' );
+				el.setAttribute( att, value );
+			});
+
+			placeholder.after( el );
+			placeholder.remove();
 		}
 	});
 

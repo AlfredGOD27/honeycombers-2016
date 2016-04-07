@@ -130,6 +130,7 @@ function hc_do_nav() {
 												<?php
 												break;
 											case 'post':
+												$title = get_the_title($column['item_id']);
 												?>
 												<div class="one-third first">
 													<?php
@@ -137,13 +138,22 @@ function hc_do_nav() {
 														echo '<span>' . sanitize_text_field($column['label']) . '</span>';
 													?>
 
-													<a href="<?php echo get_permalink($column['item_id']); ?>"><?php echo get_the_title($column['item_id']); ?></a>
+													<a href="<?php echo get_permalink($column['item_id']); ?>"><?php echo $title; ?></a>
 												</div>
 
 												<div class="two-thirds">
 													<?php
-													if( has_post_thumbnail($column['item_id']) )
-														echo get_the_post_thumbnail($column['item_id'], 'archive-small', '', array('class' => 'async-load-image skip-image-on-mobile') );
+													if( has_post_thumbnail($column['item_id']) ) {
+														$src = wp_get_attachment_image_src( get_post_thumbnail_id($column['item_id']), 'archive-small' );
+
+														$atts = array(
+															'src'    => $src[0],
+															'alt'    => $title,
+															'width'  => $src[1],
+															'height' => $src[2],
+														);
+														echo HC()->utilities->get_async_image_placeholder( $atts, 'skip-image-on-mobile' );
+													}
 													?>
 												</div>
 												<?php
