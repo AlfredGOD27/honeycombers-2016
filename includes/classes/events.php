@@ -6,6 +6,7 @@ class HC_Events {
 	public function __construct() {
 
 		add_action( 'init', array($this, 'register') );
+		add_action( 'admin_notices', array($this, 'maybe_display_invalid_dates_warning') );
 		add_action( 'wp', array($this, 'init') );
 		add_action( 'pre_get_posts', array($this, 'filter_events_query') );
 
@@ -79,6 +80,32 @@ class HC_Events {
 				remove_action( 'genesis_loop', 'genesis_do_loop' );
 				add_action( 'genesis_loop', array($this, 'do_calendar') );
 			}
+		}
+
+	}
+
+	public function maybe_display_invalid_dates_warning() {
+
+		if( !isset($_GET['action']) )
+			return;
+
+		if( 'edit' !== $_GET['action'] )
+			return;
+
+		if( !isset($_GET['post']) )
+			return;
+
+		$post_id = absint($_GET['post']);
+		if( 'event' !== get_post_type($post_id) )
+			return;
+
+		$dates = $this->get_event_date_info( $post_id );
+		if( $dates['start_datetime'] > $dates['end_datetime'] ) {
+			?>
+			<div class="error">
+				<p><strong>Warning:</strong> This event's end date is before its start date.</p>
+			</div>
+			<?php
 		}
 
 	}
