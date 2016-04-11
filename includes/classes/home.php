@@ -68,14 +68,15 @@ class HC_Home {
 				}
 
 				?>
-				<a href="<?php echo get_permalink($post_id); ?>" class="other-pick">
+				<div class="other-pick">
+					<?php HC()->favorites->display( $post_id, true ); ?>
 					<?php
 					if( has_post_thumbnail($post_id) )
 						echo get_the_post_thumbnail($post_id, 'archive-small' );
 					?>
 
-					<h3><?php echo get_the_title($post_id); ?></h3>
-				</a>
+					<h3><a href="<?php echo get_permalink($post_id); ?>"><?php echo get_the_title($post_id); ?></a></h3>
+				</div>
 				<?php
 			echo '</div>';
 			++$i;
@@ -105,13 +106,20 @@ class HC_Home {
 				$main_post = get_post( $main_post_id );
 				?>
 				<div class="one-half first">
-					<a href="<?php echo get_permalink($main_post_id); ?>" class="main-pick">
+					<div class="main-pick">
+						<?php HC()->favorites->display( $main_post_id, true ); ?>
+
 						<?php
-						if( has_post_thumbnail($main_post_id) )
-							echo get_the_post_thumbnail($main_post_id, 'archive-large' );
+						if( has_post_thumbnail($main_post_id) ) {
+							?>
+							<div class="top">
+								<?php echo get_the_post_thumbnail($main_post_id, 'archive-large' ); ?>
+							</div>
+							<?php
+						}
 						?>
 
-						<div class="bottom clearfix">
+						<a href="<?php echo get_permalink($main_post_id); ?>" class="bottom clearfix">
 							<div class="left">
 								<h3><?php echo $main_post->post_title; ?></h3>
 
@@ -129,8 +137,8 @@ class HC_Home {
 								echo '<p>' . $user->display_name . '</p>';
 								?>
 							</div>
-						</div>
-					</a>
+						</a>
+					</div>
 				</div>
 				<div class="one-half">
 					<?php
@@ -443,22 +451,34 @@ class HC_Home {
 			'posts_per_page' => 8,
 			'offset'         => $offset,
 			'post_type'      => 'post',
-			'fields'         => 'ids',
 		);
 		$posts = get_posts( $args );
 
 		$i = 1;
-		foreach( $posts as $post_id ) {
+		foreach( $posts as $post ) {
 			echo 1 === $i % 4 ? '<div class="one-fourth first">' : '<div class="one-fourth">';
-				?>
-				<a href="<?php echo get_permalink( $post_id ); ?>">
-					<?php
-					if( has_post_thumbnail($post_id) )
-						echo get_the_post_thumbnail( $post_id, 'archive-small' );
+				if( has_post_thumbnail($post->ID) ) {
 					?>
+					<div class="top">
+						<?php HC()->favorites->display( $post->ID, true ); ?>
+						<?php echo get_the_post_thumbnail( $post->ID, 'archive-small' ); ?>
+					</div>
+					<?php
+				}
+				?>
 
-					<h3><?php echo get_the_title( $post_id ); ?></h3>
-				</a>
+				<div class="bottom">
+					<a href="<?php echo get_permalink( $post->ID ); ?>">
+						<h3><?php echo get_the_title( $post->ID ); ?></h3>
+						<span class="author">
+							By
+							<?php
+							$author = get_user_by( 'id', $post->post_author );
+							echo $author->display_name;
+							?>
+						</span>
+					</a>
+				</div>
 				<?php
 			echo '</div>';
 			++$i;

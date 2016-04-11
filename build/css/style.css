@@ -4107,13 +4107,43 @@ input[type='search'] {
   margin-bottom: .5em;
   text-transform: uppercase;
 }
+.home-section .favorites-button {
+  position: absolute;
+  top: .5em;
+  right: .5em;
+  z-index: 99;
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease-in-out;
+          transition: opacity 0.25s ease-in-out;
+}
+.home-section .favorites-button i {
+  color: #4f4f4f;
+}
 
 .main-pick {
+  position: relative;
   display: block;
   margin-bottom: 1.25em;
   border: 1px solid #fe862c;
-  color: inherit;
-  text-decoration: none;
+}
+.main-pick:hover .favorites-button, .main-pick:focus .favorites-button {
+  opacity: 1;
+}
+.main-pick:hover .top img, .main-pick:focus .top img {
+  opacity: .5;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.main-pick:hover h3, .main-pick:focus h3 {
+  color: #fe862c;
+}
+.main-pick .top {
+  overflow: hidden;
+  background-color: #252525;
+}
+.main-pick .top img {
+  -webkit-transition: all 0.25s ease-in-out;
+          transition: all 0.25s ease-in-out;
 }
 .main-pick img {
   display: block;
@@ -4129,6 +4159,8 @@ input[type='search'] {
           align-items: center;
   padding: .5em .75em;
   border-top: 3px solid #fe862c;
+  color: inherit;
+  text-decoration: none;
 }
 .main-pick .left {
   -webkit-box-flex: 1;
@@ -4149,6 +4181,8 @@ input[type='search'] {
   margin-bottom: .5em;
   text-transform: uppercase;
   font-size: 1.5em;
+  -webkit-transition: color 0.25s ease-in-out;
+          transition: color 0.25s ease-in-out;
 }
 .main-pick .right {
   -webkit-box-flex: 0;
@@ -4176,12 +4210,25 @@ input[type='search'] {
 .other-pick {
   position: relative;
   display: block;
+  overflow: hidden;
   margin-bottom: 1.25em;
-  color: inherit;
-  text-decoration: none;
+  background-color: #252525;
+}
+.other-pick:hover .favorites-button, .other-pick:focus .favorites-button {
+  opacity: 1;
+}
+.other-pick:hover img, .other-pick:focus img {
+  opacity: .5;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.other-pick:hover h3 a, .other-pick:focus h3 a {
+  color: #fe862c;
 }
 .other-pick img {
   display: block;
+  -webkit-transition: all 0.25s ease-in-out;
+          transition: all 0.25s ease-in-out;
 }
 .other-pick h3 {
   position: absolute;
@@ -4194,6 +4241,12 @@ input[type='search'] {
   text-align: center;
   text-transform: uppercase;
   font-size: 1em;
+}
+.other-pick h3 a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-transition: color 0.25s ease-in-out;
+          transition: color 0.25s ease-in-out;
 }
 
 .home-section-featured-video-listings {
@@ -4698,23 +4751,64 @@ input[type='search'] {
 .home-section-latest-posts h2 i {
   margin-left: .5em;
 }
-.home-section-latest-posts .one-fourth {
-  margin-bottom: 2em;
-}
 .home-section-latest-posts .block a {
   display: block;
   color: inherit;
   text-decoration: none;
 }
-.home-section-latest-posts .block img {
-  display: block;
-  margin-bottom: .5em;
-  border-bottom: 3px solid #fe862c;
+.home-section-latest-posts .one-fourth {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2em;
 }
-.home-section-latest-posts .block h3 {
+.home-section-latest-posts .one-fourth:hover .favorites-button, .home-section-latest-posts .one-fourth:focus .favorites-button {
+  opacity: 1;
+}
+.home-section-latest-posts .one-fourth:hover img, .home-section-latest-posts .one-fourth:focus img {
+  opacity: .5;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.home-section-latest-posts .one-fourth:hover .bottom, .home-section-latest-posts .one-fourth:focus .bottom {
+  bottom: 0;
+}
+.home-section-latest-posts .one-fourth:hover h3, .home-section-latest-posts .one-fourth:focus h3 {
+  color: #fe862c;
+}
+.home-section-latest-posts .top {
+  position: relative;
+  overflow: hidden;
+  background-color: #252525;
+}
+.home-section-latest-posts img {
+  display: block;
+  -webkit-transition: all 0.25s ease-in-out;
+          transition: all 0.25s ease-in-out;
+}
+.home-section-latest-posts .bottom {
+  position: absolute;
+  bottom: -1em;
+  left: 0;
+  padding-top: .5em;
+  width: 100%;
+  border-top: 3px solid #fe862c;
+  background-color: #FFFFFF;
+  -webkit-transition: bottom 0.25s ease-in-out;
+          transition: bottom 0.25s ease-in-out;
+}
+.home-section-latest-posts h3 {
   text-align: center;
   text-transform: uppercase;
   font-size: 1em;
+  -webkit-transition: color 0.25s ease-in-out;
+          transition: color 0.25s ease-in-out;
+}
+.home-section-latest-posts .author {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  display: block;
+  text-align: center;
+  font-size: .9em;
 }
 .home-section-latest-posts .il-load-more {
   margin-top: 1em;
