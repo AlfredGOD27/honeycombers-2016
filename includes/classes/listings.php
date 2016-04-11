@@ -109,6 +109,11 @@ class HC_Listings {
 				remove_action( 'genesis_before_loop', 'hc_do_breadcrumbs' );
 				remove_action( 'genesis_loop', 'genesis_do_loop' );
 				add_action( 'genesis_loop', array($this, 'do_directory') );
+
+				remove_action( 'genesis_before_footer', 'genesis_footer_widget_areas' );
+				remove_action( 'genesis_footer', 'genesis_footer_markup_open', 5 );
+				remove_action( 'genesis_footer', 'genesis_footer_markup_close', 15 );
+				remove_action( 'genesis_footer', 'hc_do_footer' );
 			}
 		}
 

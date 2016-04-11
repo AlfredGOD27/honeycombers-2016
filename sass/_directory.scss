@@ -13,6 +13,7 @@ $directory-height: 50em;
 
 	.content {
 		display: flex;
+		margin-bottom: 0;
 		height: $directory-height;
 	}
 }
