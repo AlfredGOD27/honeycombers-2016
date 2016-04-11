@@ -1169,7 +1169,7 @@ ul {
     display: block;
   }
 }
-p, .wp-caption .wp-caption-text, .entry-content ol,
+p, .wp-caption .wp-caption-text, .entry-slideshow .slide-content p, .entry-content ol,
 .entry-content ul, .entry-pagination {
   margin-bottom: 2em;
   text-overflow: ellipsis;
@@ -1182,13 +1182,13 @@ p, .wp-caption .wp-caption-text, .entry-content ol,
   font-size: .95em;
   line-height: 1.35;
 }
-p:last-child, .wp-caption .wp-caption-text:last-child, .entry-content ol:last-child,
+p:last-child, .wp-caption .wp-caption-text:last-child, .entry-slideshow .slide-content p:last-child, .entry-content ol:last-child,
 .entry-content ul:last-child, .entry-pagination:last-child {
   margin-bottom: 0;
 }
 
 @media (max-width: 45em) {
-  p, .wp-caption .wp-caption-text, .entry-content ol,
+  p, .wp-caption .wp-caption-text, .entry-slideshow .slide-content p, .entry-content ol,
   .entry-content ul, .entry-pagination {
     margin-bottom: 1.5em;
   }
@@ -1509,7 +1509,7 @@ html {
 }
 .content-sidebar .sidebar-primary {
   float: right;
-  width: 23.5%;
+  width: 24%;
 }
 
 @media (max-width: 45em) {
@@ -1609,7 +1609,7 @@ img {
 img.aligncenter,
 .aligncenter {
   display: block;
-  margin: 0 auto 1.25em auto;
+  margin: 0 auto 1.875em auto;
 }
 
 .alignleft {
@@ -1625,12 +1625,12 @@ img.aligncenter,
 img.alignleft,
 .wp-caption.alignleft {
   margin-right: 1.25em;
-  margin-bottom: 1.25em;
+  margin-bottom: 1.875em;
 }
 
 img.alignright,
 .wp-caption.alignright {
-  margin-bottom: 1.25em;
+  margin-bottom: 1.875em;
   margin-left: 1.25em;
 }
 
@@ -2505,6 +2505,25 @@ input[type='search'] {
   position: relative;
   margin-top: -1.5em;
   margin-bottom: 1.5em;
+}
+.entry-slideshow .slick-current:hover .slide-content, .entry-slideshow .slick-current:focus .slide-content {
+  opacity: 1;
+}
+.entry-slideshow .slide-content {
+  position: absolute;
+  right: .5em;
+  bottom: .5em;
+  left: .5em;
+  padding: .5em;
+  background-color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  -webkit-transition: opacity .1s ease-in-out;
+          transition: opacity .1s ease-in-out;
+}
+.entry-slideshow .slide-content p {
+  text-align: center;
+  font-weight: 600;
+  font-size: .85em;
 }
 
 .entry-header {

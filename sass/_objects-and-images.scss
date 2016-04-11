@@ -27,7 +27,7 @@ img {
 img.aligncenter,
 .aligncenter {
 	display: block;
-	margin: 0 auto $spacer auto;
+	margin: 0 auto ($spacer * 1.5) auto;
 }
 
 .alignleft {
@@ -43,12 +43,12 @@ img.aligncenter,
 img.alignleft,
 .wp-caption.alignleft {
 	margin-right: $spacer;
-	margin-bottom: $spacer;
+	margin-bottom: $spacer * 1.5;
 }
 
 img.alignright,
 .wp-caption.alignright {
-	margin-bottom: $spacer;
+	margin-bottom: $spacer * 1.5;
 	margin-left: $spacer;
 }
 

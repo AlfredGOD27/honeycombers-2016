@@ -20,6 +20,33 @@
 	position: relative;
 	margin-top: -1.5em;
 	margin-bottom: 1.5em;
+
+	.slick-current {
+		&:hover,
+		&:focus {
+			.slide-content {
+				opacity: 1;
+			}
+		}
+	}
+
+	.slide-content {
+		position: absolute;
+		right: .5em;
+		bottom: .5em;
+		left: .5em;
+		padding: .5em;
+		background-color: rgba( $white, .5 );
+		opacity: 0;
+		transition: opacity .1s ease-in-out;
+
+		p {
+			@extend %type;
+			text-align: center;
+			font-weight: 600;
+			font-size: .85em;
+		}
+	}
 }
 
 .entry-header {
