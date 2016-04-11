@@ -443,7 +443,7 @@
                 "featured_image"
             ],
             "min": 4,
-            "max": "",
+            "max": 4,
             "return_format": "id"
         },
         {
@@ -898,5 +898,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1459954663
+    "modified": 1460403273
 }
