@@ -1,11 +1,29 @@
-$directory-height: 50em;
-
 .page-template-page_directory {
+	.site-container {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+	}
+
+	.site-top,
+	.site-header,
+	.nav-primary-wrapper {
+		flex-grow: 0;
+		flex-shrink: 0;
+	}
+
 	.nav-primary-wrapper {
 		margin-bottom: 0;
 	}
 
+	.site-inner {
+		display: flex;
+		flex-grow: 1;
+		flex-shrink: 1;
+	}
+
 	.content-sidebar-wrap {
+		display: flex;
 		padding-right: 0;
 		padding-left: 0;
 		max-width: 100%;
@@ -14,24 +32,36 @@ $directory-height: 50em;
 	.content {
 		display: flex;
 		margin-bottom: 0;
-		height: $directory-height;
+		width: 100%;
 	}
 }
 
 @include media('<=phone') {
 	.page-template-page_directory {
-		.content {
+		.site-container {
 			display: block;
 			height: auto;
+		}
+
+		.site-inner {
+			display: block;
+		}
+
+		.content-sidebar-wrap {
+			display: block;
+		}
+
+		.content {
+			display: block;
 		}
 	}
 }
 
 .directory-map-container {
+	position: relative;
 	flex-grow: 1;
 	flex-shrink: 1;
 	float: left;
-	height: 100%;
 }
 
 @include media('<=phone') {
@@ -42,6 +72,7 @@ $directory-height: 50em;
 }
 
 .directory-map {
+	position: absolute;
 	width: 100%;
 	height: 100%;
 }
@@ -71,7 +102,6 @@ $directory-height: 50em;
 	flex-shrink: 0;
 	float: right;
 	width: 42em;
-	height: 100%;
 
 	h2 {
 		text-transform: uppercase;
@@ -84,7 +114,7 @@ $directory-height: 50em;
 		display: block;
 		float: none;
 		max-width: none;
-		height: auto;
+		width: 100%;
 	}
 }
 

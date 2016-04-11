@@ -270,7 +270,7 @@ function hc_load_favicons() {
 // remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
 // remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
 
-add_action( 'genesis_before', 'hc_site_top' );
+add_action( 'genesis_before_header', 'hc_site_top' );
 function hc_site_top() {
 
 	?>
