@@ -180,12 +180,29 @@
 	.toggle-nav {
 		margin-left: 1em;
 		padding: 0;
+		width: 1em;
 		font-size: 1.5em;
+
+		.ico-close {
+			display: none;
+		}
 	}
 }
 
 @include media('<=phone') {
 	.mobile-header-right {
 		display: block;
+	}
+}
+
+.nav-open {
+	.toggle-nav {
+		.ico-menu {
+			display: none;
+		}
+
+		.ico-close {
+			display: block;
+		}
 	}
 }

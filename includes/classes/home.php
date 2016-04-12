@@ -22,6 +22,7 @@ class HC_Home {
 
 		remove_action( 'genesis_loop', 'genesis_do_loop' );
 		add_action( 'genesis_loop', array($this, 'do_slider') );
+		add_action( 'genesis_loop', array($this, 'do_mobile_buttons') );
 		add_action( 'genesis_loop', array($this, 'do_featured_posts') );
 		add_action( 'genesis_loop', array($this, 'do_featured_video_and_listings') );
 		add_action( 'genesis_loop', array($this, 'do_featured_events_and_join') );
@@ -51,6 +52,26 @@ class HC_Home {
 
 	}
 
+	public function do_mobile_buttons() {
+
+		$buttons = get_field( '_hc_home_mobile_links' );
+		if( empty($buttons) )
+			return;
+
+		?>
+		<section class="home-section home-section-mobile-buttons show-phone">
+			<div class="wrap">
+				<?php
+				foreach( $buttons as $button ) {
+					echo '<a href="' . esc_url($button['link']) . '" class="btn">' . sanitize_text_field($button['label']) . '</a>';
+				}
+				?>
+			</div>
+		</div>
+		<?php
+
+	}
+
 	private function display_editors_pick_other_posts( $post_ids ) {
 
 		global $post;
@@ -59,12 +80,12 @@ class HC_Home {
 
 		$i = 1;
 		foreach( $post_ids as $post_id ) {
-			echo 1 === $i % 2 ? '<div class="one-half first ">' : '<div class="one-half">';
+			echo 1 === $i % 2 ? '<div class="one-half first item item-' . $i . '">' : '<div class="one-half item item-' . $i . '">';
 				if( 2 === $i && !empty($ad_code) ) {
 						echo $ad_code;
 					echo '</div>';
 					++$i;
-					echo 1 === $i % 2 ? '<div class="one-half first ">' : '<div class="one-half">';
+					echo 1 === $i % 2 ? '<div class="one-half first item item-' . $i . '">' : '<div class="one-half item item-' . $i . '">';
 				}
 
 				?>
@@ -140,7 +161,7 @@ class HC_Home {
 						</a>
 					</div>
 				</div>
-				<div class="one-half">
+				<div class="one-half other-picks">
 					<?php
 					$this->display_editors_pick_other_posts( $post_ids );
 					?>
@@ -178,6 +199,11 @@ class HC_Home {
 							echo wp_get_attachment_image( $image_id, 'event' );
 						echo '</a>';
 						?>
+
+						<div class="mobile-bar show-phone">
+							<?php $page_id = get_field( '_hc_video_page_id', 'option' ); ?>
+							<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><span>More Videos</span> <i class="ico-arrow-right"></i></a>
+						</div>
 					</div>
 					<?php
 				}
@@ -215,6 +241,22 @@ class HC_Home {
 											echo get_the_post_thumbnail( $post_id, 'archive' );
 										echo '</a>';
 										?>
+
+										<div class="slide-content show-phone">
+											<h3><?php echo get_the_title( $post_id ); ?></h3>
+
+											<?php
+											$categories = wp_get_object_terms( $post_id, 'directories' );
+											if( !empty($categories) ) {
+												$category_links = array();
+
+												foreach( $categories as $category )
+													$category_links[] = '<a href="' . get_term_link($category) . '">' . $category->name . '</a>';
+
+												echo '<p>' . HC()->formatting->build_comma_separated_list($category_links) . '</p>';
+											}
+											?>
+										</div>
 									</div>
 									<?php
 								}
@@ -287,6 +329,11 @@ class HC_Home {
 								</a>
 							</div>
 						</div>
+
+						<div class="mobile-bar show-phone">
+							<?php $page_id = get_field( '_hc_directory_page_id', 'option' ); ?>
+							<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><span>More Restaurants</span> <i class="ico-arrow-right"></i></a>
+						</div>
 					</div>
 					<?php
 				}
@@ -319,6 +366,7 @@ class HC_Home {
 					<div class="event-slider-for">
 						<?php
 						foreach( $events as $post_id ) {
+							$date = HC()->events->get_event_date_info( $post_id );
 							?>
 							<div>
 								<?php
@@ -326,6 +374,28 @@ class HC_Home {
 									echo get_the_post_thumbnail( $post_id, 'slide' );
 								echo '</a>';
 								?>
+
+								<div class="slide-content show-phone">
+									<div class="info">
+										<span class="m"><?php echo date('M', $date['start_date']); ?></span>
+										<span class="d"><?php echo date('j', $date['start_date']); ?></span>
+									</div>
+
+									<div class="name">
+										<?php
+										$categories = wp_get_object_terms( $post_id, 'event-category' );
+										if( !empty($categories) )
+											echo '<span class="cat">' . $categories[0]->name . '</span>';
+
+										echo '<span class="title">' . get_the_title( $post_id ) . '</span>';
+										?>
+									</div>
+
+									<?php
+									if( !empty($categories) )
+										echo HC()->utilities->get_category_icon_html( $categories[0] );
+									?>
+								</div>
 							</div>
 							<?php
 						}
@@ -369,6 +439,11 @@ class HC_Home {
 							<?php
 						}
 						?>
+					</div>
+
+					<div class="mobile-bar show-phone">
+						<?php $page_id = get_field( '_hc_calendar_page_id', 'option' ); ?>
+						<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><span>More Events</span> <i class="ico-arrow-right"></i></a>
 					</div>
 				</div>
 

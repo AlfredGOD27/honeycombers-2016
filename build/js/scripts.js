@@ -6338,9 +6338,11 @@ function hc_directory_maps() {
 	} else {
 		$('.slider-for').slick({
 			adaptiveHeight: true,
-			arrows: false,
+			arrows: true,
 			slidesToScroll: 1,
-			slidesToShow: 1
+			slidesToShow: 1,
+			prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
+			nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
 		});
 	}
 

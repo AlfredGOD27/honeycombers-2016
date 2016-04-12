@@ -203,6 +203,7 @@ $slider-height: 25em;
 @include media('<=phone') {
 	.archive-slider-container {
 		> .wrap {
+			padding-left: 0;
 			height: auto;
 		}
 	}
@@ -216,12 +217,66 @@ $slider-height: 25em;
 		max-width: none;
 		width: 100%;
 	}
+
+	.slide-content {
+		position: relative;
+		display: none;
+		align-items: center;
+		padding: 1em 1.5em;
+		border: 1px solid $orange;
+		background-color: $white;
+
+		&:before,
+		&:after {
+			position: absolute;
+			bottom: 100%;
+			left: 50%;
+			width: 0;
+			height: 0;
+			border-width: 0 .5em .75em .5em;
+			border-style: solid;
+			border-color: transparent;
+			content: '';
+			transform: translateX(-50%);
+		}
+
+		&:before {
+			border-bottom-color: $orange;
+		}
+
+		&:after {
+			margin-bottom: -1px;
+			border-bottom-color: $white;
+		}
+
+		i {
+			flex-grow: 0;
+			flex-shrink: 0;
+			order: 2;
+			margin-left: .5em;
+			color: $orange;
+			font-size: 3.25em;
+		}
+
+		span {
+			flex-grow: 1;
+			flex-shrink: 1;
+			order: 1;
+			text-transform: uppercase;
+			font-family: $heading;
+		}
+	}
 }
 
 @include media('<=phone') {
 	.slider-for {
 		width: 100%;
 		height: auto;
+
+		.slide-content {
+			display: block;
+			display: flex;
+		}
 	}
 }
 

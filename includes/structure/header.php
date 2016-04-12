@@ -310,7 +310,10 @@ function hc_mobile_menu_toggle() {
 	?>
 	<div class="mobile-header-right">
 		<a href="<?php echo HC()->utilities->get_page_link('_hc_login_page_id'); ?>" class="btn btn-bordered">Login</a>
-		<button type="button" class="btn toggle-nav" title="Toggle Menu"><i class="ico-menu"></i></button>
+		<button type="button" class="btn toggle-nav" title="Toggle Menu">
+			<i class="ico-menu"></i>
+			<i class="ico-close"></i>
+		</button>
 	</div>
 	<?php
 

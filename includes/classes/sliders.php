@@ -3,6 +3,32 @@
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class HC_Sliders {
+	private function display_post_content( $post_id ) {
+
+		$terms = false;
+		switch( get_post_type($post_id) ) {
+			case 'post':
+				$terms = wp_get_object_terms( $post_id, 'category' );
+				break;
+			case 'event':
+				$terms = wp_get_object_terms( $post_id, 'event-category' );
+				break;
+			case 'listing':
+				$terms = wp_get_object_terms( $post_id, 'directories' );
+				break;
+		}
+
+		$icon = false;
+		if( !empty($terms) )
+			$icon = get_field( '_hc_category_icon', $terms[0] );
+
+		if( !empty($icon) )
+			echo '<i class="ico-' . $icon . '"></i>';
+
+		echo '<span>' . get_the_title( $post_id ) . '</span>';
+
+	}
+
 	public function display( $args ) {
 
 		$posts = get_posts( $args );
@@ -31,7 +57,13 @@ class HC_Sliders {
 									echo '</a>';
 									break;
 							}
+
 							?>
+							<div class="slide-content">
+								<?php
+								$this->display_post_content( $post_id );
+								?>
+							</div>
 						</div>
 						<?php
 					}
@@ -50,27 +82,7 @@ class HC_Sliders {
 
 								<div class="inner">
 									<?php
-									$terms = false;
-									switch( get_post_type($post_id) ) {
-										case 'post':
-											$terms = wp_get_object_terms( $post_id, 'category' );
-											break;
-										case 'event':
-											$terms = wp_get_object_terms( $post_id, 'event-category' );
-											break;
-										case 'listing':
-											$terms = wp_get_object_terms( $post_id, 'directories' );
-											break;
-									}
-
-									$icon = false;
-									if( !empty($terms) )
-										$icon = get_field( '_hc_category_icon', $terms[0] );
-
-									if( !empty($icon) )
-										echo '<i class="ico-' . $icon . '"></i>';
-
-									echo '<span>' . get_the_title( $post_id ) . '</span>';
+									$this->display_post_content( $post_id );
 									?>
 								</div>
 							</div>

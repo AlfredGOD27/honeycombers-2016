@@ -25,6 +25,30 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.ico-close:before {
+	content: '\e920';
+}
+
+.ico-circle:before {
+	content: '\e913';
+}
+
+.ico-star-half-empty:before {
+	content: '\e90f';
+}
+
+.ico-star-o:before {
+	content: '\e910';
+}
+
+.ico-star:before {
+	content: '\e911';
+}
+
+.ico-heart-filled:before {
+	content: '\e91f';
+}
+
 .ico-pin-filled:before {
 	content: '\e91e';
 }
@@ -131,20 +155,4 @@
 
 .ico-youtube:before {
 	content: '\e909';
-}
-
-.ico-circle:before {
-	content: '\e913';
-}
-
-.ico-star-half-empty:before {
-	content: '\e90f';
-}
-
-.ico-star-o:before {
-	content: '\e910';
-}
-
-.ico-star:before {
-	content: '\e911';
 }
