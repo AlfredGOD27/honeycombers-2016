@@ -35,6 +35,9 @@ BREAKPOINTS
 COLORS
 *********************/
 /*********************
+ALERTS
+*********************/
+/*********************
 SOCIAL COLORS - http://designpieces.com/2012/12/social-media-colours-hex-and-rgb/
 *********************/
 /*********************
@@ -1089,7 +1092,7 @@ th {
 .site-footer,
 .site-header,
 .site-inner,
-.wrap, .content-sidebar-wrap {
+.wrap, .content-sidebar-wrap, .alert {
   zoom: 1;
 }
 .pika-single:before, .author-box:before,
@@ -1104,7 +1107,7 @@ th {
 .site-footer:before,
 .site-header:before,
 .site-inner:before,
-.wrap:before, .content-sidebar-wrap:before, .pika-single:after, .author-box:after,
+.wrap:before, .content-sidebar-wrap:before, .alert:before, .pika-single:after, .author-box:after,
 .clearfix:after,
 .entry:after,
 .entry-content:after,
@@ -1116,7 +1119,7 @@ th {
 .site-footer:after,
 .site-header:after,
 .site-inner:after,
-.wrap:after, .content-sidebar-wrap:after {
+.wrap:after, .content-sidebar-wrap:after, .alert:after {
   display: table;
   content: '';
 }
@@ -1132,7 +1135,7 @@ th {
 .site-footer:after,
 .site-header:after,
 .site-inner:after,
-.wrap:after, .content-sidebar-wrap:after {
+.wrap:after, .content-sidebar-wrap:after, .alert:after {
   clear: both;
 }
 
@@ -1656,6 +1659,77 @@ img.alignright,
   font-size: .85em;
 }
 
+.messages {
+  margin-bottom: 2.5em;
+}
+
+.alert {
+  position: relative;
+  display: block;
+  clear: both;
+  margin: 0 0 1em;
+  padding: 1em 1em 1em 4em;
+  border-top-width: .25em;
+  border-top-style: solid;
+  border-right: 1px solid #d7d7d7;
+  border-bottom: 1px solid #d7d7d7;
+  border-left: 1px solid #d7d7d7;
+  background-color: #FFFFFF;
+  text-align: left;
+}
+.alert:last-child {
+  margin-bottom: 0;
+}
+.alert:before {
+  position: absolute;
+  top: 0;
+  left: 1em;
+  display: block;
+  padding-top: 1em;
+  width: 1.5em;
+  height: 2.5em;
+  color: #FFFFFF;
+  content: '';
+  text-align: center;
+  font-size: 1em;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+.alert a {
+  color: #3a3a3a;
+  text-decoration: underline;
+}
+
+.alert-success {
+  border-top-color: #2ECC40;
+  color: #2ECC40;
+}
+.alert-success:before {
+  background-color: #2ECC40;
+  content: '\2713';
+}
+
+.alert-error {
+  border-top-color: #FF4136;
+  color: #FF4136;
+}
+.alert-error:before {
+  background-color: #FF4136;
+  content: '\00d7';
+  font-weight: bold;
+}
+
+.alert-info {
+  border-top-color: #0074D9;
+  color: #0074D9;
+}
+.alert-info:before {
+  background-color: #0074D9;
+  content: 'i';
+  font-style: italic;
+  font-family: Times, Georgia, serif;
+}
+
 .btn, button,
 input[type='button'],
 input[type='reset'],
@@ -1891,6 +1965,39 @@ input[type='search'] {
 }
 .post-password-form input[type='submit'] {
   margin-left: .25em;
+}
+
+.subscribe-form {
+  position: relative;
+}
+.subscribe-form.processing {
+  opacity: .5;
+}
+.subscribe-form .email-container {
+  position: relative;
+}
+.subscribe-form input[type='email'] {
+  padding-right: 1.5em;
+}
+.subscribe-form .result {
+  position: absolute;
+  top: .4em;
+  right: .4em;
+  display: block;
+  text-align: center;
+  font-style: normal;
+  font-size: 1.25em;
+  font-family: sans-serif;
+  line-height: 1;
+}
+.subscribe-form .result.success:before {
+  color: #2ECC40;
+  content: '\2713';
+}
+.subscribe-form .result.error:before {
+  color: #FF4136;
+  content: '\00d7';
+  font-weight: bold;
 }
 
 .slick-slider .slick-slide {
@@ -3693,7 +3800,7 @@ input[type='search'] {
 .page-template-page_calendar .slider-nav .m,
 .page-template-page_calendar .slider-nav .d {
   display: block;
-  line-height: 1.15;
+  line-height: 1;
 }
 .page-template-page_calendar .slider-nav .starts,
 .page-template-page_calendar .slider-nav .ends {
@@ -3724,6 +3831,9 @@ input[type='search'] {
 }
 .page-template-page_calendar .subcategory:last-child {
   margin-bottom: 0;
+}
+.page-template-page_calendar .subcategory > .wrap {
+  max-width: none;
 }
 .page-template-page_calendar .subcategory .slick-slide {
   margin: 0 .25em;

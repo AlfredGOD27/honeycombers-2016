@@ -21,6 +21,7 @@ final class HC {
 		'schemas',
 		'share',
 		'sliders',
+		'subscriptions',
 		'users',
 		'utilities',
 		'widgets',

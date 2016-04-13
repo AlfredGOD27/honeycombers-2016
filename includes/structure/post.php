@@ -166,12 +166,9 @@ function hc_entry_subscribe_form() {
 		<h2>Want More From Honeycombers?</h2>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pretium turpis.</p>
 
-		<form>
-			<label for="subscribe-email">Email</label>
-			<input id="subscribe-email" type="email">
-
-			<button type="submit" class="btn">Sign Up</button>
-		</form>
+		<?php
+		HC()->subscriptions->display_form();
+		?>
 	</section>
 	<?php
 

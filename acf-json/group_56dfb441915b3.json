@@ -158,6 +158,46 @@
             "disabled": 0
         },
         {
+            "key": "field_570dc1bc8d75e",
+            "label": "MailChimp API Key",
+            "name": "_hc_mailchimp_api_key",
+            "type": "password",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_570dc1cc8d75f",
+            "label": "MailChimp List ID",
+            "name": "_hc_mailchimp_list_id",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
             "key": "field_56fd92a8f599f",
             "label": "Pages",
             "name": "",
@@ -345,5 +385,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1459903107
+    "modified": 1460519392
 }

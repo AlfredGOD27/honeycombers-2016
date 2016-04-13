@@ -22,15 +22,7 @@ class HC_Subscribe_Widget extends WP_Widget {
 			if( !empty($above_text) )
 				echo '<div class="above-text">' . wpautop( wp_kses_data($above_text) ) . '</div>';
 
-			?>
-			<form>
-				<label for="<?php echo $widget_id; ?>-email">Email</label>
-
-				<input id="<?php echo $widget_id; ?>-email" type="email">
-
-				<button type="submit" class="btn">Sign Up</button>
-			</form>
-			<?php
+			HC()->subscriptions->display_form();
 		echo $after_widget;
 
 	}

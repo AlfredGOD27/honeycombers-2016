@@ -56,7 +56,6 @@
 
 		} else {
 			data = placeholder.data();
-			console.log(data);
 			el = document.createElement('img');
 			$.each( data, function(att, value) {
 				att = att.replace( 'data-', '' );
