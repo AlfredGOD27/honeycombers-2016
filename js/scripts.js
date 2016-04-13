@@ -30,10 +30,32 @@
 	// Enable FitVids on the content area
 	$('.content').fitVids();
 
-	// MFP Video Popup
+	// Video Popup
 	$('.open-video-link').magnificPopup({
 		type: 'iframe',
 		midClick: true
+	});
+
+	// HTML Popup
+	$('.open-popup-link').magnificPopup({
+		type: 'inline',
+		midClick: true,
+		callbacks: {
+			open: function() {
+				var item = $(this.contentContainer).find( 'input:visible' );
+				if( item.length > 0 ) {
+					setTimeout(
+						function() {
+							item.eq(0).focus();
+						},
+						50
+					);
+				}
+
+				if( $(this.contentContainer).find( '.btn-facebook' ).length > 0 )
+					hc_maybe_load_facebook();
+			}
+		}
 	});
 
 	// Entry header slideshow

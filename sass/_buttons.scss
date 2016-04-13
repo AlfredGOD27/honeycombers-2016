@@ -48,3 +48,16 @@
 	border: 1px solid $white;
 	font-size: .75em;
 }
+
+.btn-facebook {
+	background-color: $facebook;
+
+	i {
+		color: $white;
+	}
+
+	span {
+		color: $white;
+		text-transform: uppercase;
+	}
+}

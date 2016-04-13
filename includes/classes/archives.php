@@ -187,7 +187,7 @@ class HC_Archives {
 		if( !empty($page) )
 			return;
 
-		HC()->users->do_author_box( 'archive' );
+		HC()->authors->do_author_box( 'archive' );
 
 	}
 

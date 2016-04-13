@@ -77,11 +77,13 @@ module.exports = function(grunt) {
 					'js/_calendar.js',
 					'js/_components.js',
 					'js/_directory.js',
+					'js/_facebook.js',
 					'js/_home.js',
 					'js/_infinite-scroll.js',
 					'js/_navigation.js',
 					'js/_slider.js',
 					'js/_subscriptions.js',
+					'js/_users.js',
 					'js/_widgets.js',
 					'js/scripts.js'
 				],

@@ -121,6 +121,13 @@ function hc_load_assets() {
 			'fallback' => $stylesheet_dir . '/build/svgs/icons.fallback.css',
 		)
 	);
+	wp_localize_script(
+		'hc',
+		'hc_facebook',
+		array(
+			'app_id' => get_field( '_hc_facebook_app_id', 'option' ),
+		)
+	);
 
 	$spinner = '<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>';
 	wp_localize_script(
@@ -289,7 +296,7 @@ function hc_site_top() {
 			</div>
 
 			<div class="right">
-				<a href="<?php echo HC()->utilities->get_page_link('_hc_login_page_id'); ?>">Sign In <i class="ico-exit"></i></a>
+				<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="open-popup-link" data-mfp-src="#login-popup">Sign In <i class="ico-exit"></i></a>
 			</div>
 		</div>
 	</section>
@@ -309,7 +316,7 @@ function hc_mobile_menu_toggle() {
 
 	?>
 	<div class="mobile-header-right">
-		<a href="<?php echo HC()->utilities->get_page_link('_hc_login_page_id'); ?>" class="btn btn-bordered">Login</a>
+		<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="btn btn-bordered open-popup-link" data-mfp-src="#login-popup">Login</a>
 		<button type="button" class="btn toggle-nav" title="Toggle Menu">
 			<i class="ico-menu"></i>
 			<i class="ico-close"></i>

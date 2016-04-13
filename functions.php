@@ -10,6 +10,7 @@ final class HC {
 	private static $classes_init = array(
 		'acf',
 		'archives',
+		'authors',
 		'components',
 		'entry',
 		'events',
@@ -17,6 +18,7 @@ final class HC {
 		'formatting',
 		'home',
 		'listings',
+		'messages',
 		'migration',
 		'schemas',
 		'share',
@@ -65,7 +67,7 @@ final class HC {
 		require_once get_template_directory() . '/lib/init.php';
 
 		// Libraries
-		// require_once CHILD_DIR . '/vendor/autoload.php';
+		require_once CHILD_DIR . '/vendor/autoload.php';
 
 		foreach( self::$classes_init as $key )
 			$this->{$key} = require_once CHILD_DIR . '/includes/classes/' . $key . '.php';

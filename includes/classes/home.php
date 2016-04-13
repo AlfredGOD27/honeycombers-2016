@@ -462,7 +462,7 @@ class HC_Home {
 
 							<p class="top"><?php echo sanitize_text_field($top); ?></p>
 
-							<a href="<?php echo HC()->utilities->get_page_link('_hc_login_page_id'); ?>" class="btn">Sign Up <i class="ico-exit"></i></a>
+							<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="btn open-popup-link" data-mfp-src="#login-popup">Sign Up <i class="ico-exit"></i></a>
 
 							<p class="bottom"><?php echo sanitize_text_field($bottom); ?></p>
 						</div>

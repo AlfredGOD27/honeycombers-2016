@@ -1,5 +1,9 @@
 .messages {
 	margin-bottom: 2.5em;
+
+	&:empty {
+		display: none;
+	}
 }
 
 .alert {

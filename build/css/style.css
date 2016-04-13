@@ -1395,6 +1395,53 @@ html {
   content: '\e909';
 }
 
+@-webkit-keyframes shake {
+  from,
+	100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  20%,
+	60% {
+    -webkit-transform: translate3d(-0.5em, 0, 0);
+            transform: translate3d(-0.5em, 0, 0);
+  }
+  40%,
+	80% {
+    -webkit-transform: translate3d(0.5em, 0, 0);
+            transform: translate3d(0.5em, 0, 0);
+  }
+}
+
+@keyframes shake {
+  from,
+	100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  20%,
+	60% {
+    -webkit-transform: translate3d(-0.5em, 0, 0);
+            transform: translate3d(-0.5em, 0, 0);
+  }
+  40%,
+	80% {
+    -webkit-transform: translate3d(0.5em, 0, 0);
+            transform: translate3d(0.5em, 0, 0);
+  }
+}
+.shake {
+  -webkit-animation-name: shake;
+          animation-name: shake;
+}
+
+.animated {
+  -webkit-animation-duration: .25s;
+          animation-duration: .25s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
 .five-sixths,
 .four-sixths,
 .one-fourth,
@@ -1662,6 +1709,9 @@ img.alignright,
 .messages {
   margin-bottom: 2.5em;
 }
+.messages:empty {
+  display: none;
+}
 
 .alert {
   position: relative;
@@ -1782,6 +1832,17 @@ input[type='submit'] {
   font-size: .75em;
 }
 
+.btn-facebook {
+  background-color: #3b5998;
+}
+.btn-facebook i {
+  color: #FFFFFF;
+}
+.btn-facebook span {
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
 @-webkit-keyframes bounce-delay {
   0%,
 	80%,
@@ -1839,6 +1900,14 @@ label {
   font-size: .9em;
   font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
 }
+label.checkbox {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  text-transform: none;
+}
+label.checkbox input[type='checkbox'] {
+  margin-right: .5em;
+}
 
 input[type='text'],
 input[type='password'],
@@ -1851,6 +1920,7 @@ textarea {
   max-width: 100%;
   width: 100%;
   border: 1px solid #fe862c;
+  border: 1px solid #c6c7c8;
   border-radius: 0;
   color: #252525;
   font-size: .85em;
@@ -1883,35 +1953,35 @@ select.styled::-ms-expand {
 .placeholder {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  color: #c7c7c7;
+  color: #5e5e5e;
   text-overflow: ellipsis;
 }
 
 ::-webkit-input-placeholder {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  color: #c7c7c7;
+  color: #5e5e5e;
   text-overflow: ellipsis;
 }
 
 ::-moz-placeholder {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  color: #c7c7c7;
+  color: #5e5e5e;
   text-overflow: ellipsis;
 }
 
 :-ms-input-placeholder {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  color: #c7c7c7;
+  color: #5e5e5e;
   text-overflow: ellipsis;
 }
 
 ::placeholder {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  color: #c7c7c7;
+  color: #5e5e5e;
   text-overflow: ellipsis;
 }
 
@@ -1965,6 +2035,93 @@ input[type='search'] {
 }
 .post-password-form input[type='submit'] {
   margin-left: .25em;
+}
+
+.no-fb .hide-no-fb {
+  display: none !important;
+}
+
+.white-popup {
+  margin: 1.5em auto;
+  padding: 1.25em 3.5em;
+  max-width: 40em;
+  border: 1px solid #fe862c;
+  background-color: #FFFFFF;
+  text-align: center;
+}
+.white-popup .ico-favicon {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: .25em;
+  color: #fe862c;
+  font-size: 4em;
+}
+.white-popup h2 {
+  margin-bottom: .5em;
+  text-transform: uppercase;
+}
+.white-popup .lead {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  margin-bottom: 1.5em;
+  color: #919191;
+}
+.white-popup .btn, .white-popup button,
+.white-popup input[type='button'],
+.white-popup input[type='reset'],
+.white-popup input[type='submit'] {
+  padding: .9em;
+  width: 16em;
+}
+.white-popup .or {
+  position: relative;
+  display: block;
+  margin-top: 2em;
+  margin-bottom: 2.5em;
+  height: 1px;
+  background-color: #d7d7d7;
+}
+.white-popup .or span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 0 .75em;
+  background-color: #FFFFFF;
+  text-transform: uppercase;
+  font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
+  line-height: 1;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+.white-popup form {
+  margin: 0 auto;
+  max-width: 27.5em;
+}
+.white-popup .field {
+  margin-bottom: .9em;
+}
+
+.login-popup .forgot-remember-bar {
+  margin-bottom: .75em;
+  padding-bottom: 0;
+}
+.login-popup .forgot-remember-bar .left {
+  text-align: left;
+}
+.login-popup .forgot-remember-bar .left a {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  font-size: .9em;
+}
+.login-popup .forgot-remember-bar .right {
+  text-align: right;
+}
+.login-popup .join {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+  font-size: .9em;
 }
 
 .subscribe-form {

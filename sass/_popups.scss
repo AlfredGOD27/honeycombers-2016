@@ -1,0 +1,95 @@
+.no-fb {
+	.hide-no-fb {
+		display: none !important;
+	}
+}
+
+.white-popup {
+	margin: 1.5em auto;
+	padding: 1.25em 3.5em;
+	max-width: 40em;
+	border: 1px solid $orange;
+	background-color: $white;
+	text-align: center;
+
+	.ico-favicon {
+		display: block;
+		margin: 0 auto;
+		margin-bottom: .25em;
+		color: $orange;
+		font-size: 4em;
+	}
+
+	h2 {
+		margin-bottom: .5em;
+		text-transform: uppercase;
+	}
+
+	.lead {
+		@include meta-font;
+		margin-bottom: 1.5em;
+		color: $grey-light;
+	}
+
+	.btn {
+		padding: .9em;
+		width: 16em;
+	}
+
+	.or {
+		position: relative;
+		display: block;
+		margin-top: 2em;
+		margin-bottom: 2.5em;
+		height: 1px;
+		background-color: $grey-border;
+
+		span {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			padding: 0 .75em;
+			background-color: $white;
+			text-transform: uppercase;
+			font-family: $heading;
+			line-height: 1;
+			transform: translateX(-50%) translateY(-50%);
+		}
+	}
+
+	form {
+		margin: 0 auto;
+		max-width: 27.5em;
+	}
+
+	.field {
+		margin-bottom: .9em;
+	}
+}
+
+.login-popup {
+	.forgot-remember-bar {
+		margin-bottom: .75em;
+		padding-bottom: 0;
+
+		.left {
+			text-align: left;
+
+			a {
+				@include meta-font;
+				font-size: .9em;
+			}
+		}
+
+		.right {
+			text-align: right;
+		}
+	}
+
+	.join {
+		@include meta-font;
+		margin-top: 2em;
+		margin-bottom: 1.5em;
+		font-size: .9em;
+	}
+}

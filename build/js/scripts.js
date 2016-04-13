@@ -6113,6 +6113,33 @@ function hc_directory_maps() {
 
 }
 
+var fb_init = false;
+
+window.fbAsyncInit = function() {
+	jQuery('html').removeClass('no-fb');
+
+	FB.init({
+		appId : hc_facebook.app_id,
+		xfbml : true,
+		version : 'v2.6'
+	});
+};
+
+function hc_maybe_load_facebook() {
+
+	if( fb_init )
+		return;
+
+	fb_init = true;
+
+	var script = document.createElement('script');
+	script.type = 'text/javascript';
+	script.src = 'https://connect.facebook.net/en_US/sdk.js';
+
+	document.getElementsByTagName('head')[0].appendChild(script);
+
+}
+
 (function($) {
 
 	if( !$('body').hasClass('page-template-page_home') )
@@ -6389,6 +6416,161 @@ function hc_directory_maps() {
 
 (function($) {
 
+	function add_message( container, status, message ) {
+
+		if( 'error' === status ) {
+			container.html( '<div class="alert alert-' + status + ' animated shake">' + message + '</div>' );
+		} else {
+			container.html( '<div class="alert alert-' + status + '">' + message + '</div>' );
+		}
+
+	}
+
+	$('#register-popup form').on( 'submit', function(e) {
+		e.preventDefault();
+
+		var self = $(this);
+
+		$.ajax({
+			url: ajax_object.ajaxurl,
+			type: 'POST',
+			data: {
+				action: 'hc_ajax_register',
+				email: self.find('[name="email"]').val(),
+				password: self.find('[name="password"]').val()
+			},
+			success: function( json ) {
+				var data = JSON.parse( json );
+
+				add_message( self.closest('.white-popup').find('.messages'), data.status, data.message );
+
+				if( 'success' === data.status ) {
+					self.find('input, button').prop('disabled', true);
+
+					setTimeout(
+						function() {
+							window.location.href = data.redirect_to;
+						},
+						1500
+					);
+				}
+			}
+		});
+
+		return false;
+	});
+
+
+	$('#login-popup form').on( 'submit', function(e) {
+		e.preventDefault();
+
+		var self = $(this);
+
+		$.ajax({
+			url: ajax_object.ajaxurl,
+			type: 'POST',
+			data: {
+				action: 'hc_ajax_login',
+				log: self.find('[name="log"]').val(),
+				pwd: self.find('[name="pwd"]').val(),
+				rememberme: self.find('[name="rememberme"]').prop('checked')
+			},
+			success: function( json ) {
+				console.log(json);
+				var data = JSON.parse( json );
+
+				add_message( self.closest('.white-popup').find('.messages'), data.status, data.message );
+
+				if( 'success' === data.status ) {
+					self.find('input, button').prop('disabled', true);
+
+					setTimeout(
+						function() {
+							window.location.href = data.redirect_to;
+						},
+						1500
+					);
+				}
+			}
+		});
+
+		return false;
+	});
+
+	$('#password-popup form').on( 'submit', function(e) {
+		e.preventDefault();
+
+		var self = $(this);
+
+		$.ajax({
+			url: ajax_object.ajaxurl,
+			type: 'POST',
+			data: {
+				action: 'hc_ajax_reset_password',
+				email: self.find('[name="user_login"]').val()
+			},
+			success: function( json ) {
+				var data = JSON.parse( json );
+
+				add_message( self.closest('.white-popup').find('.messages'), data.status, data.message );
+
+				if( 'success' === data.status )
+					self.find('input, button').prop('disabled', true);
+			}
+		});
+
+		return false;
+	});
+
+	$('.btn-facebook').on( 'click', function(e) {
+		e.preventDefault();
+
+		var self = $(this);
+
+		FB.login(
+			function(response) {
+
+				if( response.status === 'connected' ) {
+					$.ajax({
+						url: ajax_object.ajaxurl,
+						type: 'POST',
+						data: {
+							action: 'hc_ajax_facebook_register_or_login',
+							token: response.authResponse.accessToken
+						},
+						success: function( json ) {
+							var data = JSON.parse( json );
+
+							add_message( self.closest('.white-popup').find('.messages'), data.status, data.message );
+
+							if( 'success' === data.status ) {
+								self.find('input, button').prop('disabled', true);
+
+								setTimeout(
+									function() {
+										window.location.href = data.redirect_to;
+									},
+									1500
+								);
+							}
+						}
+					});
+				} else if( response.status === 'not_authorized' ) {
+					add_message( self.closest('.white-popup').find('.messages'), 'error', 'You must authorize the app to login via Facebook.' );
+				} else {
+					add_message( self.closest('.white-popup').find('.messages'), 'error', 'You must login to Facebook.' );
+				}
+			},
+			{
+				scope: 'public_profile,email'
+			}
+		);
+	});
+
+})( window.jQuery );
+
+(function($) {
+
 	$('.featured-event-widget').slick({
 		arrows: true,
 		slidesToScroll: 1,
@@ -6432,10 +6614,32 @@ function hc_directory_maps() {
 	// Enable FitVids on the content area
 	$('.content').fitVids();
 
-	// MFP Video Popup
+	// Video Popup
 	$('.open-video-link').magnificPopup({
 		type: 'iframe',
 		midClick: true
+	});
+
+	// HTML Popup
+	$('.open-popup-link').magnificPopup({
+		type: 'inline',
+		midClick: true,
+		callbacks: {
+			open: function() {
+				var item = $(this.contentContainer).find( 'input:visible' );
+				if( item.length > 0 ) {
+					setTimeout(
+						function() {
+							item.eq(0).focus();
+						},
+						50
+					);
+				}
+
+				if( $(this.contentContainer).find( '.btn-facebook' ).length > 0 )
+					hc_maybe_load_facebook();
+			}
+		}
 	});
 
 	// Entry header slideshow

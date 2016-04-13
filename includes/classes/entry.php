@@ -90,7 +90,7 @@ class HC_Entry {
 
 								<?php
 
-								$job_title = HC()->users->get_title( $user_id );
+								$job_title = HC()->authors->get_title( $user_id );
 								if( !empty($job_title) )
 									echo '<p>' . $job_title . '</p>';
 								?>
@@ -120,7 +120,7 @@ class HC_Entry {
 							$lines   = array();
 							$lines[] = do_shortcode( __( 'By', CHILD_THEME_TEXT_DOMAIN ) . ' [post_author_posts_link]' );
 
-							$title = HC()->users->get_title( $post->post_author );
+							$title = HC()->authors->get_title( $post->post_author );
 							if( !empty($title) )
 								$lines[] = $title;
 
