@@ -2036,6 +2036,10 @@ input[type='search'] {
   position: relative;
   margin-bottom: .75em;
 }
+.component-slideshow img {
+  max-width: none;
+  width: 100%;
+}
 
 .social a {
   display: inline-block;
