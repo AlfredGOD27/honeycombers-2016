@@ -4836,7 +4836,7 @@
 	$('.events-slider').slick({
 		arrows: true,
 		slidesToScroll: 3,
-		slidesToShow: 5,
+		slidesToShow: Math.floor($('.events-slider').width() / 225),
 		centerPadding: '8px',
 		prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
 		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
