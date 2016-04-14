@@ -379,3 +379,54 @@
 		font-size: 2em;
 	}
 }
+
+.user-menu {
+	// Applied to all menu <a>'s
+	a {
+		display: block;
+	}
+
+	// First level
+	li {
+		position: relative;
+		display: inline-block;
+
+		&:hover,
+		&:focus,
+		&:active {
+			> .sub-menu {
+				left: auto;
+				opacity: 1;
+			}
+		}
+	}
+
+	// Sublevels
+	.sub-menu {
+		position: absolute;
+		top: 100%;
+		left: -9999px;
+		z-index: 99;
+		padding: .25em;
+		width: 100%;
+		border: 1px solid $orange;
+		background-color: $white;
+		opacity: 0;
+		transition: opacity .4s ease-in-out;
+
+		> li {
+			display: block;
+			border-top: 1px solid $grey-border;
+
+			&:first-child {
+				border-top: none;
+			}
+
+			> a {
+				position: relative;
+				padding: .5em;
+				color: $text;
+			}
+		}
+	}
+}

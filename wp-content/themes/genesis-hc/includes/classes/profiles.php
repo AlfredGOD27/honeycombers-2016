@@ -135,6 +135,22 @@ class HC_Profiles {
 
 	}
 
+	public function display_top_menu() {
+
+		?>
+		<ul class="user-menu">
+			<li>
+				<a href="<?php echo $this->get_url(); ?>">Hello, <?php echo HC()->profiles->get_first_name( get_current_user_id() ); ?> <i class="ico-arrow-down"></i></a>
+
+				<ul class="sub-menu">
+					<li><a href="<?php echo $this->get_url('logout'); ?>">Logout</a></li>
+				</ul>
+			</li>
+		</ul>
+		<?php
+
+	}
+
 	public function do_seo() {
 
 		// If WordPress SEO is installed, overwrite everything. Otherwise, just replace the <title>

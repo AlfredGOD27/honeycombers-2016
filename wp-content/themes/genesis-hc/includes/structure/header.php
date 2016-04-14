@@ -302,9 +302,7 @@ function hc_site_top() {
 					<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="open-popup-link" data-mfp-src="#login-popup">Sign In <i class="ico-exit"></i></a>
 					<?php
 				} else {
-					?>
-					<a href="<?php echo HC()->profiles->get_url(); ?>">Hello, <?php echo HC()->profiles->get_first_name( get_current_user_id() ); ?></a>
-					<?php
+					HC()->profiles->display_top_menu();
 				}
 				?>
 			</div>
