@@ -178,13 +178,17 @@ abstract class HC_Form_Abstract {
 					break;
 				case 'select':
 					$placeholder = isset($field['placeholder']) ? $field['placeholder'] : 'Select ' . $field['label'];
-					echo '<select id="field-' . $field['slug'] . '" name="' . $field['slug'] . '" ' . $required . ' ' . $disabled . '>';
-						echo '<option value="">' . $placeholder . '</option>';
-						foreach( $field['options'] as $option ) {
-							$option_value = esc_attr($option);
-							echo '<option value="' . $option_value . '" ' . selected( $value, $option_value, false ) . '>' . $option . '</option>';
-						}
-					echo '</select>';
+
+					echo '<div>';
+						echo '<select id="field-' . $field['slug'] . '" name="' . $field['slug'] . '" ' . $required . ' ' . $disabled . ' class="styled">';
+							echo '<option value="">' . $placeholder . '</option>';
+							foreach( $field['options'] as $option ) {
+								$option_value = esc_attr($option);
+								echo '<option value="' . $option_value . '" ' . selected( $value, $option_value, false ) . '>' . $option . '</option>';
+							}
+						echo '</select>';
+						echo '<i class="ico-arrow-down"></i>';
+					echo '</div>';
 					break;
 				case 'radio':
 					echo '<div class="radio-list">';

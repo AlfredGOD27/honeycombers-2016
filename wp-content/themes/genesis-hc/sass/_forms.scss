@@ -31,7 +31,6 @@ textarea {
 	padding: .5em;
 	max-width: 100%;
 	width: 100%;
-	border: 1px solid $orange;
 	border: 1px solid #c6c7c8;
 	border-radius: 0;		 // Removes the border radius on iOS
 	color: $black;
@@ -60,7 +59,7 @@ select {
 
 	&.styled {
 		padding: .5em;
-		border: none;
+		border: 1px solid #c6c7c8;
 		border-radius: 0;
 		background-color: $white;
 		color: $black;
@@ -150,6 +149,21 @@ input[type='search'] {
 
 	.field {
 		margin-bottom: 1.5em;
+	}
+
+	.field-select {
+		> div {
+			position: relative;
+		}
+
+		.ico-arrow-down {
+			position: absolute;
+			top: 50%;
+			right: 1em;
+			font-size: .75em;
+			transform: translateY(-50%);
+			pointer-events: none;
+		}
 	}
 
 	.field-file {
