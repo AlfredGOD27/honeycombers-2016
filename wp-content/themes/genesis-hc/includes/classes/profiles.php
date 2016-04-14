@@ -55,13 +55,15 @@ class HC_Profiles {
 		status_header(200);
 
 		add_action( 'template_include', array($this, 'do_seo') );
+
+		add_action( 'wp_enqueue_scripts', array($this, 'load_assets') );
 		add_filter( 'body_class', array($this, 'body_classes') );
 		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 		remove_action( 'genesis_loop', 'genesis_do_loop' );
-		add_action( 'genesis_loop', array(HC()->messages, 'display') );
 
 		if( !is_user_logged_in() ) {
 			HC()->messages->add( 'error', 'You must <a href="#" class="open-popup-link" data-mfp-src="#login-popup">login</a> to edit your profile.' );
+			add_action( 'genesis_loop', array(HC()->messages, 'display') );
 
 			return;
 		} else {
@@ -70,10 +72,15 @@ class HC_Profiles {
 		}
 
 		add_action( 'genesis_loop', array($this, 'display_heading') );
+		add_action( 'genesis_loop', array(HC()->messages, 'display') );
 
 		switch( $this->endpoint ) {
 			case 'base':
 				add_action( 'genesis_loop', array($this, 'display_landing') );
+				break;
+			case 'edit':
+				$this->form = new HC_Profile_Edit_Form( $this->user );
+				add_action( 'genesis_loop', array($this, 'display_edit') );
 				break;
 		}
 
@@ -159,6 +166,21 @@ class HC_Profiles {
 	public function seo_title( $title ) {
 
 		return 'XXX';
+
+	}
+
+	public function load_assets() {
+
+		$use_production_assets = genesis_get_option('hc_production_on');
+		$use_production_assets = !empty($use_production_assets);
+
+		$assets_version = genesis_get_option('hc_assets_version');
+		$assets_version = !empty($assets_version) ? absint($assets_version) : null;
+
+		$stylesheet_dir = get_stylesheet_directory_uri();
+
+		$src = $use_production_assets ? '/build/css/profiles.min.css' : '/build/css/profiles.css';
+		wp_enqueue_style( 'hc-profiles', $stylesheet_dir . $src, array('hc'), $assets_version );
 
 	}
 
@@ -260,6 +282,15 @@ class HC_Profiles {
 			?>
 		</div>
 		<?php
+
+	}
+
+	public function display_edit() {
+
+		?>
+		<h2 class="profile-page-title">Edit Profile</h2>
+		<?php
+		$this->form->display_form();
 
 	}
 

@@ -70,6 +70,10 @@ final class HC {
 		// Libraries
 		require_once CHILD_DIR . '/vendor/autoload.php';
 
+		// Abstracts
+		require_once CHILD_DIR . '/includes/classes/abstracts/form.php';
+		require_once CHILD_DIR . '/includes/classes/profile-edit.php';
+
 		foreach( self::$classes_init as $key )
 			$this->{$key} = require_once CHILD_DIR . '/includes/classes/' . $key . '.php';
 

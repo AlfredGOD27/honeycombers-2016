@@ -1,3 +1,24 @@
+// Compass & Variables
+@import 'compass/css3';
+
+// Colors
+@import '../bower_components/colors-sass/sass/variables';
+
+// Variables & Mixins
+@import '../bower_components/include-media/dist/_include-media';
+@import '../bower_components/include-media-export/dist/_include-media-export';
+@import 'variables';
+@import 'mixins';
+
+// Toolkit
+@import 'toolkit';
+
+.profile {
+	.content {
+		margin-bottom: 1.75em;
+	}
+}
+
 .profile-heading {
 	display: flex;
 	align-items: center;
@@ -90,8 +111,6 @@
 }
 
 .profile-boxes {
-	margin-bottom: 1.75em;
-
 	.box {
 		margin-bottom: 1.75em;
 		border: 1px solid $orange;
@@ -136,4 +155,10 @@
 		@extend %type;
 		@include meta-font;
 	}
+}
+
+.profile-page-title {
+	margin-bottom: 1em;
+	text-transform: uppercase;
+	font-size: 1.25em;
 }

@@ -32,6 +32,7 @@ module.exports = function(grunt) {
 			build: {
 				files: {
 					'build/css/style.css': 'sass/style.scss',
+					'build/css/profiles.css': 'sass/profiles.scss',
 					'build/css/admin.css': 'sass/admin.scss'
 				}
 			}
@@ -44,6 +45,7 @@ module.exports = function(grunt) {
 				},
 				src: [
 					'build/css/style.css',
+					'build/css/profiles.css',
 					'build/css/admin.css'
 				]
 			}
@@ -137,6 +139,7 @@ module.exports = function(grunt) {
 			build: {
 				files: {
 					'build/css/style.css': ['build/css/style.css'],
+					'build/css/profiles.css': ['build/css/profiles.css'],
 					'build/css/admin.css': ['build/css/admin.css']
 				}
 			}
@@ -149,6 +152,7 @@ module.exports = function(grunt) {
 			build: {
 				files: {
 					'build/css/style.min.css': ['build/css/style.css'],
+					'build/css/profiles.min.css': ['build/css/profiles.css'],
 					'build/css/admin.min.css': ['build/css/admin.css']
 				}
 			}
