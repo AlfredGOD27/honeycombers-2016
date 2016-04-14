@@ -2116,12 +2116,21 @@ input[type='search'] {
 }
 
 .white-popup {
+  position: relative;
   margin: 1.5em auto;
   padding: 1.25em 3.5em;
   max-width: 40em;
   border: 1px solid #fe862c;
   background-color: #FFFFFF;
   text-align: center;
+}
+.white-popup .mfp-close {
+  padding: 0;
+  width: 1em;
+  height: 1em;
+  color: #c7c7c7;
+  font-size: 3em;
+  line-height: 1;
 }
 .white-popup .ico-favicon {
   display: block;
