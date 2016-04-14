@@ -56,7 +56,20 @@ class HC_Profile_Edit_Form extends HC_Form_Abstract {
 			'classes'  => array('one-third'),
 		);
 		$this->fields[] = array(
-			'slug'               => '_thumbnail_id',
+			'slug'        => '_hc_user_city',
+			'label'       => 'Choose Your City',
+			'type'        => 'select',
+			'table'       => 'usermeta',
+			'placeholder' => '',
+			'required'    => false,
+			'options'     => array(
+				'Singapore',
+				'Jakarta',
+			),
+			'classes' => array('one-third'),
+		);
+		$this->fields[] = array(
+			'slug'               => 'wp_user_avatar',
 			'label'              => 'Profile Image (<1MB)',
 			'type'               => 'file',
 			'table'              => 'usermeta',
