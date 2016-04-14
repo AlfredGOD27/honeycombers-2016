@@ -303,7 +303,7 @@ function hc_site_top() {
 					<?php
 				} else {
 					?>
-					<a href="<?php echo HC()->profiles->get_url(); ?>">Hello, <?php echo HC()->users->get_display_name( get_current_user_id() ); ?></a>
+					<a href="<?php echo HC()->profiles->get_url(); ?>">Hello, <?php echo HC()->profiles->get_first_name( get_current_user_id() ); ?></a>
 					<?php
 				}
 				?>
@@ -333,7 +333,7 @@ function hc_mobile_menu_toggle() {
 			<?php
 		} else {
 			?>
-			<a href="<?php echo HC()->profiles->get_url(); ?>" class="btn btn-bordered">Hello, <?php echo HC()->users->get_display_name( get_current_user_id() ); ?></a>
+			<a href="<?php echo HC()->profiles->get_url(); ?>" class="btn btn-bordered">Hello, <?php echo HC()->profiles->get_first_name( get_current_user_id() ); ?></a>
 			<?php
 		}
 		?>

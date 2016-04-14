@@ -36,20 +36,6 @@ class HC_Users {
 
 	}
 
-	public function get_display_name( $user_id ) {
-
-		$user = get_user_by( 'id', $user_id );
-
-		if( !empty($user->first_name))
-			return $user->first_name;
-
-		if( !empty($user->display_name))
-			return $user->display_name;
-
-		return $user->user_login;
-
-	}
-
 	private function handle_logout() {
 
 		// Maybe logout

@@ -69,6 +69,8 @@ class HC_Profiles {
 			$this->user    = get_user_by( 'id', $this->user_id );
 		}
 
+		add_action( 'genesis_loop', array($this, 'display_heading') );
+
 		switch( $this->endpoint ) {
 			case 'base':
 				add_action( 'genesis_loop', array($this, 'display_landing') );
@@ -87,6 +89,42 @@ class HC_Profiles {
 			$url .= $endpoint . '/';
 
 		return $url;
+
+	}
+
+	public function get_first_name( $user_id = false ) {
+
+		if( false === $user_id ) {
+			$user = $this->user;
+		} else {
+			$user = get_user_by( 'id', $user_id );
+		}
+
+		if( !empty($user->first_name))
+			return $user->first_name;
+
+		if( !empty($user->display_name))
+			return $user->display_name;
+
+		return $user->user_login;
+
+	}
+
+	public function get_full_name( $user_id = false ) {
+
+		if( false === $user_id ) {
+			$user = $this->user;
+		} else {
+			$user = get_user_by( 'id', $user_id );
+		}
+
+		if( !empty($user->first_name) && !empty($user->last_name) )
+			return $user->first_name . ' ' . $user->last_name;
+
+		if( !empty($user->display_name))
+			return $user->display_name;
+
+		return $user->user_login;
 
 	}
 
@@ -130,6 +168,29 @@ class HC_Profiles {
 		$classes[] = 'profile-' . $this->endpoint;
 
 		return $classes;
+
+	}
+
+	public function display_heading() {
+
+		?>
+		<heading class="profile-heading clearfix">
+			<div class="left">
+				<?php
+				echo get_avatar( $this->user_id, 120 );
+				?>
+
+				<div class="profile-welcome">
+					<span>Welcome</span>
+					<h1><?php echo $this->get_full_name(); ?></h1>
+					<nav class="profile-nav">
+						<a href="<?php echo $this->get_url('edit'); ?>">Edit profile</a>
+						<a href="<?php echo $this->get_url('folders'); ?>">Edit folders</a>
+					</nav>
+				</div>
+			</div>
+		</heading>
+		<?php
 
 	}
 
