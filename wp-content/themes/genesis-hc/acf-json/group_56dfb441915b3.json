@@ -158,6 +158,22 @@
             "disabled": 0
         },
         {
+            "key": "field_57101de3616dd",
+            "label": "MailChimp API URL",
+            "name": "_hc_mailchimp_api_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
             "key": "field_570dc1bc8d75e",
             "label": "MailChimp API Key",
             "name": "_hc_mailchimp_api_key",
@@ -406,5 +422,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1460591509
+    "modified": 1460674046
 }

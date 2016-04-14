@@ -79,6 +79,26 @@ class HC_Profile_Edit_Form extends HC_Form_Abstract {
 			'preview_type'       => 'image',
 			'classes'            => array('first', 'one-third'),
 		);
+		$this->fields[] = array(
+			'slug'        => '_hc_user_subscriptions',
+			'label'       => 'Sign Me Up For:',
+			'type'        => 'subscriptions',
+			'table'       => 'usermeta',
+			'placeholder' => '',
+			'required'    => false,
+			'interests'   => array(
+				'bd8c8e73a4' => 'Bali',
+				'1b924312a1' => 'Bangkok',
+				'cf6431e0fc' => 'Hong Kong',
+				'3ff287c860' => 'Jakarta',
+				'262a76a060' => 'Kuala Lumpur',
+				'b406482699' => 'Melbourne',
+				'41f0c232da' => 'Shanghai',
+				'5f7798b95f' => 'Singapore',
+				'19924cdc98' => 'Sydney',
+			),
+			'classes' => array('first', 'one-third'),
+		);
 
 	}
 

@@ -28,6 +28,17 @@ abstract class HC_Form_Abstract {
 
 	}
 
+	protected function get_field_by_slug( $slug ) {
+
+		foreach( $this->fields as $field ) {
+			if( $slug === $field['slug'] )
+				return $field;
+		}
+
+		return false;
+
+	}
+
 	protected function sanitize_email( $value ) {
 
 		return filter_var( $value, FILTER_VALIDATE_EMAIL ) ? sanitize_email( $value ) : false;
@@ -68,6 +79,16 @@ abstract class HC_Form_Abstract {
 			case 'boolean':
 				$value = !empty($value) ? 'yes' : false;
 				break;
+			case 'subscriptions':
+				$value              = (array) $value;
+				$whitelisted_values = array();
+				foreach( $value as $interest ) {
+					if( isset($field['interests'][$interest]) )
+						$whitelisted_values[] = $interest;
+				}
+
+				$value = $whitelisted_values;
+				break;
 		}
 
 		return $value;
@@ -80,19 +101,26 @@ abstract class HC_Form_Abstract {
 		if( isset($_POST[ $field['slug'] ]) ) {
 			$value = $_POST[ $field['slug'] ];
 		} else {
-			switch( $field['table'] ) {
-				case 'posts':
-					$value = $this->target_object->{$field['slug']};
-					break;
-				case 'postmeta':
-					$value = get_post_meta( $this->target_id, $field['slug'], true );
-					break;
-				case 'users':
-					$value = $this->user_object->{$field['slug']};
-					break;
-				case 'usermeta':
-					$value = get_user_meta( $this->user_object->ID, $field['slug'], true );
-					break;
+			if( 'subscriptions' === $field['type'] ) {
+				$email_field = $this->get_field_by_slug('user_email');
+				$email       = $this->get_field_value($email_field);
+				if( !empty($email) )
+					$value = HC()->subscriptions->get_subscriber_interests( $email );
+			} else {
+				switch( $field['table'] ) {
+					case 'posts':
+						$value = $this->target_object->{$field['slug']};
+						break;
+					case 'postmeta':
+						$value = get_post_meta( $this->target_id, $field['slug'], true );
+						break;
+					case 'users':
+						$value = $this->user_object->{$field['slug']};
+						break;
+					case 'usermeta':
+						$value = get_user_meta( $this->user_object->ID, $field['slug'], true );
+						break;
+				}
 			}
 		}
 
@@ -210,6 +238,17 @@ abstract class HC_Form_Abstract {
 						echo '</label>';
 					echo '</div>';
 					break;
+				case 'subscriptions':
+					echo '<div class="checkbox-list">';
+						foreach( $field['interests'] as $interest_id => $interest_name ) {
+							$checked = in_array($interest_id, $value, true) ? 'checked' : '';
+							echo '<label class="checkbox">';
+								echo '<input type="checkbox" name="' . $field['slug'] . '[]" value="' . $interest_id . '" ' . $checked . '>';
+								echo $interest_name;
+							echo '</label>';
+						}
+					echo '</div>';
+					break;
 			}
 		echo '</div>';
 
@@ -236,6 +275,7 @@ abstract class HC_Form_Abstract {
 				case 'textarea':
 				case 'select':
 				case 'radio':
+				case 'subscriptions':
 					// These are empty if they have no content
 					if(
 						!isset($args[ $field['table'] ][ $field['slug'] ]) ||
@@ -435,6 +475,23 @@ abstract class HC_Form_Abstract {
 
 	}
 
+	protected function save_subscriptions( $args ) {
+
+		foreach( $this->fields as $field ) {
+			if( 'subscriptions' !== $field['type'] )
+				continue;
+
+			$current_interests = isset($args[ $field['table'] ][ $field['slug'] ]) ? $args[ $field['table'] ][ $field['slug'] ] : array();
+
+			$interests = array();
+			foreach( $field['interests'] as $interest_id => $interest_name )
+				$interests[$interest_id] = in_array($interest_id, $current_interests, true);
+
+			HC()->subscriptions->subscribe( $args['users']['user_email'], $interests );
+		}
+
+	}
+
 	protected function maybe_save() {
 
 		if( !isset($_POST['hc_edit']) )
@@ -484,6 +541,7 @@ abstract class HC_Form_Abstract {
 				case 'select':
 				case 'radio':
 				case 'boolean':
+				case 'subscriptions':
 					if( isset($_POST[ $field['slug'] ]) )
 						$args[ $field['table'] ][ $field['slug'] ] = $this->sanitize_value( $field, $_POST[ $field['slug'] ] );
 				case 'password':
@@ -540,7 +598,11 @@ abstract class HC_Form_Abstract {
 			wp_update_user( $args['users'] );
 		}
 
+		// Save files
 		$this->upload_files();
+
+		// Save subcriptions
+		$this->save_subscriptions( $args );
 
 		$this->do_post_save();
 

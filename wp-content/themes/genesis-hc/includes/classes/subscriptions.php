@@ -12,6 +12,11 @@ class HC_Subscriptions {
 
 	private function setup_api() {
 
+		if( !isset($this->api_url) ) {
+			$this->api_url = get_option( 'options__hc_mailchimp_api_url' );
+			$this->api_url = untrailingslashit($this->api_url);
+		}
+
 		if( !isset($this->api_key) )
 			$this->api_key = get_option( 'options__hc_mailchimp_api_key' );
 
@@ -20,16 +25,41 @@ class HC_Subscriptions {
 
 	}
 
-	private function subscribe( $email, $list_id = false ) {
+	public function get_subscriber_interests( $email ) {
 
 		$this->setup_api();
 
-		if( false === $list_id )
-			$list_id = $this->list_id;
+		$url .= $this->api_url . '/lists/' . $this->list_id . '/members/';
+		$url .= md5( strtolower( $email ) );
+
+		$args = array(
+			'headers' => array(
+				'Authorization' => 'Basic ' . base64_encode( 'un_not_needed' . ':' . $this->api_key ),
+			),
+		);
+		$response = wp_remote_get( $url, $args );
+
+		if( is_wp_error($response) || 200 !== $response['response']['code'] )
+			return array();
+
+		$body = json_decode($response['body'], true);
+
+		$interests = array();
+		foreach( $body['interests'] as $interest_id => $enabled ) {
+			if( !empty($enabled) )
+				$interests[] = $interest_id;
+		}
+
+		return $interests;
+
+	}
+
+	public function subscribe( $email, $interests = array() ) {
+
+		$this->setup_api();
 
 		// Build query
-		$url = 'https://us11.api.mailchimp.com/3.0/';
-		$url .= 'lists/' . $list_id . '/members/' . md5( strtolower($email) );
+		$url = $this->api_url . '/lists/' . $this->list_id . '/members/' . md5( strtolower($email) );
 
 		$args = array(
 			'method'  => 'PUT',
@@ -39,6 +69,7 @@ class HC_Subscriptions {
 			'body' => array(
 				'status'        => 'subscribed',
 				'email_address' => $email,
+				'interests'     => $interests,
 			),
 		);
 

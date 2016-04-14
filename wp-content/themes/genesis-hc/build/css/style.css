@@ -1961,6 +1961,29 @@ select.styled::-ms-expand {
   display: none;
 }
 
+.checkbox {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+input[type='checkbox'] {
+  width: 1em;
+  height: 1em;
+  border: 1px solid #fe862c;
+  background-color: #FFFFFF;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+input[type='checkbox']:checked {
+  background-color: #fe862c;
+}
+
 .required {
   color: #fe862c;
 }
