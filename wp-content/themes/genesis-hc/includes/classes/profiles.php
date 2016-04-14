@@ -204,7 +204,7 @@ class HC_Profiles {
 
 				<div class="profile-welcome">
 					<span>Welcome</span>
-					<h1><?php echo $this->get_full_name(); ?></h1>
+					<h1><a href="<?php echo $this->get_url(); ?>"><?php echo $this->get_full_name(); ?></a></h1>
 					<nav class="profile-nav">
 						<a href="<?php echo $this->get_url('edit'); ?>">Edit profile</a>
 						<a href="<?php echo $this->get_url('folders'); ?>">Edit folders</a>
