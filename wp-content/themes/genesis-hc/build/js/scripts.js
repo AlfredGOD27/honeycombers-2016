@@ -5942,6 +5942,7 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 (function($) {
 
 	$('.component-slideshow').slick({
+		speed: 150,
 		prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
 		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>'
 	});
@@ -6648,6 +6649,7 @@ function hc_maybe_load_facebook() {
 		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
 		centerMode: true,
 		slidesToShow: 1,
+		speed: 150,
 		variableWidth: true,
 	});
 

@@ -64,6 +64,7 @@
 		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
 		centerMode: true,
 		slidesToShow: 1,
+		speed: 150,
 		variableWidth: true,
 	});
 
