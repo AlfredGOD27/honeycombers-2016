@@ -8,9 +8,9 @@ class HC_Profiles {
 		$this->base_url  = 'profile';
 		$this->endpoints = array(
 			'edit',
-			'folders',
-			'favourites',
-			'bookmarks',
+			'add-folder',
+			'edit-folder',
+			'view-folder',
 		);
 
 		add_action( 'init', array($this, 'rewrites'), 1 );
@@ -175,7 +175,7 @@ class HC_Profiles {
 
 		?>
 		<heading class="profile-heading clearfix">
-			<div class="left">
+			<div class="left two-thirds first">
 				<?php
 				echo get_avatar( $this->user_id, 120 );
 				?>
@@ -189,6 +189,19 @@ class HC_Profiles {
 					</nav>
 				</div>
 			</div>
+
+			<?php
+			if( 'base' === $this->endpoint ) {
+				?>
+				<div class="right one-third">
+					<div class="profile-favorites-info">
+						<p class="orange">When you see the <i class="ico-heart"></i> Just click to save!</p>
+						<p class="black">Save, organise and share your favourite posts here</p>
+					</div>
+				</div>
+				<?php
+			}
+			?>
 		</heading>
 		<?php
 
@@ -196,7 +209,57 @@ class HC_Profiles {
 
 	public function display_landing() {
 
-		echo 'hi';
+		$folders = HC()->favorites->get_folders( $this->user_id );
+
+		$boxes = array();
+
+		foreach( $folders as $folder )
+			$boxes[] = $folder;
+
+		$boxes[] = array(
+			'name'        => 'Create Your Own Folder',
+			'description' => 'Ideas for a night out, a dinner date or a quick getaway!',
+			'url'         => $this->get_url('add-folder'),
+			'icon'        => 'plus',
+		);
+
+		?>
+		<div class="profile-boxes clearfix">
+			<?php
+			$i = 1;
+			foreach( $boxes as $box ) {
+				echo 1 === $i % 3 ? '<div class="one-third first box">' : '<div class="one-third box">';
+					?>
+					<a href="<?php echo $box['url']; ?>">
+						<div class="top">
+							<?php
+							if( !empty($box['image_id']) )	{
+								echo wp_get_attachment_image( $box['image_id'], 'archive' );
+							} elseif( !empty($box['icon']) ) {
+								echo '<i class="ico-' . $box['icon'] . '"></i>';
+							}
+							?>
+						</div>
+
+						<div class="bottom">
+							<h3><?php echo $box['name']; ?></h3>
+
+							<?php
+							if( !empty($box['description']) ) {
+								?>
+								<p><?php echo $box['description']; ?></p>
+								<?php
+							}
+							?>
+						</div>
+					</a>
+					<?php
+				echo '</div>';
+				++$i;
+			}
+			?>
+		</div>
+		<?php
 
 	}
 
