@@ -74,6 +74,24 @@ select {
 	}
 }
 
+.checkbox {
+	display: flex;
+	align-items: center;
+}
+
+input[type='checkbox'] {
+	width: 1em;
+	height: 1em;
+	border: 1px solid $orange;
+	background-color: $white;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	&:checked {
+		background-color: $orange;
+	}
+}
+
 .required {
 	color: $orange;
 }
