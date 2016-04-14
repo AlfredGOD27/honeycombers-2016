@@ -11,6 +11,7 @@ class HC_Profiles {
 			'add-folder',
 			'edit-folder',
 			'view-folder',
+			'logout',
 		);
 
 		add_action( 'init', array($this, 'rewrites'), 1 );
@@ -75,6 +76,9 @@ class HC_Profiles {
 		add_action( 'genesis_loop', array(HC()->messages, 'display') );
 
 		switch( $this->endpoint ) {
+			case 'logout':
+				$this->handle_logout();
+				break;
 			case 'base':
 				add_action( 'genesis_loop', array($this, 'display_landing') );
 				break;
@@ -148,6 +152,15 @@ class HC_Profiles {
 			</li>
 		</ul>
 		<?php
+
+	}
+
+	private function handle_logout() {
+
+		wp_logout();
+
+		wp_redirect( get_bloginfo('url') );
+		exit;
 
 	}
 

@@ -28,35 +28,9 @@ class HC_Users {
 		if( (int) $post->ID !== (int) $account_page_id )
 			return;
 
-		$this->handle_logout();
-
 		$this->handle_password_reset();
 
 		add_action( 'genesis_entry_content', array($this, 'user_page_content') );
-
-	}
-
-	private function handle_logout() {
-
-		// Maybe logout
-		if( !isset($_GET['logout']) )
-			return;
-
-		if( is_user_logged_in() ) {
-			wp_logout();
-
-			$url = add_query_arg(
-				array(
-					'logged_out' => true,
-				),
-				HC()->profiles->get_url()
-			);
-		} else {
-			$url = HC()->profiles->get_url();
-		}
-
-		wp_redirect($url);
-		exit;
 
 	}
 
