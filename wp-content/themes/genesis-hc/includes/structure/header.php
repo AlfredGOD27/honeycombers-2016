@@ -296,7 +296,17 @@ function hc_site_top() {
 			</div>
 
 			<div class="right">
-				<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="open-popup-link" data-mfp-src="#login-popup">Sign In <i class="ico-exit"></i></a>
+				<?php
+				if( !is_user_logged_in() ) {
+					?>
+					<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="open-popup-link" data-mfp-src="#login-popup">Sign In <i class="ico-exit"></i></a>
+					<?php
+				} else {
+					?>
+					<a href="<?php echo HC()->profiles->get_url(); ?>">Hello, <?php echo HC()->users->get_display_name( get_current_user_id() ); ?></a>
+					<?php
+				}
+				?>
 			</div>
 		</div>
 	</section>
@@ -316,7 +326,17 @@ function hc_mobile_menu_toggle() {
 
 	?>
 	<div class="mobile-header-right">
-		<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="btn btn-bordered open-popup-link" data-mfp-src="#login-popup">Login</a>
+		<?php
+		if( !is_user_logged_in() ) {
+			?>
+			<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="btn btn-bordered open-popup-link" data-mfp-src="#login-popup">Login</a>
+			<?php
+		} else {
+			?>
+			<a href="<?php echo HC()->profiles->get_url(); ?>" class="btn btn-bordered">Hello, <?php echo HC()->users->get_display_name( get_current_user_id() ); ?></a>
+			<?php
+		}
+		?>
 		<button type="button" class="btn toggle-nav" title="Toggle Menu">
 			<i class="ico-menu"></i>
 			<i class="ico-close"></i>
