@@ -20,6 +20,7 @@ final class HC {
 		'listings',
 		'messages',
 		'migration',
+		'profiles',
 		'schemas',
 		'share',
 		'sliders',

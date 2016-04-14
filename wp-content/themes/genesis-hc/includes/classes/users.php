@@ -36,11 +36,17 @@ class HC_Users {
 
 	}
 
-	public function get_user_endpoint_url() {
+	public function get_display_name( $user_id ) {
 
-		$account_page_id = get_option( 'options__hc_profile_page_id' );
+		$user = get_user_by( 'id', $user_id );
 
-		return get_permalink( $account_page_id );
+		if( !empty($user->first_name))
+			return $user->first_name;
+
+		if( !empty($user->display_name))
+			return $user->display_name;
+
+		return $user->user_login;
 
 	}
 
@@ -57,10 +63,10 @@ class HC_Users {
 				array(
 					'logged_out' => true,
 				),
-				$this->get_user_endpoint_url()
+				HC()->profiles->get_url()
 			);
 		} else {
-			$url = $this->get_user_endpoint_url();
+			$url = HC()->profiles->get_url();
 		}
 
 		wp_redirect($url);
@@ -99,7 +105,7 @@ class HC_Users {
 						array(
 							'password_reset' => true,
 						),
-						$this->get_user_endpoint_url()
+						HC()->profiles->get_url()
 					);
 					wp_redirect( $url );
 					exit;
@@ -138,7 +144,7 @@ class HC_Users {
 				'key'            => $_GET['key'],
 				'login'          => $_GET['login'],
 			),
-			$this->get_user_endpoint_url()
+			HC()->profiles->get_url()
 		);
 		?>
 		<form action="<?php echo $url; ?>" method="post" autocomplete="off" class="one-half first">
@@ -202,7 +208,7 @@ class HC_Users {
 	private function die_with_success( $message, $user_id, $redirect_params = array() ) {
 
 		$profile_id = HC()->profiles->get_user_profile_id( $user_id );
-		$url        = !empty($profile_id) ? get_permalink($profile_id) : $this->get_user_endpoint_url();
+		$url        = !empty($profile_id) ? get_permalink($profile_id) : HC()->profiles->get_url();
 
 		$url = add_query_arg(
 			$redirect_params,
@@ -341,7 +347,7 @@ class HC_Users {
 				'key'            => $key,
 				'login'          => rawurlencode($user_login),
 			),
-			$this->get_user_endpoint_url()
+			HC()->profiles->get_url()
 		);
 
 		$message = __('Someone requested that the password be reset for the following account:') . "\r\n\r\n";
