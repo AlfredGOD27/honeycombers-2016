@@ -33,7 +33,60 @@
 	// Video Popup
 	$('.open-video-link').magnificPopup({
 		type: 'iframe',
-		midClick: true
+		midClick: true,
+		iframe: {
+			markup: '<div class="mfp-iframe-scaler">'+
+						'<div class="mfp-close"></div>'+
+					'</div>',
+			patterns: {
+				youtube: {
+					index: 'youtube.com',
+					id: 'v=',
+					src: '//www.youtube.com/embed/%id%?autoplay=1&enablejsapi=1'
+				}
+			}
+		},
+		callbacks: {
+			open: function() {
+				var embed_src = this.currItem.src,
+					is_youtube = false,
+					video_id,
+					html;
+
+				$.each( this.st.iframe.patterns, function() {
+					if( embed_src.indexOf( this.index ) > -1) {
+						if( this.id ) {
+							if( typeof this.id === 'string' ) {
+								embed_src = embed_src.substr( embed_src.lastIndexOf(this.id) + this.id.length, embed_src.length);
+							} else {
+								embed_src = this.id.call( this, embed_src );
+							}
+						}
+
+						if( 'youtube.com' === this.index ) {
+							is_youtube = true;
+							video_id = embed_src;
+							embed_src = this.src.replace(/%id%/g, embed_src );
+						} else {
+							embed_src = this.src.replace('%id%', embed_src );
+						}
+
+						return false;
+					}
+				});
+
+				if( is_youtube ) {
+					html = '<iframe id="youtube-player-' + video_id + '" src="' + embed_src  + '" class="mfp-iframe youtube-tracked-embed" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+				} else {
+					html = '<iframe src="' + embed_src  + '" class="mfp-iframe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+				}
+
+				this.container.find( '.mfp-iframe-scaler' ).append( html );
+
+				if( is_youtube )
+					$('body').trigger( 'hc_load_youtube_modal_video' );
+			}
+		}
 	});
 
 	// HTML Popup

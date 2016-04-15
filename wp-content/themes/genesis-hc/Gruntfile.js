@@ -75,6 +75,7 @@ module.exports = function(grunt) {
 					'bower_components/magnific-popup/dist/jquery.magnific-popup.js',
 					'bower_components/slick-carousel/slick/slick.js',
 					'bower_components/waypoints/lib/jquery.waypoints.js',
+					'js/_analytics-youtube.js',
 					'js/_archives.js',
 					'js/_calendar.js',
 					'js/_components.js',

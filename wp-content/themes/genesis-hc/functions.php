@@ -27,6 +27,7 @@ final class HC {
 		'subscriptions',
 		'users',
 		'utilities',
+		'videos',
 		'widgets',
 	);
 
