@@ -147,6 +147,7 @@ class HC_Profiles {
 				<a href="<?php echo $this->get_url(); ?>">Hello, <?php echo HC()->profiles->get_first_name( get_current_user_id() ); ?> <i class="ico-arrow-down"></i></a>
 
 				<ul class="sub-menu">
+					<li><a href="<?php echo $this->get_url(); ?>">Me</a></li>
 					<li><a href="<?php echo $this->get_url('logout'); ?>">Logout</a></li>
 				</ul>
 			</li>
