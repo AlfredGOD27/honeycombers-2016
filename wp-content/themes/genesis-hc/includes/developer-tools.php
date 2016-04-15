@@ -18,6 +18,14 @@ function hc_clear_transients_node( $wp_admin_bar ) {
 	if( isset($_GET['clear-transients']) && 1 === (int) $_GET['clear-transients'] ) {
 		$wpdb->query( "DELETE FROM `$wpdb->options` WHERE `option_name` LIKE ('_transient_%') OR `option_name` LIKE ('_transient_timeout_%')" );
 		wp_cache_flush();
+
+		$wpdb->query( "UPDATE $wpdb->options SET autoload = 'no'" );
+
+		$autoload_options = array();
+
+		foreach( $autoload_options as $option_name ) {
+			$wpdb->query( "UPDATE $wpdb->options SET autoload = 'yes' WHERE option_name LIKE '$option_name'" );
+		}
 	}
 
 	$count = $wpdb->query( "SELECT `option_name` FROM `$wpdb->options` WHERE `option_name` LIKE ('_transient_%')" );

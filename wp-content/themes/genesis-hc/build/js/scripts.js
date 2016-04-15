@@ -5943,8 +5943,8 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
 	$('.component-slideshow').slick({
 		speed: 150,
-		prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>'
+		prevArrow: hc_strings.prev_arrow,
+		nextArrow: hc_strings.next_arrow,
 	});
 
 })( window.jQuery );
@@ -6187,18 +6187,41 @@ function hc_maybe_load_facebook() {
 	} else {
 		$('.listing-slider-for').slick({
 			adaptiveHeight: true,
-			arrows: false,
+			arrows: true,
 			slidesToScroll: 1,
-			slidesToShow: 1
+			slidesToShow: 1,
+			prevArrow: hc_strings.prev_arrow,
+			nextArrow: hc_strings.next_arrow,
 		});
 
 		$('.event-slider-for').slick({
 			adaptiveHeight: true,
-			arrows: false,
+			arrows: true,
 			slidesToScroll: 1,
-			slidesToShow: 1
+			slidesToShow: 1,
+			prevArrow: hc_strings.prev_arrow,
+			nextArrow: hc_strings.next_arrow,
 		});
 	}
+
+	$('.trending-slider').slick({
+		arrows: false,
+		slidesToScroll: 3,
+		slidesToShow: 5,
+		speed: 150,
+		prevArrow: hc_strings.prev_arrow,
+		nextArrow: hc_strings.next_arrow,
+		responsive: [
+			{
+				breakpoint: im.getValue('tablet', true),
+				settings: {
+					arrows: true,
+					slidesToScroll: 1,
+					slidesToShow: 2,
+				}
+			}
+		]
+	});
 
 	function load_next_page() {
 
@@ -6369,8 +6392,8 @@ function hc_maybe_load_facebook() {
 			arrows: true,
 			slidesToScroll: 1,
 			slidesToShow: 1,
-			prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
-			nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
+			prevArrow: hc_strings.prev_arrow,
+			nextArrow: hc_strings.next_arrow,
 		});
 	}
 
@@ -6577,8 +6600,8 @@ function hc_maybe_load_facebook() {
 		slidesToScroll: 1,
 		slidesToShow: 1,
 		fade: true,
-		prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-up"></i></button>',
-		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-down"></i></button>',
+		prevArrow: hc_strings.prev_arrow,
+		nextArrow: hc_strings.next_arrow,
 	});
 
 })( window.jQuery );
@@ -6645,8 +6668,8 @@ function hc_maybe_load_facebook() {
 
 	// Entry header slideshow
 	$('.entry-slideshow').slick({
-		prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
+		prevArrow: hc_strings.prev_arrow,
+		nextArrow: hc_strings.next_arrow,
 		centerMode: true,
 		slidesToShow: 1,
 		speed: 150,
