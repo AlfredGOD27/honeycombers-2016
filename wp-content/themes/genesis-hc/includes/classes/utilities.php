@@ -17,7 +17,7 @@ class HC_Utilities {
 
 		$icon = get_field( '_hc_category_icon', $category );
 		if( !empty($icon) )
-			return '<i class="ico-' . $icon . '"></i>';
+			return '<i class="category-icon ico-' . $icon . '"></i>';
 
 	}
 

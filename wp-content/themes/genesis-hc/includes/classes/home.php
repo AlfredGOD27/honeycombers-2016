@@ -186,11 +186,13 @@ class HC_Home {
 			<div class="wrap">
 				<?php
 				if( !empty($enable_video) ) {
+					$video_page_id   = get_field( '_hc_video_page_id', 'option' );
+					$video_page_link = get_permalink($video_page_id);
 					?>
 					<div class="left">
 						<?php
 						$heading = get_post_meta( $post->ID, '_hc_home_watch_this_heading', true );
-						echo '<h2>' . sanitize_text_field($heading) . '</h2>';
+						echo '<h2><a href="' . $video_page_link . '">' . sanitize_text_field($heading) . '</a></h2>';
 
 						$image_id = get_post_meta( $post->ID, '_hc_home_watch_this_video_thumbnail_id', true );
 						$src      = get_post_meta( $post->ID, '_hc_home_watch_this_video_url', true );
@@ -201,8 +203,7 @@ class HC_Home {
 						?>
 
 						<div class="mobile-bar show-phone">
-							<?php $page_id = get_field( '_hc_video_page_id', 'option' ); ?>
-							<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><span>More Videos</span> <i class="ico-arrow-right"></i></a>
+							<a href="<?php echo $video_page_link; ?>" class="btn btn-icon"><span>More Videos</span> <i class="ico-arrow-right"></i></a>
 						</div>
 					</div>
 					<?php
@@ -211,11 +212,14 @@ class HC_Home {
 
 				<?php
 				if( !empty($enable_listings) ) {
+					$directory_page_id   = get_field( '_hc_directory_page_id', 'option' );
+					$directory_page_link = get_permalink($directory_page_id);
+
 					?>
 					<div class="right hide-no-js">
 						<?php
 						$heading = get_post_meta( $post->ID, '_hc_home_tables_heading', true );
-						echo '<h2>' . sanitize_text_field($heading) . '</h2>';
+						echo '<h2><a href="' . $directory_page_link . '">' . sanitize_text_field($heading) . '</a></h2>';
 						?>
 
 						<?php
@@ -331,8 +335,7 @@ class HC_Home {
 						</div>
 
 						<div class="mobile-bar show-phone">
-							<?php $page_id = get_field( '_hc_directory_page_id', 'option' ); ?>
-							<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><span>More Restaurants</span> <i class="ico-arrow-right"></i></a>
+							<a href="<?php echo $directory_page_link; ?>" class="btn btn-icon"><span>More Restaurants</span> <i class="ico-arrow-right"></i></a>
 						</div>
 					</div>
 					<?php
@@ -354,12 +357,15 @@ class HC_Home {
 
 		$events = get_post_meta( $post->ID, '_hc_home_featured_event_ids', true );
 
+		$events_page_id   = get_field( '_hc_calendar_page_id', 'option' );
+		$events_page_link = get_permalink($events_page_id);
+
 		?>
 		<section class="home-section home-section-events-join">
 			<div class="wrap">
 				<?php
 				$heading = get_post_meta( $post->ID, '_hc_home_featured_events_heading', true );
-				echo '<h2>' . sanitize_text_field($heading) . '</h2>';
+				echo '<h2><a href="' . $events_page_link . '">' . sanitize_text_field($heading) . '</a></h2>';
 				?>
 
 				<div class="three-fourths first left hide-no-js">
@@ -442,8 +448,8 @@ class HC_Home {
 					</div>
 
 					<div class="mobile-bar show-phone">
-						<?php $page_id = get_field( '_hc_calendar_page_id', 'option' ); ?>
-						<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><span>More Events</span> <i class="ico-arrow-right"></i></a>
+						<?php  ?>
+						<a href="<?php echo $events_page_link; ?>" class="btn btn-icon"><span>More Events</span> <i class="ico-arrow-right"></i></a>
 					</div>
 				</div>
 
@@ -492,7 +498,7 @@ class HC_Home {
 				echo '<h2>' . sanitize_text_field($heading) . '</h2>';
 				?>
 
-				<div class="clearfix">
+				<div class="clearfix trending-slider hide-no-js">
 					<?php
 					$i        = 1;
 					$post_ids = get_post_meta( $post->ID, '_hc_home_trending_post_ids', true );
@@ -501,14 +507,28 @@ class HC_Home {
 							continue;
 
 						?>
-						<a href="<?php echo get_permalink($post_id); ?>">
-							<?php
-							echo get_the_post_thumbnail( $post_id, 'archive-small' );
-							?>
+						<div>
+							<a href="<?php echo get_permalink($post_id); ?>">
+								<?php
+								echo get_the_post_thumbnail( $post_id, 'archive-small' );
+								?>
 
-							<i class="ico-hexagon"></i>
-							<span><?php echo $i; ?></span>
-						</a>
+								<i class="ico-hexagon"></i>
+								<span><?php echo $i; ?></span>
+
+								<div class="overlay">
+									<div>
+										<?php
+										$categories = wp_get_post_terms( $post_id, 'category' );
+										if( !empty($categories) )
+											echo HC()->utilities->get_category_icon_html( $categories[0] );
+										?>
+
+										<h3><?php echo get_the_title($post_id); ?></h3>
+									</div>
+								</div>
+							</a>
+						</div>
 						<?php
 						++$i;
 					}
@@ -535,6 +555,11 @@ class HC_Home {
 				if( has_post_thumbnail($post->ID) ) {
 					?>
 					<div class="top">
+						<?php
+						$categories = wp_get_post_terms( $post->ID, 'category' );
+						if( !empty($categories) )
+							echo HC()->utilities->get_category_icon_html( $categories[0] );
+						?>
 						<?php HC()->favorites->display( $post->ID, true ); ?>
 						<?php echo get_the_post_thumbnail( $post->ID, 'archive-small' ); ?>
 					</div>
@@ -583,13 +608,6 @@ class HC_Home {
 		if( empty($enable) )
 			return;
 
-		$args = array(
-			'posts_per_page' => -1,
-			'post_type'      => 'post',
-			'fields'         => 'ids',
-		);
-		$posts = get_posts( $args );
-
 		?>
 		<section class="home-section home-section-latest-posts">
 			<div class="wrap">
@@ -610,7 +628,7 @@ class HC_Home {
 					</a>
 				</h2>
 
-				<div class="block clearfix" data-offset="8" data-total="<?php echo count($posts); ?>">
+				<div class="block clearfix" data-offset="8" data-total="100">
 					<?php
 					$this->display_posts();
 					?>
