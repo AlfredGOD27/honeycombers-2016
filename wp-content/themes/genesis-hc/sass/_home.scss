@@ -991,6 +991,7 @@ $slider-height: 25em;
 .home-section-latest-posts {
 	.banner {
 		margin: 0 auto 1.25em;
+		text-align: center;
 	}
 
 	h2 {
@@ -1048,11 +1049,11 @@ $slider-height: 25em;
 		position: relative;
 		overflow: hidden;
 		background-color: $black;
-	}
 
-	img {
-		display: block;
-		transition: all $home-transition-time ease-in-out;
+		img {
+			display: block;
+			transition: all $home-transition-time ease-in-out;
+		}
 	}
 
 	.bottom {

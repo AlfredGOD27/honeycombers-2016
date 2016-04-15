@@ -5605,6 +5605,7 @@ input[type='search'] {
 
 .home-section-latest-posts .banner {
   margin: 0 auto 1.25em;
+  text-align: center;
 }
 .home-section-latest-posts h2 a {
   color: inherit;
@@ -5647,7 +5648,7 @@ input[type='search'] {
   overflow: hidden;
   background-color: #252525;
 }
-.home-section-latest-posts img {
+.home-section-latest-posts .top img {
   display: block;
   -webkit-transition: all 0.25s ease-in-out;
           transition: all 0.25s ease-in-out;
