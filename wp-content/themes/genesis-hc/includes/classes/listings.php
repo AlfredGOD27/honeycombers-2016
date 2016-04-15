@@ -215,7 +215,7 @@ class HC_Listings {
 			array(
 				'callback' => 'hc_directory_maps',
 				'v'        => '3.23',
-// 				'key'      => get_field( '_hc_google_maps_api_key', 'option' ),
+				'key'      => get_field( '_hc_google_maps_api_key', 'option' ),
 			),
 			'//maps.googleapis.com/maps/api/js'
 		);
