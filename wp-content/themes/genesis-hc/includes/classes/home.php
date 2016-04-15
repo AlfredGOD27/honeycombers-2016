@@ -198,7 +198,7 @@ class HC_Home {
 						$src      = get_post_meta( $post->ID, '_hc_home_watch_this_video_url', true );
 						$src      = esc_url($src);
 						echo '<a href="' . $src . '" class="open-video-link">';
-							echo wp_get_attachment_image( $image_id, 'event' );
+							echo wp_get_attachment_image( $image_id, 'archive' );
 						echo '</a>';
 						?>
 
@@ -377,7 +377,7 @@ class HC_Home {
 							<div>
 								<?php
 								echo '<a href="' . get_permalink($post_id) . '">';
-									echo get_the_post_thumbnail( $post_id, 'slide' );
+									echo get_the_post_thumbnail( $post_id, 'featured' );
 								echo '</a>';
 								?>
 

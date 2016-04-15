@@ -766,12 +766,13 @@ $slider-height: 25em;
 }
 
 .event-slider-for {
+	overflow: hidden;
 	width: 67.5%;
-	height: 100%;
+	height: $slider-height;
 
 	img {
 		max-width: none;
-		width: 100%;
+		height: 100%;
 		border-top: 1px solid $orange;
 	}
 
