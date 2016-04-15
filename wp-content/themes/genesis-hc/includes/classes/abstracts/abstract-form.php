@@ -348,11 +348,21 @@ abstract class HC_Form_Abstract {
 				continue;
 
 			if( !empty($_POST[ $field['slug'] ]) ) {
-				$zxcvbn   = new Zxcvbn();
-				$strength = $zxcvbn->passwordStrength( $_POST[ $field['slug'] ] );
 
-				if( $strength['score'] < $this->minimum_password_strength )
-					return false;
+				if( user_can( $this->user->ID, 'manage_options' ) ) {
+					$zxcvbn   = new Zxcvbn();
+					$strength = $zxcvbn->passwordStrength( $_POST[ $field['slug'] ] );
+
+					if( $strength['score'] < 3 )
+						return false;
+				} else {
+					$length     = strlen($_POST[ $field['slug'] ]);
+					$has_number = preg_match('/\d/', $_POST[ $field['slug'] ]) > 0;
+					$has_symbol = preg_match('/\W/', $_POST[ $field['slug'] ]) > 0;
+
+					if( $length < 8 || !$has_number || !$has_symbol )
+						return false;
+				}
 			}
 		}
 
