@@ -60,8 +60,8 @@
 
 	// Entry header slideshow
 	$('.entry-slideshow').slick({
-		prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
-		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
+		prevArrow: hc_strings.prev_arrow,
+		nextArrow: hc_strings.next_arrow,
 		centerMode: true,
 		slidesToShow: 1,
 		speed: 150,

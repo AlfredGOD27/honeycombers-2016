@@ -44,18 +44,41 @@
 	} else {
 		$('.listing-slider-for').slick({
 			adaptiveHeight: true,
-			arrows: false,
+			arrows: true,
 			slidesToScroll: 1,
-			slidesToShow: 1
+			slidesToShow: 1,
+			prevArrow: hc_strings.prev_arrow,
+			nextArrow: hc_strings.next_arrow,
 		});
 
 		$('.event-slider-for').slick({
 			adaptiveHeight: true,
-			arrows: false,
+			arrows: true,
 			slidesToScroll: 1,
-			slidesToShow: 1
+			slidesToShow: 1,
+			prevArrow: hc_strings.prev_arrow,
+			nextArrow: hc_strings.next_arrow,
 		});
 	}
+
+	$('.trending-slider').slick({
+		arrows: false,
+		slidesToScroll: 3,
+		slidesToShow: 5,
+		speed: 150,
+		prevArrow: hc_strings.prev_arrow,
+		nextArrow: hc_strings.next_arrow,
+		responsive: [
+			{
+				breakpoint: im.getValue('tablet', true),
+				settings: {
+					arrows: true,
+					slidesToScroll: 1,
+					slidesToShow: 2,
+				}
+			}
+		]
+	});
 
 	function load_next_page() {
 
