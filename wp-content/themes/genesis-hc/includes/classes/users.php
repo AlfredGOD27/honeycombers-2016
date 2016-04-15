@@ -122,7 +122,7 @@ class HC_Users {
 			</div>
 
 			<div class="form-footer">
-				<button type="submit" name="do_reset" class="btn">Reset Password ></button>
+				<button type="submit" name="do_reset" class="btn" disabled>Reset Password ></button>
 			</div>
 
 			<p class="password-instructions">Password must be at least 8 characters, and contain at least one number and one symbol.</p>
@@ -185,6 +185,28 @@ class HC_Users {
 
 	}
 
+	private function verify_captcha( $code ) {
+
+		$url = 'https://www.google.com/recaptcha/api/siteverify';
+
+		$args = array(
+			'body' => array(
+				'secret'   => get_option( 'options__hc_recaptcha_api_secret' ),
+				'response' => $code,
+			),
+		);
+
+		$response = wp_remote_post( $url, $args );
+
+		if( 200 !== $response['response']['code'] )
+			return false;
+
+		$body = json_decode($response['body'], true);
+
+		return !empty($body['success']);
+
+	}
+
 	private function check_password_strength( $password, $is_admin ) {
 
 		if( $is_admin ) {
@@ -220,6 +242,13 @@ class HC_Users {
 		if( !$strong )
 			$this->die_with_error( 'You must choose a stronger password.' );
 
+		if( empty($_POST['captcha']) )
+			$this->die_with_error( 'Invalid CAPTCHA.' );
+
+		$valid = $this->verify_captcha($_POST['captcha']);
+		if( !$valid )
+			$this->die_with_error( 'Invalid CAPTCHA.' );
+
 		if( email_exists($email) || username_exists($email) )
 			$this->die_with_error( 'A user with this email already exists.' );
 
@@ -248,6 +277,13 @@ class HC_Users {
 		if( empty($_POST['log']) || empty($_POST['pwd']) )
 			$this->die_with_error( 'You must enter an email and password.' );
 
+		if( empty($_POST['captcha']) )
+			$this->die_with_error( 'Invalid CAPTCHA.' );
+
+		$valid = $this->verify_captcha($_POST['captcha']);
+		if( !$valid )
+			$this->die_with_error( 'Invalid CAPTCHA.' );
+
 		$email = sanitize_email($_POST['log']);
 		$user  = get_user_by( 'email', $email );
 		if( empty($user) )
@@ -260,6 +296,8 @@ class HC_Users {
 		} else {
 			$this->die_with_success( 'Login successful, redirecting...', $user->ID );
 		}
+
+		wp_die();
 
 	}
 
@@ -274,6 +312,13 @@ class HC_Users {
 		} else {
 			$email = sanitize_email($_POST['email']);
 		}
+
+		if( empty($_POST['captcha']) )
+			$this->die_with_error( 'Invalid CAPTCHA.' );
+
+		$valid = $this->verify_captcha($_POST['captcha']);
+		if( !$valid )
+			$this->die_with_error( 'Invalid CAPTCHA.' );
 
 		$user = get_user_by( 'email', $email );
 		if( empty($user) )
@@ -483,7 +528,9 @@ class HC_Users {
 					</div>
 				</div>
 
-				<button type="submit" name="wp-submit" class="btn">Log In</button>
+				<div id="login-popup-captcha" class="captcha"></div>
+
+				<button type="submit" name="wp-submit" class="btn" disabled>Log In</button>
 
 				<p class="join">Don't have an account? <a href="#register-popup" class="open-popup-link" rel="nofollow">Join here</a></p>
 			</form>
@@ -505,8 +552,10 @@ class HC_Users {
 						<input type="email" name="user_login" id="forgot_password_email" placeholder="Email" required>
 					</div>
 
+					<div id="password-popup-captcha" class="captcha"></div>
+
 					<div class="form-footer">
-						<button type="submit" name="wp-submit" class="btn">Send ></button>
+						<button type="submit" name="wp-submit" class="btn" disabled>Send ></button>
 					</div>
 				</form>
 			</div>
@@ -539,8 +588,10 @@ class HC_Users {
 						<p class="password-instructions">Password must be at least 8 characters, and contain at least one number and one symbol.</p>
 					</div>
 
+					<div id="register-popup-captcha" class="captcha"></div>
+
 					<div class="form-footer">
-						<button type="submit" name="wp-submit" class="btn">Sign Up ></button>
+						<button type="submit" name="wp-submit" class="btn" disabled>Sign Up ></button>
 
 						<br><br>
 

@@ -205,4 +205,7 @@ function hc_remove_files_on_upgrade() {
 	if( file_exists(ABSPATH . 'xmlrpc.php') )
 		unlink(ABSPATH . 'xmlrpc.php');
 
+	if( file_exists(ABSPATH . 'wp-login.php') )
+		unlink(ABSPATH . 'wp-login.php');
+
 }

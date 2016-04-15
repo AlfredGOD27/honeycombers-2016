@@ -107,6 +107,9 @@
 
 				if( $(this.contentContainer).find( '.btn-facebook' ).length > 0 )
 					hc_maybe_load_facebook();
+
+				if( $(this.contentContainer).find( '.captcha' ).length > 0 )
+					hc_init_captcha( $(this.contentContainer) );
 			}
 		}
 	});

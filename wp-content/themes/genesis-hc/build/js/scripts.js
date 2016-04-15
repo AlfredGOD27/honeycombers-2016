@@ -6066,6 +6066,53 @@ function onYouTubeIframeAPIReady() {
 
 })( window.jQuery );
 
+var captcha_init = false;
+
+window.hc_activate_captcha = function() {
+
+	if( 'undefined' === typeof $.magnificPopup.instance.contentContainer )
+		return;
+
+	$.magnificPopup.instance.contentContainer.find('.captcha:not(.loaded)').each( function() {
+		var self = $(this);
+
+		grecaptcha.render(
+			self[0],
+			{
+				'sitekey': hc_settings.recaptcha_key,
+				'callback': function(response) {
+					self.data( 'captcha-response', response );
+					self.closest('form').find('[type="submit"]').prop( 'disabled', false );
+				},
+				'expired-callback': function() {
+					self.data( 'captcha-response', '' );
+					self.closest('form').find('[type="submit"]').prop( 'disabled', true );
+				}
+			}
+		);
+
+		self.addClass('loaded');
+	});
+
+};
+
+function hc_init_captcha() {
+
+	if( captcha_init ) {
+		hc_activate_captcha();
+		return;
+	}
+
+	captcha_init = true;
+
+	var script = document.createElement('script');
+	script.type = 'text/javascript';
+	script.src = 'https://www.google.com/recaptcha/api.js?onload=hc_activate_captcha&render=explicit';
+
+	document.getElementsByTagName('head')[0].appendChild(script);
+
+}
+
 (function($) {
 
 	$('.component-slideshow').slick({
@@ -6247,7 +6294,7 @@ window.fbAsyncInit = function() {
 	jQuery('html').removeClass('no-fb');
 
 	FB.init({
-		appId : hc_facebook.app_id,
+		appId : hc_settings.facebook_app_id,
 		xfbml : true,
 		version : 'v2.6'
 	});
@@ -6577,6 +6624,21 @@ function hc_maybe_load_facebook() {
 
 	}
 
+	function reset_captcha() {
+
+		$('.captcha.loaded').each( function() {
+			var self = $(this);
+
+			grecaptcha.reset(
+				self.attr('id')
+			);
+
+			self.data( 'captcha-response', '' );
+			self.closest('form').find('[type="submit"]').prop( 'disabled', true );
+		});
+
+	}
+
 	$('#register-popup form').on( 'submit', function(e) {
 		e.preventDefault();
 
@@ -6588,7 +6650,8 @@ function hc_maybe_load_facebook() {
 			data: {
 				action: 'hc_ajax_register',
 				email: self.find('[name="email"]').val(),
-				password: self.find('[name="password"]').val()
+				password: self.find('[name="password"]').val(),
+				captcha: self.find('.captcha').data('captcha-response')
 			},
 			success: function( json ) {
 				var data = JSON.parse( json );
@@ -6624,7 +6687,8 @@ function hc_maybe_load_facebook() {
 				action: 'hc_ajax_login',
 				log: self.find('[name="log"]').val(),
 				pwd: self.find('[name="pwd"]').val(),
-				rememberme: self.find('[name="rememberme"]').prop('checked')
+				rememberme: self.find('[name="rememberme"]').prop('checked'),
+				captcha: self.find('.captcha').data('captcha-response')
 			},
 			success: function( json ) {
 				console.log(json);
@@ -6658,7 +6722,8 @@ function hc_maybe_load_facebook() {
 			type: 'POST',
 			data: {
 				action: 'hc_ajax_reset_password',
-				email: self.find('[name="user_login"]').val()
+				email: self.find('[name="user_login"]').val(),
+				captcha: self.find('.captcha').data('captcha-response')
 			},
 			success: function( json ) {
 				var data = JSON.parse( json );
@@ -6842,6 +6907,9 @@ function hc_maybe_load_facebook() {
 
 				if( $(this.contentContainer).find( '.btn-facebook' ).length > 0 )
 					hc_maybe_load_facebook();
+
+				if( $(this.contentContainer).find( '.captcha' ).length > 0 )
+					hc_init_captcha( $(this.contentContainer) );
 			}
 		}
 	});

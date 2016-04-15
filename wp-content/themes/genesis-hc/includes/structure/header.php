@@ -121,11 +121,13 @@ function hc_load_assets() {
 			'fallback' => $stylesheet_dir . '/build/svgs/icons.fallback.css',
 		)
 	);
+
 	wp_localize_script(
 		'hc',
-		'hc_facebook',
+		'hc_settings',
 		array(
-			'app_id' => get_field( '_hc_facebook_app_id', 'option' ),
+			'facebook_app_id' => get_option( 'options__hc_facebook_app_id' ),
+			'recaptcha_key'   => get_option( 'options__hc_recaptcha_api_key' ),
 		)
 	);
 
@@ -140,7 +142,6 @@ function hc_load_assets() {
 			'prev_arrow'  => '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
 			'next_arrow'  => '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
 		)
-
 	);
 	wp_localize_script( 'hc', 'ajax_object', array('ajaxurl' => admin_url( 'admin-ajax.php' )) );
 

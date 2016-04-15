@@ -2183,6 +2183,9 @@ input[type='search'] {
 .white-popup .field {
   margin-bottom: .9em;
 }
+.white-popup .captcha > div > div {
+  margin: 0 auto .9em;
+}
 
 .login-popup .forgot-remember-bar {
   margin-bottom: .75em;

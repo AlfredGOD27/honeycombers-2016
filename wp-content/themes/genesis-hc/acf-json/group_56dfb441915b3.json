@@ -235,6 +235,46 @@
             "disabled": 0
         },
         {
+            "key": "field_5711609385779",
+            "label": "reCAPTCHA API Key",
+            "name": "_hc_recaptcha_api_key",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_571160a78577a",
+            "label": "reCAPTCHA API Secret",
+            "name": "_hc_recaptcha_api_secret",
+            "type": "password",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
             "key": "field_56fd92a8f599f",
             "label": "Pages",
             "name": "",
@@ -422,5 +462,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1460674046
+    "modified": 1460756670
 }

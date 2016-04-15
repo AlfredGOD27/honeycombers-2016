@@ -78,6 +78,7 @@ module.exports = function(grunt) {
 					'js/_analytics-youtube.js',
 					'js/_archives.js',
 					'js/_calendar.js',
+					'js/_captcha.js',
 					'js/_components.js',
 					'js/_directory.js',
 					'js/_facebook.js',

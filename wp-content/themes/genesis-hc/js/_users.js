@@ -10,6 +10,21 @@
 
 	}
 
+	function reset_captcha() {
+
+		$('.captcha.loaded').each( function() {
+			var self = $(this);
+
+			grecaptcha.reset(
+				self.attr('id')
+			);
+
+			self.data( 'captcha-response', '' );
+			self.closest('form').find('[type="submit"]').prop( 'disabled', true );
+		});
+
+	}
+
 	$('#register-popup form').on( 'submit', function(e) {
 		e.preventDefault();
 
@@ -21,7 +36,8 @@
 			data: {
 				action: 'hc_ajax_register',
 				email: self.find('[name="email"]').val(),
-				password: self.find('[name="password"]').val()
+				password: self.find('[name="password"]').val(),
+				captcha: self.find('.captcha').data('captcha-response')
 			},
 			success: function( json ) {
 				var data = JSON.parse( json );
@@ -57,7 +73,8 @@
 				action: 'hc_ajax_login',
 				log: self.find('[name="log"]').val(),
 				pwd: self.find('[name="pwd"]').val(),
-				rememberme: self.find('[name="rememberme"]').prop('checked')
+				rememberme: self.find('[name="rememberme"]').prop('checked'),
+				captcha: self.find('.captcha').data('captcha-response')
 			},
 			success: function( json ) {
 				console.log(json);
@@ -91,7 +108,8 @@
 			type: 'POST',
 			data: {
 				action: 'hc_ajax_reset_password',
-				email: self.find('[name="user_login"]').val()
+				email: self.find('[name="user_login"]').val(),
+				captcha: self.find('.captcha').data('captcha-response')
 			},
 			success: function( json ) {
 				var data = JSON.parse( json );

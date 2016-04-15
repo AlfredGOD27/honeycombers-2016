@@ -75,6 +75,14 @@
 	.field {
 		margin-bottom: .9em;
 	}
+
+	.captcha {
+		> div {
+			> div {
+				margin: 0 auto .9em;
+			}
+		}
+	}
 }
 
 .login-popup {

@@ -4,7 +4,7 @@ window.fbAsyncInit = function() {
 	jQuery('html').removeClass('no-fb');
 
 	FB.init({
-		appId : hc_facebook.app_id,
+		appId : hc_settings.facebook_app_id,
 		xfbml : true,
 		version : 'v2.6'
 	});
