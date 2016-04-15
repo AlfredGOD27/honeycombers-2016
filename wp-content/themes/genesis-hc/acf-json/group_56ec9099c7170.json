@@ -163,7 +163,7 @@
             {
                 "param": "taxonomy",
                 "operator": "==",
-                "value": "all"
+                "value": "directories"
             }
         ]
     ],
@@ -175,5 +175,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1459952492
+    "modified": 1460749374
 }
