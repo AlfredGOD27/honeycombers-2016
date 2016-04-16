@@ -30,8 +30,10 @@ function hc_404() {
 			$s = str_replace( '-', ' ', $s );
 
 			$args = array(
-				'post_type' => array('post', 'page'),
-				's'         => $s,
+				'post_type'              => array('post', 'page'),
+				's'                      => $s,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
 			);
 
 			$posts = get_posts( $args );

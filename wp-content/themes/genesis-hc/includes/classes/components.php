@@ -47,10 +47,11 @@ class HC_Components {
 	public function admin_object() {
 
 		$args = array(
-			'post_type'      => 'component',
-			'posts_per_page' => -1,
-			'orderby'        => 'title',
-			'order'          => 'ASC',
+			'post_type'              => 'component',
+			'posts_per_page'         => -1,
+			'orderby'                => 'title',
+			'order'                  => 'ASC',
+			'update_post_meta_cache' => false,
 		);
 		$slides = get_posts($args);
 

@@ -53,9 +53,10 @@ class HC_Related {
 			),
 		);
 
-		$args['posts_per_page'] = $count;
-		$args['post_type']      = $post->post_type;
-		$args['post__not_in']   = array($post->ID);
+		$args['posts_per_page']         = $count;
+		$args['post_type']              = $post->post_type;
+		$args['post__not_in']           = array($post->ID);
+		$args['update_post_term_cache'] = false;
 
 		$posts = get_posts( $args );
 		if( empty($posts) )

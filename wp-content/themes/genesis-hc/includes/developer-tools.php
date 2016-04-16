@@ -21,7 +21,7 @@ function hc_clear_transients_node( $wp_admin_bar ) {
 
 		$wpdb->query( "UPDATE $wpdb->options SET autoload = 'no'" );
 
-		$autoload_options = array();
+		$autoload_options = array('wpseo_onpage', '%options__hc_%_url', 'date_format', 'wpseo_rss', 'uninstall_plugins', 'category_base', 'widget_%', '_widget_%', 'sliderpro_%', 'wpseo_social', 'genesis-settings', 'show_on_front', 'siteurl', 'active_plugins', 'blog_public', '%options__hc_instagram_%', 'can_compress_scripts', 'stylesheet', 'siteurl', 'WPLANG', 'blogdescription', 'blog_charset', 'wpseo_permalinks', 'wpseo_xml', 'wp_user_roles', 'wpseo_titles', 'wpseo_internallinks', 'permalink_structure', 'rewrite_rules', 'theme_switched', 'link_manager_enabled', '%options__hc_%_page_id', 'use_smilies', 'sidebars_widgets', 'tag_base', 'page_on_front', 'template', 'html_type', 'posts_per_page', 'comments_per_page', 'sticky_posts', 'close_comments_for_old_posts', 'close_comments_days_old', 'db_version', 'cron', 'category_children', 'wpseo', 'page_for_posts', 'site_icon', 'default_ping_status', 'gmt_offset', 'uploads_use_yearmonth_folders', 'upload_url_path', 'upload_path', 'timezone_string', 'hack_file', 'thread_comments', 'home');
 
 		foreach( $autoload_options as $option_name ) {
 			$wpdb->query( "UPDATE $wpdb->options SET autoload = 'yes' WHERE option_name LIKE '$option_name'" );

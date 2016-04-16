@@ -272,11 +272,13 @@ class HC_Listings {
 			wp_die();
 		}
 
-		$args                          = array();
-		$args['post_type']             = 'listing';
-		$args['posts_per_page']        = $this->results_per_page;
-		$args['tax_query']             = array();
-		$args['tax_query']['relation'] = 'AND';
+		$args                           = array();
+		$args['post_type']              = 'listing';
+		$args['posts_per_page']         = $this->results_per_page;
+		$args['update_post_meta_cache'] = false;
+		$args['update_post_term_cache'] = false;
+		$args['tax_query']              = array();
+		$args['tax_query']['relation']  = 'AND';
 
 		if( !empty($text) )
 			$args['s'] = $text;

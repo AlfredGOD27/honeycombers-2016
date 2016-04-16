@@ -543,9 +543,10 @@ class HC_Home {
 	private function display_posts( $offset = 0 ) {
 
 		$args = array(
-			'posts_per_page' => 8,
-			'offset'         => $offset,
-			'post_type'      => 'post',
+			'posts_per_page'         => 8,
+			'offset'                 => $offset,
+			'post_type'              => 'post',
+			'update_post_term_cache' => false,
 		);
 		$posts = get_posts( $args );
 

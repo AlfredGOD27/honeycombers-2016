@@ -15,9 +15,10 @@ class HC_Featured_Widget extends WP_Widget {
 
 		$post_type = get_field( '_hc_post_type', 'widget_' . $widget_id );
 
-		$query_args              = array();
-		$query_args['post_type'] = $post_type;
-		$query_args['fields']    = 'ids';
+		$query_args                           = array();
+		$query_args['post_type']              = $post_type;
+		$query_args['fields']                 = 'ids';
+		$query_args['update_post_meta_cache'] = false;
 
 		switch( $post_type ) {
 			case 'event':
