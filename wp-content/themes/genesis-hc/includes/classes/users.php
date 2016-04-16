@@ -5,152 +5,11 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HC_Users {
 	public function __construct() {
 
-		$this->show_pw_reset_form = false;
-		$this->show_login_form    = false;
-
-		add_action( 'wp', array($this, 'init') );
 		add_action( 'wp_ajax_nopriv_hc_ajax_register', array($this, 'ajax_register') );
 		add_action( 'wp_ajax_nopriv_hc_ajax_login', array($this, 'ajax_login') );
 		add_action( 'wp_ajax_nopriv_hc_ajax_reset_password', array($this, 'ajax_reset_password') );
 		add_action( 'wp_ajax_nopriv_hc_ajax_facebook_register_or_login', array($this, 'ajax_facebook') );
 		add_action( 'wp_footer', array($this, 'display_modal') );
-
-	}
-
-	public function init() {
-
-		global $post;
-
-		if( !isset($post->ID) )
-			return;
-
-		$account_page_id = get_option( 'options__hc_profile_page_id' );
-		if( (int) $post->ID !== (int) $account_page_id )
-			return;
-
-		$this->handle_password_reset();
-
-		add_action( 'genesis_entry_content', array($this, 'user_page_content') );
-
-	}
-
-	private function check_password_reset_key() {
-
-		if( !isset($_GET['key']) || !isset($_GET['login']) )
-			return false;
-
-		$check_key = check_password_reset_key( $_GET['key'], $_GET['login'] );
-
-		return empty($check_key) || is_wp_error($check_key) ? false : $check_key;
-
-	}
-
-	private function do_password_reset( $user ) {
-
-		// Reset PW action?
-		if( !isset($_POST['pass1']) || !isset($_POST['pass2']) ) {
-			HC()->messages->add( 'error', 'You must set and confirm a new password.' );
-		} else {
-			if( $_POST['pass1'] !== $_POST['pass2'] ) {
-				HC()->messages->add( 'error', 'Your passwords don\'t match.' );
-			} else {
-				$require_strong = user_can( $user, 'edit_posts' );
-				$strong         = $this->check_password_strength( $_POST['pass1'], $require_strong );
-				if( !$strong ) {
-					HC()->messages->add( 'error', 'You must choose a stronger password.' );
-				} else {
-					reset_password( $user, $_POST['pass1'] );
-
-					$url = add_query_arg(
-						array(
-							'password_reset' => true,
-						),
-						HC()->profiles->get_url()
-					);
-					wp_redirect( $url );
-					exit;
-				}
-			}
-		}
-
-	}
-
-	private function handle_password_reset() {
-
-		// PW reset form?
-		if( !isset($_GET['reset_password']) )
-			return;
-
-		$user = $this->check_password_reset_key();
-
-		if( false === $user ) {
-			HC()->messages->add( 'error', 'Invalid password reset link. Please <a href="#password-popup" class="open-popup-link">try again</a>.' );
-
-			return;
-		}
-
-		if( isset($_POST['do_reset']) )
-			$this->do_password_reset( $user );
-
-		$this->show_pw_reset_form = true;
-
-	}
-
-	private function password_reset_form() {
-
-		$url = add_query_arg(
-			array(
-				'reset_password' => true,
-				'key'            => $_GET['key'],
-				'login'          => $_GET['login'],
-			),
-			HC()->profiles->get_url()
-		);
-		?>
-		<form action="<?php echo $url; ?>" method="post" autocomplete="off" class="one-half first">
-			<input type="hidden" id="user_login" value="<?php echo esc_attr( $_GET['login'] ); ?>">
-			<input type="hidden" name="rp_key" value="<?php echo esc_attr( $_GET['key'] ); ?>">
-
-			<div class="field">
-				<label for="pass1">New password</label>
-				<input type="password" name="pass1" id="pass1" required>
-			</div>
-
-			<div class="field">
-				<label for="pass2">Confirm new password</label>
-				<input type="password" name="pass2" id="pass2" required>
-			</div>
-
-			<div class="form-footer">
-				<button type="submit" name="do_reset" class="btn" disabled>Reset Password ></button>
-			</div>
-
-			<p class="password-instructions">Password must be at least 8 characters, and contain at least one number and one symbol.</p>
-		</form>
-		<?php
-
-	}
-
-	public function user_page_content() {
-
-		if( isset($_GET['logged_out']) && $_GET['logged_out'] ) {
-			// Logged out message
-			HC()->messages->add( 'info', 'You have been logged out. <a href="#login-popup" class="open-popup-link">Login</a> again?' );
-		} elseif( isset($_GET['welcome']) && $_GET['welcome'] ) {
-			// Welcome message
-			HC()->messages->add( 'info', 'Welcome to ' . get_bloginfo( 'name' ) . '!' );
-		} elseif( isset($_GET['password_reset']) && $_GET['password_reset'] ) {
-			// Welcome message
-			HC()->messages->add( 'success', 'Your password has been reset. <a href="#login-popup" class="open-popup-link">Login?</a>' );
-		}
-
-		HC()->messages->display();
-
-		if( $this->show_pw_reset_form )
-			$this->password_reset_form();
-
-		if( $this->show_login_form )
-			HC()->messages->add_and_display( 'info', '<a href="#login-popup" class="open-popup-link">Login</a> or <a href="#register-popup" class="open-popup-link">register</a> to view your account.' );
 
 	}
 
@@ -204,23 +63,6 @@ class HC_Users {
 
 	}
 
-	private function check_password_strength( $password, $is_admin ) {
-
-		if( $is_admin ) {
-			$zxcvbn   = new Zxcvbn();
-			$strength = $zxcvbn->passwordStrength( $password );
-
-			return $strength['score'] >= 3;
-		} else {
-			$length     = strlen($password);
-			$has_number = preg_match('/\d/', $password) > 0;
-			$has_symbol = preg_match('/\W/', $password) > 0;
-
-			return $length >= 8 && $has_number && $has_symbol;
-		}
-
-	}
-
 	private function user_registered( $user_id ) {
 
 		HC()->favorites->reset_folders( $user_id );
@@ -241,7 +83,7 @@ class HC_Users {
 			$password = $_POST['password'];
 		}
 
-		$strong = $this->check_password_strength( $password, false );
+		$strong = HC()->profiles->check_password_strength( $password, false );
 		if( !$strong )
 			$this->die_with_error( 'You must choose a stronger password.' );
 
@@ -349,11 +191,10 @@ class HC_Users {
 
 		$url = add_query_arg(
 			array(
-				'reset_password' => true,
-				'key'            => $key,
-				'login'          => rawurlencode($user_login),
+				'key'   => $key,
+				'login' => rawurlencode($user_login),
 			),
-			HC()->profiles->get_url()
+			HC()->profiles->get_url('reset-password')
 		);
 
 		$message = __('Someone requested that the password be reset for the following account:') . "\r\n\r\n";
@@ -501,6 +342,8 @@ class HC_Users {
 
 			<p class="lead">Lorem ipsum...</p>
 
+			<div class="messages"></div>
+
 			<a href="#" class="btn btn-facebook btn-icon hide-no-fb" rel="nofollow"><i class="ico-facebook"></i> <span>Login Via Facebook</span></a>
 
 			<span class="or hide-no-fb"><span>Or</span></span>
@@ -535,8 +378,6 @@ class HC_Users {
 
 				<p class="join">Don't have an account? <a href="#register-popup" class="open-popup-link" rel="nofollow">Join here</a></p>
 			</form>
-
-			<div class="messages"></div>
 		</aside>
 		<?php
 
@@ -544,24 +385,22 @@ class HC_Users {
 		<aside id="password-popup" class="white-popup password-popup mfp-hide clearfix">
 			<h2>Forgot your password? No problem.</h2>
 
-			<div class="two-thirds first">
-				<p>Instructions for resetting your password <br> will be sent to your email</p>
-
-				<form action="#" method="post" autocomplete="off">
-					<div class="field">
-						<label for="forgot_password_email" class="screen-reader-text">Email</label>
-						<input type="email" name="user_login" id="forgot_password_email" placeholder="Email" required>
-					</div>
-
-					<div id="password-popup-captcha" class="captcha"></div>
-
-					<div class="form-footer">
-						<button type="submit" name="wp-submit" class="btn" disabled>Send ></button>
-					</div>
-				</form>
-			</div>
+			<p class="lead">Instructions for resetting your password <br> will be sent to your email</p>
 
 			<div class="messages"></div>
+
+			<form action="#" method="post" autocomplete="off">
+				<div class="field">
+					<label for="forgot_password_email" class="screen-reader-text">Email</label>
+					<input type="email" name="user_login" id="forgot_password_email" placeholder="Email" required>
+				</div>
+
+				<div id="password-popup-captcha" class="captcha"></div>
+
+				<div class="form-footer">
+					<button type="submit" name="wp-submit" class="btn" disabled>Send</button>
+				</div>
+			</form>
 		</aside>
 		<?php
 

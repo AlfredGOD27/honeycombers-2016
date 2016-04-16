@@ -2,6 +2,8 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+use ZxcvbnPhp\Zxcvbn;
+
 class HC_Profiles {
 	public function __construct() {
 
@@ -11,6 +13,7 @@ class HC_Profiles {
 			'add-folder',
 			'edit-folder',
 			'view-folder',
+			'reset-password',
 			'logout',
 		);
 
@@ -52,6 +55,8 @@ class HC_Profiles {
 		if( 'base' !== $this->endpoint && !in_array($this->endpoint, $this->endpoints, true) )
 			return;
 
+		$logged_in = is_user_logged_in();
+
 		$wp_query->is_404 = false;
 		status_header(200);
 
@@ -62,7 +67,26 @@ class HC_Profiles {
 		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 		remove_action( 'genesis_loop', 'genesis_do_loop' );
 
-		if( !is_user_logged_in() ) {
+		if( isset($_GET['password_reset']) && $_GET['password_reset'] ) {
+			// Welcome message
+			HC()->messages->add( 'success', 'Your password has been reset. <a href="#login-popup" class="open-popup-link">Login?</a>' );
+		}
+
+		if( 'reset-password' === $this->endpoint ) {
+			if( $logged_in ) {
+				wp_redirect( $this->get_url() );
+				exit;
+			} else {
+				$result = $this->handle_password_reset();
+				add_action( 'genesis_loop', array(HC()->messages, 'display') );
+				if( false !== $result )
+					add_action( 'genesis_loop', array($this, 'display_password_reset_form') );
+
+				return;
+			}
+		}
+
+		if( !$logged_in ) {
 			HC()->messages->add( 'error', 'You must <a href="#" class="open-popup-link" data-mfp-src="#login-popup">login</a> to edit your profile.' );
 			add_action( 'genesis_loop', array(HC()->messages, 'display') );
 
@@ -152,6 +176,113 @@ class HC_Profiles {
 				</ul>
 			</li>
 		</ul>
+		<?php
+
+	}
+
+	private function check_password_reset_key() {
+
+		if( !isset($_GET['key']) || !isset($_GET['login']) )
+			return false;
+
+		$check_key = check_password_reset_key( $_GET['key'], $_GET['login'] );
+
+		return empty($check_key) || is_wp_error($check_key) ? false : $check_key;
+
+	}
+
+	private function check_password_strength( $password, $is_admin ) {
+
+		if( $is_admin ) {
+			$zxcvbn   = new Zxcvbn();
+			$strength = $zxcvbn->passwordStrength( $password );
+
+			return $strength['score'] >= 3;
+		} else {
+			$length     = strlen($password);
+			$has_number = preg_match('/\d/', $password) > 0;
+			$has_symbol = preg_match('/\W/', $password) > 0;
+
+			return $length >= 8 && $has_number && $has_symbol;
+		}
+
+	}
+
+	private function do_password_reset( $user ) {
+
+		// Reset PW action?
+		if( !isset($_POST['pass1']) || !isset($_POST['pass2']) ) {
+			HC()->messages->add( 'error', 'You must set and confirm a new password.' );
+		} else {
+			if( $_POST['pass1'] !== $_POST['pass2'] ) {
+				HC()->messages->add( 'error', 'Your passwords don\'t match.' );
+			} else {
+				$require_strong = user_can( $user, 'edit_posts' );
+				$strong         = $this->check_password_strength( $_POST['pass1'], $require_strong );
+				if( !$strong ) {
+					HC()->messages->add( 'error', 'You must choose a stronger password.' );
+				} else {
+					reset_password( $user, $_POST['pass1'] );
+
+					$url = add_query_arg(
+						array(
+							'password_reset' => true,
+						),
+						HC()->profiles->get_url()
+					);
+					wp_redirect( $url );
+					exit;
+				}
+			}
+		}
+
+	}
+
+	private function handle_password_reset() {
+
+		$user = $this->check_password_reset_key();
+
+		if( false === $user ) {
+			HC()->messages->add( 'error', 'Invalid password reset link. Please <a href="#password-popup" class="open-popup-link">try again</a>.' );
+
+			return false;
+		}
+
+		if( isset($_POST['do_reset']) )
+			$this->do_password_reset( $user );
+
+	}
+
+	public function display_password_reset_form() {
+
+		$url = add_query_arg(
+			array(
+				'key'   => $_GET['key'],
+				'login' => $_GET['login'],
+			),
+			HC()->profiles->get_url('reset-password')
+		);
+		?>
+		<form action="<?php echo $url; ?>" method="post" autocomplete="off" class="hc-form one-half first">
+			<input type="hidden" id="user_login" value="<?php echo esc_attr( $_GET['login'] ); ?>">
+			<input type="hidden" name="rp_key" value="<?php echo esc_attr( $_GET['key'] ); ?>">
+
+			<div class="field">
+				<label for="pass1">New password</label>
+				<input type="password" name="pass1" id="pass1" required>
+			</div>
+
+			<div class="field">
+				<label for="pass2">Confirm new password</label>
+				<input type="password" name="pass2" id="pass2" required>
+			</div>
+
+			<div class="form-footer">
+				<p class="description">Password must be at least 8 characters, and contain at least one number and one symbol.</p>
+
+				<button type="submit" name="do_reset" class="btn">Reset Password</button>
+			</div>
+		</form>
 		<?php
 
 	}

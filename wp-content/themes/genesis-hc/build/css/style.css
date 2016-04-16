@@ -1172,7 +1172,7 @@ ul {
     display: block;
   }
 }
-p, .wp-caption .wp-caption-text, .entry-slideshow .slide-content p, .entry-content ol,
+p, .wp-caption .wp-caption-text, .hc-form .description, .entry-slideshow .slide-content p, .entry-content ol,
 .entry-content ul, .entry-pagination {
   margin-bottom: 2em;
   text-overflow: ellipsis;
@@ -1185,13 +1185,13 @@ p, .wp-caption .wp-caption-text, .entry-slideshow .slide-content p, .entry-conte
   font-size: .95em;
   line-height: 1.35;
 }
-p:last-child, .wp-caption .wp-caption-text:last-child, .entry-slideshow .slide-content p:last-child, .entry-content ol:last-child,
+p:last-child, .wp-caption .wp-caption-text:last-child, .hc-form .description:last-child, .entry-slideshow .slide-content p:last-child, .entry-content ol:last-child,
 .entry-content ul:last-child, .entry-pagination:last-child {
   margin-bottom: 0;
 }
 
 @media (max-width: 45em) {
-  p, .wp-caption .wp-caption-text, .entry-slideshow .slide-content p, .entry-content ol,
+  p, .wp-caption .wp-caption-text, .hc-form .description, .entry-slideshow .slide-content p, .entry-content ol,
   .entry-content ul, .entry-pagination {
     margin-bottom: 1.5em;
   }
@@ -2082,6 +2082,11 @@ input[type='search'] {
 }
 .hc-form .field {
   margin-bottom: 1.5em;
+}
+.hc-form .description {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  font-size: .9em;
 }
 .hc-form .field-select > div {
   position: relative;

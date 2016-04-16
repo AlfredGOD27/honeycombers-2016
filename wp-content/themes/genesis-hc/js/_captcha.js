@@ -1,11 +1,14 @@
-var captcha_init = false;
+var captcha_script_inserted = false;
 
 window.hc_activate_captcha = function() {
 
 	if( 'undefined' === typeof $.magnificPopup.instance.contentContainer )
 		return;
 
-	$.magnificPopup.instance.contentContainer.find('.captcha:not(.loaded)').each( function() {
+	if( 'undefined' === typeof grecaptcha )
+		return;
+
+	$('.captcha:not(.loaded)').each( function() {
 		var self = $(this);
 
 		grecaptcha.render(
@@ -30,12 +33,12 @@ window.hc_activate_captcha = function() {
 
 function hc_init_captcha() {
 
-	if( captcha_init ) {
+	if( captcha_script_inserted ) {
 		hc_activate_captcha();
 		return;
 	}
 
-	captcha_init = true;
+	captcha_script_inserted = true;
 
 	var script = document.createElement('script');
 	script.type = 'text/javascript';

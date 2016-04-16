@@ -169,6 +169,12 @@ input[type='search'] {
 		margin-bottom: 1.5em;
 	}
 
+	.description {
+		@include meta-font;
+		@extend %type;
+		font-size: .9em;
+	}
+
 	.field-select {
 		> div {
 			position: relative;
