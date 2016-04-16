@@ -303,10 +303,17 @@ function hc_admin_menu_plugins_node( $wp_admin_bar ) {
 
 }
 
-add_action( 'init', 'hc_remove_post_thumbnail_support' );
-function hc_remove_post_thumbnail_support() {
+add_action( 'init', 'hc_remove_post_type_support' );
+function hc_remove_post_type_support() {
 
 	remove_post_type_support( 'post', 'thumbnail' );
+	remove_post_type_support( 'page', 'thumbnail' );
+
+	remove_post_type_support( 'post', 'trackbacks' );
+	remove_post_type_support( 'page', 'trackbacks' );
+
+	remove_post_type_support( 'post', 'custom-fields' );
+	remove_post_type_support( 'page', 'custom-fields' );
 
 }
 
