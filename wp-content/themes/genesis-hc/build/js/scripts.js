@@ -5908,6 +5908,9 @@ https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
 	function post_ga_event( player_id, event_label ) {
 
+		if( 'undefined' === typeof ga )
+			return;
+
 		ga(
 			'send',
 			'event',
