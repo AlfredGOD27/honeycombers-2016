@@ -377,7 +377,7 @@ class HC_Home {
 							<div>
 								<?php
 								echo '<a href="' . get_permalink($post_id) . '">';
-									echo get_the_post_thumbnail( $post_id, 'featured' );
+									echo get_the_post_thumbnail( $post_id, 'slide' );
 								echo '</a>';
 								?>
 
