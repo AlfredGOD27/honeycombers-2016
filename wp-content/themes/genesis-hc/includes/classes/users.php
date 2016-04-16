@@ -71,22 +71,6 @@ class HC_Users {
 
 	public function ajax_register() {
 
-		if( empty($_POST['email']) ) {
-			$this->die_with_error( 'You must enter a valid email.' );
-		} else {
-			$email = sanitize_email($_POST['email']);
-		}
-
-		if( empty($_POST['password']) ) {
-			$this->die_with_error( 'You must enter a password.' );
-		} else {
-			$password = $_POST['password'];
-		}
-
-		$strong = HC()->profiles->check_password_strength( $password, false );
-		if( !$strong )
-			$this->die_with_error( 'You must choose a stronger password.' );
-
 		if( empty($_POST['captcha']) )
 			$this->die_with_error( 'Invalid CAPTCHA.' );
 
@@ -94,21 +78,80 @@ class HC_Users {
 		if( !$valid )
 			$this->die_with_error( 'Invalid CAPTCHA.' );
 
-		if( email_exists($email) || username_exists($email) )
-			$this->die_with_error( 'A user with this email already exists.' );
+		$form = new HC_Profile_Add_Form();
+
+		// Stop if mismatches PW fields
+		$passwords_match = $form->check_passwords_match();
+		if( !$passwords_match )
+			$this->die_with_error( 'Your passwords don\'t match.' );
+
+		// Stop if mismatches PW fields
+		$password_score = $form->check_password_strength();
+		if( !$password_score )
+			$this->die_with_error( 'You must choose a stronger password.' );
 
 		$args = array(
-			'user_login' => $email,
-			'user_email' => $email,
-			'user_pass'  => $password,
-			'role'       => 'subscriber',
+			'users'    => array(),
+			'usermeta' => array(),
 		);
-		$user_id = wp_insert_user( $args );
+
+		// Populate fields
+		foreach( $form->fields as $field ) {
+			if( isset($field['disabled']) && $field['disabled'] )
+				continue;
+
+			switch( $field['type'] ) {
+				case 'text':
+				case 'email':
+				case 'url':
+				case 'number':
+				case 'textarea':
+				case 'select':
+				case 'radio':
+				case 'boolean':
+					if( isset($_POST[ $field['slug'] ]) )
+						$args[ $field['table'] ][ $field['slug'] ] = $form->sanitize_value( $field, $_POST[ $field['slug'] ] );
+				case 'password':
+					// Skip the '_2' version
+					if( substr($field['slug'], -2) === '_2' )
+						continue;
+
+					if( !empty($_POST[ $field['slug'] ]) )
+						$args[ $field['table'] ][ $field['slug'] ] = $form->sanitize_value( $field, $_POST[ $field['slug'] ] );
+					break;
+			}
+		}
+
+		// Stop if empty required fields
+		$empty_required_fields = $form->check_required( $args );
+		if( count($empty_required_fields) > 0 ) {
+			foreach( $empty_required_fields as $field )
+				$this->die_with_error( '<strong>' . $field['label'] . '</strong> is a required field.' );
+		}
+
+		if( email_exists($args['users']['user_email']) || username_exists($args['users']['user_email']) )
+			$this->die_with_error( 'A user with this email already exists.' );
+
+		$args['users']['role']       = 'subscriber';
+		$args['users']['user_login'] = $args['users']['user_email'];
+		$user_id                     = wp_insert_user( $args['users'] );
 
 		if( is_wp_error($user_id) || 0 === $user_id ) {
 			$this->die_with_error( 'An error occurred when creating your account. Please refresh the page and try again.' );
 		} else {
 			$this->user_registered( $user_id );
+
+			// User created. Save meta-type fields
+			foreach( $this->fields as $field ) {
+				if( !isset($args[ $field['table'] ][ $field['slug'] ]) )
+					continue;
+
+				switch( $field['table'] ) {
+					case 'usermeta':
+						update_user_meta( $user_id, $field['slug'], $args[ $field['table'] ][ $field['slug'] ] );
+						break;
+				}
+			}
 
 			// Set login cookie
 			wp_set_auth_cookie( $user_id );
@@ -344,7 +387,7 @@ class HC_Users {
 
 			<div class="messages"></div>
 
-			<a href="#" class="btn btn-facebook btn-icon hide-no-fb" rel="nofollow"><i class="ico-facebook"></i> <span>Login Via Facebook</span></a>
+			<button type="button" class="btn btn-facebook btn-icon hide-no-fb"><i class="ico-facebook"></i> <span>Login Via Facebook</span></button>
 
 			<span class="or hide-no-fb"><span>Or</span></span>
 
@@ -406,42 +449,24 @@ class HC_Users {
 
 		?>
 		<aside id="register-popup" class="white-popup register-popup mfp-hide clearfix">
-			<h2>Memorable trips start with a great travel kit</h2>
+			<i class="ico-favicon"></i>
 
-			<div class="two-thirds first">
+			<h2>Welcome to Honeycombers!</h2>
 
-				<p class="hide-no-fb">Register to create your Travel Kit</p>
-
-				<a href="#" class="btn btn-facebook btn-icon hide-no-fb" rel="nofollow"><i class="ico-facebook"></i> <span>Facebook</span></a>
-
-				<p class="hide-no-fb">or</p>
-
-				<form action="#" method="post" autocomplete="off">
-					<div class="field">
-						<label for="user_register_email" class="screen-reader-text">Email</label>
-						<input type="email" name="email" id="user_register_email" placeholder="Email" required>
-					</div>
-
-					<div class="field">
-						<label for="user_register_password" class="screen-reader-text">Password</label>
-						<input type="password" name="password" id="user_register_password" placeholder="Password" required>
-						<p class="password-instructions">Password must be at least 8 characters, and contain at least one number and one symbol.</p>
-					</div>
-
-					<div id="register-popup-captcha" class="captcha"></div>
-
-					<div class="form-footer">
-						<button type="submit" name="wp-submit" class="btn" disabled>Sign Up ></button>
-
-						<br><br>
-
-						<p><em><strong>Already have an account?</strong></em> <a href="#login-popup" class="open-popup-link btn btn-small" rel="nofollow">Log In ></a></p>
-					</div>
-				</form>
-
-			</div>
+			<p class="lead">Lorem ipsum...</p>
 
 			<div class="messages"></div>
+
+			<button type="button" class="btn btn-facebook btn-icon hide-no-fb"><i class="ico-facebook"></i> <span>Login Via Facebook</span></button>
+
+			<span class="or hide-no-fb"><span>Or</span></span>
+
+			<?php
+			$form = new HC_Profile_Add_Form();
+			$form->display_form();
+			?>
+
+			<p class="join">Already have an account? <a href="#login-popup" class="open-popup-link" rel="nofollow">Sign in here</a></p>
 		</aside>
 		<?php
 	}

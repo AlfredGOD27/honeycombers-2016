@@ -2,8 +2,6 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-use ZxcvbnPhp\Zxcvbn;
-
 abstract class HC_Form_Abstract {
 	public function __construct() {
 
@@ -45,7 +43,7 @@ abstract class HC_Form_Abstract {
 
 	}
 
-	protected function sanitize_value( $field, $value ) {
+	public function sanitize_value( $field, $value ) {
 
 		$maxlength = isset($field['maxlength']) ? $field['maxlength'] : 2500;
 
@@ -140,6 +138,8 @@ abstract class HC_Form_Abstract {
 
 		$disabled = isset($field['disabled']) && $field['disabled'] ? 'disabled' : '';
 
+		$input_placeholder = isset($field['placeholder']) && $field['placeholder'] ? 'placeholder="' . $field['placeholder'] . '"' : '';
+
 		$classes   = array();
 		$classes[] = 'field';
 		$classes[] = 'field-' . $field['type'];
@@ -165,13 +165,13 @@ abstract class HC_Form_Abstract {
 				case 'text':
 				case 'email':
 				case 'url':
-					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" value="' . $value . '" ' . $required . ' ' . $disabled . ' maxlength="' . $field['maxlength'] . '">';
+					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" value="' . $value . '" ' . $required . ' ' . $disabled . ' maxlength="' . $field['maxlength'] . '" ' . $input_placeholder . '>';
 					break;
 				case 'password':
-					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" autocomplete="off">';
+					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" autocomplete="off" ' . $required . ' ' . $input_placeholder . '>';
 					break;
 				case 'number':
-					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" value="' . $value . '" ' . $required . ' ' . $disabled . '>';
+					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" value="' . $value . '" ' . $required . ' ' . $disabled . ' ' . $input_placeholder . '>';
 					break;
 				case 'file':
 					$html = '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" accept="' . implode(',', $field['allowed_mime_types']) . '">';
@@ -202,10 +202,10 @@ abstract class HC_Form_Abstract {
 					}
 					break;
 				case 'textarea':
-					echo '<textarea id="field-' . $field['slug'] . '" name="' . $field['slug'] . '" ' . $required . ' ' . $disabled . ' maxlength="' . $field['maxlength'] . '">' . $value . '</textarea>';
+					echo '<textarea id="field-' . $field['slug'] . '" name="' . $field['slug'] . '" ' . $required . ' ' . $disabled . ' maxlength="' . $field['maxlength'] . '" ' . $input_placeholder . '>' . $value . '</textarea>';
 					break;
 				case 'select':
-					$placeholder = isset($field['placeholder']) ? $field['placeholder'] : 'Select ' . $field['label'];
+					$placeholder = isset($field['placeholder']) && $field['placeholder'] ? $field['placeholder'] : '';
 
 					echo '<div>';
 						echo '<select id="field-' . $field['slug'] . '" name="' . $field['slug'] . '" ' . $required . ' ' . $disabled . ' class="styled">';
@@ -260,7 +260,7 @@ abstract class HC_Form_Abstract {
 
 	}
 
-	protected function check_required( $args ) {
+	public function check_required( $args ) {
 
 		$empty_fields = array();
 		foreach( $this->fields as $field ) {
@@ -315,7 +315,7 @@ abstract class HC_Form_Abstract {
 
 	}
 
-	protected function check_passwords_match() {
+	public function check_passwords_match() {
 
 		foreach( $this->fields as $field ) {
 			if( 'password' !== $field['type'] )
@@ -337,7 +337,7 @@ abstract class HC_Form_Abstract {
 
 	}
 
-	protected function check_password_strength() {
+	public function check_password_strength() {
 
 		foreach( $this->fields as $field ) {
 			if( 'password' !== $field['type'] )
@@ -348,21 +348,9 @@ abstract class HC_Form_Abstract {
 				continue;
 
 			if( !empty($_POST[ $field['slug'] ]) ) {
-
-				if( user_can( $this->user->ID, 'manage_options' ) ) {
-					$zxcvbn   = new Zxcvbn();
-					$strength = $zxcvbn->passwordStrength( $_POST[ $field['slug'] ] );
-
-					if( $strength['score'] < 3 )
-						return false;
-				} else {
-					$length     = strlen($_POST[ $field['slug'] ]);
-					$has_number = preg_match('/\d/', $_POST[ $field['slug'] ]) > 0;
-					$has_symbol = preg_match('/\W/', $_POST[ $field['slug'] ]) > 0;
-
-					if( $length < 8 || !$has_number || !$has_symbol )
-						return false;
-				}
+				$valid = HC()->profiles->check_password_strength( $_POST[ $field['slug'] ], user_can( $this->user->ID, 'manage_options' ) );
+				if( !$valid )
+					return false;
 			}
 		}
 

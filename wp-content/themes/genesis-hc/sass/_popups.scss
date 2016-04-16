@@ -73,7 +73,7 @@
 	}
 
 	.field {
-		margin-bottom: .9em;
+		margin-bottom: 1em;
 	}
 
 	.captcha {
@@ -82,6 +82,13 @@
 				margin: 0 auto .9em;
 			}
 		}
+	}
+
+	.join {
+		@include meta-font;
+		margin-top: 2em;
+		margin-bottom: 1.5em;
+		font-size: .9em;
 	}
 }
 
@@ -105,11 +112,21 @@
 			}
 		}
 	}
+}
 
-	.join {
-		@include meta-font;
-		margin-top: 2em;
-		margin-bottom: 1.5em;
-		font-size: .9em;
+
+.register-popup {
+	.hc-form {
+		max-width: 100%;
+
+		.form-body {
+			margin-bottom: 1.5em;
+			padding-bottom: .5em;
+			border-bottom: 1px solid $grey-border;
+		}
+	}
+
+	label {
+		@extend %visuallyhidden;
 	}
 }

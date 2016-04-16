@@ -1197,7 +1197,7 @@ p:last-child, .wp-caption .wp-caption-text:last-child, .hc-form .description:las
   }
 }
 .screen-reader-text,
-.screen-reader-shortcut, .site-title,
+.screen-reader-shortcut, .register-popup label, .site-title,
 .site-description, .archive-has-slider .archive-description, .calendar-search-bar label, .directory-search-form label {
   position: absolute;
   overflow: hidden;
@@ -1211,7 +1211,7 @@ p:last-child, .wp-caption .wp-caption-text:last-child, .hc-form .description:las
   color: #252525;
 }
 .screen-reader-text:focus,
-.screen-reader-shortcut:focus, .site-title:focus,
+.screen-reader-shortcut:focus, .register-popup label:focus, .site-title:focus,
 .site-description:focus, .archive-has-slider .archive-description:focus, .calendar-search-bar label:focus, .directory-search-form label:focus {
   z-index: 100000;
   display: block;
@@ -2186,10 +2186,17 @@ input[type='search'] {
   max-width: 27.5em;
 }
 .white-popup .field {
-  margin-bottom: .9em;
+  margin-bottom: 1em;
 }
 .white-popup .captcha > div > div {
   margin: 0 auto .9em;
+}
+.white-popup .join {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+  font-size: .9em;
 }
 
 .login-popup .forgot-remember-bar {
@@ -2210,12 +2217,14 @@ input[type='search'] {
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
-.login-popup .join {
-  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
-  margin-top: 2em;
+
+.register-popup .hc-form {
+  max-width: 100%;
+}
+.register-popup .hc-form .form-body {
   margin-bottom: 1.5em;
-  font-size: .9em;
+  padding-bottom: .5em;
+  border-bottom: 1px solid #d7d7d7;
 }
 
 .subscribe-form {

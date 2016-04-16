@@ -74,6 +74,7 @@ final class HC {
 
 		// Abstracts
 		require_once CHILD_DIR . '/includes/classes/abstracts/abstract-form.php';
+		require_once CHILD_DIR . '/includes/classes/profile-add.php';
 		require_once CHILD_DIR . '/includes/classes/profile-edit.php';
 
 		foreach( self::$classes_init as $key )

@@ -1,4 +1,5 @@
-var captcha_script_inserted = false;
+var captcha_script_inserted = false,
+	captchas = [];
 
 window.hc_activate_captcha = function() {
 
@@ -9,9 +10,10 @@ window.hc_activate_captcha = function() {
 		return;
 
 	$('.captcha:not(.loaded)').each( function() {
-		var self = $(this);
+		var self = $(this),
+			captcha;
 
-		grecaptcha.render(
+		captcha = grecaptcha.render(
 			self[0],
 			{
 				'sitekey': hc_settings.recaptcha_key,
@@ -27,6 +29,8 @@ window.hc_activate_captcha = function() {
 		);
 
 		self.addClass('loaded');
+
+		captchas.push(captcha);
 	});
 
 };

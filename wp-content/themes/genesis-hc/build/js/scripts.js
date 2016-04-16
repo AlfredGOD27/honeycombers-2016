@@ -6069,7 +6069,8 @@ function onYouTubeIframeAPIReady() {
 
 })( window.jQuery );
 
-var captcha_script_inserted = false;
+var captcha_script_inserted = false,
+	captchas = [];
 
 window.hc_activate_captcha = function() {
 
@@ -6080,9 +6081,10 @@ window.hc_activate_captcha = function() {
 		return;
 
 	$('.captcha:not(.loaded)').each( function() {
-		var self = $(this);
+		var self = $(this),
+			captcha;
 
-		grecaptcha.render(
+		captcha = grecaptcha.render(
 			self[0],
 			{
 				'sitekey': hc_settings.recaptcha_key,
@@ -6098,6 +6100,8 @@ window.hc_activate_captcha = function() {
 		);
 
 		self.addClass('loaded');
+
+		captchas.push(captcha);
 	});
 
 };
@@ -6637,13 +6641,14 @@ function hc_maybe_load_facebook() {
 
 	function reset_captcha() {
 
+		$.each( captchas, function( _, captcha ) {
+			grecaptcha.reset(
+				captcha
+			);
+		});
+
 		$('.captcha.loaded').each( function() {
 			var self = $(this);
-
-			grecaptcha.reset(
-				self.attr('id')
-			);
-
 			self.data( 'captcha-response', '' );
 			self.closest('form').find('[type="submit"]').prop( 'disabled', true );
 		});
@@ -6660,8 +6665,12 @@ function hc_maybe_load_facebook() {
 			type: 'POST',
 			data: {
 				action: 'hc_ajax_register',
-				email: self.find('[name="email"]').val(),
-				password: self.find('[name="password"]').val(),
+				first_name: self.find('[name="first_name"]').val(),
+				last_name: self.find('[name="last_name"]').val(),
+				user_email: self.find('[name="user_email"]').val(),
+				_hc_user_city: self.find('[name="_hc_user_city"] option:selected').val(),
+				user_pass: self.find('[name="user_pass"]').val(),
+				user_pass_2: self.find('[name="user_pass_2"]').val(),
 				captcha: self.find('.captcha').data('captcha-response')
 			},
 			success: function( json ) {
@@ -6678,6 +6687,8 @@ function hc_maybe_load_facebook() {
 						},
 						1500
 					);
+				} else {
+					reset_captcha();
 				}
 			}
 		});
@@ -6716,6 +6727,8 @@ function hc_maybe_load_facebook() {
 						},
 						1500
 					);
+				} else {
+					reset_captcha();
 				}
 			}
 		});
@@ -6741,8 +6754,11 @@ function hc_maybe_load_facebook() {
 
 				add_message( self.closest('.white-popup').find('.messages'), data.status, data.message );
 
-				if( 'success' === data.status )
+				if( 'success' === data.status ) {
 					self.find('input, button').prop('disabled', true);
+				} else {
+					reset_captcha();
+				}
 			}
 		});
 
