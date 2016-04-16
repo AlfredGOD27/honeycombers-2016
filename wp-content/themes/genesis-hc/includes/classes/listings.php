@@ -204,6 +204,10 @@ class HC_Listings {
 					HC()->formatting->display_map($map_address['address'], 790, 380);
 				?>
 			</div>
+
+			<?php
+			HC()->related->display_related_content( $post, 'aside' );
+			?>
 		</article>
 		<?php
 

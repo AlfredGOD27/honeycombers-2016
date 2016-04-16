@@ -173,3 +173,15 @@ function hc_entry_subscribe_form() {
 	<?php
 
 }
+
+add_action( 'genesis_after_content_sidebar_wrap', 'hc_entry_related' );
+function hc_entry_related() {
+
+	global $post;
+
+	if( !is_singular('post') )
+		return;
+
+	HC()->related->display_related_content( $post, 'section' );
+
+}

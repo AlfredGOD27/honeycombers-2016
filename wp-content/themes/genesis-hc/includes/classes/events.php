@@ -110,7 +110,7 @@ class HC_Events {
 
 	}
 
-	private function get_date_query_args( $direction = 'future' ) {
+	public function get_date_query_args( $direction = 'future' ) {
 
 		$args = array(
 			'post_type'      => 'event',
@@ -344,6 +344,10 @@ class HC_Events {
 					HC()->formatting->display_map($map_address, 630, 300);
 				?>
 			</div>
+
+			<?php
+			HC()->related->display_related_content( $post, 'aside' );
+			?>
 		</article>
 		<?php
 
