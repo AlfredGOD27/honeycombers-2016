@@ -467,7 +467,7 @@ class HC_Users {
 
 					// Set login cookie
 					wp_set_auth_cookie( $user_id );
-					$this->die_with_success( 'Registration successful, redirecting...', $user_id, array('welcome', true) );
+					$this->die_with_success( 'Registration successful, redirecting...', $user_id, array('welcome' => true) );
 				}
 			}
 		} else {
