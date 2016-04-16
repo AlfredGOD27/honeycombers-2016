@@ -73,6 +73,25 @@ class HC_Migration {
 			echo 'Deleted ' . $key . '<br>';
 		}
 
+		// Update user keys
+		$keys = array(
+			'wp_user_avatar' => '_hc_profile_image_id',
+		);
+
+		foreach( $keys as $from => $to ) {
+			$wpdb->update(
+				$wpdb->usermeta,
+				array(
+					'meta_key' => $to,
+				),
+				array('meta_key' => $from),
+				array('%s'),
+				array('%s')
+			);
+
+			echo 'Updated ' . $from . ' > ' . $to . '<br>';
+		}
+
 		// Update meta_keys
 		$keys = array(
 			'where_website'      => '_hc_listing_website',

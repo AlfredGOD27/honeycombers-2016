@@ -69,7 +69,7 @@ class HC_Profile_Edit_Form extends HC_Form_Abstract {
 			'classes' => array('one-third'),
 		);
 		$this->fields[] = array(
-			'slug'               => 'wp_user_avatar',
+			'slug'               => '_hc_profile_image_id',
 			'label'              => 'Profile Image (<1MB)',
 			'type'               => 'file',
 			'table'              => 'usermeta',

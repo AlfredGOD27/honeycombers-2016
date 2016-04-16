@@ -5,8 +5,44 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HC_Authors {
 	public function __construct() {
 
+		add_filter( 'get_avatar', array($this, 'get_avatar'), 10, 5 );
 		remove_action( 'genesis_after_entry', 'genesis_do_author_box_single', 8 );
 		add_action( 'genesis_after_entry', array($this, 'do_author_box_single'), 8 );
+
+	}
+
+	public function get_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
+
+		$user = false;
+		if( is_numeric( $id_or_email ) ) {
+			$user_id = (int) $id_or_email;
+			$user    = get_user_by( 'id', $user_id );
+		} elseif( is_object( $id_or_email ) ) {
+			if( !empty( $id_or_email->user_id ) ) {
+				$user_id = (int) $id_or_email->user_id;
+				$user    = get_user_by( 'id', $user_id );
+			}
+		} else {
+			$user = get_user_by( 'email', $id_or_email );
+		}
+
+		if( !empty($user) && is_object( $user ) ) {
+			$user_image_id = get_user_meta( $user->ID, '_hc_profile_image_id', true );
+			if( !empty($user_image_id) ) {
+				$avatar = wp_get_attachment_image(
+					$user_image_id,
+					array($size, $size),
+					'',
+					array(
+						'title' => $user->display_name,
+						'alt'   => $user->display_name,
+						'class' => 'avatar',
+					)
+				);
+			}
+		}
+
+		return $avatar;
 
 	}
 
