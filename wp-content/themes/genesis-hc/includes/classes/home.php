@@ -67,7 +67,7 @@ class HC_Home {
 				}
 				?>
 			</div>
-		</div>
+		</section>
 		<?php
 
 	}

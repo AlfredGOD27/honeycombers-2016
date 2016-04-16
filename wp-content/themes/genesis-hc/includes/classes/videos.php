@@ -24,7 +24,7 @@ class HC_Videos {
 			'https://www.youtube.com/embed/' . $video_id
 		);
 
-		return '<iframe src="' . $url . '" id="youtube-player-' . $video_id . '" class="youtube-tracked-embed" frameborder="0" ' . $attr_str . ' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+		return '<iframe src="' . $url . '" id="youtube-player-' . $video_id . '" class="youtube-tracked-embed" ' . $attr_str . ' allowfullscreen></iframe>';
 
 	}
 
