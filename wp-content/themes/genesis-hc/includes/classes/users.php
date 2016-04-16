@@ -167,12 +167,9 @@ class HC_Users {
 
 	private function die_with_success( $message, $user_id, $redirect_params = array() ) {
 
-		$profile_id = HC()->profiles->get_user_profile_id( $user_id );
-		$url        = !empty($profile_id) ? get_permalink($profile_id) : HC()->profiles->get_url();
-
 		$url = add_query_arg(
 			$redirect_params,
-			$url
+			HC()->profiles->get_url()
 		);
 
 		$output = array(
@@ -224,6 +221,12 @@ class HC_Users {
 
 	}
 
+	private function user_registered( $user_id ) {
+
+		HC()->favorites->reset_folders( $user_id );
+
+	}
+
 	public function ajax_register() {
 
 		if( empty($_POST['email']) ) {
@@ -263,7 +266,7 @@ class HC_Users {
 		if( is_wp_error($user_id) || 0 === $user_id ) {
 			$this->die_with_error( 'An error occurred when creating your account. Please refresh the page and try again.' );
 		} else {
-			HC()->profiles->create_profile_for_user( $user_id );
+			$this->user_registered( $user_id );
 
 			// Set login cookie
 			wp_set_auth_cookie( $user_id );
@@ -296,8 +299,6 @@ class HC_Users {
 		} else {
 			$this->die_with_success( 'Login successful, redirecting...', $user->ID );
 		}
-
-		wp_die();
 
 	}
 
@@ -459,7 +460,7 @@ class HC_Users {
 				if( is_wp_error($user_id) || 0 === $user_id ) {
 					$this->die_with_error( 'An error occurred when creating your account. Please refresh the page and try again.' );
 				} else {
-					HC()->profiles->create_profile_for_user( $user_id );
+					$this->user_registered( $user_id );
 
 					// Save FB ID
 					update_user_meta( $user_id, '_hc_facebook_id', $facebook_id );

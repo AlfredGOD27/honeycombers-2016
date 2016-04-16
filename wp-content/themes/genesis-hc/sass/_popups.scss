@@ -100,7 +100,9 @@
 		}
 
 		.right {
-			text-align: right;
+			.checkbox {
+				justify-content: flex-end;
+			}
 		}
 	}
 
