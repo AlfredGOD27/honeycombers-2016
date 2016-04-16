@@ -119,6 +119,7 @@ function hc_remove_wp_icon_from_admin_bar() {
 
 	global $wp_admin_bar;
 	$wp_admin_bar->remove_menu('wp-logo');
+	$wp_admin_bar->remove_node( 'top-secondary' );
 
 }
 
