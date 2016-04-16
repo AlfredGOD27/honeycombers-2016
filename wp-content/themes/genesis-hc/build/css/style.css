@@ -4261,6 +4261,9 @@ input[type='search'] {
 .calendar-search-bar form select {
   padding-right: 2.5em;
 }
+.calendar-search-bar form select.styled {
+  border: none;
+}
 .calendar-search-bar form .datepicker {
   padding-right: 2.5em;
 }
@@ -4534,6 +4537,9 @@ input[type='search'] {
 }
 .directory-search-form .select-container {
   position: relative;
+}
+.directory-search-form .select-container .styled {
+  border: none;
 }
 .directory-search-form .ico-arrow-down {
   position: absolute;

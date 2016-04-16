@@ -150,6 +150,10 @@
 
 		select {
 			padding-right: 2.5em;
+
+			&.styled {
+				border: none;
+			}
 		}
 
 		.datepicker {
