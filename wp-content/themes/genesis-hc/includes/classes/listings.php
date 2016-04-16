@@ -232,7 +232,6 @@ class HC_Listings {
 			array(
 				'lat' => round( $map['lat'], 3 ),
 				'lng' => round( $map['lng'], 3 ),
-				'pin' => get_stylesheet_directory_uri() . '/build/images/pin.svg',
 			)
 		);
 

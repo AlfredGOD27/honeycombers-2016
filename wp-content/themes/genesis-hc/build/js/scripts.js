@@ -6200,7 +6200,12 @@ function hc_directory_maps() {
 				map: map,
 				title: title,
 				animation: google.maps.Animation.DROP,
-				icon: hc_directory_coords.pin
+				icon: {
+					path: 'M10,0C4.478,0,0,4.479,0,10c0,5.523,10,19.714,10,19.714S20,15.523,20,10C20,4.479,15.521,0,10,0z M10.001,15.714c-3.157,0-5.716-2.561-5.716-5.714c0-3.155,2.559-5.715,5.716-5.715c3.156,0,5.714,2.56,5.714,5.715 C15.715,13.156,13.157,15.714,10.001,15.714z',
+					fillColor: '#F79534',
+					fillOpacity: 1,
+					strokeWeight: 0
+				}
 			});
 
 		// Add marker listener to open info window

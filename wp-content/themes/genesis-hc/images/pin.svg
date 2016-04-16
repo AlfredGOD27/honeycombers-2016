@@ -2,11 +2,8 @@
 <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="20px" height="29.713px" viewBox="334.625 497.143 20 29.713" enable-background="new 334.625 497.143 20 29.713"
-	 xml:space="preserve">
-<g id="icomoon-ignore">
-</g>
-<path fill="#F79433" d="M344.625,497.143c-5.522,0-10,4.478-10,10c0,5.523,10,19.713,10,19.713s10-14.19,10-19.713
-	C354.625,501.621,350.147,497.143,344.625,497.143z M344.626,512.856c-3.157,0-5.716-2.559-5.716-5.713
-	c0-3.156,2.559-5.715,5.716-5.715c3.156,0,5.714,2.559,5.714,5.715C350.34,510.299,347.782,512.856,344.626,512.856z"/>
+	 width="20px" height="29.714px" viewBox="0 0 20 29.714" enable-background="new 0 0 20 29.714" xml:space="preserve">
+<path fill="#F79534" d="M10,0C4.478,0,0,4.479,0,10c0,5.523,10,19.714,10,19.714S20,15.523,20,10C20,4.479,15.522,0,10,0z
+	 M10.001,15.714c-3.157,0-5.716-2.56-5.716-5.714c0-3.155,2.559-5.715,5.716-5.715c3.156,0,5.714,2.56,5.714,5.715
+	C15.715,13.156,13.157,15.714,10.001,15.714z"/>
 </svg>
