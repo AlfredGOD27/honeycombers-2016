@@ -326,7 +326,10 @@ class HC_Profiles {
 
 	public function seo_title( $title ) {
 
-		return 'XXX';
+		$titles = get_option( 'wpseo_titles' );
+		$title  = str_replace( '%%title%%', $this->get_full_name(), $titles['title-folder'] );
+
+		return wpseo_replace_vars( $title );
 
 	}
 
