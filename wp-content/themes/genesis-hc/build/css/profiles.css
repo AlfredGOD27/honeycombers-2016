@@ -197,8 +197,8 @@ TYPOGRAPHY - http://cssfontstack.com/
   text-decoration: none;
 }
 .profile-boxes .top {
+  position: relative;
   border-bottom: 3px solid #fe862c;
-  background-color: #f7f8f9;
   text-align: center;
 }
 .profile-boxes .top img {
@@ -206,11 +206,20 @@ TYPOGRAPHY - http://cssfontstack.com/
   max-width: none;
   width: 100%;
 }
+.profile-boxes .top .placeholder {
+  padding-bottom: 68.5%;
+  width: 100%;
+  background-color: #f7f8f9;
+}
 .profile-boxes .top i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   display: block;
-  padding: 1.5em .25em;
   color: #fe862c;
   font-size: 4.5em;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
 }
 .profile-boxes .bottom {
   padding: 1.25em 1em;
@@ -224,6 +233,10 @@ TYPOGRAPHY - http://cssfontstack.com/
 .profile-boxes p {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
+  margin-bottom: 1em;
+}
+.profile-boxes p:last-child {
+  margin-bottom: 0;
 }
 
 .profile-page-title {

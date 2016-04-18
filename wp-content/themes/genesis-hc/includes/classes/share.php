@@ -9,7 +9,6 @@ class HC_Share {
 		<button class="share-button btn btn-icon"><i class="ico-share"></i> <span>Share</span></button>
 		<?php
 
-
 	}
 }
 

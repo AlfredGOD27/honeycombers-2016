@@ -392,12 +392,21 @@ class HC_Profiles {
 
 	public function display_landing() {
 
-		$folders = HC()->bookmarks->get_folders( $this->user_id );
+		$folders = HC()->folders->get_user_folder_ids( $this->user_id );
 
 		$boxes = array();
+		foreach( $folders as $folder_id ) {
+			$folder = get_post( $folder_id );
 
-		foreach( $folders as $folder )
-			$boxes[] = $folder;
+			$boxes[] = array(
+				'id'          => $folder_id,
+				'name'        => $folder->post_title,
+				'description' => $folder->post_content,
+				'url'         => get_permalink($folder_id),
+				'icon'        => get_post_meta( $folder_id, '_hc_folder_icon', true ),
+				'image_id'    => get_post_thumbnail_id($folder_id),
+			);
+		}
 
 		$boxes[] = array(
 			'name'        => 'Create Your Own Folder',
@@ -413,29 +422,41 @@ class HC_Profiles {
 			foreach( $boxes as $box ) {
 				echo 1 === $i % 3 ? '<div class="one-third first box">' : '<div class="one-third box">';
 					?>
-					<a href="<?php echo $box['url']; ?>">
-						<div class="top">
-							<?php
-							if( !empty($box['image_id']) )	{
-								echo wp_get_attachment_image( $box['image_id'], 'archive' );
-							} elseif( !empty($box['icon']) ) {
-								echo '<i class="ico-' . $box['icon'] . '"></i>';
-							}
+					<div class="top">
+						<?php
+						if( !empty($box['image_id']) ) {
+							echo wp_get_attachment_image( $box['image_id'], 'archive' );
+						} else {
 							?>
-						</div>
-
-						<div class="bottom">
-							<h3><?php echo $box['name']; ?></h3>
-
+							<div class="placeholder"></div>
 							<?php
-							if( !empty($box['description']) ) {
-								?>
-								<p><?php echo $box['description']; ?></p>
-								<?php
-							}
+						}
+
+						if( !empty($box['icon']) )
+							echo '<i class="ico-' . $box['icon'] . '"></i>';
+						?>
+					</div>
+
+					<div class="bottom">
+						<h3><a href="<?php echo $box['url']; ?>"><?php echo $box['name']; ?></a></h3>
+
+						<?php
+						if( !empty($box['description']) ) {
 							?>
-						</div>
-					</a>
+							<p><?php echo $box['description']; ?></p>
+							<?php
+						}
+						?>
+
+						<?php
+						if(
+							isset($box['id']) &&
+							HC()->folders->is_public( $box['id'] )
+						) {
+							HC()->share->display( $box['id'] );
+						}
+						?>
+					</div>
 					<?php
 				echo '</div>';
 				++$i;
