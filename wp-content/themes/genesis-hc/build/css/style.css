@@ -4774,9 +4774,6 @@ input[type='search'] {
   -webkit-transition: opacity 0.25s ease-in-out;
           transition: opacity 0.25s ease-in-out;
 }
-.home-section .favorites-button i {
-  color: #4f4f4f;
-}
 .home-section .mobile-bar {
   margin-bottom: .25em;
   padding: .5em 1.5em;
@@ -4968,6 +4965,8 @@ input[type='search'] {
 }
 .other-pick img {
   display: block;
+  max-width: none;
+  width: 100%;
   -webkit-transition: all 0.25s ease-in-out;
           transition: all 0.25s ease-in-out;
 }
