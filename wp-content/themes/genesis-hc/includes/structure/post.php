@@ -59,7 +59,7 @@ function hc_entry_footer() {
 	if( !is_singular() )
 		return;
 
-	HC()->favorites->display( $post->ID );
+	HC()->bookmarks->display( $post->ID );
 
 }
 

@@ -98,7 +98,7 @@ class HC_Entry {
 						</div>
 
 						<div class="share header-bottom">
-							<?php HC()->favorites->display( $post->ID ); ?>
+							<?php HC()->bookmarks->display( $post->ID ); ?>
 							<?php HC()->share->display( $post->ID ); ?>
 						</div>
 					</div>
@@ -129,7 +129,7 @@ class HC_Entry {
 						</div>
 
 						<div class="right">
-							<?php HC()->favorites->display( $post->ID ); ?>
+							<?php HC()->bookmarks->display( $post->ID ); ?>
 							<?php HC()->share->display( $post->ID ); ?>
 						</div>
 					</div>

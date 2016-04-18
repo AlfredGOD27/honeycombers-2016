@@ -2,7 +2,7 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-class HC_Favorites {
+class HC_Bookmarks {
 	public function __construct() {
 
 		$this->key = '_hc_folders';
@@ -12,7 +12,7 @@ class HC_Favorites {
 	public function display( $post_id, $icon_only = false ) {
 
 		?>
-		<button class="favorites-button btn btn-icon">
+		<button class="bookmarks-button btn btn-icon">
 			<i class="ico-heart"></i>
 			<?php
 			if( !$icon_only ) {
@@ -75,4 +75,4 @@ class HC_Favorites {
 	}
 }
 
-return new HC_Favorites();
+return new HC_Bookmarks();

@@ -33,7 +33,7 @@
 		}
 	}
 
-	.favorites-button {
+	.bookmarks-button {
 		position: absolute;
 		top: .5em;
 		right: .5em;
@@ -110,7 +110,7 @@
 
 	&:hover,
 	&:focus {
-		.favorites-button {
+		.bookmarks-button {
 			opacity: 1;
 		}
 
@@ -227,7 +227,7 @@
 
 	&:hover,
 	&:focus {
-		.favorites-button {
+		.bookmarks-button {
 			opacity: 1;
 		}
 
@@ -1079,7 +1079,7 @@ $slider-height: 25em;
 				opacity: .5;
 			}
 
-			.favorites-button {
+			.bookmarks-button {
 				opacity: 1;
 			}
 

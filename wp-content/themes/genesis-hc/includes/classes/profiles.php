@@ -377,7 +377,7 @@ class HC_Profiles {
 			if( 'base' === $this->endpoint ) {
 				?>
 				<div class="right one-third">
-					<div class="profile-favorites-info">
+					<div class="profile-bookmarks-info">
 						<p class="orange">When you see the <i class="ico-heart"></i> Just click to save!</p>
 						<p class="black">Save, organise and share your favourite posts here</p>
 					</div>
@@ -392,7 +392,7 @@ class HC_Profiles {
 
 	public function display_landing() {
 
-		$folders = HC()->favorites->get_folders( $this->user_id );
+		$folders = HC()->bookmarks->get_folders( $this->user_id );
 
 		$boxes = array();
 

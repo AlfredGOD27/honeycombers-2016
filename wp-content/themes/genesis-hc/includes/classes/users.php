@@ -65,7 +65,7 @@ class HC_Users {
 
 	private function user_registered( $user_id ) {
 
-		HC()->favorites->reset_folders( $user_id );
+		HC()->bookmarks->reset_folders( $user_id );
 
 	}
 
