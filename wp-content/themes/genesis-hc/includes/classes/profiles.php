@@ -10,9 +10,6 @@ class HC_Profiles {
 		$this->base_url  = 'profile';
 		$this->endpoints = array(
 			'edit',
-			'add-folder',
-			'edit-folder',
-			'view-folder',
 			'reset-password',
 			'logout',
 		);
