@@ -136,9 +136,8 @@ abstract class HC_Form_Abstract {
 
 		$value = $this->get_field_value( $field );
 
-		$disabled = isset($field['disabled']) && $field['disabled'] ? 'disabled' : '';
-
-		$input_placeholder = isset($field['placeholder']) && $field['placeholder'] ? 'placeholder="' . $field['placeholder'] . '"' : '';
+		$disabled         = isset($field['disabled']) && $field['disabled'] ? 'disabled' : '';
+		$placeholder_text = isset($field['placeholder']) && $field['placeholder'] ? $field['placeholder'] : '';
 
 		$classes   = array();
 		$classes[] = 'field';
@@ -151,6 +150,8 @@ abstract class HC_Form_Abstract {
 			$required      = 'required';
 			$required_text = '<span class="required">*</span>';
 			$classes[]     = 'is-required';
+			if( !empty($placeholder_text) )
+				$placeholder_text .= ' *';
 		} else {
 			$required      = '';
 			$required_text = '';
@@ -165,13 +166,13 @@ abstract class HC_Form_Abstract {
 				case 'text':
 				case 'email':
 				case 'url':
-					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" value="' . $value . '" ' . $required . ' ' . $disabled . ' maxlength="' . $field['maxlength'] . '" ' . $input_placeholder . '>';
+					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" value="' . $value . '" ' . $required . ' ' . $disabled . ' maxlength="' . $field['maxlength'] . '" placeholder="' . $placeholder_text . '">';
 					break;
 				case 'password':
-					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" autocomplete="off" ' . $required . ' ' . $input_placeholder . '>';
+					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" autocomplete="off" ' . $required . ' placeholder="' . $placeholder_text . '">';
 					break;
 				case 'number':
-					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" value="' . $value . '" ' . $required . ' ' . $disabled . ' ' . $input_placeholder . '>';
+					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" value="' . $value . '" ' . $required . ' ' . $disabled . ' placeholder="' . $placeholder_text . '">';
 					break;
 				case 'file':
 					$html = '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" accept="' . implode(',', $field['allowed_mime_types']) . '">';
@@ -202,14 +203,13 @@ abstract class HC_Form_Abstract {
 					}
 					break;
 				case 'textarea':
-					echo '<textarea id="field-' . $field['slug'] . '" name="' . $field['slug'] . '" ' . $required . ' ' . $disabled . ' maxlength="' . $field['maxlength'] . '" ' . $input_placeholder . '>' . $value . '</textarea>';
+					echo '<textarea id="field-' . $field['slug'] . '" name="' . $field['slug'] . '" ' . $required . ' ' . $disabled . ' maxlength="' . $field['maxlength'] . '" placeholder="' . $placeholder_text . '">' . $value . '</textarea>';
 					break;
 				case 'select':
-					$placeholder = isset($field['placeholder']) && $field['placeholder'] ? $field['placeholder'] : '';
 
 					echo '<div>';
 						echo '<select id="field-' . $field['slug'] . '" name="' . $field['slug'] . '" ' . $required . ' ' . $disabled . ' class="styled">';
-							echo '<option value="">' . $placeholder . '</option>';
+							echo '<option value="">' . $placeholder_text . '</option>';
 							foreach( $field['options'] as $option ) {
 								$option_value = esc_attr($option);
 								echo '<option value="' . $option_value . '" ' . selected( $value, $option_value, false ) . '>' . $option . '</option>';
