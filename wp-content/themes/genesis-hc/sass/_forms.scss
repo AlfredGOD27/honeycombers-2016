@@ -9,8 +9,19 @@ label {
 	&.checkbox {
 		@include meta-font;
 		text-transform: none;
+		cursor: pointer;
 
 		input[type='checkbox'] {
+			margin-right: .5em;
+		}
+	}
+
+	&.radio {
+		@include meta-font;
+		text-transform: none;
+		cursor: pointer;
+
+		input[type='radio'] {
 			margin-right: .5em;
 		}
 	}
@@ -74,7 +85,8 @@ select {
 	}
 }
 
-.checkbox {
+.checkbox,
+.radio {
 	display: flex;
 	align-items: center;
 }
@@ -83,6 +95,20 @@ input[type='checkbox'] {
 	width: 1em;
 	height: 1em;
 	border: 1px solid $orange;
+	background-color: $white;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	&:checked {
+		background-color: $orange;
+	}
+}
+
+input[type='radio'] {
+	width: 1em;
+	height: 1em;
+	border: 1px solid $orange;
+	border-radius: 50%;
 	background-color: $white;
 	-webkit-appearance: none;
 	-moz-appearance: none;
