@@ -41,8 +41,18 @@ class HC_Related {
 			return;
 
 		$term_ids = array();
-		foreach( $terms as $term )
-			$term_ids[] = $term->term_id;
+
+		// Try to only get child terms
+		foreach( $terms as $term ) {
+			if( 0 !== $term->parent )
+				$term_ids[] = $term->term_id;
+		}
+
+		// If not possible, use all terms
+		if( empty($term_ids) ) {
+			foreach( $terms as $term )
+				$term_ids[] = $term->term_id;
+		}
 
 		$args['tax_query'] = array(
 			array(
