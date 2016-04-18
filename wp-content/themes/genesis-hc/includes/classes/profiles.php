@@ -414,7 +414,7 @@ class HC_Profiles {
 		$boxes[] = array(
 			'name'        => 'Create Your Own Folder',
 			'description' => 'Ideas for a night out, a dinner date or a quick getaway!',
-			'url'         => $this->get_url('add-folder'),
+			'url'         => HC()->folders->get_add_url(),
 			'icon'        => 'plus',
 		);
 
