@@ -59,7 +59,7 @@ function hc_entry_footer() {
 	if( !is_singular() )
 		return;
 
-	HC()->bookmarks->display( $post->ID );
+	HC()->folders->display_add_button( $post->ID );
 
 }
 

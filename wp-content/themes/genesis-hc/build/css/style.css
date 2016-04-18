@@ -1916,8 +1916,18 @@ label.checkbox {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
   text-transform: none;
+  cursor: pointer;
 }
 label.checkbox input[type='checkbox'] {
+  margin-right: .5em;
+}
+label.radio {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  text-transform: none;
+  cursor: pointer;
+}
+label.radio input[type='radio'] {
   margin-right: .5em;
 }
 
@@ -1961,7 +1971,8 @@ select.styled::-ms-expand {
   display: none;
 }
 
-.checkbox {
+.checkbox,
+.radio {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1981,6 +1992,19 @@ input[type='checkbox'] {
   -moz-appearance: none;
 }
 input[type='checkbox']:checked {
+  background-color: #fe862c;
+}
+
+input[type='radio'] {
+  width: 1em;
+  height: 1em;
+  border: 1px solid #fe862c;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+input[type='radio']:checked {
   background-color: #fe862c;
 }
 
@@ -2100,7 +2124,7 @@ input[type='search'] {
           transform: translateY(-50%);
   pointer-events: none;
 }
-.hc-form .field-file .image-preview {
+.hc-form .field-file.round-image .image-preview {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2110,10 +2134,16 @@ input[type='search'] {
       -ms-flex-align: center;
           align-items: center;
 }
-.hc-form .field-file img {
-  margin-right: 1em;
+.hc-form .field-file.round-image img {
   border: 3px solid #fe862c;
   border-radius: 50%;
+}
+.hc-form .field-file.block-image img {
+  display: block;
+  margin-bottom: 1em;
+}
+.hc-form .field-file img {
+  margin-right: 1em;
 }
 
 .no-fb .hide-no-fb {

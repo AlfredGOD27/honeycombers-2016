@@ -77,7 +77,8 @@ class HC_Profile_Edit_Form extends HC_Form_Abstract {
 			'allowed_mime_types' => array('image/jpg', 'image/jpeg'),
 			'max_size'           => 1,
 			'preview_type'       => 'image',
-			'classes'            => array('first', 'one-third'),
+			'preview_image_size' => 'avatar',
+			'classes'            => array('first', 'one-third', 'round-image'),
 		);
 		$this->fields[] = array(
 			'slug'        => '_hc_user_subscriptions',

@@ -217,15 +217,27 @@ input[type='search'] {
 	}
 
 	.field-file {
-		.image-preview {
-			display: flex;
-			align-items: center;
+		&.round-image {
+			.image-preview {
+				display: flex;
+				align-items: center;
+			}
+
+			img {
+				border: $border-width solid $orange;
+				border-radius: 50%;
+			}
+		}
+
+		&.block-image {
+			img {
+				display: block;
+				margin-bottom: 1em;
+			}
 		}
 
 		img {
 			margin-right: 1em;
-			border: $border-width solid $orange;
-			border-radius: 50%;
 		}
 	}
 }

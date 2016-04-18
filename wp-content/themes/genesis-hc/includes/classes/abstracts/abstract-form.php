@@ -107,10 +107,10 @@ abstract class HC_Form_Abstract {
 			} else {
 				switch( $field['table'] ) {
 					case 'posts':
-						$value = $this->target_object->{$field['slug']};
+						$value = $this->post_object->{$field['slug']};
 						break;
 					case 'postmeta':
-						$value = get_post_meta( $this->target_id, $field['slug'], true );
+						$value = get_post_meta( $this->post_id, $field['slug'], true );
 						break;
 					case 'users':
 						$value = $this->user_object->{$field['slug']};
@@ -181,13 +181,8 @@ abstract class HC_Form_Abstract {
 						echo '<div class="image-preview">';
 							switch( $field['preview_type'] ) {
 								case 'image':
-									echo '<div class="one-half first">';
-										echo wp_get_attachment_image( $value, 'avatar' );
-									echo '</div>';
-
-									echo '<div class="one-half">';
-										echo $html;
-									echo '</div>';
+									echo wp_get_attachment_image( $value, $field['preview_image_size'] );
+									echo $html;
 									break;
 								case 'link':
 									$attachment = get_attached_file( (int) $value );
@@ -462,7 +457,7 @@ abstract class HC_Form_Abstract {
 
 				switch( $field['table'] ) {
 					case 'postmeta':
-						update_post_meta( $this->target_id, $field['slug'], $attach_id );
+						update_post_meta( $this->post_id, $field['slug'], $attach_id );
 						break;
 					case 'usermeta':
 						update_user_meta( $this->user_object->ID, $field['slug'], $attach_id );
@@ -573,7 +568,7 @@ abstract class HC_Form_Abstract {
 
 			switch( $field['table'] ) {
 				case 'postmeta':
-					update_post_meta( $this->target_id, $field['slug'], $args[ $field['table'] ][ $field['slug'] ] );
+					update_post_meta( $this->post_id, $field['slug'], $args[ $field['table'] ][ $field['slug'] ] );
 					break;
 				case 'usermeta':
 					update_user_meta( $this->user_object->ID, $field['slug'], $args[ $field['table'] ][ $field['slug'] ] );
@@ -582,7 +577,7 @@ abstract class HC_Form_Abstract {
 		}
 
 		if( count($args['posts']) > 0 ) {
-			$args['posts']['ID'] = $this->target_id;
+			$args['posts']['ID'] = $this->post_id;
 
 			// Sync post_name to title
 			if( isset($args['posts']['post_title']) )

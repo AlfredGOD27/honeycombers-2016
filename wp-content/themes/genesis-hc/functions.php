@@ -11,10 +11,10 @@ final class HC {
 		'acf',
 		'archives',
 		'authors',
-		'bookmarks',
 		'components',
 		'entry',
 		'events',
+		'folders',
 		'formatting',
 		'home',
 		'listings',
@@ -76,6 +76,8 @@ final class HC {
 		require_once CHILD_DIR . '/includes/classes/abstracts/abstract-form.php';
 		require_once CHILD_DIR . '/includes/classes/profile-add.php';
 		require_once CHILD_DIR . '/includes/classes/profile-edit.php';
+
+		require_once CHILD_DIR . '/includes/classes/folder-edit.php';
 
 		foreach( self::$classes_init as $key )
 			$this->{$key} = require_once CHILD_DIR . '/includes/classes/' . $key . '.php';

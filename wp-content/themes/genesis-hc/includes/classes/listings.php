@@ -185,7 +185,7 @@ class HC_Listings {
 				?>
 
 				<div class="item-action-row">
-					<?php HC()->bookmarks->display( $post->ID ); ?>
+					<?php HC()->folders->display_add_button( $post->ID ); ?>
 					<?php HC()->share->display( $post->ID ); ?>
 					<button type="button" class="calendar-button btn btn-icon"><i class="ico-star-o"></i> <span>Rate</span></button>
 				</div>

@@ -320,7 +320,7 @@ class HC_Archives {
 			if( 'full' === $this->post_style ) {
 				?>
 				<div class="share">
-					<?php HC()->bookmarks->display( $post->ID ); ?>
+					<?php HC()->folders->display_add_button( $post->ID ); ?>
 					<?php HC()->share->display( $post->ID ); ?>
 				</div>
 				<?php

@@ -297,7 +297,7 @@ class HC_Events {
 				?>
 
 				<div class="item-action-row">
-					<?php HC()->bookmarks->display( $post->ID ); ?>
+					<?php HC()->folders->display_add_button( $post->ID ); ?>
 					<?php HC()->share->display( $post->ID ); ?>
 
 					<?php
