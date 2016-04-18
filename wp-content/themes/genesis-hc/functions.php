@@ -73,11 +73,10 @@ final class HC {
 		require_once CHILD_DIR . '/vendor/autoload.php';
 
 		// Abstracts
-		require_once CHILD_DIR . '/includes/classes/abstracts/abstract-form.php';
-		require_once CHILD_DIR . '/includes/classes/profile-add.php';
-		require_once CHILD_DIR . '/includes/classes/profile-edit.php';
-
-		require_once CHILD_DIR . '/includes/classes/folder-edit.php';
+		require_once CHILD_DIR . '/includes/classes/forms/abstract-form.php';
+		require_once CHILD_DIR . '/includes/classes/forms/profile-add.php';
+		require_once CHILD_DIR . '/includes/classes/forms/profile-edit.php';
+		require_once CHILD_DIR . '/includes/classes/forms/folders.php';
 
 		foreach( self::$classes_init as $key )
 			$this->{$key} = require_once CHILD_DIR . '/includes/classes/' . $key . '.php';

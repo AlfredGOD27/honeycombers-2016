@@ -104,7 +104,7 @@ abstract class HC_Form_Abstract {
 				$email       = $this->get_field_value($email_field);
 				if( !empty($email) )
 					$value = HC()->subscriptions->get_subscriber_interests( $email );
-			} else {
+			} elseif( 'edit' === $this->action ) {
 				switch( $field['table'] ) {
 					case 'posts':
 						$value = $this->post_object->{$field['slug']};
@@ -561,6 +561,39 @@ abstract class HC_Form_Abstract {
 		if( $has_upload_errors )
 			return;
 
+		// Sync post_name to title
+		if( isset($args['posts']['post_title']) )
+			$args['posts']['post_name'] = sanitize_title($args['posts']['post_title']);
+
+		switch( $this->action ) {
+			case 'add':
+				if( count($args['posts']) > 0 ) {
+					$args['posts']['post_type']   = $this->post_type;
+					$args['posts']['post_status'] = 'publish';
+					$args['posts']['post_author'] = get_current_user_id();
+
+					$this->post_id     = wp_insert_post( $args['posts'] );
+					$this->post_object = get_post($this->post_id);
+				}
+
+				if( count($args['users']) > 0 ) {
+					$this->user_id     = wp_insert_user( $args['users'] );
+					$this->user_object = get_user_by( 'id', $this->user_id );
+				}
+				break;
+			case 'edit':
+				if( count($args['posts']) > 0 ) {
+					$args['posts']['ID'] = $this->post_id;
+					wp_update_post( $args['posts'] );
+				}
+
+				if( count($args['users']) > 0 ) {
+					$args['users']['ID'] = $this->user_object->ID;
+					wp_update_user( $args['users'] );
+				}
+				break;
+		}
+
 		// Validation passed. Save meta-type fields
 		foreach( $this->fields as $field ) {
 			if( !isset($args[ $field['table'] ][ $field['slug'] ]) )
@@ -576,28 +609,13 @@ abstract class HC_Form_Abstract {
 			}
 		}
 
-		if( count($args['posts']) > 0 ) {
-			$args['posts']['ID'] = $this->post_id;
-
-			// Sync post_name to title
-			if( isset($args['posts']['post_title']) )
-				$args['posts']['post_name'] = sanitize_title($args['posts']['post_title']);
-
-			wp_update_post( $args['posts'] );
-		}
-
-		if( count($args['users']) > 0 ) {
-			$args['users']['ID'] = $this->user_object->ID;
-			wp_update_user( $args['users'] );
-		}
-
 		// Save files
 		$this->upload_files();
 
 		// Save subcriptions
 		$this->save_subscriptions( $args );
 
-		$this->do_post_save();
+		$this->do_after_save();
 
 	}
 
@@ -617,7 +635,20 @@ abstract class HC_Form_Abstract {
 				wp_nonce_field( $this->nonce_key );
 				?>
 
-				<button type="submit" name="hc_edit" class="btn btn-solid">Update</button>
+				<?php
+				switch( $this->action ) {
+					case 'add':
+						?>
+						<button type="submit" name="hc_edit" class="btn btn-solid">Add</button>
+						<?php
+						break;
+					case 'edit':
+						?>
+						<button type="submit" name="hc_edit" class="btn btn-solid">Update</button>
+						<?php
+						break;
+				}
+				?>
 			</div>
 		</form>
 		<?php

@@ -79,7 +79,7 @@ class HC_Profile_Add_Form extends HC_Form_Abstract {
 
 	}
 
-	protected function do_post_save() {
+	protected function do_after_save() {
 
 		HC()->messages->add( 'success', 'Profile saved.' );
 

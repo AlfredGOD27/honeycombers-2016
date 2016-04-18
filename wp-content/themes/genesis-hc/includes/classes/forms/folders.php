@@ -3,10 +3,19 @@
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class HC_Folder_Editor extends HC_Form_Abstract {
-	public function __construct( $folder_id ) {
+	public function __construct( $action, $folder_id = false ) {
 
-		$this->post_id     = $folder_id;
-		$this->post_object = get_post( $folder_id );
+		$this->post_type = 'folder';
+
+		$this->action = $action;
+		switch( $this->action ) {
+			case 'add':
+				break;
+			case 'edit':
+				$this->post_id     = $folder_id;
+				$this->post_object = get_post( $folder_id );
+				break;
+		}
 
 		parent::__construct();
 
@@ -61,13 +70,29 @@ class HC_Folder_Editor extends HC_Form_Abstract {
 
 	protected function set_nonce_key() {
 
-		$this->nonce_key = 'edit_' . $this->post_object->ID . '_' . get_current_user_id();
+		switch( $this->action ) {
+			case 'add':
+				$this->nonce_key = 'add_folder_' . get_current_user_id();
+				break;
+			case 'edit':
+				$this->nonce_key = 'edit_folder_' . $this->post_object->ID . '_' . get_current_user_id();
+				break;
+		}
 
 	}
 
-	protected function do_post_save() {
+	protected function do_after_save() {
 
-		HC()->messages->add( 'success', 'Folder updated.' );
+		$url = get_permalink( $this->post_id );
+		$url = add_query_arg(
+			array(
+				$this->action => true,
+			),
+			$url
+		);
+
+		wp_redirect( $url );
+		exit;
 
 	}
 

@@ -75,13 +75,17 @@ class HC_Folders {
 		if( !is_user_logged_in() )
 			return;
 
-		$this->user_id = get_current_user_id();
-		$this->user    = get_user_by( 'id', $this->user_id );
+		$this->user_id          = get_current_user_id();
+		$this->user             = get_user_by( 'id', $this->user_id );
+		HC()->profiles->user_id = $this->user_id;
+		HC()->profiles->user    = $this->user;
+
+		$valid = false;
 
 		switch( $this->action ) {
 			case 'add':
-				$wp_query->is_404 = false;
-				status_header(200);
+				$this->form = new HC_Folder_Editor( 'add' );
+				$valid      = true;
 				break;
 			case 'edit':
 				$this->slug = get_query_var( 'hc_folder_slug' );
@@ -102,24 +106,30 @@ class HC_Folders {
 				if( empty($items) )
 					return;
 
-				$wp_query->is_404 = false;
-				status_header(200);
-
-				HC()->profiles->user_id = $this->user_id;
-				HC()->profiles->user    = $this->user;
-
-				$this->form = new HC_Folder_Editor( $items[0] );
-
-				add_action( 'wp_enqueue_scripts', array(HC()->profiles, 'load_assets') );
-				add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-				add_filter( 'body_class', array(HC()->profiles, 'body_classes') );
-				add_action( 'genesis_loop', array(HC()->profiles, 'display_heading') );
-				add_action( 'genesis_loop', array(HC()->messages, 'display') );
-				add_action( 'genesis_loop', array($this->form, 'display_form') );
-				remove_action( 'genesis_loop', 'genesis_do_loop' );
-
+				$this->form = new HC_Folder_Editor( 'edit', $items[0] );
+				$valid      = true;
 				$this->item = $items[0];
 				break;
+		}
+
+		if( $valid ) {
+			$wp_query->is_404 = false;
+			status_header(200);
+
+			if( isset($_GET['add']) ) {
+				HC()->messages->add( 'success', 'Folder added.' );
+			} elseif( isset($_GET['edit']) ) {
+				HC()->messages->add( 'success', 'Folder updated.' );
+			}
+
+			add_action( 'wp_enqueue_scripts', array(HC()->profiles, 'load_assets') );
+			add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+			add_filter( 'body_class', array(HC()->profiles, 'body_classes') );
+			add_action( 'genesis_loop', array(HC()->profiles, 'display_heading') );
+			add_action( 'genesis_loop', array(HC()->messages, 'display') );
+			add_action( 'genesis_loop', array($this->form, 'display_form') );
+			add_action( 'template_include', array($this, 'do_seo') );
+			remove_action( 'genesis_loop', 'genesis_do_loop' );
 		}
 
 	}
@@ -238,6 +248,60 @@ class HC_Folders {
 		$url = trailingslashit($url) . 'edit/';
 
 		return $url;
+
+	}
+
+	public function do_seo() {
+
+		// If WordPress SEO is installed, overwrite everything. Otherwise, just replace the <title>
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
+		if( is_plugin_active('wordpress-seo/wp-seo.php') || is_plugin_active('wordpress-seo-premium/wp-seo-premium.php') ) {
+			add_action( 'wpseo_robots', array($this, 'noindex') );
+			add_filter( 'wpseo_canonical', array($this, 'seo_canonical') );
+			add_filter( 'wpseo_title', array($this, 'seo_title') );
+		} else {
+			add_filter( 'wp_title', array($this, 'seo_title') );
+		}
+
+		return get_query_template( 'index' );
+
+	}
+
+	public function noindex() {
+
+		return 'noindex,nofollow';
+
+	}
+
+	public function seo_canonical( $canonical ) {
+
+		switch( $this->action ) {
+			case 'add':
+				$canonical = $this->get_add_url();
+				break;
+			case 'edit':
+				$canonical = $this->get_edit_url( $this->item->ID );
+				break;
+		}
+
+		return $canonical;
+
+	}
+
+	public function seo_title( $title ) {
+
+		$titles = get_option( 'wpseo_titles' );
+
+		switch( $this->action ) {
+			case 'add':
+				$title = str_replace( '%%title%%', 'Add New Folder', $titles['title-folder'] );
+				break;
+			case 'edit':
+				$title = str_replace( '%%title%%', 'Edit Folder', $titles['title-folder'] );
+				break;
+		}
+
+		return wpseo_replace_vars( $title );
 
 	}
 
