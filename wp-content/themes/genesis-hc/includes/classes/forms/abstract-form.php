@@ -3,6 +3,12 @@
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 abstract class HC_Form_Abstract {
+	private static $disallowed_slugs = array(
+		'new',
+		'edit',
+		'add',
+	);
+
 	public function __construct() {
 
 		$this->setup_fields();
@@ -562,8 +568,12 @@ abstract class HC_Form_Abstract {
 			return;
 
 		// Sync post_name to title
-		if( isset($args['posts']['post_title']) )
+		if( isset($args['posts']['post_title']) ) {
 			$args['posts']['post_name'] = sanitize_title($args['posts']['post_title']);
+
+			if( in_array($args['posts']['post_name'], self::$disallowed_slugs, true) )
+				$args['posts']['post_name'] .= '-' . rand(1, 99);
+		}
 
 		switch( $this->action ) {
 			case 'add':
