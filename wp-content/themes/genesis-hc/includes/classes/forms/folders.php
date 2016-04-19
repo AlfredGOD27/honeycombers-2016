@@ -65,6 +65,14 @@ class HC_Folder_Editor extends HC_Form_Abstract {
 			'preview_image_size' => 'archive-small',
 			'classes'            => array('one-half', 'block-image'),
 		);
+		$this->fields[] = array(
+			'slug'     => '_hc_folder_item_ids',
+			'label'    => 'Items',
+			'type'     => 'posts_list',
+			'table'    => 'postmeta',
+			'required' => false,
+			'classes'  => array('first'),
+		);
 
 	}
 

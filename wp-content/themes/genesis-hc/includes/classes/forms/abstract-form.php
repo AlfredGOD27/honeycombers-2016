@@ -83,6 +83,15 @@ abstract class HC_Form_Abstract {
 			case 'boolean':
 				$value = !empty($value) ? 'yes' : false;
 				break;
+			case 'posts_list':
+				$value              = (array) $value;
+				$whitelisted_values = array();
+				foreach( $value as $item_id ) {
+					if( HC()->folders->item_can_be_bookmarked( $item_id ) )
+						$whitelisted_values[] = $item_id;
+				}
+				$value = $whitelisted_values;
+				break;
 			case 'subscriptions':
 				$value              = (array) $value;
 				$whitelisted_values = array();
@@ -141,6 +150,10 @@ abstract class HC_Form_Abstract {
 		$field_id = esc_attr($field_id);
 
 		$value = $this->get_field_value( $field );
+
+		// Don't show empty post lists
+		if( 'posts_list' === $field['type'] && empty($value) )
+			return;
 
 		$disabled         = isset($field['disabled']) && $field['disabled'] ? 'disabled' : '';
 		$placeholder_text = isset($field['placeholder']) && $field['placeholder'] ? $field['placeholder'] : '';
@@ -239,6 +252,16 @@ abstract class HC_Form_Abstract {
 						echo '</label>';
 					echo '</div>';
 					break;
+				case 'posts_list':
+					echo '<div class="checkbox-list">';
+						foreach( $value as $item_id ) {
+							echo '<label class="checkbox">';
+								echo '<input type="checkbox" name="' . $field['slug'] . '[]" value="' . $item_id . '" checked>';
+								echo get_the_title($item_id);
+							echo '</label>';
+						}
+					echo '</label>';
+					break;
 				case 'subscriptions':
 					echo '<div class="checkbox-list">';
 						foreach( $field['interests'] as $interest_id => $interest_name ) {
@@ -276,6 +299,7 @@ abstract class HC_Form_Abstract {
 				case 'textarea':
 				case 'select':
 				case 'radio':
+				case 'posts_list':
 				case 'subscriptions':
 					// These are empty if they have no content
 					if(
@@ -543,6 +567,13 @@ abstract class HC_Form_Abstract {
 				case 'subscriptions':
 					if( isset($_POST[ $field['slug'] ]) )
 						$args[ $field['table'] ][ $field['slug'] ] = $this->sanitize_value( $field, $_POST[ $field['slug'] ] );
+				case 'posts_list':
+					if( isset($_POST[ $field['slug'] ]) ) {
+						$args[ $field['table'] ][ $field['slug'] ] = $this->sanitize_value( $field, $_POST[ $field['slug'] ] );
+					} else {
+						$args[ $field['table'] ][ $field['slug'] ] = array();
+					}
+					break;
 				case 'password':
 					// Skip the '_2' version
 					if( substr($field['slug'], -2) === '_2' )
