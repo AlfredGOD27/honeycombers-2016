@@ -10,6 +10,7 @@ class HC_Folders {
 		add_action( 'init', array($this, 'register_post_type') );
 		add_action( 'init', array($this, 'rewrites'), 1 );
 		add_action( 'wp', array($this, 'init') );
+		add_action( 'wp_ajax_hc_ajax_add_item_to_folder', array($this, 'ajax_add_item_to_folder') );
 
 	}
 
@@ -136,18 +137,79 @@ class HC_Folders {
 
 	public function display_add_button( $post_id, $icon_only = false ) {
 
-		?>
-		<button class="bookmarks-button btn btn-icon">
-			<i class="ico-heart"></i>
-			<?php
-			if( !$icon_only ) {
-				?>
-				<span>+ Save to Favorites</span>
-				<?php
-			}
+		$post_id = absint($post_id);
+
+		if( is_user_logged_in() ) {
+			$folder_ids = $this->get_user_folder_ids( get_current_user_id() );
+
+			$add_url = add_query_arg(
+				array(
+					'add_post_id' => $post_id,
+				),
+				$this->get_add_url()
+			);
 			?>
-		</button>
-		<?php
+			<nav class="favorites-nav">
+				<button class="bookmarks-button btn btn-icon">
+					<i class="ico-heart"></i>
+					<?php
+					if( !$icon_only ) {
+						?>
+						<span>+ Save to Favorites</span>
+						<?php
+					}
+					?>
+				</button>
+
+				<div class="sub">
+					<ul>
+						<?php
+						$i = 1;
+						foreach( $folder_ids as $folder_id ) {
+							$items = $this->get_items_in_folder( $folder_id );
+
+							?>
+							<li class="<?php echo $i > 3 ? 'hide' : ''; ?> <?php echo in_array($post_id, $items, true) ? 'added' : ''; ?>">
+								<a href="#" class="add-to-folder" data-item_id="<?php echo $post_id; ?>" data-folder_id="<?php echo $folder_id; ?>">
+									<span class="name"><?php echo get_the_title($folder_id); ?></span>
+									<i class="ico-check"></i>
+									<span class="count"><?php echo count($items); ?></span>
+								</a>
+							</li>
+							<?php
+							++$i;
+						}
+
+						if( $i > 3 ) {
+							?>
+							<li class="view-all">
+								<button type="button" class="view-all btn btn-icon">
+									<span>View All</span>
+									<i class="ico-arrow-down"></i>
+								</button>
+							</li>
+							<?php
+						}
+						?>
+					</ul>
+					<a href="<?php echo $add_url; ?>" class="btn add-new">Create New</a>
+				</div>
+			</nav>
+			<?php
+		} else {
+			?>
+			<button class="bookmarks-button btn btn-icon open-popup-link" data-mfp-src="#login-popup">
+				<i class="ico-heart"></i>
+				<?php
+				if( !$icon_only ) {
+					?>
+					<span>+ Save to Favorites</span>
+					<?php
+				}
+				?>
+			</button>
+			<?php
+		}
 
 	}
 
@@ -227,6 +289,8 @@ class HC_Folders {
 
 		$folders = get_posts( $args );
 
+		$folders = array_map( 'absint', $folders );
+
 		return $folders;
 
 	}
@@ -305,6 +369,30 @@ class HC_Folders {
 
 	}
 
+	public function get_items_in_folder( $folder_id ) {
+
+		$item_ids = get_post_meta( $folder_id, '_hc_folder_item_ids', true );
+
+		return !empty($item_ids) ? $item_ids : array();
+
+	}
+
+	public function item_can_be_bookmarked( $item_id ) {
+
+		$item = get_post( $item_id );
+		if( empty($item) )
+			return false;
+
+		if( !in_array( $item->post_type, array('post', 'event', 'listing'), true ) )
+			return false;
+
+		if( 'publish' !== $item->post_status )
+			return false;
+
+		return true;
+
+	}
+
 	public function add_item_to_folder( $item_id, $folder_id ) {
 
 		$item_id = absint($item_id);
@@ -322,6 +410,72 @@ class HC_Folders {
 		$items[] = $item_id;
 		$items   = array_unique($items);
 		update_post_meta( $folder_id, '_hc_folder_item_ids', $items );
+
+	}
+
+	public function ajax_add_item_to_folder() {
+
+		$result = array(
+			'status'  => '',
+			'message' => '',
+		);
+
+		if( !is_user_logged_in() ) {
+			$result['status']  = 'error';
+			$result['message'] = 'You must login to save items.';
+			echo json_encode($result);
+			wp_die();
+		}
+
+		$user_id = get_current_user_id();
+
+		if(
+			empty($_POST['folder_id']) ||
+			empty($_POST['item_id'])
+		) {
+			$result['status']  = 'error';
+			$result['message'] = 'Incomplete information.';
+			echo json_encode($result);
+			wp_die();
+		}
+
+		$folder_id = absint($_POST['folder_id']);
+		$folder    = get_post( $folder_id );
+		if( empty($folder) ) {
+			$result['status']  = 'error';
+			$result['message'] = 'Folder not found';
+			echo json_encode($result);
+			wp_die();
+		}
+
+		if( (int) $user_id !== (int) $folder->post_author ) {
+			$result['status']  = 'error';
+			$result['message'] = 'You don\'t have permission to edit this folder';
+			echo json_encode($result);
+			wp_die();
+		}
+
+		$item_id = absint($_POST['item_id']);
+		$item    = get_post( $item_id );
+		if( empty($item) ) {
+			$result['status']  = 'error';
+			$result['message'] = 'Item not found.';
+			echo json_encode($result);
+			wp_die();
+		}
+
+		if( !$this->item_can_be_bookmarked( $item_id ) ) {
+			$result['status']  = 'error';
+			$result['message'] = 'Item cannot be bookmarked.';
+			echo json_encode($result);
+			wp_die();
+		}
+
+		$this->add_item_to_folder( $item_id, $folder_id );
+
+		$result['status'] = 'success';
+		echo json_encode($result);
+		wp_die();
 
 	}
 

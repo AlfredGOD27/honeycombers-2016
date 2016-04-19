@@ -83,6 +83,12 @@ class HC_Folder_Editor extends HC_Form_Abstract {
 
 	protected function do_after_save() {
 
+		if( isset($_GET['add_post_id']) ) {
+			$item_id = absint($_GET['add_post_id']);
+			if( HC()->folders->item_can_be_bookmarked( $item_id ) )
+				HC()->folders->add_item_to_folder( $item_id, $this->post_id );
+		}
+
 		$url = get_permalink( $this->post_id );
 		$url = add_query_arg(
 			array(

@@ -77,6 +77,7 @@ module.exports = function(grunt) {
 					'bower_components/waypoints/lib/jquery.waypoints.js',
 					'js/_analytics-youtube.js',
 					'js/_archives.js',
+					'js/_bookmarks.js',
 					'js/_calendar.js',
 					'js/_captcha.js',
 					'js/_components.js',
