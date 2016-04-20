@@ -272,19 +272,13 @@ class HC_Home {
 								foreach( $listings as $post_id ) {
 									?>
 									<div>
-										<div class="listing-slide-default">
+										<div class="listing-slide-left">
 											<div class="inner">
-												<div class="left">
-													<h3><?php echo get_the_title( $post_id ); ?></h3>
-												</div>
-
-												<div class="right">
-													<i class="ico-pin-filled"></i>
-												</div>
+												<h3><?php echo get_the_title( $post_id ); ?></h3>
 											</div>
 										</div>
 
-										<div class="listing-slide-active">
+										<div class="listing-slide-right">
 											<div class="inner">
 												<div class="left">
 													<i class="ico-pin-filled"></i>
