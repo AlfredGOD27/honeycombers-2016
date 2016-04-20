@@ -180,7 +180,7 @@ function hc_do_nav() {
 		$nav = ob_get_clean();
 
 		$transient = $nav_markup_open . $nav . $nav_markup_close;
-		set_transient( $transient_name, $transient, YEAR_IN_SECONDS );
+		set_transient( $transient_name, $transient );
 	}
 
 	echo $transient;
