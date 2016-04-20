@@ -149,7 +149,7 @@ class HC_Folders {
 				$this->get_add_url()
 			);
 			?>
-			<nav class="favorites-nav">
+			<nav class="button-nav favorites-nav">
 				<button class="bookmarks-button btn btn-icon">
 					<i class="ico-heart"></i>
 					<?php
@@ -443,14 +443,14 @@ class HC_Folders {
 		$folder    = get_post( $folder_id );
 		if( empty($folder) ) {
 			$result['status']  = 'error';
-			$result['message'] = 'Folder not found';
+			$result['message'] = 'Folder not found.';
 			echo json_encode($result);
 			wp_die();
 		}
 
 		if( (int) $user_id !== (int) $folder->post_author ) {
 			$result['status']  = 'error';
-			$result['message'] = 'You don\'t have permission to edit this folder';
+			$result['message'] = 'You don\'t have permission to edit this folder.';
 			echo json_encode($result);
 			wp_die();
 		}

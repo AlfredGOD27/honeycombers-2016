@@ -21,6 +21,7 @@ final class HC {
 		'messages',
 		'migration',
 		'profiles',
+		'ratings',
 		'related',
 		'schemas',
 		'share',

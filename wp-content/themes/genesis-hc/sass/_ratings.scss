@@ -1,0 +1,61 @@
+.stars {
+	a {
+		position: relative;
+		display: inline-block;
+		margin-left: .25em;
+		width: 1em;
+		height: 1em;
+		color: $orange;
+		text-indent: -999em;
+		font-size: 1.5em;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&:before {
+			@extend %ico;
+			@extend .ico-star-o:before;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: 1em;
+			height: 1em;
+			text-indent: 0;
+			line-height: 1;
+		}
+
+		&:hover {
+			~ a:before {
+				@extend .ico-star-o:before;
+			}
+		}
+	}
+
+	&:hover {
+		a {
+			&:before {
+				@extend .ico-star:before;
+			}
+		}
+	}
+
+	&.selected {
+		a.active {
+			&:before {
+				@extend .ico-star:before;
+			}
+
+			~ a:before {
+				@extend .ico-star-o:before;
+			}
+		}
+
+		a:not(.active) {
+			&:before {
+				@extend .ico-star:before;
+			}
+		}
+	}
+}

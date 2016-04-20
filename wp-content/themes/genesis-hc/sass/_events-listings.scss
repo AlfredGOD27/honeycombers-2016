@@ -72,7 +72,8 @@
 	border-bottom: 1px solid $grey-border;
 	text-align: center;
 
-	.btn {
+	> .btn,
+	.button-nav {
 		margin-left: 3em;
 
 		&:first-child {
@@ -83,7 +84,8 @@
 
 @include media('<=phone') {
 	.item-action-row {
-		.btn {
+		> .btn,
+		.button-nav {
 			margin-left: 1em;
 
 			&:first-child {

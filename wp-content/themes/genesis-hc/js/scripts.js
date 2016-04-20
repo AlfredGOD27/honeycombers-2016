@@ -146,4 +146,9 @@
 		}
 	});
 
+	// Buttons nav
+	$('.button-nav > .btn').on( 'click', function() {
+		$(this).closest('.button-nav').toggleClass('open');
+	});
+
 })( window.jQuery );

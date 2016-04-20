@@ -187,7 +187,7 @@ class HC_Listings {
 				<div class="item-action-row">
 					<?php HC()->folders->display_add_button( $post->ID ); ?>
 					<?php HC()->share->display( $post->ID ); ?>
-					<button type="button" class="calendar-button btn btn-icon"><i class="ico-star-o"></i> <span>Rate</span></button>
+					<?php HC()->ratings->display_button( $post->ID ); ?>
 				</div>
 
 				<?php printf( '<div %s>', genesis_attr( 'entry-content' ) ); ?>

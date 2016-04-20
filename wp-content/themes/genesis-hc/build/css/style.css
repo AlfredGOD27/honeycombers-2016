@@ -1248,7 +1248,8 @@ html {
 [class^='ico-'],
 [class*=' ico-'],
 .pika-prev:before,
-.pika-next:before {
+.pika-next:before,
+.stars a:before {
   text-transform: none;
   font-weight: normal;
   font-style: normal;
@@ -1278,11 +1279,11 @@ html {
   content: '\e90f';
 }
 
-.ico-star-o:before {
+.ico-star-o:before, .stars a:before, .stars a:hover ~ a:before, .stars.selected a.active ~ a:before {
   content: '\e910';
 }
 
-.ico-star:before {
+.ico-star:before, .stars:hover a:before, .stars.selected a.active:before, .stars.selected a:not(.active):before {
   content: '\e911';
 }
 
@@ -2335,21 +2336,21 @@ input[type='search'] {
   width: 100%;
 }
 
-.favorites-nav {
+.button-nav {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
-.favorites-nav.open .sub {
+.button-nav.open .sub {
   display: block;
 }
-.favorites-nav.show-all li.hide {
+.button-nav.show-all li.hide {
   display: block;
 }
-.favorites-nav.show-all .view-all {
+.button-nav.show-all .view-all {
   display: none;
 }
-.favorites-nav .sub {
+.button-nav .sub {
   position: absolute;
   top: 110%;
   top: calc(100% + 1em);
@@ -2361,7 +2362,7 @@ input[type='search'] {
   border: 1px solid #fe862c;
   background-color: #FFFFFF;
 }
-.favorites-nav .sub:before, .favorites-nav .sub:after {
+.button-nav .sub:before, .button-nav .sub:after {
   position: absolute;
   bottom: 100%;
   width: 0;
@@ -2371,31 +2372,31 @@ input[type='search'] {
   border-color: transparent;
   content: '';
 }
-.favorites-nav .sub:before {
+.button-nav .sub:before {
   right: -1px;
   border-bottom-color: #fe862c;
 }
-.favorites-nav .sub:after {
+.button-nav .sub:after {
   right: 0;
   margin-bottom: -2px;
   border-bottom-color: #FFFFFF;
 }
-.favorites-nav ul {
+.button-nav ul {
   margin-bottom: .75em;
 }
-.favorites-nav li {
+.button-nav li {
   display: block;
   margin-bottom: .25em;
   padding-bottom: .25em;
   border-bottom: 1px solid #d7d7d7;
 }
-.favorites-nav li.added .ico-check {
+.button-nav li.added .ico-check {
   display: block;
 }
-.favorites-nav li.hide {
+.button-nav li.hide {
   display: none;
 }
-.favorites-nav a {
+.button-nav a {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2408,7 +2409,7 @@ input[type='search'] {
   text-decoration: none;
   font-size: .9em;
 }
-.favorites-nav .name {
+.button-nav .name {
   display: block;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -2418,7 +2419,7 @@ input[type='search'] {
       -ms-flex-negative: 1;
           flex-shrink: 1;
 }
-.favorites-nav .ico-check {
+.button-nav .ico-check {
   display: none;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
@@ -2431,7 +2432,7 @@ input[type='search'] {
   color: #fe862c;
   font-size: 1.25em;
 }
-.favorites-nav .count {
+.button-nav .count {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
   display: block;
@@ -2445,25 +2446,49 @@ input[type='search'] {
   margin-left: .5em;
   color: #fe862c;
 }
-.favorites-nav .view-all {
+.button-nav .view-all {
   margin-bottom: 0;
   padding-bottom: 0;
   border-bottom: none;
 }
-.favorites-nav .view-all .btn, .favorites-nav .view-all button,
-.favorites-nav .view-all input[type='button'],
-.favorites-nav .view-all input[type='reset'],
-.favorites-nav .view-all input[type='submit'] {
+.button-nav .view-all .btn, .button-nav .view-all button,
+.button-nav .view-all input[type='button'],
+.button-nav .view-all input[type='reset'],
+.button-nav .view-all input[type='submit'] {
   width: 100%;
 }
-.favorites-nav .view-all .btn span, .favorites-nav .view-all button span,
-.favorites-nav .view-all input[type='button'] span,
-.favorites-nav .view-all input[type='reset'] span,
-.favorites-nav .view-all input[type='submit'] span {
+.button-nav .view-all .btn span, .button-nav .view-all button span,
+.button-nav .view-all input[type='button'] span,
+.button-nav .view-all input[type='reset'] span,
+.button-nav .view-all input[type='submit'] span {
   text-transform: none;
 }
-.favorites-nav .add-new {
+.button-nav .add-new {
   color: #FFFFFF;
+}
+
+.stars a {
+  position: relative;
+  display: inline-block;
+  margin-left: .25em;
+  width: 1em;
+  height: 1em;
+  color: #fe862c;
+  text-indent: -999em;
+  font-size: 1.5em;
+}
+.stars a:first-child {
+  margin-left: 0;
+}
+.stars a:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 1em;
+  height: 1em;
+  text-indent: 0;
+  line-height: 1;
 }
 
 .social a {
@@ -4885,30 +4910,34 @@ input[type='search'] {
   border-bottom: 1px solid #d7d7d7;
   text-align: center;
 }
-.item-action-row .btn, .item-action-row button,
-.item-action-row input[type='button'],
-.item-action-row input[type='reset'],
-.item-action-row input[type='submit'] {
+.item-action-row > .btn, .item-action-row > button,
+.item-action-row > input[type='button'],
+.item-action-row > input[type='reset'],
+.item-action-row > input[type='submit'],
+.item-action-row .button-nav {
   margin-left: 3em;
 }
-.item-action-row .btn:first-child, .item-action-row button:first-child,
-.item-action-row input[type='button']:first-child,
-.item-action-row input[type='reset']:first-child,
-.item-action-row input[type='submit']:first-child {
+.item-action-row > .btn:first-child, .item-action-row > button:first-child,
+.item-action-row > input[type='button']:first-child,
+.item-action-row > input[type='reset']:first-child,
+.item-action-row > input[type='submit']:first-child,
+.item-action-row .button-nav:first-child {
   margin-left: 0;
 }
 
 @media (max-width: 45em) {
-  .item-action-row .btn, .item-action-row button,
-  .item-action-row input[type='button'],
-  .item-action-row input[type='reset'],
-  .item-action-row input[type='submit'] {
+  .item-action-row > .btn, .item-action-row > button,
+  .item-action-row > input[type='button'],
+  .item-action-row > input[type='reset'],
+  .item-action-row > input[type='submit'],
+  .item-action-row .button-nav {
     margin-left: 1em;
   }
-  .item-action-row .btn:first-child, .item-action-row button:first-child,
-  .item-action-row input[type='button']:first-child,
-  .item-action-row input[type='reset']:first-child,
-  .item-action-row input[type='submit']:first-child {
+  .item-action-row > .btn:first-child, .item-action-row > button:first-child,
+  .item-action-row > input[type='button']:first-child,
+  .item-action-row > input[type='reset']:first-child,
+  .item-action-row > input[type='submit']:first-child,
+  .item-action-row .button-nav:first-child {
     margin-left: 0;
   }
 }

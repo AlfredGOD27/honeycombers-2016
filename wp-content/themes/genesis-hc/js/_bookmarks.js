@@ -1,9 +1,5 @@
 (function($) {
 
-	$('.favorites-nav .bookmarks-button').on( 'click', function() {
-		$(this).closest('.favorites-nav').toggleClass('open');
-	});
-
 	$('.favorites-nav .view-all .btn').on( 'click', function() {
 		$(this).closest('.favorites-nav').addClass('show-all');
 	});

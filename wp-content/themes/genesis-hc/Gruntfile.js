@@ -86,6 +86,7 @@ module.exports = function(grunt) {
 					'js/_home.js',
 					'js/_infinite-scroll.js',
 					'js/_navigation.js',
+					'js/_ratings.js',
 					'js/_slider.js',
 					'js/_subscriptions.js',
 					'js/_users.js',
