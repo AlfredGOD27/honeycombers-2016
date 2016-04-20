@@ -4274,6 +4274,10 @@ input[type='search'] {
 .slider-nav .slick-current .inner span {
   color: #3a3a3a;
 }
+.slider-nav img {
+  max-width: none;
+  width: 100%;
+}
 
 @media (max-width: 45em) {
   .slider-nav {

@@ -21,6 +21,7 @@
 			slidesToScroll: 1,
 			slidesToShow: 4,
 			speed: 0,
+			useCSS: false,
 			vertical: true,
 		});
 	} else {

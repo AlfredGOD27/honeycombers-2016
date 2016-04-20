@@ -373,6 +373,11 @@ $slider-height: 25em;
 			}
 		}
 	}
+
+	img {
+		max-width: none;
+		width: 100%;
+	}
 }
 
 @include media('<=phone') {

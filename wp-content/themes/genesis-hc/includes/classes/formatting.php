@@ -101,7 +101,7 @@ class HC_Formatting {
 
 		?>
 		<a href="<?php echo esc_url($url); ?>" target="_blank">
-			<img src="<?php echo esc_url($src); ?>" alt="<?php echo esc_attr($map_address); ?>">
+			<img src="<?php echo esc_url($src); ?>" alt="<?php echo esc_attr($map_address); ?>" class="aligncenter">
 		</a>
 		<?php
 

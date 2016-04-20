@@ -62,11 +62,8 @@ class HC_Profile_Edit_Form extends HC_Form_Abstract {
 			'table'       => 'usermeta',
 			'placeholder' => '',
 			'required'    => false,
-			'options'     => array(
-				'Singapore',
-				'Jakarta',
-			),
-			'classes' => array('one-third'),
+			'options'     => HC()->profiles->get_city_options(),
+			'classes'     => array('one-third'),
 		);
 		$this->fields[] = array(
 			'slug'               => '_hc_profile_image_id',

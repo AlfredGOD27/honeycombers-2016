@@ -6492,9 +6492,9 @@ function hc_maybe_load_facebook() {
 
 	}
 
-	maybe_add_load_more_button( $('.home-section-posts .block') );
+	maybe_add_load_more_button( $('.home-section-latest-posts .block') );
 
-	$('.home-section-posts').on( 'click', '.il-load-more', load_next_page );
+	$('.home-section-latest-posts').on( 'click', '.il-load-more', load_next_page );
 
 })( window.jQuery );
 
@@ -6614,6 +6614,7 @@ function hc_maybe_load_facebook() {
 			slidesToScroll: 1,
 			slidesToShow: 4,
 			speed: 0,
+			useCSS: false,
 			vertical: true,
 		});
 	} else {
@@ -6860,8 +6861,8 @@ function hc_maybe_load_facebook() {
 		slidesToScroll: 1,
 		slidesToShow: 1,
 		fade: true,
-		prevArrow: hc_strings.prev_arrow,
-		nextArrow: hc_strings.next_arrow,
+		prevArrow: '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-up"></i></button>',
+		nextArrow: '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-down"></i></button>'
 	});
 
 })( window.jQuery );

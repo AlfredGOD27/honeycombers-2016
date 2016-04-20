@@ -43,11 +43,8 @@ class HC_Profile_Add_Form extends HC_Form_Abstract {
 			'type'     => 'select',
 			'table'    => 'usermeta',
 			'required' => true,
-			'options'  => array(
-				'Singapore',
-				'Jakarta',
-			),
-			'classes' => array('one-half'),
+			'options'  => HC()->profiles->get_city_options(),
+			'classes'  => array('one-half'),
 		);
 		$this->fields[] = array(
 			'slug'     => 'user_pass',

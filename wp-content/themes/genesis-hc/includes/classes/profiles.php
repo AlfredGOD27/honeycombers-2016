@@ -124,6 +124,16 @@ class HC_Profiles {
 
 	}
 
+	public function get_city_options() {
+
+		return array(
+			'Singapore',
+			'Jakarta',
+			'Bali',
+		);
+
+	}
+
 	public function get_first_name( $user_id = false ) {
 
 		if( false === $user_id ) {

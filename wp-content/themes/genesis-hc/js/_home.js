@@ -119,8 +119,8 @@
 
 	}
 
-	maybe_add_load_more_button( $('.home-section-posts .block') );
+	maybe_add_load_more_button( $('.home-section-latest-posts .block') );
 
-	$('.home-section-posts').on( 'click', '.il-load-more', load_next_page );
+	$('.home-section-latest-posts').on( 'click', '.il-load-more', load_next_page );
 
 })( window.jQuery );
