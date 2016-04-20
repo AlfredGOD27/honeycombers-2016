@@ -1,0 +1,22 @@
+.sticky-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	width: 100%;
+	background-color: $orange;
+	transition: .25s transform ease-in-out;
+	transform: translateY(-100%);
+
+	.admin-bar & {
+		top: 32px;
+	}
+
+	&.show {
+		transform: translateY(0);
+	}
+
+	> .wrap {
+		@extend %wrap;
+	}
+}
