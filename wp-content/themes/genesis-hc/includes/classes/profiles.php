@@ -198,7 +198,7 @@ class HC_Profiles {
 
 	}
 
-	private function check_password_strength( $password, $is_admin ) {
+	public function check_password_strength( $password, $is_admin ) {
 
 		if( $is_admin ) {
 			$zxcvbn   = new Zxcvbn();
