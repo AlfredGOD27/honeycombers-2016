@@ -6,6 +6,7 @@ class HC_Profile_Edit_Form extends HC_Form_Abstract {
 	public function __construct( $user ) {
 
 		$this->user_object = $user;
+		$this->action      = 'edit';
 
 		parent::__construct();
 

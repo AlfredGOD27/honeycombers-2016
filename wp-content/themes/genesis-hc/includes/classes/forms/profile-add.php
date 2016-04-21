@@ -5,6 +5,8 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HC_Profile_Add_Form extends HC_Form_Abstract {
 	public function __construct() {
 
+		$this->action = 'add';
+
 		parent::__construct();
 
 	}
