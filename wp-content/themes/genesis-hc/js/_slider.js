@@ -35,4 +35,13 @@
 		});
 	}
 
+	$('.slider-for').on( 'afterChange', function() {
+		$(this).find('.youtube-tracked-embed').each( function() {
+			var player = YT.get( $(this).attr('id') );
+
+			if( 'undefined' !== typeof player )
+				player.stopVideo();
+		});
+	});
+
 })( window.jQuery );
