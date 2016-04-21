@@ -150,8 +150,59 @@ class HC_Folders {
 				$this->get_add_url()
 			);
 			?>
-			<nav class="button-nav favorites-nav">
-				<button class="bookmarks-button btn btn-icon">
+			<div class="bookmarks-button-container">
+				<nav class="button-nav favorites-nav">
+					<button class="bookmarks-button btn btn-icon">
+						<i class="ico-heart"></i>
+						<?php
+						if( !$icon_only ) {
+							?>
+							<span>+ Save to Favorites</span>
+							<?php
+						}
+						?>
+					</button>
+
+					<div class="sub">
+						<ul>
+							<?php
+							$i = 1;
+							foreach( $folder_ids as $folder_id ) {
+								$items = $this->get_items_in_folder( $folder_id );
+
+								?>
+								<li class="<?php echo $i > 3 ? 'hide' : ''; ?> <?php echo in_array($post_id, $items, true) ? 'added' : ''; ?>">
+									<a href="#" class="add-to-folder" data-item_id="<?php echo $post_id; ?>" data-folder_id="<?php echo $folder_id; ?>">
+										<span class="name"><?php echo get_the_title($folder_id); ?></span>
+										<i class="ico-check"></i>
+										<span class="count"><?php echo count($items); ?></span>
+									</a>
+								</li>
+								<?php
+								++$i;
+							}
+
+							if( $i > 3 ) {
+								?>
+								<li class="view-all">
+									<button type="button" class="view-all btn btn-icon">
+										<span>View All</span>
+										<i class="ico-arrow-down"></i>
+									</button>
+								</li>
+								<?php
+							}
+							?>
+						</ul>
+						<a href="<?php echo $add_url; ?>" class="btn add-new">Create New</a>
+					</div>
+				</nav>
+			</div>
+			<?php
+		} else {
+			?>
+			<div class="bookmarks-button-container">
+				<button class="bookmarks-button btn btn-icon open-popup-link" data-mfp-src="#login-popup">
 					<i class="ico-heart"></i>
 					<?php
 					if( !$icon_only ) {
@@ -161,54 +212,7 @@ class HC_Folders {
 					}
 					?>
 				</button>
-
-				<div class="sub">
-					<ul>
-						<?php
-						$i = 1;
-						foreach( $folder_ids as $folder_id ) {
-							$items = $this->get_items_in_folder( $folder_id );
-
-							?>
-							<li class="<?php echo $i > 3 ? 'hide' : ''; ?> <?php echo in_array($post_id, $items, true) ? 'added' : ''; ?>">
-								<a href="#" class="add-to-folder" data-item_id="<?php echo $post_id; ?>" data-folder_id="<?php echo $folder_id; ?>">
-									<span class="name"><?php echo get_the_title($folder_id); ?></span>
-									<i class="ico-check"></i>
-									<span class="count"><?php echo count($items); ?></span>
-								</a>
-							</li>
-							<?php
-							++$i;
-						}
-
-						if( $i > 3 ) {
-							?>
-							<li class="view-all">
-								<button type="button" class="view-all btn btn-icon">
-									<span>View All</span>
-									<i class="ico-arrow-down"></i>
-								</button>
-							</li>
-							<?php
-						}
-						?>
-					</ul>
-					<a href="<?php echo $add_url; ?>" class="btn add-new">Create New</a>
-				</div>
-			</nav>
-			<?php
-		} else {
-			?>
-			<button class="bookmarks-button btn btn-icon open-popup-link" data-mfp-src="#login-popup">
-				<i class="ico-heart"></i>
-				<?php
-				if( !$icon_only ) {
-					?>
-					<span>+ Save to Favorites</span>
-					<?php
-				}
-				?>
-			</button>
+			</div>
 			<?php
 		}
 

@@ -555,7 +555,7 @@ class HC_Home {
 						if( !empty($categories) )
 							echo HC()->utilities->get_category_icon_html( $categories[0] );
 						?>
-						<?php HC()->folders->display_add_button( $post->ID, true ); ?>
+						<?php // HC()->folders->display_add_button( $post->ID, true ); ?>
 						<?php echo get_the_post_thumbnail( $post->ID, 'archive-small' ); ?>
 					</div>
 					<?php
