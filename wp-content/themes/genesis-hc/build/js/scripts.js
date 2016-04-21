@@ -6163,7 +6163,7 @@ function hc_init_captcha() {
 (function($) {
 
 	$('.component-slideshow').slick({
-		speed: 150,
+		speed: 500,
 		prevArrow: hc_strings.prev_arrow,
 		nextArrow: hc_strings.next_arrow,
 	});
@@ -7106,7 +7106,7 @@ function hc_maybe_load_facebook() {
 		nextArrow: hc_strings.next_arrow,
 		centerMode: true,
 		slidesToShow: 1,
-		speed: 150,
+		speed: 500,
 		variableWidth: true,
 	});
 

@@ -120,7 +120,7 @@
 		nextArrow: hc_strings.next_arrow,
 		centerMode: true,
 		slidesToShow: 1,
-		speed: 150,
+		speed: 500,
 		variableWidth: true,
 	});
 
