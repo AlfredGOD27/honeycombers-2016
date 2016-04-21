@@ -10,6 +10,7 @@ class HC_Folders {
 		add_action( 'init', array($this, 'register_post_type') );
 		add_action( 'init', array($this, 'rewrites'), 1 );
 		add_action( 'wp', array($this, 'init') );
+		add_action( 'wp', array($this, 'init_single') );
 		add_action( 'wp_ajax_hc_ajax_add_item_to_folder', array($this, 'ajax_add_item_to_folder') );
 
 	}
@@ -276,6 +277,8 @@ class HC_Folders {
 			'posts_per_page' => -1,
 			'author'         => $user_id,
 			'fields'         => 'ids',
+			'orderby'        => 'title',
+			'order'          => 'ASC',
 		);
 
 		if( $public_only ) {
@@ -476,6 +479,131 @@ class HC_Folders {
 		$result['status'] = 'success';
 		echo json_encode($result);
 		wp_die();
+
+	}
+
+	public function init_single() {
+
+		global $post;
+
+		if( !is_singular('folder') )
+			return;
+
+		add_action( 'wpseo_robots', array($this, 'noindex') );
+
+		if( !$this->is_public($post->ID) && !current_user_can( 'edit_post', $post->ID ) ) {
+			add_action( 'genesis_loop', array(HC()->messages, 'display') );
+			// Not authorized
+		} else {
+			// Authorized
+			HC()->profiles->user_id = $post->post_author;
+			HC()->profiles->user    = get_user_by( 'id', $post->post_author );
+
+			add_action( 'wp_enqueue_scripts', array(HC()->profiles, 'load_assets') );
+			add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+			add_filter( 'body_class', array(HC()->profiles, 'body_classes') );
+			add_action( 'genesis_loop', array(HC()->profiles, 'display_heading') );
+			add_action( 'genesis_loop', array(HC()->messages, 'display') );
+			add_action( 'genesis_loop', array($this, 'display_single') );
+			remove_action( 'genesis_loop', 'genesis_do_loop' );
+
+		}
+
+	}
+
+	public function display_single() {
+
+		global $post;
+
+		$is_own_folder = (int) get_current_user_id() === (int) $post->post_author;
+
+		?>
+		<div class="clearfix">
+			<aside class="one-fourth first folders-list">
+				<h4>Folders:</h4>
+
+				<ul>
+					<?php
+					$folders = $this->get_user_folder_ids( $post->post_author, !$is_own_folder );
+					foreach( $folders as $folder_id ) {
+						?>
+						<li>
+							<a href="<?php echo get_permalink( $folder_id ); ?>" class="<?php echo $folder_id === $post->ID ? 'current' : ''; ?>"><?php echo get_the_title($folder_id); ?></a>
+						</li>
+						<?php
+					}
+					?>
+				</ul>
+
+				<?php
+				if( $is_own_folder ) {
+					?>
+					<h4><a href="<?php echo $this->get_add_url(); ?>"><i class="ico-plus"></i> Create New Folder</a></h4>
+					<?php
+				}
+				?>
+			</aside>
+
+			<div class="three-fourths">
+				<header class="folder-header">
+					<h1><?php the_title(); ?></h1>
+
+					<?php
+					if( current_user_can( 'edit_post', $post->ID ) ) {
+						?>
+						<a href="<?php echo $this->get_edit_url( $post->ID ); ?>" class="edit-folder-link">Edit articles</a>
+						<?php
+					}
+					?>
+				</header>
+
+				<div class="hc-archive two-columns-archive">
+					<?php
+					$items = $this->get_items_in_folder( $post->ID );
+
+					$i = 1;
+					foreach( $items as $item_id ) {
+						$item = get_post( $item_id );
+						?>
+						<article class="entry one-half post-half <?php echo 1 === $i % 2 ? 'first' : ''; ?>">
+							<header class="entry-header">
+								<?php
+								if( has_post_thumbnail($item_id) ) {
+									?>
+									<a href="<?php echo get_permalink($item_id); ?>">
+										<?php
+										echo get_the_post_thumbnail( $item_id, 'archive', array('class' => 'entry-image') );
+										?>
+									</a>
+									<?php
+								}
+								?>
+
+								<h2 class="entry-title">
+									<a href="<?php echo get_permalink($item_id); ?>"><?php echo get_the_title($item_id); ?></a>
+								</h2>
+							</header>
+
+							<div class="entry-content" itemprop="text">
+								<div class="entry-excerpt" itemprop="description">
+									<?php
+									echo '<p>' . HC()->formatting->get_excerpt( $item, 140 ) . '</p>';
+									?>
+								</div>
+
+								<div class="read-more-share-bar">
+									<a href="<?php echo get_permalink($item_id); ?>" class="more-link">Read more &gt;</a>
+								</div>
+							</div>
+						</article>
+						<?php
+						++$i;
+					}
+					?>
+				</div>
+			</div>
+		</div>
+		<?php
 
 	}
 

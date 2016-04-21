@@ -366,6 +366,8 @@ class HC_Profiles {
 
 	public function display_heading() {
 
+		$is_own_profile = (int) $this->user_id === (int) get_current_user_id();
+
 		?>
 		<heading class="profile-heading clearfix">
 			<div class="left two-thirds first">
@@ -374,17 +376,27 @@ class HC_Profiles {
 				?>
 
 				<div class="profile-welcome">
-					<span>Welcome</span>
-					<h1><a href="<?php echo $this->get_url(); ?>"><?php echo $this->get_full_name(); ?></a></h1>
-					<nav class="profile-nav">
-						<a href="<?php echo $this->get_url('edit'); ?>">Edit profile</a>
-						<a href="<?php echo $this->get_url('folders'); ?>">Edit folders</a>
-					</nav>
+					<?php
+					if( $is_own_profile ) {
+						?>
+						<span>Welcome</span>
+						<h1><a href="<?php echo $this->get_url(); ?>"><?php echo $this->get_full_name(); ?></a></h1>
+						<nav class="profile-nav">
+							<a href="<?php echo $this->get_url('edit'); ?>">Edit profile</a>
+							<a href="<?php echo $this->get_url('folders'); ?>">Edit folders</a>
+						</nav>
+						<?php
+					} else {
+						?>
+						<h2><?php echo $this->get_full_name(); ?></h2>
+						<?php
+					}
+					?>
 				</div>
 			</div>
 
 			<?php
-			if( 'base' === $this->endpoint ) {
+			if( $is_own_profile && 'base' === $this->endpoint ) {
 				?>
 				<div class="right one-third">
 					<div class="profile-bookmarks-info">

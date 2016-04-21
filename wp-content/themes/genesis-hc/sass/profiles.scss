@@ -51,7 +51,8 @@
 		font-size: 1.1em;
 	}
 
-	h1 {
+	h1,
+	h2 {
 		text-transform: uppercase;
 		font-size: 2.25em;
 
@@ -180,4 +181,61 @@
 	margin-bottom: 1em;
 	text-transform: uppercase;
 	font-size: 1.25em;
+}
+
+.folders-list {
+	padding-right: 1em;
+
+	h4 {
+		margin-bottom: .5em;
+		text-transform: uppercase;
+		font-size: 1.1em;
+
+		i {
+			margin-right: .5em;
+			font-size: .5em;
+		}
+
+		a {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	li {
+		margin-bottom: .5em;
+		font-size: 1.1em;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+
+		&.current {
+			color: $orange;
+		}
+	}
+}
+
+.folder-header {
+	margin-bottom: 2em;
+
+	h1,
+	.edit-folder-link {
+		display: inline-block;
+		vertical-align: bottom;
+	}
+
+	h1 {
+		text-transform: uppercase;
+		font-size: 1.75em;
+	}
+}
+
+.edit-folder-link {
+	margin-left: .5em;
+	color: inherit;
+	text-decoration: none;
+	font-size: .9em;
+	opacity: .5;
 }

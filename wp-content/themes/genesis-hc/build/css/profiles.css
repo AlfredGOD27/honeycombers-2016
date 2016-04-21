@@ -137,11 +137,13 @@ TYPOGRAPHY - http://cssfontstack.com/
   color: #fe862c;
   font-size: 1.1em;
 }
-.profile-welcome h1 {
+.profile-welcome h1,
+.profile-welcome h2 {
   text-transform: uppercase;
   font-size: 2.25em;
 }
-.profile-welcome h1 a {
+.profile-welcome h1 a,
+.profile-welcome h2 a {
   color: inherit;
   text-decoration: none;
 }
@@ -243,4 +245,59 @@ TYPOGRAPHY - http://cssfontstack.com/
   margin-bottom: 1em;
   text-transform: uppercase;
   font-size: 1.25em;
+}
+
+.folders-list {
+  padding-right: 1em;
+}
+.folders-list h4 {
+  margin-bottom: .5em;
+  text-transform: uppercase;
+  font-size: 1.1em;
+}
+.folders-list h4 i {
+  margin-right: .5em;
+  font-size: .5em;
+}
+.folders-list h4 a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.folders-list li {
+  margin-bottom: .5em;
+  font-size: 1.1em;
+}
+.folders-list a {
+  color: inherit;
+  text-decoration: none;
+}
+.folders-list a.current {
+  color: #fe862c;
+}
+
+.folder-header {
+  margin-bottom: 2em;
+}
+.folder-header h1,
+.folder-header .edit-folder-link {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.folder-header h1 {
+  text-transform: uppercase;
+  font-size: 1.75em;
+}
+
+.edit-folder-link {
+  margin-left: .5em;
+  color: inherit;
+  text-decoration: none;
+  font-size: .9em;
+  opacity: .5;
 }
