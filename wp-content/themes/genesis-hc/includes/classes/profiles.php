@@ -420,13 +420,15 @@ class HC_Profiles {
 		foreach( $folders as $folder_id ) {
 			$folder = get_post( $folder_id );
 
+			$items = HC()->folders->get_items_in_folder( $folder_id );
+
 			$boxes[] = array(
 				'id'          => $folder_id,
 				'name'        => $folder->post_title,
 				'description' => $folder->post_content,
 				'url'         => get_permalink($folder_id),
 				'icon'        => get_post_meta( $folder_id, '_hc_folder_icon', true ),
-				'image_id'    => get_post_thumbnail_id($folder_id),
+				'image_id'    => isset($items[0]) && has_post_thumbnail($items[0]) ? get_post_thumbnail_id($items[0]) : '',
 			);
 		}
 
