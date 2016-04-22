@@ -555,7 +555,7 @@ class HC_Folders {
 					<?php
 					if( current_user_can( 'edit_post', $post->ID ) ) {
 						?>
-						<a href="<?php echo $this->get_edit_url( $post->ID ); ?>" class="edit-folder-link">Edit articles</a>
+						<a href="<?php echo $this->get_edit_url( $post->ID ); ?>" class="edit-folder-link">Edit</a>
 						<?php
 					}
 					?>

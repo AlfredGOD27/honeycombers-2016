@@ -383,7 +383,6 @@ class HC_Profiles {
 						<h1><a href="<?php echo $this->get_url(); ?>"><?php echo $this->get_full_name(); ?></a></h1>
 						<nav class="profile-nav">
 							<a href="<?php echo $this->get_url('edit'); ?>">Edit profile</a>
-							<a href="<?php echo $this->get_url('folders'); ?>">Edit folders</a>
 						</nav>
 						<?php
 					} else {
