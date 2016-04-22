@@ -71,7 +71,7 @@ module.exports = function(grunt) {
 					'bower_components/include-media-export/include-media.js',
 					'bower_components/iOS-Orientationchange-Fix/ios-orientationchange-fix.js',
 					'bower_components/jquery.fitvids/jquery.fitvids.js',
-					// 'bower_components/js-cookie/src/js.cookie.js',
+					'bower_components/js-cookie/src/js.cookie.js',
 					'bower_components/magnific-popup/dist/jquery.magnific-popup.js',
 					'bower_components/slick-carousel/slick/slick.js',
 					'bower_components/waypoints/lib/jquery.waypoints.js',

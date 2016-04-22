@@ -3,6 +3,8 @@
 	if( typeof document.addEventListener !== 'function' )
 		return;
 
+	var status;
+
 	// Setup global vars
 	var affix_on = false,
 		sticky_el,
@@ -57,5 +59,22 @@
 		window.addEventListener('scroll', on_scroll, false);
 		$(window).on( 'resize', init );
 	});
+
+	$('.toggle-sticky-header .btn').on( 'click', function() {
+		$('body').toggleClass('allow-sticky-header');
+	});
+
+
+	// Close
+	$('.toggle-sticky-header .btn').on( 'click', function() {
+		$('body').addClass( 'force-hide-sticky-header' );
+		Cookies.set('hc_sticky_header_status', 'closed');
+	});
+
+	// Maybe open
+	status = Cookies.get('hc_sticky_header_status');
+	if( 'closed' === status ) {
+		$('body').addClass( 'force-hide-sticky-header' );
+	}
 
 })( window.jQuery );

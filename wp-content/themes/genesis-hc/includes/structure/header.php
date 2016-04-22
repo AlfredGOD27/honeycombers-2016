@@ -353,3 +353,77 @@ function hc_header_right() {
 	echo get_search_form( false );
 
 }
+
+add_action( 'wp_footer', 'hc_sticky_header' );
+function hc_sticky_header() {
+
+	?>
+	<section class="sticky-header">
+		<div class="wrap">
+			<div class="left">
+				<a href="<?php echo get_bloginfo('url'); ?>" title="<?php echo get_bloginfo('name'); ?>">
+					<i class="ico-favicon"></i>
+				</a>
+			</div>
+			<div class="right">
+				<div class="top">
+					<?php
+					echo get_search_form( false );
+					?>
+
+					<nav class="sites-nav">
+						<button type="button" class="btn btn-icon"><span><?php echo get_bloginfo('name'); ?></span> <i class="ico-arrow-down"></i></button>
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'top',
+								'depth'          => 1,
+							)
+						);
+						?>
+					</nav>
+
+					<?php
+					hc_do_social();
+					?>
+
+					<div class="user-menu">
+						<?php
+						if( !is_user_logged_in() ) {
+							?>
+							<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="btn btn-icon open-popup-link" data-mfp-src="#login-popup"><span>Sign In</span> <i class="ico-exit"></i></a>
+							<?php
+						} else {
+							?>
+							<a href="<?php echo HC()->profiles->get_url(); ?>" class="btn btn-icon"><span>Hello, <?php echo HC()->profiles->get_first_name( get_current_user_id() ); ?></span></a>
+							<?php
+						}
+						?>
+					</div>
+
+					<div class="toggle-sticky-header">
+						<button type="button" class="btn btn-icon"><i class="ico-arrow-up"></i></button>
+					</div>
+				</div>
+				<div class="bottom">
+					<?php
+					hc_do_nav();
+					?>
+
+					<div class="sticky-icon-nav">
+						<?php $page_id = get_field( '_hc_calendar_page_id', 'option' ); ?>
+						<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-calendar"></i> <span>Calendar</span></a>
+
+						<?php $page_id = get_field( '_hc_directory_page_id', 'option' ); ?>
+						<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-pin"></i> <span>Directory</span></a>
+
+						<?php $page_id = get_field( '_hc_video_page_id', 'option' ); ?>
+						<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-play"></i> <span>Video</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<?php
+
+}
