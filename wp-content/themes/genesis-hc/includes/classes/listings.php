@@ -13,6 +13,8 @@ class HC_Listings {
 		add_action( 'wp_ajax_hc_get_listings', array($this, 'ajax_get_listings') );
 		add_action( 'wp_ajax_nopriv_hc_get_listings', array($this, 'ajax_get_listings') );
 
+		add_action( 'save_post', array($this, 'save_coords'), 10, 3 );
+
 	}
 
 	public function register() {
@@ -478,6 +480,32 @@ class HC_Listings {
 			<div class="directory-search-results clearfix"></div>
 		</div>
 		<?php
+
+	}
+
+	public function save_coords( $post_id, $post, $update ) {
+
+		if( wp_is_post_revision( $post_id ) )
+			return;
+
+		if( 'listing' !== $post->post_type )
+			return;
+
+		$coords = get_post_meta( $post_id, '_hc_listing_address_map', true );
+
+		if( !empty($coords['lat']) ) {
+			$value = (float) $coords['lat'];
+			update_post_meta( $post_id, '_hc_listing_lat', $value );
+		} else {
+			delete_post_meta( $post_id, '_hc_listing_lat' );
+		}
+
+		if( !empty($coords['lng']) ) {
+			$value = (float) $coords['lng'];
+			update_post_meta( $post_id, '_hc_listing_lng', $value );
+		} else {
+			delete_post_meta( $post_id, '_hc_listing_lng' );
+		}
 
 	}
 
