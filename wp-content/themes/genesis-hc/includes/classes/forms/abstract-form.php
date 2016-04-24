@@ -340,6 +340,30 @@ abstract class HC_Form_Abstract {
 
 	}
 
+	public function check_word_limit( $args ) {
+
+		$over_limit_fields = array();
+		foreach( $this->fields as $field ) {
+			switch( $field['type'] ) {
+				case 'text':
+				case 'textarea':
+					if(
+						isset($field['word_limit']) &&
+						$field['word_limit'] > 0 &&
+						isset($args[ $field['table'] ][ $field['slug'] ])
+					) {
+						$words = explode( ' ', $args[ $field['table'] ][ $field['slug'] ] );
+						if( count($words) > $field['word_limit'] )
+							$over_limit_fields[] = $field;
+					}
+					break;
+			}
+		}
+
+		return $over_limit_fields;
+
+	}
+
 	public function check_passwords_match() {
 
 		foreach( $this->fields as $field ) {
@@ -590,6 +614,15 @@ abstract class HC_Form_Abstract {
 		if( count($empty_required_fields) > 0 ) {
 			foreach( $empty_required_fields as $field )
 				HC()->messages->add( 'error', '<strong>' . $field['label'] . '</strong> is a required field.' );
+
+			return;
+		}
+
+		// Stop if over word limit fields
+		$over_limit_fields = $this->check_word_limit( $args );
+		if( count($over_limit_fields) > 0 ) {
+			foreach( $over_limit_fields as $field )
+				HC()->messages->add( 'error', '<strong>' . $field['label'] . '</strong> is too long. It must be under  <strong>' . $field['word_limit'] . '</strong> words.' );
 
 			return;
 		}
