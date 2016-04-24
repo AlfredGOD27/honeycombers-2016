@@ -241,35 +241,21 @@ class HC_Listings {
 
 		$output = array();
 
+		if( empty($_POST['type']) || !in_array( $_POST['type'], array('form', 'map'), true) ) {
+			$output['status']  = 'error';
+			$output['message'] = 'Search type not indicated.';
+			echo json_encode($output);
+			wp_die();
+		}
+		$type = $_POST['type'];
+
 		$text = false;
 		if( !empty($_POST['text']) )
 			$text = sanitize_text_field($_POST['text']);
 
-		$location_id = false;
-		if( !empty($_POST['location_id']) )
-			$location_id = absint($_POST['location_id']);
-
 		$category_id = false;
 		if( !empty($_POST['category_id']) )
 			$category_id = absint($_POST['category_id']);
-
-		if( empty($location_id) ) {
-			$output['status']  = 'error';
-			$output['message'] = 'You must select a location';
-			echo json_encode($output);
-			wp_die();
-		}
-
-		if(
-			empty($text) &&
-			empty($location_id) &&
-			empty($category_id)
-		) {
-			$output['status']  = 'error';
-			$output['message'] = 'You must enter search text, a location, or a category';
-			echo json_encode($output);
-			wp_die();
-		}
 
 		$args                           = array();
 		$args['post_type']              = 'listing';
@@ -282,14 +268,6 @@ class HC_Listings {
 		if( !empty($text) )
 			$args['s'] = $text;
 
-		if( !empty($location_id) ) {
-			$args['tax_query'][] = array(
-				'taxonomy' => 'locations',
-				'field'    => 'term_id',
-				'terms'    => $location_id,
-			);
-		}
-
 		if( !empty($category_id) ) {
 			$args['tax_query'][] = array(
 				'taxonomy' => 'directories',
@@ -297,6 +275,73 @@ class HC_Listings {
 				'terms'    => $category_id,
 			);
 		}
+
+		switch( $type ) {
+			case 'form':
+				$location_id = false;
+				if( !empty($_POST['location_id']) )
+					$location_id = absint($_POST['location_id']);
+
+				if( empty($location_id) ) {
+					$output['status']  = 'error';
+					$output['message'] = 'You must select a location';
+					echo json_encode($output);
+					wp_die();
+				}
+
+				if(
+					empty($text) &&
+					empty($location_id) &&
+					empty($category_id)
+				) {
+					$output['status']  = 'error';
+					$output['message'] = 'You must enter search text, a location, or a category';
+					echo json_encode($output);
+					wp_die();
+				}
+
+				if( !empty($location_id) ) {
+					$args['tax_query'][] = array(
+						'taxonomy' => 'locations',
+						'field'    => 'term_id',
+						'terms'    => $location_id,
+					);
+				}
+				break;
+			case 'map':
+				$corners = array('ne', 'nw', 'se', 'sw');
+
+				$coords = array();
+				foreach( $corners as $key ) {
+					if( empty($_POST[$key]) ) {
+						$output['status']  = 'error';
+						$output['message'] = 'Invalid coordinated';
+						echo json_encode($output);
+						wp_die();
+					}
+
+					$coords[$key] = array_map( 'floatval', (array) $_POST[$key] );
+				}
+
+				$args['meta_query']             = array();
+				$args['meta_query']['relation'] = 'AND';
+
+				$args['meta_query'][] = array(
+					'key'     => '_hc_listing_lat',
+					'value'   => array($coords['se'][0], $coords['ne'][0]),
+					'compare' => 'BETWEEN',
+				);
+
+				$args['meta_query'][] = array(
+					'key'     => '_hc_listing_lng',
+					'value'   => array($coords['nw'][1], $coords['ne'][1]),
+					'compare' => 'BETWEEN',
+				);
+
+				break;
+		}
+
+		$output['query'] = print_r($args, true);
 
 		$listings = get_posts( $args );
 		if( empty($listings) ) {

@@ -17,9 +17,12 @@ function hc_directory_maps() {
 			scrollwheel: false,
 			center: new google.maps.LatLng( hc_directory_coords.lat, hc_directory_coords.lng )
 		},
-		use_map = !im.lessThan('tablet');
+		use_map = !im.lessThan('tablet'),
+		script_event = true;
 
 	function reset() {
+
+		script_event = true;
 
 		// Close any open window
 		if( open_info_window )
@@ -44,9 +47,6 @@ function hc_directory_maps() {
 		loading = true;
 		els.results.html( hc_strings.loading );
 
-		if( use_map )
-			map.setCenter( map_settings.center );
-
 		els.form.find('input[type="search"]').prop( 'readonly', true );
 		els.form.find('button[type="submit"], select').prop( 'disabled', true );
 
@@ -62,6 +62,8 @@ function hc_directory_maps() {
 	}
 
 	function add_marker( title, content, latitude, longitude ) {
+
+		script_event = true;
 
 		var info_window = new google.maps.InfoWindow({
 				content: content,
@@ -93,22 +95,19 @@ function hc_directory_maps() {
 
 	}
 
-	function search( e ) {
-
-		e.preventDefault();
+	function get_results( data, recenter ) {
 
 		reset();
 		start_loading();
 
+		data.action = 'hc_get_listings';
+		data.text = els.form.find('input[type="search"]').val();
+		data.category_id = els.form.find('select[name="category"] option:selected').val();
+
 		$.ajax({
 			url: ajax_object.ajaxurl,
 			type: 'POST',
-			data: {
-				action: 'hc_get_listings',
-				text: els.form.find('input[type="search"]').val(),
-				location_id: els.form.find('select[name="location"] option:selected').val(),
-				category_id: els.form.find('select[name="category"] option:selected').val()
-			},
+			data: data,
 			success: function( data ) {
 				var bounds = new google.maps.LatLngBounds();
 
@@ -122,6 +121,8 @@ function hc_directory_maps() {
 						break;
 					case 'success':
 						els.results.append( '<h2>' + data.heading + '</h2>' );
+
+						script_event = true;
 
 						// Add each marker
 						$.each( data.items, function(_, item) {
@@ -146,7 +147,7 @@ function hc_directory_maps() {
 						});
 
 						// Set new center, based on results
-						if( use_map ) {
+						if( use_map && recenter ) {
 							map.setCenter( bounds.getCenter() );
 							map.fitBounds( bounds );
 						}
@@ -159,11 +160,51 @@ function hc_directory_maps() {
 
 	}
 
-	// Activate map
-	if( use_map )
-		map = new google.maps.Map( els.map[0], map_settings );
+	function get_from_form( e ) {
+
+		e.preventDefault();
+
+		var data = {};
+
+		data.type = 'form';
+		data.location_id = els.form.find('select[name="location"] option:selected').val();
+
+		get_results( data, true );
+
+	}
+
+	function get_from_map() {
+
+		var data = {},
+			bounds = map.getBounds(),
+			ne = bounds.getNorthEast(),
+			sw = bounds.getSouthWest(),
+			nw = new google.maps.LatLng(ne.lat(), sw.lng()),
+			se = new google.maps.LatLng(sw.lat(), ne.lng());
+
+		data.type = 'map';
+		data.ne = [ne.lat(), ne.lng()];
+		data.nw = [nw.lat(), nw.lng()];
+		data.se = [se.lat(), se.lng()];
+		data.sw = [sw.lat(), sw.lng()];
+
+		get_results( data, false );
+
+	}
 
 	// Update on search
-	els.form.on( 'submit', search );
+	els.form.on( 'submit', get_from_form );
+
+	// Activate map + update on drag
+	if( use_map ) {
+		map = new google.maps.Map( els.map[0], map_settings );
+		google.maps.event.addListener(map, 'idle', function() {
+			if( !script_event ) {
+			    get_from_map();
+
+			}
+			script_event = false;
+		});
+	}
 
 }

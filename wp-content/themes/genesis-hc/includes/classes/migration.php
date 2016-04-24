@@ -126,6 +126,31 @@ class HC_Migration {
 			)
 		);
 
+		// Update coordinates
+		$args = array(
+			'posts_per_page' => -1,
+			'post_type'      => 'listing',
+			'fields'         => 'ids',
+		);
+		$listings = get_posts( $args );
+
+		foreach( $listings as $listing_id ) {
+			$coords = get_post_meta( $listing_id, '_hc_listing_address_map', true );
+			if( !empty($coords['lat']) ) {
+				$value = (float) $coords['lat'];
+				$value = round($coords['lat'], 5);
+				update_post_meta( $listing_id, '_hc_listing_lat', $value );
+			}
+
+			if( !empty($coords['lng']) ) {
+				$value = (float) $coords['lng'];
+				$value = round($coords['lng'], 5);
+				update_post_meta( $listing_id, '_hc_listing_lng', $value );
+			}
+
+			echo 'Set coordinates for ' . $listing_id . '<br>';
+		}
+
 		exit;
 
 	}
