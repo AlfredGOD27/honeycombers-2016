@@ -138,13 +138,11 @@ class HC_Migration {
 			$coords = get_post_meta( $listing_id, '_hc_listing_address_map', true );
 			if( !empty($coords['lat']) ) {
 				$value = (float) $coords['lat'];
-				$value = round($coords['lat'], 5);
 				update_post_meta( $listing_id, '_hc_listing_lat', $value );
 			}
 
 			if( !empty($coords['lng']) ) {
 				$value = (float) $coords['lng'];
-				$value = round($coords['lng'], 5);
 				update_post_meta( $listing_id, '_hc_listing_lng', $value );
 			}
 
