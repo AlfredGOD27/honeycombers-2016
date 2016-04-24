@@ -56,7 +56,7 @@ function hc_entry_footer() {
 
 	global $post;
 
-	if( !is_singular() )
+	if( !is_singular('post') )
 		return;
 
 	HC()->folders->display_add_button( $post->ID );
@@ -158,7 +158,7 @@ function hc_highlight_non_breaking_spaces( $content ) {
 add_action( 'genesis_after_entry', 'hc_entry_subscribe_form', 6 );
 function hc_entry_subscribe_form() {
 
-	if( !is_singular() )
+	if( !is_singular('post') )
 		return;
 
 	?>

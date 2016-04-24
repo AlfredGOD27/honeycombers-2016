@@ -14,7 +14,7 @@ class HC_Entry {
 
 		global $post;
 
-		if( !is_singular() )
+		if( !is_singular('post') )
 			return;
 
 		add_filter( 'body_class', array($this, 'body_class') );
