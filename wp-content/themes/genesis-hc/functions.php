@@ -75,6 +75,8 @@ final class HC {
 
 		// Abstracts
 		require_once CHILD_DIR . '/includes/classes/forms/abstract-form.php';
+		require_once CHILD_DIR . '/includes/classes/forms/post-type-editor.php';
+
 		require_once CHILD_DIR . '/includes/classes/forms/profile-add.php';
 		require_once CHILD_DIR . '/includes/classes/forms/profile-edit.php';
 		require_once CHILD_DIR . '/includes/classes/forms/folders.php';

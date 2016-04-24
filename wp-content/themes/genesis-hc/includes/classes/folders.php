@@ -5,11 +5,10 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HC_Folders {
 	public function __construct() {
 
-		$this->folder_slug = 'folder';
+		$this->slug   = 'folder';
+		$this->editor = new HC_Post_Type_Editor('folder', array('add', 'edit'), 'HC_Folder_Editor' );
 
 		add_action( 'init', array($this, 'register_post_type') );
-		add_action( 'init', array($this, 'rewrites'), 1 );
-		add_action( 'wp', array($this, 'init') );
 		add_action( 'wp', array($this, 'init_single') );
 		add_action( 'wp_ajax_hc_ajax_add_item_to_folder', array($this, 'ajax_add_item_to_folder') );
 
@@ -37,102 +36,10 @@ class HC_Folders {
 				'public'    => true,
 				'show_ui'   => 101028 === get_current_user_id() && current_user_can('manage_options'),
 				'menu_icon' => 'dashicons-portfolio',
-				'rewrite'   => array('slug' => $this->folder_slug),
+				'rewrite'   => array('slug' => $this->slug),
 				'supports'  => array('title', 'author'),
 		 	)
 		);
-
-	}
-
-	// http://wordpress.stackexchange.com/questions/26388/how-to-create-custom-url-routes
-	public function rewrites() {
-
-		$page_id = get_option( 'options__hc_profile_page_id' );
-
-		add_rewrite_tag( '%hc_folder_slug%', '([^&]+)' );
-		add_rewrite_tag( '%hc_folder_action%', '([^&]+)' );
-
-		add_rewrite_rule(
-			'^' . $this->folder_slug . '/new/?$',
-			'index.php?p=' . $page_id . '&&hc_folder_action=add',
-			'top'
-		);
-
-		add_rewrite_rule(
-			'^' . $this->folder_slug . '/([^/]+)/edit/?$',
-			'index.php?p=' . $page_id . '&hc_folder_slug=$matches[1]&hc_folder_action=edit',
-			'top'
-		);
-
-	}
-
-	public function init() {
-
-		global $wp_query;
-
-		$this->action = get_query_var( 'hc_folder_action' );
-		if( empty($this->action) || !in_array($this->action, array('add', 'edit'), true ) )
-			return;
-
-		if( !is_user_logged_in() )
-			return;
-
-		$this->user_id          = get_current_user_id();
-		$this->user             = get_user_by( 'id', $this->user_id );
-		HC()->profiles->user_id = $this->user_id;
-		HC()->profiles->user    = $this->user;
-
-		$valid = false;
-
-		switch( $this->action ) {
-			case 'add':
-				$this->form = new HC_Folder_Editor( 'add' );
-				$valid      = true;
-				break;
-			case 'edit':
-				$this->slug = get_query_var( 'hc_folder_slug' );
-				if( empty($this->slug) )
-					return;
-
-				$args = array(
-					'posts_per_page' => 1,
-					'post_type'      => 'folder',
-					'name'           => sanitize_title($this->slug),
-					'fields'         => 'ids',
-				);
-
-				if( !current_user_can('manage_options') )
-					$args['post_author'] = get_current_user_id();
-
-				$items = get_posts( $args );
-				if( empty($items) )
-					return;
-
-				$this->form = new HC_Folder_Editor( 'edit', $items[0] );
-				$valid      = true;
-				$this->item = $items[0];
-				break;
-		}
-
-		if( $valid ) {
-			$wp_query->is_404 = false;
-			status_header(200);
-
-			if( isset($_GET['add']) ) {
-				HC()->messages->add( 'success', 'Folder added.' );
-			} elseif( isset($_GET['edit']) ) {
-				HC()->messages->add( 'success', 'Folder updated.' );
-			}
-
-			add_action( 'wp_enqueue_scripts', array(HC()->profiles, 'load_assets') );
-			add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
-			add_filter( 'body_class', array(HC()->profiles, 'body_classes') );
-			add_action( 'genesis_loop', array(HC()->profiles, 'display_heading') );
-			add_action( 'genesis_loop', array(HC()->messages, 'display') );
-			add_action( 'genesis_loop', array($this->form, 'display_form') );
-			add_action( 'template_include', array($this, 'do_seo') );
-			remove_action( 'genesis_loop', 'genesis_do_loop' );
-		}
 
 	}
 
@@ -147,7 +54,7 @@ class HC_Folders {
 				array(
 					'add_post_id' => $post_id,
 				),
-				$this->get_add_url()
+				$this->editor->get_add_url()
 			);
 			?>
 			<div class="bookmarks-button-container">
@@ -299,80 +206,6 @@ class HC_Folders {
 		$folders = array_map( 'absint', $folders );
 
 		return $folders;
-
-	}
-
-	public function get_add_url() {
-
-		$url = get_bloginfo('url');
-		$url = trailingslashit($url);
-		$url .= $this->folder_slug . '/';
-		$url .= 'new/';
-
-		return $url;
-
-	}
-
-	private function get_edit_url( $item_id ) {
-
-		$url = get_permalink( $item_id );
-		$url = trailingslashit($url) . 'edit/';
-
-		return $url;
-
-	}
-
-	public function do_seo() {
-
-		// If WordPress SEO is installed, overwrite everything. Otherwise, just replace the <title>
-		include_once ABSPATH . 'wp-admin/includes/plugin.php';
-		if( is_plugin_active('wordpress-seo/wp-seo.php') || is_plugin_active('wordpress-seo-premium/wp-seo-premium.php') ) {
-			add_action( 'wpseo_robots', array($this, 'noindex') );
-			add_filter( 'wpseo_canonical', array($this, 'seo_canonical') );
-			add_filter( 'wpseo_title', array($this, 'seo_title') );
-		} else {
-			add_filter( 'wp_title', array($this, 'seo_title') );
-		}
-
-		return get_query_template( 'index' );
-
-	}
-
-	public function noindex() {
-
-		return 'noindex,nofollow';
-
-	}
-
-	public function seo_canonical( $canonical ) {
-
-		switch( $this->action ) {
-			case 'add':
-				$canonical = $this->get_add_url();
-				break;
-			case 'edit':
-				$canonical = $this->get_edit_url( $this->item->ID );
-				break;
-		}
-
-		return $canonical;
-
-	}
-
-	public function seo_title( $title ) {
-
-		$titles = get_option( 'wpseo_titles' );
-
-		switch( $this->action ) {
-			case 'add':
-				$title = str_replace( '%%title%%', 'Add New Folder', $titles['title-folder'] );
-				break;
-			case 'edit':
-				$title = str_replace( '%%title%%', 'Edit Folder', $titles['title-folder'] );
-				break;
-		}
-
-		return wpseo_replace_vars( $title );
 
 	}
 
@@ -542,7 +375,7 @@ class HC_Folders {
 				<?php
 				if( $is_own_folder ) {
 					?>
-					<h4><a href="<?php echo $this->get_add_url(); ?>"><i class="ico-plus"></i> Create New Folder</a></h4>
+					<h4><a href="<?php echo $this->editor->get_add_url(); ?>"><i class="ico-plus"></i> Create New Folder</a></h4>
 					<?php
 				}
 				?>
@@ -555,7 +388,7 @@ class HC_Folders {
 					<?php
 					if( current_user_can( 'edit_post', $post->ID ) ) {
 						?>
-						<a href="<?php echo $this->get_edit_url( $post->ID ); ?>" class="edit-folder-link">Edit</a>
+						<a href="<?php echo $this->editor->get_edit_url( $post->ID ); ?>" class="edit-folder-link">Edit</a>
 						<?php
 					}
 					?>
