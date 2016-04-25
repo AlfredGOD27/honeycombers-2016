@@ -80,6 +80,7 @@ final class HC {
 
 		require_once CHILD_DIR . '/includes/classes/forms/profile-add.php';
 		require_once CHILD_DIR . '/includes/classes/forms/profile-edit.php';
+		require_once CHILD_DIR . '/includes/classes/forms/events.php';
 		require_once CHILD_DIR . '/includes/classes/forms/folders.php';
 
 		foreach( self::$classes_init as $key )

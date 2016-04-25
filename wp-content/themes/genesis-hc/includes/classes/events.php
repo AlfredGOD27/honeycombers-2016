@@ -5,6 +5,9 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HC_Events {
 	public function __construct() {
 
+		$this->slug   = 'event';
+		$this->editor = new HC_Post_Type_Editor('event', array('add'), 'HC_Event_Editor' );
+
 		add_action( 'init', array($this, 'register') );
 		add_action( 'admin_notices', array($this, 'maybe_display_invalid_dates_warning') );
 		add_action( 'wp', array($this, 'init') );
@@ -35,6 +38,7 @@ class HC_Events {
 				'capability_type' => 'post',
 				'hierarchical'    => false,
 				'menu_icon'       => 'dashicons-calendar-alt',
+				'rewrite'         => array('slug' => $this->slug),
 				'supports'        => array('title', 'editor'),
 			)
 		);
