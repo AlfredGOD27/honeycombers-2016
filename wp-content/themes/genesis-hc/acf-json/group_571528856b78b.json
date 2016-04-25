@@ -11,7 +11,35 @@
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 50,
+                "width": "33.33",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Yes": "Yes",
+                "No": "No"
+            },
+            "default_value": [
+                "No"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "disabled": 0,
+            "readonly": 0
+        },
+        {
+            "key": "field_571e73991a926",
+            "label": "Curated?",
+            "name": "_hc_folder_is_curated",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.33",
                 "class": "",
                 "id": ""
             },
@@ -39,7 +67,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": 50,
+                "width": "33.33",
                 "class": "",
                 "id": ""
             },
@@ -99,5 +127,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1461004536
+    "modified": 1461613486
 }

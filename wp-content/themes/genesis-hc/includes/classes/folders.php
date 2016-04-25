@@ -244,6 +244,35 @@ class HC_Folders {
 
 	}
 
+	public function get_user_curated_folder_ids( $user_id ) {
+
+		$args = array(
+			'post_type'      => 'folder',
+			'posts_per_page' => -1,
+			'author__not_in' => $user_id,
+			'fields'         => 'ids',
+			'orderby'        => 'title',
+			'order'          => 'ASC',
+			'meta_query'     => array(
+				array(
+					'key'   => '_hc_folder_is_public',
+					'value' => 'Yes',
+				),
+				array(
+					'key'   => '_hc_folder_is_curated',
+					'value' => 'Yes',
+				),
+			),
+		);
+
+		$folders = get_posts( $args );
+
+		$folders = array_map( 'absint', $folders );
+
+		return $folders;
+
+	}
+
 	public function get_items_in_folder( $folder_id ) {
 
 		$item_ids = get_post_meta( $folder_id, '_hc_folder_item_ids', true );

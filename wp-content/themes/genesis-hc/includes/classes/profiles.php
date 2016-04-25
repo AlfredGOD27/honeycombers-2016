@@ -419,7 +419,9 @@ class HC_Profiles {
 
 	public function display_landing() {
 
-		$folders = HC()->folders->get_user_folder_ids( $this->user_id );
+		$curated_folders = HC()->folders->get_user_curated_folder_ids( $this->user_id );
+		$folders         = HC()->folders->get_user_folder_ids( $this->user_id );
+		$folders         = array_merge( $curated_folders, $folders );
 
 		$boxes = array();
 		foreach( $folders as $folder_id ) {

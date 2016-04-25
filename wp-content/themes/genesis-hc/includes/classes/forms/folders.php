@@ -56,6 +56,22 @@ class HC_Folder_Editor extends HC_Form_Abstract {
 			'required' => false,
 			'classes'  => array('first', 'one-half'),
 		);
+
+		if( current_user_can('manage_options') ) {
+			$this->fields[] = array(
+				'slug'     => '_hc_folder_is_curated',
+				'label'    => 'Curated?',
+				'type'     => 'radio',
+				'table'    => 'postmeta',
+				'required' => true,
+				'options'  => array(
+					'Yes',
+					'No',
+				),
+				'classes' => array('one-half'),
+			);
+		}
+
 		$this->fields[] = array(
 			'slug'     => '_hc_folder_item_ids',
 			'label'    => 'Items',
