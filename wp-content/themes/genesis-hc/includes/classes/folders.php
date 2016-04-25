@@ -207,9 +207,22 @@ class HC_Folders {
 
 	}
 
+	public function can_edit( $folder_id ) {
+
+		if( current_user_can( 'manage_options' ) )
+			return true;
+
+		$folder = get_post( $folder_id );
+		if( (int) $folder->post_author === (int) get_current_user_id() )
+			return true;
+
+		return false;
+
+	}
+
 	public function can_view( $folder_id ) {
 
-		if( current_user_can( 'edit_post', $folder_id ) )
+		if( $this->can_edit($folder_id) )
 			return true;
 
 		return $this->is_public( $folder_id );
@@ -390,9 +403,11 @@ class HC_Folders {
 		if( !is_singular('folder') )
 			return;
 
+		remove_action( 'genesis_loop', 'genesis_do_loop' );
 		add_action( 'wpseo_robots', array($this, 'noindex') );
 
-		if( !$this->is_public($post->ID) && !current_user_can( 'edit_post', $post->ID ) ) {
+		if( !$this->is_public($post->ID) && !$this->can_edit( $post->ID ) ) {
+			HC()->messages->add( 'info', 'This folder is private.' );
 			add_action( 'genesis_loop', array(HC()->messages, 'display') );
 			// Not authorized
 		} else {
@@ -406,9 +421,13 @@ class HC_Folders {
 			add_action( 'genesis_loop', array(HC()->profiles, 'display_heading') );
 			add_action( 'genesis_loop', array(HC()->messages, 'display') );
 			add_action( 'genesis_loop', array($this, 'display_single') );
-			remove_action( 'genesis_loop', 'genesis_do_loop' );
-
 		}
+
+	}
+
+	public function noindex() {
+
+		return 'noindex,nofollow';
 
 	}
 
@@ -417,30 +436,34 @@ class HC_Folders {
 		global $post;
 
 		$is_own_folder = (int) get_current_user_id() === (int) $post->post_author;
+		$folders       = $this->get_user_folder_ids( $post->post_author, !$is_own_folder );
 
 		?>
 		<div class="clearfix">
 			<aside class="one-fourth first folders-list">
-				<h4>Folders:</h4>
+				<?php
+				if( !empty($folders) ) {
+					?>
+					<h4>Folders:</h4>
 
-				<ul>
-					<?php
-					$folders = $this->get_user_folder_ids( $post->post_author, !$is_own_folder );
-					foreach( $folders as $folder_id ) {
+					<ul>
+						<?php
+						foreach( $folders as $folder_id ) {
+							?>
+							<li>
+								<a href="<?php echo get_permalink( $folder_id ); ?>" class="<?php echo $folder_id === $post->ID ? 'current' : ''; ?>"><?php echo get_the_title($folder_id); ?></a>
+							</li>
+							<?php
+						}
 						?>
-						<li>
-							<a href="<?php echo get_permalink( $folder_id ); ?>" class="<?php echo $folder_id === $post->ID ? 'current' : ''; ?>"><?php echo get_the_title($folder_id); ?></a>
-						</li>
+					</ul>
+
+					<?php
+					if( $is_own_folder ) {
+						?>
+						<h4><a href="<?php echo $this->editor->get_add_url(); ?>"><i class="ico-plus"></i> Create New Folder</a></h4>
 						<?php
 					}
-					?>
-				</ul>
-
-				<?php
-				if( $is_own_folder ) {
-					?>
-					<h4><a href="<?php echo $this->editor->get_add_url(); ?>"><i class="ico-plus"></i> Create New Folder</a></h4>
-					<?php
 				}
 				?>
 			</aside>
@@ -450,7 +473,7 @@ class HC_Folders {
 					<h1><?php the_title(); ?></h1>
 
 					<?php
-					if( current_user_can( 'edit_post', $post->ID ) ) {
+					if( $this->can_edit( $post->ID ) ) {
 						?>
 						<a href="<?php echo $this->editor->get_edit_url( $post->ID ); ?>" class="edit-folder-link">Edit</a>
 						<?php

@@ -74,7 +74,7 @@ class HC_Post_Type_Editor {
 				);
 
 				if( !current_user_can('manage_options') )
-					$args['post_author'] = get_current_user_id();
+					$args['author'] = get_current_user_id();
 
 				$items = get_posts( $args );
 				if( empty($items) )
