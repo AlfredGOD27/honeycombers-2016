@@ -18,6 +18,7 @@ final class HC {
 		'formatting',
 		'home',
 		'listings',
+		'logs',
 		'messages',
 		'migration',
 		'profiles',
