@@ -240,4 +240,12 @@ input[type='search'] {
 			margin-right: 1em;
 		}
 	}
+
+	.form-footer {
+		button[name='hc_delete'] {
+			float: right;
+			background-color: transparent;
+			color: $orange;
+		}
+	}
 }

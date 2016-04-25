@@ -2166,6 +2166,11 @@ input[type='search'] {
 .hc-form .field-file img {
   margin-right: 1em;
 }
+.hc-form .form-footer button[name='hc_delete'] {
+  float: right;
+  background-color: transparent;
+  color: #fe862c;
+}
 
 .gform_wrapper .gform_fields {
   margin: 0;
@@ -4630,8 +4635,6 @@ input[type='search'] {
   margin-left: 2em;
   height: 6.25em;
   background-color: #252525;
-  -webkit-transition: margin-left .1s ease-in-out;
-          transition: margin-left .1s ease-in-out;
 }
 .slider-nav .outer:before, .slider-nav .outer:after {
   position: absolute;

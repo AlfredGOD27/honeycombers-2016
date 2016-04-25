@@ -96,6 +96,9 @@ class HC_Profiles {
 		if( isset($_GET['event_added']) )
 			HC()->messages->add( 'success', 'Your event has been submitted and is pending review.' );
 
+		if( isset($_GET['deleted']) )
+			HC()->messages->add( 'success', 'Item deleted.' );
+
 		add_action( 'genesis_loop', array($this, 'display_heading') );
 		add_action( 'genesis_loop', array(HC()->messages, 'display') );
 

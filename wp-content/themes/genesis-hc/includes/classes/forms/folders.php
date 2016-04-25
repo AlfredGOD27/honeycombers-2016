@@ -5,7 +5,8 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HC_Folder_Editor extends HC_Form_Abstract {
 	public function __construct( $action, $folder_id = false ) {
 
-		$this->post_type = 'folder';
+		$this->post_type    = 'folder';
+		$this->allow_delete = true;
 
 		$this->action = $action;
 		switch( $this->action ) {
@@ -93,6 +94,20 @@ class HC_Folder_Editor extends HC_Form_Abstract {
 				$this->action => true,
 			),
 			$url
+		);
+
+		wp_redirect( $url );
+		exit;
+
+	}
+
+	protected function do_after_delete() {
+
+		$url = add_query_arg(
+			array(
+				'deleted' => true,
+			),
+			HC()->profiles->get_url()
 		);
 
 		wp_redirect( $url );

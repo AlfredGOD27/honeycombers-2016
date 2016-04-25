@@ -7,12 +7,20 @@ abstract class HC_Form_Abstract {
 		'new',
 		'edit',
 		'add',
+		'delete',
 	);
 
 	public function __construct() {
 
 		$this->setup_fields();
 		$this->set_nonce_key();
+
+		if( isset($this->allow_delete) && $this->allow_delete ) {
+			$deleted = $this->maybe_delete();
+			if( $deleted )
+				return;
+		}
+
 		$this->maybe_save();
 
 		// Enforce max lengths
@@ -539,6 +547,24 @@ abstract class HC_Form_Abstract {
 
 	}
 
+	protected function maybe_delete() {
+
+		if( !isset($_POST['hc_delete']) )
+			return;
+
+		// Stop if bad nonce
+		if( !$this->check_nonce() ) {
+			HC()->messages->add( 'error', 'Your session has expired. Please try again.' );
+
+			return;
+		}
+
+		wp_delete_post( $this->post_id, true );
+
+		$this->do_after_delete();
+
+	}
+
 	protected function maybe_save() {
 
 		if( !isset($_POST['hc_edit']) )
@@ -720,6 +746,12 @@ abstract class HC_Form_Abstract {
 						?>
 						<button type="submit" name="hc_edit" class="btn btn-solid">Update</button>
 						<?php
+
+						if( $this->allow_delete ) {
+							?>
+							<button type="submit" name="hc_delete" class="btn btn-link">Delete</button>
+							<?php
+						}
 						break;
 				}
 				?>
