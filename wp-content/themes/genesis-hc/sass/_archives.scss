@@ -297,7 +297,6 @@ $slider-height: 25em;
 		margin-left: 2em;
 		height: $slider-height / 4;
 		background-color: $black;
-		transition: margin-left .1s ease-in-out;
 
 		&:before,
 		&:after {
