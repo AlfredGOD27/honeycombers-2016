@@ -6221,7 +6221,7 @@ function onYouTubeIframeAPIReady() {
 		$(this).closest('.favorites-nav').addClass('show-all');
 	});
 
-	$('.favorites-nav .add-to-folder').on( 'click', function(e) {
+	$('body').on( 'click', '.add-to-folder', function(e) {
 		e.preventDefault();
 
 		var self = $(this);
@@ -7340,7 +7340,19 @@ function hc_maybe_load_facebook() {
 
 	// Buttons nav
 	$('.button-nav > .btn').on( 'click', function() {
-		$(this).closest('.button-nav').toggleClass('open');
+		var self = $(this);
+
+		if( self.hasClass('use-modal') ) {
+			$.magnificPopup.open({
+				items: {
+					src: self.data('modal-html')
+				},
+				type: 'inline',
+				showCloseBtn: false
+			});
+		} else {
+			self.closest('.button-nav').toggleClass('open');
+		}
 	});
 
 })( window.jQuery );

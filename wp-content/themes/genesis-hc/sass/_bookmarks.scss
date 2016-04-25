@@ -127,5 +127,70 @@
 
 	.add-new {
 		color: $white;
+		text-align: center;
+	}
+}
+
+.bookmarks-popup {
+	position: relative;
+	margin: 1.5em auto;
+	padding: .5em .75em;
+	max-width: 12.5em;
+	width: auto;
+	border: 1px solid $orange;
+	background: $white;
+
+	ul {
+		margin-bottom: .75em;
+	}
+
+	li {
+		display: block;
+		margin-bottom: .25em;
+		padding-bottom: .25em;
+		border-bottom: 1px solid $grey-border;
+
+		&.added {
+			.ico-check {
+				display: block;
+			}
+		}
+	}
+
+	a {
+		display: flex;
+		align-items: center;
+		color: inherit;
+		text-decoration: none;
+		font-size: .9em;
+	}
+
+	.name {
+		display: block;
+		flex-grow: 1;
+		flex-shrink: 1;
+	}
+
+	.ico-check {
+		display: none;
+		flex-grow: 0;
+		flex-shrink: 0;
+		margin-left: .5em;
+		color: $orange;
+		font-size: 1.25em;
+	}
+
+	.count {
+		@include meta-font;
+		display: block;
+		flex-grow: 0;
+		flex-shrink: 0;
+		margin-left: .5em;
+		color: $orange;
+	}
+
+	.add-new {
+		color: $white;
+		text-align: center;
 	}
 }

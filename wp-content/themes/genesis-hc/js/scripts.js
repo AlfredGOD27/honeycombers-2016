@@ -148,7 +148,19 @@
 
 	// Buttons nav
 	$('.button-nav > .btn').on( 'click', function() {
-		$(this).closest('.button-nav').toggleClass('open');
+		var self = $(this);
+
+		if( self.hasClass('use-modal') ) {
+			$.magnificPopup.open({
+				items: {
+					src: self.data('modal-html')
+				},
+				type: 'inline',
+				showCloseBtn: false
+			});
+		} else {
+			self.closest('.button-nav').toggleClass('open');
+		}
 	});
 
 })( window.jQuery );

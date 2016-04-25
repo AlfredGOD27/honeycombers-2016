@@ -43,7 +43,7 @@ class HC_Folders {
 
 	}
 
-	public function display_add_button( $post_id, $icon_only = false ) {
+	public function display_add_button( $post_id, $icon_only = false, $use_modal = false ) {
 
 		$post_id = absint($post_id);
 
@@ -56,10 +56,39 @@ class HC_Folders {
 				),
 				$this->editor->get_add_url()
 			);
+
+			$modal_html = '';
+			if( $use_modal ) {
+				ob_start();
+				?>
+				<div class="bookmarks-popup">
+					<ul>
+						<?php
+						foreach( $folder_ids as $folder_id ) {
+							$items = $this->get_items_in_folder( $folder_id );
+
+							?>
+							<li class="<?php echo in_array($post_id, $items, true) ? 'added' : ''; ?>">
+								<a href="#" class="add-to-folder" data-item_id="<?php echo $post_id; ?>" data-folder_id="<?php echo $folder_id; ?>">
+									<span class="name"><?php echo get_the_title($folder_id); ?></span>
+									<i class="ico-check"></i>
+									<span class="count"><?php echo count($items); ?></span>
+								</a>
+							</li>
+							<?php
+						}
+						?>
+					</ul>
+					<a href="<?php echo $add_url; ?>" class="btn add-new">Create New</a>
+				</div>
+				<?php
+				$modal_html = ob_get_clean();
+			}
+
 			?>
 			<div class="bookmarks-button-container">
 				<nav class="button-nav favorites-nav">
-					<button class="bookmarks-button btn btn-icon">
+					<button class="bookmarks-button btn btn-icon <?php echo $use_modal ? 'use-modal' : ''; ?>" data-modal-html="<?php echo esc_attr($modal_html); ?>">
 						<i class="ico-heart"></i>
 						<?php
 						if( !$icon_only ) {
@@ -70,39 +99,45 @@ class HC_Folders {
 						?>
 					</button>
 
-					<div class="sub">
-						<ul>
-							<?php
-							$i = 1;
-							foreach( $folder_ids as $folder_id ) {
-								$items = $this->get_items_in_folder( $folder_id );
-
-								?>
-								<li class="<?php echo $i > 3 ? 'hide' : ''; ?> <?php echo in_array($post_id, $items, true) ? 'added' : ''; ?>">
-									<a href="#" class="add-to-folder" data-item_id="<?php echo $post_id; ?>" data-folder_id="<?php echo $folder_id; ?>">
-										<span class="name"><?php echo get_the_title($folder_id); ?></span>
-										<i class="ico-check"></i>
-										<span class="count"><?php echo count($items); ?></span>
-									</a>
-								</li>
+					<?php
+					if( !$use_modal ) {
+						?>
+						<div class="sub">
+							<ul>
 								<?php
-								++$i;
-							}
+								$i = 1;
+								foreach( $folder_ids as $folder_id ) {
+									$items = $this->get_items_in_folder( $folder_id );
 
-							if( $i > 3 ) {
+									?>
+									<li class="<?php echo $i > 3 ? 'hide' : ''; ?> <?php echo in_array($post_id, $items, true) ? 'added' : ''; ?>">
+										<a href="#" class="add-to-folder" data-item_id="<?php echo $post_id; ?>" data-folder_id="<?php echo $folder_id; ?>">
+											<span class="name"><?php echo get_the_title($folder_id); ?></span>
+											<i class="ico-check"></i>
+											<span class="count"><?php echo count($items); ?></span>
+										</a>
+									</li>
+									<?php
+									++$i;
+								}
+
+								if( $i > 3 ) {
+									?>
+									<li class="view-all">
+										<button type="button" class="view-all btn btn-icon">
+											<span>View All</span>
+											<i class="ico-arrow-down"></i>
+										</button>
+									</li>
+									<?php
+								}
 								?>
-								<li class="view-all">
-									<button type="button" class="view-all btn btn-icon">
-										<span>View All</span>
-										<i class="ico-arrow-down"></i>
-									</button>
-								</li>
-								<?php
-							}
-							?>
-						</ul>
-						<a href="<?php echo $add_url; ?>" class="btn add-new">Create New</a>
-					</div>
+							</ul>
+							<a href="<?php echo $add_url; ?>" class="btn add-new">Create New</a>
+						</div>
+						<?php
+					}
+					?>
 				</nav>
 			</div>
 			<?php

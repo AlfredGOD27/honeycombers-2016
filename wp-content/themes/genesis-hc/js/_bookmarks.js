@@ -4,7 +4,7 @@
 		$(this).closest('.favorites-nav').addClass('show-all');
 	});
 
-	$('.favorites-nav .add-to-folder').on( 'click', function(e) {
+	$('body').on( 'click', '.add-to-folder', function(e) {
 		e.preventDefault();
 
 		var self = $(this);

@@ -90,7 +90,7 @@ class HC_Home {
 
 				?>
 				<div class="other-pick">
-					<?php HC()->folders->display_add_button( $post_id, true ); ?>
+					<?php HC()->folders->display_add_button( $post_id, true, true ); ?>
 					<?php
 					if( has_post_thumbnail($post_id) )
 						echo get_the_post_thumbnail($post_id, 'archive-small' );
@@ -128,7 +128,7 @@ class HC_Home {
 				?>
 				<div class="one-half first">
 					<div class="main-pick">
-						<?php HC()->folders->display_add_button( $main_post_id, true ); ?>
+						<?php HC()->folders->display_add_button( $main_post_id, true, true ); ?>
 
 						<?php
 						if( has_post_thumbnail($main_post_id) ) {
@@ -555,7 +555,7 @@ class HC_Home {
 						if( !empty($categories) )
 							echo HC()->utilities->get_category_icon_html( $categories[0] );
 						?>
-						<?php // HC()->folders->display_add_button( $post->ID, true ); ?>
+						<?php HC()->folders->display_add_button( $post->ID, true ); ?>
 						<?php echo get_the_post_thumbnail( $post->ID, 'archive-small' ); ?>
 					</div>
 					<?php
