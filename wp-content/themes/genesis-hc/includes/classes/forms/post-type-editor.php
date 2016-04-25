@@ -109,7 +109,7 @@ class HC_Post_Type_Editor {
 
 		$url = get_bloginfo('url');
 		$url = trailingslashit($url);
-		$url .= $this->slug . '/';
+		$url .= $this->post_type_object->rewrite['slug'] . '/';
 		$url .= 'new/';
 
 		return $url;
@@ -178,7 +178,7 @@ class HC_Post_Type_Editor {
 				break;
 		}
 
-		return wpseo_replace_vars( $title );
+		return wpseo_replace_vars( $title, array() );
 
 	}
 
