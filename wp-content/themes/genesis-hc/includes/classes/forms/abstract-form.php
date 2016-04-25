@@ -643,7 +643,7 @@ abstract class HC_Form_Abstract {
 			case 'add':
 				if( count($args['posts']) > 0 ) {
 					$args['posts']['post_type']   = $this->post_type;
-					$args['posts']['post_status'] = 'publish';
+					$args['posts']['post_status'] = $this->default_post_status;
 					$args['posts']['post_author'] = get_current_user_id();
 
 					$this->post_id     = wp_insert_post( $args['posts'] );

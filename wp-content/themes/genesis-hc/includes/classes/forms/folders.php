@@ -17,6 +17,8 @@ class HC_Folder_Editor extends HC_Form_Abstract {
 				break;
 		}
 
+		$this->default_post_status = 'publish';
+
 		parent::__construct();
 
 	}
