@@ -93,6 +93,9 @@ class HC_Profiles {
 			$this->user    = get_user_by( 'id', $this->user_id );
 		}
 
+		if( isset($_GET['event_added']) )
+			HC()->messages->add( 'success', 'Your event has been submitted and is pending review.' );
+
 		add_action( 'genesis_loop', array($this, 'display_heading') );
 		add_action( 'genesis_loop', array(HC()->messages, 'display') );
 
@@ -434,7 +437,7 @@ class HC_Profiles {
 		$boxes[] = array(
 			'name'        => 'Create Your Own Folder',
 			'description' => 'Ideas for a night out, a dinner date or a quick getaway!',
-			'url'         => HC()->folders->get_add_url(),
+			'url'         => HC()->folders->editor->get_add_url(),
 			'icon'        => 'plus',
 		);
 

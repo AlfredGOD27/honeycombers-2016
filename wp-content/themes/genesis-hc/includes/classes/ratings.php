@@ -100,7 +100,6 @@ class HC_Ratings {
 				rating tinyint NOT NULL,
 				timestamp TIMESTAMP
 			) $charset_collate;";
-			echo $sql;
 			dbDelta( $sql );
 		}
 
