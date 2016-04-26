@@ -6239,10 +6239,16 @@ function onYouTubeIframeAPIReady() {
 			},
 			success: function( json ) {
 
-				var result = JSON.parse(json);
+				var result = JSON.parse(json),
+					count = self.closest('li').find('.count').text();
 
 				if( 'success' === result.status ) {
 					self.closest('li').addClass('added');
+
+					count = parseInt(count);
+					count += 1;
+
+					self.closest('li').find('.count').text(count);
 				} else {
 					alert(result.message);
 				}
