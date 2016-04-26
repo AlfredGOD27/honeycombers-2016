@@ -38,6 +38,7 @@ input[type='search'],
 input[type='email'],
 input[type='url'],
 input[type='number'],
+input[type='file'],
 textarea {
 	padding: .5em;
 	max-width: 100%;
@@ -48,6 +49,10 @@ textarea {
 	font-size: .85em;
 	-webkit-appearance: none; // Removes the shadow on iOS
 	-moz-appearance: none;
+}
+
+input[type='file'] {
+	width: auto;
 }
 
 // Hide the spinner on input[type="number"] in Firefox
@@ -206,9 +211,14 @@ input[type='search'] {
 	}
 
 	.description {
-		@include meta-font;
-		@extend %type;
-		font-size: .9em;
+		margin-bottom: 1em;
+
+		p {
+			@include meta-font;
+			@extend %type;
+			color: #5e5e5e;
+			font-size: .9em;
+		}
 	}
 
 	.field-select {

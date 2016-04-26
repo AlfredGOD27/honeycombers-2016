@@ -189,6 +189,9 @@ abstract class HC_Form_Abstract {
 			if( 'boolean' !== $field['type'] )
 				echo '<label for="field-' . $field_id . '">' . $field['label'] . ' ' . $required_text . '</label>';
 
+			if( isset($field['description']) )
+				echo '<div class="description">' . wpautop($field['description']) . '</div>';
+
 			switch( $field['type'] ) {
 				case 'text':
 				case 'email':
@@ -202,9 +205,12 @@ abstract class HC_Form_Abstract {
 					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" value="' . $value . '" ' . $required . ' ' . $disabled . ' placeholder="' . $placeholder_text . '">';
 					break;
 				case 'file':
-					$html = '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" accept="' . implode(',', $field['allowed_mime_types']) . '">';
+					$multiple = isset($field['multiple']) && $field['multiple'];
+					$name = $multiple ? $field['slug'] . '[]' : $field['slug'];
 
-					if( !empty($value) ) {
+					$html = '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $name . '" accept="' . implode(',', $field['allowed_mime_types']) . '" ' . ($multiple ? 'multiple' : '' ) . '>';
+
+					if( !$multiple && !empty($value) ) {
 						echo '<div class="image-preview">';
 							switch( $field['preview_type'] ) {
 								case 'image':
@@ -425,27 +431,53 @@ abstract class HC_Form_Abstract {
 			if( !isset($_FILES[ $field['slug'] ]) )
 				continue;
 
-			if( empty($_FILES[ $field['slug'] ]['size']) )
-				continue;
+			$files = array();
+			if( isset($field['multiple']) && $field['multiple'] ) {
+				$max_files = count($_FILES[ $field['slug'] ]['name']);
 
-			$file = $_FILES[ $field['slug'] ];
+				if( isset($field['max_files']) )
+					$max_files = min( $max_files, $field['max_files'] );
 
-			if( !in_array($file['type'], $field['allowed_mime_types'], true) ) {
-				HC()->messages->add(
-					'error',
-					sprintf( '<strong>%s</strong> is not an allowed format', $field['label'])
-				);
-				$has_errors = true;
-				continue;
+				$i = 0;
+				while( $i <= ($max_files - 1) ) {
+					$files[] = array(
+						'size' => $_FILES[ $field['slug'] ]['size'][$i],
+						'type' => $_FILES[ $field['slug'] ]['type'][$i],
+					);
+
+					$i++;
+				}
+			} else {
+				$files[] = $_FILES[ $field['slug'] ];
 			}
 
-			if( $file['size'] > ($field['max_size'] * 1024 * 1024) ) {
-				HC()->messages->add(
-					'error',
-					sprintf( '<strong>%s</strong> is too large. Please select a file under %sMB.', $field['label'], $field['max_size'])
-				);
-				$has_errors = true;
-				continue;
+			foreach( $files as $file ) {
+				if( empty($file['size']) ) {
+					HC()->messages->add(
+						'error',
+						sprintf( '<strong>%s</strong> is empty', $field['label'])
+					);
+					$has_errors = true;
+					break 1;
+				}
+
+				if( !in_array($file['type'], $field['allowed_mime_types'], true) ) {
+					HC()->messages->add(
+						'error',
+						sprintf( '<strong>%s</strong> is not an allowed format', $field['label'])
+					);
+					$has_errors = true;
+					break 1;
+				}
+
+				if( $file['size'] > ($field['max_size'] * 1024 * 1024) ) {
+					HC()->messages->add(
+						'error',
+						sprintf( '<strong>%s</strong> is too large. Please select a file under %sMB.', $field['label'], $field['max_size'])
+					);
+					$has_errors = true;
+					break 1;
+				}
 			}
 		}
 
@@ -488,42 +520,62 @@ abstract class HC_Form_Abstract {
 			if( !isset($_FILES[ $field['slug'] ]) )
 				continue;
 
-			if( empty($_FILES[ $field['slug'] ]['size']) )
-				continue;
+			$files = array();
+			if( isset($field['multiple']) && $field['multiple'] ) {
+				$max_files = count($_FILES[ $field['slug'] ]['name']);
 
-			$file = $_FILES[ $field['slug'] ];
+				if( isset($field['max_files']) )
+					$max_files = min( $max_files, $field['max_files'] );
 
-			add_filter( 'wp_handle_upload_prefilter', array($this, 'filter_upload_name') );
-			$moved_file = wp_handle_upload( $file, $upload_overrides );
-			remove_filter( 'wp_handle_upload_prefilter', array($this, 'filter_upload_name') );
+				$i = 0;
+				while( $i <= ($max_files - 1) ) {
+					$files[] = array(
+						'name' => $_FILES[ $field['slug'] ]['name'][$i],
+						'type' => $_FILES[ $field['slug'] ]['type'][$i],
+						'tmp_name' => $_FILES[ $field['slug'] ]['tmp_name'][$i],
+						'error' => $_FILES[ $field['slug'] ]['error'][$i],
+						'size' => $_FILES[ $field['slug'] ]['size'][$i],
+					);
 
-			if( $moved_file ) {
-				// Check the type of tile. We'll use this as the 'post_mime_type'.
-				$filetype = wp_check_filetype( basename( $moved_file['file'] ), null );
+					$i++;
+				}
+			} else {
+				$files[] = $_FILES[ $field['slug'] ];
+			}
 
-				// Prepare an array of post data for the attachment.
-				$attachment = array(
-					'guid'           => $wp_upload_dir['url'] . '/' . basename( $moved_file['file'] ),
-					'post_mime_type' => $filetype['type'],
-					'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $moved_file['file'] ) ),
-					'post_content'   => '',
-					'post_status'    => 'inherit',
-				);
+			foreach( $files as $file ) {
+				add_filter( 'wp_handle_upload_prefilter', array($this, 'filter_upload_name') );
+				$moved_file = wp_handle_upload( $file, $upload_overrides );
+				remove_filter( 'wp_handle_upload_prefilter', array($this, 'filter_upload_name') );
 
-				// Insert the attachment.
-				$attach_id = wp_insert_attachment( $attachment, $moved_file['file'] );
+				if( $moved_file ) {
+					// Check the type of tile. We'll use this as the 'post_mime_type'.
+					$filetype = wp_check_filetype( basename( $moved_file['file'] ), null );
 
-				// Generate the metadata for the attachment, and update the database record.
-				$attach_data = wp_generate_attachment_metadata( $attach_id, $moved_file['file'] );
-				wp_update_attachment_metadata( $attach_id, $attach_data );
+					// Prepare an array of post data for the attachment.
+					$attachment = array(
+						'guid'           => $wp_upload_dir['url'] . '/' . basename( $moved_file['file'] ),
+						'post_mime_type' => $filetype['type'],
+						'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $moved_file['file'] ) ),
+						'post_content'   => '',
+						'post_status'    => 'inherit',
+					);
 
-				switch( $field['table'] ) {
-					case 'postmeta':
-						update_post_meta( $this->post_id, $field['slug'], $attach_id );
-						break;
-					case 'usermeta':
-						update_user_meta( $this->user_object->ID, $field['slug'], $attach_id );
-						break;
+					// Insert the attachment.
+					$attach_id = wp_insert_attachment( $attachment, $moved_file['file'] );
+
+					// Generate the metadata for the attachment, and update the database record.
+					$attach_data = wp_generate_attachment_metadata( $attach_id, $moved_file['file'] );
+					wp_update_attachment_metadata( $attach_id, $attach_data );
+
+					switch( $field['table'] ) {
+						case 'postmeta':
+							update_post_meta( $this->post_id, $field['slug'], $attach_id );
+							break;
+						case 'usermeta':
+							update_user_meta( $this->user_object->ID, $field['slug'], $attach_id );
+							break;
+					}
 				}
 			}
 		}

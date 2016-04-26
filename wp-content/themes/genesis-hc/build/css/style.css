@@ -1172,7 +1172,7 @@ ul {
     display: block;
   }
 }
-p, .wp-caption .wp-caption-text, .hc-form .description, .gform_wrapper .validation_message, .entry-slideshow .slide-content p, .entry-content ol,
+p, .wp-caption .wp-caption-text, .hc-form .description p, .gform_wrapper .validation_message, .entry-slideshow .slide-content p, .entry-content ol,
 .entry-content ul, .entry-pagination {
   margin-bottom: 2em;
   text-overflow: ellipsis;
@@ -1185,13 +1185,13 @@ p, .wp-caption .wp-caption-text, .hc-form .description, .gform_wrapper .validati
   font-size: .95em;
   line-height: 1.35;
 }
-p:last-child, .wp-caption .wp-caption-text:last-child, .hc-form .description:last-child, .gform_wrapper .validation_message:last-child, .entry-slideshow .slide-content p:last-child, .entry-content ol:last-child,
+p:last-child, .wp-caption .wp-caption-text:last-child, .hc-form .description p:last-child, .gform_wrapper .validation_message:last-child, .entry-slideshow .slide-content p:last-child, .entry-content ol:last-child,
 .entry-content ul:last-child, .entry-pagination:last-child {
   margin-bottom: 0;
 }
 
 @media (max-width: 45em) {
-  p, .wp-caption .wp-caption-text, .hc-form .description, .gform_wrapper .validation_message, .entry-slideshow .slide-content p, .entry-content ol,
+  p, .wp-caption .wp-caption-text, .hc-form .description p, .gform_wrapper .validation_message, .entry-slideshow .slide-content p, .entry-content ol,
   .entry-content ul, .entry-pagination {
     margin-bottom: 1.5em;
   }
@@ -1959,6 +1959,7 @@ input[type='search'],
 input[type='email'],
 input[type='url'],
 input[type='number'],
+input[type='file'],
 textarea {
   padding: .5em;
   max-width: 100%;
@@ -1969,6 +1970,10 @@ textarea {
   font-size: .85em;
   -webkit-appearance: none;
   -moz-appearance: none;
+}
+
+input[type='file'] {
+  width: auto;
 }
 
 textarea {
@@ -2138,8 +2143,12 @@ input[type='search'] {
   margin-bottom: 1.5em;
 }
 .hc-form .description {
+  margin-bottom: 1em;
+}
+.hc-form .description p {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
+  color: #5e5e5e;
   font-size: .9em;
 }
 .hc-form .field-select > div {

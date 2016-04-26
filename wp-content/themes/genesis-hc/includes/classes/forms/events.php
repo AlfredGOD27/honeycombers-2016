@@ -72,23 +72,21 @@ class HC_Event_Editor extends HC_Form_Abstract {
 			'classes'    => array('first', 'one-half'),
 		);
 
-		$i = 1;
-		while( $i <= $gallery_images ) {
-
-			$this->fields[] = array(
-				'slug'               => 1 === $i ? '_thumbnail_id' : '_hc_gallery_image_' . $i,
-				'label'              => 'Image',
-				'type'               => 'file',
-				'table'              => 'postmeta',
-				'required'           => false,
-				'allowed_mime_types' => array('image/jpg', 'image/jpeg'),
-				'max_size'           => 1,
-				'preview_type'       => 'image',
-				'preview_image_size' => 'archive-small',
-				'classes'            => array('one-half', 'block-image'),
-			);
-			++$i;
-		}
+		$this->fields[] = array(
+			'slug'               => '_hc_gallery_image_ids',
+			'label'              => $gallery_images > 1 ? 'Images' : 'Image',
+			'type'               => 'file',
+			'table'              => 'postmeta',
+			'required'           => false,
+			'multiple' => $gallery_images > 1,
+			'max_files' => $gallery_images,
+			'allowed_mime_types' => array('image/jpg', 'image/jpeg'),
+			'max_size'           => 1,
+			'preview_type'       => 'image',
+			'preview_image_size' => 'archive-small',
+			'classes'            => array('one-half', 'block-image'),
+			'description' => $gallery_images > 1 ? 'You may upload up to ' . $gallery_images . ' images.' : ''
+		);
 
 	}
 
