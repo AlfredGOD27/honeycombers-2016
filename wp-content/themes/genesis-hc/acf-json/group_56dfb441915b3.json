@@ -402,8 +402,8 @@
         },
         {
             "key": "field_56fd92baf59a1",
-            "label": "Post Event",
-            "name": "_hc_post_event_page_id",
+            "label": "Purchase Credits",
+            "name": "_hc_purchase_credits_page_id",
             "type": "post_object",
             "instructions": "",
             "required": 1,
@@ -462,5 +462,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1460756670
+    "modified": 1461699922
 }

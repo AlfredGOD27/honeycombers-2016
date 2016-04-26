@@ -3,12 +3,13 @@
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class HC_Event_Editor extends HC_Form_Abstract {
-	public function __construct() {
+	public function __construct( $editor, $action, $item_id = false ) {
 
 		$this->post_type           = 'event';
 		$this->level               = $this->get_user_level();
 		$this->action              = 'add';
 		$this->default_post_status = 'pending';
+		$this->editor              = $editor;
 
 		parent::__construct();
 
@@ -96,6 +97,51 @@ class HC_Event_Editor extends HC_Form_Abstract {
 		switch( $this->action ) {
 			case 'add':
 				$this->nonce_key = 'add_event_' . get_current_user_id();
+				break;
+		}
+
+	}
+
+	public function pre_add() {
+
+		if( !isset($_GET['level']) )
+			return;
+
+		if( !in_array( $_GET['level'], array('free', 'upgrade', 'premium') ) )
+			return;
+
+		$form_level = $_GET['level'];
+		if( $form_level === $this->level )
+			return;
+
+		switch( $this->level ) {
+			case 'free':
+				$purchase_page_id = get_option( 'options__hc_purchase_credits_page_id' );
+				$url = add_query_arg(
+					array(
+						'purchase_type' => 'event',
+						'purchase_level' => $form_level
+					),
+					get_permalink($purchase_page_id)
+				);
+
+				wp_redirect($url);
+				exit;
+
+				break;
+			case 'upgrade':
+			case 'premium':
+				switch( $form_level ) {
+					case 'free':
+						HC()->messages->add( 'info', 'You indicated that you want to post a free event, but you still have ' . $this->level . '-level credits to use first.' );
+						break;
+					case 'upgrade':
+						HC()->messages->add( 'info', 'You indicated that you want to post an upgraded event, but you still have ' . $this->level . '-level credits to use first.' );
+						break;
+					case 'premium':
+						HC()->messages->add( 'info', 'You indicated that you want to post a premium event, but you still have ' . $this->level . '-level credits to use first.' );
+						break;
+				}
 				break;
 		}
 
