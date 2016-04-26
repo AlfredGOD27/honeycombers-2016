@@ -7084,8 +7084,8 @@ function hc_maybe_load_facebook() {
 				captcha: self.find('.captcha').data('captcha-response')
 			},
 			success: function( json ) {
-				console.log(json);
-				var data = JSON.parse( json );
+				var data = JSON.parse( json ),
+					redirect = self.data('redirect');
 
 				add_message( self.closest('.white-popup').find('.messages'), data.status, data.message );
 
@@ -7094,7 +7094,7 @@ function hc_maybe_load_facebook() {
 
 					setTimeout(
 						function() {
-							window.location.href = data.redirect_to;
+							window.location.href = 'undefined' !== typeof redirect ? redirect : data.redirect_to;
 						},
 						1500
 					);
@@ -7292,8 +7292,10 @@ function hc_maybe_load_facebook() {
 		type: 'inline',
 		midClick: true,
 		callbacks: {
-			open: function() {
-				var item = $(this.contentContainer).find( 'input:visible' );
+			change: function() {
+				var item = $(this.contentContainer).find( 'input:visible' ),
+					redirect = this.items[ this.index ].el.data( 'redirect' );
+
 				if( item.length > 0 ) {
 					setTimeout(
 						function() {
@@ -7302,6 +7304,9 @@ function hc_maybe_load_facebook() {
 						50
 					);
 				}
+
+				if( redirect )
+					$(this.contentContainer).find('form').data( 'redirect', redirect );
 
 				if( $(this.contentContainer).find( '.btn-facebook' ).length > 0 )
 					hc_maybe_load_facebook();

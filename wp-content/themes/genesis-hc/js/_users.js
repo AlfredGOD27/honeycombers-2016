@@ -84,8 +84,8 @@
 				captcha: self.find('.captcha').data('captcha-response')
 			},
 			success: function( json ) {
-				console.log(json);
-				var data = JSON.parse( json );
+				var data = JSON.parse( json ),
+					redirect = self.data('redirect');
 
 				add_message( self.closest('.white-popup').find('.messages'), data.status, data.message );
 
@@ -94,7 +94,7 @@
 
 					setTimeout(
 						function() {
-							window.location.href = data.redirect_to;
+							window.location.href = 'undefined' !== typeof redirect ? redirect : data.redirect_to;
 						},
 						1500
 					);

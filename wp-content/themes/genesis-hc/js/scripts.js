@@ -94,8 +94,10 @@
 		type: 'inline',
 		midClick: true,
 		callbacks: {
-			open: function() {
-				var item = $(this.contentContainer).find( 'input:visible' );
+			change: function() {
+				var item = $(this.contentContainer).find( 'input:visible' ),
+					redirect = this.items[ this.index ].el.data( 'redirect' );
+
 				if( item.length > 0 ) {
 					setTimeout(
 						function() {
@@ -104,6 +106,9 @@
 						50
 					);
 				}
+
+				if( redirect )
+					$(this.contentContainer).find('form').data( 'redirect', redirect );
 
 				if( $(this.contentContainer).find( '.btn-facebook' ).length > 0 )
 					hc_maybe_load_facebook();

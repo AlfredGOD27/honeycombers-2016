@@ -83,6 +83,7 @@ class HC_Events {
 				remove_action( 'genesis_before_loop', 'hc_do_breadcrumbs' );
 				remove_action( 'genesis_loop', 'genesis_do_loop' );
 				add_action( 'genesis_loop', array($this, 'do_calendar') );
+				add_action( 'wp_footer', array($this, 'display_post_event_modal') );
 			}
 		}
 
@@ -486,7 +487,7 @@ class HC_Events {
 					</div>
 
 					<div class="post">
-						<a href="<?php echo HC()->utilities->get_page_link('_hc_post_event_page_id'); ?>" class="btn">Post an Event</a>
+						<button type="button" class="btn open-popup-link" data-mfp-src="#post-event-popup">Post an Event</a>
 					</div>
 				</form>
 			</div>
@@ -566,6 +567,154 @@ class HC_Events {
 			</section>
 			<?php
 		}
+
+	}
+
+	function display_post_event_modal() {
+
+		$logged_in = is_user_logged_in();
+
+		?>
+		<aside id="post-event-popup" class="post-event-popup white-popup mfp-hide clearfix">
+			<i class="ico-favicon"></i>
+
+			<h2>Post to the Honeycombers Calendar</h2>
+
+			<p class="lead">Please select from the options below</p>
+
+			<div class="inner clearfix">
+				<div class="one-fourth first">
+					<div class="top">
+						<h3>Free</h3>
+
+						<p>$0</p>
+
+						<ul>
+							<li>1 standard listing</li>
+							<li>50 word description</li>
+							<li>1 image</li>
+						</ul>
+					</div>
+
+					<div class="bottom">
+						<?php
+						$url = add_query_arg(
+							array(
+								'level' => 'free'
+							),
+							$this->editor->get_add_url()
+						);
+
+						if( $logged_in ) {
+							?>
+							<a href="<?php echo $url; ?>" class="btn">Select</a>
+							<?php
+						} else {
+							?>
+							<button type="button" class="btn open-popup-link" data-mfp-src="#login-popup" data-redirect="<?php echo $url; ?>">Select</button>
+							<?php
+						}
+						?>
+					</div>
+				</div>
+
+				<div class="one-fourth">
+					<div class="top">
+						<h3>Upgrade</h3>
+
+						<p>$200</p>
+
+						<ul>
+							<li>3 listings</li>
+							<li>300 word description</li>
+							<li>5 images per listing</li>
+							<li>1 editor’s pick on calendar page for 1 month</li>
+						</ul>
+					</div>
+
+					<div class="bottom">
+						<?php
+						$url = add_query_arg(
+							array(
+								'level' => 'upgrade'
+							),
+							$this->editor->get_add_url()
+						);
+
+						if( $logged_in ) {
+							?>
+							<a href="<?php echo $url; ?>" class="btn">Select</a>
+							<?php
+						} else {
+							?>
+							<button type="button" class="btn open-popup-link" data-mfp-src="#login-popup" data-redirect="<?php echo $url; ?>">Select</button>
+							<?php
+						}
+						?>
+					</div>
+				</div>
+
+				<div class="one-fourth">
+					<div class="top">
+						<h3>Premium</h3>
+
+						<p>$1,500</p>
+
+						<ul>
+							<li>5 listings</li>
+							<li>Unlimited description</li>
+							<li>10 images per listing</li>
+							<li>1 hero listing in calendar page, homepage, and all sidebars for 1 month</li>
+							<li>2 editor's picks on calendar page for 1 month each</li>
+							<li>1 EDM inclusion in our weekly newsletter</li>
+						</ul>
+					</div>
+
+					<div class="bottom">
+						<?php
+						$url = add_query_arg(
+							array(
+								'level' => 'premium'
+							),
+							$this->editor->get_add_url()
+						);
+
+						if( $logged_in ) {
+							?>
+							<a href="<?php echo $url; ?>" class="btn">Select</a>
+							<?php
+						} else {
+							?>
+							<button type="button" class="btn open-popup-link" data-mfp-src="#login-popup" data-redirect="<?php echo $url; ?>">Select</button>
+							<?php
+						}
+						?>
+
+						<a href="#" class="more-info">Get in touch for more info</a>
+					</div>
+				</div>
+
+				<div class="one-fourth">
+					<div class="top">
+						<h3>Premium</h3>
+
+						<p>POA</p>
+
+						<ul>
+							<li>Tailor-made articles and listings</li>
+							<li>EDM Inclusions</li>
+							<li>Social amplification</li>
+							<li>Prime positioning on Honeycombers</li>
+						</ul>
+					</div>
+
+					<div class="bottom">
+						<a href="/contact-us/" class="btn">Select</a>
+					</div>
+				</div>
+			</div>
+		</aside>
+		<?php
 
 	}
 
