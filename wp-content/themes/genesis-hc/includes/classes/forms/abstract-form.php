@@ -723,6 +723,24 @@ abstract class HC_Form_Abstract {
 
 		?>
 		<form method="post" enctype="multipart/form-data" class="hc-form entry-content">
+			<div class="form-header clearfix">
+				<?php
+				switch( $this->action ) {
+					case 'add':
+						?>
+						<h2>Add New <?php echo $this->editor->post_type_object->labels->singular_name; ?></h2>
+						<?php
+						break;
+					case 'edit':
+						?>
+						<h2>Edit <?php echo $this->editor->post_type_object->labels->singular_name; ?></h2>
+						<?php
+						break;
+				}
+				?>
+
+			</div>
+
 			<div class="form-body clearfix">
 				<?php
 				foreach( $this->fields as $field )
@@ -739,7 +757,7 @@ abstract class HC_Form_Abstract {
 				switch( $this->action ) {
 					case 'add':
 						?>
-						<button type="submit" name="hc_edit" class="btn btn-solid">Add</button>
+						<button type="submit" name="hc_edit" class="btn btn-solid">Submit</button>
 						<?php
 						break;
 					case 'edit':

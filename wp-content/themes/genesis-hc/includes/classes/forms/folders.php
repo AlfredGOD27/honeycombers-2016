@@ -3,7 +3,7 @@
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class HC_Folder_Editor extends HC_Form_Abstract {
-	public function __construct( $action, $folder_id = false ) {
+	public function __construct( $editor, $action, $folder_id = false ) {
 
 		$this->post_type    = 'folder';
 		$this->allow_delete = true;
@@ -19,6 +19,7 @@ class HC_Folder_Editor extends HC_Form_Abstract {
 		}
 
 		$this->default_post_status = 'publish';
+		$this->editor              = $editor;
 
 		parent::__construct();
 

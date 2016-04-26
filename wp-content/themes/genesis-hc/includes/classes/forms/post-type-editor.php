@@ -58,8 +58,11 @@ class HC_Post_Type_Editor {
 
 		switch( $this->action ) {
 			case 'add':
-				$this->form = new $this->editor_class_name( 'add' );
+				$this->form = new $this->editor_class_name( $this, 'add' );
 				$valid      = true;
+
+				if( method_exists($this->form, 'pre_add') )
+					$this->form->pre_add();
 				break;
 			case 'edit':
 				$this->slug = get_query_var( 'hc_' . $this->post_type . '_slug' );
@@ -80,7 +83,7 @@ class HC_Post_Type_Editor {
 				if( empty($items) )
 					return;
 
-				$this->form = new $this->editor_class_name( 'edit', $items[0] );
+				$this->form = new $this->editor_class_name( $this, 'edit', $items[0] );
 				$valid      = true;
 				$this->item = $items[0];
 				break;

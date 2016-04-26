@@ -1759,6 +1759,7 @@ img.alignright,
   border-left: 1px solid #d7d7d7;
   background-color: #FFFFFF;
   text-align: left;
+  font-size: .9em;
 }
 .alert:last-child, .gform_wrapper .validation_error:last-child, .gform_confirmation_message:last-child {
   margin-bottom: 0;
@@ -2124,6 +2125,14 @@ input[type='search'] {
 .hc-form {
   margin-bottom: 1.75em;
   max-width: 60em;
+}
+.hc-form .form-header {
+  margin-bottom: 1.5em;
+}
+.hc-form .form-header h2 {
+  color: inherit;
+  text-transform: uppercase;
+  font-size: 1.25em;
 }
 .hc-form .field {
   margin-bottom: 1.5em;
