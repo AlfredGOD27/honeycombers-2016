@@ -196,6 +196,7 @@ class HC_Folders {
 				update_post_meta( $post_id, '_hc_folder_icon', $folder['icon'] );
 
 			update_post_meta( $post_id, '_hc_folder_is_public', 'No' );
+			update_post_meta( $post_id, '_hc_folder_is_curated', 'No' );
 
 		}
 
