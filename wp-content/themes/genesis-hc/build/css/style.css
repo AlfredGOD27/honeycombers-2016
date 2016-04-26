@@ -5396,14 +5396,18 @@ input[type='search'] {
 .item-action-row > input[type='button'],
 .item-action-row > input[type='reset'],
 .item-action-row > input[type='submit'], .gform_wrapper .item-action-row > input[type='submit'],
-.item-action-row .button-nav {
+.item-action-row .button-nav,
+.item-action-row .bookmarks-button-container {
+  display: inline-block;
   margin-left: 3em;
+  vertical-align: middle;
 }
 .item-action-row > .btn:first-child, .item-action-row > button:first-child,
 .item-action-row > input[type='button']:first-child,
 .item-action-row > input[type='reset']:first-child,
 .item-action-row > input[type='submit']:first-child, .gform_wrapper .item-action-row > input[type='submit']:first-child,
-.item-action-row .button-nav:first-child {
+.item-action-row .button-nav:first-child,
+.item-action-row .bookmarks-button-container:first-child {
   margin-left: 0;
 }
 
@@ -5412,14 +5416,16 @@ input[type='search'] {
   .item-action-row > input[type='button'],
   .item-action-row > input[type='reset'],
   .item-action-row > input[type='submit'], .gform_wrapper .item-action-row > input[type='submit'],
-  .item-action-row .button-nav {
+  .item-action-row .button-nav,
+  .item-action-row .bookmarks-button-container {
     margin-left: 1em;
   }
   .item-action-row > .btn:first-child, .item-action-row > button:first-child,
   .item-action-row > input[type='button']:first-child,
   .item-action-row > input[type='reset']:first-child,
   .item-action-row > input[type='submit']:first-child, .gform_wrapper .item-action-row > input[type='submit']:first-child,
-  .item-action-row .button-nav:first-child {
+  .item-action-row .button-nav:first-child,
+  .item-action-row .bookmarks-button-container:first-child {
     margin-left: 0;
   }
 }

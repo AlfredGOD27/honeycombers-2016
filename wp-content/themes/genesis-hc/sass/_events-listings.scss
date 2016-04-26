@@ -73,8 +73,11 @@
 	text-align: center;
 
 	> .btn,
-	.button-nav {
+	.button-nav,
+	.bookmarks-button-container {
+		display: inline-block;
 		margin-left: 3em;
+		vertical-align: middle;
 
 		&:first-child {
 			margin-left: 0;
@@ -85,7 +88,8 @@
 @include media('<=phone') {
 	.item-action-row {
 		> .btn,
-		.button-nav {
+		.button-nav,
+		.bookmarks-button-container {
 			margin-left: 1em;
 
 			&:first-child {
