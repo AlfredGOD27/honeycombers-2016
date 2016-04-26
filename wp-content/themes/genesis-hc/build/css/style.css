@@ -1738,6 +1738,14 @@ img.alignright,
   font-size: .85em;
 }
 
+.basic-slider {
+  margin-bottom: 1.5em;
+}
+.basic-slider img {
+  display: block;
+  margin: 0 auto;
+}
+
 .messages {
   margin-bottom: 1.75em;
   max-width: 60em;

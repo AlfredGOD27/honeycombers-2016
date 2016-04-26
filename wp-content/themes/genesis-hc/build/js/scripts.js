@@ -7327,6 +7327,14 @@ function hc_maybe_load_facebook() {
 		variableWidth: true,
 	});
 
+	// Events/listings slideshow
+	$('.basic-slider').slick({
+		prevArrow: hc_strings.prev_arrow,
+		nextArrow: hc_strings.next_arrow,
+		speed: 500,
+		adaptiveHeight: true,
+	});
+
 	// Footer IG images
 	var exclude_mobile_images = im.lessThan('tablet');
 	$('.async-load-image').each( function() {

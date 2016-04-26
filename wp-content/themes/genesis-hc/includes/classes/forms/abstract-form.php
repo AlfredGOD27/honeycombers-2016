@@ -521,7 +521,8 @@ abstract class HC_Form_Abstract {
 				continue;
 
 			$files = array();
-			if( isset($field['multiple']) && $field['multiple'] ) {
+			$multiple = isset($field['multiple']) && $field['multiple'];
+			if( $multiple ) {
 				$max_files = count($_FILES[ $field['slug'] ]['name']);
 
 				if( isset($field['max_files']) )
@@ -543,6 +544,7 @@ abstract class HC_Form_Abstract {
 				$files[] = $_FILES[ $field['slug'] ];
 			}
 
+			$attachment_ids = array();
 			foreach( $files as $file ) {
 				add_filter( 'wp_handle_upload_prefilter', array($this, 'filter_upload_name') );
 				$moved_file = wp_handle_upload( $file, $upload_overrides );
@@ -568,14 +570,20 @@ abstract class HC_Form_Abstract {
 					$attach_data = wp_generate_attachment_metadata( $attach_id, $moved_file['file'] );
 					wp_update_attachment_metadata( $attach_id, $attach_data );
 
-					switch( $field['table'] ) {
-						case 'postmeta':
-							update_post_meta( $this->post_id, $field['slug'], $attach_id );
-							break;
-						case 'usermeta':
-							update_user_meta( $this->user_object->ID, $field['slug'], $attach_id );
-							break;
-					}
+					$attachment_ids[] = $attach_id;
+				}
+			}
+
+			if( !empty($attachment_ids) ) {
+				$value = $multiple ? $attachment_ids : $attachment_ids[0];
+
+				switch( $field['table'] ) {
+					case 'postmeta':
+						update_post_meta( $this->post_id, $field['slug'], $value );
+						break;
+					case 'usermeta':
+						update_user_meta( $this->user_object->ID, $field['slug'], $value );
+						break;
 				}
 			}
 		}
