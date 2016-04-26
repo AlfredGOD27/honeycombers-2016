@@ -410,9 +410,10 @@ class HC_Folders {
 		add_action( 'wpseo_robots', array($this, 'noindex') );
 
 		if( !$this->is_public($post->ID) && !$this->can_edit( $post->ID ) ) {
-			HC()->messages->add( 'info', 'This folder is private.' );
-			add_action( 'genesis_loop', array(HC()->messages, 'display') );
 			// Not authorized
+			$url = get_bloginfo('url');
+			wp_redirect($url);
+			exit;
 		} else {
 			// Authorized
 			HC()->profiles->user_id = $post->post_author;
