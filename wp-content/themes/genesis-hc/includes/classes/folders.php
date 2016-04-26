@@ -195,6 +195,8 @@ class HC_Folders {
 			if( isset($folder['icon']) )
 				update_post_meta( $post_id, '_hc_folder_icon', $folder['icon'] );
 
+			update_post_meta( $post_id, '_hc_folder_is_public', 'No' );
+
 		}
 
 	}
