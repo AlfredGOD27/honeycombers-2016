@@ -51,7 +51,10 @@ class HC_Gravity_Forms {
 		if( false === $input_id )
 			return;
 
-		switch( $input_id ) {
+		$value = !empty($entry[$input_id]) ? $entry[$input_id] : '';
+		$value = explode( '|', $value );
+
+		switch( $value[0] ) {
 			case 'event-upgrade':
 				$this->add_points( 'event', $user_id, 'upgrade', 3, $entry['id'] );
 				break;
