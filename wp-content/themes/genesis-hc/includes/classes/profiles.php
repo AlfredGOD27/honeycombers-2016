@@ -423,11 +423,19 @@ class HC_Profiles {
 
 	public function display_landing() {
 
+		$boxes = array();
+
+		$boxes[] = array(
+			'name'        => 'Event Submission',
+			'description' => 'Manage your events submissions',
+			'url'         => $this->get_url('calendar-events'),
+			'icon'        => 'calendar',
+			'class'       => 'invert-colors',
+		);
+
 		$curated_folders = HC()->folders->get_user_curated_folder_ids( $this->user_id );
 		$folders         = HC()->folders->get_user_folder_ids( $this->user_id );
 		$folders         = array_merge( $curated_folders, $folders );
-
-		$boxes = array();
 		foreach( $folders as $folder_id ) {
 			$folder = get_post( $folder_id );
 
@@ -455,7 +463,8 @@ class HC_Profiles {
 			<?php
 			$i = 1;
 			foreach( $boxes as $box ) {
-				echo 1 === $i % 3 ? '<div class="one-third first box">' : '<div class="one-third box">';
+				$class = isset($box['class']) ? $box['class'] : '';
+				echo 1 === $i % 3 ? '<div class="one-third first box ' . $class . '">' : '<div class="one-third box ' . $class . '">';
 					?>
 					<div class="top">
 						<?php

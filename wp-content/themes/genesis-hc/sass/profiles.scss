@@ -120,6 +120,16 @@
 	.box {
 		margin-bottom: 1.75em;
 		border: 1px solid $orange;
+
+		&.invert-colors {
+			.placeholder {
+				background-color: $orange;
+			}
+
+			i {
+				color: $white;
+			}
+		}
 	}
 
 	a {

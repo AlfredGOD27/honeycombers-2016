@@ -194,6 +194,12 @@ TYPOGRAPHY - http://cssfontstack.com/
   margin-bottom: 1.75em;
   border: 1px solid #fe862c;
 }
+.profile-boxes .box.invert-colors .placeholder {
+  background-color: #fe862c;
+}
+.profile-boxes .box.invert-colors i {
+  color: #FFFFFF;
+}
 .profile-boxes a {
   color: inherit;
   text-decoration: none;
