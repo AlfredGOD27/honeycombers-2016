@@ -127,8 +127,7 @@ class HC_Event_Editor extends HC_Form_Abstract {
 				$purchase_page_id = get_option( 'options__hc_purchase_credits_page_id' );
 				$url              = add_query_arg(
 					array(
-						'purchase_type'  => 'event',
-						'purchase_level' => $form_level,
+						'purchase_type' => 'event-' . $form_level,
 					),
 					get_permalink($purchase_page_id)
 				);

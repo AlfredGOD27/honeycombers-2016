@@ -36,11 +36,26 @@ class HC_Gravity_Forms {
 
 		$user_id = $entry['created_by'];
 
-		switch( $entry[1] ) {
-			case 'Events - Upgrade|200':
+		$form     = GFAPI::get_form( $entry['form_id'] );
+		$input_id = false;
+		foreach( $form['fields'] as $field ) {
+			if( empty($field['inputName']) )
+				continue;
+
+			if( 'purchase_type' === $field['inputName'] ) {
+				$input_id = $field['id'];
+				break 1;
+			}
+		}
+
+		if( false === $input_id )
+			return;
+
+		switch( $input_id ) {
+			case 'event-upgrade':
 				$this->add_points( 'event', $user_id, 'upgrade', 3, $entry['id'] );
 				break;
-			case 'Events - Premium|1500':
+			case 'event-premium':
 				$this->add_points( 'event', $user_id, 'premium', 5, $entry['id'] );
 				break;
 		}
