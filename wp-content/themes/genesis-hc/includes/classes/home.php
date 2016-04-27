@@ -92,11 +92,26 @@ class HC_Home {
 				<div class="other-pick">
 					<?php HC()->folders->display_add_button( $post_id, true, true ); ?>
 					<?php
-					if( has_post_thumbnail($post_id) )
-						echo get_the_post_thumbnail($post_id, 'archive-small' );
+					$title = get_the_title($post_id);
+
+					if( has_post_thumbnail($post_id) ) {
+						if( $i === 1 || $i === 3 ) {
+							echo get_the_post_thumbnail($post_id, 'archive-small' );
+						} else {
+							$src = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'archive-small' );
+
+							$atts = array(
+								'src'    => $src[0],
+								'alt'    => $title,
+								'width'  => $src[1],
+								'height' => $src[2],
+							);
+							echo HC()->utilities->get_async_image_placeholder( $atts, 'skip-image-on-mobile' );
+						}
+					}
 					?>
 
-					<h3><a href="<?php echo get_permalink($post_id); ?>"><?php echo get_the_title($post_id); ?></a></h3>
+					<h3><a href="<?php echo get_permalink($post_id); ?>"><?php echo $title; ?></a></h3>
 				</div>
 				<?php
 			echo '</div>';
