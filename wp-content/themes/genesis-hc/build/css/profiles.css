@@ -250,6 +250,11 @@ TYPOGRAPHY - http://cssfontstack.com/
 .folders-list {
   padding-right: 1em;
 }
+.folders-list hr {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  border: 1px solid #3a3a3a;
+}
 .folders-list h4 {
   margin-bottom: .5em;
   text-transform: uppercase;
@@ -300,4 +305,10 @@ TYPOGRAPHY - http://cssfontstack.com/
   text-decoration: none;
   font-size: .9em;
   opacity: .5;
+}
+
+.add-more-link {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  text-decoration: none;
 }

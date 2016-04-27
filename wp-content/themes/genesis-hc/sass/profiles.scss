@@ -186,6 +186,12 @@
 .folders-list {
 	padding-right: 1em;
 
+	hr {
+		margin-top: 1.5em;
+		margin-bottom: 1.5em;
+		border: 1px solid $text;
+	}
+
 	h4 {
 		margin-bottom: .5em;
 		text-transform: uppercase;
@@ -238,4 +244,9 @@
 	text-decoration: none;
 	font-size: .9em;
 	opacity: .5;
+}
+
+.add-more-link {
+	@include meta-font;
+	text-decoration: none;
 }

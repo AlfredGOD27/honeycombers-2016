@@ -92,14 +92,14 @@ class HC_Event_Editor extends HC_Form_Abstract {
 				'type'               => 'file',
 				'table'              => 'postmeta',
 				'required'           => false,
-				'multiple' => true,
-				'max_files' => $gallery_images - 1,
+				'multiple'           => true,
+				'max_files'          => $gallery_images - 1,
 				'allowed_mime_types' => array('image/jpg', 'image/jpeg'),
 				'max_size'           => 1,
 				'preview_type'       => 'image',
 				'preview_image_size' => 'archive-small',
 				'classes'            => array('one-half', 'block-image', 'first'),
-				'description' => 'You may upload up to ' . ($gallery_images - 1) . ' additional images.'
+				'description'        => 'You may upload up to ' . ($gallery_images - 1) . ' additional images.',
 			);
 		}
 
@@ -120,7 +120,7 @@ class HC_Event_Editor extends HC_Form_Abstract {
 		if( !isset($_GET['level']) )
 			return;
 
-		if( !in_array( $_GET['level'], array('free', 'upgrade', 'premium') ) )
+		if( !in_array( $_GET['level'], array('free', 'upgrade', 'premium'), true ) )
 			return;
 
 		$form_level = $_GET['level'];
@@ -130,10 +130,10 @@ class HC_Event_Editor extends HC_Form_Abstract {
 		switch( $this->level ) {
 			case 'free':
 				$purchase_page_id = get_option( 'options__hc_purchase_credits_page_id' );
-				$url = add_query_arg(
+				$url              = add_query_arg(
 					array(
-						'purchase_type' => 'event',
-						'purchase_level' => $form_level
+						'purchase_type'  => 'event',
+						'purchase_level' => $form_level,
 					),
 					get_permalink($purchase_page_id)
 				);
@@ -188,6 +188,8 @@ class HC_Event_Editor extends HC_Form_Abstract {
 
 		// Save level
 		update_post_meta( $this->post_id, '_hc_' . $this->post_type . '_level', $this->level );
+
+		update_post_meta( $this->post_id, '_hc_event_submitter_id', get_current_user_id() );
 
 		// Remove point
 		$this->subtract_point( $type );

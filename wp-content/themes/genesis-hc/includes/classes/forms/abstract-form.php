@@ -206,7 +206,7 @@ abstract class HC_Form_Abstract {
 					break;
 				case 'file':
 					$multiple = isset($field['multiple']) && $field['multiple'];
-					$name = $multiple ? $field['slug'] . '[]' : $field['slug'];
+					$name     = $multiple ? $field['slug'] . '[]' : $field['slug'];
 
 					$html = '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $name . '" accept="' . implode(',', $field['allowed_mime_types']) . '" ' . ($multiple ? 'multiple' : '' ) . '>';
 
@@ -445,7 +445,7 @@ abstract class HC_Form_Abstract {
 						'type' => $_FILES[ $field['slug'] ]['type'][$i],
 					);
 
-					$i++;
+					++$i;
 				}
 			} else {
 				$files[] = $_FILES[ $field['slug'] ];
@@ -520,7 +520,7 @@ abstract class HC_Form_Abstract {
 			if( !isset($_FILES[ $field['slug'] ]) )
 				continue;
 
-			$files = array();
+			$files    = array();
 			$multiple = isset($field['multiple']) && $field['multiple'];
 			if( $multiple ) {
 				$max_files = count($_FILES[ $field['slug'] ]['name']);
@@ -531,14 +531,14 @@ abstract class HC_Form_Abstract {
 				$i = 0;
 				while( $i <= ($max_files - 1) ) {
 					$files[] = array(
-						'name' => $_FILES[ $field['slug'] ]['name'][$i],
-						'type' => $_FILES[ $field['slug'] ]['type'][$i],
+						'name'     => $_FILES[ $field['slug'] ]['name'][$i],
+						'type'     => $_FILES[ $field['slug'] ]['type'][$i],
 						'tmp_name' => $_FILES[ $field['slug'] ]['tmp_name'][$i],
-						'error' => $_FILES[ $field['slug'] ]['error'][$i],
-						'size' => $_FILES[ $field['slug'] ]['size'][$i],
+						'error'    => $_FILES[ $field['slug'] ]['error'][$i],
+						'size'     => $_FILES[ $field['slug'] ]['size'][$i],
 					);
 
-					$i++;
+					++$i;
 				}
 			} else {
 				$files[] = $_FILES[ $field['slug'] ];

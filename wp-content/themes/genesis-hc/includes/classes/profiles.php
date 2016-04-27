@@ -10,6 +10,7 @@ class HC_Profiles {
 		$this->base_url  = 'profile';
 		$this->endpoints = array(
 			'edit',
+			'calendar-events',
 			'reset-password',
 			'logout',
 		);
@@ -112,6 +113,9 @@ class HC_Profiles {
 			case 'edit':
 				$this->form = new HC_Profile_Edit_Form( $this->user );
 				add_action( 'genesis_loop', array($this, 'display_edit') );
+				break;
+			case 'calendar-events':
+				add_action( 'genesis_loop', array($this, 'display_events') );
 				break;
 		}
 
@@ -504,6 +508,136 @@ class HC_Profiles {
 		<h2 class="profile-page-title">Edit Profile</h2>
 		<?php
 		$this->form->display_form();
+
+	}
+
+	public function display_events() {
+
+		?>
+		<div class="clearfix">
+			<aside class="one-fourth first folders-list">
+				<?php
+				$folders = HC()->folders->get_user_folder_ids( $post->post_author, !$is_own_folder );
+				if( !empty($folders) ) {
+					?>
+					<h4><a href="<?php echo $this->get_url('calendar-events'); ?>">Calendar Listings</a></h4>
+
+					<hr>
+
+					<h4>Folders:</h4>
+
+					<ul>
+						<?php
+						foreach( $folders as $folder_id ) {
+							?>
+							<li>
+								<a href="<?php echo get_permalink( $folder_id ); ?>" class="<?php echo $folder_id === $post->ID ? 'current' : ''; ?>"><?php echo get_the_title($folder_id); ?></a>
+							</li>
+							<?php
+						}
+						?>
+					</ul>
+
+					<?php
+				}
+
+				?>
+				<h4><a href="<?php echo HC()->folders->editor->get_add_url(); ?>"><i class="ico-plus"></i> Create New Folder</a></h4>
+			</aside>
+
+			<div class="three-fourths">
+				<header class="folder-header">
+					<h1>Calendar Listings</h1>
+				</header>
+
+				<?php
+				$args = array(
+					'post_type'  => 'event',
+					'meta_query' => array(
+						array(
+							'key'     => '_hc_event_submitter_id',
+							'value'   => get_current_user_id(),
+							'compare' => 'NUMERIC',
+						),
+					),
+					'fields'         => 'ids',
+					'posts_per_page' => -1,
+					'post_status'    => 'any',
+				);
+				$items = get_posts( $args );
+
+				if( !empty($items) ) {
+					?>
+					<table class="responsive">
+						<thead>
+							<tr>
+								<th>Event Title</th>
+								<th>Type</th>
+								<th>Date</th>
+								<th>Status</th>
+								<th>Hero Listing</th>
+								<th>Editor's Pick</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<?php
+							foreach( $items as $item_id ) {
+								$status = get_post_status($item_id);
+								?>
+								<tr>
+									<th>
+										<?php
+										$title = HC()->formatting->maybe_truncate( get_the_title($item_id), 20 );
+										if( 'publish' === $status ) {
+											echo '<a href="' . get_permalink($item_id) . '">' . $title . '</a>';
+										} else {
+											echo $title;
+										}
+										?>
+									</th>
+
+									<td data-title="Type">
+										<?php
+										$level = get_post_meta( $item_id, '_hc_event_level', true );
+										echo ucfirst($level);
+										?>
+									</td>
+
+									<td data-title="Date">
+										<?php
+										$date = HC()->events->get_event_date_info( $item_id );
+										echo HC()->events->get_date_string( $date, 'F j' );
+										?>
+									</td>
+
+									<td data-title="Status">
+										<?php
+										echo ucfirst($status);
+										?>
+									</td>
+
+									<td data-title="Hero Listing">
+									</td>
+
+									<td data-title="Editor's Pick">
+									</td>
+								</tr>
+								<?php
+							}
+							?>
+						</tbody>
+					</table>
+					<?php
+				} else {
+					HC()->messages->add_and_display( 'info', 'You have submitted no events.' );
+				}
+				?>
+
+				<a href="<?php echo HC()->events->editor->get_add_url(); ?>" class="add-more-link">Add more events ></a>
+			</div>
+		</div>
+		<?php
 
 	}
 

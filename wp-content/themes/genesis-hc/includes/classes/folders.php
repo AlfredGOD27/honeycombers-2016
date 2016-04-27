@@ -463,11 +463,12 @@ class HC_Folders {
 					</ul>
 
 					<?php
-					if( $is_own_folder ) {
-						?>
-						<h4><a href="<?php echo $this->editor->get_add_url(); ?>"><i class="ico-plus"></i> Create New Folder</a></h4>
-						<?php
-					}
+				}
+
+				if( $is_own_folder ) {
+					?>
+					<h4><a href="<?php echo $this->editor->get_add_url(); ?>"><i class="ico-plus"></i> Create New Folder</a></h4>
+					<?php
 				}
 				?>
 			</aside>

@@ -13,8 +13,8 @@ add_filter( 'genesis_search_text', 'hc_search_text' );
 function hc_search_text() {
 
 	$time = current_time('timestamp');
-	$d = date( 'l', $time );
-	$d = strtolower($d);
+	$d    = date( 'l', $time );
+	$d    = strtolower($d);
 
 	$h = date( 'G', $time );
 	$h = absint($h);
@@ -28,6 +28,7 @@ function hc_search_text() {
 	}
 
 	$placeholders = get_field( '_hc_placeholders_' . $d, 'option' );
+
 	return !empty($placeholders[0][$cycle]) ? sanitize_text_field($placeholders[0][$cycle]) : '';
 
 }

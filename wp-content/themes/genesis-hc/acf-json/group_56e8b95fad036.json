@@ -3,6 +3,23 @@
     "title": "Events \/\/ Options",
     "fields": [
         {
+            "key": "field_57210b0d02ba4",
+            "label": "Submitter",
+            "name": "_hc_event_submitter_id",
+            "type": "user",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "role": "",
+            "allow_null": 1,
+            "multiple": 0
+        },
+        {
             "key": "field_56e8b9f9094b7",
             "label": "All Day?",
             "name": "_hc_event_all_day",
@@ -250,5 +267,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1461706080
+    "modified": 1461783335
 }

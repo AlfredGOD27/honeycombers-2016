@@ -203,6 +203,30 @@ class HC_Events {
 
 	}
 
+	public function get_date_string( $date, $format = 'l, F j' ) {
+
+		$date_string = '';
+		if( false !== $date['start_date'] && false !== $date['end_date'] ) {
+			$start_date = date( $format, $date['start_date'] );
+			$end_date   = date( $format, $date['end_date'] );
+
+			if( $start_date !== $end_date ) {
+				$date_string = $start_date . ' - ' . $end_date;
+			} else {
+				$date_string = $start_date;
+			}
+		} elseif( false !== $date['start_date'] ) {
+			$start_date  = date( $format, $date['start_date'] );
+			$date_string = $start_date;
+		} elseif( false !== $date['end_date'] ) {
+			$end_date    = date( $format, $date['end_date'] );
+			$date_string = $end_date;
+		}
+
+		return $date_string;
+
+	}
+
 	public function do_single_event() {
 
 		global $post;
@@ -230,23 +254,10 @@ class HC_Events {
 				$lines = array();
 
 				// Date
-				$date = $this->get_event_date_info( $post->ID );
-				if( false !== $date['start_date'] && false !== $date['end_date'] ) {
-					$start_date = date( 'l, F j', $date['start_date'] );
-					$end_date   = date( 'l, F j', $date['end_date'] );
-
-					if( $start_date !== $end_date ) {
-						$lines['Date'] = $start_date . ' - ' . $end_date;
-					} else {
-						$lines['Date'] = $start_date;
-					}
-				} elseif( false !== $date['start_date'] ) {
-					$start_date    = date( 'l, F j', $date['start_date'] );
-					$lines['Date'] = $start_date;
-				} elseif( false !== $date['end_date'] ) {
-					$end_date      = date( 'l, F j', $date['end_date'] );
-					$lines['Date'] = $end_date;
-				}
+				$date        = $this->get_event_date_info( $post->ID );
+				$date_string = $this->get_date_string( $date );
+				if( !empty($date_string) )
+					$lines['Date'] = $date_string;
 
 				// Time
 				if( !$date['all_day'] ) {
@@ -596,7 +607,7 @@ class HC_Events {
 
 	}
 
-	function display_post_event_modal() {
+	public function display_post_event_modal() {
 
 		$logged_in = is_user_logged_in();
 
@@ -626,7 +637,7 @@ class HC_Events {
 						<?php
 						$url = add_query_arg(
 							array(
-								'level' => 'free'
+								'level' => 'free',
 							),
 							$this->editor->get_add_url()
 						);
@@ -662,7 +673,7 @@ class HC_Events {
 						<?php
 						$url = add_query_arg(
 							array(
-								'level' => 'upgrade'
+								'level' => 'upgrade',
 							),
 							$this->editor->get_add_url()
 						);
@@ -700,7 +711,7 @@ class HC_Events {
 						<?php
 						$url = add_query_arg(
 							array(
-								'level' => 'premium'
+								'level' => 'premium',
 							),
 							$this->editor->get_add_url()
 						);
