@@ -9,6 +9,21 @@ class HC_Logs {
 
 		$this->table_name = $wpdb->prefix . 'logs';
 
+		$this->keys = array(
+			'_hc_event_credits_upgrade' => array(
+				'post_type' => 'event',
+				'level'     => 'upgrade',
+			),
+			'_hc_event_credits_premium' => array(
+				'post_type' => 'event',
+				'level'     => 'premium',
+			),
+		);
+		$this->values_to_check = array();
+
+		add_action( 'acf/save_post', array($this, 'before_profile_save'), 8 );
+		add_action( 'acf/save_post', array($this, 'after_profile_save'), 12 );
+
 	}
 
 	private function maybe_create_table() {
@@ -65,6 +80,51 @@ class HC_Logs {
 				'%s',
 			)
 		);
+
+	}
+
+	public function before_profile_save( $post_id ) {
+
+	    if( empty($_POST['acf']) )
+	        return;
+
+		if( 0 !== strpos($post_id, 'user_') )
+			return;
+
+		$user_id = str_replace( 'user_', '', $post_id );
+
+		foreach( $this->keys as $key => $info )
+			$this->values_to_check[$key] = (int) get_user_meta( $user_id, $key, true );
+
+	}
+
+	public function after_profile_save( $post_id ) {
+
+	    if( empty($_POST['acf']) )
+	        return;
+
+		if( 0 !== strpos($post_id, 'user_') )
+			return;
+
+		$user_id = str_replace( 'user_', '', $post_id );
+
+		foreach( $this->keys as $key => $info ) {
+			$new_value = (int) get_user_meta( $user_id, $key, true );
+			if( $this->values_to_check[$key] !== $new_value ) {
+
+				$data = array(
+					'post_type'          => $info['post_type'],
+					'level'              => $info['level'],
+					'target_user_id'     => $user_id,
+					'initiating_user_id' => get_current_user_id(),
+					'ref_id'             => '',
+					'amount'             => $new_value - $this->values_to_check[$key],
+				);
+
+				HC()->logs->add( $data );
+			}
+
+		}
 
 	}
 
