@@ -44,10 +44,9 @@ class HC_Event_Editor extends HC_Form_Abstract {
 			'classes'  => array('first', 'one-half'),
 		);
 
+		$description_word_limit = 50;
+		$gallery_images         = 1;
 		switch( $this->level ) {
-			case 'free':
-
-				break;
 			case 'upgrade':
 				$description_word_limit = 300;
 				$gallery_images         = 5;
@@ -55,10 +54,6 @@ class HC_Event_Editor extends HC_Form_Abstract {
 			case 'premium':
 				$description_word_limit = 0;
 				$gallery_images         = 10;
-				break;
-			default:
-				$description_word_limit = 50;
-				$gallery_images         = 1;
 				break;
 		}
 

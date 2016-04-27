@@ -29,7 +29,7 @@ class HC_Subscriptions {
 
 		$this->setup_api();
 
-		$url .= $this->api_url . '/lists/' . $this->list_id . '/members/';
+		$url = $this->api_url . '/lists/' . $this->list_id . '/members/';
 		$url .= md5( strtolower( $email ) );
 
 		$args = array(

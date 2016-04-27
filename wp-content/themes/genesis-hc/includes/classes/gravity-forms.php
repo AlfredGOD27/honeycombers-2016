@@ -38,10 +38,10 @@ class HC_Gravity_Forms {
 
 		switch( $entry[1] ) {
 			case 'Events - Upgrade|200':
-				HC()->events->editor->add_points( 'event', $user_id, 'upgrade', 3, $entry['id'] );
+				$this->add_points( 'event', $user_id, 'upgrade', 3, $entry['id'] );
 				break;
 			case 'Events - Premium|1500':
-				HC()->events->editor->add_points( 'event', $user_id, 'premium', 5, $entry['id'] );
+				$this->add_points( 'event', $user_id, 'premium', 5, $entry['id'] );
 				break;
 		}
 

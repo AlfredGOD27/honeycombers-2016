@@ -346,7 +346,7 @@ class HC_Profiles {
 		$titles = get_option( 'wpseo_titles' );
 		$title  = str_replace( '%%title%%', $this->get_full_name(), $titles['title-folder'] );
 
-		return wpseo_replace_vars( $title );
+		return wpseo_replace_vars( $title, array() );
 
 	}
 
@@ -522,11 +522,13 @@ class HC_Profiles {
 
 	public function display_events() {
 
+		$user_id = get_current_user_id();
+
 		?>
 		<div class="clearfix">
 			<aside class="one-fourth first folders-list">
 				<?php
-				$folders = HC()->folders->get_user_folder_ids( $post->post_author, !$is_own_folder );
+				$folders = HC()->folders->get_user_folder_ids( $user_id, false );
 				if( !empty($folders) ) {
 					?>
 					<h4><a href="<?php echo $this->get_url('calendar-events'); ?>">Calendar Listings</a></h4>
@@ -540,7 +542,7 @@ class HC_Profiles {
 						foreach( $folders as $folder_id ) {
 							?>
 							<li>
-								<a href="<?php echo get_permalink( $folder_id ); ?>" class="<?php echo $folder_id === $post->ID ? 'current' : ''; ?>"><?php echo get_the_title($folder_id); ?></a>
+								<a href="<?php echo get_permalink( $folder_id ); ?>"><?php echo get_the_title($folder_id); ?></a>
 							</li>
 							<?php
 						}
@@ -565,7 +567,7 @@ class HC_Profiles {
 					'meta_query' => array(
 						array(
 							'key'     => '_hc_event_submitter_id',
-							'value'   => get_current_user_id(),
+							'value'   => $user_id,
 							'compare' => 'NUMERIC',
 						),
 					),

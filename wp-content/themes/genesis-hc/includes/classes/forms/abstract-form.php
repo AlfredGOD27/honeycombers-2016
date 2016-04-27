@@ -15,7 +15,10 @@ abstract class HC_Form_Abstract {
 		$this->setup_fields();
 		$this->set_nonce_key();
 
-		if( isset($this->allow_delete) && $this->allow_delete ) {
+		if( !isset($this->allow_delete) )
+			$this->allow_delete = false;
+
+		if( $this->allow_delete ) {
 			$deleted = $this->maybe_delete();
 			if( $deleted )
 				return;
@@ -785,20 +788,21 @@ abstract class HC_Form_Abstract {
 		<form method="post" enctype="multipart/form-data" class="hc-form entry-content">
 			<div class="form-header clearfix">
 				<?php
-				switch( $this->action ) {
-					case 'add':
-						?>
-						<h2>Add New <?php echo $this->editor->post_type_object->labels->singular_name; ?></h2>
-						<?php
-						break;
-					case 'edit':
-						?>
-						<h2>Edit <?php echo $this->editor->post_type_object->labels->singular_name; ?></h2>
-						<?php
-						break;
+				if( isset($this->editor) ) {
+					switch( $this->action ) {
+						case 'add':
+							?>
+							<h2>Add New <?php echo $this->editor->post_type_object->labels->singular_name; ?></h2>
+							<?php
+							break;
+						case 'edit':
+							?>
+							<h2>Edit <?php echo $this->editor->post_type_object->labels->singular_name; ?></h2>
+							<?php
+							break;
+					}
 				}
 				?>
-
 			</div>
 
 			<div class="form-body clearfix">
