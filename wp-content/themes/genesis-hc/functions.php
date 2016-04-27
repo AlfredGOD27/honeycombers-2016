@@ -16,6 +16,7 @@ final class HC {
 		'events',
 		'folders',
 		'formatting',
+		'gravity-forms',
 		'home',
 		'listings',
 		'logs',
