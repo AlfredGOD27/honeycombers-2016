@@ -12,7 +12,23 @@ add_filter( 'genesis_search_text', 'hc_search_text' );
  */
 function hc_search_text() {
 
-	return esc_attr( __( 'Getting the munchies?', CHILD_THEME_TEXT_DOMAIN ) );
+	$time = current_time('timestamp');
+	$d = date( 'l', $time );
+	$d = strtolower($d);
+
+	$h = date( 'G', $time );
+	$h = absint($h);
+
+	if( $h >= 6 && $h < 12 ) {
+		$cycle = 'morning';
+	} elseif( $h >= 12 && $h < 18 ) {
+		$cycle = 'afternoon';
+	} elseif( $h >= 18 || $h < 6 ) {
+		$cycle = 'evening';
+	}
+
+	$placeholders = get_field( '_hc_placeholders_' . $d, 'option' );
+	return !empty($placeholders[0][$cycle]) ? sanitize_text_field($placeholders[0][$cycle]) : '';
 
 }
 
