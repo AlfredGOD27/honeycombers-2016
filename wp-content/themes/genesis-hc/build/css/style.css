@@ -2198,6 +2198,9 @@ input[type='search'] {
   color: #fe862c;
 }
 
+.gform_wrapper {
+  max-width: 40em;
+}
 .gform_wrapper .gform_fields {
   margin: 0;
   padding: 0;
@@ -2243,8 +2246,18 @@ input[type='search'] {
   width: 100%;
 }
 .gform_wrapper .ginput_complex label {
+  margin-top: .25em;
   margin-bottom: 0;
   font-weight: normal;
+  font-size: .95em;
+}
+.gform_wrapper .ginput_complex .address_line_1,
+.gform_wrapper .ginput_complex .address_line_2,
+.gform_wrapper .ginput_complex .address_city,
+.gform_wrapper .ginput_complex .address_state,
+.gform_wrapper .ginput_complex .address_zip,
+.gform_wrapper .ginput_complex .address_country {
+  margin-bottom: .5em;
 }
 .gform_wrapper .gfield_radio,
 .gform_wrapper .gfield_checkbox {

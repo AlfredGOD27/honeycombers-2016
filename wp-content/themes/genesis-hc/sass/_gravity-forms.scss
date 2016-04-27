@@ -1,4 +1,6 @@
 .gform_wrapper {
+	max-width: 40em;
+
 	.gform_fields {
 		margin: 0;
 		padding: 0;
@@ -55,8 +57,19 @@
 		}
 
 		label {
+			margin-top: .25em;
 			margin-bottom: 0;
 			font-weight: normal;
+			font-size: .95em;
+		}
+
+		.address_line_1,
+		.address_line_2,
+		.address_city,
+		.address_state,
+		.address_zip,
+		.address_country {
+			margin-bottom: .5em;
 		}
 	}
 
