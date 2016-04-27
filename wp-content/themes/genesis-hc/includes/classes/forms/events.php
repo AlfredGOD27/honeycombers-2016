@@ -160,6 +160,26 @@ class HC_Event_Editor extends HC_Form_Abstract {
 
 	}
 
+	public function add_points( $user_id, $level, $quantity, $entry_id ) {
+
+		$key    = '_hc_' . $this->post_type . '_credits_' . $level;
+		$points = get_user_meta( $user_id, $key, true );
+		$points += absint($quantity);
+		update_user_meta( $user_id, $key, $points );
+
+		$data = array(
+			'post_type'          => $this->post_type,
+			'level'              => $level,
+			'target_user_id'     => $user_id,
+			'initiating_user_id' => $user_id,
+			'ref_id'             => $entry_id,
+			'amount'             => $quantity,
+		);
+
+		HC()->logs->add( $data );
+
+	}
+
 	protected function subtract_point() {
 
 		if( 'free' === $this->level )

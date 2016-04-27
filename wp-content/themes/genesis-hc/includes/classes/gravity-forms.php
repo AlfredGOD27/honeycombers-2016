@@ -11,13 +11,19 @@ class HC_Gravity_Forms {
 
 	public function fulfill_paypal_order( $entry, $feed, $transaction_id, $amount ) {
 
-		$content = '';
-		$content .= print_r($entry, true);
-		$content .= print_r($feed, true);
-		$content .= print_r($transaction_id, true);
-		$content .= print_r($amount, true);
+		if( 'Paid' !== $entry['payment_status'] )
+			return;
 
-		wp_mail( 'me@cooperdukes.com', 'test', $content );
+		$user_id = $entry['created_by'];
+
+		switch( $entry[1] ) {
+			case 'Events - Upgrade|200':
+				HC()->events->editor->add_points( $user_id, 'upgrade', 3, $entry['id'] );
+				break;
+			case 'Events - Premium|1500':
+				HC()->events->editor->add_points( $user_id, 'premium', 5, $entry['id'] );
+				break;
+		}
 
 	}
 }
