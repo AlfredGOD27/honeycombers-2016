@@ -455,14 +455,8 @@ abstract class HC_Form_Abstract {
 			}
 
 			foreach( $files as $file ) {
-				if( empty($file['size']) ) {
-					HC()->messages->add(
-						'error',
-						sprintf( '<strong>%s</strong> is empty', $field['label'])
-					);
-					$has_errors = true;
-					break 1;
-				}
+				if( empty($file['size']) )
+					continue;
 
 				if( !in_array($file['type'], $field['allowed_mime_types'], true) ) {
 					HC()->messages->add(
@@ -525,7 +519,9 @@ abstract class HC_Form_Abstract {
 
 			$files    = array();
 			$multiple = isset($field['multiple']) && $field['multiple'];
-			if( $multiple ) {
+			if( !is_array($_FILES[ $field['slug'] ]['name']) ) {
+				$files[] = $_FILES[ $field['slug'] ];
+			} else {
 				$max_files = count($_FILES[ $field['slug'] ]['name']);
 
 				if( isset($field['max_files']) )
@@ -543,12 +539,13 @@ abstract class HC_Form_Abstract {
 
 					++$i;
 				}
-			} else {
-				$files[] = $_FILES[ $field['slug'] ];
 			}
 
 			$attachment_ids = array();
 			foreach( $files as $file ) {
+				if( empty($file['size']) )
+					continue;
+
 				add_filter( 'wp_handle_upload_prefilter', array($this, 'filter_upload_name') );
 				$moved_file = wp_handle_upload( $file, $upload_overrides );
 				remove_filter( 'wp_handle_upload_prefilter', array($this, 'filter_upload_name') );
