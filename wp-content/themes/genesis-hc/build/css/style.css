@@ -1249,7 +1249,9 @@ html {
 [class*=' ico-'],
 .pika-prev:before,
 .pika-next:before,
-.stars a:before {
+.stars a:before,
+.star-rating:before,
+.star-rating span:before {
   text-transform: none;
   font-weight: normal;
   font-style: normal;
@@ -1263,28 +1265,20 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ico-check:before {
-  content: '\e924';
+.ico-star:before, .stars:hover a:before, .stars.selected a.active:before, .stars.selected a:not(.active):before {
+  content: '\53';
 }
 
-.ico-close:before {
-  content: '\e920';
-}
-
-.ico-circle:before {
-  content: '\e913';
-}
-
-.ico-star-half-empty:before {
-  content: '\e90f';
+.ico-star-five:before, .star-rating span:before {
+  content: '\53\53\53\53\53';
 }
 
 .ico-star-o:before, .stars a:before, .stars a:hover ~ a:before, .stars.selected a.active ~ a:before {
-  content: '\e910';
+  content: '\73';
 }
 
-.ico-star:before, .stars:hover a:before, .stars.selected a.active:before, .stars.selected a:not(.active):before {
-  content: '\e911';
+.ico-star-five-o:before, .star-rating:before {
+  content: '\73\73\73\73\73';
 }
 
 .ico-book:before {
@@ -1409,6 +1403,18 @@ html {
 
 .ico-youtube:before {
   content: '\e909';
+}
+
+.ico-check:before {
+  content: '\e924';
+}
+
+.ico-close:before {
+  content: '\e920';
+}
+
+.ico-circle:before {
+  content: '\e913';
 }
 
 @-webkit-keyframes shake {
@@ -2718,6 +2724,52 @@ input[type='search'] {
   height: 1em;
   text-indent: 0;
   line-height: 1;
+}
+
+.star-rating-container {
+  margin-bottom: 1.25em;
+  padding-bottom: 1.25em;
+  border-bottom: 1px solid #d7d7d7;
+}
+.star-rating-container > div,
+.star-rating-container > span {
+  display: inline-block;
+  vertical-align: middle;
+}
+.star-rating-container > span {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  margin-left: .75em;
+  font-size: .95em;
+}
+
+.star-rating {
+  position: relative;
+  overflow: hidden;
+  width: 5.4em;
+  height: 1em;
+  color: #fe862c;
+  font-size: 1.5em;
+  line-height: 1;
+}
+.star-rating:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  float: left;
+}
+.star-rating span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  float: left;
+  overflow: hidden;
+  padding-top: 1.5em;
+}
+.star-rating span:before {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .social a {

@@ -13,7 +13,36 @@ class HC_Ratings {
 
 	}
 
-	public function get_rating( $post_id, $user_id ) {
+	public function get_item_rating_info( $post_id ) {
+
+		global $wpdb;
+
+		$result = $wpdb->get_results(
+			$wpdb->prepare(
+				"
+				SELECT rating
+				FROM $this->table_name
+				WHERE post_id = %d
+				",
+				$post_id
+			)
+		);
+
+		if( empty($result) )
+			return false;
+
+		$ratings = array();
+		foreach( $result as $row )
+			$ratings[] = $row->rating;
+
+		return array(
+			'average' => array_sum($ratings) / count($ratings),
+			'count'   => count($ratings),
+		);
+
+	}
+
+	public function get_user_rating_for_item( $post_id, $user_id ) {
 
 		global $wpdb;
 
@@ -35,12 +64,28 @@ class HC_Ratings {
 
 	}
 
+	public function display( $item_id ) {
+
+		$rating = $this->get_item_rating_info( $item_id );
+		if( false === $rating )
+			return;
+
+		echo '<div class="star-rating-container">';
+			echo '<div class="star-rating" title="' . sprintf( __( 'Rated %s out of 5', 'woocommerce' ), $rating['average'] ) . '">';
+				echo '<span style="width:' . ( ( $rating['average'] / 5 ) * 100 ) . '%"><strong class="rating">' . $rating['average'] . '</strong> ' . __( 'out of 5', 'woocommerce' ) . '</span>';
+			echo '</div>';
+
+			echo '<span>' . number_format($rating['average'], 1) . ' Based on ' . $rating['count'] . ' ' . _n( 'review', 'reviews', $rating['count'] ) . '</span>';
+		echo '</div>';
+
+	}
+
 	public function display_button( $post_id, $icon_only = false ) {
 
 		$post_id = absint($post_id);
 
 		if( is_user_logged_in() ) {
-			$current_rating = $this->get_rating( $post_id, get_current_user_id() );
+			$current_rating = $this->get_user_rating_for_item( $post_id, get_current_user_id() );
 			?>
 			<nav class="button-nav ratings-nav">
 				<button class="calendar-button btn btn-icon">

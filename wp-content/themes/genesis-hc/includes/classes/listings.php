@@ -142,6 +142,8 @@ class HC_Listings {
 						echo '<p class="entry-meta">' . implode( ', ', $category_links ) . '</p>';
 					}
 				genesis_entry_header_markup_close();
+
+				HC()->ratings->display( $post->ID );
 				?>
 
 				<?php
