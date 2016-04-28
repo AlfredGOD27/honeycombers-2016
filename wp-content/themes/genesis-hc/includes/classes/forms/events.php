@@ -186,7 +186,7 @@ class HC_Event_Editor extends HC_Form_Abstract {
 		update_post_meta( $this->post_id, '_hc_event_submitter_id', get_current_user_id() );
 
 		// Remove point
-		$this->subtract_point( $type );
+		$this->subtract_point();
 
 		// Redirect
 		$url = add_query_arg(
