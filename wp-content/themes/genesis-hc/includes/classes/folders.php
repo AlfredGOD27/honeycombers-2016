@@ -419,6 +419,9 @@ class HC_Folders {
 			HC()->profiles->user_id = $post->post_author;
 			HC()->profiles->user    = get_user_by( 'id', $post->post_author );
 
+			if( isset($_GET['add']) )
+				HC()->messages->add( 'success', 'Folder added.' );
+
 			add_action( 'wp_enqueue_scripts', array(HC()->profiles, 'load_assets') );
 			add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 			add_filter( 'body_class', array(HC()->profiles, 'body_classes') );
