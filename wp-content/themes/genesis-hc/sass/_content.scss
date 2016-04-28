@@ -52,8 +52,11 @@
 .entry-header {
 	margin-bottom: .5em;
 
+	.bookmarks-button-container,
 	button {
+		display: inline-block;
 		margin-left: 1em;
+		vertical-align: middle;
 
 		&:first-child {
 			margin-left: 0;

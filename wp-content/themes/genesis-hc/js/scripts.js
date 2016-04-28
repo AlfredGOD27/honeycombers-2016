@@ -160,7 +160,7 @@
 	});
 
 	// Buttons nav
-	$('.button-nav > .btn').on( 'click', function() {
+	$('.content').on( 'click', '.button-nav > .btn', function() {
 		var self = $(this);
 
 		if( self.hasClass('use-modal') ) {

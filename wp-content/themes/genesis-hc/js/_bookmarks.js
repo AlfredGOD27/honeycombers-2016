@@ -32,6 +32,9 @@
 					count += 1;
 
 					self.closest('li').find('.count').text(count);
+
+					self.closest('.button-nav').removeClass('open');
+					$.magnificPopup.close();
 				} else {
 					alert(result.message);
 				}

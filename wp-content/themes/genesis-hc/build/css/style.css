@@ -3781,9 +3781,13 @@ table > tbody > tr:nth-child(odd) > th {
 .entry-header {
   margin-bottom: .5em;
 }
+.entry-header .bookmarks-button-container,
 .entry-header button {
+  display: inline-block;
   margin-left: 1em;
+  vertical-align: middle;
 }
+.entry-header .bookmarks-button-container:first-child,
 .entry-header button:first-child {
   margin-left: 0;
 }
@@ -6064,7 +6068,7 @@ table > tbody > tr:nth-child(odd) > th {
   position: absolute;
   top: 0;
   right: 0;
-  width: 47.5%;
+  width: 48.5%;
   height: 15em;
 }
 .listing-slider-nav .slick-slide {
@@ -6213,7 +6217,7 @@ table > tbody > tr:nth-child(odd) > th {
   right: 0;
   bottom: 0;
   padding-left: 1.75em;
-  width: 47.5%;
+  width: 48.5%;
   height: 3.75em;
   border-right: 3px solid #fe862c;
 }

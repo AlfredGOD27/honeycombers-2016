@@ -38,7 +38,7 @@
 				var result = JSON.parse(json);
 
 				if( 'success' === result.status ) {
-
+					self.closest('.button-nav').removeClass('open');
 				} else {
 					alert(result.message);
 				}

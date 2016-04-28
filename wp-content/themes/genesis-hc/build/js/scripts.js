@@ -6249,6 +6249,9 @@ function onYouTubeIframeAPIReady() {
 					count += 1;
 
 					self.closest('li').find('.count').text(count);
+
+					self.closest('.button-nav').removeClass('open');
+					$.magnificPopup.close();
 				} else {
 					alert(result.message);
 				}
@@ -6901,7 +6904,7 @@ function hc_maybe_load_facebook() {
 				var result = JSON.parse(json);
 
 				if( 'success' === result.status ) {
-
+					self.closest('.button-nav').removeClass('open');
 				} else {
 					alert(result.message);
 				}
@@ -7358,7 +7361,7 @@ function hc_maybe_load_facebook() {
 	});
 
 	// Buttons nav
-	$('.button-nav > .btn').on( 'click', function() {
+	$('.content').on( 'click', '.button-nav > .btn', function() {
 		var self = $(this);
 
 		if( self.hasClass('use-modal') ) {
