@@ -75,6 +75,7 @@ class HC_Archives {
 		remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
 
 		add_action( 'genesis_entry_content', array($this, 'do_excerpt') );
+		add_action( 'genesis_entry_footer', array($this, 'do_excerpt_footer') );
 		if( 'full' === $this->post_style ) {
 			remove_action( 'genesis_entry_header', 'genesis_do_post_image', 8 );
 			add_action( 'genesis_entry_header', array($this, 'full_width_markup_open'), 4 );
@@ -312,7 +313,15 @@ class HC_Archives {
 			echo '<p>' . HC()->formatting->get_excerpt( $post, 140 ) . '</p>';
 			?>
 		</div>
+		<?php
 
+	}
+
+	public function do_excerpt_footer() {
+
+		global $post;
+
+		?>
 		<div class="read-more-share-bar">
 			<a href="<?php echo get_permalink(); ?>" class="more-link">Read more ></a>
 

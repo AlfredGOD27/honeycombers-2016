@@ -36,7 +36,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.page-template-page_directory {
 		.site-container {
 			display: block;
@@ -64,7 +64,7 @@
 	float: left;
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.directory-map-container {
 		display: none;
 		height: auto;
@@ -109,7 +109,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.directory-search {
 		display: block;
 		float: none;
@@ -166,7 +166,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.directory-search-form {
 		padding: 1em;
 

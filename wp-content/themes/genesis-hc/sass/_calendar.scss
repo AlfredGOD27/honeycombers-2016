@@ -97,7 +97,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.page-template-page_calendar {
 		.slider-nav {
 			display: none;
@@ -189,7 +189,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.calendar-search-bar {
 		form {
 			display: block;

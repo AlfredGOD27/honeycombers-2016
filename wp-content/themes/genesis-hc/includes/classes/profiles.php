@@ -165,10 +165,16 @@ class HC_Profiles {
 	public function get_full_name( $user_id = false ) {
 
 		if( false === $user_id ) {
+			if( empty($this->user) )
+				return;
+
 			$user = $this->user;
 		} else {
 			$user = get_user_by( 'id', $user_id );
 		}
+
+		if( empty($user) )
+			return;
 
 		if( !empty($user->first_name) && !empty($user->last_name) )
 			return $user->first_name . ' ' . $user->last_name;

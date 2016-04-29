@@ -12,7 +12,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.social {
 		a {
 			font-size: 1.25em;

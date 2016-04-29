@@ -10,7 +10,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.page-template-page_home {
 		.archive-slider-container {
 			margin-bottom: 2em;
@@ -57,7 +57,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.home-section {
 		h2 {
 			margin-bottom: .25em;
@@ -87,7 +87,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.home-section-featured-posts {
 		margin-bottom: 1.25em;
 
@@ -187,7 +187,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.main-pick {
 		margin-bottom: 0;
 		border: none;
@@ -270,7 +270,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.home-section-featured-posts {
 		.other-picks {
 			display: flex;
@@ -301,6 +301,7 @@
 				order: 3;
 				padding: 1em 1.5em;
 				border: 1px solid $orange;
+				text-align: center;
 			}
 		}
 
@@ -334,7 +335,7 @@ $listing-slider-height: 18.75em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.home-section-featured-video-listings {
 		margin-bottom: 0;
 
@@ -369,7 +370,7 @@ $listing-slider-height: 18.75em;
 	border-bottom: 1px solid $orange;
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.listings-slider {
 		border: none;
 	}
@@ -408,7 +409,7 @@ $listing-slider-height: 18.75em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.listing-slider-for {
 		width: 100%;
 		height: auto;
@@ -453,7 +454,7 @@ $listing-slider-height: 18.75em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.listing-slider-nav {
 		display: none;
 	}
@@ -591,7 +592,7 @@ $listing-slider-height: 18.75em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.listings-more {
 		display: none;
 	}
@@ -707,7 +708,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.home-section-events-join {
 		padding-bottom: 2em;
 
@@ -818,7 +819,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.event-slider-for {
 		width: 100%;
 		height: auto;
@@ -926,7 +927,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.event-slider-nav {
 		display: none;
 	}
@@ -1007,7 +1008,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.home-section-trending {
 		padding-bottom: 0;
 

@@ -46,7 +46,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.author {
 		.author-box {
 			.inner {
@@ -97,9 +97,13 @@ $slider-height: 25em;
 	.entry {
 		display: flex;
 		align-items: flex-end;
-		margin-bottom: 1.75em;
+		margin-bottom: 3em;
 
 		.entry-content {
+			margin-bottom: 0;
+		}
+
+		.entry-footer {
 			margin-bottom: 0;
 		}
 	}
@@ -109,6 +113,7 @@ $slider-height: 25em;
 		align-items: center;
 
 		> a {
+			flex-basis: 0;
 			flex-grow: 1;
 			flex-shrink: 0;
 		}
@@ -119,7 +124,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.one-column-archive {
 		.entry {
 			display: block;
@@ -201,7 +206,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.archive-slider-container {
 		> .wrap {
 			padding-left: 0;
@@ -269,7 +274,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.slider-for {
 		width: 100%;
 		height: auto;
@@ -343,6 +348,7 @@ $slider-height: 25em;
 		}
 
 		span {
+			width: 100%;
 			text-transform: uppercase;
 			font-family: $heading;
 		}
@@ -381,7 +387,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.slider-nav {
 		display: none;
 	}

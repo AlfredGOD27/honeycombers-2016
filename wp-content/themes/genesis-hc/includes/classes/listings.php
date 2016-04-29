@@ -359,6 +359,10 @@ class HC_Listings {
 		$output['items']  = array();
 		$i                = 1;
 		foreach( $listings as $listing ) {
+			$map = get_field( '_hc_listing_address_map', $listing->ID );
+			if( empty($map['lat']) || empty($map['lng']) )
+				continue;
+
 			$categories = array();
 			$terms      = wp_get_object_terms( $listing->ID, 'directories' );
 			foreach( $terms as $term )
@@ -368,8 +372,6 @@ class HC_Listings {
 			$terms     = wp_get_object_terms( $listing->ID, 'locations' );
 			foreach( $terms as $term )
 				$locations[] = $term->name;
-
-			$map = get_field( '_hc_listing_address_map', $listing->ID );
 
 			$info_window_html = '<span class="result-title">' . $listing->post_title . '</span>';
 			$info_window_html .= '<span class="result-category">' . HC()->formatting->build_comma_separated_list( $categories ) . '</span>';

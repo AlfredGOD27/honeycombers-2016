@@ -414,7 +414,8 @@ abstract class HC_Form_Abstract {
 				continue;
 
 			if( !empty($_POST[ $field['slug'] ]) ) {
-				$valid = HC()->profiles->check_password_strength( $_POST[ $field['slug'] ], user_can( $this->user->ID, 'manage_options' ) );
+				$is_admin = isset($this->user->ID) && user_can( $this->user->ID, 'manage_options' );
+				$valid    = HC()->profiles->check_password_strength( $_POST[ $field['slug'] ], $is_admin );
 				if( !$valid )
 					return false;
 			}

@@ -80,7 +80,7 @@ class HC_Post_Type_Editor {
 					$args['author'] = get_current_user_id();
 
 				$items = get_posts( $args );
-				if( empty($items) )
+				if( 0 === count($items) )
 					return;
 
 				$this->form = new $this->editor_class_name( $this, 'edit', $items[0] );

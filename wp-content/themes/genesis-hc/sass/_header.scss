@@ -38,7 +38,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.site-top {
 		display: none;
 	}
@@ -72,7 +72,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.site-header {
 		margin-bottom: 1.5em;
 
@@ -92,7 +92,7 @@
 	padding-bottom: 1.25em;
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.title-area {
 		flex-grow: 0;
 		order: 1;
@@ -116,7 +116,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.site-logo {
 		img {
 			display: none;
@@ -141,7 +141,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.header-widget-area {
 		order: 3;
 		float: none;
@@ -189,7 +189,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.mobile-header-right {
 		display: block;
 	}

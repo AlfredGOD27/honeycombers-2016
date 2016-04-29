@@ -142,7 +142,7 @@ class HC_Users {
 			$this->user_registered( $user_id );
 
 			// User created. Save meta-type fields
-			foreach( $this->fields as $field ) {
+			foreach( $form->fields as $field ) {
 				if( !isset($args[ $field['table'] ][ $field['slug'] ]) )
 					continue;
 

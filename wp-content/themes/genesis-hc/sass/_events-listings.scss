@@ -54,7 +54,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.item-data {
 		dt {
 			width: 20%;
@@ -85,7 +85,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.item-action-row {
 		> .btn,
 		.button-nav,
@@ -165,7 +165,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.post-event-popup {
 		.inner {
 			display: block;

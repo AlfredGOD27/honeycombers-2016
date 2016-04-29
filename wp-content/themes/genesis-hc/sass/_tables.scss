@@ -59,7 +59,7 @@ table {
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	table.responsive {
 		> thead {
 			display: none;

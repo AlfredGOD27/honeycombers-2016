@@ -21,7 +21,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.nav-primary-wrapper {
 		position: relative;
 		display: none;
@@ -207,7 +207,7 @@
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.main-menu {
 		position: static;
 		width: 100%;

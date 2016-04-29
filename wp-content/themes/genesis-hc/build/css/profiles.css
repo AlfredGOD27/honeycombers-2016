@@ -47,7 +47,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   display: none !important;
 }
 
-@media (max-width: 45em) {
+@media (max-width: 48em) {
   .hide-phone {
     display: none;
   }
@@ -56,7 +56,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   display: none;
 }
 
-@media (max-width: 45em) {
+@media (max-width: 48em) {
   .show-phone {
     display: block;
   }
@@ -71,7 +71,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   margin-bottom: 0;
 }
 
-@media (max-width: 45em) {
+@media (max-width: 48em) {
   .profile-bookmarks-info p, .profile-boxes p {
     margin-bottom: 1.5em;
   }
