@@ -1175,12 +1175,6 @@ ul {
 p, .wp-caption .wp-caption-text, .hc-form .description p, .gform_wrapper .validation_message, .entry-slideshow .slide-content p, .entry-content ol,
 .entry-content ul, .entry-pagination {
   margin-bottom: 2em;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  -webkit-hyphens: auto;
-     -moz-hyphens: auto;
-      -ms-hyphens: auto;
-          hyphens: auto;
   letter-spacing: .01rem;
   font-size: .95em;
   line-height: 1.35;
@@ -4711,6 +4705,7 @@ table > tbody > tr:nth-child(odd) > th {
 .il-load-more {
   clear: both;
   margin-top: 2em;
+  margin-bottom: 4em;
   padding: 0 .25em;
   width: 100%;
   height: 2px;

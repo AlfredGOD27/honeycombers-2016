@@ -63,12 +63,6 @@ TYPOGRAPHY - http://cssfontstack.com/
 }
 .profile-bookmarks-info p, .profile-boxes p {
   margin-bottom: 2em;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  -webkit-hyphens: auto;
-     -moz-hyphens: auto;
-      -ms-hyphens: auto;
-          hyphens: auto;
   letter-spacing: .01rem;
   font-size: .95em;
   line-height: 1.35;
