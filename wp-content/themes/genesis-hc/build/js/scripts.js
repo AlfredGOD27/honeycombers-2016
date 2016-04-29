@@ -6792,7 +6792,7 @@ function hc_maybe_load_facebook() {
 					this.destroy();
 				},
 				{
-					offset: '75%'
+					offset: 'bottom-in-view'
 				}
 			);
 		});
