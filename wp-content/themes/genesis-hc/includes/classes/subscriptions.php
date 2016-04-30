@@ -111,13 +111,13 @@ class HC_Subscriptions {
 
 	}
 
-	public function display_form() {
+	public function display_form( $location ) {
 
 		?>
 		<form class="subscribe-form">
-			<label for="subscribe-email">Email</label>
+			<label for="subscribe-email-<?php echo $location; ?>">Email</label>
 			<div class="email-container">
-				<input id="subscribe-email" type="email" required>
+				<input id="subscribe-email-<?php echo $location; ?>" type="email" required>
 			</div>
 
 			<button type="submit" class="btn">Sign Up</button>

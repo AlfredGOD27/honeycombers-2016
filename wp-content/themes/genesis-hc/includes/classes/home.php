@@ -289,7 +289,7 @@ class HC_Home {
 									<div>
 										<div class="listing-slide-left">
 											<div class="inner">
-												<h3><?php echo get_the_title( $post_id ); ?></h3>
+												<h3><?php echo HC()->formatting->maybe_truncate( get_the_title( $post_id ), 50 ); ?></h3>
 											</div>
 										</div>
 
@@ -440,7 +440,7 @@ class HC_Home {
 											if( !empty($categories) )
 												echo '<span class="cat">' . $categories[0]->name . '</span>';
 
-											echo '<span class="title">' . get_the_title( $post_id ) . '</span>';
+											echo '<span class="title">' . HC()->formatting->maybe_truncate( get_the_title( $post_id ), 28 ) . '</span>';
 											?>
 										</div>
 

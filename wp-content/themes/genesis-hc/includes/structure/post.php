@@ -167,7 +167,7 @@ function hc_entry_subscribe_form() {
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pretium turpis.</p>
 
 		<?php
-		HC()->subscriptions->display_form();
+		HC()->subscriptions->display_form( 'footer' );
 		?>
 	</section>
 	<?php

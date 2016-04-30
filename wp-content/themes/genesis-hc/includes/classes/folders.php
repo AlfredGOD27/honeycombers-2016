@@ -121,7 +121,7 @@ class HC_Folders {
 									++$i;
 								}
 
-								if( $i > 3 ) {
+								if( $i > 4 ) {
 									?>
 									<li class="view-all">
 										<button type="button" class="view-all btn btn-icon">

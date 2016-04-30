@@ -22,7 +22,7 @@ class HC_Subscribe_Widget extends WP_Widget {
 			if( !empty($above_text) )
 				echo '<div class="above-text">' . wpautop( wp_kses_data($above_text) ) . '</div>';
 
-			HC()->subscriptions->display_form();
+			HC()->subscriptions->display_form( 'widget-' . $widget_id );
 		echo $after_widget;
 
 	}

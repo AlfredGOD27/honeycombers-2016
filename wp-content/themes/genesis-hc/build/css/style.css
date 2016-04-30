@@ -4866,6 +4866,7 @@ table > tbody > tr:nth-child(odd) > th {
   position: absolute;
   top: 0;
   right: .75em;
+  min-width: 28.25em;
   width: 35.5%;
   height: 100%;
   color: #FFFFFF;
@@ -6523,6 +6524,7 @@ table > tbody > tr:nth-child(odd) > th {
   position: absolute;
   top: 0;
   right: .75em;
+  min-width: 20em;
   width: 35.5%;
   height: 100%;
   color: #FFFFFF;

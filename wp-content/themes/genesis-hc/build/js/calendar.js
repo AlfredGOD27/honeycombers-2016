@@ -5182,6 +5182,8 @@
 
 (function($) {
 
+	var timer;
+
 	if( !$('body').hasClass('page-template-page_calendar') )
 		return;
 
@@ -5269,6 +5271,9 @@
 
 	set_filter();
 	$('.calendar-search-bar').find( 'select, .datepicker' ).on( 'change', set_filter );
-	$('.calendar-search-bar input[type="search"]' ).on( 'keyup keydown', set_filter );
+	$('.calendar-search-bar input[type="search"]' ).on( 'keyup keydown', function() {
+		clearTimeout(timer);
+		timer = setTimeout(set_filter, 200);
+	});
 
 })( window.jQuery );

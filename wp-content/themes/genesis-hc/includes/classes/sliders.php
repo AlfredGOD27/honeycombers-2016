@@ -3,7 +3,7 @@
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class HC_Sliders {
-	private function display_post_content( $post_id ) {
+	private function display_post_content( $post_id, $max_chars = false ) {
 
 		$terms = false;
 		switch( get_post_type($post_id) ) {
@@ -25,7 +25,11 @@ class HC_Sliders {
 		if( !empty($icon) )
 			echo '<i class="ico-' . $icon . '"></i>';
 
-		echo '<span>' . get_the_title( $post_id ) . '</span>';
+		if( false === $max_chars ) {
+			echo '<span>' . get_the_title( $post_id ) . '</span>';
+		} else {
+			echo '<span>' . HC()->formatting->maybe_truncate( get_the_title( $post_id ), $max_chars ) . '</span>';
+		}
 
 	}
 
@@ -82,7 +86,7 @@ class HC_Sliders {
 
 								<div class="inner">
 									<?php
-									$this->display_post_content( $post_id );
+									$this->display_post_content( $post_id, 50 );
 									?>
 								</div>
 							</div>
