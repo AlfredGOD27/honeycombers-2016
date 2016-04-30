@@ -116,6 +116,11 @@ TYPOGRAPHY - http://cssfontstack.com/
   border-radius: 50%;
 }
 
+@media (max-width: 48em) {
+  .profile-heading {
+    display: block;
+  }
+}
 .profile-welcome {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -184,6 +189,16 @@ TYPOGRAPHY - http://cssfontstack.com/
   font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
 }
 
+@media (max-width: 64em) {
+  .profile-bookmarks-info .orange i {
+    font-size: 3em;
+  }
+}
+@media (max-width: 48em) {
+  .profile-bookmarks-info {
+    display: none;
+  }
+}
 .profile-boxes .box {
   margin-bottom: 1.75em;
   border: 1px solid #fe862c;

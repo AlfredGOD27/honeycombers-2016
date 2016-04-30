@@ -94,7 +94,7 @@ class HC_Formatting {
 				'scale'   => 2,
 				'zoom'    => 12,
 				'maptype' => 'roadmap',
-				'markers' => 'color:0xfe862c|' . urlencode($map_address),
+				'markers' => 'color:0xfe862c%7C' . urlencode($map_address),
 			),
 			'https://maps.googleapis.com/maps/api/staticmap'
 		);

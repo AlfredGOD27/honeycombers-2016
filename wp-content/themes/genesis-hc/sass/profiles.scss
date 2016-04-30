@@ -40,6 +40,12 @@
 	}
 }
 
+@include media('<=portrait') {
+	.profile-heading {
+		display: block;
+	}
+}
+
 .profile-welcome {
 	flex-grow: 1;
 	flex-shrink: 1;
@@ -113,6 +119,22 @@
 	.black {
 		font-size: .9em;
 		font-family: $heading;
+	}
+}
+
+@include media('<=landscape') {
+	.profile-bookmarks-info {
+		.orange {
+			i {
+				font-size: 3em;
+			}
+		}
+	}
+}
+
+@include media('<=portrait') {
+	.profile-bookmarks-info {
+		display: none;
 	}
 }
 
