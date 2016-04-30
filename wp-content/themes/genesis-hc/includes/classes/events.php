@@ -524,7 +524,7 @@ class HC_Events {
 					</div>
 
 					<div class="post">
-						<button type="button" class="btn open-popup-link" data-mfp-src="#post-event-popup">Post an Event</a>
+						<button type="button" class="btn open-popup-link" data-mfp-src="#post-event-popup">Post an Event</button>
 					</div>
 				</form>
 			</div>
@@ -657,7 +657,7 @@ class HC_Events {
 
 				<div class="one-fourth">
 					<div class="top">
-						<h3>Upgrade</h3>
+						<h3>Upgrade</h3>
 
 						<p>$200</p>
 
@@ -665,7 +665,7 @@ class HC_Events {
 							<li>3 listings</li>
 							<li>300 word description</li>
 							<li>5 images per listing</li>
-							<li>1 editor’s pick on calendar page for 1 month</li>
+							<li>1 editor’s pick on calendar page for 1 month</li>
 						</ul>
 					</div>
 
@@ -693,7 +693,7 @@ class HC_Events {
 
 				<div class="one-fourth">
 					<div class="top">
-						<h3>Premium</h3>
+						<h3>Premium</h3>
 
 						<p>$1,500</p>
 
@@ -701,9 +701,9 @@ class HC_Events {
 							<li>5 listings</li>
 							<li>Unlimited description</li>
 							<li>10 images per listing</li>
-							<li>1 hero listing in calendar page, homepage, and all sidebars for 1 month</li>
-							<li>2 editor's picks on calendar page for 1 month each</li>
-							<li>1 EDM inclusion in our weekly newsletter</li>
+							<li>1 hero listing in calendar page, homepage, and all sidebars for 1 month</li>
+							<li>2 editor's picks on calendar page for 1 month each</li>
+							<li>1 EDM inclusion in our weekly newsletter</li>
 						</ul>
 					</div>
 
@@ -733,15 +733,15 @@ class HC_Events {
 
 				<div class="one-fourth">
 					<div class="top">
-						<h3>Premium</h3>
+						<h3>Premium</h3>
 
 						<p>POA</p>
 
 						<ul>
-							<li>Tailor-made articles and listings</li>
+							<li>Tailor-made articles and listings</li>
 							<li>EDM Inclusions</li>
 							<li>Social amplification</li>
-							<li>Prime positioning on Honeycombers</li>
+							<li>Prime positioning on Honeycombers</li>
 						</ul>
 					</div>
 
