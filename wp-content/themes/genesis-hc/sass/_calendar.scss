@@ -241,8 +241,7 @@
 		border: 1px solid $white;
 	}
 
-	&:hover,
-	&:focus {
+	&:hover {
 		z-index: 5;
 		transform: scale(1.2);
 	}
@@ -272,5 +271,14 @@
 	.title {
 		text-transform: uppercase;
 		font-family: $heading;
+	}
+}
+
+@include media('<=phone') {
+	.event-slide {
+		img {
+			max-width: none;
+			width: 100%;
+		}
 	}
 }

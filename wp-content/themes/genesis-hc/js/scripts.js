@@ -127,6 +127,14 @@
 		slidesToShow: 1,
 		speed: 500,
 		variableWidth: true,
+		responsive: [
+			{
+				breakpoint: im.getValue('phone', true),
+				settings: {
+					variableWidth: false,
+				}
+			}
+		]
 	});
 
 	// Events/listings slideshow

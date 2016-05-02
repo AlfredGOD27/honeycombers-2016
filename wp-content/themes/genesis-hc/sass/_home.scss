@@ -307,6 +307,10 @@
 
 		.other-pick {
 			margin-bottom: 0;
+
+			h3 {
+				font-size: .9em;
+			}
 		}
 	}
 }
@@ -1068,8 +1072,6 @@ $slider-height: 25em;
 		}
 	}
 
-
-
 	.one-fourth {
 		position: relative;
 		overflow: hidden;
@@ -1156,5 +1158,16 @@ $slider-height: 25em;
 
 	.il-load-more {
 		margin-top: 1em;
+	}
+}
+
+@include media('<=phone') {
+	.home-section-latest-posts {
+		.top {
+			img {
+				max-width: none;
+				width: 100%;
+			}
+		}
 	}
 }

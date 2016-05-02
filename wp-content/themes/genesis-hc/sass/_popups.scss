@@ -92,6 +92,12 @@
 	}
 }
 
+@include media('<=phone') {
+	.white-popup {
+		padding: 1.25em;
+	}
+}
+
 .login-popup {
 	.forgot-remember-bar {
 		margin-bottom: .75em;

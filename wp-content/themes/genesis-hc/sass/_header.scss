@@ -83,6 +83,14 @@
 	}
 }
 
+@include media('<=phone') {
+	.site-header {
+		> .wrap {
+			padding-right: 0;
+		}
+	}
+}
+
 .title-area {
 	flex-grow: 1;
 	flex-shrink: 0;
