@@ -1550,7 +1550,6 @@ html {
   .two-fifths,
   .three-fifths,
   .four-fifths,
-  .three-fourths,
   .three-sixths,
   .two-fourths,
   .two-sixths,
@@ -1572,7 +1571,6 @@ html {
   .two-fifths:last-child,
   .three-fifths:last-child,
   .four-fifths:last-child,
-  .three-fourths:last-child,
   .three-sixths:last-child,
   .two-fourths:last-child,
   .two-sixths:last-child,
@@ -1584,7 +1582,8 @@ html {
   .one-fourth,
   .one-sixth,
   .one-third,
-  .one-fifth {
+  .one-fifth,
+  .three-fourths {
     float: none;
     clear: both;
     margin-bottom: 1.5em;
@@ -1595,7 +1594,8 @@ html {
   .one-fourth:last-child,
   .one-sixth:last-child,
   .one-third:last-child,
-  .one-fifth:last-child {
+  .one-fifth:last-child,
+  .three-fourths:last-child {
     margin-bottom: 0;
   }
 }
@@ -1755,6 +1755,10 @@ img.alignright,
 .basic-slider img {
   display: block;
   margin: 0 auto;
+}
+
+.slider-pro {
+  margin-bottom: 1.5em;
 }
 
 .messages {
@@ -4211,6 +4215,11 @@ table > tbody > tr:nth-child(odd) > th {
   text-decoration: none;
 }
 
+@media (max-width: 63.99em) {
+  .related .bottom {
+    position: relative;
+  }
+}
 .sidebar .widget {
   margin-bottom: 2.5em;
 }
@@ -4705,13 +4714,27 @@ table > tbody > tr:nth-child(odd) > th {
       -ms-flex-negative: 0;
           flex-shrink: 0;
 }
-.one-column-archive .read-more-share-bar .btn, .one-column-archive .read-more-share-bar button,
-.one-column-archive .read-more-share-bar input[type='button'],
-.one-column-archive .read-more-share-bar input[type='reset'],
-.one-column-archive .read-more-share-bar input[type='submit'] {
+.one-column-archive .read-more-share-bar .bookmarks-button-container,
+.one-column-archive .read-more-share-bar .share-button {
+  display: inline-block;
+  vertical-align: middle;
+}
+.one-column-archive .read-more-share-bar .share-button {
   margin-left: 1em;
 }
 
+@media (max-width: 64em) {
+  .one-column-archive .read-more-share-bar .bookmarks-button-container,
+  .one-column-archive .read-more-share-bar .share-button {
+    display: block;
+  }
+  .one-column-archive .read-more-share-bar .bookmarks-button-container {
+    margin-bottom: .5em;
+  }
+  .one-column-archive .read-more-share-bar .share-button {
+    margin-left: 0;
+  }
+}
 @media (max-width: 48em) {
   .one-column-archive .entry {
     display: block;

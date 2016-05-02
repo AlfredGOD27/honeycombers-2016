@@ -85,3 +85,11 @@
 		text-decoration: none;
 	}
 }
+
+@include media('<landscape') {
+	.related {
+		.bottom {
+			position: relative;
+		}
+	}
+}

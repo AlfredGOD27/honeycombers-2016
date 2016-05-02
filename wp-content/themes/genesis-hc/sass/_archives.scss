@@ -118,8 +118,33 @@ $slider-height: 25em;
 			flex-shrink: 0;
 		}
 
-		.btn {
+		.bookmarks-button-container,
+		.share-button {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.share-button {
 			margin-left: 1em;
+		}
+	}
+}
+
+@include media('<=landscape') {
+	.one-column-archive {
+		.read-more-share-bar {
+			.bookmarks-button-container,
+			.share-button {
+				display: block;
+			}
+
+			.bookmarks-button-container {
+				margin-bottom: .5em;
+			}
+
+			.share-button {
+				margin-left: 0;
+			}
 		}
 	}
 }
