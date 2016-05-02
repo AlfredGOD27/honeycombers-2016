@@ -78,11 +78,7 @@
 @include media('<=portrait') {
 	.five-sixths,
 	.four-sixths,
-	.one-fourth,
 	.one-half,
-	.one-sixth,
-	.one-third,
-	.one-fifth,
 	.two-fifths,
 	.three-fifths,
 	.four-fifths,
@@ -91,6 +87,24 @@
 	.two-fourths,
 	.two-sixths,
 	.two-thirds {
+		float: none;
+		clear: both;
+		margin-bottom: 1.5em;
+		margin-left: 0;
+		min-height: 0;
+		width: 100%;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+@include media('<=phone') {
+	.one-fourth,
+	.one-sixth,
+	.one-third,
+	.one-fifth {
 		float: none;
 		clear: both;
 		margin-bottom: 1.5em;
