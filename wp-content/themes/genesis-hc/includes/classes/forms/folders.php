@@ -48,6 +48,7 @@ class HC_Folder_Editor extends HC_Form_Abstract {
 				'No',
 			),
 			'classes' => array('one-half'),
+			'default' => 'No',
 		);
 		$this->fields[] = array(
 			'slug'     => 'post_content',
@@ -70,6 +71,7 @@ class HC_Folder_Editor extends HC_Form_Abstract {
 					'No',
 				),
 				'classes' => array('one-half'),
+				'default' => 'No',
 			);
 		}
 

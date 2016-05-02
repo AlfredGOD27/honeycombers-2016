@@ -250,6 +250,9 @@ abstract class HC_Form_Abstract {
 					echo '</div>';
 					break;
 				case 'radio':
+					if( false === $value && isset($field['default']) )
+						$value = $field['default'];
+
 					echo '<div class="radio-list">';
 						foreach( $field['options'] as $option ) {
 							$option_value = esc_attr($option);
