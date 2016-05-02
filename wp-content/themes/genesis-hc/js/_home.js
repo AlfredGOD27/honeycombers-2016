@@ -3,7 +3,7 @@
 	if( !$('body').hasClass('page-template-page_home') )
 		return;
 
-	if( !im.lessThan('tablet') ) {
+	if( !im.lessThan('portrait') ) {
 		$('.listing-slider-for').slick({
 			adaptiveHeight: true,
 			arrows: false,
@@ -70,7 +70,7 @@
 		nextArrow: hc_strings.next_arrow,
 		responsive: [
 			{
-				breakpoint: im.getValue('tablet', true),
+				breakpoint: im.getValue('portrait', true),
 				settings: {
 					arrows: true,
 					slidesToScroll: 1,

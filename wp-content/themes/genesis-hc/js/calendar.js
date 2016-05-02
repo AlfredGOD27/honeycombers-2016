@@ -15,7 +15,7 @@
 		nextArrow: hc_strings.next_arrow,
 		responsive: [
 			{
-				breakpoint: im.getValue('tablet', true),
+				breakpoint: im.getValue('portrait', true),
 				settings: {
 					slidesToScroll: 1,
 					slidesToShow: 2,

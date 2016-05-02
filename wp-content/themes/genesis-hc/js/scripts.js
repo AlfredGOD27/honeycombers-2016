@@ -138,7 +138,7 @@
 	});
 
 	// Footer IG images
-	var exclude_mobile_images = im.lessThan('tablet');
+	var exclude_mobile_images = im.lessThan('portrait');
 	$('.async-load-image').each( function() {
 		var placeholder = $(this),
 			data,

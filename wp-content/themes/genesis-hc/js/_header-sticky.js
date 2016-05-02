@@ -16,7 +16,7 @@
 		affix_on = true;
 
 		// Turn off is window isn't fullwidth
-		if( im.lessThan('tablet') )
+		if( im.lessThan('portrait') )
 			affix_on = false;
 	}
 

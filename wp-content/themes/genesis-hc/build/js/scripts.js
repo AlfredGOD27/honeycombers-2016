@@ -6344,7 +6344,7 @@ function hc_directory_maps() {
 			scrollwheel: false,
 			center: new google.maps.LatLng( hc_directory_coords.lat, hc_directory_coords.lng )
 		},
-		use_map = !im.lessThan('tablet'),
+		use_map = !im.lessThan('portrait'),
 		script_event = true;
 
 	function reset() {
@@ -6581,7 +6581,7 @@ function hc_maybe_load_facebook() {
 		affix_on = true;
 
 		// Turn off is window isn't fullwidth
-		if( im.lessThan('tablet') )
+		if( im.lessThan('portrait') )
 			affix_on = false;
 	}
 
@@ -6649,7 +6649,7 @@ function hc_maybe_load_facebook() {
 	if( !$('body').hasClass('page-template-page_home') )
 		return;
 
-	if( !im.lessThan('tablet') ) {
+	if( !im.lessThan('portrait') ) {
 		$('.listing-slider-for').slick({
 			adaptiveHeight: true,
 			arrows: false,
@@ -6716,7 +6716,7 @@ function hc_maybe_load_facebook() {
 		nextArrow: hc_strings.next_arrow,
 		responsive: [
 			{
-				breakpoint: im.getValue('tablet', true),
+				breakpoint: im.getValue('portrait', true),
 				settings: {
 					arrows: true,
 					slidesToScroll: 1,
@@ -6920,7 +6920,7 @@ function hc_maybe_load_facebook() {
 		$(this).fitVids();
 	});
 
-	if( !im.lessThan('tablet') ) {
+	if( !im.lessThan('portrait') ) {
 		$('.slider-for').slick({
 			adaptiveHeight: true,
 			arrows: false,
@@ -7339,7 +7339,7 @@ function hc_maybe_load_facebook() {
 	});
 
 	// Footer IG images
-	var exclude_mobile_images = im.lessThan('tablet');
+	var exclude_mobile_images = im.lessThan('portrait');
 	$('.async-load-image').each( function() {
 		var placeholder = $(this),
 			data,

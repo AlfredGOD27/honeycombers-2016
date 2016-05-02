@@ -9,7 +9,7 @@ $home-transition-time: .25s;
 /*********************
 BREAKPOINTS
 *********************/
-$breakpoints: ( phone: 35em, portrait: 48em, landscape: 64em, desktop: 80em );
+$breakpoints: ( phone: (35 * 16px), portrait: (48 * 16px), landscape: (64 * 16px), desktop: (80 * 16px) );
 
 /*********************
 COLORS

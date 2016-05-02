@@ -17,7 +17,7 @@ function hc_directory_maps() {
 			scrollwheel: false,
 			center: new google.maps.LatLng( hc_directory_coords.lat, hc_directory_coords.lng )
 		},
-		use_map = !im.lessThan('tablet'),
+		use_map = !im.lessThan('portrait'),
 		script_event = true;
 
 	function reset() {
