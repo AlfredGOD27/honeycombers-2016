@@ -16,9 +16,18 @@ SOCIAL COLORS - http://designpieces.com/2012/12/social-media-colours-hex-and-rgb
 /*********************
 TYPOGRAPHY - http://cssfontstack.com/
 *********************/
+@media (min-width: 16px) {
+  body::after {
+    content: '{"zero":{"value": "16px", "active": true}, "phone":{"value": "560px", "active": false}, "portrait":{"value": "768px", "active": false}, "landscape":{"value": "1024px", "active": false}, "desktop":{"value": "1280px", "active": false}}';
+    display: block;
+    height: 0;
+    overflow: hidden;
+    width: 0;
+  }
+}
 @media (min-width: 560px) {
   body::after {
-    content: '{"phone":{"value": "560px", "active": true}, "portrait":{"value": "768px", "active": false}, "landscape":{"value": "1024px", "active": false}, "desktop":{"value": "1280px", "active": false}}';
+    content: '{"zero":{"value": "16px", "active": true}, "phone":{"value": "560px", "active": true}, "portrait":{"value": "768px", "active": false}, "landscape":{"value": "1024px", "active": false}, "desktop":{"value": "1280px", "active": false}}';
     display: block;
     height: 0;
     overflow: hidden;
@@ -27,7 +36,7 @@ TYPOGRAPHY - http://cssfontstack.com/
 }
 @media (min-width: 768px) {
   body::after {
-    content: '{"phone":{"value": "560px", "active": true}, "portrait":{"value": "768px", "active": true}, "landscape":{"value": "1024px", "active": false}, "desktop":{"value": "1280px", "active": false}}';
+    content: '{"zero":{"value": "16px", "active": true}, "phone":{"value": "560px", "active": true}, "portrait":{"value": "768px", "active": true}, "landscape":{"value": "1024px", "active": false}, "desktop":{"value": "1280px", "active": false}}';
     display: block;
     height: 0;
     overflow: hidden;
@@ -36,7 +45,7 @@ TYPOGRAPHY - http://cssfontstack.com/
 }
 @media (min-width: 1024px) {
   body::after {
-    content: '{"phone":{"value": "560px", "active": true}, "portrait":{"value": "768px", "active": true}, "landscape":{"value": "1024px", "active": true}, "desktop":{"value": "1280px", "active": false}}';
+    content: '{"zero":{"value": "16px", "active": true}, "phone":{"value": "560px", "active": true}, "portrait":{"value": "768px", "active": true}, "landscape":{"value": "1024px", "active": true}, "desktop":{"value": "1280px", "active": false}}';
     display: block;
     height: 0;
     overflow: hidden;
@@ -45,7 +54,7 @@ TYPOGRAPHY - http://cssfontstack.com/
 }
 @media (min-width: 1280px) {
   body::after {
-    content: '{"phone":{"value": "560px", "active": true}, "portrait":{"value": "768px", "active": true}, "landscape":{"value": "1024px", "active": true}, "desktop":{"value": "1280px", "active": true}}';
+    content: '{"zero":{"value": "16px", "active": true}, "phone":{"value": "560px", "active": true}, "portrait":{"value": "768px", "active": true}, "landscape":{"value": "1024px", "active": true}, "desktop":{"value": "1280px", "active": true}}';
     display: block;
     height: 0;
     overflow: hidden;
