@@ -47,6 +47,10 @@
 			display: block;
 		}
 
+		.site-header {
+			margin-bottom: 0;
+		}
+
 		.content-sidebar-wrap {
 			display: block;
 		}
@@ -199,6 +203,10 @@
 					padding-left: .25em;
 				}
 			}
+		}
+
+		.one-fifth {
+			margin-left: 0;
 		}
 	}
 }

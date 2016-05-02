@@ -533,7 +533,7 @@ class HC_Home {
 											echo HC()->utilities->get_category_icon_html( $categories[0] );
 										?>
 
-										<h3><?php echo get_the_title($post_id); ?></h3>
+										<h3><?php echo HC()->formatting->maybe_truncate( get_the_title($post_id), 60 ); ?></h3>
 									</div>
 								</div>
 							</a>

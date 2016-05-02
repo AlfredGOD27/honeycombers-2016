@@ -380,6 +380,13 @@ $listing-slider-height: 18.75em;
 	width: 62.5%;
 	height: $listing-slider-height;
 
+	img {
+		display: block;
+		margin: 0 auto;
+		max-width: none;
+		height: 100%;
+	}
+
 	.slick-slide {
 		position: relative;
 	}
@@ -717,6 +724,16 @@ $slider-height: 25em;
 			padding-left: 0;
 		}
 
+		.left,
+		.join {
+			float: none;
+			clear: both;
+			margin-bottom: 1.5em;
+			margin-left: 0;
+			min-height: 0;
+			width: 100%;
+		}
+
 		.join {
 			margin: 0 auto;
 			padding: .75em;
@@ -749,6 +766,8 @@ $slider-height: 25em;
 	height: $slider-height;
 
 	img {
+		display: block;
+		margin: 0 auto;
 		max-width: none;
 		height: 100%;
 		border-top: 1px solid $orange;
@@ -1016,6 +1035,12 @@ $slider-height: 25em;
 		> .wrap {
 			padding-right: 0;
 			padding-left: 0;
+		}
+
+		.overlay {
+			i {
+				display: none;
+			}
 		}
 	}
 }
