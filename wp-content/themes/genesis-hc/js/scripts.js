@@ -95,17 +95,7 @@
 		midClick: true,
 		callbacks: {
 			change: function() {
-				var item = $(this.contentContainer).find( 'input:visible' ),
-					redirect = this.items[ this.index ].el.data( 'redirect' );
-
-				if( item.length > 0 ) {
-					setTimeout(
-						function() {
-							item.eq(0).focus();
-						},
-						50
-					);
-				}
+				var redirect = this.items[ this.index ].el.data( 'redirect' );
 
 				if( redirect )
 					$(this.contentContainer).find('form').data( 'redirect', redirect );
