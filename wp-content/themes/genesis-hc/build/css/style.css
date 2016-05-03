@@ -1476,6 +1476,440 @@ html {
           animation-fill-mode: both;
 }
 
+@-webkit-keyframes two-step-small {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -80px;
+  }
+}
+
+@keyframes two-step-small {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -80px;
+  }
+}
+@-webkit-keyframes two-step-large {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -180px;
+  }
+}
+@keyframes two-step-large {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -180px;
+  }
+}
+@-webkit-keyframes three-step-small {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -120px;
+  }
+}
+@keyframes three-step-small {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -120px;
+  }
+}
+@-webkit-keyframes three-step-large {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -270px;
+  }
+}
+@keyframes three-step-large {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -270px;
+  }
+}
+@-webkit-keyframes four-step-small {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -160px;
+  }
+}
+@keyframes four-step-small {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -160px;
+  }
+}
+@-webkit-keyframes four-step-large {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -360px;
+  }
+}
+@keyframes four-step-large {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -360px;
+  }
+}
+@-webkit-keyframes five-step-small {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -200px;
+  }
+}
+@keyframes five-step-small {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -200px;
+  }
+}
+@-webkit-keyframes five-step-large {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -450px;
+  }
+}
+@keyframes five-step-large {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -450px;
+  }
+}
+@-webkit-keyframes six-step-small {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -240px;
+  }
+}
+@keyframes six-step-small {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -240px;
+  }
+}
+@-webkit-keyframes six-step-large {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -540px;
+  }
+}
+@keyframes six-step-large {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -540px;
+  }
+}
+.animation {
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  -webkit-transition: none;
+          transition: none;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+.animation-small {
+  width: 40px;
+  height: 40px;
+}
+
+.animation-large {
+  width: 90px;
+  height: 90px;
+}
+
+.animation-calendar {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: steps(2);
+          animation-timing-function: steps(2);
+}
+.animation-calendar.animation-small {
+  -webkit-animation-name: two-step-small;
+          animation-name: two-step-small;
+}
+.animation-calendar.animation-large {
+  -webkit-animation-name: two-step-large;
+          animation-name: two-step-large;
+}
+.animation-calendar.animation-small {
+  background-image: url("../images/animations/calendar-40.png");
+}
+.animation-calendar.animation-large {
+  background-image: url("../images/animations/calendar-90.png");
+}
+
+.animation-connect {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: steps(2);
+          animation-timing-function: steps(2);
+}
+.animation-connect.animation-small {
+  -webkit-animation-name: two-step-small;
+          animation-name: two-step-small;
+}
+.animation-connect.animation-large {
+  -webkit-animation-name: two-step-large;
+          animation-name: two-step-large;
+}
+.animation-connect.animation-small {
+  background-image: url("../images/animations/connect-40.png");
+}
+.animation-connect.animation-large {
+  background-image: url("../images/animations/connect-90.png");
+}
+
+.animation-directory {
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-timing-function: steps(4);
+          animation-timing-function: steps(4);
+}
+.animation-directory.animation-small {
+  -webkit-animation-name: four-step-small;
+          animation-name: four-step-small;
+}
+.animation-directory.animation-large {
+  -webkit-animation-name: four-step-large;
+          animation-name: four-step-large;
+}
+.animation-directory.animation-small {
+  background-image: url("../images/animations/directory-40.png");
+}
+.animation-directory.animation-large {
+  background-image: url("../images/animations/directory-90.png");
+}
+
+.animation-drinks {
+  -webkit-animation-duration: 0.45s;
+          animation-duration: 0.45s;
+  -webkit-animation-timing-function: steps(3);
+          animation-timing-function: steps(3);
+}
+.animation-drinks.animation-small {
+  -webkit-animation-name: three-step-small;
+          animation-name: three-step-small;
+}
+.animation-drinks.animation-large {
+  -webkit-animation-name: three-step-large;
+          animation-name: three-step-large;
+}
+.animation-drinks.animation-small {
+  background-image: url("../images/animations/drinks-40.png");
+}
+.animation-drinks.animation-large {
+  background-image: url("../images/animations/drinks-90.png");
+}
+
+.animation-food {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: steps(2);
+          animation-timing-function: steps(2);
+}
+.animation-food.animation-small {
+  -webkit-animation-name: two-step-small;
+          animation-name: two-step-small;
+}
+.animation-food.animation-large {
+  -webkit-animation-name: two-step-large;
+          animation-name: two-step-large;
+}
+.animation-food.animation-small {
+  background-image: url("../images/animations/food-40.png");
+}
+.animation-food.animation-large {
+  background-image: url("../images/animations/food-90.png");
+}
+
+.animation-hacks {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: steps(2);
+          animation-timing-function: steps(2);
+}
+.animation-hacks.animation-small {
+  -webkit-animation-name: two-step-small;
+          animation-name: two-step-small;
+}
+.animation-hacks.animation-large {
+  -webkit-animation-name: two-step-large;
+          animation-name: two-step-large;
+}
+.animation-hacks.animation-small {
+  background-image: url("../images/animations/hacks-40.png");
+}
+.animation-hacks.animation-large {
+  background-image: url("../images/animations/hacks-90.png");
+}
+
+.animation-hitlist {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: steps(2);
+          animation-timing-function: steps(2);
+}
+.animation-hitlist.animation-small {
+  -webkit-animation-name: two-step-small;
+          animation-name: two-step-small;
+}
+.animation-hitlist.animation-large {
+  -webkit-animation-name: two-step-large;
+          animation-name: two-step-large;
+}
+.animation-hitlist.animation-small {
+  background-image: url("../images/animations/hitlist-40.png");
+}
+.animation-hitlist.animation-large {
+  background-image: url("../images/animations/hitlist-90.png");
+}
+
+.animation-recharge {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: steps(2);
+          animation-timing-function: steps(2);
+}
+.animation-recharge.animation-small {
+  -webkit-animation-name: two-step-small;
+          animation-name: two-step-small;
+}
+.animation-recharge.animation-large {
+  -webkit-animation-name: two-step-large;
+          animation-name: two-step-large;
+}
+.animation-recharge.animation-small {
+  background-image: url("../images/animations/recharge-40.png");
+}
+.animation-recharge.animation-large {
+  background-image: url("../images/animations/recharge-90.png");
+}
+
+.animation-shopping {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: steps(2);
+          animation-timing-function: steps(2);
+}
+.animation-shopping.animation-small {
+  -webkit-animation-name: two-step-small;
+          animation-name: two-step-small;
+}
+.animation-shopping.animation-large {
+  -webkit-animation-name: two-step-large;
+          animation-name: two-step-large;
+}
+.animation-shopping.animation-small {
+  background-image: url("../images/animations/shopping-40.png");
+}
+.animation-shopping.animation-large {
+  background-image: url("../images/animations/shopping-90.png");
+}
+
+.animation-travel {
+  -webkit-animation-duration: 0.9s;
+          animation-duration: 0.9s;
+  -webkit-animation-timing-function: steps(6);
+          animation-timing-function: steps(6);
+}
+.animation-travel.animation-small {
+  -webkit-animation-name: six-step-small;
+          animation-name: six-step-small;
+}
+.animation-travel.animation-large {
+  -webkit-animation-name: six-step-large;
+          animation-name: six-step-large;
+}
+.animation-travel.animation-small {
+  background-image: url("../images/animations/travel-40.png");
+}
+.animation-travel.animation-large {
+  background-image: url("../images/animations/travel-90.png");
+}
+
+.animation-video {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: steps(2);
+          animation-timing-function: steps(2);
+}
+.animation-video.animation-small {
+  -webkit-animation-name: two-step-small;
+          animation-name: two-step-small;
+}
+.animation-video.animation-large {
+  -webkit-animation-name: two-step-large;
+          animation-name: two-step-large;
+}
+.animation-video.animation-small {
+  background-image: url("../images/animations/video-40.png");
+}
+.animation-video.animation-large {
+  background-image: url("../images/animations/video-90.png");
+}
+
+.animation-win {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: steps(2);
+          animation-timing-function: steps(2);
+}
+.animation-win.animation-small {
+  -webkit-animation-name: two-step-small;
+          animation-name: two-step-small;
+}
+.animation-win.animation-large {
+  -webkit-animation-name: two-step-large;
+          animation-name: two-step-large;
+}
+.animation-win.animation-small {
+  background-image: url("../images/animations/win-40.png");
+}
+.animation-win.animation-large {
+  background-image: url("../images/animations/win-90.png");
+}
+
 .five-sixths,
 .four-sixths,
 .one-fourth,
@@ -4188,6 +4622,8 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .related .one-fourth:hover .category-icon, .related .one-fourth:focus .category-icon {
   opacity: .5;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
 }
 .related .one-fourth:hover img, .related .one-fourth:focus img {
   opacity: .5;
@@ -4937,6 +5373,10 @@ table > tbody > tr:nth-child(odd) > th {
 .slider-nav .slick-slide {
   cursor: pointer;
 }
+.slider-nav .slick-slide:hover .category-icon, .slider-nav .slick-slide:focus .category-icon {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
 .slider-nav .outer {
   position: relative;
   margin-left: 2em;
@@ -4984,6 +5424,13 @@ table > tbody > tr:nth-child(odd) > th {
   background-color: rgba(37, 37, 37, 0.75);
 }
 .slider-nav .inner i {
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
   margin-right: .5em;
   font-size: 3.25em;
 }
@@ -5034,18 +5481,22 @@ table > tbody > tr:nth-child(odd) > th {
   padding-bottom: 1em;
   border-bottom: 1px solid #d7d7d7;
 }
+.subcategory-description:hover .category-icon, .subcategory-description:focus .category-icon {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
 .subcategory-description a {
   display: inline-block;
   color: inherit;
   text-decoration: none;
 }
-.subcategory-description .ico-circle,
+.subcategory-description .category-icon,
 .subcategory-description .archive-title,
 .subcategory-description .ico-arrow-right-circle {
   display: inline-block;
   vertical-align: middle;
 }
-.subcategory-description .ico-circle {
+.subcategory-description .category-icon {
   color: #fe862c;
   font-size: 3em;
 }
@@ -6536,6 +6987,10 @@ table > tbody > tr:nth-child(odd) > th {
   border-bottom: 1px solid #fe862c;
   background-color: #FFFFFF;
 }
+.event-slider-for .slide-content:hover .category-icon, .event-slider-for .slide-content:focus .category-icon {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
 .event-slider-for .slide-content .info {
   position: relative;
   -webkit-box-flex: 0;
@@ -6626,6 +7081,10 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .event-slider-nav .slick-slide {
   cursor: pointer;
+}
+.event-slider-nav .slick-slide:hover .category-icon, .event-slider-nav .slick-slide:focus .category-icon {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
 }
 .event-slider-nav .outer {
   position: relative;
@@ -6770,11 +7229,6 @@ table > tbody > tr:nth-child(odd) > th {
 .home-section-trending .overlay div {
   width: 100%;
 }
-.home-section-trending .overlay i {
-  display: block;
-  margin: 0 auto .25em;
-  font-size: 3em;
-}
 .home-section-trending .overlay h3 {
   text-transform: uppercase;
   font-size: .9em;
@@ -6787,9 +7241,6 @@ table > tbody > tr:nth-child(odd) > th {
   .home-section-trending > .wrap {
     padding-right: 0;
     padding-left: 0;
-  }
-  .home-section-trending .overlay i {
-    display: none;
   }
 }
 .home-section-latest-posts .banner {
@@ -6815,6 +7266,8 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .home-section-latest-posts .one-fourth:hover .category-icon, .home-section-latest-posts .one-fourth:focus .category-icon {
   opacity: .5;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
 }
 .home-section-latest-posts .one-fourth:hover .bookmarks-button-container, .home-section-latest-posts .one-fourth:focus .bookmarks-button-container {
   opacity: 1;

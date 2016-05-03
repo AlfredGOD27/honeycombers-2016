@@ -527,12 +527,6 @@ class HC_Home {
 
 								<div class="overlay">
 									<div>
-										<?php
-										$categories = wp_get_post_terms( $post_id, 'category' );
-										if( !empty($categories) )
-											echo HC()->utilities->get_category_icon_html( $categories[0] );
-										?>
-
 										<h3><?php echo HC()->formatting->maybe_truncate( get_the_title($post_id), 60 ); ?></h3>
 									</div>
 								</div>

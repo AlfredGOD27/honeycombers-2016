@@ -14,14 +14,18 @@ class HC_ACF {
 
 		$field['choices'] = array();
 
-		if( file_exists(CHILD_DIR . '/sass/_icons.scss') ) {
-			$css = file_get_contents(CHILD_DIR . '/sass/_icons.scss');
+		if( file_exists(CHILD_DIR . '/sass/_animations.scss') ) {
+			$css = file_get_contents(CHILD_DIR . '/sass/_animations.scss');
 
-			preg_match_all( '/\.ico-circle-(.+?)\:/', $css, $matches );
+			preg_match_all( '/\.animation-(.+?) /', $css, $matches );
 
 			if( !empty($matches[1]) ) {
-				foreach( $matches[1] as $slug )
-					$field['choices']['circle-' . $slug] = ucfirst($slug);
+				foreach( $matches[1] as $slug ) {
+					if( in_array($slug, array('small', 'large'), true) )
+						continue;
+
+					$field['choices'][$slug] = ucfirst($slug);
+				}
 			}
 		}
 

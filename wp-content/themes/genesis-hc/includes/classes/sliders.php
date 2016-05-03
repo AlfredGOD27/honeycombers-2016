@@ -18,12 +18,7 @@ class HC_Sliders {
 				break;
 		}
 
-		$icon = false;
-		if( !empty($terms) )
-			$icon = get_field( '_hc_category_icon', $terms[0] );
-
-		if( !empty($icon) )
-			echo '<i class="ico-' . $icon . '"></i>';
+		echo HC()->utilities->get_category_icon_html( $terms[0] );
 
 		if( false === $max_chars ) {
 			echo '<span>' . get_the_title( $post_id ) . '</span>';

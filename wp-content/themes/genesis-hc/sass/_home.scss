@@ -784,6 +784,13 @@ $slider-height: 25em;
 		border-bottom: 1px solid $orange;
 		background-color: $white;
 
+		&:hover,
+		&:focus {
+			.category-icon {
+				animation-play-state: running;
+			}
+		}
+
 		.info {
 			position: relative;
 			flex-grow: 0;
@@ -864,6 +871,13 @@ $slider-height: 25em;
 
 	.slick-slide {
 		cursor: pointer;
+
+		&:hover,
+		&:focus {
+			.category-icon {
+				animation-play-state: running;
+			}
+		}
 	}
 
 	.outer {
@@ -1019,12 +1033,6 @@ $slider-height: 25em;
 			width: 100%;
 		}
 
-		i {
-			display: block;
-			margin: 0 auto .25em;
-			font-size: 3em;
-		}
-
 		h3 {
 			text-transform: uppercase;
 			font-size: .9em;
@@ -1039,12 +1047,6 @@ $slider-height: 25em;
 		> .wrap {
 			padding-right: 0;
 			padding-left: 0;
-		}
-
-		.overlay {
-			i {
-				display: none;
-			}
 		}
 	}
 }
@@ -1081,6 +1083,7 @@ $slider-height: 25em;
 		&:focus {
 			.category-icon {
 				opacity: .5;
+				animation-play-state: running;
 			}
 
 			.bookmarks-button-container {

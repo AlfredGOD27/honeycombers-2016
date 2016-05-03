@@ -24,6 +24,7 @@
 		&:focus {
 			.category-icon {
 				opacity: .5;
+				animation-play-state: running;
 			}
 
 			img {

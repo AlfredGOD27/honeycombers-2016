@@ -13,11 +13,11 @@ class HC_Utilities {
 
 	}
 
-	public function get_category_icon_html( $category ) {
+	public function get_category_icon_html( $category, $size = 'small' ) {
 
 		$icon = get_field( '_hc_category_icon', $category );
 		if( !empty($icon) )
-			return '<i class="category-icon ico-' . $icon . '"></i>';
+			return '<i class="animation animation-' . $size . ' category-icon animation-' . $icon . '"></i>';
 
 	}
 
