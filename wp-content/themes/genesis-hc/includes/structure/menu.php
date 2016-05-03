@@ -102,7 +102,7 @@ function hc_do_nav() {
 													case 'links':
 														?>
 														<div class="one-half first left">
-															<i class="ico-<?php echo $column['icon']; ?>"></i>
+															<i class="animation animation-large animation-<?php echo $column['icon']; ?>"></i>
 														</div>
 
 														<div class="one-half right">

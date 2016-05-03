@@ -1482,8 +1482,8 @@ html {
   }
 }
 .animation-calendar, .animation-connect, .animation-food, .animation-hacks, .animation-hitlist, .animation-recharge, .animation-shopping, .animation-video, .animation-win {
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
+  -webkit-animation-duration: 0.25s;
+          animation-duration: 0.25s;
   -webkit-animation-timing-function: steps(2);
           animation-timing-function: steps(2);
 }
@@ -1530,8 +1530,8 @@ html {
   }
 }
 .animation-drinks {
-  -webkit-animation-duration: 0.45s;
-          animation-duration: 0.45s;
+  -webkit-animation-duration: 0.375s;
+          animation-duration: 0.375s;
   -webkit-animation-timing-function: steps(3);
           animation-timing-function: steps(3);
 }
@@ -1578,8 +1578,8 @@ html {
   }
 }
 .animation-directory {
-  -webkit-animation-duration: 0.6s;
-          animation-duration: 0.6s;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
   -webkit-animation-timing-function: steps(4);
           animation-timing-function: steps(4);
 }
@@ -1658,8 +1658,8 @@ html {
   }
 }
 .animation-travel {
-  -webkit-animation-duration: 0.9s;
-          animation-duration: 0.9s;
+  -webkit-animation-duration: 0.75s;
+          animation-duration: 0.75s;
   -webkit-animation-timing-function: steps(6);
           animation-timing-function: steps(6);
 }
@@ -3847,9 +3847,14 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .main-menu .menu-col-links i {
   display: block;
+  margin-right: auto;
+  margin-left: auto;
   color: #fe862c;
-  text-align: center;
   font-size: 5em;
+}
+.main-menu .menu-col-links i:hover, .main-menu .menu-col-links i:focus {
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
 }
 .main-menu .menu-col-links ul {
   padding-right: 2em;

@@ -161,9 +161,15 @@
 
 		i {
 			display: block;
+			margin-right: auto;
+			margin-left: auto;
 			color: $orange;
-			text-align: center;
 			font-size: 5em;
+
+			&:hover,
+			&:focus {
+				animation-play-state: running;
+			}
 		}
 
 		ul {
