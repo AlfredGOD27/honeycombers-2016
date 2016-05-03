@@ -1325,30 +1325,6 @@ html {
   content: '\e91d';
 }
 
-.ico-circle-art:before {
-  content: '\e914';
-}
-
-.ico-circle-beauty:before {
-  content: '\e915';
-}
-
-.ico-circle-fashion:before {
-  content: '\e916';
-}
-
-.ico-circle-food:before {
-  content: '\e917';
-}
-
-.ico-circle-mail:before {
-  content: '\e918';
-}
-
-.ico-circle-music:before {
-  content: '\e919';
-}
-
 .ico-hexagon:before {
   content: '\e91a';
 }
@@ -1423,10 +1399,6 @@ html {
 
 .ico-close:before {
   content: '\e920';
-}
-
-.ico-circle:before {
-  content: '\e913';
 }
 
 @-webkit-keyframes shake {
@@ -1509,6 +1481,21 @@ html {
     background-position: -180px;
   }
 }
+.animation-calendar, .animation-connect, .animation-food, .animation-hacks, .animation-hitlist, .animation-recharge, .animation-shopping, .animation-video, .animation-win {
+  -webkit-animation-duration: 0.3s;
+          animation-duration: 0.3s;
+  -webkit-animation-timing-function: steps(2);
+          animation-timing-function: steps(2);
+}
+.animation-small.animation-calendar, .animation-small.animation-connect, .animation-small.animation-food, .animation-small.animation-hacks, .animation-small.animation-hitlist, .animation-small.animation-recharge, .animation-small.animation-shopping, .animation-small.animation-video, .animation-small.animation-win {
+  -webkit-animation-name: two-step-small;
+          animation-name: two-step-small;
+}
+.animation-large.animation-calendar, .animation-large.animation-connect, .animation-large.animation-food, .animation-large.animation-hacks, .animation-large.animation-hitlist, .animation-large.animation-recharge, .animation-large.animation-shopping, .animation-large.animation-video, .animation-large.animation-win {
+  -webkit-animation-name: two-step-large;
+          animation-name: two-step-large;
+}
+
 @-webkit-keyframes three-step-small {
   from {
     background-position: 0;
@@ -1517,6 +1504,7 @@ html {
     background-position: -120px;
   }
 }
+
 @keyframes three-step-small {
   from {
     background-position: 0;
@@ -1541,6 +1529,21 @@ html {
     background-position: -270px;
   }
 }
+.animation-drinks {
+  -webkit-animation-duration: 0.45s;
+          animation-duration: 0.45s;
+  -webkit-animation-timing-function: steps(3);
+          animation-timing-function: steps(3);
+}
+.animation-small.animation-drinks {
+  -webkit-animation-name: three-step-small;
+          animation-name: three-step-small;
+}
+.animation-large.animation-drinks {
+  -webkit-animation-name: three-step-large;
+          animation-name: three-step-large;
+}
+
 @-webkit-keyframes four-step-small {
   from {
     background-position: 0;
@@ -1549,6 +1552,7 @@ html {
     background-position: -160px;
   }
 }
+
 @keyframes four-step-small {
   from {
     background-position: 0;
@@ -1573,6 +1577,21 @@ html {
     background-position: -360px;
   }
 }
+.animation-directory {
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-timing-function: steps(4);
+          animation-timing-function: steps(4);
+}
+.animation-small.animation-directory {
+  -webkit-animation-name: four-step-small;
+          animation-name: four-step-small;
+}
+.animation-large.animation-directory {
+  -webkit-animation-name: four-step-large;
+          animation-name: four-step-large;
+}
+
 @-webkit-keyframes five-step-small {
   from {
     background-position: 0;
@@ -1581,6 +1600,7 @@ html {
     background-position: -200px;
   }
 }
+
 @keyframes five-step-small {
   from {
     background-position: 0;
@@ -1637,6 +1657,21 @@ html {
     background-position: -540px;
   }
 }
+.animation-travel {
+  -webkit-animation-duration: 0.9s;
+          animation-duration: 0.9s;
+  -webkit-animation-timing-function: steps(6);
+          animation-timing-function: steps(6);
+}
+.animation-small.animation-travel {
+  -webkit-animation-name: six-step-small;
+          animation-name: six-step-small;
+}
+.animation-large.animation-travel {
+  -webkit-animation-name: six-step-large;
+          animation-name: six-step-large;
+}
+
 .animation {
   background-position: 0 0;
   background-repeat: no-repeat;
@@ -1658,20 +1693,6 @@ html {
   height: 90px;
 }
 
-.animation-calendar {
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-timing-function: steps(2);
-          animation-timing-function: steps(2);
-}
-.animation-calendar.animation-small {
-  -webkit-animation-name: two-step-small;
-          animation-name: two-step-small;
-}
-.animation-calendar.animation-large {
-  -webkit-animation-name: two-step-large;
-          animation-name: two-step-large;
-}
 .animation-calendar.animation-small {
   background-image: url("../images/animations/calendar-40.png");
 }
@@ -1679,20 +1700,6 @@ html {
   background-image: url("../images/animations/calendar-90.png");
 }
 
-.animation-connect {
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-timing-function: steps(2);
-          animation-timing-function: steps(2);
-}
-.animation-connect.animation-small {
-  -webkit-animation-name: two-step-small;
-          animation-name: two-step-small;
-}
-.animation-connect.animation-large {
-  -webkit-animation-name: two-step-large;
-          animation-name: two-step-large;
-}
 .animation-connect.animation-small {
   background-image: url("../images/animations/connect-40.png");
 }
@@ -1700,20 +1707,6 @@ html {
   background-image: url("../images/animations/connect-90.png");
 }
 
-.animation-directory {
-  -webkit-animation-duration: 0.6s;
-          animation-duration: 0.6s;
-  -webkit-animation-timing-function: steps(4);
-          animation-timing-function: steps(4);
-}
-.animation-directory.animation-small {
-  -webkit-animation-name: four-step-small;
-          animation-name: four-step-small;
-}
-.animation-directory.animation-large {
-  -webkit-animation-name: four-step-large;
-          animation-name: four-step-large;
-}
 .animation-directory.animation-small {
   background-image: url("../images/animations/directory-40.png");
 }
@@ -1721,20 +1714,6 @@ html {
   background-image: url("../images/animations/directory-90.png");
 }
 
-.animation-drinks {
-  -webkit-animation-duration: 0.45s;
-          animation-duration: 0.45s;
-  -webkit-animation-timing-function: steps(3);
-          animation-timing-function: steps(3);
-}
-.animation-drinks.animation-small {
-  -webkit-animation-name: three-step-small;
-          animation-name: three-step-small;
-}
-.animation-drinks.animation-large {
-  -webkit-animation-name: three-step-large;
-          animation-name: three-step-large;
-}
 .animation-drinks.animation-small {
   background-image: url("../images/animations/drinks-40.png");
 }
@@ -1742,20 +1721,6 @@ html {
   background-image: url("../images/animations/drinks-90.png");
 }
 
-.animation-food {
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-timing-function: steps(2);
-          animation-timing-function: steps(2);
-}
-.animation-food.animation-small {
-  -webkit-animation-name: two-step-small;
-          animation-name: two-step-small;
-}
-.animation-food.animation-large {
-  -webkit-animation-name: two-step-large;
-          animation-name: two-step-large;
-}
 .animation-food.animation-small {
   background-image: url("../images/animations/food-40.png");
 }
@@ -1763,20 +1728,6 @@ html {
   background-image: url("../images/animations/food-90.png");
 }
 
-.animation-hacks {
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-timing-function: steps(2);
-          animation-timing-function: steps(2);
-}
-.animation-hacks.animation-small {
-  -webkit-animation-name: two-step-small;
-          animation-name: two-step-small;
-}
-.animation-hacks.animation-large {
-  -webkit-animation-name: two-step-large;
-          animation-name: two-step-large;
-}
 .animation-hacks.animation-small {
   background-image: url("../images/animations/hacks-40.png");
 }
@@ -1784,20 +1735,6 @@ html {
   background-image: url("../images/animations/hacks-90.png");
 }
 
-.animation-hitlist {
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-timing-function: steps(2);
-          animation-timing-function: steps(2);
-}
-.animation-hitlist.animation-small {
-  -webkit-animation-name: two-step-small;
-          animation-name: two-step-small;
-}
-.animation-hitlist.animation-large {
-  -webkit-animation-name: two-step-large;
-          animation-name: two-step-large;
-}
 .animation-hitlist.animation-small {
   background-image: url("../images/animations/hitlist-40.png");
 }
@@ -1805,20 +1742,6 @@ html {
   background-image: url("../images/animations/hitlist-90.png");
 }
 
-.animation-recharge {
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-timing-function: steps(2);
-          animation-timing-function: steps(2);
-}
-.animation-recharge.animation-small {
-  -webkit-animation-name: two-step-small;
-          animation-name: two-step-small;
-}
-.animation-recharge.animation-large {
-  -webkit-animation-name: two-step-large;
-          animation-name: two-step-large;
-}
 .animation-recharge.animation-small {
   background-image: url("../images/animations/recharge-40.png");
 }
@@ -1826,20 +1749,6 @@ html {
   background-image: url("../images/animations/recharge-90.png");
 }
 
-.animation-shopping {
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-timing-function: steps(2);
-          animation-timing-function: steps(2);
-}
-.animation-shopping.animation-small {
-  -webkit-animation-name: two-step-small;
-          animation-name: two-step-small;
-}
-.animation-shopping.animation-large {
-  -webkit-animation-name: two-step-large;
-          animation-name: two-step-large;
-}
 .animation-shopping.animation-small {
   background-image: url("../images/animations/shopping-40.png");
 }
@@ -1847,20 +1756,6 @@ html {
   background-image: url("../images/animations/shopping-90.png");
 }
 
-.animation-travel {
-  -webkit-animation-duration: 0.9s;
-          animation-duration: 0.9s;
-  -webkit-animation-timing-function: steps(6);
-          animation-timing-function: steps(6);
-}
-.animation-travel.animation-small {
-  -webkit-animation-name: six-step-small;
-          animation-name: six-step-small;
-}
-.animation-travel.animation-large {
-  -webkit-animation-name: six-step-large;
-          animation-name: six-step-large;
-}
 .animation-travel.animation-small {
   background-image: url("../images/animations/travel-40.png");
 }
@@ -1868,20 +1763,6 @@ html {
   background-image: url("../images/animations/travel-90.png");
 }
 
-.animation-video {
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-timing-function: steps(2);
-          animation-timing-function: steps(2);
-}
-.animation-video.animation-small {
-  -webkit-animation-name: two-step-small;
-          animation-name: two-step-small;
-}
-.animation-video.animation-large {
-  -webkit-animation-name: two-step-large;
-          animation-name: two-step-large;
-}
 .animation-video.animation-small {
   background-image: url("../images/animations/video-40.png");
 }
@@ -1889,20 +1770,6 @@ html {
   background-image: url("../images/animations/video-90.png");
 }
 
-.animation-win {
-  -webkit-animation-duration: 0.3s;
-          animation-duration: 0.3s;
-  -webkit-animation-timing-function: steps(2);
-          animation-timing-function: steps(2);
-}
-.animation-win.animation-small {
-  -webkit-animation-name: two-step-small;
-          animation-name: two-step-small;
-}
-.animation-win.animation-large {
-  -webkit-animation-name: two-step-large;
-          animation-name: two-step-large;
-}
 .animation-win.animation-small {
   background-image: url("../images/animations/win-40.png");
 }
@@ -5579,7 +5446,7 @@ table > tbody > tr:nth-child(odd) > th {
   padding-bottom: 0;
   border-bottom: none;
 }
-.page-template-page_calendar .subcategory-description .ico-circle {
+.page-template-page_calendar .subcategory-description .category-icon {
   font-size: 2.5em;
 }
 .page-template-page_calendar .subcategory-description .archive-title {
