@@ -86,10 +86,55 @@ $slider-height: 25em;
 .two-columns-archive {
 	.entry {
 		margin-bottom: 1em;
-	}
 
-	.entry-image {
-		margin-bottom: .75em;
+		&:hover,
+		&:focus {
+			.bookmarks-button-container {
+				opacity: 1;
+			}
+
+			.top {
+				img {
+					opacity: .5;
+					transform: scale(1.1);
+				}
+			}
+
+			.entry-title {
+				a {
+					color: $orange;
+				}
+			}
+		}
+
+		.top {
+			position: relative;
+			overflow: hidden;
+			margin-bottom: .75em;
+			border-bottom: $border-width solid $orange;
+			background-color: $black;
+
+			.entry-image {
+				display: block;
+				border-bottom: none;
+				transition: all $home-transition-time linear;
+			}
+		}
+
+		.bookmarks-button-container {
+			position: absolute;
+			top: .5em;
+			right: .5em;
+			z-index: 99;
+			opacity: 0;
+			transition: opacity $home-transition-time linear;
+		}
+
+		.entry-title {
+			a {
+				transition: color $home-transition-time linear;
+			}
+		}
 	}
 }
 

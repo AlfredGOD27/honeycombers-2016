@@ -5008,8 +5008,42 @@ table > tbody > tr:nth-child(odd) > th {
 .two-columns-archive .entry {
   margin-bottom: 1em;
 }
-.two-columns-archive .entry-image {
+.two-columns-archive .entry:hover .bookmarks-button-container, .two-columns-archive .entry:focus .bookmarks-button-container {
+  opacity: 1;
+}
+.two-columns-archive .entry:hover .top img, .two-columns-archive .entry:focus .top img {
+  opacity: .5;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.two-columns-archive .entry:hover .entry-title a, .two-columns-archive .entry:focus .entry-title a {
+  color: #fe862c;
+}
+.two-columns-archive .entry .top {
+  position: relative;
+  overflow: hidden;
   margin-bottom: .75em;
+  border-bottom: 3px solid #fe862c;
+  background-color: #252525;
+}
+.two-columns-archive .entry .top .entry-image {
+  display: block;
+  border-bottom: none;
+  -webkit-transition: all 0.25s linear;
+          transition: all 0.25s linear;
+}
+.two-columns-archive .entry .bookmarks-button-container {
+  position: absolute;
+  top: .5em;
+  right: .5em;
+  z-index: 99;
+  opacity: 0;
+  -webkit-transition: opacity 0.25s linear;
+          transition: opacity 0.25s linear;
+}
+.two-columns-archive .entry .entry-title a {
+  -webkit-transition: color 0.25s linear;
+          transition: color 0.25s linear;
 }
 
 .one-column-archive .entry {

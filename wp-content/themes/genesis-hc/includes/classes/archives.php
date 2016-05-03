@@ -76,11 +76,12 @@ class HC_Archives {
 
 		add_action( 'genesis_entry_content', array($this, 'do_excerpt') );
 		add_action( 'genesis_entry_footer', array($this, 'do_excerpt_footer') );
+		remove_action( 'genesis_entry_header', 'genesis_do_post_image', 8 );
 		if( 'full' === $this->post_style ) {
-			remove_action( 'genesis_entry_header', 'genesis_do_post_image', 8 );
 			add_action( 'genesis_entry_header', array($this, 'full_width_markup_open'), 4 );
 			add_action( 'genesis_entry_footer', array($this, 'full_width_markup_close'), 16 );
-
+		} else {
+			add_action( 'genesis_entry_header', array($this, 'half_width_top_container'), 8 );
 		}
 
 		switch( $this->mode ) {
@@ -357,6 +358,19 @@ class HC_Archives {
 	public function full_width_markup_close() {
 
 		?>
+		</div>
+		<?php
+
+	}
+
+	public function half_width_top_container() {
+
+		global $post;
+
+		?>
+		<div class="top">
+			<?php HC()->folders->display_add_button( $post->ID, true, true ); ?>
+			<?php genesis_do_post_image(); ?>
 		</div>
 		<?php
 
