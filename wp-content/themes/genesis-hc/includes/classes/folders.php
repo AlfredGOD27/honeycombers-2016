@@ -143,7 +143,7 @@ class HC_Folders {
 			<?php
 		} else {
 			?>
-			<div class="bookmarks-button-container">
+			<div class="bookmarks-button-container <?php echo $icon_only ? 'icon-only' : ''; ?>">
 				<button class="bookmarks-button btn btn-icon open-popup-link" data-mfp-src="#login-popup">
 					<i class="ico-heart"></i>
 					<?php
