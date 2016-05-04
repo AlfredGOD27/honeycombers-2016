@@ -5147,6 +5147,7 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: 3.25em;
 }
 .slider-nav .inner span {
+  display: block;
   width: 100%;
   text-transform: uppercase;
   font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
@@ -5452,6 +5453,7 @@ table > tbody > tr:nth-child(odd) > th {
           align-items: center;
 }
 .archive-entry-large .read-more-share-bar > a {
+  display: block;
   -webkit-flex-basis: 0;
       -ms-flex-preferred-size: 0;
           flex-basis: 0;
@@ -6776,6 +6778,13 @@ table > tbody > tr:nth-child(odd) > th {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -6800,6 +6809,16 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: 2.5em;
 }
 .home-section-events-join .left .name {
+  -webkit-flex-basis: 0;
+      -ms-flex-preferred-size: 0;
+          flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
   padding: .25em 1em;
   opacity: .7;
 }

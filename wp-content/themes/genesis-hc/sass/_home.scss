@@ -566,6 +566,8 @@ $slider-height: 25em;
 		.info {
 			display: flex;
 			flex-direction: column;
+			flex-grow: 0;
+			flex-shrink: 0;
 			justify-content: center;
 			padding: .75em 1.5em;
 			height: 100%;
@@ -591,6 +593,9 @@ $slider-height: 25em;
 		}
 
 		.name {
+			flex-basis: 0;
+			flex-grow: 1;
+			flex-shrink: 1;
 			padding: .25em 1em;
 			opacity: .7;
 		}

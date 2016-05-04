@@ -283,6 +283,7 @@ $slider-height: 25em;
 		}
 
 		span {
+			display: block;
 			width: 100%;
 			text-transform: uppercase;
 			font-family: $heading;
@@ -659,6 +660,7 @@ $slider-height: 25em;
 		align-items: center;
 
 		> a {
+			display: block;
 			flex-basis: 0;
 			flex-grow: 1;
 			flex-shrink: 0;
