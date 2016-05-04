@@ -6953,6 +6953,9 @@ function hc_maybe_load_facebook() {
 
 	$('.slider-for').on( 'afterChange', function() {
 		$(this).find('.youtube-tracked-embed').each( function() {
+			if( 'object' !== typeof YT )
+				return;
+
 			var player = YT.get( $(this).attr('id') );
 
 			if( 'undefined' !== typeof player )
