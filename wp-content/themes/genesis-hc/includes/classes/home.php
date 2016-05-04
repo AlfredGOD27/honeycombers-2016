@@ -88,32 +88,7 @@ class HC_Home {
 					echo 1 === $i % 2 ? '<div class="one-half first item item-' . $i . '">' : '<div class="one-half item item-' . $i . '">';
 				}
 
-				?>
-				<div class="other-pick">
-					<?php HC()->folders->display_add_button( $post_id, true, true ); ?>
-					<?php
-					$title = get_the_title($post_id);
-
-					if( has_post_thumbnail($post_id) ) {
-						if( $i === 1 || $i === 3 ) {
-							echo get_the_post_thumbnail($post_id, 'archive-small' );
-						} else {
-							$src = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'archive-small' );
-
-							$atts = array(
-								'src'    => $src[0],
-								'alt'    => $title,
-								'width'  => $src[1],
-								'height' => $src[2],
-							);
-							echo HC()->utilities->get_async_image_placeholder( $atts, 'skip-image-on-mobile' );
-						}
-					}
-					?>
-
-					<h3><a href="<?php echo get_permalink($post_id); ?>"><?php echo $title; ?></a></h3>
-				</div>
-				<?php
+				HC()->archives->display_entry( $post_id, 'tiny' );
 			echo '</div>';
 			++$i;
 		}
@@ -556,34 +531,7 @@ class HC_Home {
 		$i = 1;
 		foreach( $posts as $post ) {
 			echo 1 === $i % 4 ? '<div class="one-fourth first">' : '<div class="one-fourth">';
-				if( has_post_thumbnail($post->ID) ) {
-					?>
-					<div class="top">
-						<?php
-						$categories = wp_get_post_terms( $post->ID, 'category' );
-						if( !empty($categories) )
-							echo HC()->utilities->get_category_icon_html( $categories[0] );
-						?>
-						<?php HC()->folders->display_add_button( $post->ID, true, true ); ?>
-						<?php echo get_the_post_thumbnail( $post->ID, 'archive-small' ); ?>
-					</div>
-					<?php
-				}
-				?>
-
-				<div class="bottom">
-					<a href="<?php echo get_permalink( $post->ID ); ?>">
-						<h3><?php echo get_the_title( $post->ID ); ?></h3>
-						<span class="author">
-							By
-							<?php
-							$author = get_user_by( 'id', $post->post_author );
-							echo $author->display_name;
-							?>
-						</span>
-					</a>
-				</div>
-				<?php
+				HC()->archives->display_entry( $post, 'small' );
 			echo '</div>';
 			++$i;
 		}

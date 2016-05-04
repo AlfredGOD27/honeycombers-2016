@@ -7,6 +7,8 @@ class HC_Related {
 
 		switch( $post->post_type ) {
 			case 'post':
+				$style = 'small';
+
 				$args = array();
 
 				$terms = wp_get_post_terms( $post->ID, 'post_tag' );
@@ -18,12 +20,16 @@ class HC_Related {
 				}
 				break;
 			case 'event':
+				$style = 'tiny';
+
 				$args = HC()->events->get_date_query_args();
 
 				$taxonomy = 'event-category';
 				$terms    = wp_get_post_terms( $post->ID, $taxonomy );
 				break;
 			case 'listing':
+				$style = 'tiny';
+
 				$args            = array();
 				$args['orderby'] = 'rand';
 
@@ -94,24 +100,7 @@ class HC_Related {
 			$i = 1;
 			foreach( $posts as $post ) {
 				echo 1 === $i % 4 ? '<div class="one-fourth first">' : '<div class="one-fourth">';
-					if( has_post_thumbnail($post->ID) ) {
-						?>
-						<div class="top">
-							<?php
-							echo HC()->utilities->get_category_icon_html( $terms[0] );
-							?>
-							<?php echo get_the_post_thumbnail( $post->ID, 'archive-small' ); ?>
-						</div>
-						<?php
-					}
-					?>
-
-					<div class="bottom">
-						<a href="<?php echo get_permalink( $post->ID ); ?>">
-							<h3><?php echo get_the_title( $post->ID ); ?></h3>
-						</a>
-					</div>
-					<?php
+					HC()->archives->display_entry( $post, $style );
 				echo '</div>';
 				++$i;
 			}

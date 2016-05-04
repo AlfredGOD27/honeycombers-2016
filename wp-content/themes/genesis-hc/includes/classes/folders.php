@@ -86,7 +86,7 @@ class HC_Folders {
 			}
 
 			?>
-			<div class="bookmarks-button-container">
+			<div class="bookmarks-button-container <?php echo $icon_only ? 'icon-only' : ''; ?>">
 				<nav class="button-nav favorites-nav">
 					<button class="bookmarks-button btn btn-icon <?php echo $use_modal ? 'use-modal' : ''; ?>" data-modal-html="<?php echo esc_attr($modal_html); ?>">
 						<i class="ico-heart"></i>
@@ -489,46 +489,17 @@ class HC_Folders {
 					?>
 				</header>
 
-				<div class="hc-archive two-columns-archive">
+				<div class="clearfix">
 					<?php
 					$items = $this->get_items_in_folder( $post->ID );
 
 					$i = 1;
 					foreach( $items as $item_id ) {
 						$item = get_post( $item_id );
-						?>
-						<article class="entry one-half post-half <?php echo 1 === $i % 2 ? 'first' : ''; ?>">
-							<header class="entry-header">
-								<?php
-								if( has_post_thumbnail($item_id) ) {
-									?>
-									<a href="<?php echo get_permalink($item_id); ?>">
-										<?php
-										echo get_the_post_thumbnail( $item_id, 'archive', array('class' => 'entry-image') );
-										?>
-									</a>
-									<?php
-								}
-								?>
 
-								<h2 class="entry-title">
-									<a href="<?php echo get_permalink($item_id); ?>"><?php echo get_the_title($item_id); ?></a>
-								</h2>
-							</header>
-
-							<div class="entry-content" itemprop="text">
-								<div class="entry-excerpt" itemprop="description">
-									<?php
-									echo '<p>' . HC()->formatting->get_excerpt( $item, 140 ) . '</p>';
-									?>
-								</div>
-
-								<div class="read-more-share-bar">
-									<a href="<?php echo get_permalink($item_id); ?>" class="more-link">Read more &gt;</a>
-								</div>
-							</div>
-						</article>
-						<?php
+						echo 1 === $i % 2 ? '<div class="one-half first">' : '<div class="one-half">';
+							HC()->archives->display_entry( $item_id, 'medium' );
+						echo '</div>';
 						++$i;
 					}
 					?>

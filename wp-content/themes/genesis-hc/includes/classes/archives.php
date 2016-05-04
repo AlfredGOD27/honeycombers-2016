@@ -71,24 +71,13 @@ class HC_Archives {
 		// General hooks
 		add_action( 'body_class', array($this, 'body_class') );
 		remove_action( 'genesis_before_loop', 'hc_do_breadcrumbs' );
-		add_action( 'post_class', array($this, 'post_class') );
-		remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
-
-		add_action( 'genesis_entry_content', array($this, 'do_excerpt') );
-		add_action( 'genesis_entry_footer', array($this, 'do_excerpt_footer') );
-		remove_action( 'genesis_entry_header', 'genesis_do_post_image', 8 );
-		if( 'full' === $this->post_style ) {
-			add_action( 'genesis_entry_header', array($this, 'full_width_markup_open'), 4 );
-			add_action( 'genesis_entry_footer', array($this, 'full_width_markup_close'), 16 );
-		} else {
-			add_action( 'genesis_entry_header', array($this, 'half_width_top_container'), 8 );
-		}
+		remove_action( 'genesis_loop', 'genesis_do_loop' );
 
 		switch( $this->mode ) {
 			case 'infinite':
+				add_action( 'genesis_loop', array($this, 'archive_loop') );
 				break;
 			case 'sub-sections':
-				remove_action( 'genesis_loop', 'genesis_do_loop' );
 				add_action( 'genesis_loop', array($this, 'subcategory_sections') );
 				remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 				break;
@@ -148,14 +137,6 @@ class HC_Archives {
 	}
 
 	public function body_class( $classes ) {
-
-		$classes[] = 'hc-archive';
-
-		if( 'half' === $this->post_style )
-			$classes[] = 'two-columns-archive';
-
-		if( 'full' === $this->post_style )
-			$classes[] = 'one-column-archive';
 
 		if( 'infinite' === $this->mode )
 			$classes[] = 'infinite-scroll';
@@ -242,27 +223,6 @@ class HC_Archives {
 
 	}
 
-	public function post_class( $classes ) {
-
-		global $post;
-
-		if( 'half' === $this->post_style ) {
-			++$this->count;
-
-			$classes[] = 1 === $this->count % 2 ? 'one-half first post-half' : 'one-half post-half';
-		}
-
-		if( 'full' === $this->post_style ) {
-//			$classes[] = 1 === $this->count % 2 ? 'one-half first' : 'one-half';
-		}
-
-		// Add entry class for AJAX fetch
-		$classes[] = 'entry';
-
-		return $classes;
-
-	}
-
 	public function subcategory_sections() {
 
 		global $wp_query;
@@ -294,7 +254,7 @@ class HC_Archives {
 				</div>
 
 				<?php
-				genesis_standard_loop();
+				$this->archive_loop();
 				?>
 			</section>
 			<?php
@@ -304,74 +264,180 @@ class HC_Archives {
 
 	}
 
-	public function do_excerpt() {
+	public function archive_loop() {
 
 		global $post;
 
+		if( have_posts() ) {
+
+			do_action( 'genesis_before_while' );
+
+			$i = 1;
+			while( have_posts() ) {
+				the_post();
+
+				if( 'full' === $this->post_style ) {
+					$this->display_entry( $post, 'large' );
+				} else {
+					echo 1 === $i % 2 ? '<div class="one-half first">' : '<div class="one-half">';
+						$this->display_entry( $post, 'medium' );
+					echo '</div>';
+				}
+
+				++$i;
+			}
+
+			do_action( 'genesis_after_endwhile' );
+
+		} else {
+			do_action( 'genesis_loop_else' );
+		}
+
+	}
+
+	private function display_entry_content( $post, $show_share ) {
+
 		?>
-		<div class="entry-excerpt" itemprop="description">
+		<h2 class="entry-title" itemprop="headline">
+			<a href="<?php echo get_permalink( $post->ID ); ?>" rel="bookmark">
+				<?php echo get_the_title( $post->ID ); ?>
+			</a>
+		</h2>
+
+		<div class="entry-content entry-excerpt" itemprop="description">
 			<?php
 			echo '<p>' . HC()->formatting->get_excerpt( $post, 140 ) . '</p>';
 			?>
 		</div>
+
+		<footer class="entry-footer">
+			<div class="read-more-share-bar">
+				<a href="<?php echo get_permalink(); ?>" class="more-link">Read more ></a>
+
+				<?php
+				if( $show_share ) {
+					?>
+					<div class="share">
+						<?php HC()->folders->display_add_button( $post->ID ); ?>
+						<?php HC()->share->display( $post->ID ); ?>
+					</div>
+					<?php
+				}
+				?>
+			</div>
+		</footer>
 		<?php
 
 	}
 
-	public function do_excerpt_footer() {
+	public function display_entry( $post_or_post_id, $style ) {
 
-		global $post;
+		if( is_object($post_or_post_id) ) {
+			$post    = $post_or_post_id;
+			$post_id = $post->ID;
+		} else {
+			$post_id = $post_or_post_id;
+			$post    = get_post( $post_id );
+		}
+
+		$has_image = has_post_thumbnail($post_id);
 
 		?>
-		<div class="read-more-share-bar">
-			<a href="<?php echo get_permalink(); ?>" class="more-link">Read more ></a>
-
+		<article class="clearfix archive-entry archive-entry-<?php echo $style; ?> <?php echo $has_image ? 'has-image' : 'no-image'; ?>" itemscope itemtype="http://schema.org/CreativeWork">
 			<?php
-			if( 'full' === $this->post_style ) {
-				?>
-				<div class="share">
-					<?php HC()->folders->display_add_button( $post->ID ); ?>
-					<?php HC()->share->display( $post->ID ); ?>
-				</div>
-				<?php
+			switch( $style ) {
+				case 'tiny':
+					// Home 'other' posts
+					echo HC()->utilities->get_category_icon_html( $terms[0] );
+					HC()->folders->display_add_button( $post_id, true, true );
+
+					$title = get_the_title($post_id);
+
+					if( $has_image )
+						echo get_the_post_thumbnail($post_id, 'archive-small' );
+
+					?>
+					<h3 itemprop="headline">
+						<a href="<?php echo get_permalink($post_id); ?>" rel="bookmark">
+							<?php echo $post->post_title; ?>
+						</a>
+					</h3>
+					<?php
+					break;
+				case 'small':
+					// Home infinite load list + related
+					?>
+					<div class="top">
+						<?php
+						$categories = wp_get_post_terms( $post->ID, 'category' );
+						if( !empty($categories) )
+							echo HC()->utilities->get_category_icon_html( $categories[0] );
+
+						HC()->folders->display_add_button( $post->ID, true, true );
+
+						if( $has_image )
+							echo get_the_post_thumbnail( $post->ID, 'archive-small' );
+						?>
+					</div>
+
+					<div class="bottom <?php echo 'post' === $post->post_type ? 'roll-up' : ''; ?>">
+						<h3 itemprop="headline">
+							<a href="<?php echo get_permalink( $post->ID ); ?>" rel="bookmark">
+								<?php echo get_the_title( $post->ID ); ?>
+							</a>
+						</h3>
+
+						<?php
+						if( 'post' === $post->post_type ) {
+							?>
+							<span class="author">
+								By
+								<?php
+								$author = get_user_by( 'id', $post->post_author );
+								echo $author->display_name;
+								?>
+							</span>
+							<?php
+						}
+						?>
+					</div>
+					<?php
+					break;
+				case 'medium':
+					// Archive two-column list
+					?>
+					<div class="top">
+						<?php
+						HC()->folders->display_add_button( $post->ID, true, true );
+
+						if( $has_image )
+							echo get_the_post_thumbnail( $post->ID, 'archive' );
+						?>
+					</div>
+
+					<div class="bottom">
+						<?php $this->display_entry_content( $post, false ); ?>
+					</div>
+					<?php
+					break;
+				case 'large':
+					// Archive one-column list
+					?>
+					<div class="one-half first">
+						<?php
+						if( $has_image )
+							echo get_the_post_thumbnail( $post->ID, 'archive-large' );
+						?>
+					</div>
+
+					<div class="one-half">
+						<?php $this->display_entry_content( $post, true ); ?>
+					</div>
+					<?php
+					break;
 			}
 			?>
-		</div>
-		<?php
-
-	}
-
-	public function full_width_markup_open() {
-
-		?>
-		<div class="one-half first">
-			<?php
-			genesis_do_post_image();
-			?>
-		</div>
-
-		<div class="one-half">
-		<?php
-
-	}
-
-	public function full_width_markup_close() {
-
-		?>
-		</div>
-		<?php
-
-	}
-
-	public function half_width_top_container() {
-
-		global $post;
-
-		?>
-		<div class="top">
-			<?php HC()->folders->display_add_button( $post->ID, true, true ); ?>
-			<?php genesis_do_post_image(); ?>
-		</div>
+		</article>
 		<?php
 
 	}

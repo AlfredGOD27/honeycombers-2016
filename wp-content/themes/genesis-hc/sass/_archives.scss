@@ -61,151 +61,6 @@ $slider-height: 25em;
 	}
 }
 
-.hc-archive {
-	.entry {
-		.entry-title {
-			margin-bottom: .25em;
-			text-transform: uppercase;
-		}
-	}
-
-	.entry-image {
-		border-bottom: $border-width solid $orange;
-	}
-
-	.entry-excerpt {
-		margin-bottom: 1em;
-		color: $grey-dark;
-
-		p {
-			line-height: 1.45;
-		}
-	}
-}
-
-.two-columns-archive {
-	.entry {
-		margin-bottom: 1em;
-
-		&:hover,
-		&:focus {
-			.bookmarks-button-container {
-				opacity: 1;
-			}
-
-			.top {
-				img {
-					opacity: .5;
-					transform: scale(1.1);
-				}
-			}
-
-			.entry-title {
-				a {
-					color: $orange;
-				}
-			}
-		}
-
-		.top {
-			position: relative;
-			overflow: hidden;
-			margin-bottom: .75em;
-			border-bottom: $border-width solid $orange;
-			background-color: $black;
-
-			.entry-image {
-				display: block;
-				border-bottom: none;
-				transition: all $home-transition-time linear;
-			}
-		}
-
-		.bookmarks-button-container {
-			position: absolute;
-			top: .5em;
-			right: .5em;
-			z-index: 99;
-			opacity: 0;
-			transition: opacity $home-transition-time linear;
-		}
-
-		.entry-title {
-			a {
-				transition: color $home-transition-time linear;
-			}
-		}
-	}
-}
-
-.one-column-archive {
-	.entry {
-		display: flex;
-		align-items: flex-end;
-		margin-bottom: 3em;
-
-		.entry-content {
-			margin-bottom: 0;
-		}
-
-		.entry-footer {
-			margin-bottom: 0;
-		}
-	}
-
-	.read-more-share-bar {
-		display: flex;
-		align-items: center;
-
-		> a {
-			flex-basis: 0;
-			flex-grow: 1;
-			flex-shrink: 0;
-		}
-
-		.bookmarks-button-container,
-		.share-button {
-			display: inline-block;
-			vertical-align: middle;
-		}
-
-		.share-button {
-			margin-left: 1em;
-		}
-	}
-}
-
-@include media('<=landscape') {
-	.one-column-archive {
-		.read-more-share-bar {
-			.bookmarks-button-container,
-			.share-button {
-				display: block;
-			}
-
-			.bookmarks-button-container {
-				margin-bottom: .5em;
-			}
-
-			.share-button {
-				margin-left: 0;
-			}
-		}
-	}
-}
-
-@include media('<=portrait') {
-	.one-column-archive {
-		.entry {
-			display: block;
-
-			.first {
-				margin-bottom: .5em;
-			}
-		}
-	}
-}
-
 .infinite-scroll {
 	.pagination {
 		display: none;
@@ -524,5 +379,311 @@ $slider-height: 25em;
 
 	.ico-arrow-right-circle {
 		font-size: 1.5em;
+	}
+}
+
+.archive-entry {
+	position: relative;
+
+	&:hover,
+	&:focus {
+		.bookmarks-button-container {
+			&.icon-only {
+				opacity: 1;
+			}
+		}
+	}
+
+	.category-icon,
+	.bookmarks-button-container.icon-only {
+		position: absolute;
+		top: .5em;
+		z-index: 99;
+	}
+
+	.category-icon {
+		left: .5em;
+		padding: .1em;
+		border-radius: 50%;
+		background-color: $white;
+		color: $orange;
+	}
+
+	.bookmarks-button-container {
+		&.icon-only {
+			right: .5em;
+			opacity: 0;
+			transition: opacity $home-transition-time linear;
+		}
+	}
+
+	img {
+		display: block;
+		max-width: none;
+		width: 100%;
+	}
+
+	h2,
+	h3 {
+		a {
+			color: inherit;
+		}
+	}
+
+	a {
+		text-decoration: none;
+	}
+}
+
+.archive-entry-tiny {
+	overflow: hidden;
+	margin-bottom: 1.25em;
+	background-color: $black;
+
+	&:hover,
+	&:focus {
+		img {
+			opacity: .5;
+			transform: scale(1.1);
+		}
+
+		h3 {
+			a {
+				color: $orange;
+			}
+		}
+	}
+
+	img {
+		transition: all $home-transition-time linear;
+	}
+
+	h3 {
+		position: absolute;
+		right: .5em;
+		bottom: .5em;
+		left: .5em;
+		padding: .25em .5em;
+		background-color: $white;
+		background-color: rgba($white, .9);
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 1em;
+
+		a {
+			transition: color $home-transition-time linear;
+		}
+	}
+}
+
+@include media('<=portrait') {
+	.archive-entry-tiny {
+		h3 {
+			font-size: .9em;
+		}
+	}
+}
+
+.archive-entry-small {
+	overflow: hidden;
+	margin-bottom: 2em;
+
+	&:hover,
+	&:focus {
+		.category-icon {
+			animation-play-state: running;
+		}
+
+		img {
+			opacity: .5;
+			transform: scale(1.1);
+		}
+
+		.bottom {
+			&.roll-up {
+				bottom: 0;
+			}
+		}
+
+		h3 {
+			color: $orange;
+		}
+	}
+
+	.top {
+		position: relative;
+		overflow: hidden;
+		background-color: $black;
+	}
+
+	img {
+		transition: all $home-transition-time linear;
+	}
+
+	.bottom {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		padding-top: .5em;
+		width: 100%;
+		border-top: $border-width solid $orange;
+		background-color: $white;
+
+		&.roll-up {
+			bottom: -1em;
+			transition: bottom $home-transition-time linear;
+		}
+	}
+
+	h3 {
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 1em;
+		transition: color $home-transition-time linear;
+	}
+
+	.author {
+		@include meta-font;
+		display: block;
+		text-align: center;
+		font-size: .9em;
+	}
+}
+
+@include media('<landscape') {
+	.archive-entry-small {
+		.bottom {
+			position: static;
+		}
+	}
+}
+
+.archive-entry-medium {
+	margin-bottom: 1em;
+
+	&:hover,
+	&:focus {
+		img {
+			opacity: .5;
+			transform: scale(1.1);
+		}
+
+		.entry-title {
+			a {
+				color: $orange;
+			}
+		}
+	}
+
+	.top {
+		position: relative;
+		overflow: hidden;
+		margin-bottom: .75em;
+		border-bottom: $border-width solid $orange;
+		background-color: $black;
+	}
+
+	img {
+		transition: all $home-transition-time linear;
+	}
+
+	.entry-title {
+		margin-bottom: .25em;
+		text-transform: uppercase;
+
+		a {
+			transition: color $home-transition-time linear;
+		}
+	}
+
+	.entry-excerpt {
+		margin-bottom: 1em;
+		color: $grey-dark;
+
+		p {
+			line-height: 1.45;
+		}
+	}
+}
+
+.archive-entry-large {
+	display: flex;
+	align-items: flex-end;
+	margin-bottom: 3em;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	img {
+		border-bottom: $border-width solid $orange;
+	}
+
+	.entry-title {
+		margin-bottom: .25em;
+		text-transform: uppercase;
+	}
+
+	.entry-excerpt {
+		margin-bottom: 1em;
+		color: $grey-dark;
+
+		p {
+			line-height: 1.45;
+		}
+	}
+
+	.entry-footer {
+		margin-bottom: 0;
+	}
+
+	.read-more-share-bar {
+		display: flex;
+		align-items: center;
+
+		> a {
+			flex-basis: 0;
+			flex-grow: 1;
+			flex-shrink: 0;
+		}
+
+		.bookmarks-button-container,
+		.share-button {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.share-button {
+			margin-left: 1em;
+		}
+	}
+}
+
+@include media('<=landscape') {
+	.archive-entry-large {
+		.read-more-share-bar {
+			.bookmarks-button-container,
+			.share-button {
+				display: block;
+			}
+
+			.bookmarks-button-container {
+				margin-bottom: .5em;
+			}
+
+			.share-button {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@include media('<=portrait') {
+	.archive-entry-large {
+		display: block;
+
+		.first {
+			margin-bottom: .5em;
+		}
 	}
 }
