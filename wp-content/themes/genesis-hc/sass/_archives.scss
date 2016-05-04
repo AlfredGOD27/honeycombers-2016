@@ -413,7 +413,7 @@ $slider-height: 25em;
 		&.icon-only {
 			right: .5em;
 			opacity: 0;
-			transition: opacity $home-transition-time linear;
+			transition: opacity $transition-time;
 		}
 	}
 
@@ -472,7 +472,7 @@ $slider-height: 25em;
 	}
 
 	img {
-		transition: all $home-transition-time linear;
+		transition: all $transition-time;
 	}
 
 	h3 {
@@ -488,7 +488,7 @@ $slider-height: 25em;
 		font-size: 1em;
 
 		a {
-			transition: color $home-transition-time linear;
+			transition: color $transition-time;
 		}
 	}
 }
@@ -534,7 +534,7 @@ $slider-height: 25em;
 	}
 
 	img {
-		transition: all $home-transition-time linear;
+		transition: all $transition-time;
 	}
 
 	.bottom {
@@ -548,7 +548,7 @@ $slider-height: 25em;
 
 		&.roll-up {
 			bottom: -1em;
-			transition: bottom $home-transition-time linear;
+			transition: bottom $transition-time;
 		}
 	}
 
@@ -556,7 +556,7 @@ $slider-height: 25em;
 		text-align: center;
 		text-transform: uppercase;
 		font-size: 1em;
-		transition: color $home-transition-time linear;
+		transition: color $transition-time;
 	}
 
 	.author {
@@ -601,7 +601,7 @@ $slider-height: 25em;
 	}
 
 	img {
-		transition: all $home-transition-time linear;
+		transition: all $transition-time;
 	}
 
 	.entry-title {
@@ -609,7 +609,7 @@ $slider-height: 25em;
 		text-transform: uppercase;
 
 		a {
-			transition: color $home-transition-time linear;
+			transition: color $transition-time;
 		}
 	}
 

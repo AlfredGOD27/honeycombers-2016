@@ -235,7 +235,7 @@
 	position: relative;
 	padding-top: 1em;
 	padding-bottom: 1em;
-	transition: transform .15s;
+	transition: transform $transition-time;
 
 	.slick-sliders & {
 		border: 1px solid $white;

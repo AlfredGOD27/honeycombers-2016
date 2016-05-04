@@ -1958,8 +1958,8 @@ body {
 a {
   color: #fe862c;
   text-decoration: underline;
-  -webkit-transition: all .1s ease-in-out;
-          transition: all .1s ease-in-out;
+  -webkit-transition: all 0.25s;
+          transition: all 0.25s;
 }
 
 p {
@@ -2175,8 +2175,8 @@ input[type='submit'], .gform_wrapper input[type='submit'] {
   font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
   line-height: 1;
   cursor: pointer;
-  -webkit-transition: all .1s ease-in-out;
-          transition: all .1s ease-in-out;
+  -webkit-transition: all 0.25s;
+          transition: all 0.25s;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
@@ -3401,8 +3401,8 @@ table > tbody > tr:nth-child(odd) > th {
   z-index: 99;
   width: 100%;
   background-color: #fe862c;
-  -webkit-transition: .25s -webkit-transform ease-in-out;
-          transition: .25s transform ease-in-out;
+  -webkit-transition: -webkit-transform 0.25s;
+          transition: transform 0.25s;
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
 }
@@ -3829,8 +3829,8 @@ table > tbody > tr:nth-child(odd) > th {
   border-bottom: 3px solid #fe862c;
   background-color: #FFFFFF;
   opacity: 0;
-  -webkit-transition: opacity .4s ease-in-out;
-          transition: opacity .4s ease-in-out;
+  -webkit-transition: opacity 0.25s;
+          transition: opacity 0.25s;
 }
 .main-menu .menu-col {
   display: -webkit-box;
@@ -4067,8 +4067,8 @@ table > tbody > tr:nth-child(odd) > th {
   border: 1px solid #fe862c;
   background-color: #FFFFFF;
   opacity: 0;
-  -webkit-transition: opacity .4s ease-in-out;
-          transition: opacity .4s ease-in-out;
+  -webkit-transition: opacity 0.25s;
+          transition: opacity 0.25s;
 }
 .user-menu .sub-menu > li {
   display: block;
@@ -4114,8 +4114,8 @@ table > tbody > tr:nth-child(odd) > th {
   padding: .5em;
   background-color: rgba(255, 255, 255, 0.5);
   opacity: 0;
-  -webkit-transition: opacity .1s ease-in-out;
-          transition: opacity .1s ease-in-out;
+  -webkit-transition: opacity 0.25s;
+          transition: opacity 0.25s;
 }
 .entry-slideshow .slide-content p {
   text-align: center;
@@ -5242,8 +5242,8 @@ table > tbody > tr:nth-child(odd) > th {
 .archive-entry .bookmarks-button-container.icon-only {
   right: .5em;
   opacity: 0;
-  -webkit-transition: opacity 0.25s linear;
-          transition: opacity 0.25s linear;
+  -webkit-transition: opacity 0.25s;
+          transition: opacity 0.25s;
 }
 .archive-entry img {
   display: block;
@@ -5285,8 +5285,8 @@ table > tbody > tr:nth-child(odd) > th {
   color: #fe862c;
 }
 .archive-entry-tiny img {
-  -webkit-transition: all 0.25s linear;
-          transition: all 0.25s linear;
+  -webkit-transition: all 0.25s;
+          transition: all 0.25s;
 }
 .archive-entry-tiny h3 {
   position: absolute;
@@ -5301,8 +5301,8 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: 1em;
 }
 .archive-entry-tiny h3 a {
-  -webkit-transition: color 0.25s linear;
-          transition: color 0.25s linear;
+  -webkit-transition: color 0.25s;
+          transition: color 0.25s;
 }
 
 @media (max-width: 768px) {
@@ -5335,8 +5335,8 @@ table > tbody > tr:nth-child(odd) > th {
   background-color: #252525;
 }
 .archive-entry-small img {
-  -webkit-transition: all 0.25s linear;
-          transition: all 0.25s linear;
+  -webkit-transition: all 0.25s;
+          transition: all 0.25s;
 }
 .archive-entry-small .bottom {
   position: absolute;
@@ -5349,15 +5349,15 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .archive-entry-small .bottom.roll-up {
   bottom: -1em;
-  -webkit-transition: bottom 0.25s linear;
-          transition: bottom 0.25s linear;
+  -webkit-transition: bottom 0.25s;
+          transition: bottom 0.25s;
 }
 .archive-entry-small h3 {
   text-align: center;
   text-transform: uppercase;
   font-size: 1em;
-  -webkit-transition: color 0.25s linear;
-          transition: color 0.25s linear;
+  -webkit-transition: color 0.25s;
+          transition: color 0.25s;
 }
 .archive-entry-small .author {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
@@ -5391,16 +5391,16 @@ table > tbody > tr:nth-child(odd) > th {
   background-color: #252525;
 }
 .archive-entry-medium img {
-  -webkit-transition: all 0.25s linear;
-          transition: all 0.25s linear;
+  -webkit-transition: all 0.25s;
+          transition: all 0.25s;
 }
 .archive-entry-medium .entry-title {
   margin-bottom: .25em;
   text-transform: uppercase;
 }
 .archive-entry-medium .entry-title a {
-  -webkit-transition: color 0.25s linear;
-          transition: color 0.25s linear;
+  -webkit-transition: color 0.25s;
+          transition: color 0.25s;
 }
 .archive-entry-medium .entry-excerpt {
   margin-bottom: 1em;
@@ -5685,8 +5685,8 @@ table > tbody > tr:nth-child(odd) > th {
   position: relative;
   padding-top: 1em;
   padding-bottom: 1em;
-  -webkit-transition: -webkit-transform .15s;
-          transition: transform .15s;
+  -webkit-transition: -webkit-transform 0.25s;
+          transition: transform 0.25s;
 }
 .slick-sliders .event-slide {
   border: 1px solid #FFFFFF;
@@ -6314,8 +6314,8 @@ table > tbody > tr:nth-child(odd) > th {
   background-color: #252525;
 }
 .main-pick .top img {
-  -webkit-transition: all 0.25s linear;
-          transition: all 0.25s linear;
+  -webkit-transition: all 0.25s;
+          transition: all 0.25s;
 }
 .main-pick .bookmarks-button-container {
   position: absolute;
@@ -6323,8 +6323,8 @@ table > tbody > tr:nth-child(odd) > th {
   right: .5em;
   z-index: 99;
   opacity: 0;
-  -webkit-transition: opacity 0.25s linear;
-          transition: opacity 0.25s linear;
+  -webkit-transition: opacity 0.25s;
+          transition: opacity 0.25s;
 }
 .main-pick img {
   display: block;
@@ -6362,8 +6362,8 @@ table > tbody > tr:nth-child(odd) > th {
   margin-bottom: .5em;
   text-transform: uppercase;
   font-size: 1.5em;
-  -webkit-transition: color 0.25s linear;
-          transition: color 0.25s linear;
+  -webkit-transition: color 0.25s;
+          transition: color 0.25s;
 }
 .main-pick .right {
   -webkit-box-flex: 0;
@@ -6614,8 +6614,8 @@ table > tbody > tr:nth-child(odd) > th {
   margin-left: -3.75em;
   width: 100%;
   border-right: 3px solid #fe862c;
-  -webkit-transition: left 0.25s linear;
-          transition: left 0.25s linear;
+  -webkit-transition: left 0.25s;
+          transition: left 0.25s;
 }
 .listing-slide-right .inner,
 .listing-slide-right .left,
@@ -7030,8 +7030,8 @@ table > tbody > tr:nth-child(odd) > th {
   margin-left: 2em;
   height: 6.25em;
   background-color: #252525;
-  -webkit-transition: margin-left .1s linear;
-          transition: margin-left .1s linear;
+  -webkit-transition: margin-left .1s;
+          transition: margin-left .1s;
 }
 .event-slider-nav .outer:before {
   position: absolute;
@@ -7162,8 +7162,8 @@ table > tbody > tr:nth-child(odd) > th {
   color: #FFFFFF;
   text-align: center;
   opacity: 0;
-  -webkit-transition: opacity 0.25s linear;
-          transition: opacity 0.25s linear;
+  -webkit-transition: opacity 0.25s;
+          transition: opacity 0.25s;
 }
 .home-section-trending .overlay div {
   width: 100%;

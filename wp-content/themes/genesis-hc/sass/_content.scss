@@ -38,7 +38,7 @@
 		padding: .5em;
 		background-color: rgba( $white, .5 );
 		opacity: 0;
-		transition: opacity .1s ease-in-out;
+		transition: opacity $transition-time;
 
 		p {
 			@extend %type;

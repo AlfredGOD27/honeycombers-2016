@@ -14,7 +14,7 @@
 	font-family: $heading;
 	line-height: 1;
 	cursor: pointer;
-	transition: all .1s ease-in-out;
+	transition: all $transition-time;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 }

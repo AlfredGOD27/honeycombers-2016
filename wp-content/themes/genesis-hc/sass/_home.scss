@@ -122,7 +122,7 @@
 		background-color: $black;
 
 		img {
-			transition: all $home-transition-time linear;
+			transition: all $transition-time;
 		}
 	}
 
@@ -132,7 +132,7 @@
 		right: .5em;
 		z-index: 99;
 		opacity: 0;
-		transition: opacity $home-transition-time linear;
+		transition: opacity $transition-time;
 	}
 
 	img {
@@ -163,7 +163,7 @@
 		margin-bottom: .5em;
 		text-transform: uppercase;
 		font-size: 1.5em;
-		transition: color $home-transition-time linear;
+		transition: color $transition-time;
 	}
 
 	.right {
@@ -444,7 +444,7 @@ $listing-slider-height: 18.75em;
 	margin-left: -3.75em;
 	width: 100%;
 	border-right: $border-width solid $orange;
-	transition: left $home-transition-time linear;
+	transition: left $transition-time;
 
 	.inner,
 	.left,
@@ -829,7 +829,7 @@ $slider-height: 25em;
 		margin-left: 2em;
 		height: $slider-height / 4;
 		background-color: $black;
-		transition: margin-left .1s linear;
+		transition: margin-left .1s;
 
 		&:before {
 			position: absolute;
@@ -971,7 +971,7 @@ $slider-height: 25em;
 		color: $white;
 		text-align: center;
 		opacity: 0;
-		transition: opacity $home-transition-time linear;
+		transition: opacity $transition-time;
 
 		div {
 			width: 100%;
