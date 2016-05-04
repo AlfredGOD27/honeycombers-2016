@@ -11,25 +11,29 @@
 
 	.left {
 		float: left;
-		font-family: $heading;
 
 		a {
 			display: inline-block;
-			padding-top: .25em;
-			padding-bottom: .25em;
-			border-top: 1px solid transparent;
-			border-bottom: 1px solid transparent;
-			color: inherit;
 			vertical-align: middle;
-			text-decoration: none;
-			text-transform: uppercase;
-			font-size: .85em;
-			line-height: 1;
 		}
 	}
 
 	.right {
 		float: right;
+	}
+
+	.sites-nav a,
+	.open-popup-link {
+		padding-top: .25em;
+		padding-bottom: .25em;
+		border-top: 1px solid transparent;
+		border-bottom: 1px solid transparent;
+		color: inherit;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-size: .85em;
+		font-family: $heading;
+		line-height: 1;
 	}
 }
 

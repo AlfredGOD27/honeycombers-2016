@@ -3195,23 +3195,26 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .site-top .left {
   float: left;
-  font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
 }
 .site-top .left a {
   display: inline-block;
+  vertical-align: middle;
+}
+.site-top .right {
+  float: right;
+}
+.site-top .sites-nav a,
+.site-top .open-popup-link {
   padding-top: .25em;
   padding-bottom: .25em;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   color: inherit;
-  vertical-align: middle;
   text-decoration: none;
   text-transform: uppercase;
   font-size: .85em;
+  font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
   line-height: 1;
-}
-.site-top .right {
-  float: right;
 }
 
 @media (max-width: 768px) {
