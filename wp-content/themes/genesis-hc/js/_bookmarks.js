@@ -1,7 +1,7 @@
 (function($) {
 
-	$('.favorites-nav .view-all .btn').on( 'click', function() {
-		$(this).closest('.favorites-nav').addClass('show-all');
+	$('.view-all .btn').on( 'click', function() {
+		$(this).closest('.button-nav').addClass('show-all');
 	});
 
 	$('body').on( 'click', '.add-to-folder', function(e) {

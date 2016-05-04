@@ -3192,20 +3192,12 @@ table > tbody > tr:nth-child(odd) > th {
   padding-bottom: .65em;
   background-color: #fa7d1f;
   color: #FFFFFF;
-  font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
 }
 .site-top .left {
   float: left;
+  font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
 }
-.site-top .right {
-  float: right;
-}
-.site-top .right i {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 1.25em;
-}
-.site-top a {
+.site-top .left a {
   display: inline-block;
   padding-top: .25em;
   padding-bottom: .25em;
@@ -3217,6 +3209,9 @@ table > tbody > tr:nth-child(odd) > th {
   text-transform: uppercase;
   font-size: .85em;
   line-height: 1;
+}
+.site-top .right {
+  float: right;
 }
 
 @media (max-width: 768px) {
@@ -4046,41 +4041,116 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: 2em;
 }
 
-.user-menu a {
-  display: block;
-}
-.user-menu li {
-  position: relative;
+.user-menu > .btn-icon i {
   display: inline-block;
+  color: #FFFFFF;
+  vertical-align: middle;
+  font-size: 1.25em;
 }
-.user-menu li:hover > .sub-menu, .user-menu li:focus > .sub-menu, .user-menu li:active > .sub-menu {
-  left: auto;
-  opacity: 1;
-}
-.user-menu .sub-menu {
-  position: absolute;
-  top: 100%;
-  left: -9999px;
-  z-index: 99;
-  padding: .25em;
-  width: 100%;
-  border: 1px solid #fe862c;
-  background-color: #FFFFFF;
-  opacity: 0;
-  -webkit-transition: opacity 0.25s;
-          transition: opacity 0.25s;
-}
-.user-menu .sub-menu > li {
+.user-menu.show-all li.hide {
   display: block;
-  border-top: 1px solid #d7d7d7;
 }
-.user-menu .sub-menu > li:first-child {
-  border-top: none;
+.user-menu.show-all .view-all {
+  display: none;
 }
-.user-menu .sub-menu > li > a {
-  position: relative;
-  padding: .5em;
+.user-menu .sub {
+  padding: 0;
   color: #3a3a3a;
+}
+.user-menu a {
+  text-transform: none;
+}
+.user-menu .top {
+  padding: .5em .75em;
+  border-bottom: 1px solid #fe862c;
+}
+.user-menu .top .btn, .user-menu .top button,
+.user-menu .top input[type='button'],
+.user-menu .top input[type='reset'],
+.user-menu .top input[type='submit'] {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+.user-menu .top .btn span, .user-menu .top button span,
+.user-menu .top input[type='button'] span,
+.user-menu .top input[type='reset'] span,
+.user-menu .top input[type='submit'] span {
+  text-transform: none;
+  font-size: 1em;
+}
+.user-menu .middle {
+  padding: .5em 1em;
+}
+.user-menu .middle li a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: inherit;
+  text-decoration: none;
+  font-size: .9em;
+}
+.user-menu .middle li .name {
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
+  font-size: .75em;
+}
+.user-menu .middle li .count {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  display: block;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  margin-left: .5em;
+  color: #fe862c;
+  font-size: .9em;
+}
+.user-menu .middle .btn, .user-menu .middle button,
+.user-menu .middle input[type='button'],
+.user-menu .middle input[type='reset'],
+.user-menu .middle input[type='submit'] {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: .75em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-size: .75em;
+}
+.user-menu .middle .view-all {
+  padding: 0;
+}
+.user-menu .bottom {
+  padding: .25em .75em;
+  border-top: 1px solid #fe862c;
+}
+.user-menu .bottom a {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: .9em;
 }
 
 .breadcrumbs {

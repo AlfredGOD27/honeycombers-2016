@@ -189,16 +189,57 @@ class HC_Profiles {
 	public function display_top_menu() {
 
 		?>
-		<ul class="user-menu">
-			<li>
-				<a href="<?php echo $this->get_url(); ?>">Hello, <?php echo HC()->profiles->get_first_name( get_current_user_id() ); ?> <i class="ico-arrow-down"></i></a>
+		<nav class="button-nav user-menu">
+			<button class="btn btn-icon">
+				Hello, <?php echo HC()->profiles->get_first_name( get_current_user_id() ); ?>
+				<i class="ico-arrow-down"></i>
+			</button>
 
-				<ul class="sub-menu">
-					<li><a href="<?php echo $this->get_url(); ?>">Me</a></li>
-					<li><a href="<?php echo $this->get_url('logout'); ?>">Logout</a></li>
-				</ul>
-			</li>
-		</ul>
+			<div class="sub">
+				<div class="top">
+					<a href="<?php echo $this->get_url(); ?>" class="btn btn-icon"><i class="ico-heart"></i> <span>Favorite List</span></a>
+				</div>
+
+				<div class="middle">
+					<ul>
+						<?php
+						$folder_ids = HC()->folders->get_user_folder_ids( get_current_user_id() );
+						$i          = 1;
+						foreach( $folder_ids as $folder_id ) {
+							$items = HC()->folders->get_items_in_folder( $folder_id );
+
+							?>
+							<li class="<?php echo $i > 3 ? 'hide' : ''; ?>">
+								<a href="<?php echo get_permalink($folder_id); ?>">
+									<span class="name"><?php echo get_the_title($folder_id); ?></span>
+									<span class="count"><?php echo count($items); ?></span>
+								</a>
+							</li>
+							<?php
+							++$i;
+						}
+
+						if( $i > 4 ) {
+							?>
+							<li class="view-all">
+								<button type="button" class="view-all btn btn-icon">
+									<span>View All</span>
+									<i class="ico-arrow-down"></i>
+								</button>
+							</li>
+							<?php
+						}
+						?>
+					</ul>
+
+					<a href="<?php echo $this->get_url(); ?>" class="btn">Account Settings</a>
+				</div>
+
+				<div class="bottom">
+					<a href="<?php echo $this->get_url('logout'); ?>">Log out</a>
+				</div>
+			</div>
+		</nav>
 		<?php
 
 	}
