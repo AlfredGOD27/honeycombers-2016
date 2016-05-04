@@ -7359,7 +7359,7 @@ function hc_maybe_load_facebook() {
 	});
 
 	// Buttons nav
-	$('.content').on( 'click', '.button-nav > .btn', function() {
+	$('body').on( 'click', '.button-nav > .btn', function() {
 		var self = $(this);
 
 		if( self.hasClass('use-modal') ) {

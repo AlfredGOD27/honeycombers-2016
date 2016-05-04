@@ -353,8 +353,11 @@ class HC_Archives {
 
 					$title = get_the_title($post_id);
 
-					if( $has_image )
+					if( $has_image ) {
 						echo get_the_post_thumbnail($post_id, 'archive-small' );
+					} else {
+						echo '<div class="placeholder small"></div>';
+					}
 
 					?>
 					<h3 itemprop="headline">
@@ -375,8 +378,11 @@ class HC_Archives {
 
 						HC()->folders->display_add_button( $post->ID, true, true );
 
-						if( $has_image )
+						if( $has_image ) {
 							echo get_the_post_thumbnail( $post->ID, 'archive-small' );
+						} else {
+							echo '<div class="placeholder small"></div>';
+						}
 						?>
 					</div>
 
@@ -410,8 +416,11 @@ class HC_Archives {
 						<?php
 						HC()->folders->display_add_button( $post->ID, true, true );
 
-						if( $has_image )
+						if( $has_image ) {
 							echo get_the_post_thumbnail( $post->ID, 'archive' );
+						} else {
+							echo '<div class="placeholder medium"></div>';
+						}
 						?>
 					</div>
 
@@ -425,8 +434,11 @@ class HC_Archives {
 					?>
 					<div class="one-half first">
 						<?php
-						if( $has_image )
+						if( $has_image ) {
 							echo get_the_post_thumbnail( $post->ID, 'archive-large' );
+						} else {
+							echo '<div class="placeholder large"></div>';
+						}
 						?>
 					</div>
 

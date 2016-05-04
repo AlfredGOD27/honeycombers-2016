@@ -2981,7 +2981,7 @@ input[type='search'] {
 .bookmarks-popup li.added .ico-check {
   display: block;
 }
-.bookmarks-popup a {
+.bookmarks-popup li a {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3032,6 +3032,7 @@ input[type='search'] {
   color: #fe862c;
 }
 .bookmarks-popup .add-new {
+  width: 100%;
   color: #FFFFFF;
   text-align: center;
 }
@@ -5248,6 +5249,19 @@ table > tbody > tr:nth-child(odd) > th {
   display: block;
   max-width: none;
   width: 100%;
+}
+.archive-entry .placeholder {
+  width: 100%;
+  background-color: #252525;
+}
+.archive-entry .placeholder.small {
+  padding-bottom: 83.333%;
+}
+.archive-entry .placeholder.medium {
+  padding-bottom: 68.478%;
+}
+.archive-entry .placeholder.large {
+  padding-bottom: 60.484%;
 }
 .archive-entry h2 a,
 .archive-entry h3 a {

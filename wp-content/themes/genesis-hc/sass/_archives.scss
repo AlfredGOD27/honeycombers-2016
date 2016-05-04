@@ -423,6 +423,23 @@ $slider-height: 25em;
 		width: 100%;
 	}
 
+	.placeholder {
+		width: 100%;
+		background-color: $black;
+
+		&.small {
+			padding-bottom: (250% / 300 * 100);
+		}
+
+		&.medium {
+			padding-bottom: (315% / 460 * 100);
+		}
+
+		&.large {
+			padding-bottom: (375% / 620 * 100);
+		}
+	}
+
 	h2,
 	h3 {
 		a {
