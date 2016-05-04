@@ -67,15 +67,20 @@ class HC_Ratings {
 	public function display( $item_id ) {
 
 		$rating = $this->get_item_rating_info( $item_id );
-		if( false === $rating )
-			return;
 
 		echo '<div class="star-rating-container">';
-			echo '<div class="star-rating" title="' . sprintf( __( 'Rated %s out of 5', 'woocommerce' ), $rating['average'] ) . '">';
-				echo '<span style="width:' . ( ( $rating['average'] / 5 ) * 100 ) . '%"><strong class="rating">' . $rating['average'] . '</strong> ' . __( 'out of 5', 'woocommerce' ) . '</span>';
-			echo '</div>';
+			if( false !== $rating ) {
+				echo '<div class="star-rating" title="' . sprintf( __( 'Rated %s out of 5', 'woocommerce' ), $rating['average'] ) . '">';
+					echo '<span style="width:' . ( ( $rating['average'] / 5 ) * 100 ) . '%"><strong class="rating">' . $rating['average'] . '</strong> ' . __( 'out of 5', 'woocommerce' ) . '</span>';
+				echo '</div>';
 
-			echo '<span>' . number_format($rating['average'], 1) . ' Based on ' . $rating['count'] . ' ' . _n( 'review', 'reviews', $rating['count'] ) . '</span>';
+				echo '<span>' . number_format($rating['average'], 1) . ' Based on ' . $rating['count'] . ' ' . _n( 'review', 'reviews', $rating['count'] ) . '</span>';
+			} else {
+				?>
+				<div class="star-rating"></div>
+				<span>Be the first to review</span>
+				<?php
+			}
 		echo '</div>';
 
 	}
