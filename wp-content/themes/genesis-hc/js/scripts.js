@@ -90,6 +90,11 @@
 	});
 
 	// HTML Popup
+	// https://stackoverflow.com/questions/19990191/select2-in-magnific-popup-search-input-cannot-be-focused
+	$.magnificPopup.instance._onFocusIn = function(e) {
+		return true;
+	};
+
 	$('.open-popup-link').magnificPopup({
 		type: 'inline',
 		midClick: true,
