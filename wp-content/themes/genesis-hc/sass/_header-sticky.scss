@@ -16,10 +16,6 @@
 		transform: translateY(0);
 	}
 
-	.force-hide-sticky-header & {
-		transform: translateY(-100%) !important;
-	}
-
 	> .wrap {
 		@extend %wrap;
 		display: flex;
@@ -168,7 +164,7 @@
 		}
 	}
 
-	.toggle-sticky-header {
+	.scroll-to-top {
 		margin-left: .5em;
 
 		.btn {

@@ -6625,22 +6625,15 @@ function hc_maybe_load_facebook() {
 		$(window).on( 'resize', init );
 	});
 
-	$('.toggle-sticky-header .btn').on( 'click', function() {
-		$('body').toggleClass('allow-sticky-header');
+	// Scroll
+	$('.scroll-to-top .btn').on( 'click', function() {
+		$('html, body').animate(
+			{
+				scrollTop: 0
+			},
+			250
+		);
 	});
-
-
-	// Close
-	$('.toggle-sticky-header .btn').on( 'click', function() {
-		$('body').addClass( 'force-hide-sticky-header' );
-		Cookies.set('hc_sticky_header_status', 'closed');
-	});
-
-	// Maybe open
-	status = Cookies.get('hc_sticky_header_status');
-	if( 'closed' === status ) {
-		$('body').addClass( 'force-hide-sticky-header' );
-	}
 
 })( window.jQuery );
 

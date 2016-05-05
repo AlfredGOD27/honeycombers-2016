@@ -3411,10 +3411,6 @@ table > tbody > tr:nth-child(odd) > th {
   -webkit-transform: translateY(0);
           transform: translateY(0);
 }
-.force-hide-sticky-header .sticky-header {
-  -webkit-transform: translateY(-100%) !important;
-          transform: translateY(-100%) !important;
-}
 .sticky-header > .wrap {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3602,20 +3598,20 @@ table > tbody > tr:nth-child(odd) > th {
 .sticky-header .user-menu input[type='submit'] span {
   text-transform: uppercase;
 }
-.sticky-header .toggle-sticky-header {
+.sticky-header .scroll-to-top {
   margin-left: .5em;
 }
-.sticky-header .toggle-sticky-header .btn, .sticky-header .toggle-sticky-header button,
-.sticky-header .toggle-sticky-header input[type='button'],
-.sticky-header .toggle-sticky-header input[type='reset'],
-.sticky-header .toggle-sticky-header input[type='submit'] {
+.sticky-header .scroll-to-top .btn, .sticky-header .scroll-to-top button,
+.sticky-header .scroll-to-top input[type='button'],
+.sticky-header .scroll-to-top input[type='reset'],
+.sticky-header .scroll-to-top input[type='submit'] {
   padding: .55em 1em;
   font-size: .85em;
 }
-.sticky-header .toggle-sticky-header .btn i, .sticky-header .toggle-sticky-header button i,
-.sticky-header .toggle-sticky-header input[type='button'] i,
-.sticky-header .toggle-sticky-header input[type='reset'] i,
-.sticky-header .toggle-sticky-header input[type='submit'] i {
+.sticky-header .scroll-to-top .btn i, .sticky-header .scroll-to-top button i,
+.sticky-header .scroll-to-top input[type='button'] i,
+.sticky-header .scroll-to-top input[type='reset'] i,
+.sticky-header .scroll-to-top input[type='submit'] i {
   color: #FFFFFF;
   font-size: 1em;
 }

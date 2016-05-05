@@ -401,7 +401,7 @@ function hc_sticky_header() {
 						?>
 					</div>
 
-					<div class="toggle-sticky-header">
+					<div class="scroll-to-top">
 						<button type="button" class="btn btn-icon"><i class="ico-arrow-up"></i></button>
 					</div>
 				</div>
