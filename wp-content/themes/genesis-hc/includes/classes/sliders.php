@@ -21,9 +21,9 @@ class HC_Sliders {
 		echo HC()->utilities->get_category_icon_html( $terms[0] );
 
 		if( false === $max_chars ) {
-			echo '<span>' . get_the_title( $post_id ) . '</span>';
+			echo '<span>' . HC()->entry->get_headline_title( $post_id ) . '</span>';
 		} else {
-			echo '<span>' . HC()->formatting->maybe_truncate( get_the_title( $post_id ), $max_chars ) . '</span>';
+			echo '<span>' . HC()->formatting->maybe_truncate( HC()->entry->get_headline_title( $post_id ), $max_chars ) . '</span>';
 		}
 
 	}

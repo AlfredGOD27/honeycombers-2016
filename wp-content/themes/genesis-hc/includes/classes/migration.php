@@ -94,11 +94,12 @@ class HC_Migration {
 
 		// Update meta_keys
 		$keys = array(
-			'where_website'      => '_hc_listing_website',
-			'where_phone'        => '_hc_listing_phone',
-			'where_email'        => '_hc_listing_email',
-			'where_address'      => '_hc_listing_address_text',
-			'entry_location_map' => '_hc_listing_address_map',
+			'where_website'         => '_hc_listing_website',
+			'where_phone'           => '_hc_listing_phone',
+			'where_email'           => '_hc_listing_email',
+			'where_address'         => '_hc_listing_address_text',
+			'entry_location_map'    => '_hc_listing_address_map',
+			'entry_headlinetitle_1' => '_hc_headline_title',
 		);
 
 		foreach( $keys as $from => $to ) {

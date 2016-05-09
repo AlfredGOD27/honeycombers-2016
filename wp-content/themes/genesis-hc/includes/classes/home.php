@@ -237,7 +237,7 @@ class HC_Home {
 										?>
 
 										<div class="slide-content show-phone">
-											<h3><?php echo get_the_title( $post_id ); ?></h3>
+											<h3><?php echo HC()->entry->get_headline_title( $post_id ); ?></h3>
 
 											<?php
 											$categories = wp_get_object_terms( $post_id, 'directories' );
@@ -264,7 +264,7 @@ class HC_Home {
 									<div>
 										<div class="listing-slide-left">
 											<div class="inner">
-												<h3><?php echo HC()->formatting->maybe_truncate( get_the_title( $post_id ), 50 ); ?></h3>
+												<h3><?php echo HC()->entry->get_headline_title( $post_id ); ?></h3>
 											</div>
 										</div>
 
@@ -377,7 +377,7 @@ class HC_Home {
 										if( !empty($categories) )
 											echo '<span class="cat">' . $categories[0]->name . '</span>';
 
-										echo '<span class="title">' . get_the_title( $post_id ) . '</span>';
+										echo '<span class="title">' . HC()->entry->get_headline_title( $post_id ) . '</span>';
 										?>
 									</div>
 
@@ -415,7 +415,7 @@ class HC_Home {
 											if( !empty($categories) )
 												echo '<span class="cat">' . $categories[0]->name . '</span>';
 
-											echo '<span class="title">' . HC()->formatting->maybe_truncate( get_the_title( $post_id ), 28 ) . '</span>';
+											echo '<span class="title">' . HC()->entry->get_headline_title( $post_id ) . '</span>';
 											?>
 										</div>
 
@@ -502,7 +502,7 @@ class HC_Home {
 
 								<div class="overlay">
 									<div>
-										<h3><?php echo HC()->formatting->maybe_truncate( get_the_title($post_id), 60 ); ?></h3>
+										<h3><?php echo HC()->entry->get_headline_title($post_id); ?></h3>
 									</div>
 								</div>
 							</a>

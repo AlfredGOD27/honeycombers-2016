@@ -300,7 +300,7 @@ class HC_Archives {
 		?>
 		<h2 class="entry-title" itemprop="headline">
 			<a href="<?php echo get_permalink( $post->ID ); ?>" rel="bookmark">
-				<?php echo get_the_title( $post->ID ); ?>
+				<?php echo HC()->entry->get_headline_title( $post->ID ); ?>
 			</a>
 		</h2>
 
@@ -351,7 +351,7 @@ class HC_Archives {
 					echo HC()->utilities->get_category_icon_html( $terms[0] );
 					HC()->folders->display_add_button( $post_id, true, true );
 
-					$title = get_the_title($post_id);
+					$title = HC()->entry->get_headline_title($post_id);
 
 					if( $has_image ) {
 						echo get_the_post_thumbnail($post_id, 'archive-small' );
@@ -389,7 +389,7 @@ class HC_Archives {
 					<div class="bottom <?php echo 'post' === $post->post_type ? 'roll-up' : ''; ?>">
 						<h3 itemprop="headline">
 							<a href="<?php echo get_permalink( $post->ID ); ?>" rel="bookmark">
-								<?php echo get_the_title( $post->ID ); ?>
+								<?php echo HC()->entry->get_headline_title( $post->ID ); ?>
 							</a>
 						</h3>
 

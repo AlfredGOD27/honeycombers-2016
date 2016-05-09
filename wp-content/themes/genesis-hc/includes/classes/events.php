@@ -468,7 +468,7 @@ class HC_Events {
 												?>
 											</div>
 											<?php
-											echo '<span>' . HC()->formatting->maybe_truncate( get_the_title( $post_id ), 50 ) . '</span>';
+											echo '<span>' . HC()->entry->get_headline_title( $post_id ) . '</span>';
 											?>
 										</div>
 									</div>

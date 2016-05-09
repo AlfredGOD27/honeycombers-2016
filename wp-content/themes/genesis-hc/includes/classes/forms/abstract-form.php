@@ -277,7 +277,7 @@ abstract class HC_Form_Abstract {
 						foreach( $value as $item_id ) {
 							echo '<label class="checkbox">';
 								echo '<input type="checkbox" name="' . $field['slug'] . '[]" value="' . $item_id . '" checked>';
-								echo get_the_title($item_id);
+								echo HC()->entry->get_headline_title($item_id);
 							echo '</label>';
 						}
 					echo '</label>';

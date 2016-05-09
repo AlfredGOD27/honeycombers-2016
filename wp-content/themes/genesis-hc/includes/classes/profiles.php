@@ -646,7 +646,7 @@ class HC_Profiles {
 								<tr>
 									<th>
 										<?php
-										$title = HC()->formatting->maybe_truncate( get_the_title($item_id), 20 );
+										$title = HC()->entry->get_headline_title($item_id);
 										if( 'publish' === $status ) {
 											echo '<a href="' . get_permalink($item_id) . '">' . $title . '</a>';
 										} else {

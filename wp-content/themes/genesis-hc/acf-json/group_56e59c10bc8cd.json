@@ -3,6 +3,27 @@
     "title": "Posts \/\/ Options",
     "fields": [
         {
+            "key": "field_5730ae5c2e369",
+            "label": "Headline Title",
+            "name": "_hc_headline_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
             "key": "field_56e59c149fb8d",
             "label": "Sponsored?",
             "name": "_hc_post_is_sponsored",
@@ -116,5 +137,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1459609757
+    "modified": 1462808169
 }

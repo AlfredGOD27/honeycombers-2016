@@ -94,7 +94,7 @@ class HC_Featured_Widget extends WP_Widget {
 										}
 										?>
 
-										<h5><a href="<?php echo get_permalink($post_id); ?>"><?php echo get_the_title($post_id); ?></a></h5>
+										<h5><a href="<?php echo get_permalink($post_id); ?>"><?php echo HC()->entry->get_headline_title($post_id); ?></a></h5>
 									</div>
 								</div>
 							</div>
@@ -116,7 +116,7 @@ class HC_Featured_Widget extends WP_Widget {
 								?>
 
 								<div class="inner">
-									<h5><?php echo get_the_title($post_id); ?></h5>
+									<h5><?php echo HC()->entry->get_headline_title($post_id); ?></h5>
 
 									<?php
 									if( 'listing' === $post_type ) {

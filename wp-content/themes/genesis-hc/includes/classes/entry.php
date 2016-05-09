@@ -230,6 +230,17 @@ class HC_Entry {
 
 	}
 
+	public function get_headline_title( $post_id ) {
+
+		$title = get_post_meta( $post_id, '_hc_headline_title', true );
+		if( !empty($title) ) {
+			return sanitize_text_field($title);
+		} else {
+			return get_the_title($post_id);
+		}
+
+	}
+
 }
 
 return new HC_Entry();
