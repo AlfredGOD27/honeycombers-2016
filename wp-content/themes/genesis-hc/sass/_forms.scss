@@ -129,13 +129,13 @@ input[type='radio'] {
 
 .placeholder {
 	@include meta-font;
-	color: #5e5e5e;
+	color: #c7c7c7;
 	text-overflow: ellipsis;
 }
 
 ::placeholder {
 	@include meta-font;
-	color: #5e5e5e;
+	color: #c7c7c7;
 	text-overflow: ellipsis;
 }
 
@@ -165,14 +165,14 @@ input[type='search'] {
 	i {
 		position: absolute;
 		top: 50%;
-		left: .5em;
+		left: .55em;
 		color: $orange;
 		transform: translateY(-50%);
 	}
 
 	input[type='search'] {
 		flex: 1;
-		padding-left: 2em;
+		padding-left: 2.5em;
 		border-color: $orange;
 	}
 

@@ -144,6 +144,13 @@
 	.search-form {
 		margin-left: auto;
 		border-color: $white;
+		font-size: .9em;
+
+		input[type='search'] {
+			padding-top: .6em;
+			padding-bottom: .6em;
+			border: none;
+		}
 	}
 }
 

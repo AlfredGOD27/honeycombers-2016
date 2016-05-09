@@ -1677,8 +1677,6 @@ html {
   background-repeat: no-repeat;
   -webkit-transition: none;
           transition: none;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
   -webkit-animation-play-state: paused;
           animation-play-state: paused;
 }
@@ -2384,35 +2382,35 @@ input[type='radio']:checked {
 .placeholder {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  color: #5e5e5e;
+  color: #c7c7c7;
   text-overflow: ellipsis;
 }
 
 ::-webkit-input-placeholder {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  color: #5e5e5e;
+  color: #c7c7c7;
   text-overflow: ellipsis;
 }
 
 ::-moz-placeholder {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  color: #5e5e5e;
+  color: #c7c7c7;
   text-overflow: ellipsis;
 }
 
 :-ms-input-placeholder {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  color: #5e5e5e;
+  color: #c7c7c7;
   text-overflow: ellipsis;
 }
 
 ::placeholder {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  color: #5e5e5e;
+  color: #c7c7c7;
   text-overflow: ellipsis;
 }
 
@@ -2441,7 +2439,7 @@ input[type='search'] {
 .search-form i {
   position: absolute;
   top: 50%;
-  left: .5em;
+  left: .55em;
   color: #fe862c;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -2451,7 +2449,7 @@ input[type='search'] {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding-left: 2em;
+  padding-left: 2.5em;
   border-color: #fe862c;
 }
 .search-form input[type='submit'] {
@@ -3323,6 +3321,12 @@ table > tbody > tr:nth-child(odd) > th {
 .header-widget-area .search-form {
   margin-left: auto;
   border-color: #FFFFFF;
+  font-size: .9em;
+}
+.header-widget-area .search-form input[type='search'] {
+  padding-top: .6em;
+  padding-bottom: .6em;
+  border: none;
 }
 
 @media (max-width: 768px) {
