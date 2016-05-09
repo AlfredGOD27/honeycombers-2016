@@ -368,38 +368,6 @@
             "disabled": 0
         },
         {
-            "key": "field_570147eeb3ebc",
-            "label": "Video Thumbnail",
-            "name": "_hc_home_watch_this_video_thumbnail_id",
-            "type": "image",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_57051bd2118b8",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "id",
-            "preview_size": "archive",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
             "key": "field_56fed17a408c0",
             "label": "Video URL",
             "name": "_hc_home_watch_this_video_url",
@@ -972,5 +940,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1460999158
+    "modified": 1462808798
 }

@@ -184,12 +184,9 @@ class HC_Home {
 						$heading = get_post_meta( $post->ID, '_hc_home_watch_this_heading', true );
 						echo '<h2><a href="' . $video_page_link . '">' . sanitize_text_field($heading) . '</a></h2>';
 
-						$image_id = get_post_meta( $post->ID, '_hc_home_watch_this_video_thumbnail_id', true );
-						$src      = get_post_meta( $post->ID, '_hc_home_watch_this_video_url', true );
-						$src      = esc_url($src);
-						echo '<a href="' . $src . '" class="open-video-link">';
-							echo wp_get_attachment_image( $image_id, 'archive' );
-						echo '</a>';
+						$src = get_post_meta( $post->ID, '_hc_home_watch_this_video_url', true );
+						$src = esc_url($src);
+						echo wp_oembed_get($src);
 						?>
 
 						<div class="mobile-bar show-phone">
@@ -573,10 +570,8 @@ class HC_Home {
 					<a href="<?php echo HC()->utilities->get_page_link('_hc_blog_page_id'); ?>">
 						<?php
 						$heading = get_post_meta( $post->ID, '_hc_home_latest_posts_heading', true );
-						echo '<span>' . sanitize_text_field($heading) . '</span>';
+						echo sanitize_text_field($heading);
 						?>
-
-						<i class="ico-arrow-right-circle"></i>
 					</a>
 				</h2>
 
