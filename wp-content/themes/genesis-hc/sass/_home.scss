@@ -218,11 +218,37 @@
 	}
 }
 
+.other-picks {
+	.left,
+	.right {
+		float: left;
+		width: (50% - 2.564102564102564);
+	}
+
+	.left {
+		clear: both;
+	}
+
+	.right {
+		margin-left: (2 * 2.564102564102564%);
+	}
+}
+
 @include media('<=portrait') {
 	.home-section-featured-posts {
 		.other-picks {
 			display: flex;
 			flex-wrap: wrap;
+
+			.left,
+			.right {
+				float: none;
+				width: auto;
+			}
+
+			.right {
+				margin-left: 0;
+			}
 
 			.item {
 				display: none;
@@ -247,6 +273,7 @@
 			.item-2 {
 				display: block;
 				order: 3;
+				margin: 0 auto;
 				padding: 1em 1.5em;
 				border: 1px solid $orange;
 				text-align: center;

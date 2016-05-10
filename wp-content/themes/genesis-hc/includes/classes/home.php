@@ -80,12 +80,12 @@ class HC_Home {
 
 		$i = 1;
 		foreach( $post_ids as $post_id ) {
-			echo 1 === $i % 2 ? '<div class="one-half first item item-' . $i . '">' : '<div class="one-half item item-' . $i . '">';
+			echo 1 === $i % 2 ? '<div class="left item item-' . $i . '">' : '<div class="right item item-' . $i . '">';
 				if( 2 === $i && !empty($ad_code) ) {
 						echo $ad_code;
 					echo '</div>';
 					++$i;
-					echo 1 === $i % 2 ? '<div class="one-half first item item-' . $i . '">' : '<div class="one-half item item-' . $i . '">';
+					echo 1 === $i % 2 ? '<div class="left item item-' . $i . '">' : '<div class="right item item-' . $i . '">';
 				}
 
 				HC()->archives->display_entry( $post_id, 'tiny' );
