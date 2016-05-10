@@ -3,6 +3,8 @@
 	if( !$('body').hasClass('page-template-page_home') )
 		return;
 
+	$('.home-section-featured-video-listings iframe').addClass('mute').addClass('autoplay');
+
 	if( !im.lessThan('portrait') ) {
 		$('.listing-slider-for').slick({
 			adaptiveHeight: true,

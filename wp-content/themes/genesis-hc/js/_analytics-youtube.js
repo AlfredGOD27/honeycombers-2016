@@ -42,6 +42,7 @@
 	function on_ready( e ) {
 
 		var player_id = $( e.target.getIframe() ).attr('id').toString().replace( 'youtube-player-', '' ),
+			iframe,
 			src;
 
 		if( $.inArray( player_id, ready ) > -1 )
@@ -52,9 +53,15 @@
 
 		on_change( e );
 
+		iframe = $('#youtube-player-' + player_id);
+
+		// Maybe mute
+		if( iframe.hasClass('mute') )
+			e.target.mute();
+
 		// Maybe autoplay
-		src = $('#youtube-player-' + player_id).attr('src');
-		if( 'undefined' !== typeof src && src.indexOf('autoplay') > -1 )
+		src = iframe.attr('src');
+		if( 'undefined' !== typeof src && (src.indexOf('autoplay') > -1 || iframe.hasClass('autoplay')) )
 			e.target.playVideo();
 
 	}
