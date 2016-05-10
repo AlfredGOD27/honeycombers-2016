@@ -15,7 +15,7 @@ $slider-height: 25em;
 			align-items: center;
 			padding-top: .5em;
 			padding-bottom: .5em;
-			width: 74%;
+			max-width: $site-width / 2;
 		}
 
 		.left {
@@ -33,15 +33,11 @@ $slider-height: 25em;
 
 		.author-box-title {
 			margin-bottom: .25em;
-			font-size: 1.25em;
+			font-size: 1em;
 
 			span {
 				font-size: 1.25em;
 			}
-		}
-
-		p {
-			font-size: 1em;
 		}
 	}
 }
@@ -608,6 +604,7 @@ $slider-height: 25em;
 	.entry-title {
 		margin-bottom: .25em;
 		text-transform: uppercase;
+		font-size: 1.5em;
 
 		a {
 			transition: color $transition-time;
@@ -619,6 +616,7 @@ $slider-height: 25em;
 		color: $grey-dark;
 
 		p {
+			font-size: 1em;
 			line-height: 1.45;
 		}
 	}
@@ -640,6 +638,7 @@ $slider-height: 25em;
 	.entry-title {
 		margin-bottom: .25em;
 		text-transform: uppercase;
+		font-size: 1.5em;
 	}
 
 	.entry-excerpt {
@@ -647,6 +646,7 @@ $slider-height: 25em;
 		color: $grey-dark;
 
 		p {
+			font-size: 1em;
 			line-height: 1.45;
 		}
 	}

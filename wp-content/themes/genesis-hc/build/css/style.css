@@ -4962,7 +4962,7 @@ table > tbody > tr:nth-child(odd) > th {
           align-items: center;
   padding-top: .5em;
   padding-bottom: .5em;
-  width: 74%;
+  max-width: 40em;
 }
 .author .author-box .left {
   -webkit-flex-shrink: 0;
@@ -4978,13 +4978,10 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .author .author-box .author-box-title {
   margin-bottom: .25em;
-  font-size: 1.25em;
+  font-size: 1em;
 }
 .author .author-box .author-box-title span {
   font-size: 1.25em;
-}
-.author .author-box p {
-  font-size: 1em;
 }
 
 @media (max-width: 768px) {
@@ -5472,6 +5469,7 @@ table > tbody > tr:nth-child(odd) > th {
 .archive-entry-medium .entry-title {
   margin-bottom: .25em;
   text-transform: uppercase;
+  font-size: 1.5em;
 }
 .archive-entry-medium .entry-title a {
   -webkit-transition: color 0.25s;
@@ -5482,6 +5480,7 @@ table > tbody > tr:nth-child(odd) > th {
   color: #4f4f4f;
 }
 .archive-entry-medium .entry-excerpt p {
+  font-size: 1em;
   line-height: 1.45;
 }
 
@@ -5505,12 +5504,14 @@ table > tbody > tr:nth-child(odd) > th {
 .archive-entry-large .entry-title {
   margin-bottom: .25em;
   text-transform: uppercase;
+  font-size: 1.5em;
 }
 .archive-entry-large .entry-excerpt {
   margin-bottom: 1em;
   color: #4f4f4f;
 }
 .archive-entry-large .entry-excerpt p {
+  font-size: 1em;
   line-height: 1.45;
 }
 .archive-entry-large .entry-footer {
