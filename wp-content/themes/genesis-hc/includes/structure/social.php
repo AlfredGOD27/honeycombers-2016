@@ -8,7 +8,6 @@ function hc_do_social() {
 		'facebook'  => 'Facebook',
 		'youtube'   => 'YouTube',
 		'instagram' => 'Instagram',
-		'twitter'   => 'Twitter',
 	);
 	?>
 
