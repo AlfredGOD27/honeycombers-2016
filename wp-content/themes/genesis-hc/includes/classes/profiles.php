@@ -472,13 +472,16 @@ class HC_Profiles {
 
 		$boxes = array();
 
-		$boxes[] = array(
-			'name'        => 'Event Submission',
-			'description' => 'Manage your events submissions',
-			'url'         => $this->get_url('calendar-events'),
-			'icon'        => 'calendar',
-			'class'       => 'invert-colors',
-		);
+		$events = $this->get_user_event_ids( $this->user_id );
+		if( !empty($events) ) {
+			$boxes[] = array(
+				'name'        => 'Event Submission',
+				'description' => 'Manage your events submissions',
+				'url'         => $this->get_url('calendar-events'),
+				'icon'        => 'calendar',
+				'class'       => 'invert-colors',
+			);
+		}
 
 		$curated_folders = HC()->folders->get_user_curated_folder_ids( $this->user_id );
 		$folders         = HC()->folders->get_user_folder_ids( $this->user_id );
@@ -567,6 +570,26 @@ class HC_Profiles {
 
 	}
 
+	private function get_user_event_ids( $user_id ) {
+
+		$args = array(
+			'post_type'  => 'event',
+			'meta_query' => array(
+				array(
+					'key'     => '_hc_event_submitter_id',
+					'value'   => $user_id,
+					'compare' => 'NUMERIC',
+				),
+			),
+			'fields'         => 'ids',
+			'posts_per_page' => -1,
+			'post_status'    => 'any',
+		);
+
+		return get_posts( $args );
+
+	}
+
 	public function display_events() {
 
 		$user_id = get_current_user_id();
@@ -609,20 +632,7 @@ class HC_Profiles {
 				</header>
 
 				<?php
-				$args = array(
-					'post_type'  => 'event',
-					'meta_query' => array(
-						array(
-							'key'     => '_hc_event_submitter_id',
-							'value'   => $user_id,
-							'compare' => 'NUMERIC',
-						),
-					),
-					'fields'         => 'ids',
-					'posts_per_page' => -1,
-					'post_status'    => 'any',
-				);
-				$items = get_posts( $args );
+				$items = $this->get_user_event_ids( $user_id );
 
 				if( !empty($items) ) {
 					?>
