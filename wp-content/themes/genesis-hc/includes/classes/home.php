@@ -80,12 +80,12 @@ class HC_Home {
 
 		$i = 1;
 		foreach( $post_ids as $post_id ) {
-			echo 1 === $i % 2 ? '<div class="left item item-' . $i . '">' : '<div class="right item item-' . $i . '">';
+			echo 1 === $i % 2 ? '<div class="pull-left item item-' . $i . '">' : '<div class="pull-right item item-' . $i . '">';
 				if( 2 === $i && !empty($ad_code) ) {
 						echo $ad_code;
 					echo '</div>';
 					++$i;
-					echo 1 === $i % 2 ? '<div class="left item item-' . $i . '">' : '<div class="right item item-' . $i . '">';
+					echo 1 === $i % 2 ? '<div class="pull-left item item-' . $i . '">' : '<div class="pull-right item item-' . $i . '">';
 				}
 
 				HC()->archives->display_entry( $post_id, 'tiny' );
@@ -116,7 +116,7 @@ class HC_Home {
 
 				$main_post = get_post( $main_post_id );
 				?>
-				<div class="one-half first">
+				<div class="pull-left first">
 					<div class="main-pick">
 						<?php HC()->folders->display_add_button( $main_post_id, true, true ); ?>
 
@@ -151,7 +151,7 @@ class HC_Home {
 						</a>
 					</div>
 				</div>
-				<div class="one-half other-picks">
+				<div class="pull-right other-picks">
 					<?php
 					$this->display_editors_pick_other_posts( $post_ids );
 					?>
