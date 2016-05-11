@@ -93,7 +93,7 @@ class HC_Folders {
 						<?php
 						if( !$icon_only ) {
 							?>
-							<span>Save articles</span>
+							<span>Save article</span>
 							<?php
 						}
 						?>

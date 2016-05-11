@@ -1481,17 +1481,17 @@ html {
     background-position: -180px;
   }
 }
-.animation-calendar, .animation-connect, .animation-food, .animation-hacks, .animation-hitlist, .animation-recharge, .animation-shopping, .animation-video, .animation-win {
+.animation-calendar-orange, .animation-connect-orange, .animation-food-orange, .animation-hacks-orange, .animation-hitlist-orange, .animation-recharge-orange, .animation-shopping-orange, .animation-video-orange, .animation-win-orange, .animation-calendar-white, .animation-connect-white, .animation-food-white, .animation-hacks-white, .animation-hitlist-white, .animation-recharge-white, .animation-shopping-white, .animation-video-white, .animation-win-white {
   -webkit-animation-duration: 0.25s;
           animation-duration: 0.25s;
   -webkit-animation-timing-function: steps(2);
           animation-timing-function: steps(2);
 }
-.animation-small.animation-calendar, .animation-small.animation-connect, .animation-small.animation-food, .animation-small.animation-hacks, .animation-small.animation-hitlist, .animation-small.animation-recharge, .animation-small.animation-shopping, .animation-small.animation-video, .animation-small.animation-win {
+.animation-small.animation-calendar-orange, .animation-small.animation-connect-orange, .animation-small.animation-food-orange, .animation-small.animation-hacks-orange, .animation-small.animation-hitlist-orange, .animation-small.animation-recharge-orange, .animation-small.animation-shopping-orange, .animation-small.animation-video-orange, .animation-small.animation-win-orange, .animation-small.animation-calendar-white, .animation-small.animation-connect-white, .animation-small.animation-food-white, .animation-small.animation-hacks-white, .animation-small.animation-hitlist-white, .animation-small.animation-recharge-white, .animation-small.animation-shopping-white, .animation-small.animation-video-white, .animation-small.animation-win-white {
   -webkit-animation-name: two-step-small;
           animation-name: two-step-small;
 }
-.animation-large.animation-calendar, .animation-large.animation-connect, .animation-large.animation-food, .animation-large.animation-hacks, .animation-large.animation-hitlist, .animation-large.animation-recharge, .animation-large.animation-shopping, .animation-large.animation-video, .animation-large.animation-win {
+.animation-large.animation-calendar-orange, .animation-large.animation-connect-orange, .animation-large.animation-food-orange, .animation-large.animation-hacks-orange, .animation-large.animation-hitlist-orange, .animation-large.animation-recharge-orange, .animation-large.animation-shopping-orange, .animation-large.animation-video-orange, .animation-large.animation-win-orange, .animation-large.animation-calendar-white, .animation-large.animation-connect-white, .animation-large.animation-food-white, .animation-large.animation-hacks-white, .animation-large.animation-hitlist-white, .animation-large.animation-recharge-white, .animation-large.animation-shopping-white, .animation-large.animation-video-white, .animation-large.animation-win-white {
   -webkit-animation-name: two-step-large;
           animation-name: two-step-large;
 }
@@ -1529,17 +1529,17 @@ html {
     background-position: -270px;
   }
 }
-.animation-drinks {
+.animation-drinks-orange, .animation-drinks-white {
   -webkit-animation-duration: 0.375s;
           animation-duration: 0.375s;
   -webkit-animation-timing-function: steps(3);
           animation-timing-function: steps(3);
 }
-.animation-small.animation-drinks {
+.animation-small.animation-drinks-orange, .animation-small.animation-drinks-white {
   -webkit-animation-name: three-step-small;
           animation-name: three-step-small;
 }
-.animation-large.animation-drinks {
+.animation-large.animation-drinks-orange, .animation-large.animation-drinks-white {
   -webkit-animation-name: three-step-large;
           animation-name: three-step-large;
 }
@@ -1577,17 +1577,17 @@ html {
     background-position: -360px;
   }
 }
-.animation-directory {
+.animation-directory-orange, .animation-directory-white {
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
   -webkit-animation-timing-function: steps(4);
           animation-timing-function: steps(4);
 }
-.animation-small.animation-directory {
+.animation-small.animation-directory-orange, .animation-small.animation-directory-white {
   -webkit-animation-name: four-step-small;
           animation-name: four-step-small;
 }
-.animation-large.animation-directory {
+.animation-large.animation-directory-orange, .animation-large.animation-directory-white {
   -webkit-animation-name: four-step-large;
           animation-name: four-step-large;
 }
@@ -1657,17 +1657,17 @@ html {
     background-position: -540px;
   }
 }
-.animation-travel {
+.animation-travel-orange, .animation-travel-white {
   -webkit-animation-duration: 0.75s;
           animation-duration: 0.75s;
   -webkit-animation-timing-function: steps(6);
           animation-timing-function: steps(6);
 }
-.animation-small.animation-travel {
+.animation-small.animation-travel-orange, .animation-small.animation-travel-white {
   -webkit-animation-name: six-step-small;
           animation-name: six-step-small;
 }
-.animation-large.animation-travel {
+.animation-large.animation-travel-orange, .animation-large.animation-travel-white {
   -webkit-animation-name: six-step-large;
           animation-name: six-step-large;
 }
@@ -1691,88 +1691,172 @@ html {
   height: 90px;
 }
 
-.animation-calendar.animation-small {
-  background-image: url("../images/animations/calendar-40.png");
+.animation-calendar-orange.animation-small {
+  background-image: url("../images/animations/calendar-40-orange.png");
 }
-.animation-calendar.animation-large {
-  background-image: url("../images/animations/calendar-90.png");
-}
-
-.animation-connect.animation-small {
-  background-image: url("../images/animations/connect-40.png");
-}
-.animation-connect.animation-large {
-  background-image: url("../images/animations/connect-90.png");
+.animation-calendar-orange.animation-large {
+  background-image: url("../images/animations/calendar-90-orange.png");
 }
 
-.animation-directory.animation-small {
-  background-image: url("../images/animations/directory-40.png");
+.animation-connect-orange.animation-small {
+  background-image: url("../images/animations/connect-40-orange.png");
 }
-.animation-directory.animation-large {
-  background-image: url("../images/animations/directory-90.png");
-}
-
-.animation-drinks.animation-small {
-  background-image: url("../images/animations/drinks-40.png");
-}
-.animation-drinks.animation-large {
-  background-image: url("../images/animations/drinks-90.png");
+.animation-connect-orange.animation-large {
+  background-image: url("../images/animations/connect-90-orange.png");
 }
 
-.animation-food.animation-small {
-  background-image: url("../images/animations/food-40.png");
+.animation-directory-orange.animation-small {
+  background-image: url("../images/animations/directory-40-orange.png");
 }
-.animation-food.animation-large {
-  background-image: url("../images/animations/food-90.png");
-}
-
-.animation-hacks.animation-small {
-  background-image: url("../images/animations/hacks-40.png");
-}
-.animation-hacks.animation-large {
-  background-image: url("../images/animations/hacks-90.png");
+.animation-directory-orange.animation-large {
+  background-image: url("../images/animations/directory-90-orange.png");
 }
 
-.animation-hitlist.animation-small {
-  background-image: url("../images/animations/hitlist-40.png");
+.animation-drinks-orange.animation-small {
+  background-image: url("../images/animations/drinks-40-orange.png");
 }
-.animation-hitlist.animation-large {
-  background-image: url("../images/animations/hitlist-90.png");
-}
-
-.animation-recharge.animation-small {
-  background-image: url("../images/animations/recharge-40.png");
-}
-.animation-recharge.animation-large {
-  background-image: url("../images/animations/recharge-90.png");
+.animation-drinks-orange.animation-large {
+  background-image: url("../images/animations/drinks-90-orange.png");
 }
 
-.animation-shopping.animation-small {
-  background-image: url("../images/animations/shopping-40.png");
+.animation-food-orange.animation-small {
+  background-image: url("../images/animations/food-40-orange.png");
 }
-.animation-shopping.animation-large {
-  background-image: url("../images/animations/shopping-90.png");
-}
-
-.animation-travel.animation-small {
-  background-image: url("../images/animations/travel-40.png");
-}
-.animation-travel.animation-large {
-  background-image: url("../images/animations/travel-90.png");
+.animation-food-orange.animation-large {
+  background-image: url("../images/animations/food-90-orange.png");
 }
 
-.animation-video.animation-small {
-  background-image: url("../images/animations/video-40.png");
+.animation-hacks-orange.animation-small {
+  background-image: url("../images/animations/hacks-40-orange.png");
 }
-.animation-video.animation-large {
-  background-image: url("../images/animations/video-90.png");
+.animation-hacks-orange.animation-large {
+  background-image: url("../images/animations/hacks-90-orange.png");
 }
 
-.animation-win.animation-small {
-  background-image: url("../images/animations/win-40.png");
+.animation-hitlist-orange.animation-small {
+  background-image: url("../images/animations/hitlist-40-orange.png");
 }
-.animation-win.animation-large {
-  background-image: url("../images/animations/win-90.png");
+.animation-hitlist-orange.animation-large {
+  background-image: url("../images/animations/hitlist-90-orange.png");
+}
+
+.animation-recharge-orange.animation-small {
+  background-image: url("../images/animations/recharge-40-orange.png");
+}
+.animation-recharge-orange.animation-large {
+  background-image: url("../images/animations/recharge-90-orange.png");
+}
+
+.animation-shopping-orange.animation-small {
+  background-image: url("../images/animations/shopping-40-orange.png");
+}
+.animation-shopping-orange.animation-large {
+  background-image: url("../images/animations/shopping-90-orange.png");
+}
+
+.animation-travel-orange.animation-small {
+  background-image: url("../images/animations/travel-40-orange.png");
+}
+.animation-travel-orange.animation-large {
+  background-image: url("../images/animations/travel-90-orange.png");
+}
+
+.animation-video-orange.animation-small {
+  background-image: url("../images/animations/video-40-orange.png");
+}
+.animation-video-orange.animation-large {
+  background-image: url("../images/animations/video-90-orange.png");
+}
+
+.animation-win-orange.animation-small {
+  background-image: url("../images/animations/win-40-orange.png");
+}
+.animation-win-orange.animation-large {
+  background-image: url("../images/animations/win-90-orange.png");
+}
+
+.animation-calendar-white.animation-small {
+  background-image: url("../images/animations/calendar-40-white.png");
+}
+.animation-calendar-white.animation-large {
+  background-image: url("../images/animations/calendar-90-white.png");
+}
+
+.animation-connect-white.animation-small {
+  background-image: url("../images/animations/connect-40-white.png");
+}
+.animation-connect-white.animation-large {
+  background-image: url("../images/animations/connect-90-white.png");
+}
+
+.animation-directory-white.animation-small {
+  background-image: url("../images/animations/directory-40-white.png");
+}
+.animation-directory-white.animation-large {
+  background-image: url("../images/animations/directory-90-white.png");
+}
+
+.animation-drinks-white.animation-small {
+  background-image: url("../images/animations/drinks-40-white.png");
+}
+.animation-drinks-white.animation-large {
+  background-image: url("../images/animations/drinks-90-white.png");
+}
+
+.animation-food-white.animation-small {
+  background-image: url("../images/animations/food-40-white.png");
+}
+.animation-food-white.animation-large {
+  background-image: url("../images/animations/food-90-white.png");
+}
+
+.animation-hacks-white.animation-small {
+  background-image: url("../images/animations/hacks-40-white.png");
+}
+.animation-hacks-white.animation-large {
+  background-image: url("../images/animations/hacks-90-white.png");
+}
+
+.animation-hitlist-white.animation-small {
+  background-image: url("../images/animations/hitlist-40-white.png");
+}
+.animation-hitlist-white.animation-large {
+  background-image: url("../images/animations/hitlist-90-white.png");
+}
+
+.animation-recharge-white.animation-small {
+  background-image: url("../images/animations/recharge-40-white.png");
+}
+.animation-recharge-white.animation-large {
+  background-image: url("../images/animations/recharge-90-white.png");
+}
+
+.animation-shopping-white.animation-small {
+  background-image: url("../images/animations/shopping-40-white.png");
+}
+.animation-shopping-white.animation-large {
+  background-image: url("../images/animations/shopping-90-white.png");
+}
+
+.animation-travel-white.animation-small {
+  background-image: url("../images/animations/travel-40-white.png");
+}
+.animation-travel-white.animation-large {
+  background-image: url("../images/animations/travel-90-white.png");
+}
+
+.animation-video-white.animation-small {
+  background-image: url("../images/animations/video-40-white.png");
+}
+.animation-video-white.animation-large {
+  background-image: url("../images/animations/video-90-white.png");
+}
+
+.animation-win-white.animation-small {
+  background-image: url("../images/animations/win-40-white.png");
+}
+.animation-win-white.animation-large {
+  background-image: url("../images/animations/win-90-white.png");
 }
 
 .five-sixths,
@@ -1923,7 +2007,7 @@ html {
 
 .content-sidebar .content {
   float: left;
-  width: 74%;
+  width: 72%;
 }
 .content-sidebar .sidebar-primary {
   float: right;
@@ -5206,7 +5290,8 @@ table > tbody > tr:nth-child(odd) > th {
   border: 1px solid #FFFFFF;
   background-color: rgba(37, 37, 37, 0.75);
 }
-.slider-nav .inner i {
+.slider-nav .inner .orange {
+  display: none;
   -webkit-box-flex: 0;
   -webkit-flex-grow: 0;
       -ms-flex-positive: 0;
@@ -5215,6 +5300,20 @@ table > tbody > tr:nth-child(odd) > th {
       -ms-flex-negative: 0;
           flex-shrink: 0;
   margin-right: .5em;
+}
+.slider-nav .inner .white {
+  display: block;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  margin-right: .5em;
+}
+.slider-nav .inner i {
+  display: block;
   font-size: 3.25em;
 }
 .slider-nav .inner span {
@@ -5235,6 +5334,12 @@ table > tbody > tr:nth-child(odd) > th {
 .slider-nav .slick-current .inner {
   border-color: #fe862c;
   background-color: #FFFFFF;
+}
+.slider-nav .slick-current .inner .orange {
+  display: block;
+}
+.slider-nav .slick-current .inner .white {
+  display: none;
 }
 .slider-nav .slick-current .inner i {
   color: #fe862c;
@@ -5345,7 +5450,7 @@ table > tbody > tr:nth-child(odd) > th {
 
 .archive-entry-tiny {
   overflow: hidden;
-  margin-bottom: 1.25em;
+  margin-bottom: 1.75em;
   background-color: #252525;
 }
 .archive-entry-tiny:hover img, .archive-entry-tiny:focus img {
@@ -6351,6 +6456,19 @@ table > tbody > tr:nth-child(odd) > th {
   margin-left: 0;
 }
 
+.home-section-featured-posts .pull-left,
+.home-section-featured-posts .pull-right {
+  float: left;
+  width: 50%;
+}
+.home-section-featured-posts .pull-left {
+  clear: both;
+  padding-right: .775em;
+}
+.home-section-featured-posts .pull-right {
+  padding-left: .775em;
+}
+
 @media (max-width: 768px) {
   .home-section-featured-posts {
     margin-bottom: 1.25em;
@@ -6367,6 +6485,18 @@ table > tbody > tr:nth-child(odd) > th {
   .home-section-featured-posts .gform_wrapper .ginput_complex .name_last,
   .gform_wrapper .ginput_complex .home-section-featured-posts .name_last {
     margin-bottom: 0;
+  }
+  .home-section-featured-posts .pull-left,
+  .home-section-featured-posts .pull-right {
+    float: none;
+    width: auto;
+  }
+  .home-section-featured-posts .pull-left {
+    clear: both;
+    padding-right: 0;
+  }
+  .home-section-featured-posts .pull-right {
+    padding-left: 0;
   }
 }
 .main-pick {
@@ -6461,7 +6591,7 @@ table > tbody > tr:nth-child(odd) > th {
 .main-pick .right p {
   text-align: center;
   text-transform: uppercase;
-  font-style: .95em;
+  font-style: .85em;
   font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
 }
 
@@ -6487,18 +6617,6 @@ table > tbody > tr:nth-child(odd) > th {
     display: none;
   }
 }
-.other-picks .left,
-.other-picks .right {
-  float: left;
-  width: 47.436%;
-}
-.other-picks .left {
-  clear: both;
-}
-.other-picks .right {
-  margin-left: 5.128%;
-}
-
 @media (max-width: 768px) {
   .home-section-featured-posts .other-picks {
     display: -webkit-box;
@@ -6508,14 +6626,6 @@ table > tbody > tr:nth-child(odd) > th {
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
-  }
-  .home-section-featured-posts .other-picks .left,
-  .home-section-featured-posts .other-picks .right {
-    float: none;
-    width: auto;
-  }
-  .home-section-featured-posts .other-picks .right {
-    margin-left: 0;
   }
   .home-section-featured-posts .other-picks .item {
     display: none;
@@ -7186,7 +7296,7 @@ table > tbody > tr:nth-child(odd) > th {
   background-color: #FFFFFF;
 }
 .event-slider-nav .slick-current .inner i {
-  opacity: .3;
+  opacity: 1;
 }
 .event-slider-nav .slick-current .info {
   background-color: #fe862c;

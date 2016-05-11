@@ -249,7 +249,6 @@ class HC_Archives {
 						echo HC()->utilities->get_category_icon_html( $category );
 						?>
 						<h2 class="archive-title"><?php echo $category->name; ?></h2>
-						<i class="ico-arrow-right-circle"></i>
 					</a>
 				</div>
 
