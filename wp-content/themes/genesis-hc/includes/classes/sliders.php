@@ -18,7 +18,13 @@ class HC_Sliders {
 				break;
 		}
 
-		echo HC()->utilities->get_category_icon_html( $terms[0] );
+		echo '<div class="white">';
+			echo HC()->utilities->get_category_icon_html( $terms[0], 'small', 'white' );
+		echo '</div>';
+
+		echo '<div class="orange">';
+			echo HC()->utilities->get_category_icon_html( $terms[0], 'small', 'orange' );
+		echo '</div>';
 
 		if( false === $max_chars ) {
 			echo '<span>' . HC()->entry->get_headline_title( $post_id ) . '</span>';

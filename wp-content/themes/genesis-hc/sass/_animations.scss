@@ -199,146 +199,150 @@ $animation-base-speed: .125s;
 	height: 90px;
 }
 
-.animation-calendar {
-	@extend %animation-two-step;
+$animation-colors: 'orange' 'white';
 
-	&.animation-small {
-		background-image: url('../images/animations/calendar-40.png');
+@each $color in $animation-colors {
+	.animation-calendar-#{$color} {
+		@extend %animation-two-step;
+
+		&.animation-small {
+			background-image: url('../images/animations/calendar-40-#{$color}.png');
+		}
+
+		&.animation-large {
+			background-image: url('../images/animations/calendar-90-#{$color}.png');
+		}
 	}
 
-	&.animation-large {
-		background-image: url('../images/animations/calendar-90.png');
-	}
-}
+	.animation-connect-#{$color} {
+		@extend %animation-two-step;
 
-.animation-connect {
-	@extend %animation-two-step;
+		&.animation-small {
+			background-image: url('../images/animations/connect-40-#{$color}.png');
+		}
 
-	&.animation-small {
-		background-image: url('../images/animations/connect-40.png');
-	}
-
-	&.animation-large {
-		background-image: url('../images/animations/connect-90.png');
-	}
-}
-
-.animation-directory {
-	@extend %animation-four-step;
-
-	&.animation-small {
-		background-image: url('../images/animations/directory-40.png');
+		&.animation-large {
+			background-image: url('../images/animations/connect-90-#{$color}.png');
+		}
 	}
 
-	&.animation-large {
-		background-image: url('../images/animations/directory-90.png');
-	}
-}
+	.animation-directory-#{$color} {
+		@extend %animation-four-step;
 
-.animation-drinks {
-	@extend %animation-three-step;
+		&.animation-small {
+			background-image: url('../images/animations/directory-40-#{$color}.png');
+		}
 
-	&.animation-small {
-		background-image: url('../images/animations/drinks-40.png');
-	}
-
-	&.animation-large {
-		background-image: url('../images/animations/drinks-90.png');
-	}
-}
-
-.animation-food {
-	@extend %animation-two-step;
-
-	&.animation-small {
-		background-image: url('../images/animations/food-40.png');
+		&.animation-large {
+			background-image: url('../images/animations/directory-90-#{$color}.png');
+		}
 	}
 
-	&.animation-large {
-		background-image: url('../images/animations/food-90.png');
-	}
-}
+	.animation-drinks-#{$color} {
+		@extend %animation-three-step;
 
-.animation-hacks {
-	@extend %animation-two-step;
+		&.animation-small {
+			background-image: url('../images/animations/drinks-40-#{$color}.png');
+		}
 
-	&.animation-small {
-		background-image: url('../images/animations/hacks-40.png');
-	}
-
-	&.animation-large {
-		background-image: url('../images/animations/hacks-90.png');
-	}
-}
-
-.animation-hitlist {
-	@extend %animation-two-step;
-
-	&.animation-small {
-		background-image: url('../images/animations/hitlist-40.png');
+		&.animation-large {
+			background-image: url('../images/animations/drinks-90-#{$color}.png');
+		}
 	}
 
-	&.animation-large {
-		background-image: url('../images/animations/hitlist-90.png');
-	}
-}
+	.animation-food-#{$color} {
+		@extend %animation-two-step;
 
-.animation-recharge {
-	@extend %animation-two-step;
+		&.animation-small {
+			background-image: url('../images/animations/food-40-#{$color}.png');
+		}
 
-	&.animation-small {
-		background-image: url('../images/animations/recharge-40.png');
-	}
-
-	&.animation-large {
-		background-image: url('../images/animations/recharge-90.png');
-	}
-}
-
-.animation-shopping {
-	@extend %animation-two-step;
-
-	&.animation-small {
-		background-image: url('../images/animations/shopping-40.png');
+		&.animation-large {
+			background-image: url('../images/animations/food-90-#{$color}.png');
+		}
 	}
 
-	&.animation-large {
-		background-image: url('../images/animations/shopping-90.png');
-	}
-}
+	.animation-hacks-#{$color} {
+		@extend %animation-two-step;
 
-.animation-travel {
-	@extend %animation-six-step;
+		&.animation-small {
+			background-image: url('../images/animations/hacks-40-#{$color}.png');
+		}
 
-	&.animation-small {
-		background-image: url('../images/animations/travel-40.png');
-	}
-
-	&.animation-large {
-		background-image: url('../images/animations/travel-90.png');
-	}
-}
-
-.animation-video {
-	@extend %animation-two-step;
-
-	&.animation-small {
-		background-image: url('../images/animations/video-40.png');
+		&.animation-large {
+			background-image: url('../images/animations/hacks-90-#{$color}.png');
+		}
 	}
 
-	&.animation-large {
-		background-image: url('../images/animations/video-90.png');
+	.animation-hitlist-#{$color} {
+		@extend %animation-two-step;
+
+		&.animation-small {
+			background-image: url('../images/animations/hitlist-40-#{$color}.png');
+		}
+
+		&.animation-large {
+			background-image: url('../images/animations/hitlist-90-#{$color}.png');
+		}
 	}
-}
 
-.animation-win {
-	@extend %animation-two-step;
+	.animation-recharge-#{$color} {
+		@extend %animation-two-step;
 
-	&.animation-small {
-		background-image: url('../images/animations/win-40.png');
+		&.animation-small {
+			background-image: url('../images/animations/recharge-40-#{$color}.png');
+		}
+
+		&.animation-large {
+			background-image: url('../images/animations/recharge-90-#{$color}.png');
+		}
 	}
 
-	&.animation-large {
-		background-image: url('../images/animations/win-90.png');
+	.animation-shopping-#{$color} {
+		@extend %animation-two-step;
+
+		&.animation-small {
+			background-image: url('../images/animations/shopping-40-#{$color}.png');
+		}
+
+		&.animation-large {
+			background-image: url('../images/animations/shopping-90-#{$color}.png');
+		}
+	}
+
+	.animation-travel-#{$color} {
+		@extend %animation-six-step;
+
+		&.animation-small {
+			background-image: url('../images/animations/travel-40-#{$color}.png');
+		}
+
+		&.animation-large {
+			background-image: url('../images/animations/travel-90-#{$color}.png');
+		}
+	}
+
+	.animation-video-#{$color} {
+		@extend %animation-two-step;
+
+		&.animation-small {
+			background-image: url('../images/animations/video-40-#{$color}.png');
+		}
+
+		&.animation-large {
+			background-image: url('../images/animations/video-90-#{$color}.png');
+		}
+	}
+
+	.animation-win-#{$color} {
+		@extend %animation-two-step;
+
+		&.animation-small {
+			background-image: url('../images/animations/win-40-#{$color}.png');
+		}
+
+		&.animation-large {
+			background-image: url('../images/animations/win-90-#{$color}.png');
+		}
 	}
 }

@@ -271,10 +271,22 @@ $slider-height: 25em;
 		border: 1px solid $white;
 		background-color: rgba( $black, .75 );
 
-		i {
+		.orange {
+			display: none;
 			flex-grow: 0;
 			flex-shrink: 0;
 			margin-right: .5em;
+		}
+
+		.white {
+			display: block;
+			flex-grow: 0;
+			flex-shrink: 0;
+			margin-right: .5em;
+		}
+
+		i {
+			display: block;
 			font-size: 3.25em;
 		}
 
@@ -301,6 +313,14 @@ $slider-height: 25em;
 		.inner {
 			border-color: $orange;
 			background-color: $white;
+
+			.orange {
+				display: block;
+			}
+
+			.white {
+				display: none;
+			}
 
 			i {
 				color: $orange;

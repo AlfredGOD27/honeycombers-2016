@@ -17,7 +17,7 @@ class HC_ACF {
 		if( file_exists(CHILD_DIR . '/sass/_animations.scss') ) {
 			$css = file_get_contents(CHILD_DIR . '/sass/_animations.scss');
 
-			preg_match_all( '/\.animation-(.+?) /', $css, $matches );
+			preg_match_all( '/\.animation-(.+?)-#\{\$color\} /', $css, $matches );
 
 			if( !empty($matches[1]) ) {
 				foreach( $matches[1] as $slug ) {
