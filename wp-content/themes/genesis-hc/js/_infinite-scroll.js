@@ -10,19 +10,7 @@
 
 	function queue_next_page() {
 
-		$('.content').imagesLoaded( function() {
-			$('.content').append( hc_strings.more_button );
-
-			$('.content').waypoint(
-				function( direction ) {
-					load_next_page();
-					this.destroy();
-				},
-				{
-					offset: 'bottom-in-view'
-				}
-			);
-		});
+		$('.content').append( hc_strings.more_button );
 
 	}
 
