@@ -151,7 +151,10 @@ class HC_Entry {
 			<?php
 			foreach( $slides as $slide ) {
 				echo '<div>';
-					echo wp_get_attachment_image( $slide['ID'], 'featured' );
+					$src = wp_get_attachment_image_src( $slide['ID'], 'full' );
+					echo '<a href="' . $src[0] . '" class="entry-slideshow-item">';
+						echo wp_get_attachment_image( $slide['ID'], 'featured' );
+					echo '</a>';
 
 					$image = get_post( $slide['ID'] );
 					if( !empty($image->post_excerpt) ) {

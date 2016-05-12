@@ -132,6 +132,13 @@
 		]
 	});
 
+	$('.entry-slideshow-item').magnificPopup({
+		type: 'image',
+		gallery: {
+			enabled:true
+		}
+	});
+
 	// Events/listings slideshow
 	$('.basic-slider').slick({
 		prevArrow: hc_strings.prev_arrow,
