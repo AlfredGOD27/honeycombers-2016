@@ -122,16 +122,16 @@
 .header-default {
 	.entry-header {
 		.left {
-			@include meta-font;
 			float: left;
-
-			p {
-				font-size: .9em;
-			}
 		}
 
 		.right {
 			float: right;
+
+			> p {
+				@include meta-font;
+				font-size: .9em;
+			}
 		}
 	}
 }

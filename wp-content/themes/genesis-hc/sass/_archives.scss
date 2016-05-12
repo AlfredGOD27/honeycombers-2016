@@ -230,13 +230,6 @@ $slider-height: 25em;
 
 	.slick-slide {
 		cursor: pointer;
-
-		&:hover,
-		&:focus {
-			.category-icon {
-				animation-play-state: running;
-			}
-		}
 	}
 
 	.outer {
@@ -375,13 +368,6 @@ $slider-height: 25em;
 	margin-bottom: 1.5em;
 	padding-bottom: 1em;
 	border-bottom: 1px solid $grey-border;
-
-	&:hover,
-	&:focus {
-		.category-icon {
-			animation-play-state: running;
-		}
-	}
 
 	a {
 		display: inline-block;
@@ -536,10 +522,6 @@ $slider-height: 25em;
 
 	&:hover,
 	&:focus {
-		.category-icon {
-			animation-play-state: running;
-		}
-
 		img {
 			opacity: .75;
 			transform: scale(1.05);

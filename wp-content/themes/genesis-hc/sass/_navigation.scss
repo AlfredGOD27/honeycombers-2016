@@ -166,11 +166,6 @@
 			margin-left: auto;
 			color: $orange;
 			font-size: 5em;
-
-			&:hover,
-			&:focus {
-				animation-play-state: running;
-			}
 		}
 
 		ul {

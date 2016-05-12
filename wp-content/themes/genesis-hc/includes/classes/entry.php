@@ -27,7 +27,6 @@ class HC_Entry {
 		$this->header_type = !empty($this->header_type) ? $this->header_type : 'default';
 		switch( $this->header_type ) {
 			case 'default':
-				add_action( 'genesis_entry_content', array($this, 'display_image'), 8 );
 				add_action( 'genesis_entry_content', array($this, 'display_excerpt'), 8 );
 				break;
 			case 'slideshow':
@@ -109,14 +108,23 @@ class HC_Entry {
 				genesis_do_post_title();
 				?>
 				<div class="entry-meta">
-					<div class="date-row">
-						<?php echo do_shortcode('[post_date]'); ?>
-					</div>
+					<?php
+					if( 'default' === $this->header_type )
+						$this->display_image();
+					?>
 
 					<div class="author-share-row clearfix">
 						<div class="left">
-							<?php
+							<?php HC()->folders->display_add_button( $post->ID ); ?>
+							<?php HC()->share->display( $post->ID ); ?>
+						</div>
 
+						<div class="right">
+							<div class="date-row">
+								<?php echo do_shortcode('[post_date]'); ?>
+							</div>
+
+							<?php
 							$lines   = array();
 							$lines[] = do_shortcode( __( 'By', CHILD_THEME_TEXT_DOMAIN ) . ' [post_author_posts_link]' );
 
@@ -126,11 +134,6 @@ class HC_Entry {
 
 							echo '<p>' . implode( ', ', $lines ) . '</p>';
 							?>
-						</div>
-
-						<div class="right">
-							<?php HC()->folders->display_add_button( $post->ID ); ?>
-							<?php HC()->share->display( $post->ID ); ?>
 						</div>
 					</div>
 				</div>

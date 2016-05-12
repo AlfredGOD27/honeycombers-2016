@@ -1487,11 +1487,11 @@ html {
   -webkit-animation-timing-function: steps(2);
           animation-timing-function: steps(2);
 }
-.animation-small.animation-calendar-orange, .animation-small.animation-connect-orange, .animation-small.animation-food-orange, .animation-small.animation-hacks-orange, .animation-small.animation-hitlist-orange, .animation-small.animation-recharge-orange, .animation-small.animation-shopping-orange, .animation-small.animation-video-orange, .animation-small.animation-win-orange, .animation-small.animation-calendar-white, .animation-small.animation-connect-white, .animation-small.animation-food-white, .animation-small.animation-hacks-white, .animation-small.animation-hitlist-white, .animation-small.animation-recharge-white, .animation-small.animation-shopping-white, .animation-small.animation-video-white, .animation-small.animation-win-white {
+.animation-small.run.animation-calendar-orange, .animation-small.run.animation-connect-orange, .animation-small.run.animation-food-orange, .animation-small.run.animation-hacks-orange, .animation-small.run.animation-hitlist-orange, .animation-small.run.animation-recharge-orange, .animation-small.run.animation-shopping-orange, .animation-small.run.animation-video-orange, .animation-small.run.animation-win-orange, .animation-small.run.animation-calendar-white, .animation-small.run.animation-connect-white, .animation-small.run.animation-food-white, .animation-small.run.animation-hacks-white, .animation-small.run.animation-hitlist-white, .animation-small.run.animation-recharge-white, .animation-small.run.animation-shopping-white, .animation-small.run.animation-video-white, .animation-small.run.animation-win-white {
   -webkit-animation-name: two-step-small;
           animation-name: two-step-small;
 }
-.animation-large.animation-calendar-orange, .animation-large.animation-connect-orange, .animation-large.animation-food-orange, .animation-large.animation-hacks-orange, .animation-large.animation-hitlist-orange, .animation-large.animation-recharge-orange, .animation-large.animation-shopping-orange, .animation-large.animation-video-orange, .animation-large.animation-win-orange, .animation-large.animation-calendar-white, .animation-large.animation-connect-white, .animation-large.animation-food-white, .animation-large.animation-hacks-white, .animation-large.animation-hitlist-white, .animation-large.animation-recharge-white, .animation-large.animation-shopping-white, .animation-large.animation-video-white, .animation-large.animation-win-white {
+.animation-large.run.animation-calendar-orange, .animation-large.run.animation-connect-orange, .animation-large.run.animation-food-orange, .animation-large.run.animation-hacks-orange, .animation-large.run.animation-hitlist-orange, .animation-large.run.animation-recharge-orange, .animation-large.run.animation-shopping-orange, .animation-large.run.animation-video-orange, .animation-large.run.animation-win-orange, .animation-large.run.animation-calendar-white, .animation-large.run.animation-connect-white, .animation-large.run.animation-food-white, .animation-large.run.animation-hacks-white, .animation-large.run.animation-hitlist-white, .animation-large.run.animation-recharge-white, .animation-large.run.animation-shopping-white, .animation-large.run.animation-video-white, .animation-large.run.animation-win-white {
   -webkit-animation-name: two-step-large;
           animation-name: two-step-large;
 }
@@ -1535,11 +1535,11 @@ html {
   -webkit-animation-timing-function: steps(3);
           animation-timing-function: steps(3);
 }
-.animation-small.animation-drinks-orange, .animation-small.animation-drinks-white {
+.animation-small.run.animation-drinks-orange, .animation-small.run.animation-drinks-white {
   -webkit-animation-name: three-step-small;
           animation-name: three-step-small;
 }
-.animation-large.animation-drinks-orange, .animation-large.animation-drinks-white {
+.animation-large.run.animation-drinks-orange, .animation-large.run.animation-drinks-white {
   -webkit-animation-name: three-step-large;
           animation-name: three-step-large;
 }
@@ -1583,11 +1583,11 @@ html {
   -webkit-animation-timing-function: steps(4);
           animation-timing-function: steps(4);
 }
-.animation-small.animation-directory-orange, .animation-small.animation-directory-white {
+.animation-small.run.animation-directory-orange, .animation-small.run.animation-directory-white {
   -webkit-animation-name: four-step-small;
           animation-name: four-step-small;
 }
-.animation-large.animation-directory-orange, .animation-large.animation-directory-white {
+.animation-large.run.animation-directory-orange, .animation-large.run.animation-directory-white {
   -webkit-animation-name: four-step-large;
           animation-name: four-step-large;
 }
@@ -1663,11 +1663,11 @@ html {
   -webkit-animation-timing-function: steps(6);
           animation-timing-function: steps(6);
 }
-.animation-small.animation-travel-orange, .animation-small.animation-travel-white {
+.animation-small.run.animation-travel-orange, .animation-small.run.animation-travel-white {
   -webkit-animation-name: six-step-small;
           animation-name: six-step-small;
 }
-.animation-large.animation-travel-orange, .animation-large.animation-travel-white {
+.animation-large.run.animation-travel-orange, .animation-large.run.animation-travel-white {
   -webkit-animation-name: six-step-large;
           animation-name: six-step-large;
 }
@@ -1677,8 +1677,6 @@ html {
   background-repeat: no-repeat;
   -webkit-transition: none;
           transition: none;
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
 }
 
 .animation-small {
@@ -3936,10 +3934,6 @@ table > tbody > tr:nth-child(odd) > th {
   color: #fe862c;
   font-size: 5em;
 }
-.main-menu .menu-col-links i:hover, .main-menu .menu-col-links i:focus {
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
-}
 .main-menu .menu-col-links ul {
   padding-right: 2em;
   border-right: 1px solid #fe862c;
@@ -4346,15 +4340,15 @@ table > tbody > tr:nth-child(odd) > th {
 }
 
 .header-default .entry-header .left {
-  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
   float: left;
-}
-.header-default .entry-header .left p {
-  font-size: .9em;
 }
 .header-default .entry-header .right {
   float: right;
+}
+.header-default .entry-header .right > p {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  font-size: .9em;
 }
 
 @media (max-width: 768px) {
@@ -5252,10 +5246,6 @@ table > tbody > tr:nth-child(odd) > th {
 .slider-nav .slick-slide {
   cursor: pointer;
 }
-.slider-nav .slick-slide:hover .category-icon, .slider-nav .slick-slide:focus .category-icon {
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
-}
 .slider-nav .outer {
   position: relative;
   margin-left: 2em;
@@ -5382,10 +5372,6 @@ table > tbody > tr:nth-child(odd) > th {
   padding-bottom: 1em;
   border-bottom: 1px solid #d7d7d7;
 }
-.subcategory-description:hover .category-icon, .subcategory-description:focus .category-icon {
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
-}
 .subcategory-description a {
   display: inline-block;
   color: inherit;
@@ -5502,10 +5488,6 @@ table > tbody > tr:nth-child(odd) > th {
 .archive-entry-small {
   overflow: hidden;
   margin-bottom: 2em;
-}
-.archive-entry-small:hover .category-icon, .archive-entry-small:focus .category-icon {
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
 }
 .archive-entry-small:hover img, .archive-entry-small:focus img {
   opacity: .75;
@@ -7163,10 +7145,6 @@ table > tbody > tr:nth-child(odd) > th {
   border-bottom: 1px solid #fe862c;
   background-color: #FFFFFF;
 }
-.event-slider-for .slide-content:hover .category-icon, .event-slider-for .slide-content:focus .category-icon {
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
-}
 .event-slider-for .slide-content .info {
   position: relative;
   -webkit-box-flex: 0;
@@ -7257,10 +7235,6 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .event-slider-nav .slick-slide {
   cursor: pointer;
-}
-.event-slider-nav .slick-slide:hover .category-icon, .event-slider-nav .slick-slide:focus .category-icon {
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
 }
 .event-slider-nav .outer {
   position: relative;
