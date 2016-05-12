@@ -71,6 +71,10 @@
 	word-wrap: break-word;
 	font-size: 1.75em;
 
+	.single-post & {
+		text-transform: uppercase;
+	}
+
 	a {
 		color: inherit;
 		text-decoration: none;

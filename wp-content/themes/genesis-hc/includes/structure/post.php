@@ -155,7 +155,7 @@ function hc_highlight_non_breaking_spaces( $content ) {
 
 }
 
-add_action( 'genesis_after_entry', 'hc_entry_subscribe_form', 6 );
+// add_action( 'genesis_after_entry', 'hc_entry_subscribe_form', 6 );
 function hc_entry_subscribe_form() {
 
 	if( !is_singular('post') )

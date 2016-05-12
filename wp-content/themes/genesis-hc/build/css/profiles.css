@@ -37,7 +37,7 @@ TYPOGRAPHY - http://cssfontstack.com/
 .profile-bookmarks-info p, .profile-boxes p {
   margin-bottom: 2em;
   letter-spacing: .01rem;
-  font-size: .95em;
+  font-size: .9em;
   line-height: 1.35;
 }
 .profile-bookmarks-info p:last-child, .profile-boxes p:last-child {

@@ -100,7 +100,7 @@ class HC_Related {
 			$i = 1;
 			foreach( $posts as $post ) {
 				echo 1 === $i % 4 ? '<div class="one-fourth first">' : '<div class="one-fourth">';
-					HC()->archives->display_entry( $post, $style );
+					HC()->archives->display_entry( $post, $style, false );
 				echo '</div>';
 				++$i;
 			}

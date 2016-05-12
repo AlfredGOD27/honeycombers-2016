@@ -329,7 +329,7 @@ class HC_Archives {
 
 	}
 
-	public function display_entry( $post_or_post_id, $style ) {
+	public function display_entry( $post_or_post_id, $style, $show_byline = true ) {
 
 		if( is_object($post_or_post_id) ) {
 			$post    = $post_or_post_id;
@@ -385,7 +385,7 @@ class HC_Archives {
 						?>
 					</div>
 
-					<div class="bottom <?php echo 'post' === $post->post_type ? 'roll-up' : ''; ?>">
+					<div class="bottom <?php echo 'post' === $post->post_type && $show_byline ? 'roll-up' : ''; ?>">
 						<h3 itemprop="headline">
 							<a href="<?php echo get_permalink( $post->ID ); ?>" rel="bookmark">
 								<?php echo HC()->entry->get_headline_title( $post->ID ); ?>
@@ -393,7 +393,7 @@ class HC_Archives {
 						</h3>
 
 						<?php
-						if( 'post' === $post->post_type ) {
+						if( 'post' === $post->post_type && $show_byline ) {
 							?>
 							<span class="author">
 								By
