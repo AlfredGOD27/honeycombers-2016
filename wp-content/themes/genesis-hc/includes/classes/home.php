@@ -135,8 +135,7 @@ class HC_Home {
 								<h3><?php echo $main_post->post_title; ?></h3>
 
 								<?php
-								if( !empty($main_post->post_excerpt) )
-									echo '<p>' . $main_post->post_excerpt . '</p>';
+								echo '<p>' . HC()->formatting->get_excerpt($main_post) . '</p>';
 								?>
 							</div>
 

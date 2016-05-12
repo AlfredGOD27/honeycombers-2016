@@ -100,6 +100,7 @@ class HC_Migration {
 			'where_address'         => '_hc_listing_address_text',
 			'entry_location_map'    => '_hc_listing_address_map',
 			'entry_headlinetitle_1' => '_hc_headline_title',
+			'entry_subtitle_1'      => '_hc_subtitle',
 		);
 
 		foreach( $keys as $from => $to ) {

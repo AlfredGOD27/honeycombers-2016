@@ -22,7 +22,7 @@ class HC_Formatting {
 		$content = strip_shortcodes( $content );
 		$content = sanitize_text_field( $content );
 
-		if( strlen($content) > $max_length ) {
+		if( $max_length > 0 && strlen($content) > $max_length ) {
 			$content = genesis_truncate_phrase( $content, $max_length - 3 );
 			$content = trim($content);
 
@@ -35,7 +35,10 @@ class HC_Formatting {
 
 	public function get_excerpt( $post, $max_length = 250 ) {
 
-		if( !empty($post->post_excerpt) ) {
+		$subtitle = get_post_meta( $post->ID, '_hc_subtitle', true );
+		if( !empty($subtitle) ) {
+			$content = $subtitle;
+		} elseif( !empty($post->post_excerpt) ) {
 			$content = $post->post_excerpt;
 		} else {
 			$seo_description = get_post_meta( $post->ID, '_yoast_wpseo_metadesc', true );

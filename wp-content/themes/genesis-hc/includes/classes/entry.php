@@ -211,7 +211,7 @@ class HC_Entry {
 
 		?>
 		<div class="entry-excerpt" itemprop="description">
-			<?php the_excerpt(); ?>
+			<?php HC()->formatting->get_excerpt($post, 0); ?>
 		</div>
 		<?php
 

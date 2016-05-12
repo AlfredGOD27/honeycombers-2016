@@ -335,7 +335,7 @@ class HC_Events {
 						array(
 							'action'   => 'TEMPLATE',
 							'text'     => urlencode( $post->post_title ),
-							'details'  => urlencode( $post->post_excerpt ),
+							'details'  => urlencode( HC()->formatting->get_excerpt($post) ),
 							'location' => urlencode( $venue ),
 							'dates'    => urlencode( $start . '/' . $end ),
 						),
