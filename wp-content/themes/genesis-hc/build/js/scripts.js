@@ -5053,7 +5053,7 @@ function onYouTubeIframeAPIReady() {
 	$(window).on(
 		'load',
 		function() {
-			$('.event-slider-nav .slick-slide, .event-slider-for .slide-content, .slider-nav .slick-slide, .subcategory-description, .archive-entry-small').on(
+			$('.event-slider-nav .slick-slide, .event-slider-for .slide-content, .slider-nav .slick-slide, .subcategory-description, .archive-entry-small, .home-section-trending a').on(
 				'mouseenter',
 				function() {
 					console.log($(this).find('.category-icon'));

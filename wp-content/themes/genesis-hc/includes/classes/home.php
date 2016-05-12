@@ -486,6 +486,7 @@ class HC_Home {
 						if( !has_post_thumbnail($post_id) )
 							continue;
 
+						$categories = wp_get_object_terms( $post_id, 'category' );
 						?>
 						<div>
 							<a href="<?php echo get_permalink($post_id); ?>">
@@ -498,6 +499,11 @@ class HC_Home {
 
 								<div class="overlay">
 									<div>
+										<?php
+										if( !empty($categories) )
+											echo HC()->utilities->get_category_icon_html( $categories[0], 'small', 'white' );
+										?>
+
 										<h3><?php echo HC()->entry->get_headline_title($post_id); ?></h3>
 									</div>
 								</div>

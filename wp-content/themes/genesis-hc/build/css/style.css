@@ -7359,6 +7359,10 @@ table > tbody > tr:nth-child(odd) > th {
 .home-section-trending .overlay div {
   width: 100%;
 }
+.home-section-trending .overlay .category-icon {
+  display: block;
+  margin: 0 auto .5em;
+}
 .home-section-trending .overlay h3 {
   text-transform: uppercase;
   font-size: .9em;
