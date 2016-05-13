@@ -31,7 +31,7 @@ class HC_Videos {
 	public function embed_oembed_html( $html, $data, $url ) {
 
 		// Extract YouTube ID
-		preg_match( '/src="https:\/\/www.youtube.com\/embed\/(\w+)/', $html, $matches );
+		preg_match( '/src="https:\/\/www.youtube.com\/embed\/([-\w]+)/', $html, $matches );
 		if( isset($matches[1]) ) {
 			$video_id = $matches[1];
 
