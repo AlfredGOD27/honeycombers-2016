@@ -25,6 +25,16 @@
 			vertical: true,
 		});
 
+		$('.listing-slider-nav .slick-slide').on(
+			'mouseenter',
+			function(e) {
+				var idx = $(e.currentTarget).data('slick-index'),
+					slick_obj = $('.listing-slider-for').slick('getSlick');
+
+				slick_obj.slickGoTo(idx);
+			}
+		);
+
 		$('.event-slider-for').slick({
 			adaptiveHeight: true,
 			arrows: false,
