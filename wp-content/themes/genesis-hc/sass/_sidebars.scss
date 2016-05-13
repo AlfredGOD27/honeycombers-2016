@@ -197,6 +197,11 @@
 	a {
 		color: $grey-lighter;
 		font-size: 3em;
+
+		&:hover,
+		&:focus {
+			color: $orange;
+		}
 	}
 }
 
