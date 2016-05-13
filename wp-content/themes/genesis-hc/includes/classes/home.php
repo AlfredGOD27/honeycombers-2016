@@ -258,37 +258,39 @@ class HC_Home {
 								foreach( $listings as $post_id ) {
 									?>
 									<div>
-										<div class="listing-slide-left">
-											<div class="inner">
-												<h3><?php echo HC()->entry->get_headline_title( $post_id ); ?></h3>
-											</div>
-										</div>
-
-										<div class="listing-slide-right">
-											<div class="inner">
-												<div class="left">
-													<i class="ico-pin-filled"></i>
-												</div>
-
-												<div class="right">
-													<div class="address">
-														<?php
-														$address = get_post_meta( $post_id, '_hc_listing_address_text', true );
-														if( !empty($address) )
-															echo sanitize_text_field($address);
-														?>
-													</div>
-
-													<div class="contact">
-														<?php
-														$contact = get_post_meta( $post_id, '_hc_listing_phone', true );
-														if( !empty($contact) )
-															echo sanitize_text_field($contact);
-														?>
-													</div>
+										<a href="<?php echo get_permalink($post_id); ?>">
+											<div class="listing-slide-left">
+												<div class="inner">
+													<h3><?php echo HC()->entry->get_headline_title( $post_id ); ?></h3>
 												</div>
 											</div>
-										</div>
+
+											<div class="listing-slide-right">
+												<div class="inner">
+													<div class="left">
+														<i class="ico-pin-filled"></i>
+													</div>
+
+													<div class="right">
+														<div class="address">
+															<?php
+															$address = get_post_meta( $post_id, '_hc_listing_address_text', true );
+															if( !empty($address) )
+																echo sanitize_text_field($address);
+															?>
+														</div>
+
+														<div class="contact">
+															<?php
+															$contact = get_post_meta( $post_id, '_hc_listing_phone', true );
+															if( !empty($contact) )
+																echo sanitize_text_field($contact);
+															?>
+														</div>
+													</div>
+												</div>
+											</div>
+										</a>
 									</div>
 									<?php
 								}
