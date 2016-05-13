@@ -5576,7 +5576,6 @@ function hc_maybe_load_facebook() {
 					slick_obj = $('.listing-slider-for').slick('getSlick');
 
 				slick_obj.slickGoTo(idx);
-//				$(this).trigger('click');
 			}
 		);
 

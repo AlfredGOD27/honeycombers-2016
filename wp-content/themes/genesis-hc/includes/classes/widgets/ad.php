@@ -13,12 +13,16 @@ class HC_Ad_Widget extends WP_Widget {
 
 		extract($args);
 
-		$code = get_field( '_hc_ad_code', 'widget_' . $widget_id );
-		if( empty($code) )
+		$position = get_field( '_hc_ad_position', 'widget_' . $widget_id );
+		if( empty($position) )
+			return;
+
+		$html = HC()->ads->get_ad_container( $position );
+		if( empty($html) )
 			return;
 
 		echo $before_widget;
-			echo $code;
+			echo $html;
 		echo $after_widget;
 
 	}
