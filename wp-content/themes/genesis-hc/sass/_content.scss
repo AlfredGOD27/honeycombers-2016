@@ -121,12 +121,19 @@
 
 .header-default {
 	.entry-header {
+		.entry-title {
+			margin-bottom: .5em;
+			padding-bottom: .35em;
+			border-bottom: 1px solid $grey-border;
+		}
+
 		.left {
 			float: left;
 		}
 
 		.right {
 			float: right;
+			text-align: right;
 
 			> p {
 				@include meta-font;
@@ -146,7 +153,6 @@
 
 			.right {
 				float: none;
-				text-align: right;
 			}
 		}
 	}
