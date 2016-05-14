@@ -132,7 +132,7 @@ class HC_Home {
 
 						<a href="<?php echo get_permalink($main_post_id); ?>" class="bottom clearfix">
 							<div class="left">
-								<h3><?php echo $main_post->post_title; ?></h3>
+								<h3><?php echo HC()->entry->get_headline_title( $main_post_id ); ?></h3>
 
 								<?php
 								echo '<p>' . HC()->formatting->get_excerpt($main_post) . '</p>';

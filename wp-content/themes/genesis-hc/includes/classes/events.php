@@ -564,7 +564,7 @@ class HC_Events {
 							if( !has_post_thumbnail($event->ID) )
 								continue;
 
-							$text = $event->post_title . ' ' . $event->post_content;
+							$text = HC()->entry->get_headline_title($event->ID) . ' ' . $event->post_content;
 							$text = sanitize_text_field($text);
 							$text = strtolower($text);
 
@@ -583,7 +583,7 @@ class HC_Events {
 									?>
 
 									<div class="inner">
-										<span class="title"><?php echo $event->post_title; ?></span>
+										<span class="title"><?php echo HC()->entry->get_headline_title($event->ID); ?></span>
 										<span class="date">
 											<?php
 											if( date( 'Ymd', $date['start_date'] ) !== date( 'Ymd', $date['end_date'] ) ) {

@@ -400,7 +400,7 @@ class HC_Listings {
 
 			$output['items'][] = array(
 				'id'               => $listing->ID,
-				'name'             => $listing->post_title,
+				'name'             => HC()->entry->get_headline_title($listing->ID),
 				'lat'              => round( $map['lat'], 3 ),
 				'lng'              => round( $map['lng'], 3 ),
 				'info_window_html' => $info_window_html,

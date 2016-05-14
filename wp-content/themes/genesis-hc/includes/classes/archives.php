@@ -350,8 +350,6 @@ class HC_Archives {
 					echo HC()->utilities->get_category_icon_html( $terms[0] );
 					HC()->folders->display_add_button( $post_id, true, true );
 
-					$title = HC()->entry->get_headline_title($post_id);
-
 					if( $has_image ) {
 						echo get_the_post_thumbnail($post_id, 'archive-small' );
 					} else {
@@ -361,7 +359,7 @@ class HC_Archives {
 					?>
 					<h3 itemprop="headline">
 						<a href="<?php echo get_permalink($post_id); ?>" rel="bookmark">
-							<?php echo $post->post_title; ?>
+							<?php echo HC()->entry->get_headline_title($post_id); ?>
 						</a>
 					</h3>
 					<?php
