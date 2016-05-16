@@ -516,8 +516,22 @@ class HC_Home {
 								<div class="overlay">
 									<div>
 										<?php
-										if( !empty($term) )
-											echo HC()->utilities->get_category_icon_html( $term, 'small', 'white' );
+										if( !empty($term) ) {
+											?>
+											<div class="hide-phone">
+												<?php
+												echo HC()->utilities->get_category_icon_html( $term, 'large', 'white' );
+												?>
+											</div>
+
+											<div class="show-phone">
+												<?php
+												echo HC()->utilities->get_category_icon_html( $term, 'small', 'white' );
+												?>
+											</div>
+											<?php
+										}
+
 										?>
 
 										<h3><?php echo HC()->entry->get_headline_title($post_id); ?></h3>
