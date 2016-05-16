@@ -134,10 +134,6 @@ class HC_Authors {
 		if( !is_single() )
 			return;
 
-		$user_id = get_the_author_meta( 'ID' );
-		if( !get_the_author_meta( 'genesis_author_box_single', $user_id ) )
-			return;
-
 		$this->do_author_box( 'single' );
 
 	}
