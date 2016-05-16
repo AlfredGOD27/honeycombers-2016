@@ -25,6 +25,18 @@ class HC_Ads {
 
 	}
 
+	private function ad_field_to_array( $field ) {
+
+		if( empty($field[0]['id']) )
+			return false;
+
+		return array(
+			'id'   => $this->sanitize_ad_id( $field[0]['id'] ),
+			'name' => $field[0]['name'],
+		);
+
+	}
+
 	public function setup_applicable_ads() {
 
 		global $post;
@@ -40,19 +52,67 @@ class HC_Ads {
 			}
 		} elseif( is_search() ) {
 			// Search Ads
-
 			$ads = get_field( '_hc_search_mpu_1', 'option' );
-			if( !empty($ads) ) {
-				$ad                 = array_pop($ads);
-				$this->ads['mpu-1'] = array(
-					'id'   => $this->sanitize_ad_id( $ad['id'] ),
-					'name' => $ad['name'],
-				);
-			}
+			$ad  = $this->ad_field_to_array( $ads );
+			if( false !== $ad )
+				$this->ads['mpu-1'] = $ad;
 		} elseif( is_author() ) {
 			// Author Ads
+			$ads = get_field( '_hc_author_mpu_1', 'option' );
+			$ad  = $this->ad_field_to_array( $ads );
+			if( false !== $ad )
+				$this->ads['mpu-1'] = $ad;
+		} elseif( is_singular('post') ) {
+			// Post Ads
+			$ads = array(
+				'mpu-1' => '_hc_mpu_1',
+				'mpu-2' => '_hc_mpu_2',
+			);
+
+			foreach( $ads as $position => $key ) {
+				$ads    = get_field( $key );
+				$result = $this->ad_field_to_array( $ads );
+				if( false !== $result ) {
+					$this->ads[$position] = $result;
+				} else {
+					$term = HC()->utilities->get_primary_term( $post->ID, 'category' );
+					if( !empty($term) ) {
+						$ads    = get_field( $key, $term );
+						$result = $this->ad_field_to_array( $ads );
+						if( false !== $result ) {
+							$this->ads[$position] = $result;
+						} elseif( $term->parent > 0 ) {
+							$parent = get_term_by( 'id', $term->parent, $term->taxonomy );
+							$ads    = get_field( $key, $parent );
+							$result = $this->ad_field_to_array( $ads );
+							if( false !== $result )
+								$this->ads[$position] = $result;
+						}
+					}
+				}
+			}
 		} elseif( is_archive() ) {
 			// Archive Ads
+			$term = get_queried_object();
+
+			$ads = array(
+				'mpu-1' => '_hc_mpu_1',
+				'mpu-2' => '_hc_mpu_2',
+			);
+
+			foreach( $ads as $position => $key ) {
+				$ads    = get_field( $key, $term );
+				$result = $this->ad_field_to_array( $ads );
+				if( false !== $result ) {
+					$this->ads[$position] = $result;
+				} elseif( $term->parent > 0 ) {
+					$parent = get_term_by( 'id', $term->parent, $term->taxonomy );
+					$ads    = get_field( $key, $parent );
+					$result = $this->ad_field_to_array( $ads );
+					if( false !== $result )
+						$this->ads[$position] = $result;
+				}
+			}
 		}
 
 	}
