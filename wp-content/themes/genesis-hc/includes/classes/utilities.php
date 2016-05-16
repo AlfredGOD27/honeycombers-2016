@@ -45,6 +45,25 @@ class HC_Utilities {
 
 	}
 
+	public function get_primary_term( $post_id, $taxonomy ) {
+
+		// If a primary term if set, try getting it directly...
+		$primary_term_id = get_post_meta( $post_id, '_yoast_wpseo_primary_category', true );
+		if( !empty($primary_term_id) ) {
+			$term = get_term_by( 'id', absint($primary_term_id), $taxonomy );
+			if( !empty($term) && !is_wp_error($term) )
+				return $term;
+		}
+
+		// ...otherwise, take the first term in the taxonomy
+		$terms = wp_get_object_terms( $post_id, $taxonomy );
+		if( empty($terms) )
+			return;
+
+		return $terms[0];
+
+	}
+
 }
 
 return new HC_Utilities();

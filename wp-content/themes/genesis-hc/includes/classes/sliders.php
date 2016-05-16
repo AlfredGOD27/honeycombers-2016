@@ -5,26 +5,28 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HC_Sliders {
 	private function display_post_content( $post_id, $max_chars = false ) {
 
-		$terms = false;
+		$term = false;
 		switch( get_post_type($post_id) ) {
 			case 'post':
-				$terms = wp_get_object_terms( $post_id, 'category' );
+				$term = HC()->utilities->get_primary_term( $post_id, 'category' );
 				break;
 			case 'event':
-				$terms = wp_get_object_terms( $post_id, 'event-category' );
+				$term = HC()->utilities->get_primary_term( $post_id, 'event-category' );
 				break;
 			case 'listing':
-				$terms = wp_get_object_terms( $post_id, 'directories' );
+				$term = HC()->utilities->get_primary_term( $post_id, 'directories' );
 				break;
 		}
 
-		echo '<div class="white">';
-			echo HC()->utilities->get_category_icon_html( $terms[0], 'small', 'white' );
-		echo '</div>';
+		if( !empty($term) ) {
+			echo '<div class="white">';
+				echo HC()->utilities->get_category_icon_html( $term, 'small', 'white' );
+			echo '</div>';
 
-		echo '<div class="orange">';
-			echo HC()->utilities->get_category_icon_html( $terms[0], 'small', 'orange' );
-		echo '</div>';
+			echo '<div class="orange">';
+				echo HC()->utilities->get_category_icon_html( $term, 'small', 'orange' );
+			echo '</div>';
+		}
 
 		if( false === $max_chars ) {
 			echo '<span>' . HC()->entry->get_headline_title( $post_id ) . '</span>';

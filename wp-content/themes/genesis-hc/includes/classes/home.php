@@ -371,17 +371,17 @@ class HC_Home {
 
 									<div class="name">
 										<?php
-										$categories = wp_get_object_terms( $post_id, 'event-category' );
-										if( !empty($categories) )
-											echo '<span class="cat">' . $categories[0]->name . '</span>';
+										$term = HC()->utilities->get_primary_term( $post_id, 'event-category' );
+										if( !empty($term) )
+											echo '<span class="cat">' . $term->name . '</span>';
 
 										echo '<span class="title">' . HC()->entry->get_headline_title( $post_id ) . '</span>';
 										?>
 									</div>
 
 									<?php
-									if( !empty($categories) )
-										echo HC()->utilities->get_category_icon_html( $categories[0] );
+									if( !empty($term) )
+										echo HC()->utilities->get_category_icon_html( $term );
 									?>
 								</div>
 							</div>
@@ -409,17 +409,17 @@ class HC_Home {
 
 										<div class="name">
 											<?php
-											$categories = wp_get_object_terms( $post_id, 'event-category' );
-											if( !empty($categories) )
-												echo '<span class="cat">' . $categories[0]->name . '</span>';
+											$term = HC()->utilities->get_primary_term( $post_id, 'event-category' );
+											if( !empty($term) )
+												echo '<span class="cat">' . $term->name . '</span>';
 
 											echo '<span class="title">' . HC()->entry->get_headline_title( $post_id ) . '</span>';
 											?>
 										</div>
 
 										<?php
-										if( !empty($categories) )
-											echo HC()->utilities->get_category_icon_html( $categories[0] );
+										if( !empty($term) )
+											echo HC()->utilities->get_category_icon_html( $term );
 										?>
 									</div>
 								</div>
@@ -488,7 +488,7 @@ class HC_Home {
 						if( !has_post_thumbnail($post_id) )
 							continue;
 
-						$categories = wp_get_object_terms( $post_id, 'category' );
+						$term = HC()->utilities->get_primary_term( $post_id, 'category' );
 						?>
 						<div>
 							<a href="<?php echo get_permalink($post_id); ?>">
@@ -502,8 +502,8 @@ class HC_Home {
 								<div class="overlay">
 									<div>
 										<?php
-										if( !empty($categories) )
-											echo HC()->utilities->get_category_icon_html( $categories[0], 'small', 'white' );
+										if( !empty($term) )
+											echo HC()->utilities->get_category_icon_html( $term, 'small', 'white' );
 										?>
 
 										<h3><?php echo HC()->entry->get_headline_title($post_id); ?></h3>

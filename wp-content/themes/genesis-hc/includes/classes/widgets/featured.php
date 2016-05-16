@@ -86,10 +86,10 @@ class HC_Featured_Widget extends WP_Widget {
 
 									<div class="right clearfix">
 										<?php
-										$terms = wp_get_object_terms( $post_id, 'event-category' );
-										if( !empty($terms) ) {
+										$term = HC()->utilities->get_primary_term( $post_id, 'event-category' );
+										if( !empty($term) ) {
 											?>
-											<p><?php echo $terms[0]->name; ?></p>
+											<p><?php echo $term->name; ?></p>
 											<?php
 										}
 										?>
