@@ -278,35 +278,6 @@
             "return_format": "id"
         },
         {
-            "key": "field_57013fca241c3",
-            "label": "Ad Code",
-            "name": "_hc_home_picks_ad_code",
-            "type": "textarea",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_57051bd0118b7",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
             "key": "field_56fed17b408c1",
             "label": "Video",
             "name": "video",
@@ -890,35 +861,6 @@
             "maxlength": "",
             "readonly": 0,
             "disabled": 0
-        },
-        {
-            "key": "field_5702f661aa6e0",
-            "label": "Banner Ad",
-            "name": "_hc_home_banner_ad",
-            "type": "textarea",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_57051bf9118bc",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": "",
-            "readonly": 0,
-            "disabled": 0
         }
     ],
     "location": [
@@ -940,5 +882,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1462808798
+    "modified": 1463427519
 }

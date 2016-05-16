@@ -76,19 +76,24 @@ class HC_Home {
 
 		global $post;
 
-		$ad_code = get_post_meta( $post->ID, '_hc_home_picks_ad_code', true );
+		$mpu_1 = HC()->ads->get_ad_container( 'mpu-1' );
+		$mpu_2 = HC()->ads->get_ad_container( 'mpu-2' );
 
 		$i = 1;
 		foreach( $post_ids as $post_id ) {
 			echo 1 === $i % 2 ? '<div class="pull-left item item-' . $i . '">' : '<div class="pull-right item item-' . $i . '">';
-				if( 2 === $i && !empty($ad_code) ) {
-						echo $ad_code;
-					echo '</div>';
-					++$i;
-					echo 1 === $i % 2 ? '<div class="pull-left item item-' . $i . '">' : '<div class="pull-right item item-' . $i . '">';
-				}
+				if( 4 === $i && !empty($mpu_2) ) {
+					echo $mpu_2;
+				} else {
+					if( 2 === $i && !empty($mpu_1) ) {
+							echo $mpu_1;
+						echo '</div>';
+						++$i;
+						echo 1 === $i % 2 ? '<div class="pull-left item item-' . $i . '">' : '<div class="pull-right item item-' . $i . '">';
+					}
 
-				HC()->archives->display_entry( $post_id, 'tiny' );
+					HC()->archives->display_entry( $post_id, 'tiny' );
+				}
 			echo '</div>';
 			++$i;
 		}
@@ -456,6 +461,15 @@ class HC_Home {
 						</div>
 						<?php
 					}
+				} else {
+					$ad = HC()->ads->get_ad_container( 'signed-in' );
+					if( !empty($ad) ) {
+						?>
+						<div class="one-fourth right">
+							<?php echo $ad; ?>
+						</div>
+						<?php
+					}
 				}
 				?>
 			</div>
@@ -568,7 +582,7 @@ class HC_Home {
 		<section class="home-section home-section-latest-posts">
 			<div class="wrap">
 				<?php
-				$ad = get_post_meta( $post->ID, '_hc_home_banner_ad', true );
+				$ad = HC()->ads->get_ad_container( 'leaderboard-1' );
 				if( !empty($ad) )
 					echo '<div class="banner">' . $ad . '</div>';
 				?>

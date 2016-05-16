@@ -45,6 +45,19 @@ class HC_Ads {
 			switch( get_page_template_slug($post->ID) ) {
 				case 'page_templates/page_home.php':
 					// Home Ads
+					$ads = array(
+						'mpu-1'         => '_hc_home_mpu_1',
+						'mpu-2'         => '_hc_home_mpu_2',
+						'signed-in'     => '_hc_home_signed_in_ad',
+						'leaderboard-1' => '_hc_home_leaderboard',
+					);
+
+					foreach( $ads as $position => $key ) {
+						$ads    = get_field( $key );
+						$result = $this->ad_field_to_array( $ads );
+						if( false !== $result )
+							$this->ads[$position] = $result;
+					}
 					break;
 				case 'page_templates/page_calendar.php':
 					// Calendar Ads
