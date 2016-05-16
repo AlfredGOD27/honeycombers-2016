@@ -24,7 +24,6 @@
 			$('.event-slider-nav .slick-slide, .event-slider-for .slide-content, .slider-nav .slick-slide, .subcategory-description, .archive-entry-small, .home-section-trending a').on(
 				'mouseenter',
 				function() {
-					console.log($(this).find('.category-icon'));
 					reset_animation( $(this).find('.category-icon') );
 				}
 			);
