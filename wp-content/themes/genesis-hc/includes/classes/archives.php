@@ -340,6 +340,23 @@ class HC_Archives {
 		}
 
 		$has_image = has_post_thumbnail($post_id);
+		if( $has_image ) {
+			switch( $style ) {
+				case 'tiny':
+				case 'small':
+					$image_size = 'archive-small';
+					break;
+				case 'medium':
+					$image_size = 'archive';
+					break;
+				case 'large':
+					$image_size = 'archive-large';
+					break;
+			}
+
+			$image_html = get_the_post_thumbnail($post_id, $image_size );
+			$has_image  = !empty($image_html);
+		}
 
 		?>
 		<article class="clearfix archive-entry archive-entry-<?php echo $style; ?> <?php echo $has_image ? 'has-image' : 'no-image'; ?>" itemscope itemtype="http://schema.org/CreativeWork">
@@ -351,7 +368,7 @@ class HC_Archives {
 					HC()->folders->display_add_button( $post_id, true, true );
 
 					if( $has_image ) {
-						echo get_the_post_thumbnail($post_id, 'archive-small' );
+						echo $image_html;
 					} else {
 						echo '<div class="placeholder small"></div>';
 					}
@@ -376,7 +393,7 @@ class HC_Archives {
 						HC()->folders->display_add_button( $post->ID, true, true );
 
 						if( $has_image ) {
-							echo get_the_post_thumbnail( $post->ID, 'archive-small' );
+							echo $image_html;
 						} else {
 							echo '<div class="placeholder small"></div>';
 						}
@@ -414,7 +431,7 @@ class HC_Archives {
 						HC()->folders->display_add_button( $post->ID, true, true );
 
 						if( $has_image ) {
-							echo get_the_post_thumbnail( $post->ID, 'archive' );
+							echo $image_html;
 						} else {
 							echo '<div class="placeholder medium"></div>';
 						}
@@ -432,7 +449,7 @@ class HC_Archives {
 					<div class="one-half first">
 						<?php
 						if( $has_image ) {
-							echo get_the_post_thumbnail( $post->ID, 'archive-large' );
+							echo $image_html;
 						} else {
 							echo '<div class="placeholder large"></div>';
 						}
