@@ -2147,6 +2147,9 @@ img.alignright,
   font-weight: 600;
   font-size: .85em;
 }
+.wp-caption .wp-caption-text:last-child {
+  margin-bottom: 1.25em;
+}
 
 .basic-slider {
   margin-bottom: 1.5em;
@@ -4310,7 +4313,7 @@ table > tbody > tr:nth-child(odd) > th {
   }
 }
 .date-row {
-  margin-bottom: 1.75em;
+  margin-bottom: 1em;
   font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
 }
 

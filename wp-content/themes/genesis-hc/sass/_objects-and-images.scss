@@ -66,6 +66,10 @@ img.alignright,
 		text-align: center;
 		font-weight: 600;
 		font-size: .85em;
+
+		&:last-child {
+			margin-bottom: $spacer;
+		}
 	}
 }
 
