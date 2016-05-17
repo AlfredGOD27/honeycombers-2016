@@ -409,9 +409,8 @@ class HC_Listings {
 			++$i;
 		}
 
-		$count             = count($output['items']);
-		$count             = $this->results_per_page === $count ? $count . '+' : $count;
-		$output['heading'] = $count . ' Directory ' .  _n('Result', 'Results', count($output['items']) );
+		$count = count($output['items']);
+		$count = $this->results_per_page === $count ? $count . '+' : $count;
 
 		echo json_encode($output);
 		wp_die();

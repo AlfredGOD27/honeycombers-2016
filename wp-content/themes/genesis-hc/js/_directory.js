@@ -120,8 +120,6 @@ function hc_directory_maps() {
 						els.results.html( '<div class="alert alert-' + data.status + '">' + data.message + '</div>' );
 						break;
 					case 'success':
-						els.results.append( '<h2>' + data.heading + '</h2>' );
-
 						script_event = true;
 
 						// Add each marker

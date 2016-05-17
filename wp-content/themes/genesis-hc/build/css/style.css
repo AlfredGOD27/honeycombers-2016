@@ -2924,6 +2924,25 @@ input[type='search'] {
 .button-nav.show-all .view-all {
   display: none;
 }
+.button-nav.button-nav-above .sub {
+  top: auto;
+  right: 50%;
+  bottom: 110%;
+  bottom: calc(100% + 1em);
+}
+.button-nav.button-nav-above .sub:before, .button-nav.button-nav-above .sub:after {
+  top: 100%;
+  bottom: auto;
+  border-width: 0 1em 1em 0;
+  border-bottom-color: transparent;
+}
+.button-nav.button-nav-above .sub:before {
+  border-right-color: #fe862c;
+}
+.button-nav.button-nav-above .sub:after {
+  margin-top: -2px;
+  border-right-color: #FFFFFF;
+}
 .button-nav .sub {
   position: absolute;
   top: 110%;
@@ -6057,7 +6076,7 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .directory-search h2 {
   text-transform: uppercase;
-  font-size: 1.25em;
+  font-size: 1.1em;
 }
 
 @media (max-width: 768px) {
@@ -6076,7 +6095,7 @@ table > tbody > tr:nth-child(odd) > th {
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
           flex-shrink: 0;
-  margin-bottom: 1em;
+  margin-bottom: .75em;
   padding: 1em 2em .25em;
   background-color: #fad9bd;
 }
@@ -6109,6 +6128,11 @@ table > tbody > tr:nth-child(odd) > th {
   pointer-events: none;
 }
 .directory-search-form input[type='search'],
+.directory-search-form input[type='text'],
+.directory-search-form select.styled {
+  font-size: .75em;
+}
+.directory-search-form input[type='search'],
 .directory-search-form input[type='text'] {
   border: none;
 }
@@ -6118,6 +6142,7 @@ table > tbody > tr:nth-child(odd) > th {
 .directory-search-form input[type='submit'] {
   padding: .5em;
   width: 100%;
+  font-size: .9em;
 }
 
 @media (max-width: 768px) {
@@ -6162,9 +6187,6 @@ table > tbody > tr:nth-child(odd) > th {
           flex-shrink: 1;
   overflow-y: scroll;
   padding: 1.5em;
-}
-.directory-search-results h2 {
-  margin-bottom: .5em;
 }
 
 .listing-result {
@@ -6555,6 +6577,7 @@ table > tbody > tr:nth-child(odd) > th {
       -ms-flex-align: center;
           align-items: center;
   padding: .35em .75em;
+  min-height: 9.6em;
   border-top: 3px solid #fe862c;
   color: inherit;
   text-decoration: none;
@@ -6615,6 +6638,7 @@ table > tbody > tr:nth-child(odd) > th {
   .main-pick .bottom {
     display: block;
     padding: 1em 1.5em;
+    min-height: 0;
   }
   .main-pick .left {
     float: none;

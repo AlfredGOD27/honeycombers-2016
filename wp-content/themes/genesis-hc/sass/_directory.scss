@@ -109,7 +109,7 @@
 
 	h2 {
 		text-transform: uppercase;
-		font-size: 1.25em;
+		font-size: 1.1em;
 	}
 }
 
@@ -125,7 +125,7 @@
 .directory-search-form {
 	flex-grow: 0;
 	flex-shrink: 0;
-	margin-bottom: 1em;
+	margin-bottom: .75em;
 	padding: 1em 2em .25em;
 	background-color: $orange-light;
 
@@ -160,6 +160,12 @@
 	}
 
 	input[type='search'],
+	input[type='text'],
+	select.styled {
+		font-size: .75em;
+	}
+
+	input[type='search'],
 	input[type='text'] {
 		border: none;
 	}
@@ -167,6 +173,7 @@
 	.btn {
 		padding: .5em;
 		width: 100%;
+		font-size: .9em;
 	}
 }
 
@@ -216,10 +223,6 @@
 	flex-shrink: 1;
 	overflow-y: scroll;
 	padding: 1.5em;
-
-	h2 {
-		margin-bottom: .5em;
-	}
 }
 
 .listing-result {

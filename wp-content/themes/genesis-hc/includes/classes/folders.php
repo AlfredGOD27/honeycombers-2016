@@ -46,6 +46,7 @@ class HC_Folders {
 	public function display_add_button( $post_id, $icon_only = false, $use_modal = false ) {
 
 		$post_id = absint($post_id);
+		$label   = 'listing' === get_post_type( $post_id ) ? 'Save Venue' : 'Save Article';
 
 		if( is_user_logged_in() ) {
 			$folder_ids = $this->get_user_folder_ids( get_current_user_id() );
@@ -93,7 +94,7 @@ class HC_Folders {
 						<?php
 						if( !$icon_only ) {
 							?>
-							<span>Save article</span>
+							<span><?php echo $label; ?></span>
 							<?php
 						}
 						?>
@@ -149,7 +150,7 @@ class HC_Folders {
 					<?php
 					if( !$icon_only ) {
 						?>
-						<span>+ Save to Favorites</span>
+						<span><?php echo $label; ?></span>
 						<?php
 					}
 					?>

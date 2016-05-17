@@ -92,7 +92,7 @@ class HC_Ratings {
 		if( is_user_logged_in() ) {
 			$current_rating = $this->get_user_rating_for_item( $post_id, get_current_user_id() );
 			?>
-			<nav class="button-nav ratings-nav">
+			<nav class="button-nav button-nav-above ratings-nav">
 				<button class="calendar-button btn btn-icon">
 					<i class="ico-star-o"></i>
 					<?php
