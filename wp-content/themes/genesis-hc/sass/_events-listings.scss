@@ -102,10 +102,19 @@
 .post-event-popup {
 	max-width: 50em;
 
+	.ico-favicon {
+		font-size: 3.5em;
+	}
+
+	h2 {
+		font-size: 1.25em;
+	}
+
 	.lead {
-		margin-bottom: 1.25em;
-		padding-bottom: 1.5em;
+		margin-bottom: 1em;
+		padding-bottom: 1.25em;
 		border-bottom: 1px solid $grey-border;
+		font-size: .85em;
 	}
 
 	.inner {
@@ -155,13 +164,6 @@
 	.btn {
 		margin-bottom: .5em;
 		width: 100%;
-	}
-
-	.more-info {
-		display: block;
-		text-decoration: none;
-		font-size: .75em;
-		line-height: 1;
 	}
 }
 

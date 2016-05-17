@@ -554,7 +554,6 @@ class HC_Events {
 							echo HC()->utilities->get_category_icon_html( $term );
 							?>
 							<h2 class="archive-title"><?php echo $term->name; ?></h2>
-							<i class="ico-arrow-right-circle"></i>
 						</a>
 					</div>
 
@@ -718,16 +717,14 @@ class HC_Events {
 
 						if( $logged_in ) {
 							?>
-							<a href="<?php echo $url; ?>" class="btn">Select</a>
+							<a href="<?php echo $url; ?>" class="btn">Enquire</a>
 							<?php
 						} else {
 							?>
-							<button type="button" class="btn open-popup-link" data-mfp-src="#login-popup" data-redirect="<?php echo $url; ?>">Select</button>
+							<button type="button" class="btn open-popup-link" data-mfp-src="#login-popup" data-redirect="<?php echo $url; ?>">Enquire</button>
 							<?php
 						}
 						?>
-
-						<a href="#" class="more-info">Get in touch for more info</a>
 					</div>
 				</div>
 
@@ -746,7 +743,7 @@ class HC_Events {
 					</div>
 
 					<div class="bottom">
-						<a href="/contact-us/" class="btn">Select</a>
+						<a href="/contact-us/" class="btn">Enquire</a>
 					</div>
 				</div>
 			</div>

@@ -671,6 +671,7 @@ img.mfp-img {
   outline: none;
   background: transparent;
   color: #3a3a3a;
+  font-style: normal;
   font-size: .75em;
   cursor: pointer;
 }
@@ -5412,8 +5413,7 @@ table > tbody > tr:nth-child(odd) > th {
   text-decoration: none;
 }
 .subcategory-description .category-icon,
-.subcategory-description .archive-title,
-.subcategory-description .ico-arrow-right-circle {
+.subcategory-description .archive-title {
   display: inline-block;
   vertical-align: middle;
 }
@@ -5424,9 +5424,7 @@ table > tbody > tr:nth-child(odd) > th {
 .subcategory-description .archive-title {
   margin-right: .5em;
   margin-left: .5em;
-}
-.subcategory-description .ico-arrow-right-circle {
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 .archive-entry {
@@ -5923,7 +5921,7 @@ table > tbody > tr:nth-child(odd) > th {
 .event-slide .title,
 .event-slide .date {
   display: block;
-  font-size: .9em;
+  font-size: .85em;
 }
 .event-slide .title {
   text-transform: uppercase;
@@ -6325,10 +6323,17 @@ table > tbody > tr:nth-child(odd) > th {
 .post-event-popup {
   max-width: 50em;
 }
+.post-event-popup .ico-favicon {
+  font-size: 3.5em;
+}
+.post-event-popup h2 {
+  font-size: 1.25em;
+}
 .post-event-popup .lead {
-  margin-bottom: 1.25em;
-  padding-bottom: 1.5em;
+  margin-bottom: 1em;
+  padding-bottom: 1.25em;
   border-bottom: 1px solid #d7d7d7;
+  font-size: .85em;
 }
 .post-event-popup .inner {
   display: -webkit-box;
@@ -6393,12 +6398,6 @@ table > tbody > tr:nth-child(odd) > th {
 .post-event-popup input[type='submit'] {
   margin-bottom: .5em;
   width: 100%;
-}
-.post-event-popup .more-info {
-  display: block;
-  text-decoration: none;
-  font-size: .75em;
-  line-height: 1;
 }
 
 @media (max-width: 768px) {

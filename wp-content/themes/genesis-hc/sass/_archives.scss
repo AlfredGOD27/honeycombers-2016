@@ -378,8 +378,7 @@ $slider-height: 25em;
 	}
 
 	.category-icon,
-	.archive-title,
-	.ico-arrow-right-circle {
+	.archive-title {
 		display: inline-block;
 		vertical-align: middle;
 	}
@@ -392,10 +391,7 @@ $slider-height: 25em;
 	.archive-title {
 		margin-right: .5em;
 		margin-left: .5em;
-	}
-
-	.ico-arrow-right-circle {
-		font-size: 1.5em;
+		font-size: 1.25em;
 	}
 }
 

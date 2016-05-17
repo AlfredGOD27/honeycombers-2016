@@ -3,6 +3,27 @@
     "title": "Events \/\/ Options",
     "fields": [
         {
+            "key": "field_573b96a3e799e",
+            "label": "Headline Title",
+            "name": "_hc_headline_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
             "key": "field_57210b0d02ba4",
             "label": "Submitter",
             "name": "_hc_event_submitter_id",
@@ -267,5 +288,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1461783335
+    "modified": 1463522993
 }
