@@ -4322,6 +4322,9 @@ table > tbody > tr:nth-child(odd) > th {
 .single-post .entry-title {
   text-transform: uppercase;
 }
+.page .entry-title {
+  font-size: 1.5em;
+}
 .entry-title a {
   color: inherit;
   text-decoration: none;
@@ -6237,7 +6240,7 @@ table > tbody > tr:nth-child(odd) > th {
 .single-listing .entry-meta {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  font-size: .95em;
+  font-size: .85em;
 }
 .single-event .entry-meta a,
 .single-listing .entry-meta a {
@@ -6262,7 +6265,7 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .item-data dd {
   width: 85%;
-  font-size: .95em;
+  font-size: .85em;
 }
 .item-data a {
   color: inherit;

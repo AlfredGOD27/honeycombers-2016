@@ -342,7 +342,7 @@ class HC_Events {
 						'http://www.google.com/calendar/event'
 					);
 					?>
-					<a href="<?php echo $url; ?>" class="calendar-button btn btn-icon" target="_blank"><i class="ico-calendar"></i> <span>+ Calendar</span></a>
+					<a href="<?php echo $url; ?>" class="calendar-button btn btn-icon" target="_blank"><i class="ico-calendar"></i> <span>Add to Google Calendar</span></a>
 				</div>
 
 				<?php printf( '<div %s>', genesis_attr( 'entry-content' ) ); ?>
