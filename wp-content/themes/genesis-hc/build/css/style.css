@@ -4579,6 +4579,8 @@ table > tbody > tr:nth-child(odd) > th {
 
 .author-box {
   margin-bottom: 2em;
+  padding-top: 1.25em;
+  border-top: 1px solid #d7d7d7;
 }
 .author-box img {
   display: block;
@@ -5041,7 +5043,9 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .author .author-box {
   margin-bottom: 1em;
+  padding-top: 0;
   padding-bottom: 1em;
+  border-top: none;
   border-bottom: 1px solid #d7d7d7;
 }
 .author .author-box .inner {
@@ -6550,7 +6554,7 @@ table > tbody > tr:nth-child(odd) > th {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: .5em .75em;
+  padding: .35em .75em;
   border-top: 3px solid #fe862c;
   color: inherit;
   text-decoration: none;

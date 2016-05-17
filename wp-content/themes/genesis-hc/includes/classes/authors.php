@@ -78,7 +78,7 @@ class HC_Authors {
 					$gravatar = get_avatar( get_the_author_meta( 'email' ), 120 );
 
 					$html .= '<div class="clearfix">';
-						$html .= '<div class="left one-fourth first">';
+						$html .= '<div class="left one-sixth first">';
 							$html .= '<figure>';
 								$html .= $gravatar;
 
@@ -88,7 +88,7 @@ class HC_Authors {
 							$html .= '</figure>';
 						$html .= '</div>';
 
-						$html .= '<div class="right three-fourths">';
+						$html .= '<div class="right five-sixths">';
 							$html .= '<h4 class="author-box-title">' . $title . '</h4>';
 							$html .= '<div class="author-box-content entry-content" itemprop="description">';
 								$html .= $description;

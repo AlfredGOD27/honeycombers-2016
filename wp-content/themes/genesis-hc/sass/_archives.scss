@@ -3,7 +3,9 @@ $slider-height: 25em;
 .author {
 	.author-box {
 		margin-bottom: 1em;
+		padding-top: 0;
 		padding-bottom: 1em;
+		border-top: none;
 		border-bottom: 1px solid $grey-border;
 
 		> .wrap {
