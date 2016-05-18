@@ -127,6 +127,13 @@
 
 				if( 'success' === data.status ) {
 					self.find('input, button').prop('disabled', true);
+
+					setTimeout(
+						function() {
+							$.magnificPopup.close();
+						},
+						1500
+					);
 				} else {
 					reset_captcha();
 				}
