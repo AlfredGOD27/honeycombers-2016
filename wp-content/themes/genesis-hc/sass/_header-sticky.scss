@@ -10,10 +10,10 @@
 		width: 100%;
 		transition: transform $transition-time;
 		transform: translateY(-100%);
-	}
 
-	.admin-bar & {
-		top: 32px;
+		.admin-bar & {
+			top: 32px;
+		}
 	}
 
 	&.show {

@@ -3519,7 +3519,7 @@ table > tbody > tr:nth-child(odd) > th {
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
 }
-.admin-bar .sticky-header {
+.admin-bar .sticky-header.use-sticky {
   top: 32px;
 }
 .sticky-header.show {

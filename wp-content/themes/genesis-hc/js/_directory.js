@@ -18,7 +18,8 @@ function hc_directory_maps() {
 			center: new google.maps.LatLng( hc_directory_coords.lat, hc_directory_coords.lng )
 		},
 		use_map = !im.lessThan('portrait'),
-		script_event = true;
+		script_event = true,
+		loaded_initial_location = false;
 
 	function reset() {
 
@@ -190,6 +191,22 @@ function hc_directory_maps() {
 
 	}
 
+	function set_to_current_position() {
+
+		loaded_initial_location = true;
+
+		if( !navigator.geolocation )
+			return;
+
+		navigator.geolocation.getCurrentPosition(
+			function( position ) {
+				map.setCenter( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
+				get_from_map();
+			}
+		);
+
+	}
+
 	// Update on search
 	els.form.on( 'submit', get_from_form );
 
@@ -197,10 +214,14 @@ function hc_directory_maps() {
 	if( use_map ) {
 		map = new google.maps.Map( els.map[0], map_settings );
 		google.maps.event.addListener(map, 'idle', function() {
-			if( !script_event ) {
-			    get_from_map();
-
+			if( !loaded_initial_location ) {
+				set_to_current_position();
+			} else {
+				if( !script_event ) {
+				    get_from_map();
+				}
 			}
+
 			script_event = false;
 		});
 	}
