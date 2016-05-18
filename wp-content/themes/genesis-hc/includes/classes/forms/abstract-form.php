@@ -832,7 +832,7 @@ abstract class HC_Form_Abstract {
 
 						if( $this->allow_delete ) {
 							?>
-							<button type="submit" name="hc_delete" class="btn btn-link">Delete</button>
+							<button type="submit" name="hc_delete" class="btn btn-link">Delete <?php echo $this->editor->post_type_object->labels->singular_name; ?></button>
 							<?php
 						}
 						break;
