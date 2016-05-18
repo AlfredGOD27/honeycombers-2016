@@ -121,7 +121,7 @@ function hc_do_nav() {
 														<?php
 														break;
 													case 'post':
-														$title = get_the_title($column['item_id']);
+														$title = HC()->entry->get_headline_title($column['item_id']);
 														?>
 														<div class="one-third first">
 															<?php
