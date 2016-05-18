@@ -3097,6 +3097,9 @@ input[type='search'] {
   text-decoration: none;
   font-size: .9em;
 }
+.bookmarks-popup li a:hover, .bookmarks-popup li a:focus {
+  color: #fe862c;
+}
 .bookmarks-popup .name {
   display: block;
   -webkit-box-flex: 1;
@@ -6208,18 +6211,6 @@ table > tbody > tr:nth-child(odd) > th {
   text-transform: uppercase;
   font-size: 1em;
 }
-.listing-result .meta {
-  display: block;
-  margin-bottom: .5em;
-  color: #fe862c;
-  text-transform: uppercase;
-  font-size: .85em;
-}
-.listing-result p {
-  margin-bottom: 0;
-  font-size: .75em;
-  line-height: 1.5;
-}
 .listing-result .more-link {
   font-size: .85em;
 }
@@ -6707,12 +6698,12 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .home-section-featured-video-listings > .wrap > .left {
   float: left;
-  width: 37%;
+  width: 41.75%;
 }
 .home-section-featured-video-listings > .wrap > .right {
   float: right;
   padding-left: 1.25em;
-  width: 63%;
+  width: 58%;
 }
 .home-section-featured-video-listings img {
   max-height: 18.75em;
