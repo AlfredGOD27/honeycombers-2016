@@ -69,6 +69,15 @@ class HC_Folders {
 				$this->editor->get_add_url()
 			);
 
+			$added = false;
+			foreach( $folder_ids as $folder_id ) {
+				$items = $this->get_items_in_folder( $folder_id );
+				if( in_array($post_id, $items, true) ) {
+					$added = true;
+					break 1;
+				}
+			}
+
 			$modal_html = '';
 			if( $use_modal ) {
 				ob_start();
@@ -101,7 +110,7 @@ class HC_Folders {
 			<div class="bookmarks-button-container <?php echo $icon_only ? 'icon-only' : ''; ?>">
 				<nav class="button-nav favorites-nav">
 					<button class="bookmarks-button btn btn-icon <?php echo $use_modal ? 'use-modal' : ''; ?>" data-modal-html="<?php echo esc_attr($modal_html); ?>">
-						<i class="ico-heart"></i>
+						<i class="<?php echo $added ? 'ico-heart-filled' : 'ico-heart'; ?>"></i>
 						<?php
 						if( !$icon_only ) {
 							?>
