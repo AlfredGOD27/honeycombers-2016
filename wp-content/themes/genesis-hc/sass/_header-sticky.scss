@@ -1,12 +1,16 @@
 .sticky-header {
-	position: fixed;
-	top: 0;
-	left: 0;
+	position: relative;
 	z-index: 99;
-	width: 100%;
 	background-color: $orange;
-	transition: transform $transition-time;
-	transform: translateY(-100%);
+
+	&.use-sticky {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		transition: transform $transition-time;
+		transform: translateY(-100%);
+	}
 
 	.admin-bar & {
 		top: 32px;

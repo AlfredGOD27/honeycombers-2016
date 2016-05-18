@@ -5515,7 +5515,7 @@ function hc_maybe_load_facebook() {
 	}
 
 	$(window).on( 'load', function() {
-		sticky_el = $('.sticky-header');
+		sticky_el = $('.sticky-header.use-sticky');
 
 		if( 1 !== sticky_el.length )
 			return;

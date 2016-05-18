@@ -3502,12 +3502,15 @@ table > tbody > tr:nth-child(odd) > th {
 }
 
 .sticky-header {
+  position: relative;
+  z-index: 99;
+  background-color: #fe862c;
+}
+.sticky-header.use-sticky {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
   width: 100%;
-  background-color: #fe862c;
   -webkit-transition: -webkit-transform 0.25s;
           transition: transform 0.25s;
   -webkit-transform: translateY(-100%);

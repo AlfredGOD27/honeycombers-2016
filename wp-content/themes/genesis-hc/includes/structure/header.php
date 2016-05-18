@@ -357,8 +357,10 @@ function hc_header_right() {
 add_action( 'wp_footer', 'hc_sticky_header' );
 function hc_sticky_header() {
 
+	$use_sticky = 'page_templates/page_directory.php' !== get_page_template_slug();
+
 	?>
-	<section class="sticky-header">
+	<section class="sticky-header <?php echo $use_sticky ? 'use-sticky' : ''; ?>">
 		<div class="wrap">
 			<div class="left">
 				<a href="<?php echo get_bloginfo('url'); ?>" title="<?php echo get_bloginfo('name'); ?>">
@@ -401,9 +403,15 @@ function hc_sticky_header() {
 						?>
 					</div>
 
-					<div class="scroll-to-top">
-						<button type="button" class="btn btn-icon"><i class="ico-arrow-up"></i></button>
-					</div>
+					<?php
+					if( $use_sticky ) {
+						?>
+						<div class="scroll-to-top">
+							<button type="button" class="btn btn-icon"><i class="ico-arrow-up"></i></button>
+						</div>
+						<?php
+					}
+					?>
 				</div>
 				<div class="bottom">
 					<?php
