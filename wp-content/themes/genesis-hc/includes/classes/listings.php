@@ -382,11 +382,6 @@ class HC_Listings {
 			foreach( $terms as $term )
 				$categories[] = $term->name;
 
-			$locations = array();
-			$terms     = wp_get_object_terms( $listing->ID, 'locations' );
-			foreach( $terms as $term )
-				$locations[] = $term->name;
-
 			$info_window_html = '<span class="result-title">' . $listing->post_title . '</span>';
 			$info_window_html .= '<span class="result-category">' . HC()->formatting->build_comma_separated_list( $categories ) . '</span>';
 
@@ -395,19 +390,6 @@ class HC_Listings {
 					$result_html .= get_the_post_thumbnail($listing->ID, 'archive-small' );
 
 				$result_html .= '<h3>' . $listing->post_title . '</h3>';
-
-				$meta = array();
-				if( !empty($locations) )
-					$meta[] = HC()->formatting->build_comma_separated_list( $locations );
-
-				$contact = get_post_meta( $listing->ID, '_hc_listing_contact', true );
-				if( !empty($contact) )
-					$meta[] = sanitize_text_field($contact);
-
-				if( !empty($meta) )
-					$result_html .= '<span class="meta">' . implode( ' | ', $meta ) . '</span>';
-
-				$result_html .= wpautop( HC()->formatting->get_excerpt( $listing, 100) );
 
 				$result_html .= '<span class="more-link">Read more ></span>';
 			$result_html .= '</div>';
