@@ -111,7 +111,7 @@ function hc_do_nav() {
 																foreach( $column['item_ids'] as $item_id ) {
 																	?>
 																	<li>
-																		<a href="<?php echo get_permalink($item_id); ?>"><?php echo get_the_title($item_id); ?></a>
+																		<a href="<?php echo get_permalink($item_id); ?>"><?php echo HC()->entry->get_headline_title($item_id); ?></a>
 																	</li>
 																	<?php
 																}
