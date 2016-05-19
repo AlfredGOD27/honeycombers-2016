@@ -205,7 +205,9 @@ abstract class HC_Form_Abstract {
 					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" autocomplete="off" ' . $required . ' placeholder="' . $placeholder_text . '">';
 					break;
 				case 'number':
-					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" value="' . $value . '" ' . $required . ' ' . $disabled . ' placeholder="' . $placeholder_text . '">';
+					$min  = isset($field['min']) ? 'min="' . $field['min'] . '"' : '';
+					$step = isset($field['step']) ? 'step="' . $field['step'] . '"' : '';
+					echo '<input id="field-' . $field['slug'] . '" type="' . $field['type'] . '" name="' . $field['slug'] . '" value="' . $value . '" ' . $min . ' ' . $step . ' ' . $required . ' ' . $disabled . ' placeholder="' . $placeholder_text . '">';
 					break;
 				case 'file':
 					$multiple = isset($field['multiple']) && $field['multiple'];
