@@ -113,6 +113,12 @@ abstract class HC_Form_Abstract {
 
 				$value = $whitelisted_values;
 				break;
+			case 'term_list':
+				$value = absint($value);
+				$term  = get_term_by( 'id', $value, $field['taxonomy'] );
+				if( is_wp_error($term) || empty($term) )
+					return false;
+				break;
 		}
 
 		return $value;
@@ -295,6 +301,22 @@ abstract class HC_Form_Abstract {
 						}
 					echo '</div>';
 					break;
+				case 'term_list':
+					$args = array(
+						'taxonomy'   => $field['taxonomy'],
+						'hide_empty' => false,
+					);
+					$terms = get_terms( $args );
+
+					echo '<div class="radio-list">';
+						foreach( $terms as $term ) {
+							echo '<label class="radio">';
+								echo '<input type="radio" name="' . $field['slug'] . '" value="' . $term->term_id . '" ' . checked( $value, $term->term_id, false ) . ' required>';
+								echo $term->name;
+							echo '</label>';
+						}
+					echo '</div>';
+					break;
 			}
 		echo '</div>';
 
@@ -323,6 +345,7 @@ abstract class HC_Form_Abstract {
 				case 'radio':
 				case 'posts_list':
 				case 'subscriptions':
+				case 'term_list':
 					// These are empty if they have no content
 					if(
 						!isset($args[ $field['table'] ][ $field['slug'] ]) ||
@@ -681,6 +704,7 @@ abstract class HC_Form_Abstract {
 				case 'radio':
 				case 'boolean':
 				case 'subscriptions':
+				case 'term_list':
 					if( isset($_POST[ $field['slug'] ]) )
 						$args[ $field['table'] ][ $field['slug'] ] = $this->sanitize_value( $field, $_POST[ $field['slug'] ] );
 				case 'posts_list':
@@ -767,7 +791,11 @@ abstract class HC_Form_Abstract {
 
 			switch( $field['table'] ) {
 				case 'postmeta':
-					update_post_meta( $this->post_id, $field['slug'], $args[ $field['table'] ][ $field['slug'] ] );
+					if( 'term_list' === $field['type'] ) {
+						wp_set_object_terms( $this->post_id, absint($args[ $field['table'] ][ $field['slug'] ]), $field['taxonomy'] );
+					} else {
+						update_post_meta( $this->post_id, $field['slug'], $args[ $field['table'] ][ $field['slug'] ] );
+					}
 					break;
 				case 'usermeta':
 					update_user_meta( $this->user_object->ID, $field['slug'], $args[ $field['table'] ][ $field['slug'] ] );
