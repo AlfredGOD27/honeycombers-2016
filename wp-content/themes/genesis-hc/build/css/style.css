@@ -2569,13 +2569,13 @@ input[type='search'] {
   margin-bottom: 1.5em;
 }
 .hc-form .description {
-  margin-bottom: 1em;
+  padding-top: 1em;
 }
 .hc-form .description p {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
   color: #5e5e5e;
-  font-size: .9em;
+  font-size: .8em;
 }
 .hc-form .field-select > div {
   position: relative;

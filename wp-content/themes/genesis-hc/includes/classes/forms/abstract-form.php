@@ -202,9 +202,6 @@ abstract class HC_Form_Abstract {
 			if( 'boolean' !== $field['type'] )
 				echo '<label for="field-' . $field_id . '">' . $field['label'] . ' ' . $required_text . '</label>';
 
-			if( isset($field['description']) )
-				echo '<div class="description">' . wpautop($field['description']) . '</div>';
-
 			switch( $field['type'] ) {
 				case 'text':
 				case 'email':
@@ -328,6 +325,9 @@ abstract class HC_Form_Abstract {
 					echo '</div>';
 					break;
 			}
+
+			if( isset($field['description']) )
+				echo '<div class="description">' . wpautop($field['description']) . '</div>';
 		echo '</div>';
 
 	}

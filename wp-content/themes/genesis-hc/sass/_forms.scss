@@ -211,13 +211,13 @@ input[type='search'] {
 	}
 
 	.description {
-		margin-bottom: 1em;
+		padding-top: 1em;
 
 		p {
 			@include meta-font;
 			@extend %type;
 			color: #5e5e5e;
-			font-size: .9em;
+			font-size: .8em;
 		}
 	}
 

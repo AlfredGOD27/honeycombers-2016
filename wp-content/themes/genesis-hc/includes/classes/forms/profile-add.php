@@ -49,12 +49,13 @@ class HC_Profile_Add_Form extends HC_Form_Abstract {
 			'classes'  => array('one-half'),
 		);
 		$this->fields[] = array(
-			'slug'     => 'user_pass',
-			'label'    => 'Password',
-			'type'     => 'password',
-			'table'    => 'users',
-			'required' => true,
-			'classes'  => array('first', 'one-half'),
+			'slug'        => 'user_pass',
+			'label'       => 'Password',
+			'type'        => 'password',
+			'table'       => 'users',
+			'required'    => true,
+			'classes'     => array('first', 'one-half'),
+			'description' => 'Password must be at least 8 characters, and contain at least one number and one symbol.',
 		);
 		$this->fields[] = array(
 			'slug'     => 'user_pass_2',
