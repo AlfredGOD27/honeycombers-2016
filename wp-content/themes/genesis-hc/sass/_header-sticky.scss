@@ -62,7 +62,6 @@
 		flex-grow: 1;
 		flex-shrink: 1;
 		margin-bottom: 0;
-		max-width: none;
 		border-color: $white;
 
 		input[type='search'] {
@@ -140,9 +139,10 @@
 	}
 
 	.social {
-		flex-grow: 0;
+		flex-grow: 1;
 		flex-shrink: 0;
 		margin-left: 2em;
+		text-align: right;
 	}
 
 	.user-menu {
@@ -210,16 +210,10 @@
 			}
 		}
 
-		.sticky-icon-nav {
-			flex-grow: 0;
-			flex-shrink: 0;
-			font-family: $heading;
-
+		.icon-nav {
 			.btn-icon {
-				display: inline-block;
 				padding: .55em 1em;
 				border-left: 1px solid $white;
-				vertical-align: middle;
 				font-size: .85em;
 
 				&:first-child {
@@ -232,7 +226,6 @@
 
 				span {
 					color: $white;
-					text-transform: uppercase;
 					font-size: 1em;
 				}
 			}

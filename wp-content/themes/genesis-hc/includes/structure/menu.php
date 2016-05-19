@@ -16,19 +16,14 @@ function hc_nav_open() {
 	?>
 	<div class="nav-primary-wrapper">
 		<div class="wrap">
-			<div class="left">
-	<?php
+		<?php
 
 }
 
 add_action( 'genesis_after_header', 'hc_nav_close', 12 );
 function hc_nav_close() {
 
-	?>
-			</div>
-			<div class="right">
-				<?php hc_do_social(); ?>
-			</div>
+		?>
 		</div>
 	</div>
 	<?php
@@ -43,6 +38,7 @@ function hc_do_nav() {
 
 	$transient_name = 'hc_main_menu_html';
 	$transient      = get_transient( $transient_name );
+	$transient      = false;
 
 	if( false === $transient ) {
 		$menu = get_field( 'hc_main_menu', 'option' );
@@ -55,17 +51,6 @@ function hc_do_nav() {
 		?>
 		<nav class="nav-primary" itemscope itemtype="http://schema.org/SiteNavigationElement" aria-label="Main navigation">
 			<div class="wrap">
-				<div class="show-phone mobile-icon-nav">
-					<?php $page_id = get_field( '_hc_calendar_page_id', 'option' ); ?>
-					<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-calendar"></i> <span>Calendar</span></a>
-
-					<?php $page_id = get_field( '_hc_directory_page_id', 'option' ); ?>
-					<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-pin"></i> <span>Directory</span></a>
-
-					<?php $page_id = get_field( '_hc_video_page_id', 'option' ); ?>
-					<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-play"></i> <span>Video</span></a>
-				</div>
-
 				<ul class="main-menu clearfix">
 					<?php
 					foreach( $menu as $top_item ) {
@@ -162,6 +147,17 @@ function hc_do_nav() {
 					}
 					?>
 				</ul>
+
+				<div class="icon-nav">
+					<?php $page_id = get_field( '_hc_calendar_page_id', 'option' ); ?>
+					<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-calendar"></i> <span>Calendar</span></a>
+
+					<?php $page_id = get_field( '_hc_directory_page_id', 'option' ); ?>
+					<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-pin"></i> <span>Directory</span></a>
+
+					<?php $page_id = get_field( '_hc_video_page_id', 'option' ); ?>
+					<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-play"></i> <span>Video</span></a>
+				</div>
 
 				<div class="show-phone mobile-social-nav">
 					<span><span>Follow Us</span></span>

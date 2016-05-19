@@ -1,9 +1,7 @@
 .site-top {
-	padding-top: .65em;
-	padding-bottom: .65em;
+	padding-top: .1em;
+	padding-bottom: .1em;
 	background-color: $orange-dark;
-	color: $white;
-
 
 	> .wrap {
 		@extend %wrap;
@@ -22,16 +20,32 @@
 		float: right;
 	}
 
+	.social,
+	.nav-or-popup-link {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.social {
+		a {
+			color: $white;
+		}
+	}
+
+	.nav-or-popup-link {
+		margin-left: 1.5em;
+	}
+
 	.sites-nav a,
 	.open-popup-link {
 		padding-top: .25em;
 		padding-bottom: .25em;
 		border-top: 1px solid transparent;
 		border-bottom: 1px solid transparent;
-		color: inherit;
+		color: $white;
 		text-decoration: none;
 		text-transform: uppercase;
-		font-size: .85em;
+		font-size: .8em;
 		font-family: $heading;
 		line-height: 1;
 	}
@@ -94,8 +108,8 @@
 	flex-grow: 1;
 	flex-shrink: 0;
 	float: left;
-	padding-top: 1.25em;
-	padding-bottom: 1.25em;
+	padding-top: .5em;
+	padding-bottom: .5em;
 }
 
 @include media('<=portrait') {

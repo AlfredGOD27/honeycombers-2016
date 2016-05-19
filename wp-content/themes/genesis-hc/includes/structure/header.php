@@ -299,15 +299,19 @@ function hc_site_top() {
 			</div>
 
 			<div class="right">
-				<?php
-				if( !is_user_logged_in() ) {
-					?>
-					<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="open-popup-link" data-mfp-src="#login-popup">Sign In <i class="ico-exit"></i></a>
+				<?php hc_do_social(); ?>
+
+				<div class="nav-or-popup-link">
 					<?php
-				} else {
-					HC()->profiles->display_top_menu();
-				}
-				?>
+					if( !is_user_logged_in() ) {
+						?>
+						<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="open-popup-link" data-mfp-src="#login-popup">Sign In <i class="ico-exit"></i></a>
+						<?php
+					} else {
+						HC()->profiles->display_top_menu();
+					}
+					?>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -417,17 +421,6 @@ function hc_sticky_header() {
 					<?php
 					hc_do_nav();
 					?>
-
-					<div class="sticky-icon-nav">
-						<?php $page_id = get_field( '_hc_calendar_page_id', 'option' ); ?>
-						<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-calendar"></i> <span>Calendar</span></a>
-
-						<?php $page_id = get_field( '_hc_directory_page_id', 'option' ); ?>
-						<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-pin"></i> <span>Directory</span></a>
-
-						<?php $page_id = get_field( '_hc_video_page_id', 'option' ); ?>
-						<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-play"></i> <span>Video</span></a>
-					</div>
 				</div>
 			</div>
 		</div>
