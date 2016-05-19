@@ -37,7 +37,7 @@ class HC_Event_Editor extends HC_Form_Abstract {
 
 		$this->fields[] = array(
 			'slug'     => 'post_title',
-			'label'    => 'Name',
+			'label'    => 'Event Title',
 			'type'     => 'text',
 			'table'    => 'posts',
 			'required' => true,
@@ -59,17 +59,110 @@ class HC_Event_Editor extends HC_Form_Abstract {
 
 		$this->fields[] = array(
 			'slug'       => 'post_content',
-			'label'      => 'Description',
+			'label'      => 'Event Description',
 			'type'       => 'textarea',
 			'table'      => 'posts',
-			'word_limit' => 50,
-			'required'   => false,
+			'word_limit' => $description_word_limit,
+			'required'   => true,
 			'classes'    => array('first', 'one-half'),
 		);
 
 		$this->fields[] = array(
+			'slug'     => '_hc_event_start_date',
+			'label'    => 'Start Date',
+			'type'     => 'text',
+			'table'    => 'postmeta',
+			'required' => true,
+			'classes'  => array('first', 'one-half'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_event_start_time',
+			'label'    => 'Start Time',
+			'type'     => 'text',
+			'table'    => 'postmeta',
+			'required' => false,
+			'classes'  => array('one-half'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_event_end_date',
+			'label'    => 'End Date',
+			'type'     => 'text',
+			'table'    => 'postmeta',
+			'required' => true,
+			'classes'  => array('first', 'one-half'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_event_end_time',
+			'label'    => 'End Time',
+			'type'     => 'text',
+			'table'    => 'postmeta',
+			'required' => false,
+			'classes'  => array('one-half'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_event_all_day',
+			'label'    => 'Ongoing?',
+			'type'     => 'boolean',
+			'table'    => 'postmeta',
+			'required' => false,
+			'classes'  => array('one-half', 'first'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_event_venue',
+			'label'    => 'Location',
+			'type'     => 'text',
+			'table'    => 'postmeta',
+			'required' => true,
+			'classes'  => array('one-half', 'first'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_event_price',
+			'label'    => 'Price',
+			'type'     => 'number',
+			'table'    => 'postmeta',
+			'required' => false,
+			'min'      => 0,
+			'step'     => .01,
+			'classes'  => array('one-half'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_event_contact',
+			'label'    => 'Contact Email',
+			'type'     => 'email',
+			'table'    => 'postmeta',
+			'required' => false,
+			'classes'  => array('one-half', 'first'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_event_website',
+			'label'    => 'Website',
+			'type'     => 'url',
+			'table'    => 'postmeta',
+			'required' => false,
+			'classes'  => array('one-half'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_event_category',
+			'label'    => 'Event Category',
+			'type'     => 'term_list',
+			'table'    => 'postmeta',
+			'required' => true,
+			'taxonomy' => 'event-category',
+			'classes'  => array('one-half', 'first'),
+		);
+
+		$this->fields[] = array(
 			'slug'               => '_thumbnail_id',
-			'label'              => 'Main Image',
+			'label'              => 'Event Photo',
 			'type'               => 'file',
 			'table'              => 'postmeta',
 			'required'           => true,
