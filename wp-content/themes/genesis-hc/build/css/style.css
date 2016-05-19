@@ -5817,6 +5817,7 @@ table > tbody > tr:nth-child(odd) > th {
       -ms-flex-pack: center;
           justify-content: center;
   padding: .75em 1.5em;
+  min-width: 6em;
   height: 100%;
   background-color: #686868;
   color: #FFFFFF;
@@ -6006,8 +6007,6 @@ table > tbody > tr:nth-child(odd) > th {
   margin-left: 2em;
   height: 6.25em;
   background-color: #252525;
-  -webkit-transition: margin-left .1s;
-          transition: margin-left .1s;
 }
 .event-slider-nav img {
   max-width: none;
