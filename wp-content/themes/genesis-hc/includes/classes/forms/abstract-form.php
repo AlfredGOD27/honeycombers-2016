@@ -94,6 +94,10 @@ abstract class HC_Form_Abstract {
 			case 'boolean':
 				$value = !empty($value) ? 'yes' : false;
 				break;
+			case 'date':
+				$time  = strtotime($value);
+				$value = false !== $time ? date('Ymd', $time) : false;
+				break;
 			case 'posts_list':
 				$value              = (array) $value;
 				$whitelisted_values = array();
@@ -245,7 +249,6 @@ abstract class HC_Form_Abstract {
 					echo '<textarea id="field-' . $field['slug'] . '" name="' . $field['slug'] . '" ' . $required . ' ' . $disabled . ' maxlength="' . $field['maxlength'] . '" placeholder="' . $placeholder_text . '">' . $value . '</textarea>';
 					break;
 				case 'select':
-
 					echo '<div>';
 						echo '<select id="field-' . $field['slug'] . '" name="' . $field['slug'] . '" ' . $required . ' ' . $disabled . ' class="styled">';
 							echo '<option value="">' . $placeholder_text . '</option>';
@@ -279,6 +282,13 @@ abstract class HC_Form_Abstract {
 							echo $field['label'] . ' ' . $required_text;
 						echo '</label>';
 					echo '</div>';
+					break;
+				case 'date':
+					if( !empty($value) ) {
+						$time  = strtotime($value);
+						$value = date( 'd-m-Y', $time );
+					}
+					echo '<input id="field-' . $field['slug'] . '" type="text" name="' . $field['slug'] . '" class="datepicker" value="' . $value . '" ' . $required . ' ' . $disabled . '>';
 					break;
 				case 'posts_list':
 					echo '<div class="checkbox-list">';
@@ -343,6 +353,7 @@ abstract class HC_Form_Abstract {
 				case 'textarea':
 				case 'select':
 				case 'radio':
+				case 'date':
 				case 'posts_list':
 				case 'subscriptions':
 				case 'term_list':
@@ -703,6 +714,7 @@ abstract class HC_Form_Abstract {
 				case 'select':
 				case 'radio':
 				case 'boolean':
+				case 'date':
 				case 'subscriptions':
 				case 'term_list':
 					if( isset($_POST[ $field['slug'] ]) )

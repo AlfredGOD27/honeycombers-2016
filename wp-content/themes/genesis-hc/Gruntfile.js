@@ -106,6 +106,16 @@ module.exports = function(grunt) {
 				dest: 'build/js/calendar.js',
 				nonull: true
 			},
+			forms: {
+				src: [
+					'bower_components/moment/moment.js',
+					'bower_components/pikaday/pikaday.js',
+					'bower_components/pikaday/plugins/pikaday.jquery.js',
+					'js/forms.js',
+				],
+				dest: 'build/js/forms.js',
+				nonull: true
+			},
 			admin: {
 				src: [
 					'js/admin.js'
@@ -130,6 +140,7 @@ module.exports = function(grunt) {
 				files: {
 					'build/js/scripts.min.js': 'build/js/scripts.js',
 					'build/js/calendar.min.js': 'build/js/calendar.js',
+					'build/js/forms.min.js': 'build/js/forms.js',
 					'build/js/admin.min.js': 'build/js/admin.js',
 					'build/js/tinymce.min.js': 'build/js/tinymce.js'
 				}

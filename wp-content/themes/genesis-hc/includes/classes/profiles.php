@@ -410,6 +410,9 @@ class HC_Profiles {
 		$src = $use_production_assets ? '/build/css/profiles.min.css' : '/build/css/profiles.css';
 		wp_enqueue_style( 'hc-profiles', $stylesheet_dir . $src, array('hc'), $assets_version );
 
+		$src = $use_production_assets ? '/build/js/forms.min.js' : '/build/js/forms.js';
+		wp_enqueue_script( 'hc-forms', $stylesheet_dir . $src, array('jquery'), $assets_version, true );
+
 	}
 
 	public function body_classes( $classes ) {

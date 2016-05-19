@@ -70,7 +70,7 @@ class HC_Event_Editor extends HC_Form_Abstract {
 		$this->fields[] = array(
 			'slug'     => '_hc_event_start_date',
 			'label'    => 'Start Date',
-			'type'     => 'text',
+			'type'     => 'date',
 			'table'    => 'postmeta',
 			'required' => true,
 			'classes'  => array('first', 'one-half'),
@@ -88,7 +88,7 @@ class HC_Event_Editor extends HC_Form_Abstract {
 		$this->fields[] = array(
 			'slug'     => '_hc_event_end_date',
 			'label'    => 'End Date',
-			'type'     => 'text',
+			'type'     => 'date',
 			'table'    => 'postmeta',
 			'required' => true,
 			'classes'  => array('first', 'one-half'),
