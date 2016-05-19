@@ -463,7 +463,7 @@ class HC_Listings {
 							$terms = get_terms( 'directories' );
 							foreach( $terms as $term ) {
 								?>
-								<option value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
+								<option value="<?php echo $term->term_id; ?>" <?php selected('eat', strtolower($term->name));?>><?php echo $term->name; ?></option>
 								<?php
 							}
 							?>
