@@ -395,6 +395,90 @@ class HC_Events {
 
 	}
 
+	public function display_slider( $events ) {
+
+		?>
+		<div class="event-slider-for">
+			<?php
+			foreach( $events as $post_id ) {
+				$date = HC()->events->get_event_date_info( $post_id );
+				?>
+				<div>
+					<?php
+					echo '<a href="' . get_permalink($post_id) . '">';
+						echo get_the_post_thumbnail( $post_id, 'slide' );
+					echo '</a>';
+					?>
+
+					<div class="slide-content show-phone">
+						<div class="info">
+							<span class="m"><?php echo date('M', $date['start_date']); ?></span>
+							<span class="d"><?php echo date('j', $date['start_date']); ?></span>
+						</div>
+
+						<div class="name">
+							<?php
+							$term = HC()->utilities->get_primary_term( $post_id, 'event-category' );
+							if( !empty($term) )
+								echo '<span class="cat">' . $term->name . '</span>';
+
+							echo '<span class="title">' . HC()->entry->get_headline_title( $post_id ) . '</span>';
+							?>
+						</div>
+
+						<?php
+						if( !empty($term) )
+							echo HC()->utilities->get_category_icon_html( $term );
+						?>
+					</div>
+				</div>
+				<?php
+			}
+			?>
+		</div>
+
+		<div class="event-slider-nav">
+			<?php
+			foreach( $events as $post_id ) {
+				$date = HC()->events->get_event_date_info( $post_id );
+				?>
+				<div>
+					<div class="outer">
+						<?php
+						echo get_the_post_thumbnail( $post_id, 'slide-thumbnail' );
+						?>
+
+						<div class="inner">
+							<div class="info">
+								<span class="m"><?php echo date('M', $date['start_date']); ?></span>
+								<span class="d"><?php echo date('j', $date['start_date']); ?></span>
+							</div>
+
+							<div class="name">
+								<?php
+								$term = HC()->utilities->get_primary_term( $post_id, 'event-category' );
+								if( !empty($term) )
+									echo '<span class="cat">' . $term->name . '</span>';
+
+								echo '<span class="title">' . HC()->entry->get_headline_title( $post_id ) . '</span>';
+								?>
+							</div>
+
+							<?php
+							if( !empty($term) )
+								echo HC()->utilities->get_category_icon_html( $term );
+							?>
+						</div>
+					</div>
+				</div>
+				<?php
+			}
+			?>
+		</div>
+		<?php
+
+	}
+
 	public function do_calendar() {
 
 		global $post;
@@ -414,69 +498,9 @@ class HC_Events {
 				?>
 				<section class="archive-slider-container hide-no-js">
 					<div class="wrap">
-						<div class="slider-for">
-							<?php
-							foreach( $events as $post_id ) {
-								?>
-								<div>
-									<?php
-									echo '<a href="' . get_permalink($post_id) . '">';
-										echo get_the_post_thumbnail( $post_id, 'slide' );
-									echo '</a>';
-									?>
-								</div>
-								<?php
-							}
-							?>
-						</div>
-
-						<div class="slider-nav">
-							<?php
-							foreach( $events as $post_id ) {
-								$date = $this->get_event_date_info( $post_id );
-								?>
-								<div>
-									<div class="outer">
-										<?php
-										echo get_the_post_thumbnail( $post_id, 'slide-thumbnail' );
-										?>
-
-										<div class="inner">
-											<div class="info">
-												<?php
-												if( date( 'Ymd', $date['start_date'] ) === date( 'Ymd', $date['end_date'] ) ) {
-													?>
-													<span class="m"><?php echo date('M', $date['start_date']); ?></span>
-													<span class="d"><?php echo date('j', $date['start_date']); ?></span>
-													<?php
-												} else {
-													$current_time = current_time( 'timestamp' );
-													if( $current_time < $date['start_datetime'] ) {
-														?>
-														<span class="starts">Starts</span>
-														<span class="m"><?php echo date('M', $date['start_date']); ?></span>
-														<span class="d"><?php echo date('j', $date['start_date']); ?></span>
-														<?php
-													} else {
-														?>
-														<span class="ends">Ends</span>
-														<span class="m"><?php echo date('M', $date['end_date']); ?></span>
-														<span class="d"><?php echo date('j', $date['end_date']); ?></span>
-														<?php
-													}
-												}
-												?>
-											</div>
-											<?php
-											echo '<span>' . HC()->entry->get_headline_title( $post_id ) . '</span>';
-											?>
-										</div>
-									</div>
-								</div>
-								<?php
-							}
-							?>
-						</div>
+						<?php
+						HC()->events->display_slider($events);
+						?>
 					</div>
 				</section>
 				<?php

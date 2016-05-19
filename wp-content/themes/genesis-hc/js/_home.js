@@ -34,36 +34,8 @@
 				slick_obj.slickGoTo(idx);
 			}
 		);
-
-		$('.event-slider-for').slick({
-			adaptiveHeight: true,
-			arrows: false,
-			asNavFor: '.event-slider-nav',
-			fade: true,
-			slidesToScroll: 1,
-			slidesToShow: 1
-		});
-
-		$('.event-slider-nav').slick({
-			arrows: false,
-			asNavFor: '.event-slider-for',
-			focusOnSelect: true,
-			slidesToScroll: 1,
-			slidesToShow: 4,
-			speed: 0,
-			vertical: true,
-		});
 	} else {
 		$('.listing-slider-for').slick({
-			adaptiveHeight: true,
-			arrows: true,
-			slidesToScroll: 1,
-			slidesToShow: 1,
-			prevArrow: hc_strings.prev_arrow,
-			nextArrow: hc_strings.next_arrow,
-		});
-
-		$('.event-slider-for').slick({
 			adaptiveHeight: true,
 			arrows: true,
 			slidesToScroll: 1,

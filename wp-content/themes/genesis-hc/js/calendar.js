@@ -5,25 +5,6 @@
 	if( !$('body').hasClass('page-template-page_calendar') )
 		return;
 
-	$('.events-slider').slick({
-		arrows: true,
-		slidesToScroll: 3,
-		speed: 150,
-		slidesToShow: Math.floor($('.events-slider').width() / 225),
-		centerPadding: '8px',
-		prevArrow: hc_strings.prev_arrow,
-		nextArrow: hc_strings.next_arrow,
-		responsive: [
-			{
-				breakpoint: im.getValue('portrait', true),
-				settings: {
-					slidesToScroll: 1,
-					slidesToShow: 2,
-				}
-			}
-		]
-	});
-
 	$('.datepicker').pikaday({
 		firstDay: 1,
 		minDate: new Date(),
