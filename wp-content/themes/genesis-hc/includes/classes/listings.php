@@ -434,8 +434,8 @@ class HC_Listings {
 				</div>
 
 				<div class="first">
-					<label for="directory-search-text">Search for French restaurants...</label>
-					<input id="directory-search-text" type="search" placeholder="Search for...">
+					<label for="directory-search-text">Search for...</label>
+					<input id="directory-search-text" type="search" placeholder="Search for French restaurants...">
 				</div>
 
 				<div class="row clearfix">
