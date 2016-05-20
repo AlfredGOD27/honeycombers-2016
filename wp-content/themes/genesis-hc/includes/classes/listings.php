@@ -382,10 +382,12 @@ class HC_Listings {
 			foreach( $terms as $term )
 				$categories[] = $term->name;
 
-			$info_window_html = '<span class="result-title">' . $listing->post_title . '</span>';
+			$link = get_permalink( $listing->ID );
+
+			$info_window_html = '<a class="result-title" href="' . $link . '">' . $listing->post_title . '</a>';
 			$info_window_html .= '<span class="result-category">' . HC()->formatting->build_comma_separated_list( $categories ) . '</span>';
 
-			$result_html = 1 === $i % 2 ? '<a href="' . get_permalink( $listing->ID ) . '" class="listing-result one-half first">' : '<a href="' . get_permalink( $listing->ID ) . '" class="listing-result one-half">';
+			$result_html = 1 === $i % 2 ? '<a href="' . get_permalink( $listing->ID ) . '" class="listing-result one-half first">' : '<a href="' . $link . '" class="listing-result one-half">';
 				if( has_post_thumbnail($listing->ID) )
 					$result_html .= get_the_post_thumbnail($listing->ID, 'archive-small' );
 

@@ -6359,6 +6359,7 @@ table > tbody > tr:nth-child(odd) > th {
 
 .result-title {
   color: #fe862c;
+  text-decoration: none;
   text-transform: uppercase;
   font-size: .9em;
   font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
@@ -6411,7 +6412,6 @@ table > tbody > tr:nth-child(odd) > th {
   -webkit-flex-shrink: 0;
       -ms-flex-negative: 0;
           flex-shrink: 0;
-  margin-bottom: .75em;
   padding: 1em 2em .25em;
   background-color: #fad9bd;
 }
