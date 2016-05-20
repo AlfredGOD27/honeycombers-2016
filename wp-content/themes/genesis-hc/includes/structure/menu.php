@@ -38,7 +38,6 @@ function hc_do_nav() {
 
 	$transient_name = 'hc_main_menu_html';
 	$transient      = get_transient( $transient_name );
-	$transient      = false;
 
 	if( false === $transient ) {
 		$menu = get_field( 'hc_main_menu', 'option' );

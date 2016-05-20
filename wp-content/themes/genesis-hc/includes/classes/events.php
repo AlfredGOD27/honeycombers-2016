@@ -352,34 +352,7 @@ class HC_Events {
 
 			<div class="one-half">
 				<?php
-				$images = array();
-
-				if( has_post_thumbnail() )
-					$images[] = get_post_thumbnail_id( $post->ID );
-
-				$additional_images = get_post_meta( $post->ID, '_hc_gallery_image_ids', true );
-				if( !empty($additional_images) )
-					$images = array_merge($images, $additional_images);
-
-				if( 1 === count($images) ) {
-					echo wp_get_attachment_image( $images[0], 'featured', '', array('class' => 'aligncenter') );
-				} elseif( count($images) > 1 ) {
-					?>
-					<div class="basic-slider">
-						<?php
-						foreach( $images as $image_id ) {
-							?>
-							<div>
-								<?php
-								echo wp_get_attachment_image( $image_id, 'featured' );
-								?>
-							</div>
-							<?php
-						}
-						?>
-					</div>
-					<?php
-				}
+				HC()->utilities->display_basic_slider( $post->ID );
 
 				$map_address = get_post_meta( $post->ID, '_hc_event_map_address', true );
 				if( !empty($map_address) )

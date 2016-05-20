@@ -216,8 +216,7 @@ class HC_Listings {
 
 			<div class="three-fifths">
 				<?php
-				if( has_post_thumbnail() )
-					the_post_thumbnail( 'featured', array('class' => 'aligncenter') );
+				HC()->utilities->display_basic_slider( $post->ID );
 
 				if( !empty($map_address['address']) )
 					HC()->formatting->display_map($map_address['address'], 790, 380);
