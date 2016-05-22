@@ -21,9 +21,6 @@ class HC_Menu {
 
 	public function clear_transient( $post_id ) {
 
-		if( 'options' !== $post_id )
-			return;
-
 		delete_transient($this->transient_name);
 
 	}
