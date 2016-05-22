@@ -12,7 +12,8 @@ class HC_Menu {
 		remove_action( 'genesis_after_header', 'genesis_do_nav' );
 		remove_action( 'genesis_after_header', 'genesis_do_subnav' );
 
-		add_action( 'save_post', array($this, 'clear_transient'), 12 );
+		add_action( 'save_post', array($this, 'clear_transient') );
+		add_action( 'acf/save_post', array($this, 'clear_transient'), 12 );
 		add_action( 'genesis_after_header', array($this, 'open'), 8 );
 		add_action( 'genesis_after_header', array($this, 'close'), 12 );
 		add_action( 'genesis_after_header', array($this, 'display') );
