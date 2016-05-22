@@ -419,7 +419,7 @@ function hc_sticky_header() {
 				</div>
 				<div class="bottom">
 					<?php
-					hc_do_nav();
+					HC()->menu->display();
 					?>
 				</div>
 			</div>

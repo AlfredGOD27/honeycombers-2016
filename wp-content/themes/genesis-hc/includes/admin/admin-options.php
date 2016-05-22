@@ -137,12 +137,5 @@ function hc_environment_settings_box() {
 
 }
 
-if( function_exists('acf_add_options_page') ) {
+if( function_exists('acf_add_options_page') )
 	acf_add_options_page('Site Options');
-	acf_add_options_sub_page(
-		array(
-			'title'  => 'Main Menu',
-			'parent' => 'themes.php',
-		)
-	);
-}

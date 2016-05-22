@@ -125,7 +125,7 @@ class HC_Listings {
 				remove_action( 'genesis_header', 'genesis_header_markup_close', 15 );
 
 				remove_action( 'genesis_after_header', 'hc_nav_open', 8 );
-				remove_action( 'genesis_after_header', 'hc_do_nav' );
+				remove_action( 'genesis_after_header', array(HC()->menu, 'display') );
 				remove_action( 'genesis_after_header', 'hc_nav_close', 12 );
 
 				remove_action( 'wp_footer', 'hc_sticky_header' );

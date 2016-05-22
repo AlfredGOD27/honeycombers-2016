@@ -21,6 +21,7 @@ final class HC {
 		'home',
 		'listings',
 		'logs',
+		'menu',
 		'messages',
 		'migration',
 		'profiles',
@@ -107,7 +108,6 @@ final class HC {
 		require_once CHILD_DIR . '/includes/structure/header.php';
 		require_once CHILD_DIR . '/includes/structure/layout.php';
 		require_once CHILD_DIR . '/includes/structure/loops.php';
-		require_once CHILD_DIR . '/includes/structure/menu.php';
 		require_once CHILD_DIR . '/includes/structure/post.php';
 		require_once CHILD_DIR . '/includes/structure/search.php';
 		require_once CHILD_DIR . '/includes/structure/sidebar.php';

@@ -151,19 +151,36 @@
 		opacity: 0;
 		transition: opacity $transition-time;
 
-		ul {
+		> ul {
 			@extend %wrap;
+			position: relative;
+			display: flex;
+			max-height: 12.5em;
 		}
 	}
 
 	.menu-col {
 		display: flex;
-		align-items: center;
+		float: left;
+
+		.left {
+			float: left;
+		}
+
+		.right {
+			float: right;
+		}
 	}
 
 	.menu-col-links {
+		align-items: center;
 		padding-top: 1.5em;
 		padding-bottom: 1.5em;
+		width: 23.5%;
+
+		.left {
+			width: 50%;
+		}
 
 		i {
 			display: block;
@@ -173,25 +190,55 @@
 			font-size: 5em;
 		}
 
-		ul {
-			padding-right: 2em;
-			border-right: 1px solid $orange;
-		}
-
-		a {
-			display: inline-block;
-			padding: .15em 0;
-			color: inherit;
-			text-decoration: none;
-			text-transform: uppercase;
-			font-size: .85em;
+		.right {
+			width: 50%;
 		}
 	}
 
+	.subcategory-list {
+		padding-right: 2em;
+		border-right: 1px solid $orange;
+
+		li {
+			&:hover,
+			&:focus {
+				.menu-col-post-container {
+					display: block;
+				}
+			}
+		}
+	}
+
+	.subcategory-link {
+		display: inline-block;
+		padding: .15em 0;
+		color: inherit;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-size: .85em;
+
+		&:hover,
+		&:focus {
+			color: $orange;
+		}
+	}
+
+	.menu-col-post-container {
+		position: absolute;
+		top: 0;
+		left: 23.5%;
+		display: none;
+		overflow: hidden;
+		width: (100% - 23.5%);
+		height: 100%;
+	}
+
 	.menu-col-post {
-		.first {
-			padding-top: 1em;
-			padding-bottom: 1em;
+		width: 50%;
+
+		.left {
+			padding: 2em 1.25em;
+			width: 38.25%;
 		}
 
 		span {
@@ -208,8 +255,15 @@
 			font-size: 1.1em;
 		}
 
+		.right {
+			overflow: hidden;
+			width: 61.75%;
+		}
+
 		img {
 			display: block;
+			max-width: none;
+			width: 100%;
 		}
 	}
 }
@@ -240,10 +294,6 @@
 				}
 
 				&.active {
-					.menu-item-link,
-					.inactive-link {
-					}
-
 					.inactive-link {
 						color: $orange;
 
@@ -287,36 +337,27 @@
 		}
 
 		.menu-col-links {
-			display: flex;
-			align-items: flex-start;
 			padding-top: 0;
-			padding-bottom: 0;
+			width: 100%;
 
 			.left {
-				flex-grow: 0;
-				flex-shrink: 0;
-				padding-right: 1em;
-				width: auto;
-			}
-
-			i {
-				font-size: 2.5em;
+				padding-right: .5em;
+				padding-left: .5em;
+				width: 7em;
 			}
 
 			.right {
-				flex-grow: 1;
-				flex-shrink: 0;
 				width: auto;
-			}
-
-			ul {
-				padding-right: 0;
-				border-right: none;
 			}
 		}
 
-		.menu-col-post {
-			display: none;
+		.subcategory-list {
+			padding-right: 0;
+			border-right: none;
+		}
+
+		.menu-col-post-container {
+			display: none !important;
 		}
 	}
 }
