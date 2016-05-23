@@ -154,14 +154,18 @@
 		> ul {
 			@extend %wrap;
 			position: relative;
-			display: flex;
 			height: 12.5em;
+
+			> .menu-col-post {
+				width: ((100% - 23.5%) / 2);
+			}
 		}
 	}
 
 	.menu-col {
 		display: flex;
 		float: left;
+		height: 100%;
 
 		.left {
 			float: left;
@@ -203,6 +207,7 @@
 			&:hover,
 			&:focus {
 				.menu-col-post-container {
+					z-index: 101;
 					display: block;
 				}
 			}
@@ -226,11 +231,14 @@
 	.menu-col-post-container {
 		position: absolute;
 		top: 0;
+		right: .75em;
 		left: 23.5%;
+		left: calc(23% + .75em + 1px);
 		display: none;
 		overflow: hidden;
-		width: (100% - 23.5%);
 		height: 100%;
+		height: 100%;
+		background-color: $white;
 	}
 
 	.menu-col-post {
@@ -256,14 +264,18 @@
 		}
 
 		.right {
+			position: relative;
 			overflow: hidden;
 			width: 61.75%;
 		}
 
 		img {
+			position: absolute;
+			top: 50%;
 			display: block;
 			max-width: none;
 			width: 100%;
+			transform: translateY(-50%);
 		}
 	}
 }
@@ -334,6 +346,10 @@
 			border-bottom: none;
 			background-color: transparent;
 			opacity: 1;
+
+			> ul {
+				height: auto;
+			}
 		}
 
 		.menu-col-links {
@@ -356,7 +372,8 @@
 			border-right: none;
 		}
 
-		.menu-col-post-container {
+		.menu-col-post-container,
+		.menu-col-post {
 			display: none !important;
 		}
 	}

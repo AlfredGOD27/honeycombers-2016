@@ -3945,11 +3945,10 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .main-menu .sub-menu > ul {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   height: 12.5em;
+}
+.main-menu .sub-menu > ul > .menu-col-post {
+  width: 38.25%;
 }
 .main-menu .menu-col {
   display: -webkit-box;
@@ -3957,6 +3956,7 @@ table > tbody > tr:nth-child(odd) > th {
   display: -ms-flexbox;
   display: flex;
   float: left;
+  height: 100%;
 }
 .main-menu .menu-col .left {
   float: left;
@@ -3991,6 +3991,7 @@ table > tbody > tr:nth-child(odd) > th {
   border-right: 1px solid #fe862c;
 }
 .main-menu .subcategory-list li:hover .menu-col-post-container, .main-menu .subcategory-list li:focus .menu-col-post-container {
+  z-index: 101;
   display: block;
 }
 .main-menu .subcategory-link {
@@ -4007,11 +4008,14 @@ table > tbody > tr:nth-child(odd) > th {
 .main-menu .menu-col-post-container {
   position: absolute;
   top: 0;
+  right: .75em;
   left: 23.5%;
+  left: calc(23% + .75em + 1px);
   display: none;
   overflow: hidden;
-  width: 76.5%;
   height: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
 }
 .main-menu .menu-col-post {
   width: 50%;
@@ -4034,13 +4038,18 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: 1.1em;
 }
 .main-menu .menu-col-post .right {
+  position: relative;
   overflow: hidden;
   width: 61.75%;
 }
 .main-menu .menu-col-post img {
+  position: absolute;
+  top: 50%;
   display: block;
   max-width: none;
   width: 100%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 @media (max-width: 1024px) {
@@ -4097,6 +4106,9 @@ table > tbody > tr:nth-child(odd) > th {
     background-color: transparent;
     opacity: 1;
   }
+  .main-menu .sub-menu > ul {
+    height: auto;
+  }
   .main-menu .menu-col-links {
     padding-top: 0;
     width: 100%;
@@ -4113,7 +4125,8 @@ table > tbody > tr:nth-child(odd) > th {
     padding-right: 0;
     border-right: none;
   }
-  .main-menu .menu-col-post-container {
+  .main-menu .menu-col-post-container,
+  .main-menu .menu-col-post {
     display: none !important;
   }
 }

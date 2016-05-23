@@ -131,6 +131,55 @@ class HC_Menu {
 						</ul>
 					</div>
 				</li>
+
+				<?php
+				$args = array(
+					'posts_per_page' => 2,
+					'post_type'      => 'post',
+					'tax_query'      => array(
+						array(
+							'taxonomy' => 'category',
+							'field'    => 'term_id',
+							'terms'    => array($top_item_id),
+						),
+					),
+					'fields' => 'ids',
+				);
+
+				$posts = get_posts( $args );
+				if( !empty($posts) ) {
+					foreach( $posts as $post_id ) {
+						?>
+						<li class="menu-col menu-col-post clearfix">
+							<?php
+							$title = HC()->entry->get_headline_title($post_id);
+							?>
+							<div class="left">
+								<span><?php echo $subcategory->name; ?></span>
+
+								<a href="<?php echo get_permalink($post_id); ?>"><?php echo $title; ?></a>
+							</div>
+
+							<div class="right">
+								<?php
+								if( has_post_thumbnail($post_id) ) {
+									$src = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), 'archive-small' );
+
+									$atts = array(
+										'src'    => $src[0],
+										'alt'    => $title,
+										'width'  => $src[1],
+										'height' => $src[2],
+									);
+									echo HC()->utilities->get_async_image_placeholder( $atts, 'skip-image-on-mobile' );
+								}
+								?>
+							</div>
+						</li>
+						<?php
+					}
+				}
+				?>
 			</ul>
 		</div>
 		<?php
