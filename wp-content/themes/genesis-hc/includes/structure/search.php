@@ -67,7 +67,7 @@ function hc_redirect_single_search_result() {
 
 }
 
-// add_filter( 'pre_get_posts', 'hc_only_search_posts' );
+add_filter( 'pre_get_posts', 'hc_only_search_posts' );
 /**
  * Limit searching to just posts, excluding pages and CPTs.
  *
@@ -78,7 +78,7 @@ function hc_redirect_single_search_result() {
 function hc_only_search_posts( $query ) {
 
 	if( $query->is_search ) {
-		$query->set( 'post_type', 'post' );
+		$query->set( 'post_type', array('post', 'page', 'event', 'listing') );
 	}
 
 	return $query;
