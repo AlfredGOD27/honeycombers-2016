@@ -4,15 +4,21 @@
 
 	> span {
 		font-size: .9em;
+
+		> span {
+			> span {
+				&:first-of-type {
+					a {
+						color: $orange;
+					}
+				}
+			}
+		}
 	}
 
 	a {
 		color: inherit;
 		text-decoration: none;
-	}
-
-	.breadcrumb_last {
-		color: $orange;
 	}
 }
 
