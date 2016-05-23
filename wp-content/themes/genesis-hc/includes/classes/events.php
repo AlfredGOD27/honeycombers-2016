@@ -546,12 +546,7 @@ class HC_Events {
 			<section class="subcategory">
 				<div class="wrap">
 					<div class="subcategory-description">
-						<a href="<?php echo get_term_link($term); ?>">
-							<?php
-							echo HC()->utilities->get_category_icon_html( $term );
-							?>
-							<h2 class="archive-title"><?php echo $term->name; ?></h2>
-						</a>
+						<h2 class="archive-title"><a href="<?php echo get_term_link($term); ?>"><?php echo $term->name; ?></a></h2>
 					</div>
 
 					<div class="events-slider hide-no-js">
