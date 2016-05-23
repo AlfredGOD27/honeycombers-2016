@@ -188,74 +188,82 @@ class HC_Menu {
 
 	public function display() {
 
+		global $post;
+
 		printf( '<h2 class="screen-reader-text">%s</h2>', __( 'Main navigation', 'genesis' ) );
 
-		$transient = get_transient( $this->transient_name );
+		$menu = get_field( '_hc_main_menu_category_ids', 'option' );
+		if( empty($menu) )
+			return;
 
-		if( false === $transient ) {
-			$menu = get_field( '_hc_main_menu_category_ids', 'option' );
-			if( empty($menu) )
-				return;
+		$is_singular = is_singular();
+		$is_archive  = is_archive();
 
-			ob_start();
-			?>
-			<nav class="nav-primary" itemscope itemtype="http://schema.org/SiteNavigationElement" aria-label="Main navigation">
-				<div class="wrap">
-					<ul class="main-menu clearfix">
-						<?php
-						foreach( $menu as $top_item_id ) {
-							if( !isset($this->categories[$top_item_id]))
-								$this->categories[$top_item_id] = get_term_by( 'id', $top_item_id, 'category' );
+		if( $is_singular )
+			$primary_term = HC()->utilities->get_primary_term( $post->ID, 'category' );
 
-							if( !isset($this->subcategories[$top_item_id]) ) {
-								$args = array(
-									'parent'   => $top_item_id,
-									'taxonomy' => 'category',
-								);
-								$this->subcategories[$top_item_id] = get_terms($args);
-							}
+		?>
+		<nav class="nav-primary" itemscope itemtype="http://schema.org/SiteNavigationElement" aria-label="Main navigation">
+			<div class="wrap">
+				<ul class="main-menu clearfix">
+					<?php
+					foreach( $menu as $top_item_id ) {
+						if( !isset($this->categories[$top_item_id]))
+							$this->categories[$top_item_id] = get_term_by( 'id', $top_item_id, 'category' );
 
-							echo !empty($this->subcategories[$top_item_id]) ? '<li class="menu-item has-children">' : '<li class="menu-item">';
-								$label = sanitize_text_field($top_item['label']);
-
-								if( !empty($this->subcategories[$top_item_id]) ) {
-									echo '<a href="' . get_term_link($this->categories[$top_item_id]) . '" class="menu-item-link">' . $this->categories[$top_item_id]->name . '</a>';
-									echo '<button type="button" class="inactive-link"><span>' . $this->categories[$top_item_id]->name . '</span> <i class="ico-arrow-down"></i> <i class="ico-arrow-up"></i></button>';
-
-									$this->display_links_menu( $top_item_id );
-
-								} else {
-									echo '<a href="' . get_term_link($this->categories[$top_item_id]) . '" class="menu-item-link">' . $this->categories[$top_item_id]->name . '</a>';
-								}
-							echo '</li>';
+						if( !isset($this->subcategories[$top_item_id]) ) {
+							$args = array(
+								'parent'   => $top_item_id,
+								'taxonomy' => 'category',
+							);
+							$this->subcategories[$top_item_id] = get_terms($args);
 						}
-						?>
-					</ul>
 
-					<div class="icon-nav">
-						<?php $page_id = get_field( '_hc_calendar_page_id', 'option' ); ?>
-						<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-calendar"></i> <span>Calendar</span></a>
+						$current = '';
+						if( $is_singular ) {
+							if( $top_item_id === $primary_term->term_id || $top_item_id === $primary_term->parent )
+								$current = 'current';
+						} elseif( $is_archive ) {
+							$queried_term = get_queried_object();
+							if( $top_item_id === $queried_term->term_id || $top_item_id === $queried_term->parent )
+								$current = 'current';
+						}
 
-						<?php $page_id = get_field( '_hc_directory_page_id', 'option' ); ?>
-						<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-pin"></i> <span>Directory</span></a>
+						echo !empty($this->subcategories[$top_item_id]) ? '<li class="menu-item has-children ' . $current . '">' : '<li class="menu-item ' . $current . '">';
+							$label = sanitize_text_field($top_item['label']);
 
-						<?php $page_id = get_field( '_hc_video_page_id', 'option' ); ?>
-						<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-play"></i> <span>Video</span></a>
-					</div>
+							if( !empty($this->subcategories[$top_item_id]) ) {
+								echo '<a href="' . get_term_link($this->categories[$top_item_id]) . '" class="menu-item-link">' . $this->categories[$top_item_id]->name . '</a>';
+								echo '<button type="button" class="inactive-link"><span>' . $this->categories[$top_item_id]->name . '</span> <i class="ico-arrow-down"></i> <i class="ico-arrow-up"></i></button>';
 
-					<div class="show-phone mobile-social-nav">
-						<span><span>Follow Us</span></span>
-						<?php hc_do_social(); ?>
-					</div>
+								$this->display_links_menu( $top_item_id );
+
+							} else {
+								echo '<a href="' . get_term_link($this->categories[$top_item_id]) . '" class="menu-item-link">' . $this->categories[$top_item_id]->name . '</a>';
+							}
+						echo '</li>';
+					}
+					?>
+				</ul>
+
+				<div class="icon-nav">
+					<?php $page_id = get_field( '_hc_calendar_page_id', 'option' ); ?>
+					<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-calendar"></i> <span>Calendar</span></a>
+
+					<?php $page_id = get_field( '_hc_directory_page_id', 'option' ); ?>
+					<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-pin"></i> <span>Directory</span></a>
+
+					<?php $page_id = get_field( '_hc_video_page_id', 'option' ); ?>
+					<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-play"></i> <span>Video</span></a>
 				</div>
-			</nav>
-			<?php
-			$transient = ob_get_clean();
 
-			set_transient( $this->transient_name, $transient );
-		}
-
-		echo $transient;
+				<div class="show-phone mobile-social-nav">
+					<span><span>Follow Us</span></span>
+					<?php hc_do_social(); ?>
+				</div>
+			</div>
+		</nav>
+		<?php
 
 	}
 
