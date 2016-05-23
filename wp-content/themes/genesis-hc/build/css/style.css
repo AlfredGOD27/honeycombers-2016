@@ -3333,7 +3333,7 @@ table > tbody > tr:nth-child(odd) > th {
   line-height: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .site-top {
     display: none;
   }
@@ -3364,7 +3364,7 @@ table > tbody > tr:nth-child(odd) > th {
           align-items: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .site-header {
     margin-bottom: 1.5em;
   }
@@ -3393,7 +3393,7 @@ table > tbody > tr:nth-child(odd) > th {
   padding-bottom: .5em;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .title-area {
     -webkit-box-flex: 0;
     -webkit-flex-grow: 0;
@@ -3416,7 +3416,7 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: 3em;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .site-logo img {
     display: none;
   }
@@ -3447,7 +3447,7 @@ table > tbody > tr:nth-child(odd) > th {
   border: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .header-widget-area {
     -webkit-box-ordinal-group: 4;
     -webkit-order: 3;
@@ -3502,7 +3502,7 @@ table > tbody > tr:nth-child(odd) > th {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .mobile-header-right {
     display: block;
   }
@@ -3795,7 +3795,7 @@ table > tbody > tr:nth-child(odd) > th {
   border-bottom: 1px solid #fe862c;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-primary-wrapper {
     position: relative;
     display: none;
@@ -3832,7 +3832,7 @@ table > tbody > tr:nth-child(odd) > th {
           align-items: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .nav-primary > .wrap {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -3949,7 +3949,7 @@ table > tbody > tr:nth-child(odd) > th {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  max-height: 12.5em;
+  height: 12.5em;
 }
 .main-menu .menu-col {
   display: -webkit-box;
@@ -4043,7 +4043,7 @@ table > tbody > tr:nth-child(odd) > th {
   width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .main-menu {
     position: static;
     -webkit-box-ordinal-group: 3;
@@ -4151,7 +4151,7 @@ table > tbody > tr:nth-child(odd) > th {
   text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .icon-nav {
     -webkit-box-ordinal-group: 2;
     -webkit-order: 1;

@@ -8,7 +8,7 @@
 	}
 }
 
-@include media('<=portrait') {
+@include media('<=landscape') {
 	.nav-primary-wrapper {
 		position: relative;
 		display: none;
@@ -46,7 +46,7 @@
 	}
 }
 
-@include media('<=portrait') {
+@include media('<=landscape') {
 	.nav-primary {
 		> .wrap {
 			flex-direction: column;
@@ -155,7 +155,7 @@
 			@extend %wrap;
 			position: relative;
 			display: flex;
-			max-height: 12.5em;
+			height: 12.5em;
 		}
 	}
 
@@ -268,7 +268,7 @@
 	}
 }
 
-@include media('<=portrait') {
+@include media('<=landscape') {
 	.main-menu {
 		position: static;
 		order: 2;
@@ -395,7 +395,7 @@
 	}
 }
 
-@include media('<=portrait') {
+@include media('<=landscape') {
 	.icon-nav {
 		order: 1;
 		float: none;

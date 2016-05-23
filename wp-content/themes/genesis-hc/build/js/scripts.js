@@ -5504,7 +5504,7 @@ function hc_maybe_load_facebook() {
 		affix_on = true;
 
 		// Turn off is window isn't fullwidth
-		if( im.lessThan('portrait') )
+		if( im.lessThan('landscape') )
 			affix_on = false;
 	}
 
