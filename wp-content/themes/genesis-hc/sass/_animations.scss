@@ -286,7 +286,7 @@ $animation-colors: 'orange' 'white';
 	}
 
 	.animation-recharge-#{$color} {
-		@extend %animation-two-step;
+		@extend %animation-six-step;
 
 		&.animation-small {
 			background-image: url('../images/animations/recharge-40-#{$color}.png');

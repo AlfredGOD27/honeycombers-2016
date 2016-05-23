@@ -1482,17 +1482,17 @@ html {
     background-position: -180px;
   }
 }
-.animation-calendar-orange, .animation-connect-orange, .animation-food-orange, .animation-hacks-orange, .animation-hitlist-orange, .animation-recharge-orange, .animation-shopping-orange, .animation-video-orange, .animation-win-orange, .animation-calendar-white, .animation-connect-white, .animation-food-white, .animation-hacks-white, .animation-hitlist-white, .animation-recharge-white, .animation-shopping-white, .animation-video-white, .animation-win-white {
+.animation-calendar-orange, .animation-connect-orange, .animation-food-orange, .animation-hacks-orange, .animation-hitlist-orange, .animation-shopping-orange, .animation-video-orange, .animation-win-orange, .animation-calendar-white, .animation-connect-white, .animation-food-white, .animation-hacks-white, .animation-hitlist-white, .animation-shopping-white, .animation-video-white, .animation-win-white {
   -webkit-animation-duration: 0.25s;
           animation-duration: 0.25s;
   -webkit-animation-timing-function: steps(2);
           animation-timing-function: steps(2);
 }
-.animation-small.run.animation-calendar-orange, .animation-small.run.animation-connect-orange, .animation-small.run.animation-food-orange, .animation-small.run.animation-hacks-orange, .animation-small.run.animation-hitlist-orange, .animation-small.run.animation-recharge-orange, .animation-small.run.animation-shopping-orange, .animation-small.run.animation-video-orange, .animation-small.run.animation-win-orange, .animation-small.run.animation-calendar-white, .animation-small.run.animation-connect-white, .animation-small.run.animation-food-white, .animation-small.run.animation-hacks-white, .animation-small.run.animation-hitlist-white, .animation-small.run.animation-recharge-white, .animation-small.run.animation-shopping-white, .animation-small.run.animation-video-white, .animation-small.run.animation-win-white {
+.animation-small.run.animation-calendar-orange, .animation-small.run.animation-connect-orange, .animation-small.run.animation-food-orange, .animation-small.run.animation-hacks-orange, .animation-small.run.animation-hitlist-orange, .animation-small.run.animation-shopping-orange, .animation-small.run.animation-video-orange, .animation-small.run.animation-win-orange, .animation-small.run.animation-calendar-white, .animation-small.run.animation-connect-white, .animation-small.run.animation-food-white, .animation-small.run.animation-hacks-white, .animation-small.run.animation-hitlist-white, .animation-small.run.animation-shopping-white, .animation-small.run.animation-video-white, .animation-small.run.animation-win-white {
   -webkit-animation-name: two-step-small;
           animation-name: two-step-small;
 }
-.animation-large.run.animation-calendar-orange, .animation-large.run.animation-connect-orange, .animation-large.run.animation-food-orange, .animation-large.run.animation-hacks-orange, .animation-large.run.animation-hitlist-orange, .animation-large.run.animation-recharge-orange, .animation-large.run.animation-shopping-orange, .animation-large.run.animation-video-orange, .animation-large.run.animation-win-orange, .animation-large.run.animation-calendar-white, .animation-large.run.animation-connect-white, .animation-large.run.animation-food-white, .animation-large.run.animation-hacks-white, .animation-large.run.animation-hitlist-white, .animation-large.run.animation-recharge-white, .animation-large.run.animation-shopping-white, .animation-large.run.animation-video-white, .animation-large.run.animation-win-white {
+.animation-large.run.animation-calendar-orange, .animation-large.run.animation-connect-orange, .animation-large.run.animation-food-orange, .animation-large.run.animation-hacks-orange, .animation-large.run.animation-hitlist-orange, .animation-large.run.animation-shopping-orange, .animation-large.run.animation-video-orange, .animation-large.run.animation-win-orange, .animation-large.run.animation-calendar-white, .animation-large.run.animation-connect-white, .animation-large.run.animation-food-white, .animation-large.run.animation-hacks-white, .animation-large.run.animation-hitlist-white, .animation-large.run.animation-shopping-white, .animation-large.run.animation-video-white, .animation-large.run.animation-win-white {
   -webkit-animation-name: two-step-large;
           animation-name: two-step-large;
 }
@@ -1658,17 +1658,17 @@ html {
     background-position: -540px;
   }
 }
-.animation-travel-orange, .animation-travel-white {
+.animation-recharge-orange, .animation-travel-orange, .animation-recharge-white, .animation-travel-white {
   -webkit-animation-duration: 0.75s;
           animation-duration: 0.75s;
   -webkit-animation-timing-function: steps(6);
           animation-timing-function: steps(6);
 }
-.animation-small.run.animation-travel-orange, .animation-small.run.animation-travel-white {
+.animation-small.run.animation-recharge-orange, .animation-small.run.animation-travel-orange, .animation-small.run.animation-recharge-white, .animation-small.run.animation-travel-white {
   -webkit-animation-name: six-step-small;
           animation-name: six-step-small;
 }
-.animation-large.run.animation-travel-orange, .animation-large.run.animation-travel-white {
+.animation-large.run.animation-recharge-orange, .animation-large.run.animation-travel-orange, .animation-large.run.animation-recharge-white, .animation-large.run.animation-travel-white {
   -webkit-animation-name: six-step-large;
           animation-name: six-step-large;
 }
