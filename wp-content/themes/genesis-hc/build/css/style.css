@@ -1449,183 +1449,6 @@ html {
           animation-fill-mode: both;
 }
 
-@-webkit-keyframes two-step-small {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -80px;
-  }
-}
-
-@keyframes two-step-small {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -80px;
-  }
-}
-@-webkit-keyframes two-step-large {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -180px;
-  }
-}
-@keyframes two-step-large {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -180px;
-  }
-}
-.animation-calendar-orange, .animation-connect-orange, .animation-food-orange, .animation-hacks-orange, .animation-hitlist-orange, .animation-shopping-orange, .animation-video-orange, .animation-win-orange, .animation-calendar-white, .animation-connect-white, .animation-food-white, .animation-hacks-white, .animation-hitlist-white, .animation-shopping-white, .animation-video-white, .animation-win-white {
-  -webkit-animation-duration: 0.25s;
-          animation-duration: 0.25s;
-  -webkit-animation-timing-function: steps(2);
-          animation-timing-function: steps(2);
-}
-.animation-small.run.animation-calendar-orange, .animation-small.run.animation-connect-orange, .animation-small.run.animation-food-orange, .animation-small.run.animation-hacks-orange, .animation-small.run.animation-hitlist-orange, .animation-small.run.animation-shopping-orange, .animation-small.run.animation-video-orange, .animation-small.run.animation-win-orange, .animation-small.run.animation-calendar-white, .animation-small.run.animation-connect-white, .animation-small.run.animation-food-white, .animation-small.run.animation-hacks-white, .animation-small.run.animation-hitlist-white, .animation-small.run.animation-shopping-white, .animation-small.run.animation-video-white, .animation-small.run.animation-win-white {
-  -webkit-animation-name: two-step-small;
-          animation-name: two-step-small;
-}
-.animation-large.run.animation-calendar-orange, .animation-large.run.animation-connect-orange, .animation-large.run.animation-food-orange, .animation-large.run.animation-hacks-orange, .animation-large.run.animation-hitlist-orange, .animation-large.run.animation-shopping-orange, .animation-large.run.animation-video-orange, .animation-large.run.animation-win-orange, .animation-large.run.animation-calendar-white, .animation-large.run.animation-connect-white, .animation-large.run.animation-food-white, .animation-large.run.animation-hacks-white, .animation-large.run.animation-hitlist-white, .animation-large.run.animation-shopping-white, .animation-large.run.animation-video-white, .animation-large.run.animation-win-white {
-  -webkit-animation-name: two-step-large;
-          animation-name: two-step-large;
-}
-
-@-webkit-keyframes three-step-small {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -120px;
-  }
-}
-
-@keyframes three-step-small {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -120px;
-  }
-}
-@-webkit-keyframes three-step-large {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -270px;
-  }
-}
-@keyframes three-step-large {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -270px;
-  }
-}
-.animation-drinks-orange, .animation-drinks-white {
-  -webkit-animation-duration: 0.375s;
-          animation-duration: 0.375s;
-  -webkit-animation-timing-function: steps(3);
-          animation-timing-function: steps(3);
-}
-.animation-small.run.animation-drinks-orange, .animation-small.run.animation-drinks-white {
-  -webkit-animation-name: three-step-small;
-          animation-name: three-step-small;
-}
-.animation-large.run.animation-drinks-orange, .animation-large.run.animation-drinks-white {
-  -webkit-animation-name: three-step-large;
-          animation-name: three-step-large;
-}
-
-@-webkit-keyframes four-step-small {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -160px;
-  }
-}
-
-@keyframes four-step-small {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -160px;
-  }
-}
-@-webkit-keyframes four-step-large {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -360px;
-  }
-}
-@keyframes four-step-large {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -360px;
-  }
-}
-.animation-directory-orange, .animation-directory-white {
-  -webkit-animation-duration: 0.5s;
-          animation-duration: 0.5s;
-  -webkit-animation-timing-function: steps(4);
-          animation-timing-function: steps(4);
-}
-.animation-small.run.animation-directory-orange, .animation-small.run.animation-directory-white {
-  -webkit-animation-name: four-step-small;
-          animation-name: four-step-small;
-}
-.animation-large.run.animation-directory-orange, .animation-large.run.animation-directory-white {
-  -webkit-animation-name: four-step-large;
-          animation-name: four-step-large;
-}
-
-@-webkit-keyframes five-step-small {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -200px;
-  }
-}
-
-@keyframes five-step-small {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -200px;
-  }
-}
-@-webkit-keyframes five-step-large {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -450px;
-  }
-}
-@keyframes five-step-large {
-  from {
-    background-position: 0;
-  }
-  to {
-    background-position: -450px;
-  }
-}
 @-webkit-keyframes six-step-small {
   from {
     background-position: 0;
@@ -1634,6 +1457,7 @@ html {
     background-position: -240px;
   }
 }
+
 @keyframes six-step-small {
   from {
     background-position: 0;
@@ -1647,7 +1471,7 @@ html {
     background-position: 0;
   }
   to {
-    background-position: -540px;
+    background-position: -420px;
   }
 }
 @keyframes six-step-large {
@@ -1655,29 +1479,26 @@ html {
     background-position: 0;
   }
   to {
-    background-position: -540px;
+    background-position: -420px;
   }
 }
-.animation-recharge-orange, .animation-travel-orange, .animation-recharge-white, .animation-travel-white {
-  -webkit-animation-duration: 0.75s;
-          animation-duration: 0.75s;
-  -webkit-animation-timing-function: steps(6);
-          animation-timing-function: steps(6);
-}
-.animation-small.run.animation-recharge-orange, .animation-small.run.animation-travel-orange, .animation-small.run.animation-recharge-white, .animation-small.run.animation-travel-white {
-  -webkit-animation-name: six-step-small;
-          animation-name: six-step-small;
-}
-.animation-large.run.animation-recharge-orange, .animation-large.run.animation-travel-orange, .animation-large.run.animation-recharge-white, .animation-large.run.animation-travel-white {
-  -webkit-animation-name: six-step-large;
-          animation-name: six-step-large;
-}
-
 .animation {
   background-position: 0 0;
   background-repeat: no-repeat;
   -webkit-transition: none;
           transition: none;
+  -webkit-animation-duration: 0.75s;
+          animation-duration: 0.75s;
+  -webkit-animation-timing-function: steps(6);
+          animation-timing-function: steps(6);
+}
+.animation.animation-small.run {
+  -webkit-animation-name: six-step-small;
+          animation-name: six-step-small;
+}
+.animation.animation-large.run {
+  -webkit-animation-name: six-step-large;
+          animation-name: six-step-large;
 }
 
 .animation-small {
@@ -1686,176 +1507,176 @@ html {
 }
 
 .animation-large {
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
 }
 
 .animation-calendar-orange.animation-small {
   background-image: url("../images/animations/calendar-40-orange.png");
 }
 .animation-calendar-orange.animation-large {
-  background-image: url("../images/animations/calendar-90-orange.png");
+  background-image: url("../images/animations/calendar-70-orange.png");
 }
 
 .animation-connect-orange.animation-small {
   background-image: url("../images/animations/connect-40-orange.png");
 }
 .animation-connect-orange.animation-large {
-  background-image: url("../images/animations/connect-90-orange.png");
+  background-image: url("../images/animations/connect-70-orange.png");
 }
 
 .animation-directory-orange.animation-small {
   background-image: url("../images/animations/directory-40-orange.png");
 }
 .animation-directory-orange.animation-large {
-  background-image: url("../images/animations/directory-90-orange.png");
+  background-image: url("../images/animations/directory-70-orange.png");
 }
 
 .animation-drinks-orange.animation-small {
   background-image: url("../images/animations/drinks-40-orange.png");
 }
 .animation-drinks-orange.animation-large {
-  background-image: url("../images/animations/drinks-90-orange.png");
+  background-image: url("../images/animations/drinks-70-orange.png");
 }
 
 .animation-food-orange.animation-small {
   background-image: url("../images/animations/food-40-orange.png");
 }
 .animation-food-orange.animation-large {
-  background-image: url("../images/animations/food-90-orange.png");
+  background-image: url("../images/animations/food-70-orange.png");
 }
 
 .animation-hacks-orange.animation-small {
   background-image: url("../images/animations/hacks-40-orange.png");
 }
 .animation-hacks-orange.animation-large {
-  background-image: url("../images/animations/hacks-90-orange.png");
+  background-image: url("../images/animations/hacks-70-orange.png");
 }
 
 .animation-hitlist-orange.animation-small {
   background-image: url("../images/animations/hitlist-40-orange.png");
 }
 .animation-hitlist-orange.animation-large {
-  background-image: url("../images/animations/hitlist-90-orange.png");
+  background-image: url("../images/animations/hitlist-70-orange.png");
 }
 
 .animation-recharge-orange.animation-small {
   background-image: url("../images/animations/recharge-40-orange.png");
 }
 .animation-recharge-orange.animation-large {
-  background-image: url("../images/animations/recharge-90-orange.png");
+  background-image: url("../images/animations/recharge-70-orange.png");
 }
 
 .animation-shopping-orange.animation-small {
   background-image: url("../images/animations/shopping-40-orange.png");
 }
 .animation-shopping-orange.animation-large {
-  background-image: url("../images/animations/shopping-90-orange.png");
+  background-image: url("../images/animations/shopping-70-orange.png");
 }
 
 .animation-travel-orange.animation-small {
   background-image: url("../images/animations/travel-40-orange.png");
 }
 .animation-travel-orange.animation-large {
-  background-image: url("../images/animations/travel-90-orange.png");
+  background-image: url("../images/animations/travel-70-orange.png");
 }
 
 .animation-video-orange.animation-small {
   background-image: url("../images/animations/video-40-orange.png");
 }
 .animation-video-orange.animation-large {
-  background-image: url("../images/animations/video-90-orange.png");
+  background-image: url("../images/animations/video-70-orange.png");
 }
 
 .animation-win-orange.animation-small {
   background-image: url("../images/animations/win-40-orange.png");
 }
 .animation-win-orange.animation-large {
-  background-image: url("../images/animations/win-90-orange.png");
+  background-image: url("../images/animations/win-70-orange.png");
 }
 
 .animation-calendar-white.animation-small {
   background-image: url("../images/animations/calendar-40-white.png");
 }
 .animation-calendar-white.animation-large {
-  background-image: url("../images/animations/calendar-90-white.png");
+  background-image: url("../images/animations/calendar-70-white.png");
 }
 
 .animation-connect-white.animation-small {
   background-image: url("../images/animations/connect-40-white.png");
 }
 .animation-connect-white.animation-large {
-  background-image: url("../images/animations/connect-90-white.png");
+  background-image: url("../images/animations/connect-70-white.png");
 }
 
 .animation-directory-white.animation-small {
   background-image: url("../images/animations/directory-40-white.png");
 }
 .animation-directory-white.animation-large {
-  background-image: url("../images/animations/directory-90-white.png");
+  background-image: url("../images/animations/directory-70-white.png");
 }
 
 .animation-drinks-white.animation-small {
   background-image: url("../images/animations/drinks-40-white.png");
 }
 .animation-drinks-white.animation-large {
-  background-image: url("../images/animations/drinks-90-white.png");
+  background-image: url("../images/animations/drinks-70-white.png");
 }
 
 .animation-food-white.animation-small {
   background-image: url("../images/animations/food-40-white.png");
 }
 .animation-food-white.animation-large {
-  background-image: url("../images/animations/food-90-white.png");
+  background-image: url("../images/animations/food-70-white.png");
 }
 
 .animation-hacks-white.animation-small {
   background-image: url("../images/animations/hacks-40-white.png");
 }
 .animation-hacks-white.animation-large {
-  background-image: url("../images/animations/hacks-90-white.png");
+  background-image: url("../images/animations/hacks-70-white.png");
 }
 
 .animation-hitlist-white.animation-small {
   background-image: url("../images/animations/hitlist-40-white.png");
 }
 .animation-hitlist-white.animation-large {
-  background-image: url("../images/animations/hitlist-90-white.png");
+  background-image: url("../images/animations/hitlist-70-white.png");
 }
 
 .animation-recharge-white.animation-small {
   background-image: url("../images/animations/recharge-40-white.png");
 }
 .animation-recharge-white.animation-large {
-  background-image: url("../images/animations/recharge-90-white.png");
+  background-image: url("../images/animations/recharge-70-white.png");
 }
 
 .animation-shopping-white.animation-small {
   background-image: url("../images/animations/shopping-40-white.png");
 }
 .animation-shopping-white.animation-large {
-  background-image: url("../images/animations/shopping-90-white.png");
+  background-image: url("../images/animations/shopping-70-white.png");
 }
 
 .animation-travel-white.animation-small {
   background-image: url("../images/animations/travel-40-white.png");
 }
 .animation-travel-white.animation-large {
-  background-image: url("../images/animations/travel-90-white.png");
+  background-image: url("../images/animations/travel-70-white.png");
 }
 
 .animation-video-white.animation-small {
   background-image: url("../images/animations/video-40-white.png");
 }
 .animation-video-white.animation-large {
-  background-image: url("../images/animations/video-90-white.png");
+  background-image: url("../images/animations/video-70-white.png");
 }
 
 .animation-win-white.animation-small {
   background-image: url("../images/animations/win-40-white.png");
 }
 .animation-win-white.animation-large {
-  background-image: url("../images/animations/win-90-white.png");
+  background-image: url("../images/animations/win-70-white.png");
 }
 
 .five-sixths,
