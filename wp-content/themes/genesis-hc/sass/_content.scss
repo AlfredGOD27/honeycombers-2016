@@ -4,16 +4,6 @@
 
 	> span {
 		font-size: .9em;
-
-		> span {
-			> span {
-				&:first-of-type {
-					a {
-						color: $orange;
-					}
-				}
-			}
-		}
 	}
 
 	a {
