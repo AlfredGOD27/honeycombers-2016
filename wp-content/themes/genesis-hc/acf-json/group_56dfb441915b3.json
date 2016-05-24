@@ -409,8 +409,8 @@
         {
             "key": "field_56fff0eaf264e",
             "label": "Video",
-            "name": "_hc_video_page_id",
-            "type": "post_object",
+            "name": "_hc_video_category_id",
+            "type": "taxonomy",
             "instructions": "",
             "required": 1,
             "conditional_logic": 0,
@@ -419,14 +419,14 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [],
+            "taxonomy": "category",
+            "field_type": "select",
             "allow_null": 0,
-            "multiple": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
             "return_format": "id",
-            "ui": 1
+            "multiple": 0
         },
         {
             "key": "field_5720fe7dd2cb3",
@@ -1230,5 +1230,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1463766553
+    "modified": 1464129313
 }

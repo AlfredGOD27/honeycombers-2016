@@ -180,8 +180,8 @@ class HC_Home {
 			<div class="wrap">
 				<?php
 				if( !empty($enable_video) ) {
-					$video_page_id   = get_field( '_hc_video_page_id', 'option' );
-					$video_page_link = get_permalink($video_page_id);
+					$video_page_id   = get_field( '_hc_video_category_id', 'option' );
+					$video_page_link = get_term_link($video_page_id, 'category');
 					?>
 					<div class="left">
 						<?php

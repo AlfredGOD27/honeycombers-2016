@@ -253,8 +253,8 @@ class HC_Menu {
 					<?php $page_id = get_field( '_hc_directory_page_id', 'option' ); ?>
 					<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-pin"></i> <span>Directory</span></a>
 
-					<?php $page_id = get_field( '_hc_video_page_id', 'option' ); ?>
-					<a href="<?php echo get_permalink($page_id); ?>" class="btn btn-icon"><i class="ico-play"></i> <span>Video</span></a>
+					<?php $page_id = get_field( '_hc_video_category_id', 'option' ); ?>
+					<a href="<?php echo get_term_link($page_id, 'category'); ?>" class="btn btn-icon"><i class="ico-play"></i> <span>Video</span></a>
 				</div>
 
 				<div class="show-phone mobile-social-nav">
