@@ -219,4 +219,13 @@
 		}
 	});
 
+	$('.main-menu').on( 'mouseenter', function() {
+		if( !im.lessThan('landscape') )
+			$('body').addClass('main-menu-open');
+	});
+
+	$('.main-menu').on( 'mouseleave', function() {
+		$('body').removeClass('main-menu-open');
+	});
+
 })( window.jQuery );
