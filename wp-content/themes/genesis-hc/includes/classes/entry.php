@@ -106,24 +106,11 @@ class HC_Entry {
 				break;
 			default:
 				genesis_do_post_title();
+
 				?>
 				<div class="entry-meta">
-					<?php
-					if( 'default' === $this->header_type )
-						$this->display_image();
-					?>
-
 					<div class="author-share-row clearfix">
 						<div class="left">
-							<?php HC()->folders->display_add_button( $post->ID ); ?>
-							<?php HC()->share->display( $post->ID ); ?>
-						</div>
-
-						<div class="right">
-							<div class="date-row">
-								<?php echo do_shortcode('[post_date]'); ?>
-							</div>
-
 							<?php
 							$lines   = array();
 							$lines[] = do_shortcode( __( 'By', CHILD_THEME_TEXT_DOMAIN ) . ' [post_author_posts_link]' );
@@ -135,9 +122,18 @@ class HC_Entry {
 							echo '<p>' . implode( ', ', $lines ) . '</p>';
 							?>
 						</div>
+
+						<div class="right">
+							<?php HC()->folders->display_add_button( $post->ID ); ?>
+							<?php HC()->share->display( $post->ID ); ?>
+						</div>
 					</div>
 				</div>
 				<?php
+
+				if( 'default' === $this->header_type )
+					$this->display_image();
+
 				break;
 		}
 
@@ -209,12 +205,9 @@ class HC_Entry {
 
 		global $post;
 
-		if( empty($post->post_excerpt) )
-			return;
-
 		?>
 		<div class="entry-excerpt" itemprop="description">
-			<?php HC()->formatting->get_excerpt($post, 0); ?>
+			<?php echo HC()->formatting->get_excerpt($post, 0); ?>
 		</div>
 		<?php
 

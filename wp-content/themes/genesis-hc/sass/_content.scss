@@ -65,14 +65,10 @@
 	overflow: hidden;
 	margin-bottom: .5em;
 	word-wrap: break-word;
-	font-size: 1.75em;
+	font-size: 1.5em;
 
 	.single-post & {
 		text-transform: uppercase;
-	}
-
-	.page & {
-		font-size: 1.5em;
 	}
 
 	a {
@@ -111,7 +107,7 @@
 
 .featured-image-container {
 	position: relative;
-	margin-bottom: 1em;
+	margin-bottom: 2em;
 
 	img {
 		max-width: none;
@@ -122,22 +118,34 @@
 .header-default {
 	.entry-header {
 		.entry-title {
-			margin-bottom: .5em;
-			padding-bottom: .35em;
-			border-bottom: 1px solid $grey-border;
+			margin-bottom: .75em;
+		}
+
+		.entry-meta {
+			margin-bottom: .75em;
 		}
 
 		.left {
 			float: left;
+
+			> p {
+				@include meta-font;
+				font-size: .75em;
+			}
 		}
 
 		.right {
 			float: right;
 			text-align: right;
+		}
 
-			> p {
-				@include meta-font;
-				font-size: .9em;
+		.btn-icon {
+			i {
+				font-size: 1em;
+			}
+
+			span {
+				font-size: .75em;
 			}
 		}
 	}
@@ -268,7 +276,7 @@
 
 .entry-excerpt {
 	@include meta-font;
-	margin-bottom: .75em;
+	margin-bottom: 1.25em;
 	color: $grey-light;
 
 	p {
@@ -290,6 +298,15 @@
 		margin-bottom: .2em;
 		color: $orange;
 		font-size: 1.1em;
+	}
+
+	h3 {
+		font-size: .9em;
+		line-height: 1.75;
+
+		a {
+			text-decoration: none;
+		}
 	}
 
 	p {
