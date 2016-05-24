@@ -187,7 +187,9 @@ TYPOGRAPHY - http://cssfontstack.com/
 }
 .profile-boxes .top {
   position: relative;
+  display: block;
   border-bottom: 3px solid #fe862c;
+  color: inherit;
   text-align: center;
 }
 .profile-boxes .top img {

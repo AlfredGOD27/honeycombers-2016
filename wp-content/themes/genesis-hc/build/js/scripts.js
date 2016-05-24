@@ -5043,17 +5043,10 @@ function onYouTubeIframeAPIReady() {
 
 	}
 
-	$('.main-menu .menu-col-links i').on(
-		'mouseenter',
-		function() {
-			reset_animation( $(this) );
-		}
-	);
-
 	$(window).on(
 		'load',
 		function() {
-			$('.event-slider-nav .slick-slide, .event-slider-for .slide-content, .slider-nav .slick-slide, .subcategory-description, .archive-entry-small, .home-section-trending a').on(
+			$('.event-slider-nav .slick-slide, .event-slider-for .slide-content, .slider-nav .slick-slide, .subcategory-description, .archive-entry-small, .home-section-trending a, .main-menu .menu-item.has-children').on(
 				'mouseenter',
 				function() {
 					reset_animation( $(this).find('.category-icon') );
@@ -6320,6 +6313,15 @@ function hc_maybe_load_facebook() {
 		} else {
 			self.closest('.button-nav').toggleClass('open');
 		}
+	});
+
+	$('.main-menu').on( 'mouseenter', function() {
+		if( !im.lessThan('landscape') )
+			$('body').addClass('main-menu-open');
+	});
+
+	$('.main-menu').on( 'mouseleave', function() {
+		$('body').removeClass('main-menu-open');
 	});
 
 })( window.jQuery );

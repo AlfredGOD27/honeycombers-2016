@@ -431,6 +431,8 @@ $listing-slider-height: 18.75em;
 		&:hover,
 		&:focus {
 			.listing-slide-right {
+				top: -1px;
+				bottom: 0;
 				left: 3.75em;
 
 				.inner {
