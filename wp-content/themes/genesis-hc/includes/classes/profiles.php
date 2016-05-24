@@ -519,7 +519,7 @@ class HC_Profiles {
 				$class = isset($box['class']) ? $box['class'] : '';
 				echo 1 === $i % 3 ? '<div class="one-third first box ' . $class . '">' : '<div class="one-third box ' . $class . '">';
 					?>
-					<div class="top">
+					<a href="<?php echo $box['url']; ?>" class="top">
 						<?php
 						if( !empty($box['image_id']) ) {
 							echo wp_get_attachment_image( $box['image_id'], 'archive' );
@@ -532,7 +532,7 @@ class HC_Profiles {
 						if( !empty($box['icon']) )
 							echo '<i class="ico-' . $box['icon'] . '"></i>';
 						?>
-					</div>
+					</a>
 
 					<div class="bottom">
 						<h3><a href="<?php echo $box['url']; ?>"><?php echo $box['name']; ?></a></h3>

@@ -159,7 +159,9 @@
 
 	.top {
 		position: relative;
+		display: block;
 		border-bottom: $border-width solid $orange;
+		color: inherit;
 		text-align: center;
 
 		img {
