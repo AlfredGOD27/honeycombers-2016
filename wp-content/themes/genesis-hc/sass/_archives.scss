@@ -155,6 +155,7 @@ $slider-height: 25em;
 	}
 
 	.slick-arrow {
+		visibility: hidden;
 		opacity: 0;
 		transition: opacity $transition-time;
 	}
@@ -209,10 +210,23 @@ $slider-height: 25em;
 	}
 }
 
+@include media('>=desktop') {
+	.slider-for {
+		.slick-arrow {
+			visibility: visible;
+		}
+	}
+}
+
 @include media('<=portrait') {
 	.slider-for {
 		width: 100%;
 		height: auto;
+
+		.slick-arrow {
+			visibility: visible;
+			opacity: 1;
+		}
 
 		.slide-content {
 			display: block;

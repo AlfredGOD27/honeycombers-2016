@@ -6247,10 +6247,12 @@ function hc_maybe_load_facebook() {
 	if( !im.lessThan('portrait') ) {
 		$('.event-slider-for').slick({
 			adaptiveHeight: true,
-			arrows: false,
+			arrows: true,
 			asNavFor: '.event-slider-nav',
 			fade: true,
 			autoplay: true,
+			prevArrow: hc_strings.prev_arrow,
+			nextArrow: hc_strings.next_arrow,
 			autoplaySpeed: 4000,
 			slidesToScroll: 1,
 			slidesToShow: 1

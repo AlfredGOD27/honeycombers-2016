@@ -180,14 +180,27 @@
 
 .event-slider-for {
 	overflow: hidden;
-	width: 67.5%;
+	width: 65.75%;
 	height: $slider-height;
+
+	&:hover,
+	&:focus {
+		.slick-arrow {
+			opacity: 1;
+		}
+	}
 
 	img {
 		display: block;
 		max-width: none;
 		height: 100%;
 		border-top: 1px solid $orange;
+	}
+
+	.slick-arrow {
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity $transition-time;
 	}
 
 	.slide-content {
@@ -255,10 +268,23 @@
 	}
 }
 
+@include media('>=desktop') {
+	.event-slider-for {
+		.slick-arrow {
+			visibility: visible;
+		}
+	}
+}
+
 @include media('<=portrait') {
 	.event-slider-for {
 		width: 100%;
 		height: auto;
+
+		.slick-arrow {
+			visibility: visible;
+			opacity: 1;
+		}
 
 		.slide-content {
 			display: flex;
