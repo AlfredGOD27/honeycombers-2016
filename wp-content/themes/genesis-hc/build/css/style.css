@@ -7225,6 +7225,10 @@ table > tbody > tr:nth-child(odd) > th {
 .home-section-events-join .left {
   position: relative;
 }
+.home-section-events-join .event-slider-nav {
+  right: 0;
+  width: 37.75%;
+}
 .home-section-events-join .join {
   padding: 2em 1em 2.5em;
   min-height: 25em;

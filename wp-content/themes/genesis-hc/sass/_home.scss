@@ -609,6 +609,11 @@ $slider-height: 25em;
 		position: relative;
 	}
 
+	.event-slider-nav {
+		right: 0;
+		width: 37.75%;
+	}
+
 	.join {
 		padding: 2em 1em 2.5em;
 		min-height: $slider-height;
