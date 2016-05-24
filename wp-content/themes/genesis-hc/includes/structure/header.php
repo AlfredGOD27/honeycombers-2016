@@ -137,7 +137,7 @@ function hc_load_assets() {
 		'hc_strings',
 		array(
 			'spinner'     => $spinner,
-			'more_button' => '<button type="button" class="il-load-more"><span><i class="ico-arrow-down"></i><label>more stories</label></span></button>',
+			'more_button' => '<button type="button" class="il-load-more"><span><i class="ico-arrow-down"></i><label>more cool stuff</label></span></button>',
 			'loading'     => '<div class="il-loading">' . $spinner . '</div>',
 			'prev_arrow'  => '<button type="button" class="slick-prev" title="Previous"><i class="ico-arrow-left"></i></button>',
 			'next_arrow'  => '<button type="button" class="slick-next" title="Next"><i class="ico-arrow-right"></i></button>',
