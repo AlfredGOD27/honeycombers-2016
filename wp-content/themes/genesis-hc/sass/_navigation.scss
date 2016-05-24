@@ -210,13 +210,16 @@
 	}
 
 	.menu-col-links {
+		display: flex;
 		align-items: center;
 		padding-top: 1.5em;
 		padding-bottom: 1.5em;
 		width: 23.5%;
 
 		.left {
-			width: 50%;
+			flex-grow: 0;
+			flex-shrink: 0;
+			width: 7em;
 		}
 
 		i {
@@ -228,7 +231,8 @@
 		}
 
 		.right {
-			width: 50%;
+			flex-grow: 1;
+			flex-shrink: 1;
 		}
 	}
 
@@ -387,16 +391,6 @@
 		.menu-col-links {
 			padding-top: 0;
 			width: 100%;
-
-			.left {
-				padding-right: .5em;
-				padding-left: .5em;
-				width: 7em;
-			}
-
-			.right {
-				width: auto;
-			}
 		}
 
 		.subcategory-list {
