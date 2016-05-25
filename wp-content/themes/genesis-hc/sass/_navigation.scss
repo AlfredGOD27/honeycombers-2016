@@ -71,9 +71,13 @@
 		content: '';
 	}
 
+	.nav-primary-wrapper,
+	.sticky-header {
+		z-index: 9999;
+	}
+
 	.nav-primary-wrapper {
 		position: relative;
-		z-index: 9999;
 	}
 }
 
@@ -238,7 +242,7 @@
 
 	.subcategory-list {
 		> li {
-			padding-right: 2em;
+			padding-right: .5em;
 			border-right: 1px solid $orange;
 
 			&:hover,
@@ -281,6 +285,9 @@
 		width: 50%;
 
 		.left {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
 			padding: 1em 1.25em;
 			width: 38.25%;
 		}
