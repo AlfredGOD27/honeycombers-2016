@@ -290,6 +290,7 @@ $slider-height: 25em;
 		overflow: hidden;
 		padding: 1.25em;
 		border: 1px solid $white;
+		border-right-color: transparent;
 		background-color: rgba( $black, .75 );
 
 		.orange {

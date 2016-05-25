@@ -433,7 +433,7 @@ class HC_Events {
 								if( !empty($term) )
 									echo '<span class="cat">' . $term->name . '</span>';
 
-								echo '<span class="title">' . HC()->entry->get_headline_title( $post_id ) . '</span>';
+								echo '<span class="title">' . HC()->formatting->maybe_truncate( HC()->entry->get_headline_title( $post_id ), 25 ) . '</span>';
 								?>
 							</div>
 
