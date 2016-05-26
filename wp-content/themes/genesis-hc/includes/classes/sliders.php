@@ -14,7 +14,7 @@ class HC_Sliders {
 				$term = HC()->utilities->get_primary_term( $post_id, 'event-category' );
 				break;
 			case 'listing':
-				$term = HC()->utilities->get_primary_term( $post_id, 'directories' );
+				$term = HC()->utilities->get_primary_term( $post_id, 'listing_type' );
 				break;
 		}
 

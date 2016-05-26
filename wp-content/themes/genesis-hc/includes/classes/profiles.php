@@ -97,6 +97,9 @@ class HC_Profiles {
 		if( isset($_GET['event_added']) )
 			HC()->messages->add( 'success', 'Your event has been submitted and is pending review.' );
 
+		if( isset($_GET['listing_added']) )
+			HC()->messages->add( 'success', 'Your listing has been submitted and is pending review.' );
+
 		if( isset($_GET['deleted']) )
 			HC()->messages->add( 'success', 'Item deleted.' );
 

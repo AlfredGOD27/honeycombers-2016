@@ -200,7 +200,7 @@ class HC_Listings {
 				genesis_entry_header_markup_open();
 					genesis_do_post_title();
 
-					$categories = wp_get_object_terms( $post->ID, 'directories' );
+					$categories = wp_get_object_terms( $post->ID, 'listing_type' );
 					if( !empty($categories) ) {
 						$category_links = array();
 
@@ -515,7 +515,7 @@ class HC_Listings {
 						<select id="directory-category" name="category" class="styled">
 							<option value="">Category</option>
 							<?php
-							$terms = get_terms( 'directories' );
+							$terms = get_terms( 'listing_type' );
 							foreach( $terms as $term ) {
 								?>
 								<option value="<?php echo $term->term_id; ?>" <?php selected('eat', strtolower($term->name));?>><?php echo $term->name; ?></option>

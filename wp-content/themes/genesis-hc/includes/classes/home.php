@@ -273,7 +273,7 @@ class HC_Home {
 											<h3><?php echo HC()->entry->get_headline_title( $post_id ); ?></h3>
 
 											<?php
-											$categories = wp_get_object_terms( $post_id, 'directories' );
+											$categories = wp_get_object_terms( $post_id, 'listing_type' );
 											if( !empty($categories) ) {
 												$category_links = array();
 

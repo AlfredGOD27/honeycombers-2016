@@ -33,9 +33,9 @@ class HC_Related {
 				$args            = array();
 				$args['orderby'] = 'rand';
 
-				$terms = wp_get_post_terms( $post->ID, 'directories' );
+				$terms = wp_get_post_terms( $post->ID, 'listing_type' );
 				if( !empty($terms) ) {
-					$taxonomy = 'directories';
+					$taxonomy = 'listing_type';
 				} else {
 					$taxonomy = 'locations';
 					$terms    = wp_get_post_terms( $post->ID, 'locations' );

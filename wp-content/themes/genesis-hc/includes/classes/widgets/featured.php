@@ -120,7 +120,7 @@ class HC_Featured_Widget extends WP_Widget {
 
 									<?php
 									if( 'listing' === $post_type ) {
-										$terms = wp_get_object_terms( $post_id, 'directories' );
+										$terms = wp_get_object_terms( $post_id, 'listing_type' );
 										if( !empty($terms) ) {
 											$categories = array();
 											foreach( $terms as $term )
