@@ -6317,12 +6317,12 @@ function hc_maybe_load_facebook() {
 		}
 	});
 
-	$('.main-menu').on( 'mouseenter', function() {
+	$('.main-menu > .menu-item').on( 'mouseenter', function() {
 		if( !im.lessThan('landscape') )
 			$('body').addClass('main-menu-open');
 	});
 
-	$('.main-menu').on( 'mouseleave', function() {
+	$('.main-menu > .menu-item').on( 'mouseleave', function() {
 		$('body').removeClass('main-menu-open');
 	});
 
