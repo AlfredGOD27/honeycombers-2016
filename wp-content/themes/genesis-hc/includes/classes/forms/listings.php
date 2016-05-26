@@ -31,10 +31,30 @@ class HC_Listing_Editor extends HC_Form_Abstract {
 			'type'     => 'text',
 			'table'    => 'posts',
 			'required' => true,
-			'classes'  => array('first', 'one-half'),
+			'classes'  => array('first', 'one-third'),
 		);
 
-		// Category
+		$this->fields[] = array(
+			'slug'     => '_hc_listing_type',
+			'label'    => 'Venue Type',
+			'type'     => 'term_list',
+			'table'    => 'postmeta',
+			'taxonomy' => 'listing_type',
+			'multiple' => true,
+			'required' => true,
+			'classes'  => array('one-third'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_listing_tag',
+			'label'    => 'Venue Tag',
+			'type'     => 'term_list',
+			'table'    => 'postmeta',
+			'taxonomy' => 'listing_tag',
+			'multiple' => true,
+			'required' => true,
+			'classes'  => array('one-third'),
+		);
 
 		$this->fields[] = array(
 			'slug'     => '_hc_listing_address_text',

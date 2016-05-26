@@ -118,10 +118,21 @@ abstract class HC_Form_Abstract {
 				$value = $whitelisted_values;
 				break;
 			case 'term_list':
-				$value = absint($value);
-				$term  = get_term_by( 'id', $value, $field['taxonomy'] );
-				if( is_wp_error($term) || empty($term) )
-					return false;
+				if( isset($field['multiple']) && $field['multiple'] ) {
+					$value = array_map( 'absint', (array) $value );
+
+					$whitelisted_values = array();
+					foreach( $value as $term_id ) {
+						$term = get_term_by( 'id', $term_id, $field['taxonomy'] );
+						if( !is_wp_error($term) && !empty($term) )
+							$whitelisted_values[] = $term_id;
+					}
+				} else {
+					$value = absint($value);
+					$term  = get_term_by( 'id', $value, $field['taxonomy'] );
+					if( is_wp_error($term) || empty($term) )
+						return false;
+				}
 				break;
 		}
 
@@ -315,14 +326,21 @@ abstract class HC_Form_Abstract {
 					);
 					$terms = get_terms( $args );
 
-					echo '<div class="radio-list">';
-						foreach( $terms as $term ) {
-							echo '<label class="radio">';
-								echo '<input type="radio" name="' . $field['slug'] . '" value="' . $term->term_id . '" ' . checked( $value, $term->term_id, false ) . ' required>';
-								echo $term->name;
-							echo '</label>';
-						}
-					echo '</div>';
+					if( isset($field['multiple']) && $field['multiple'] ) {
+						echo '<select id="field-' . $field['slug'] . '" name="' . $field['slug'] . '[]" ' . $required . ' ' . $disabled . ' multiple>';
+							foreach( $terms as $term )
+								echo '<option value="' . $term->term_id . '" ' . (in_array($term->term_id, $value, true) ? 'selected' : '') . '>' . $term->name . '</option>';
+						echo '</select>';
+					} else {
+						echo '<div class="radio-list">';
+							foreach( $terms as $term ) {
+								echo '<label class="radio">';
+									echo '<input type="radio" name="' . $field['slug'] . '" value="' . $term->term_id . '" ' . checked( $value, $term->term_id, false ) . ' required>';
+									echo $term->name;
+								echo '</label>';
+							}
+						echo '</div>';
+					}
 					break;
 			}
 
@@ -804,7 +822,7 @@ abstract class HC_Form_Abstract {
 			switch( $field['table'] ) {
 				case 'postmeta':
 					if( 'term_list' === $field['type'] ) {
-						wp_set_object_terms( $this->post_id, absint($args[ $field['table'] ][ $field['slug'] ]), $field['taxonomy'] );
+						wp_set_object_terms( $this->post_id, $args[ $field['table'] ][ $field['slug'] ], $field['taxonomy'] );
 					} else {
 						update_post_meta( $this->post_id, $field['slug'], $args[ $field['table'] ][ $field['slug'] ] );
 					}
