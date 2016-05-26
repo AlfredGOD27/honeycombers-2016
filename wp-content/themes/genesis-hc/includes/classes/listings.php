@@ -65,10 +65,63 @@ class HC_Listings {
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
-			'rewrite'           => array('slug' => 'directories'),
+			'public'            => false,
+			'rewrite'           => false,
 		);
 
 		register_taxonomy( 'directories', array('listing'), $args );
+
+		$labels = array(
+			'name'              => _x( 'Listing Types', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Listing Type', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Listing Types' ),
+			'all_items'         => __( 'All Listing Types' ),
+			'parent_item'       => __( 'Parent Listing Type' ),
+			'parent_item_colon' => __( 'Parent Listing Type:' ),
+			'edit_item'         => __( 'Edit Listing Type' ),
+			'update_item'       => __( 'Update Listing Type' ),
+			'add_new_item'      => __( 'Add New Listing Type' ),
+			'new_item_name'     => __( 'New Listing Type Name' ),
+			'menu_name'         => __( 'Listing Type' ),
+		);
+
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'public'            => false,
+			'rewrite'           => false,
+		);
+
+		register_taxonomy( 'listing_type', array('listing'), $args );
+
+		$labels = array(
+			'name'              => _x( 'Listing Tags', 'taxonomy general name' ),
+			'singular_name'     => _x( 'Listing Tag', 'taxonomy singular name' ),
+			'search_items'      => __( 'Search Listing Tags' ),
+			'all_items'         => __( 'All Listing Tags' ),
+			'parent_item'       => __( 'Parent Listing Tag' ),
+			'parent_item_colon' => __( 'Parent Listing Tag:' ),
+			'edit_item'         => __( 'Edit Listing Tag' ),
+			'update_item'       => __( 'Update Listing Tag' ),
+			'add_new_item'      => __( 'Add New Listing Tag' ),
+			'new_item_name'     => __( 'New Listing Tag Name' ),
+			'menu_name'         => __( 'Listing Tag' ),
+		);
+
+		$args = array(
+			'hierarchical'      => false,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'public'            => false,
+			'rewrite'           => false,
+		);
+
+		register_taxonomy( 'listing_tag', array('listing'), $args );
 
 		$labels = array(
 			'name'              => _x( 'Listing Locations', 'taxonomy general name' ),
