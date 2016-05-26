@@ -37,11 +37,21 @@ class HC_Event_Editor extends HC_Form_Abstract {
 
 		$this->fields[] = array(
 			'slug'     => 'post_title',
-			'label'    => 'Event Title',
+			'label'    => 'Full Event Name',
 			'type'     => 'text',
 			'table'    => 'posts',
 			'required' => true,
 			'classes'  => array('first', 'one-half'),
+		);
+
+		$this->fields[] = array(
+			'slug'        => '_hc_headline_title',
+			'label'       => 'Alternative Event Name',
+			'type'        => 'text',
+			'table'       => 'postmeta',
+			'required'    => true,
+			'description' => "This title will appear on the Home Page and the Calendar's main page.",
+			'classes'     => array('one-half'),
 		);
 
 		$description_word_limit = 50;
@@ -58,13 +68,14 @@ class HC_Event_Editor extends HC_Form_Abstract {
 		}
 
 		$this->fields[] = array(
-			'slug'       => 'post_content',
-			'label'      => 'Event Description',
-			'type'       => 'textarea',
-			'table'      => 'posts',
-			'word_limit' => $description_word_limit,
-			'required'   => true,
-			'classes'    => array('first', 'one-half'),
+			'slug'        => 'post_content',
+			'label'       => 'Event Description',
+			'type'        => 'textarea',
+			'table'       => 'posts',
+			'word_limit'  => $description_word_limit,
+			'required'    => true,
+			'description' => 'Word limit: ' . $description_word_limit,
+			'classes'     => array('first', 'one-half'),
 		);
 
 		$this->fields[] = array(
@@ -133,12 +144,13 @@ class HC_Event_Editor extends HC_Form_Abstract {
 		);
 
 		$this->fields[] = array(
-			'slug'     => '_hc_event_contact',
-			'label'    => 'Contact Email',
-			'type'     => 'email',
-			'table'    => 'postmeta',
-			'required' => false,
-			'classes'  => array('one-half', 'first'),
+			'slug'        => '_hc_event_contact',
+			'label'       => 'Contact Email',
+			'type'        => 'email',
+			'table'       => 'postmeta',
+			'required'    => false,
+			'description' => "Contact information will only be available to the site's admin.",
+			'classes'     => array('one-half', 'first'),
 		);
 
 		$this->fields[] = array(
