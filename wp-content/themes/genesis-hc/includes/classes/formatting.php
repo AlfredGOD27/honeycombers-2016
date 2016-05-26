@@ -67,6 +67,8 @@ class HC_Formatting {
 			$website
 		);
 
+		$website_label = trim($website_label, '/');
+
 		return '<a href="' . esc_url($website) . '">' . sanitize_text_field($website_label) . '</a>';
 
 	}
