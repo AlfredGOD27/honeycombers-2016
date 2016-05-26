@@ -6,6 +6,7 @@ class HC_Listings {
 	public function __construct() {
 
 		$this->results_per_page = 24;
+		$this->editor           = new HC_Post_Type_Editor('listing', array('add'), 'HC_Listing_Editor' );
 
 		add_action( 'init', array($this, 'register') );
 		add_action( 'wp', array($this, 'init') );
@@ -430,7 +431,7 @@ class HC_Listings {
 					</div>
 
 					<div class="two-fifths hide-phone">
-						<a href="<?php echo HC()->utilities->get_page_link('_hc_claim_listing_page_id'); ?>" class="btn">Submit A Listing</a>
+						<a href="<?php echo $this->editor->get_add_url(); ?>" class="btn">Submit A Listing</a>
 					</div>
 				</div>
 
