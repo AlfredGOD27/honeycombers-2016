@@ -329,9 +329,14 @@ class HC_Listings {
 		if( !empty($_POST['category_id']) )
 			$category_id = absint($_POST['category_id']);
 
+		$page = 1;
+		if( !empty($_POST['page']) )
+			$page = absint($_POST['page']);
+
 		$args                           = array();
+		$args['fields']                 = 'ids';
 		$args['post_type']              = 'listing';
-		$args['posts_per_page']         = $this->results_per_page;
+		$args['posts_per_page']         = -1;
 		$args['update_post_meta_cache'] = false;
 		$args['update_post_term_cache'] = false;
 		$args['tax_query']              = array();
@@ -342,7 +347,7 @@ class HC_Listings {
 
 		if( !empty($category_id) ) {
 			$args['tax_query'][] = array(
-				'taxonomy' => 'directories',
+				'taxonomy' => 'listing_type',
 				'field'    => 'term_id',
 				'terms'    => $category_id,
 			);
@@ -413,8 +418,6 @@ class HC_Listings {
 				break;
 		}
 
-		$output['query'] = print_r($args, true);
-
 		$listings = get_posts( $args );
 		if( empty($listings) ) {
 			$output['status']  = 'info';
@@ -423,36 +426,42 @@ class HC_Listings {
 			wp_die();
 		}
 
+		$listings = array_slice($listings, $this->results_per_page * ($page - 1) );
+
 		$output['status'] = 'success';
 		$output['items']  = array();
 		$i                = 1;
-		foreach( $listings as $listing ) {
-			$map = get_field( '_hc_listing_address_map', $listing->ID );
+		foreach( $listings as $listing_id ) {
+			if( $i > $this->results_per_page )
+				break 1;
+
+			$map = get_field( '_hc_listing_address_map', $listing_id );
 			if( empty($map['lat']) || empty($map['lng']) )
 				continue;
 
 			$categories = array();
-			$terms      = wp_get_object_terms( $listing->ID, 'directories' );
+			$terms      = wp_get_object_terms( $listing_id, 'listing_type' );
 			foreach( $terms as $term )
 				$categories[] = $term->name;
 
-			$link = get_permalink( $listing->ID );
+			$link  = get_permalink( $listing_id );
+			$title = get_the_title( $listing_id );
 
-			$info_window_html = '<a class="result-title" href="' . $link . '">' . $listing->post_title . '</a>';
+			$info_window_html = '<a class="result-title" href="' . $link . '">' . $title . '</a>';
 			$info_window_html .= '<span class="result-category">' . HC()->formatting->build_comma_separated_list( $categories ) . '</span>';
 
-			$result_html = 1 === $i % 2 ? '<a href="' . get_permalink( $listing->ID ) . '" class="listing-result one-half first">' : '<a href="' . $link . '" class="listing-result one-half">';
-				if( has_post_thumbnail($listing->ID) )
-					$result_html .= get_the_post_thumbnail($listing->ID, 'archive-small' );
+			$result_html = 1 === $i % 2 ? '<a href="' . get_permalink( $listing_id ) . '" class="listing-result one-half first">' : '<a href="' . $link . '" class="listing-result one-half">';
+				if( has_post_thumbnail($listing_id) )
+					$result_html .= get_the_post_thumbnail($listing_id, 'archive-small' );
 
-				$result_html .= '<h3>' . $listing->post_title . '</h3>';
+				$result_html .= '<h3>' . $title . '</h3>';
 
 				$result_html .= '<span class="more-link">Read more ></span>';
 			$result_html .= '</div>';
 
 			$output['items'][] = array(
-				'id'               => $listing->ID,
-				'name'             => HC()->entry->get_headline_title($listing->ID),
+				'id'               => $listing_id,
+				'name'             => HC()->entry->get_headline_title($listing_id),
 				'lat'              => round( $map['lat'], 3 ),
 				'lng'              => round( $map['lng'], 3 ),
 				'info_window_html' => $info_window_html,
@@ -461,8 +470,20 @@ class HC_Listings {
 			++$i;
 		}
 
-		$count = count($output['items']);
-		$count = $this->results_per_page === $count ? $count . '+' : $count;
+		$output['total_results'] = count($listings);
+
+		$output['load_more_settings'] = array();
+		if( $output['total_results'] > $this->results_per_page ) {
+			foreach( array('type', 'text', 'category_id', 'location_id') as $key ) {
+				if( !empty(${$key}) )
+					$output['load_more_settings'][$key] = ${$key};
+			}
+
+			if( isset($coords) )
+				$output['load_more_settings'] = array_merge( $output['load_more_settings'], $coords );
+
+			$output['load_more_settings']['page'] = $page + 1;
+		}
 
 		echo json_encode($output);
 		wp_die();

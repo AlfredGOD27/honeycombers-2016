@@ -5243,7 +5243,8 @@ function hc_directory_maps() {
 		},
 		use_map = !im.lessThan('portrait'),
 		script_event = true,
-		loaded_initial_location = false;
+		loaded_initial_location = false,
+		load_more_settings;
 
 	function reset() {
 
@@ -5264,6 +5265,8 @@ function hc_directory_maps() {
 
 		// Clear results list
 		els.results.html('');
+
+		load_more_settings = {};
 
 	}
 
@@ -5369,11 +5372,80 @@ function hc_directory_maps() {
 							els.results.append( item.result_html );
 						});
 
+						if( 'undefined' !== typeof data.load_more_settings.page ) {
+							load_more_settings = data.load_more_settings;
+							els.results.append( hc_strings.more_button );
+						}
+
 						// Set new center, based on results
 						if( use_map && recenter ) {
 							map.setCenter( bounds.getCenter() );
 							map.fitBounds( bounds );
 						}
+						break;
+				}
+
+				stop_loading();
+			}
+		});
+
+	}
+
+	function get_results_subpage() {
+
+		els.results.find('.il-load-more').remove();
+
+		data = load_more_settings;
+		data.action = 'hc_get_listings';
+
+		$.ajax({
+			url: ajax_object.ajaxurl,
+			type: 'POST',
+			data: data,
+			success: function( data ) {
+				var bounds = new google.maps.LatLngBounds();
+
+				// Parse server output
+				data = JSON.parse(data);
+
+				switch( data.status ) {
+					case 'error':
+					case 'info':
+						els.results.html( '<div class="alert alert-' + data.status + '">' + data.message + '</div>' );
+						break;
+					case 'success':
+						script_event = true;
+
+						// Add each marker
+						$.each( data.items, function(_, item) {
+							if( use_map && item.lat && item.lng ) {
+								// Add to map
+								marker = add_marker(
+									item.name,
+									item.info_window_html,
+									item.lat,
+									item.lng
+								);
+
+								// Add to array
+								markers.push( marker );
+
+								// Note position for later centering
+								bounds.extend( marker.getPosition() );
+							}
+
+							// Add to results list
+							els.results.append( item.result_html );
+						});
+
+						if( 'undefined' !== typeof data.load_more_settings.page ) {
+							load_more_settings = data.load_more_settings;
+							els.results.append( hc_strings.more_button );
+						}
+
+						// Set new center, based on results
+						map.setCenter( bounds.getCenter() );
+						map.fitBounds( bounds );
 						break;
 				}
 
@@ -5433,6 +5505,8 @@ function hc_directory_maps() {
 
 	// Update on search
 	els.form.on( 'submit', get_from_form );
+
+	els.results.on( 'click', '.il-load-more', get_results_subpage );
 
 	// Activate map + update on drag
 	if( use_map ) {
