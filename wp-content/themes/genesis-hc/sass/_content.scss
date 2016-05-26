@@ -1,9 +1,9 @@
 .breadcrumbs {
-	margin-bottom: .5em;
+	margin-bottom: 1em;
 	color: $grey-lighter;
 
 	> span {
-		font-size: .9em;
+		font-size: .75em;
 	}
 
 	a {
@@ -15,7 +15,7 @@
 .entry-slideshow {
 	position: relative;
 	margin-top: -1.5em;
-	margin-bottom: 1.5em;
+	margin-bottom: .75em;
 
 	.slick-current {
 		&:hover,
@@ -81,11 +81,6 @@
 	.entry-title {
 		font-size: 1.5em;
 	}
-}
-
-.date-row {
-	margin-bottom: 1em;
-	font-family: $heading;
 }
 
 .entry-time {
@@ -168,10 +163,14 @@
 
 .header-slideshow {
 	.entry-header {
-		margin-bottom: 2.5em;
+		margin-bottom: 1.5em;
 
 		.inner {
 			display: flex;
+		}
+
+		.entry-excerpt {
+			margin-bottom: 0;
 		}
 	}
 
@@ -182,42 +181,48 @@
 	.header-top {
 		display: flex;
 		align-items: center;
-		padding: 1em 2em 1.75em;
+		padding: 0 1em .5em 1.5em;
 	}
 
 	.header-bottom {
-		padding: 2em;
+		padding: .75em 1.5em;
 		border-top: 1px solid $grey-border;
 
-		.btn {
-			display: block;
-			margin-top: 2em;
-			margin-left: 0;
+		> .btn,
+		> .bookmarks-button-container {
+			display: inline-block;
+			margin-left: 3em;
+			vertical-align: middle;
 
 			&:first-child {
-				margin-top: 0;
+				margin-left: 0;
 			}
 		}
 	}
 
 	.author-left {
+		flex-grow: 0;
+		flex-shrink: 0;
 		float: left;
 
 		img {
 			display: block;
+			max-width: 5.5em;
 			border: $border-width solid $orange;
 			border-radius: 50%;
 		}
 	}
 
 	.author-right {
+		flex-grow: 1;
+		flex-shrink: 1;
 		float: right;
 		margin-left: .5em;
 		text-align: center;
 
 		.entry-author {
 			display: block;
-			margin-bottom: .75em;
+			margin-bottom: .5em;
 			color: $orange;
 			text-transform: uppercase;
 			font-size: 1.05em;
@@ -225,8 +230,8 @@
 		}
 
 		p {
-			@include meta-font;
-			font-size: .95em;
+			font-size: .9em;
+			font-family: $heading;
 		}
 	}
 }
@@ -280,8 +285,8 @@
 	color: $grey-light;
 
 	p {
-		font-size: 1.1em;
-		line-height: 1.5;
+		font-size: 1em;
+		line-height: 1.625;
 	}
 }
 

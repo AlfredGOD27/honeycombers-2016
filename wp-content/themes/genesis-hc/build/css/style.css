@@ -4214,11 +4214,11 @@ table > tbody > tr:nth-child(odd) > th {
 }
 
 .breadcrumbs {
-  margin-bottom: .5em;
+  margin-bottom: 1em;
   color: #c7c7c7;
 }
 .breadcrumbs > span {
-  font-size: .9em;
+  font-size: .75em;
 }
 .breadcrumbs a {
   color: inherit;
@@ -4228,7 +4228,7 @@ table > tbody > tr:nth-child(odd) > th {
 .entry-slideshow {
   position: relative;
   margin-top: -1.5em;
-  margin-bottom: 1.5em;
+  margin-bottom: .75em;
 }
 .entry-slideshow .slick-current:hover .slide-content, .entry-slideshow .slick-current:focus .slide-content {
   opacity: 1;
@@ -4284,11 +4284,6 @@ table > tbody > tr:nth-child(odd) > th {
     font-size: 1.5em;
   }
 }
-.date-row {
-  margin-bottom: 1em;
-  font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
-}
-
 .entry-time {
   color: #fe862c;
   font-size: 1.1em;
@@ -4349,13 +4344,16 @@ table > tbody > tr:nth-child(odd) > th {
   }
 }
 .header-slideshow .entry-header {
-  margin-bottom: 2.5em;
+  margin-bottom: 1.5em;
 }
 .header-slideshow .entry-header .inner {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+.header-slideshow .entry-header .entry-excerpt {
+  margin-bottom: 0;
 }
 .header-slideshow .header-right {
   border-left: 1px solid #d7d7d7;
@@ -4369,51 +4367,67 @@ table > tbody > tr:nth-child(odd) > th {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 1em 2em 1.75em;
+  padding: 0 1em .5em 1.5em;
 }
 .header-slideshow .header-bottom {
-  padding: 2em;
+  padding: .75em 1.5em;
   border-top: 1px solid #d7d7d7;
 }
-.header-slideshow .header-bottom .btn, .header-slideshow .header-bottom button,
-.header-slideshow .header-bottom input[type='button'],
-.header-slideshow .header-bottom input[type='reset'],
-.header-slideshow .header-bottom input[type='submit'] {
-  display: block;
-  margin-top: 2em;
+.header-slideshow .header-bottom > .btn, .header-slideshow .header-bottom > button,
+.header-slideshow .header-bottom > input[type='button'],
+.header-slideshow .header-bottom > input[type='reset'],
+.header-slideshow .header-bottom > input[type='submit'], .header-slideshow .gform_wrapper .header-bottom > input[type='submit'],
+.header-slideshow .header-bottom > .bookmarks-button-container {
+  display: inline-block;
+  margin-left: 3em;
+  vertical-align: middle;
+}
+.header-slideshow .header-bottom > .btn:first-child, .header-slideshow .header-bottom > button:first-child,
+.header-slideshow .header-bottom > input[type='button']:first-child,
+.header-slideshow .header-bottom > input[type='reset']:first-child,
+.header-slideshow .header-bottom > input[type='submit']:first-child, .header-slideshow .gform_wrapper .header-bottom > input[type='submit']:first-child,
+.header-slideshow .header-bottom > .bookmarks-button-container:first-child {
   margin-left: 0;
 }
-.header-slideshow .header-bottom .btn:first-child, .header-slideshow .header-bottom button:first-child,
-.header-slideshow .header-bottom input[type='button']:first-child,
-.header-slideshow .header-bottom input[type='reset']:first-child,
-.header-slideshow .header-bottom input[type='submit']:first-child {
-  margin-top: 0;
-}
 .header-slideshow .author-left {
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
   float: left;
 }
 .header-slideshow .author-left img {
   display: block;
+  max-width: 5.5em;
   border: 3px solid #fe862c;
   border-radius: 50%;
 }
 .header-slideshow .author-right {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
   float: right;
   margin-left: .5em;
   text-align: center;
 }
 .header-slideshow .author-right .entry-author {
   display: block;
-  margin-bottom: .75em;
+  margin-bottom: .5em;
   color: #fe862c;
   text-transform: uppercase;
   font-size: 1.05em;
   font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
 }
 .header-slideshow .author-right p {
-  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
-  font-size: .95em;
+  font-size: .9em;
+  font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
 }
 
 @media (max-width: 768px) {
@@ -4474,8 +4488,8 @@ table > tbody > tr:nth-child(odd) > th {
   color: #919191;
 }
 .entry-excerpt p {
-  font-size: 1.1em;
-  line-height: 1.5;
+  font-size: 1em;
+  line-height: 1.625;
 }
 
 .entry-video {

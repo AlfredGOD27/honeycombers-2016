@@ -66,13 +66,8 @@ class HC_Entry {
 					<div class="three-fifths first header-left">
 						<?php genesis_do_post_title(); ?>
 
-						<div class="date-row">
-							<?php echo do_shortcode('[post_date]'); ?>
-						</div>
-
 						<?php $this->display_excerpt(); ?>
 					</div>
-
 
 					<div class="two-fifths header-right">
 						<div class="author header-top clearfix">
@@ -81,7 +76,7 @@ class HC_Entry {
 							?>
 
 							<div class="author-left">
-								<?php echo get_avatar( $user_id, 90 ); ?>
+								<?php echo get_avatar( $user_id, 85 ); ?>
 							</div>
 
 							<div class="author-right">
@@ -207,7 +202,7 @@ class HC_Entry {
 
 		?>
 		<div class="entry-excerpt" itemprop="description">
-			<?php echo HC()->formatting->get_excerpt($post, 0); ?>
+			<?php echo '<p>' . HC()->formatting->get_excerpt($post, 0) . '</p>'; ?>
 		</div>
 		<?php
 
