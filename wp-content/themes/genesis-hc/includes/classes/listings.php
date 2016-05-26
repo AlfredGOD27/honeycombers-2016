@@ -452,7 +452,7 @@ class HC_Listings {
 
 			$result_html = 1 === $i % 2 ? '<a href="' . get_permalink( $listing_id ) . '" class="listing-result one-half first">' : '<a href="' . $link . '" class="listing-result one-half">';
 				if( has_post_thumbnail($listing_id) )
-					$result_html .= get_the_post_thumbnail($listing_id, 'archive-small' );
+					$result_html .= get_the_post_thumbnail($listing_id, 'slide-thumbnail' );
 
 				$result_html .= '<h3>' . $title . '</h3>';
 
@@ -505,7 +505,17 @@ class HC_Listings {
 					</div>
 
 					<div class="two-fifths hide-phone">
-						<a href="<?php echo $this->editor->get_add_url(); ?>" class="btn">Submit A Listing</a>
+						<?php
+						if( is_user_logged_in() ) {
+							?>
+							<a href="<?php echo $this->editor->get_add_url(); ?>" class="btn">Submit A Listing</a>
+							<?php
+						} else {
+							?>
+							<button type="button" class="btn open-popup-link" data-mfp-src="#login-popup" data-redirect="<?php echo $this->editor->get_add_url(); ?>">Submit A Listing</button>
+							<?php
+						}
+						?>
 					</div>
 				</div>
 

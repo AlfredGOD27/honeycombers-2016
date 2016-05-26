@@ -83,7 +83,7 @@ class HC_Events {
 				remove_action( 'genesis_before_loop', 'hc_do_breadcrumbs' );
 				remove_action( 'genesis_loop', 'genesis_do_loop' );
 				add_action( 'genesis_loop', array($this, 'do_calendar') );
-				add_action( 'wp_footer', array($this, 'display_post_event_modal') );
+				// add_action( 'wp_footer', array($this, 'display_post_event_modal') );
 			}
 		}
 
@@ -521,7 +521,17 @@ class HC_Events {
 					</div>
 
 					<div class="post">
-						<button type="button" class="btn open-popup-link" data-mfp-src="#post-event-popup">Post an Event</button>
+						<?php
+						if( is_user_logged_in() ) {
+							?>
+							<a href="<?php echo $this->editor->get_add_url(); ?>" class="btn">Post an Event</a>
+							<?php
+						} else {
+							?>
+							<button type="button" class="btn open-popup-link" data-mfp-src="#login-popup" data-redirect="<?php echo $this->editor->get_add_url(); ?>">Post an Event</button>
+							<?php
+						}
+						?>
 					</div>
 				</form>
 			</div>
