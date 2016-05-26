@@ -1,6 +1,6 @@
 .sidebar {
 	.widget {
-		margin-bottom: 2.5em;
+		margin-bottom: 1em;
 
 		&:last-child {
 			margin-bottom: 0;
@@ -8,51 +8,14 @@
 	}
 
 	.widgettitle {
-		margin-bottom: .25em;
+		margin-bottom: .5em;
 		text-align: center;
 		text-transform: uppercase;
-		font-size: 1.25em;
+		font-size: 1em;
 	}
 }
 
-.widget_hc_featured_widget {
-	.featured-item {
-		margin-bottom: 1em;
-		border: 1px solid $orange;
-
-		&:last-child {
-			margin-bottom: 0;
-		}
-
-		a {
-			color: inherit;
-			text-decoration: none;
-		}
-
-		.inner {
-			padding: 1em .75em;
-			text-align: center;
-		}
-
-		img {
-			display: block;
-			border-bottom: 1px solid $orange;
-		}
-
-		h5 {
-			text-transform: uppercase;
-			font-size: .9em;
-		}
-
-		p {
-			@include meta-font;
-			color: $orange;
-			font-size: .85em;
-		}
-	}
-}
-
-.featured-event-widget {
+.featured-widget-slider {
 	border: 1px solid $orange;
 
 	img {
@@ -62,13 +25,13 @@
 
 	.bottom {
 		overflow: hidden;
-		height: 5em;
+		height: 3.5em;
 	}
 
 	.left {
 		float: left;
-		padding: 1em;
-		width: 25%;
+		padding: .5em .25em;
+		width: 20%;
 		height: 100%;
 		background-color: $orange;
 		color: $white;
@@ -82,34 +45,40 @@
 
 		.m {
 			text-transform: uppercase;
+			font-size: .9em;
 		}
 
 		.d {
-			font-size: 2em;
+			font-size: 1.5em;
 		}
 	}
 
 	.right {
 		float: left;
 		padding: .25em 1em;
-		width: 64%;
+		width: 69%;
 		height: 100%;
+	}
 
-		p {
-			@include meta-font;
-			margin-bottom: .25em;
-			color: $grey-dark;
-			font-size: .9em;
-		}
+	.full {
+		padding: .25em 3em .25em 1em;
+		height: 100%;
+	}
 
-		h5 {
-			font-size: .9em;
-			line-height: 1.25;
+	p {
+		@include meta-font;
+		margin-bottom: 0;
+		color: $grey-dark;
+		font-size: .65em;
+	}
 
-			a {
-				color: inherit;
-				text-decoration: none;
-			}
+	h5 {
+		text-transform: uppercase;
+		font-size: .9em;
+
+		a {
+			color: inherit;
+			text-decoration: none;
 		}
 	}
 
@@ -117,17 +86,21 @@
 		top: auto;
 		right: 0;
 		padding: 0;
-		width: 2.5em;
-		height: 2.5em;
+		width: (3.5em / 2);
+		height: (3.5em / 2);
 		border-left: 1px solid $orange;
 		background-color: transparent;
 		color: $grey-lighter;
 		font-size: 1em;
 		transform: none;
+
+		i {
+			font-size: 1em;
+		}
 	}
 
 	.slick-prev {
-		bottom: 2.5em;
+		bottom: (3.5em / 2);
 		left: auto;
 		border-bottom: 1px solid $orange;
 	}
@@ -138,31 +111,30 @@
 }
 
 .widget_hc_join_widget {
-	padding: 1.25em .5em 1em;
+	padding: 2.25em .5em 1.5em;
 	border: 1px solid $orange;
 	text-align: center;
 
 	.widgettitle {
-		margin-bottom: .75em;
+		margin-bottom: .5em;
 	}
 
 	.above-text {
 		@include meta-font;
-		margin-bottom: 1em;
+		margin-bottom: 2.25em;
 		color: $orange;
 	}
 
 	.btn {
-		margin-bottom: 1.5em;
-		padding: .65em 2em;
-		font-size: 1.25em;
+		margin-bottom: 2em;
+		font-size: 1em;
 	}
 
 	.below-text {
 		p {
 			@include meta-font;
 			color: $grey-lighter;
-			font-size: .9em;
+			font-size: .75em;
 		}
 	}
 }
@@ -172,7 +144,7 @@
 
 	.widgettitle {
 		position: relative;
-		margin-bottom: 1.25em;
+		margin-bottom: .25em;
 
 		span {
 			position: relative;
@@ -196,7 +168,7 @@
 
 	a {
 		color: $grey-lighter;
-		font-size: 3em;
+		font-size: 2.5em;
 
 		&:hover,
 		&:focus {

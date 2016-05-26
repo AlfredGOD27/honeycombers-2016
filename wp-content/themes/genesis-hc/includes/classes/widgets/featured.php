@@ -63,22 +63,24 @@ class HC_Featured_Widget extends WP_Widget {
 			if( !empty($title) )
 				echo $before_title . sanitize_text_field($title) . $after_title;
 
-			switch( $post_type ) {
-				case 'event':
+			?>
+			<div class="featured-widget-slider hide-no-js">
+				<?php
+				foreach( $post_ids as $post_id ) {
+					$date = HC()->events->get_event_date_info( $post_id );
+
 					?>
-					<div class="featured-event-widget hide-no-js">
+					<div>
 						<?php
-						foreach( $post_ids as $post_id ) {
-							$date = HC()->events->get_event_date_info( $post_id );
+						if( has_post_thumbnail($post_id) )
+							echo get_the_post_thumbnail( $post_id, 'archive-small' );
+						?>
 
-							?>
-							<div>
-								<?php
-								if( has_post_thumbnail($post_id) )
-									echo get_the_post_thumbnail( $post_id, 'archive-small' );
-								?>
-
-								<div class="bottom">
+						<div class="bottom">
+							<?php
+							switch( $post_type ) {
+								case 'event':
+									?>
 									<div class="left">
 										<span class="m"><?php echo date('M', $date['start_date']); ?></span>
 										<span class="d"><?php echo date('j', $date['start_date']); ?></span>
@@ -96,49 +98,36 @@ class HC_Featured_Widget extends WP_Widget {
 
 										<h5><a href="<?php echo get_permalink($post_id); ?>"><?php echo HC()->entry->get_headline_title($post_id); ?></a></h5>
 									</div>
-								</div>
-							</div>
-							<?php
-						}
-						?>
-					</div>
-					<?php
-					break;
-				case 'listing':
-				case 'post':
-					foreach( $post_ids as $post_id ) {
-						?>
-						<div class="featured-item <?php echo $post_type; ?>">
-							<a href="<?php echo get_permalink($post_id); ?>">
-								<?php
-								if( has_post_thumbnail($post_id) )
-									echo get_the_post_thumbnail($post_id, 'archive-small' );
-								?>
-
-								<div class="inner">
-									<h5><?php echo HC()->entry->get_headline_title($post_id); ?></h5>
-
 									<?php
-									if( 'listing' === $post_type ) {
-										$terms = wp_get_object_terms( $post_id, 'listing_type' );
-										if( !empty($terms) ) {
-											$categories = array();
-											foreach( $terms as $term )
-												$categories[] = $term->name;
+									break;
+								case 'listing':
+								case 'post':
+									$taxonomy = 'listing' === $post_type ? 'listing_type' : 'category';
 
+									?>
+									<div class="full">
+										<?php
+										$term = HC()->utilities->get_primary_term( $post_id, $taxonomy );
+										if( !empty($term) ) {
 											?>
-											<p><?php echo HC()->formatting->build_comma_separated_list($categories); ?></p>
+											<p><?php echo $term->name; ?></p>
 											<?php
 										}
-									}
-									?>
-								</div>
-							</a>
+										?>
+
+										<h5><a href="<?php echo get_permalink($post_id); ?>"><?php echo HC()->entry->get_headline_title($post_id); ?></a></h5>
+									</div>
+									<?php
+									break;
+							}
+							?>
 						</div>
-						<?php
-					}
-					break;
-			}
+					</div>
+					<?php
+				}
+				?>
+			</div>
+			<?php
 		echo $after_widget;
 
 	}
