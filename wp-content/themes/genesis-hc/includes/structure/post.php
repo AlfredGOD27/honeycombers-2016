@@ -171,7 +171,7 @@ function hc_highlight_non_breaking_spaces( $content ) {
 
 }
 
-add_action( 'genesis_after_content_sidebar_wrap', 'hc_entry_related' );
+add_action( 'genesis_after_loop', 'hc_entry_related' );
 function hc_entry_related() {
 
 	global $post;
@@ -179,6 +179,6 @@ function hc_entry_related() {
 	if( !is_singular('post') )
 		return;
 
-	HC()->related->display_related_content( $post, 'section' );
+	HC()->related->display_related_content( $post, 'aside' );
 
 }

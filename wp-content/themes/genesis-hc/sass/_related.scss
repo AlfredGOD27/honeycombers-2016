@@ -16,3 +16,20 @@
 		font-size: 1.25em;
 	}
 }
+
+@include media('<=portrait') {
+	.related {
+		.one-fourth {
+			float: left;
+			clear: none;
+			margin-bottom: 0;
+			margin-left: 2.564102564102564%;
+			width: 50%;
+			width: 48.717948717948715%;
+
+			&:nth-of-type(odd) {
+				margin-left: 0;
+			}
+		}
+	}
+}

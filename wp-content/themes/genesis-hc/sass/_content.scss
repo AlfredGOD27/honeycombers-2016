@@ -121,7 +121,7 @@
 
 			> p {
 				@include meta-font;
-				font-size: .75em;
+				font-size: .9em;
 			}
 		}
 
@@ -209,7 +209,7 @@
 			margin-bottom: .5em;
 			color: $orange;
 			text-transform: uppercase;
-			font-size: 1.05em;
+			font-size: .9em;
 			font-family: $heading;
 		}
 
@@ -271,7 +271,6 @@
 
 			.entry-author {
 				margin-bottom: 0;
-				font-size: .75em;
 
 				&:before {
 					@include meta-font;

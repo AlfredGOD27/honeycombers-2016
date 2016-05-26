@@ -93,7 +93,8 @@ class HC_Authors {
 							$html .= '<div class="author-box-content entry-content" itemprop="description">';
 								$html .= $description;
 
-								$html .= '<p class="read-more">Read more from <a href="' . get_the_author_meta('url') . '">' . get_the_author() . '</a></p>';
+								$html .= '<p class="read-more">Read more from <a href="' . get_author_posts_url($user_id) . '">' . get_the_author() . '</a></p>';
+								$html .= get_the_author_meta('url');
 							$html .= '</div>';
 						$html .= '</div>';
 					$html .= '</div>';
