@@ -486,7 +486,7 @@ $listing-slider-height: 18.75em;
 	top: 0;
 	bottom: 1px;
 	left: 100%;
-	margin-left: -3.75em;
+	margin-left: ((3.5 * 16 * -1px) - 3px);
 	width: 100%;
 	border-right: $border-width solid $orange;
 	transition: left $transition-time;

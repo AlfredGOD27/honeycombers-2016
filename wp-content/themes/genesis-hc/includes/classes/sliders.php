@@ -87,11 +87,11 @@ class HC_Sliders {
 								echo get_the_post_thumbnail( $post_id, 'slide-thumbnail' );
 								?>
 
-								<div class="inner">
+								<a class="inner" href="<?php echo get_permalink($post_id); ?>">
 									<?php
 									$this->display_post_content( $post_id, 50 );
 									?>
-								</div>
+								</a>
 							</div>
 						</div>
 						<?php
