@@ -108,6 +108,27 @@
             "default_value": 0
         },
         {
+            "key": "field_57475fb98762f",
+            "label": "Image Credit",
+            "name": "_hc_image_credit",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
             "key": "field_56e81b59f8ccb",
             "label": "Header Type",
             "name": "_hc_post_header_type",
@@ -205,5 +226,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1464210980
+    "modified": 1464295364
 }

@@ -69,7 +69,7 @@ class HC_Entry {
 						<?php $this->display_excerpt(); ?>
 					</div>
 
-					<div class="two-fifths header-right">
+					<div class="two-fifths header-right clearfix">
 						<div class="author header-top clearfix">
 							<?php
 							$user_id = get_the_author_meta( 'ID' );

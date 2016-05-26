@@ -59,7 +59,23 @@ function hc_entry_footer() {
 	if( !is_singular('post') )
 		return;
 
-	HC()->folders->display_add_button( $post->ID );
+	$credit = get_post_meta( $post->ID, '_hc_image_credit', true );
+	if( !empty($credit) ) {
+		?>
+		<p class="image-credit">Image Credit: <?php echo sanitize_text_field($credit); ?></p>
+		<?php
+	}
+
+	?>
+	<div class="date-share-row clearfix">
+		<?php echo do_shortcode('[post_date]'); ?>
+
+		<div class="share">
+			<?php HC()->folders->display_add_button( $post->ID ); ?>
+			<?php HC()->share->display( $post->ID ); ?>
+		</div>
+	</div>
+	<?php
 
 }
 
@@ -152,25 +168,6 @@ function hc_highlight_non_breaking_spaces( $content ) {
 
 	// Highlight non-breaking spaces
 	return str_replace('&nbsp;', '<mark title="' . __( 'Non-breaking space', CHILD_THEME_TEXT_DOMAIN ) . '">&nbsp;</mark>', $content);
-
-}
-
-// add_action( 'genesis_after_entry', 'hc_entry_subscribe_form', 6 );
-function hc_entry_subscribe_form() {
-
-	if( !is_singular('post') )
-		return;
-
-	?>
-	<section class="entry-subscribe">
-		<h2>Want More From Honeycombers?</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tincidunt pretium turpis.</p>
-
-		<?php
-		HC()->subscriptions->display_form( 'footer' );
-		?>
-	</section>
-	<?php
 
 }
 
