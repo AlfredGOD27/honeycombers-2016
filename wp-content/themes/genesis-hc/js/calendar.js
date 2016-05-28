@@ -19,6 +19,25 @@
 		}
 	});
 
+	$('.events-slider').slick({
+		arrows: true,
+		slidesToScroll: 3,
+		speed: 150,
+		slidesToShow: Math.floor($('.events-slider').width() / 225),
+		centerPadding: '8px',
+		prevArrow: hc_strings.prev_arrow,
+		nextArrow: hc_strings.next_arrow,
+		responsive: [
+			{
+				breakpoint: im.getValue('portrait', true),
+				settings: {
+					slidesToScroll: 1,
+					slidesToShow: 2,
+				}
+			}
+		]
+	});
+
 	function set_filter() {
 
 		var current_text = $('.calendar-search-bar input[type="search"]' ).val(),

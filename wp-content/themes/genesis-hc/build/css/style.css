@@ -5904,7 +5904,7 @@ table > tbody > tr:nth-child(odd) > th {
   -webkit-flex-shrink: 1;
       -ms-flex-negative: 1;
           flex-shrink: 1;
-  padding: .25em 1em;
+  padding: .25em .5em;
   opacity: .7;
 }
 .event-slider-for .cat,
@@ -6100,7 +6100,7 @@ table > tbody > tr:nth-child(odd) > th {
   background-color: rgba(37, 37, 37, 0.75);
 }
 .event-slider-nav .inner i {
-  margin-right: .5em;
+  margin-right: .25em;
   font-size: 3.25em;
 }
 .event-slider-nav .slick-current {
@@ -6110,7 +6110,6 @@ table > tbody > tr:nth-child(odd) > th {
   margin-left: 1em;
 }
 .event-slider-nav .slick-current .inner {
-  padding-right: 5em;
   border-color: #fe862c;
   background-color: #FFFFFF;
 }

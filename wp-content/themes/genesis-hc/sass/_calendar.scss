@@ -142,7 +142,7 @@
 		flex-basis: 0;
 		flex-grow: 1;
 		flex-shrink: 1;
-		padding: .25em 1em;
+		padding: .25em .5em;
 		opacity: .7;
 	}
 
@@ -331,7 +331,7 @@
 		background-color: rgba( $black, .75 );
 
 		i {
-			margin-right: .5em;
+			margin-right: .25em;
 			font-size: 3.25em;
 		}
 	}
@@ -344,7 +344,6 @@
 		}
 
 		.inner {
-			padding-right: 5em;
 			border-color: $orange;
 			background-color: $white;
 
