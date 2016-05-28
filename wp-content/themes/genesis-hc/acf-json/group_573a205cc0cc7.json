@@ -23,9 +23,9 @@
             "sub_fields": [
                 {
                     "key": "field_573a205ccef98",
-                    "label": "ID",
-                    "name": "id",
-                    "type": "text",
+                    "label": "Head Code",
+                    "name": "head_code",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -36,17 +36,17 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
                     "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
                     "key": "field_573a205ccefa8",
-                    "label": "Name",
-                    "name": "name",
-                    "type": "text",
+                    "label": "Body Code",
+                    "name": "body_code",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -57,9 +57,9 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
                     "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 }
@@ -86,9 +86,9 @@
             "sub_fields": [
                 {
                     "key": "field_573a205cda273",
-                    "label": "ID",
-                    "name": "id",
-                    "type": "text",
+                    "label": "Head Code",
+                    "name": "head_code",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -99,17 +99,17 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
                     "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
                     "key": "field_573a205cda280",
-                    "label": "Name",
-                    "name": "name",
-                    "type": "text",
+                    "label": "Body Code",
+                    "name": "body_code",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -120,9 +120,9 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
                     "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 }
@@ -149,9 +149,9 @@
             "sub_fields": [
                 {
                     "key": "field_573a20c2b09f2",
-                    "label": "ID",
-                    "name": "id",
-                    "type": "text",
+                    "label": "Head Code",
+                    "name": "head_code",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -162,17 +162,17 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
                     "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
                     "key": "field_573a20c2b09f3",
-                    "label": "Name",
-                    "name": "name",
-                    "type": "text",
+                    "label": "Body Code",
+                    "name": "body_code",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 1,
                     "conditional_logic": 0,
@@ -183,9 +183,9 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
                     "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 }
@@ -212,9 +212,9 @@
             "sub_fields": [
                 {
                     "key": "field_573a20bab09ef",
-                    "label": "ID",
-                    "name": "id",
-                    "type": "text",
+                    "label": "Head Code",
+                    "name": "head_code",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -225,17 +225,17 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
                     "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
                     "key": "field_573a20bab09f0",
-                    "label": "Name",
-                    "name": "name",
-                    "type": "text",
+                    "label": "Body Code",
+                    "name": "body_code",
+                    "type": "textarea",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -246,9 +246,9 @@
                     },
                     "default_value": "",
                     "placeholder": "",
-                    "prepend": "",
-                    "append": "",
                     "maxlength": "",
+                    "rows": 4,
+                    "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 }
@@ -277,5 +277,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1463427282
+    "modified": 1464395492
 }

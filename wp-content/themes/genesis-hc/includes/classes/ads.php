@@ -11,28 +11,14 @@ class HC_Ads {
 
 	}
 
-	private function sanitize_ad_id( $id ) {
-
-		$id = str_replace( 'div-gpt-ad-', '', $id );
-		if( empty($id) )
-			return;
-		$id = explode('-', $id);
-		if( !isset($id[1]) )
-			$id[] = 0;
-		$id    = implode('-', $id);
-
-		return $id;
-
-	}
-
 	private function ad_field_to_array( $field ) {
 
-		if( empty($field[0]['id']) )
+		if( empty($field[0]['head_code']) || empty($field[0]['body_code']) )
 			return false;
 
 		return array(
-			'id'   => $this->sanitize_ad_id( $field[0]['id'] ),
-			'name' => $field[0]['name'],
+			'head' => $field[0]['head_code'],
+			'body' => $field[0]['body_code'],
 		);
 
 	}
@@ -150,21 +136,10 @@ class HC_Ads {
 				node.parentNode.insertBefore(gads, node);
 			})();
 
-			googletag.cmd.push(function() {
-				<?php foreach( $this->ads as $ad ) {
-					?>
-					if( document.getElementById('div-gpt-ad-<?php echo $ad['id']; ?>') ) {
-						googletag.defineSlot(
-							'<?php echo $ad['name']; ?>',
-							'fluid',
-							'div-gpt-ad-<?php echo $ad['id']; ?>'
-						).addService( googletag.pubads() );
-					}
-				<?php } ?>
-				googletag.pubads().enableSingleRequest();
-				googletag.pubads().collapseEmptyDivs();
-				googletag.enableServices();
-			});
+			<?php
+			foreach( $this->ads as $ad )
+				echo $ad['head'];
+			?>
 		</script>
 
 		<?php
@@ -188,19 +163,7 @@ class HC_Ads {
 		if( empty($ad) )
 			return;
 
-		ob_start();
-		?>
-		<div id="div-gpt-ad-<?php echo $ad['id']; ?>" class="ad <?php echo $position; ?>-ad clearfix">
-			<script>
-				(function() {
-					googletag.cmd.push(function() {googletag.display('div-gpt-ad-<?php echo $ad['id']; ?>')});
-				})();
-			</script>
-		</div>
-		<?php
-		$output = ob_get_clean();
-
-		return preg_replace( '/\s+/', ' ', $output ) . "\n";
+		return preg_replace( '/\s+/', ' ', $ad['body'] ) . "\n";
 
 	}
 
