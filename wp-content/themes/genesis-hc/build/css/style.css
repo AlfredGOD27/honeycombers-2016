@@ -5948,9 +5948,6 @@ table > tbody > tr:nth-child(odd) > th {
 .event-slider-for:hover .slick-arrow, .event-slider-for:focus .slick-arrow {
   opacity: 1;
 }
-.event-slider-for .slick-current .inner {
-  padding-right: 5em;
-}
 .event-slider-for img {
   display: block;
   max-width: none;
@@ -6113,6 +6110,7 @@ table > tbody > tr:nth-child(odd) > th {
   margin-left: 1em;
 }
 .event-slider-nav .slick-current .inner {
+  padding-right: 5em;
   border-color: #fe862c;
   background-color: #FFFFFF;
 }

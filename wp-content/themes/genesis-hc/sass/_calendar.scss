@@ -190,12 +190,6 @@
 		}
 	}
 
-	.slick-current {
-		.inner {
-			padding-right: 5em;
-		}
-	}
-
 	img {
 		display: block;
 		max-width: none;
@@ -350,6 +344,7 @@
 		}
 
 		.inner {
+			padding-right: 5em;
 			border-color: $orange;
 			background-color: $white;
 
