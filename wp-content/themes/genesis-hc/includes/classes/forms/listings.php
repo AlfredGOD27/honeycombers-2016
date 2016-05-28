@@ -47,12 +47,12 @@ class HC_Listing_Editor extends HC_Form_Abstract {
 
 		$this->fields[] = array(
 			'slug'     => '_hc_listing_tag',
-			'label'    => 'Venue Tag',
+			'label'    => 'Specialties and Features',
 			'type'     => 'term_list',
 			'table'    => 'postmeta',
 			'taxonomy' => 'listing_tag',
 			'multiple' => true,
-			'required' => true,
+			'required' => false,
 			'classes'  => array('one-third'),
 		);
 
@@ -117,6 +117,7 @@ class HC_Listing_Editor extends HC_Form_Abstract {
 			'type'               => 'file',
 			'table'              => 'postmeta',
 			'required'           => true,
+			'description'        => 'Optimal image size: 850 (w) x 400 (h); max 1MB',
 			'allowed_mime_types' => array('image/jpg', 'image/jpeg'),
 			'max_size'           => 1,
 			'preview_type'       => 'image',

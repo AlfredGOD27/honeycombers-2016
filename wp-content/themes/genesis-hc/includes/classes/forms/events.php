@@ -49,8 +49,9 @@ class HC_Event_Editor extends HC_Form_Abstract {
 			'label'       => 'Alternative Event Name',
 			'type'        => 'text',
 			'table'       => 'postmeta',
+			'maxlength'   => 45,
 			'required'    => true,
-			'description' => "This title will appear on the Home Page and the Calendar's main page.",
+			'description' => "This title will appear on the Home Page and the Calendar's main page. Character limit: 45",
 			'classes'     => array('one-half'),
 		);
 
@@ -178,6 +179,7 @@ class HC_Event_Editor extends HC_Form_Abstract {
 			'type'               => 'file',
 			'table'              => 'postmeta',
 			'required'           => true,
+			'description'        => 'Optimal image size: 850 (w) x 400 (h); max 1MB',
 			'allowed_mime_types' => array('image/jpg', 'image/jpeg'),
 			'max_size'           => 1,
 			'preview_type'       => 'image',
