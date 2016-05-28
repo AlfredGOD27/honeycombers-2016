@@ -142,7 +142,7 @@
 		flex-basis: 0;
 		flex-grow: 1;
 		flex-shrink: 1;
-		padding: .25em 4.5em .25em 1em;
+		padding: .25em 1em;
 		opacity: .7;
 	}
 
@@ -187,6 +187,12 @@
 	&:focus {
 		.slick-arrow {
 			opacity: 1;
+		}
+	}
+
+	.slick-current {
+		.inner {
+			padding-right: 5em;
 		}
 	}
 

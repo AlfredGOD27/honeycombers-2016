@@ -5904,7 +5904,7 @@ table > tbody > tr:nth-child(odd) > th {
   -webkit-flex-shrink: 1;
       -ms-flex-negative: 1;
           flex-shrink: 1;
-  padding: .25em 4.5em .25em 1em;
+  padding: .25em 1em;
   opacity: .7;
 }
 .event-slider-for .cat,
@@ -5947,6 +5947,9 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .event-slider-for:hover .slick-arrow, .event-slider-for:focus .slick-arrow {
   opacity: 1;
+}
+.event-slider-for .slick-current .inner {
+  padding-right: 5em;
 }
 .event-slider-for img {
   display: block;
