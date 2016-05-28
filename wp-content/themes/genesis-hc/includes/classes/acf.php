@@ -14,20 +14,23 @@ class HC_ACF {
 
 		$field['choices'] = array();
 
-		if( file_exists(CHILD_DIR . '/sass/_animations.scss') ) {
-			$css = file_get_contents(CHILD_DIR . '/sass/_animations.scss');
+		$animations = array(
+			'calendar',
+			'connect',
+			'directory',
+			'drinks',
+			'food',
+			'hacks',
+			'hitlist',
+			'recharge',
+			'shopping',
+			'travel',
+			'video',
+			'win',
+		);
 
-			preg_match_all( '/\.animation-(.+?)-#\{\$color\} /', $css, $matches );
-
-			if( !empty($matches[1]) ) {
-				foreach( $matches[1] as $slug ) {
-					if( in_array($slug, array('small', 'large'), true) )
-						continue;
-
-					$field['choices'][$slug] = ucfirst($slug);
-				}
-			}
-		}
+		foreach( $animations as $animation )
+			$field['choices'][$animation] = ucfirst($animation);
 
 		return $field;
 
