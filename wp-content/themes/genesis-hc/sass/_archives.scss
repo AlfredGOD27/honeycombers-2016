@@ -20,9 +20,24 @@ $slider-height: 25em;
 			max-width: $site-width / 2;
 		}
 
+		.author-box-title {
+			margin-bottom: .25em;
+
+
+			span {
+				font-size: 1.25em;
+			}
+		}
+
 		.left {
 			flex-shrink: 0;
 			margin-right: 2.25em;
+
+			.author-box-title {
+				flex-grow: 1;
+				flex-shrink: 1;
+				font-size: .95em;
+			}
 		}
 
 		img {
@@ -31,14 +46,10 @@ $slider-height: 25em;
 
 		.right {
 			padding-top: 0;
-		}
 
-		.author-box-title {
-			margin-bottom: .25em;
-			font-size: 1em;
-
-			span {
-				font-size: 1.25em;
+			.author-box-title {
+				margin-bottom: .25em;
+				font-size: 1em;
 			}
 		}
 	}
@@ -53,7 +64,19 @@ $slider-height: 25em;
 			}
 
 			.left {
-				margin-right: auto;
+				display: flex;
+				align-items: center;
+				margin-right: 0;
+				max-width: none;
+
+				figure {
+					flex-grow: 0;
+					flex-shrink: 0;
+					margin-right: .5em;
+				}
+
+				.author-box-title {
+				}
 			}
 		}
 	}

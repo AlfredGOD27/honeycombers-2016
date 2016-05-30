@@ -250,6 +250,12 @@ class HC_Events {
 				genesis_entry_header_markup_close();
 				?>
 
+				<div class="show-phone">
+					<?php
+					HC()->utilities->display_basic_slider( $post->ID );
+					?>
+				</div>
+
 				<?php
 				$lines = array();
 
@@ -351,8 +357,12 @@ class HC_Events {
 			</div>
 
 			<div class="one-half">
+				<div class="hide-phone">
+					<?php
+					HC()->utilities->display_basic_slider( $post->ID );
+					?>
+				</div>
 				<?php
-				HC()->utilities->display_basic_slider( $post->ID );
 
 				$map_address = get_post_meta( $post->ID, '_hc_event_map_address', true );
 				if( !empty($map_address) )

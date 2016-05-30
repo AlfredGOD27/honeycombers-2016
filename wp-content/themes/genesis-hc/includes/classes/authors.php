@@ -108,10 +108,11 @@ class HC_Authors {
 								$html .= '<figure>';
 									$html .= $gravatar;
 								$html .= '</figure>';
+								$html .= '<h4 class="author-box-title show-phone">' . $title . '</h4>';
 							$html .= '</div>';
 
 							$html .= '<div class="right">';
-								$html .= '<h4 class="author-box-title">' . $title . '</h4>';
+								$html .= '<h4 class="author-box-title hide-phone">' . $title . '</h4>';
 								$html .= '<div class="author-box-content entry-content" itemprop="description">';
 									$html .= $description;
 								$html .= '</div>';

@@ -444,7 +444,7 @@ class HC_Listings {
 
 			$result_html = 1 === $i % 2 ? '<a href="' . get_permalink( $listing_id ) . '" class="listing-result one-half first">' : '<a href="' . $link . '" class="listing-result one-half">';
 				if( has_post_thumbnail($listing_id) )
-					$result_html .= get_the_post_thumbnail($listing_id, 'slide-thumbnail' );
+					$result_html .= '<div class="image-container">' . get_the_post_thumbnail($listing_id, 'archive-small' ) . '</div>';
 
 				$result_html .= '<h3>' . $title . '</h3>';
 
