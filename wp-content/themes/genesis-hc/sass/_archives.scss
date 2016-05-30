@@ -116,6 +116,12 @@ $slider-height: 25em;
 	font-size: 1.5em;
 }
 
+@include media('<=portrait') {
+	.archive-title {
+		font-size: 1.25em;
+	}
+}
+
 .archive-slider-container {
 	overflow: hidden;
 	margin-top: -1.5em;

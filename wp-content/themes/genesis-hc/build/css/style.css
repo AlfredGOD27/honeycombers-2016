@@ -5251,6 +5251,11 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: 1.5em;
 }
 
+@media (max-width: 768px) {
+  .archive-title {
+    font-size: 1.25em;
+  }
+}
 .archive-slider-container {
   overflow: hidden;
   margin-top: -1.5em;
@@ -6085,14 +6090,14 @@ table > tbody > tr:nth-child(odd) > th {
   .event-slider-for .slick-arrow {
     visibility: visible;
   }
-  .event-slider-for img {
-    max-width: 100%;
-    height: auto;
-  }
 }
 @media (max-width: 768px) {
   .event-slider-for {
     width: 100%;
+    height: auto;
+  }
+  .event-slider-for img {
+    max-width: 100%;
     height: auto;
   }
   .event-slider-for .slick-arrow {
@@ -6699,6 +6704,10 @@ table > tbody > tr:nth-child(odd) > th {
   .item-action-row > input[type='submit']:first-child, .gform_wrapper .item-action-row > input[type='submit']:first-child,
   .item-action-row .button-nav:first-child,
   .item-action-row .bookmarks-button-container:first-child {
+    margin-left: 0;
+  }
+  .item-action-row .calendar-button {
+    margin-top: .5em;
     margin-left: 0;
   }
 }
@@ -7386,6 +7395,11 @@ table > tbody > tr:nth-child(odd) > th {
     display: none;
   }
 }
+.home-mobile-promo {
+  margin: 0 auto 1em;
+  text-align: center;
+}
+
 .home-section-events-join {
   padding-top: 1.25em;
   padding-bottom: 1.25em;

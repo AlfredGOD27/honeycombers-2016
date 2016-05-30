@@ -119,6 +119,12 @@ TYPOGRAPHY - http://cssfontstack.com/
   text-decoration: none;
 }
 
+@media (max-width: 768px) {
+  .profile-welcome h1,
+  .profile-welcome h2 {
+    font-size: 1.5em;
+  }
+}
 .profile-nav {
   opacity: .5;
 }

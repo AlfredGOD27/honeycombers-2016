@@ -273,11 +273,6 @@
 		.slick-arrow {
 			visibility: visible;
 		}
-
-		img {
-			max-width: 100%;
-			height: auto;
-		}
 	}
 }
 
@@ -285,6 +280,11 @@
 	.event-slider-for {
 		width: 100%;
 		height: auto;
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
 
 		.slick-arrow {
 			visibility: visible;
