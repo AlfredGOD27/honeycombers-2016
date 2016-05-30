@@ -178,12 +178,12 @@
 }
 
 .widget_hc_subscribe_widget {
-	padding: 1.5em 1em 1.75em;
+	padding: 1em;
 	border: 1px solid $orange;
 	text-align: center;
 
 	.widgettitle {
-		margin-bottom: 1em;
+		margin-bottom: .75em;
 	}
 
 	.above-text {
@@ -192,18 +192,16 @@
 		p {
 			@include meta-font;
 			color: $grey;
-
-			em {
-				color: $orange;
-			}
+			font-size: .75em;
 		}
 	}
 
 	label {
+		@extend %visuallyhidden;
 		margin-bottom: .5em;
 	}
 
 	input[type='email'] {
-		margin-bottom: 1.5em;
+		margin-bottom: .75em;
 	}
 }

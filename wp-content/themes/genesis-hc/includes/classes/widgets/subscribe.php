@@ -20,7 +20,7 @@ class HC_Subscribe_Widget extends WP_Widget {
 
 			$above_text = get_field( '_hc_above_text', 'widget_' . $widget_id );
 			if( !empty($above_text) )
-				echo '<div class="above-text">' . wpautop( wp_kses_data($above_text) ) . '</div>';
+				echo '<div class="above-text">' . wpautop( sanitize_text_field($above_text) ) . '</div>';
 
 			HC()->subscriptions->display_form( 'widget-' . $widget_id );
 		echo $after_widget;

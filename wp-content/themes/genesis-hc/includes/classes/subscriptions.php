@@ -117,10 +117,10 @@ class HC_Subscriptions {
 		<form class="subscribe-form">
 			<label for="subscribe-email-<?php echo $location; ?>">Email</label>
 			<div class="email-container">
-				<input id="subscribe-email-<?php echo $location; ?>" type="email" required>
+				<input id="subscribe-email-<?php echo $location; ?>" type="email" required placeholder="Enter your email here">
 			</div>
 
-			<button type="submit" class="btn">Sign Up</button>
+			<button type="submit" class="btn">Sign Me Up!</button>
 		</form>
 		<?php
 
