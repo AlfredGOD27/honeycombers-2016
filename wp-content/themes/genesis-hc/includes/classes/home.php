@@ -271,18 +271,6 @@ class HC_Home {
 
 										<div class="slide-content show-phone">
 											<h3><?php echo HC()->entry->get_headline_title( $post_id ); ?></h3>
-
-											<?php
-											$categories = wp_get_object_terms( $post_id, 'listing_type' );
-											if( !empty($categories) ) {
-												$category_links = array();
-
-												foreach( $categories as $category )
-													$category_links[] = '<a href="' . get_term_link($category) . '">' . $category->name . '</a>';
-
-												echo '<p>' . HC()->formatting->build_comma_separated_list($category_links) . '</p>';
-											}
-											?>
 										</div>
 									</div>
 									<?php

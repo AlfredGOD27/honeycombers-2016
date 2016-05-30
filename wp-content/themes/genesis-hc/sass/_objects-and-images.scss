@@ -84,4 +84,26 @@ img.alignright,
 
 .slider-pro {
 	margin-bottom: 1.5em;
+
+	.sp-button {
+		width: 12px;
+		height: 12px;
+	}
+
+	.sp-caption-container {
+		@extend %type;
+	}
+}
+
+@include media('<=portrait') {
+	.slider-pro {
+		.sp-caption-container {
+			font-size: .85em;
+		}
+
+		.sp-button {
+			width: 12px;
+			height: 12px;
+		}
+	}
 }

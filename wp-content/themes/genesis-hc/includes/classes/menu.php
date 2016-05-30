@@ -5,24 +5,15 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class HC_Menu {
 	public function __construct() {
 
-		$this->categories     = array();
-		$this->subcategories  = array();
-		$this->transient_name = 'hc_main_menu_html';
+		$this->categories    = array();
+		$this->subcategories = array();
 
 		remove_action( 'genesis_after_header', 'genesis_do_nav' );
 		remove_action( 'genesis_after_header', 'genesis_do_subnav' );
 
-		add_action( 'save_post', array($this, 'clear_transient') );
-		add_action( 'acf/save_post', array($this, 'clear_transient'), 12 );
 		add_action( 'genesis_after_header', array($this, 'open'), 8 );
 		add_action( 'genesis_after_header', array($this, 'close'), 12 );
 		add_action( 'genesis_after_header', array($this, 'display') );
-
-	}
-
-	public function clear_transient( $post_id ) {
-
-		delete_transient($this->transient_name);
 
 	}
 
@@ -116,6 +107,8 @@ class HC_Menu {
 
 					<div class="right">
 						<ul class="subcategory-list">
+							<li class="show-phone"><a href="<?php echo get_term_link($this->categories[$top_item_id]); ?>" class="subcategory-link subcategory-<?php echo $this->categories[$top_item_id]->slug; ?>">View all</a></li>
+
 							<?php
 							foreach( $this->subcategories[$top_item_id] as $subcategory ) {
 								?>

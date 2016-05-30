@@ -12,6 +12,12 @@
 	}
 }
 
+@include media('<=portrait') {
+	.breadcrumbs {
+		display: none;
+	}
+}
+
 .entry-slideshow {
 	position: relative;
 	margin-top: -1.5em;
@@ -68,7 +74,7 @@
 
 @include media('<=landscape') {
 	.entry-title {
-		font-size: 1.5em;
+		font-size: 1.25em;
 	}
 }
 
@@ -310,6 +316,15 @@
 	p {
 		font-size: 1em;
 		line-height: 1.625;
+	}
+}
+
+@include media('<=portrait') {
+	.entry-excerpt {
+		p {
+			font-size: .9em;
+			line-height: 1.35;
+		}
 	}
 }
 

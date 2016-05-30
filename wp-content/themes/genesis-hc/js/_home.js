@@ -59,6 +59,7 @@
 					arrows: true,
 					slidesToScroll: 1,
 					slidesToShow: 2,
+					variableWidth: true
 				}
 			}
 		]

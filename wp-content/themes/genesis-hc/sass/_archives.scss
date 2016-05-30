@@ -82,7 +82,7 @@ $slider-height: 25em;
 	span {
 		display: inline-block;
 		background-color: $white;
-		transform: translateY(-25%);
+		transform: translateY(-20%);
 	}
 
 	i {
@@ -164,7 +164,7 @@ $slider-height: 25em;
 		position: relative;
 		display: none;
 		align-items: center;
-		padding: 1em 1.5em;
+		padding: .5em .75em;
 		border: 1px solid $orange;
 		background-color: $white;
 
@@ -191,13 +191,19 @@ $slider-height: 25em;
 			border-bottom-color: $white;
 		}
 
-		i {
+		.white {
+			display: none;
+		}
+
+		.orange {
 			flex-grow: 0;
 			flex-shrink: 0;
 			order: 2;
 			margin-left: .5em;
-			color: $orange;
-			font-size: 3.25em;
+		}
+
+		i {
+			display: block;
 		}
 
 		span {
@@ -592,6 +598,10 @@ $slider-height: 25em;
 	.archive-entry-small {
 		.bottom {
 			position: static;
+		}
+
+		.author {
+			display: none;
 		}
 	}
 }

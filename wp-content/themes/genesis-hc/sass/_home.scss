@@ -38,6 +38,10 @@
 		padding: .5em 1.5em;
 		text-align: right;
 
+		.btn {
+			font-size: .85em;
+		}
+
 		span {
 			text-transform: uppercase;
 		}
@@ -71,6 +75,7 @@
 		margin-left: .75em;
 		padding-right: .25em;
 		padding-left: .25em;
+		width: 30%;
 
 		&:first-child {
 			margin-left: 0;
@@ -234,8 +239,9 @@
 
 		.bottom {
 			display: block;
-			padding: 1em 1.5em;
+			padding: 1em 1.5em 2em;
 			min-height: 0;
+			border-top-width: 1px;
 		}
 
 		.left {
@@ -331,6 +337,7 @@ $listing-slider-height: 18.75em;
 			> .left,
 			> .right {
 				float: none;
+				margin-bottom: 1em;
 				width: 100%;
 			}
 
@@ -338,7 +345,6 @@ $listing-slider-height: 18.75em;
 			}
 
 			> .right {
-				margin-bottom: 1em;
 				padding-left: 0;
 			}
 		}
@@ -384,19 +390,8 @@ $listing-slider-height: 18.75em;
 		text-align: center;
 
 		h3 {
-			margin-bottom: .25em;
 			text-transform: uppercase;
 			font-size: 1em;
-		}
-
-		p {
-			@include meta-font;
-			color: $orange;
-			font-size: .9em;
-
-			a {
-				text-decoration: none;
-			}
 		}
 	}
 }
@@ -407,6 +402,8 @@ $listing-slider-height: 18.75em;
 		height: auto;
 
 		img {
+			max-width: 100%;
+			height: auto;
 			border-top: 1px solid $orange;
 		}
 	}
@@ -776,6 +773,10 @@ $slider-height: 25em;
 		> .wrap {
 			padding-right: 0;
 			padding-left: 0;
+		}
+
+		.slick-slide {
+			max-width: 10em;
 		}
 	}
 }

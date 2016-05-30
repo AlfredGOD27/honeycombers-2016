@@ -332,7 +332,7 @@
 
 		.menu-item {
 			display: block;
-			border-top: 1px solid $grey-border;
+			border-top: 1px solid #f9f9f9;
 
 			&:first-child {
 				border-top: none;
@@ -374,8 +374,7 @@
 
 		.menu-item-link,
 		.inactive-link {
-			padding-right: 0;
-			padding-left: 0;
+			padding: 1em .5em;
 		}
 
 		.inactive-link {
@@ -455,7 +454,14 @@
 		padding-bottom: 1em;
 
 		.btn-icon {
-			border-left-color: $white;
+			margin-left: .75em;
+			padding-left: .75em;
+			border-left: none;
+
+			&:first-child {
+				margin-left: 0;
+				padding-left: 0;
+			}
 
 			i {
 				color: $white;
@@ -471,6 +477,7 @@
 .mobile-social-nav {
 	order: 3;
 	padding-bottom: 1em;
+	width: 100%;
 	text-align: center;
 	font-family: $heading;
 
@@ -498,7 +505,6 @@
 			display: inline-block;
 			padding: .5em;
 			background-color: $white;
-			font-size: 1.1em;
 			line-height: 1;
 		}
 	}

@@ -5688,6 +5688,7 @@ function hc_maybe_load_facebook() {
 					arrows: true,
 					slidesToScroll: 1,
 					slidesToShow: 2,
+					variableWidth: true
 				}
 			}
 		]
