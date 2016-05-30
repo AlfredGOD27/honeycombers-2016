@@ -173,17 +173,9 @@ class HC_Listings {
 
 				// Switch standard header to sticky one
 				remove_action( 'genesis_before_header', 'hc_site_top' );
-				remove_action( 'genesis_header', 'genesis_header_markup_open', 5 );
-				remove_action( 'genesis_header', 'genesis_do_header' );
-				remove_action( 'genesis_header', 'hc_mobile_menu_toggle', 8 );
-				remove_action( 'genesis_header', 'genesis_header_markup_close', 15 );
-
-				remove_action( 'genesis_after_header', 'hc_nav_open', 8 );
-				remove_action( 'genesis_after_header', array(HC()->menu, 'display') );
-				remove_action( 'genesis_after_header', 'hc_nav_close', 12 );
 
 				remove_action( 'wp_footer', 'hc_sticky_header' );
-				add_action( 'genesis_header', 'hc_sticky_header' );
+				add_action( 'genesis_after_header', 'hc_sticky_header', 2 );
 			}
 		}
 

@@ -1,4 +1,8 @@
 .page-template-page_directory {
+	.site-header {
+		display: none;
+	}
+
 	.site-container {
 		display: flex;
 		flex-direction: column;
@@ -13,6 +17,7 @@
 	}
 
 	.nav-primary-wrapper {
+		display: none;
 		margin-bottom: 0;
 	}
 
@@ -38,6 +43,16 @@
 
 @include media('<=portrait') {
 	.page-template-page_directory {
+		.site-header {
+			display: block;
+		}
+
+		.nav-primary-wrapper {
+			> .wrap {
+				margin-top: 0;
+			}
+		}
+
 		.site-container {
 			display: block;
 			height: auto;
