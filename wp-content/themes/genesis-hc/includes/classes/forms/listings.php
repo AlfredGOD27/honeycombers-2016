@@ -102,13 +102,14 @@ class HC_Listing_Editor extends HC_Form_Abstract {
 		);
 
 		$this->fields[] = array(
-			'slug'       => 'post_content',
-			'label'      => 'Venue Description',
-			'type'       => 'textarea',
-			'table'      => 'posts',
-			'word_limit' => 100,
-			'required'   => true,
-			'classes'    => array('first', 'one-half'),
+			'slug'        => 'post_content',
+			'label'       => 'Venue Description',
+			'type'        => 'textarea',
+			'table'       => 'posts',
+			'word_limit'  => 100,
+			'required'    => true,
+			'description' => 'Word limit: 100',
+			'classes'     => array('first', 'one-half'),
 		);
 
 		$this->fields[] = array(
