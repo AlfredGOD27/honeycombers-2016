@@ -109,7 +109,7 @@ class HC_Home {
 		global $post;
 
 		$mpu_1 = HC()->ads->get_ad_container( 'mpu-1' );
-		$mpu_2 = HC()->ads->get_ad_container( 'mpu-2' );
+		$mpu_2 = HC()->ads->get_ad_container( 'mpu-2-desktop' );
 
 		$i = 1;
 		foreach( $post_ids as $post_id ) {
@@ -352,6 +352,17 @@ class HC_Home {
 		</section>
 		<?php
 
+		$mpu = HC()->ads->get_ad_container( 'mpu-2-mobile' );
+		if( !empty($mpu) ) {
+			?>
+			<div class="home-mobile-promo show-phone">
+				<?php
+				echo $mpu;
+				?>
+			</div>
+			<?php
+		}
+
 	}
 
 	public function do_featured_events_and_join() {
@@ -551,7 +562,7 @@ class HC_Home {
 					<a href="<?php echo HC()->utilities->get_page_link('_hc_blog_page_id'); ?>">
 						<?php
 						$heading = get_post_meta( $post->ID, '_hc_home_latest_posts_heading', true );
-						echo sanitize_text_field($heading);
+						echo trim($heading);
 						?>
 					</a>
 				</h2>
