@@ -213,7 +213,7 @@
         },
         {
             "key": "field_56e8bab9a4fe6",
-            "label": "Contact",
+            "label": "Email",
             "name": "_hc_event_contact",
             "type": "email",
             "instructions": "",
@@ -288,5 +288,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1463522993
+    "modified": 1464724200
 }

@@ -381,6 +381,12 @@ class HC_Migration {
 			'entry_location_map'    => '_hc_listing_address_map',
 			'entry_headlinetitle_1' => '_hc_headline_title',
 			'entry_subtitle_1'      => '_hc_subtitle',
+			'entry_event_cost_2'    => '_hc_event_price',
+			'entry_event_email'     => '_hc_event_contact',
+			'entry_event_location'  => '_hc_event_venue',
+			'entry_end_date'        => '_hc_event_end_date',
+			'entry_start_date_2'    => '_hc_event_start_date',
+			'entry_website'         => '_hc_event_website',
 		);
 
 		foreach( $keys as $from => $to ) {
@@ -407,6 +413,61 @@ class HC_Migration {
 				'post_type' => 'directory',
 			)
 		);
+
+		$event_category_ids   = array();
+		$event_category       = get_term_by( 'slug', 'whatson-events', 'category' );
+		$event_category_ids[] = $event_category->term_id;
+
+		$args = array(
+			'parent'   => $event_category->term_id,
+			'taxonomy' => 'category',
+		);
+		$event_subcategory_ids = get_terms( $args );
+
+		foreach( $event_subcategory_ids as $cat )
+			$event_category_ids[] = $cat->term_id;
+
+		$args = array(
+			'posts_per_page' => -1,
+			'post_type'      => 'post',
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'category',
+					'field'    => 'term_id',
+					'terms'    => $event_category_ids,
+				),
+			),
+			'fields' => 'ids',
+		);
+		$event_post_ids = get_posts( $args );
+
+		foreach( $event_post_ids as $post_id ) {
+			$categories = wp_get_object_terms( $post_id, 'category' );
+			$term_ids   = array();
+			foreach( $categories as $category ) {
+				$event_category = get_term_by( 'name', $category->name, 'event-category' );
+				if( empty($event_category) ) {
+					$result = wp_insert_term( $category->name, 'event-category' );
+					if( !empty($result) && !is_wp_error($result) )
+						$term_ids[] = $result['term_id'];
+				} else {
+					$term_ids[] = $event_category->term_id;
+				}
+			}
+
+			$wpdb->update(
+				$wpdb->posts,
+				array(
+					'post_type' => 'event',
+				),
+				array(
+					'ID' => $post_id,
+				)
+			);
+
+			wp_set_object_terms( $post_id, $term_ids, 'event-category' );
+			echo 'Migrating post #' . $post_id . ' to event<br>';
+		}
 
 		// Migrate listing taxonomies
 		$this->setup_default_listing_types();
