@@ -150,21 +150,29 @@ TYPOGRAPHY - http://cssfontstack.com/
   background-color: #f7f8f9;
   text-align: center;
 }
+.profile-bookmarks-info p {
+  font-size: .7em;
+}
+.profile-bookmarks-info i {
+  display: block;
+  margin-right: auto;
+  margin-bottom: .25em;
+  margin-left: auto;
+  color: #fe862c;
+  font-size: 1.5em;
+}
 .profile-bookmarks-info .orange {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
-  margin-bottom: .75em;
+  margin-bottom: .5em;
   color: #fe862c;
 }
-.profile-bookmarks-info .orange i {
-  margin-right: .25em;
-  margin-left: .25em;
-  vertical-align: middle;
-  font-size: 4em;
-}
 .profile-bookmarks-info .black {
-  font-size: .9em;
   font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
+}
+.profile-bookmarks-info a {
+  color: inherit;
+  text-decoration: none;
 }
 
 @media (max-width: 1024px) {

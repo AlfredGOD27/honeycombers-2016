@@ -192,69 +192,6 @@
             ]
         },
         {
-            "key": "field_573a20c2b09f1",
-            "label": "Signed In",
-            "name": "_hc_home_signed_in_ad",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": "",
-            "max": 1,
-            "layout": "table",
-            "button_label": "Add Row",
-            "sub_fields": [
-                {
-                    "key": "field_573a20c2b09f2",
-                    "label": "Head Code",
-                    "name": "head_code",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": 4,
-                    "new_lines": "",
-                    "readonly": 0,
-                    "disabled": 0
-                },
-                {
-                    "key": "field_573a20c2b09f3",
-                    "label": "Body Code",
-                    "name": "body_code",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": 4,
-                    "new_lines": "",
-                    "readonly": 0,
-                    "disabled": 0
-                }
-            ]
-        },
-        {
             "key": "field_573a20bab09ee",
             "label": "Leaderboard",
             "name": "_hc_home_leaderboard",
@@ -340,5 +277,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1464628271
+    "modified": 1464728069
 }

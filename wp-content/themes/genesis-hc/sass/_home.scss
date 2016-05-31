@@ -617,37 +617,44 @@ $slider-height: 25em;
 	}
 
 	.join {
-		padding: 2em 1em 2.5em;
+		display: flex;
+		align-items: center;
+		padding: 1.5em 1.25em 1.25em;
 		min-height: $slider-height;
 		background-color: $orange;
 		color: $white;
 		text-align: center;
 
-		> i {
-			display: block;
-			margin-bottom: .66em;
-			font-size: 4em;
+		.join-inner {
+			width: 100%;
+		}
+
+		.ico-heart {
+			display: inline-block;
+			margin-bottom: .5em;
+			padding: .375em;
+			width: 2em;
+			height: 2em;
+			border: $border-width solid $white;
+			border-radius: 50%;
+			font-size: 2em;
+			line-height: 1.15;
 		}
 
 		h3 {
-			margin-bottom: 1em;
+			margin-bottom: 1.25em;
 			text-transform: uppercase;
-			font-size: 1.1em;
-		}
-
-		.top {
-			@include meta-font;
-			margin-bottom: 2.5em;
+			font-size: 1.35em;
 		}
 
 		.btn {
-			margin-bottom: 2.75em;
+			margin-bottom: 1.75em;
 			border: 2px solid $white;
 		}
 
-		.bottom {
-			font-size: .85em;
-			line-height: 1.2;
+		p {
+			@extend %type;
+			font-size: .9em;
 		}
 	}
 }
@@ -676,23 +683,6 @@ $slider-height: 25em;
 			padding: .75em;
 			min-height: 0;
 			max-width: 22.5em;
-
-			> i {
-				margin-bottom: .33em;
-				font-size: 3em;
-			}
-
-			h3 {
-				margin-bottom: .5em;
-			}
-
-			.top {
-				margin-bottom: .75em;
-			}
-
-			.btn {
-				margin-bottom: .75em;
-			}
 		}
 	}
 }

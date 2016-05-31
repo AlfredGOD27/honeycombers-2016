@@ -462,8 +462,10 @@ class HC_Profiles {
 				?>
 				<div class="right one-third">
 					<div class="profile-bookmarks-info">
-						<p class="orange">When you see the <i class="ico-heart"></i> Just click to save!</p>
-						<p class="black">Save, organise and share your favourite posts here</p>
+						<i class="ico-heart"></i>
+						<p class="orange">Put articles, listings or any editorial content you like in your profile
+by clicking on the heart or save icon</p>
+						<p class="black"><a href="#">Click through to learn more about what you can do with your account</a></p>
 					</div>
 				</div>
 				<?php

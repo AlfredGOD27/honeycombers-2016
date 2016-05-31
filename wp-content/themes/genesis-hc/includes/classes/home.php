@@ -397,38 +397,26 @@ class HC_Home {
 					</div>
 				</div>
 
-				<?php
-				if( !is_user_logged_in() ) {
-					$enable = get_post_meta( $post->ID, '_hc_home_join_enable', true );
-					if( !empty($enable) ) {
-						$heading = get_post_meta( $post->ID, '_hc_home_join_heading', true );
-						$top     = get_post_meta( $post->ID, '_hc_home_join_top_text', true );
-						$bottom  = get_post_meta( $post->ID, '_hc_home_join_bottom_text', true );
-						?>
-						<div class="one-fourth right join">
-							<i class="ico-circle-mail"></i>
+				<div class="one-fourth right join">
+					<div class="join-inner">
+						<i class="ico-heart"></i>
 
-							<h3><?php echo $heading; ?></h3>
-
-							<p class="top"><?php echo sanitize_text_field($top); ?></p>
-
+						<?php
+						if( is_user_logged_in() ) {
+							?>
+							<h3>Heart It!</h3>
+							<p>Save the things that interest you by clicking on the heart at the top right corner of an image, or within an article. You’ll be prompted to create a folder, or select an existing folder, to keep the article. Go to your profile page to view your saved items anytime!</p>
+							<?php
+						} else {
+							?>
+							<h3>Make Honeycombers Yours</h3>
 							<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="btn open-popup-link" data-mfp-src="#login-popup">Sign Up <i class="ico-exit"></i></a>
-
-							<p class="bottom"><?php echo sanitize_text_field($bottom); ?></p>
-						</div>
-						<?php
-					}
-				} else {
-					$ad = HC()->ads->get_ad_container( 'signed-in' );
-					if( !empty($ad) ) {
+							<p>Sign up for a profile to build your very own collection of must-dos, must-eats, must-drinks and must-buys. You’ll never miss a thing!</p>
+							<?php
+						}
 						?>
-						<div class="one-fourth right">
-							<?php echo $ad; ?>
-						</div>
-						<?php
-					}
-				}
-				?>
+					</div>
+				</div>
 			</div>
 		</section>
 		<?php

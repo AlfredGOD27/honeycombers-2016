@@ -20,6 +20,8 @@
 
 	img {
 		display: block;
+		max-width: none;
+		width: 100%;
 		border-bottom: 1px solid $orange;
 	}
 

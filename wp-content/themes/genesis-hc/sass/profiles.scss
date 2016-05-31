@@ -108,24 +108,31 @@
 
 	p {
 		@extend %type;
+		font-size: .7em;
+	}
+
+	i {
+		display: block;
+		margin-right: auto;
+		margin-bottom: .25em;
+		margin-left: auto;
+		color: $orange;
+		font-size: 1.5em;
 	}
 
 	.orange {
 		@include meta-font;
-		margin-bottom: .75em;
+		margin-bottom: .5em;
 		color: $orange;
-
-		i {
-			margin-right: .25em;
-			margin-left: .25em;
-			vertical-align: middle;
-			font-size: 4em;
-		}
 	}
 
 	.black {
-		font-size: .9em;
 		font-family: $heading;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
 	}
 }
 

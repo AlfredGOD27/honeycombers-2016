@@ -35,7 +35,6 @@ class HC_Ads {
 						'mpu-1'         => '_hc_home_mpu_1',
 						'mpu-2-desktop' => '_hc_home_mpu_2_desktop',
 						'mpu-2-mobile'  => '_hc_home_mpu_2_mobile',
-						'signed-in'     => '_hc_home_signed_in_ad',
 						'leaderboard-1' => '_hc_home_leaderboard',
 					);
 

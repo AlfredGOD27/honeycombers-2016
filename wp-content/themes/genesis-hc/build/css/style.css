@@ -1192,20 +1192,20 @@ ul {
   }
 }
 p, .wp-caption .wp-caption-text, .slider-pro .sp-caption-container, .hc-form .description p, .gform_wrapper .validation_message, .entry-slideshow .slide-content p, .entry-content ol,
-.entry-content ul, .entry-pagination {
+.entry-content ul, .entry-pagination, .home-section-events-join .join p {
   margin-bottom: 2em;
   letter-spacing: .01rem;
   font-size: .9em;
   line-height: 1.35;
 }
 p:last-child, .wp-caption .wp-caption-text:last-child, .slider-pro .sp-caption-container:last-child, .hc-form .description p:last-child, .gform_wrapper .validation_message:last-child, .entry-slideshow .slide-content p:last-child, .entry-content ol:last-child,
-.entry-content ul:last-child, .entry-pagination:last-child {
+.entry-content ul:last-child, .entry-pagination:last-child, .home-section-events-join .join p:last-child {
   margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
   p, .wp-caption .wp-caption-text, .slider-pro .sp-caption-container, .hc-form .description p, .gform_wrapper .validation_message, .entry-slideshow .slide-content p, .entry-content ol,
-  .entry-content ul, .entry-pagination {
+  .entry-content ul, .entry-pagination, .home-section-events-join .join p {
     margin-bottom: 1.5em;
   }
 }
@@ -4803,6 +4803,8 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .featured-widget-slider img {
   display: block;
+  max-width: none;
+  width: 100%;
   border-bottom: 1px solid #fe862c;
 }
 .featured-widget-slider .bottom {
@@ -6423,6 +6425,9 @@ table > tbody > tr:nth-child(odd) > th {
   margin-bottom: 0;
   width: 100%;
 }
+.page-template-page_directory .site-footer {
+  display: none;
+}
 
 @media (max-width: 768px) {
   .page-template-page_directory .site-header {
@@ -6445,6 +6450,9 @@ table > tbody > tr:nth-child(odd) > th {
     display: block;
   }
   .page-template-page_directory .content {
+    display: block;
+  }
+  .page-template-page_directory .site-footer {
     display: block;
   }
 }
@@ -7467,37 +7475,48 @@ table > tbody > tr:nth-child(odd) > th {
   width: 37.75%;
 }
 .home-section-events-join .join {
-  padding: 2em 1em 2.5em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1.5em 1.25em 1.25em;
   min-height: 25em;
   background-color: #fe862c;
   color: #FFFFFF;
   text-align: center;
 }
-.home-section-events-join .join > i {
-  display: block;
-  margin-bottom: .66em;
-  font-size: 4em;
+.home-section-events-join .join .join-inner {
+  width: 100%;
+}
+.home-section-events-join .join .ico-heart {
+  display: inline-block;
+  margin-bottom: .5em;
+  padding: .375em;
+  width: 2em;
+  height: 2em;
+  border: 3px solid #FFFFFF;
+  border-radius: 50%;
+  font-size: 2em;
+  line-height: 1.15;
 }
 .home-section-events-join .join h3 {
-  margin-bottom: 1em;
+  margin-bottom: 1.25em;
   text-transform: uppercase;
-  font-size: 1.1em;
-}
-.home-section-events-join .join .top {
-  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
-  margin-bottom: 2.5em;
+  font-size: 1.35em;
 }
 .home-section-events-join .join .btn, .home-section-events-join .join button,
 .home-section-events-join .join input[type='button'],
 .home-section-events-join .join input[type='reset'],
 .home-section-events-join .join input[type='submit'] {
-  margin-bottom: 2.75em;
+  margin-bottom: 1.75em;
   border: 2px solid #FFFFFF;
 }
-.home-section-events-join .join .bottom {
-  font-size: .85em;
-  line-height: 1.2;
+.home-section-events-join .join p {
+  font-size: .9em;
 }
 
 @media (max-width: 768px) {
@@ -7522,22 +7541,6 @@ table > tbody > tr:nth-child(odd) > th {
     padding: .75em;
     min-height: 0;
     max-width: 22.5em;
-  }
-  .home-section-events-join .join > i {
-    margin-bottom: .33em;
-    font-size: 3em;
-  }
-  .home-section-events-join .join h3 {
-    margin-bottom: .5em;
-  }
-  .home-section-events-join .join .top {
-    margin-bottom: .75em;
-  }
-  .home-section-events-join .join .btn, .home-section-events-join .join button,
-  .home-section-events-join .join input[type='button'],
-  .home-section-events-join .join input[type='reset'],
-  .home-section-events-join .join input[type='submit'] {
-    margin-bottom: .75em;
   }
 }
 .home-section-trending {
