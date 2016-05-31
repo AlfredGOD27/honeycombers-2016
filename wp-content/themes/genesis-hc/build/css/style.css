@@ -6581,18 +6581,42 @@ table > tbody > tr:nth-child(odd) > th {
 .directory-search-form input[type='text'] {
   border: none;
 }
+.directory-search-form .buttons-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
 .directory-search-form .btn, .directory-search-form button,
 .directory-search-form input[type='button'],
 .directory-search-form input[type='reset'],
 .directory-search-form input[type='submit'] {
   padding: .5em;
-  width: 100%;
   font-size: .9em;
+}
+.directory-search-form .submit-form {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
+}
+.directory-search-form .submit-listing {
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+  margin-left: 0.833em;
 }
 
 @media (max-width: 768px) {
   .directory-search-form {
-    padding: 1em;
+    padding: .5em;
   }
   .directory-search-form > div {
     margin-bottom: .5em;
@@ -6605,6 +6629,9 @@ table > tbody > tr:nth-child(odd) > th {
   }
   .directory-search-form .row > div {
     margin-bottom: 0;
+  }
+  .directory-search-form .row:first-child > .two-fifths {
+    margin-bottom: .5em;
   }
   .directory-search-form .row .select-container {
     float: left;

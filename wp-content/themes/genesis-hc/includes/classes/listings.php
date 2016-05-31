@@ -489,65 +489,65 @@ class HC_Listings {
 		<div class="directory-search">
 			<form class="directory-search-form clearfix">
 				<div class="row clearfix">
-					<div class="three-fifths first">
+					<div class="two-fifths first">
 						<h2>Search the Directory</h2>
 					</div>
 
-					<div class="two-fifths hide-phone">
-						<?php
-						if( is_user_logged_in() ) {
-							?>
-							<a href="<?php echo $this->editor->get_add_url(); ?>" class="btn">Submit A Listing</a>
-							<?php
-						} else {
-							?>
-							<button type="button" class="btn open-popup-link" data-mfp-src="#login-popup" data-redirect="<?php echo $this->editor->get_add_url(); ?>">Submit A Listing</button>
-							<?php
-						}
-						?>
+					<div class="three-fifths">
+						<label for="directory-search-text">Search for...</label>
+						<input id="directory-search-text" type="search" placeholder="Search for French restaurants...">
 					</div>
-				</div>
-
-				<div class="first">
-					<label for="directory-search-text">Search for...</label>
-					<input id="directory-search-text" type="search" placeholder="Search for French restaurants...">
 				</div>
 
 				<div class="row clearfix">
-					<div class="two-fifths first select-container">
-						<label for="directory-location">Location</label>
-						<select id="directory-location" name="location" class="styled" required>
-							<option value="">Location</option>
-							<?php
-							$terms = get_terms( 'locations' );
-							foreach( $terms as $term ) {
-								?>
-								<option value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
+					<div class="three-fifths first">
+						<div class="one-half first select-container">
+							<label for="directory-location">Location</label>
+							<select id="directory-location" name="location" class="styled" required>
+								<option value="">Location</option>
 								<?php
-							}
-							?>
-						</select>
-						<i class="ico-arrow-down"></i>
+								$terms = get_terms( 'locations' );
+								foreach( $terms as $term ) {
+									?>
+									<option value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
+									<?php
+								}
+								?>
+							</select>
+							<i class="ico-arrow-down"></i>
+						</div>
+
+						<div class="one-half select-container">
+							<label for="directory-category">Category</label>
+							<select id="directory-category" name="category" class="styled">
+								<option value="">Category</option>
+								<?php
+								$terms = get_terms( 'listing_type' );
+								foreach( $terms as $term ) {
+									?>
+									<option value="<?php echo $term->term_id; ?>" <?php selected('eat', strtolower($term->name));?>><?php echo $term->name; ?></option>
+									<?php
+								}
+								?>
+							</select>
+							<i class="ico-arrow-down"></i>
+						</div>
 					</div>
 
-					<div class="two-fifths select-container">
-						<label for="directory-category">Category</label>
-						<select id="directory-category" name="category" class="styled">
-							<option value="">Category</option>
-							<?php
-							$terms = get_terms( 'listing_type' );
-							foreach( $terms as $term ) {
-								?>
-								<option value="<?php echo $term->term_id; ?>" <?php selected('eat', strtolower($term->name));?>><?php echo $term->name; ?></option>
-								<?php
-							}
-							?>
-						</select>
-						<i class="ico-arrow-down"></i>
-					</div>
+					<div class="two-fifths buttons-container">
+						<button type="submit" class="submit-form">Search</button>
 
-					<div class="one-fifth">
-						<button type="submit">Search</button>
+						<?php
+						if( is_user_logged_in() ) {
+							?>
+							<a href="<?php echo $this->editor->get_add_url(); ?>" class="btn submit-listing">Submit A Listing</a>
+							<?php
+						} else {
+							?>
+							<button type="button" class="btn open-popup-link submit-listing" data-mfp-src="#login-popup" data-redirect="<?php echo $this->editor->get_add_url(); ?>">Submit A Listing</button>
+							<?php
+						}
+						?>
 					</div>
 				</div>
 			</form>
