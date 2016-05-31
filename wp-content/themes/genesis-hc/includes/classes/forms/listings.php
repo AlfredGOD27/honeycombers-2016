@@ -35,14 +35,15 @@ class HC_Listing_Editor extends HC_Form_Abstract {
 		);
 
 		$this->fields[] = array(
-			'slug'     => '_hc_listing_type',
-			'label'    => 'Venue Type',
-			'type'     => 'term_list',
-			'table'    => 'postmeta',
-			'taxonomy' => 'listing_type',
-			'multiple' => true,
-			'required' => true,
-			'classes'  => array('one-third'),
+			'slug'        => '_hc_listing_type',
+			'label'       => 'Venue Type',
+			'type'        => 'term_list',
+			'table'       => 'postmeta',
+			'taxonomy'    => 'listing_type',
+			'multiple'    => true,
+			'required'    => true,
+			'description' => 'Can\'t find a suitable category or venue type? Keen to take your listing to the next level? Get in touch at <a href="mailto:hello@thehoneycombers.com" target="_blank">hello@thehoneycombers.com</a>.',
+			'classes'     => array('one-third'),
 		);
 
 		$this->fields[] = array(

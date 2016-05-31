@@ -320,16 +320,77 @@ abstract class HC_Form_Abstract {
 					echo '</div>';
 					break;
 				case 'term_list':
-					$args = array(
-						'taxonomy'   => $field['taxonomy'],
-						'hide_empty' => false,
-					);
-					$terms = get_terms( $args );
 
 					if( isset($field['multiple']) && $field['multiple'] ) {
+
 						echo '<select id="field-' . $field['slug'] . '" name="' . $field['slug'] . '[]" ' . $required . ' ' . $disabled . ' multiple>';
-							foreach( $terms as $term )
-								echo '<option value="' . $term->term_id . '" ' . (in_array($term->term_id, $value, true) ? 'selected' : '') . '>' . $term->name . '</option>';
+							switch( $field['taxonomy'] ) {
+								case 'listing_type':
+									$args = array(
+										'taxonomy'   => $field['taxonomy'],
+										'hide_empty' => false,
+										'parent'     => 0,
+									);
+									$parents = get_terms( $args );
+
+									foreach( $parents as $parent ) {
+										$args = array(
+											'taxonomy'   => $field['taxonomy'],
+											'hide_empty' => false,
+											'parent'     => $parent->term_id,
+										);
+										$children = get_terms( $args );
+										if( empty($children) )
+											continue;
+
+										echo '<option value="' . $parent->term_id . '" disabled>' . $parent->name . '</option>';
+										foreach( $children as $child ) {
+											echo '<option value="' . $child->term_id . '" ' . (in_array($child->term_id, $value, true) ? 'selected' : '') . '>&nbsp;&nbsp;&nbsp;&nbsp;' . $child->name . '</option>';
+										}
+									}
+									break;
+								case 'listing_tag':
+									$types          = array();
+									$terms_by_types = array();
+
+									$args = array(
+										'taxonomy'   => $field['taxonomy'],
+										'hide_empty' => false,
+									);
+									$terms = get_terms( $args );
+
+									foreach( $terms as $term ) {
+										$type_id = get_field( '_hc_listing_type_id', $term );
+										if( empty($type_id) )
+											continue;
+
+										if( !isset($terms_by_types[$type_id]) )
+											$terms_by_types[$type_id] = array();
+
+										$terms_by_types[$type_id][] = $term;
+									}
+
+									foreach( $terms_by_types as $type_id => $terms ) {
+										$type = get_term_by( 'id', $type_id, 'listing_type' );
+
+										echo '<option value="' . $type->term_id . '" disabled>' . $type->name . '</option>';
+										foreach( $terms as $term ) {
+											echo '<option value="' . $term->term_id . '" ' . (in_array($term->term_id, $value, true) ? 'selected' : '') . '>&nbsp;&nbsp;&nbsp;&nbsp;' . $term->name . '</option>';
+										}
+									}
+									break;
+								default:
+									$args = array(
+										'taxonomy'   => $field['taxonomy'],
+										'hide_empty' => false,
+									);
+									$terms = get_terms( $args );
+
+									foreach( $terms as $term ) {
+										echo '<option value="' . $term->term_id . '" ' . (in_array($term->term_id, $value, true) ? 'selected' : '') . '>' . $term->name . '</option>';
+									}
+									break;
+							}
 						echo '</select>';
 					} else {
 						echo '<div class="radio-list">';
