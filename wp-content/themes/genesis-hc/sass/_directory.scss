@@ -39,6 +39,10 @@
 		margin-bottom: 0;
 		width: 100%;
 	}
+
+	.site-footer {
+		display: none;
+	}
 }
 
 @include media('<=portrait') {
@@ -71,6 +75,10 @@
 		}
 
 		.content {
+			display: block;
+		}
+
+		.site-footer {
 			display: block;
 		}
 	}
