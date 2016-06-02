@@ -257,8 +257,6 @@ class HC_Migration {
 
 		foreach( $mappings as $taxonomy => $map ) {
 			foreach( $map as $category => $type ) {
-				echo 'Migrating listing category ' . $category . ' to ' . $taxonomy . ' ' . $type . '<br>';
-
 				$term = get_term_by( 'slug', $type, $taxonomy );
 				if( empty($term) || is_wp_error($term) ) {
 					echo "Listing type doesn't exist: " . $type . '<br>';
@@ -279,6 +277,11 @@ class HC_Migration {
 				);
 
 				$listing_ids = get_posts( $args );
+				if( empty($listing_ids) )
+					continue;
+
+				echo 'Migrating listing category ' . $category . ' to ' . $taxonomy . ' ' . $type . '<br>';
+
 				foreach( $listing_ids as $listing_id ) {
 					if( has_term($term, $term->taxonomy, $listing_id) )
 						continue;
@@ -473,6 +476,24 @@ class HC_Migration {
 		$this->setup_default_listing_types();
 		$this->migrate_listing_categories();
 
+		// Remove empty post tags
+		$tags = get_terms(
+			'post_tag',
+			array(
+				'orderby'    => 'count',
+				'hide_empty' => 0,
+				'order'      => 'ASC',
+			)
+		);
+
+		foreach( $tags as $tag ) {
+			if( $tag->count > 5 )
+				continue;
+
+			wp_delete_term( $tag->term_id, 'post_tag' );
+			echo 'Deleting tag #' . $tag->term_id . ' <br>';
+		}
+
 		// Update coordinates
 		$args = array(
 			'posts_per_page' => -1,
@@ -482,6 +503,10 @@ class HC_Migration {
 		$listings = get_posts( $args );
 
 		foreach( $listings as $listing_id ) {
+			$lat = get_post_meta( $listing_id, '_hc_listing_lat', true );
+			if( !empty($lat) )
+				continue;
+
 			$coords = get_post_meta( $listing_id, '_hc_listing_address_map', true );
 			if( !empty($coords['lat']) ) {
 				$value = (float) $coords['lat'];
