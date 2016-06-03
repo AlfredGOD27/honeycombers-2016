@@ -16,6 +16,11 @@ class HC_Utilities {
 	public function get_category_icon_html( $category, $size = 'small', $color = 'orange' ) {
 
 		$icon = get_field( '_hc_category_icon', $category );
+		if( empty($icon) && !empty($category->parent) ) {
+			$parent = get_term_by( 'id', $category->term_id, $category->taxonomy );
+			$icon   = get_field( '_hc_category_icon', $parent );
+		}
+
 		if( !empty($icon) )
 			return '<i class="animation animation-' . $size . ' category-icon animation-' . $icon . '-' . $color . '"></i>';
 
