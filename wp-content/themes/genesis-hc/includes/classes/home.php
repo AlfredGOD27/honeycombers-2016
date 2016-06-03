@@ -39,11 +39,9 @@ class HC_Home {
 		if( empty($enable) )
 			return;
 
-		$post_ids = get_post_meta( $post->ID, '_hc_home_slider_post_ids', true );
-
 		$args = array(
 			'post_type'      => 'post',
-			'posts_per_page' => -1,
+			'posts_per_page' => 8,
 			'meta_query'     => array(
 				array(
 					'key'   => '_hc_sticky_on_home',
@@ -60,6 +58,14 @@ class HC_Home {
 			$pos                    = absint($pos);
 			$ordered_post_ids[$pos] = $post_id;
 		}
+
+		$args = array(
+			'post_type'      => 'post',
+			'posts_per_page' => 8,
+			'post__not_in'   => $ordered_post_ids,
+			'fields'         => 'ids',
+		);
+		$post_ids = get_posts( $args );
 
 		$total = count( array_merge($post_ids, $stickied_post_ids) );
 

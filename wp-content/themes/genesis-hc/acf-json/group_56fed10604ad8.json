@@ -35,42 +35,6 @@
             "default_value": 0
         },
         {
-            "key": "field_56fed12d9f39a",
-            "label": "Posts",
-            "name": "_hc_home_slider_post_ids",
-            "type": "relationship",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_57051bae118b6",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "post"
-            ],
-            "taxonomy": [],
-            "filters": [
-                "search",
-                "taxonomy"
-            ],
-            "elements": [
-                "featured_image"
-            ],
-            "min": 4,
-            "max": "",
-            "return_format": "id"
-        },
-        {
             "key": "field_570c56c5d48f0",
             "label": "Mobile Buttons",
             "name": "",
@@ -763,5 +727,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1464728114
+    "modified": 1464979252
 }
