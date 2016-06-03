@@ -60,10 +60,10 @@ class HC_Listings {
 		);
 
 		$args = array(
-			'hierarchical'      => true,
-			'labels'            => $labels,
-			'public'            => false,
-			'rewrite'           => false,
+			'hierarchical' => true,
+			'labels'       => $labels,
+			'public'       => false,
+			'rewrite'      => false,
 		);
 
 		register_taxonomy( 'directories', array('listing'), $args );

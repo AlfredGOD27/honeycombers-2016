@@ -416,7 +416,7 @@ class HC_Home {
 						} else {
 							?>
 							<h3>Make Honeycombers Yours</h3>
-							<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="btn open-popup-link" data-mfp-src="#login-popup">Sign Up <i class="ico-exit"></i></a>
+							<button class="btn open-popup-link" data-mfp-src="#login-popup">Sign Up <i class="ico-exit"></i></button>
 							<p>Save the cool stuff you see so you never forget that hot new table or very happy hour. Sign up, create a folder, share it with your mates - in minutes</p>
 							<?php
 						}
@@ -553,12 +553,10 @@ class HC_Home {
 				?>
 
 				<h2>
-					<a href="<?php echo HC()->utilities->get_page_link('_hc_blog_page_id'); ?>">
-						<?php
-						$heading = get_post_meta( $post->ID, '_hc_home_latest_posts_heading', true );
-						echo trim($heading);
-						?>
-					</a>
+					<?php
+					$heading = get_post_meta( $post->ID, '_hc_home_latest_posts_heading', true );
+					echo trim($heading);
+					?>
 				</h2>
 
 				<div class="block clearfix" data-offset="8" data-total="100">

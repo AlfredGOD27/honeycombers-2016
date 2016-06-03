@@ -19,7 +19,7 @@ class HC_Post_Type_Editor {
 
 		$this->post_type_object = get_post_type_object( $this->post_type );
 
-		$page_id = get_option( 'options__hc_profile_page_id' );
+		$page_id = get_option( 'page_on_front' );
 
 		add_rewrite_tag( '%hc_' . $this->post_type . '_slug%', '([^&]+)' );
 		add_rewrite_tag( '%hc_' . $this->post_type . '_action%', '([^&]+)' );

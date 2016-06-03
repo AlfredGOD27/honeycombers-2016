@@ -305,7 +305,7 @@ function hc_site_top() {
 					<?php
 					if( !is_user_logged_in() ) {
 						?>
-						<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="open-popup-link" data-mfp-src="#login-popup">Sign In <i class="ico-exit"></i></a>
+						<button class="open-popup-link" data-mfp-src="#login-popup">Sign In <i class="ico-exit"></i></button>
 						<?php
 					} else {
 						HC()->profiles->display_top_menu();
@@ -334,7 +334,7 @@ function hc_mobile_menu_toggle() {
 		<?php
 		if( !is_user_logged_in() ) {
 			?>
-			<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="btn btn-bordered open-popup-link" data-mfp-src="#login-popup">Login</a>
+			<button class="btn btn-bordered open-popup-link" data-mfp-src="#login-popup">Login</button>
 			<?php
 		} else {
 			?>
@@ -397,7 +397,7 @@ function hc_sticky_header() {
 						<?php
 						if( !is_user_logged_in() ) {
 							?>
-							<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="btn btn-icon open-popup-link" data-mfp-src="#login-popup"><span>Sign In</span> <i class="ico-exit"></i></a>
+							<button class="btn btn-icon open-popup-link" data-mfp-src="#login-popup"><span>Sign In</span> <i class="ico-exit"></i></button>
 							<?php
 						} else {
 							?>

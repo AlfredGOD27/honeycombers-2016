@@ -275,28 +275,6 @@
             "endpoint": 0
         },
         {
-            "key": "field_57045a61b1172",
-            "label": "Blog",
-            "name": "_hc_blog_page_id",
-            "type": "post_object",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "id",
-            "ui": 1
-        },
-        {
             "key": "field_56fff0c9f264c",
             "label": "Calendar",
             "name": "_hc_calendar_page_id",
@@ -344,28 +322,6 @@
             "key": "field_56fff0e3f264d",
             "label": "Directory",
             "name": "_hc_directory_page_id",
-            "type": "post_object",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "page"
-            ],
-            "taxonomy": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "return_format": "id",
-            "ui": 1
-        },
-        {
-            "key": "field_57045a69b1173",
-            "label": "Profile",
-            "name": "_hc_profile_page_id",
             "type": "post_object",
             "instructions": "",
             "required": 1,
@@ -1230,5 +1186,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1464395223
+    "modified": 1464982062
 }

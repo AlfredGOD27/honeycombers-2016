@@ -22,7 +22,7 @@ class HC_Profiles {
 
 	public function rewrites() {
 
-		$page_id = get_option( 'options__hc_profile_page_id' );
+		$page_id = get_option( 'page_on_front' );
 
 		add_rewrite_tag( '%hc_profile_endpoint%', '([^&]+)' );
 
