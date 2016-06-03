@@ -417,7 +417,7 @@ class HC_Home {
 							?>
 							<h3>Make Honeycombers Yours</h3>
 							<a href="<?php echo HC()->utilities->get_page_link('_hc_profile_page_id'); ?>" class="btn open-popup-link" data-mfp-src="#login-popup">Sign Up <i class="ico-exit"></i></a>
-							<p>Sign up for a profile to build your very own collection of must-dos, must-eats, must-drinks and must-buys. You’ll never miss a thing!</p>
+							<p>Save the cool stuff you see so you never forget that hot new table or very happy hour. Sign up, create a folder, share it with your mates - in minutes</p>
 							<?php
 						}
 						?>
