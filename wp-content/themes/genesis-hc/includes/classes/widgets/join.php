@@ -17,21 +17,26 @@ class HC_Join_Widget extends WP_Widget {
 		extract($args);
 
 		echo $before_widget;
-			$title = get_field( '_hc_title', 'widget_' . $widget_id );
-			if( !empty($title) )
-				echo $before_title . sanitize_text_field($title) . $after_title;
-
-			$above_text = get_field( '_hc_above_text', 'widget_' . $widget_id );
-			if( !empty($above_text) )
-				echo '<div class="above-text">' . wpautop( wp_kses_data($above_text) ) . '</div>';
-
 			?>
-			<button class="btn open-popup-link" data-mfp-src="#login-popup">Sign In <i class="ico-exit"></i></button>
-			<?php
+			<i class="ico-heart"></i>
 
-			$below_text = get_field( '_hc_below_text', 'widget_' . $widget_id );
-			if( !empty($below_text) )
-				echo '<div class="below-text">' . wpautop( wp_kses_data($below_text) ) . '</div>';
+			<?php
+			if( is_user_logged_in() ) {
+				$title = get_option( 'options__hc_join_user_title' );
+				$text  = get_option( 'options__hc_join_user_text' );
+
+				echo !empty($title) ? '<h3>' . $title . '</h3>' : '';
+				echo !empty($text) ? wpautop($text) : '';
+			} else {
+				$title = get_option( 'options__hc_join_visitor_title' );
+				$text  = get_option( 'options__hc_join_visitor_text' );
+
+				echo !empty($title) ? '<h3>' . $title . '</h3>' : '';
+				?>
+				<button class="btn open-popup-link" data-mfp-src="#login-popup">Sign Up <i class="ico-exit"></i></button>
+				<?php
+				echo !empty($text) ? wpautop($text) : '';
+			}
 		echo $after_widget;
 
 	}

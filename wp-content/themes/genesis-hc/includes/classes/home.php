@@ -409,16 +409,20 @@ class HC_Home {
 
 						<?php
 						if( is_user_logged_in() ) {
-							?>
-							<h3>Heart It!</h3>
-							<p>Save the things that interest you by clicking on the heart at the top right corner of an image, or within an article. You’ll be prompted to create a folder, or select an existing folder, to keep the article. Go to your profile page to view your saved items anytime!</p>
-							<?php
+							$title = get_option( 'options__hc_join_user_title' );
+							$text  = get_option( 'options__hc_join_user_text' );
+
+							echo !empty($title) ? '<h3>' . $title . '</h3>' : '';
+							echo !empty($text) ? wpautop($text) : '';
 						} else {
+							$title = get_option( 'options__hc_join_visitor_title' );
+							$text  = get_option( 'options__hc_join_visitor_text' );
+
+							echo !empty($title) ? '<h3>' . $title . '</h3>' : '';
 							?>
-							<h3>Make Honeycombers Yours</h3>
 							<button class="btn open-popup-link" data-mfp-src="#login-popup">Sign Up <i class="ico-exit"></i></button>
-							<p>Save the cool stuff you see so you never forget that hot new table or very happy hour. Sign up, create a folder, share it with your mates - in minutes</p>
 							<?php
+							echo !empty($text) ? wpautop($text) : '';
 						}
 						?>
 					</div>

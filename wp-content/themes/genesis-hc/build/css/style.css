@@ -1192,7 +1192,7 @@ ul {
   }
 }
 p, .wp-caption .wp-caption-text, .slider-pro .sp-caption-container, .hc-form .description p, .gform_wrapper .validation_message, .entry-slideshow .slide-content p, .entry-content ol,
-.entry-content ul, .entry-pagination, .home-section-events-join .join p {
+.entry-content ul, .entry-pagination, .widget_hc_join_widget p, .home-section-events-join .join p {
   margin-bottom: 2em;
   letter-spacing: .01rem;
   font-size: .9em;
@@ -1205,7 +1205,7 @@ p:last-child, .wp-caption .wp-caption-text:last-child, .slider-pro .sp-caption-c
 
 @media (max-width: 768px) {
   p, .wp-caption .wp-caption-text, .slider-pro .sp-caption-container, .hc-form .description p, .gform_wrapper .validation_message, .entry-slideshow .slide-content p, .entry-content ol,
-  .entry-content ul, .entry-pagination, .home-section-events-join .join p {
+  .entry-content ul, .entry-pagination, .widget_hc_join_widget p, .home-section-events-join .join p {
     margin-bottom: 1.5em;
   }
 }
@@ -4884,33 +4884,43 @@ table > tbody > tr:nth-child(odd) > th {
 }
 
 .widget_hc_join_widget {
-  padding: 2.25em .5em 1.5em;
-  border: 1px solid #fe862c;
+  padding: 1.5em 1.25em 1.25em;
+  background-color: #fe862c;
+  color: #FFFFFF;
   text-align: center;
 }
-.widget_hc_join_widget .widgettitle {
+.widget_hc_join_widget .ico-heart {
+  display: inline-block;
   margin-bottom: .5em;
+  padding: .375em;
+  width: 2em;
+  height: 2em;
+  border: 3px solid #FFFFFF;
+  border-radius: 50%;
+  font-size: 2em;
+  line-height: 1.15;
 }
-.widget_hc_join_widget .above-text {
-  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
-  margin-bottom: 2.25em;
-  color: #fe862c;
+.widget_hc_join_widget h3 {
+  margin-bottom: 1.25em;
+  text-transform: uppercase;
+  font-size: 1.35em;
 }
 .widget_hc_join_widget .btn, .widget_hc_join_widget button,
 .widget_hc_join_widget input[type='button'],
 .widget_hc_join_widget input[type='reset'],
 .widget_hc_join_widget input[type='submit'] {
-  margin-bottom: 2em;
-  font-size: 1em;
+  margin-bottom: 1.75em;
+  border: 2px solid #FFFFFF;
 }
-.widget_hc_join_widget .below-text p {
-  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
-  font-style: italic;
-  color: #c7c7c7;
-  font-size: .75em;
+.widget_hc_join_widget p {
+  font-size: .9em;
 }
 
+@media (max-width: 768px) {
+  .widget_hc_join_widget {
+    padding: .75em;
+  }
+}
 .widget_hc_follow_widget {
   text-align: center;
 }

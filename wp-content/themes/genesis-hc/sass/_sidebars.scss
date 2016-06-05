@@ -113,31 +113,43 @@
 }
 
 .widget_hc_join_widget {
-	padding: 2.25em .5em 1.5em;
-	border: 1px solid $orange;
+	padding: 1.5em 1.25em 1.25em;
+	background-color: $orange;
+	color: $white;
 	text-align: center;
 
-	.widgettitle {
+	.ico-heart {
+		display: inline-block;
 		margin-bottom: .5em;
+		padding: .375em;
+		width: 2em;
+		height: 2em;
+		border: $border-width solid $white;
+		border-radius: 50%;
+		font-size: 2em;
+		line-height: 1.15;
 	}
 
-	.above-text {
-		@include meta-font;
-		margin-bottom: 2.25em;
-		color: $orange;
+	h3 {
+		margin-bottom: 1.25em;
+		text-transform: uppercase;
+		font-size: 1.35em;
 	}
 
 	.btn {
-		margin-bottom: 2em;
-		font-size: 1em;
+		margin-bottom: 1.75em;
+		border: 2px solid $white;
 	}
 
-	.below-text {
-		p {
-			@include meta-font;
-			color: $grey-lighter;
-			font-size: .75em;
-		}
+	p {
+		@extend %type;
+		font-size: .9em;
+	}
+}
+
+@include media('<=portrait') {
+	.widget_hc_join_widget {
+		padding: .75em;
 	}
 }
 
