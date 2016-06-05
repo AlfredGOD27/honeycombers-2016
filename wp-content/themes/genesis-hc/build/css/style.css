@@ -3332,6 +3332,8 @@ table > tbody > tr:nth-child(odd) > th {
 .mobile-header-right input[type='reset'],
 .mobile-header-right input[type='submit'] {
   display: inline-block;
+  padding-top: .45em;
+  padding-bottom: .45em;
   vertical-align: middle;
 }
 .mobile-header-right .toggle-nav {
@@ -3966,7 +3968,7 @@ table > tbody > tr:nth-child(odd) > th {
   }
   .main-menu .menu-item {
     display: block;
-    border-top: 1px solid #f9f9f9;
+    border-top: 1px solid #707070;
   }
   .main-menu .menu-item:first-child {
     border-top: none;
@@ -3991,7 +3993,7 @@ table > tbody > tr:nth-child(odd) > th {
   }
   .main-menu .menu-item-link,
   .main-menu .inactive-link {
-    padding: 1em .5em;
+    padding: 1.25em .5em;
   }
   .main-menu .inactive-link {
     display: -webkit-box;
@@ -7690,6 +7692,9 @@ table > tbody > tr:nth-child(odd) > th {
   }
   .home-section-trending .slick-slide {
     max-width: 10em;
+  }
+  .home-section-trending .overlay .category-icon {
+    margin-bottom: .5em;
   }
 }
 .home-section-latest-posts .banner {
