@@ -290,6 +290,11 @@ TYPOGRAPHY - http://cssfontstack.com/
   color: #fe862c;
 }
 
+@media (max-width: 768px) {
+  .folders-list {
+    display: none;
+  }
+}
 .folder-header {
   margin-bottom: 2em;
 }

@@ -4774,6 +4774,9 @@ table > tbody > tr:nth-child(odd) > th {
 }
 
 @media (max-width: 768px) {
+  .related .block {
+    border-bottom: 3px solid #252525;
+  }
   .related .one-fourth {
     float: left;
     clear: none;
@@ -4784,6 +4787,9 @@ table > tbody > tr:nth-child(odd) > th {
   }
   .related .one-fourth:nth-of-type(odd) {
     margin-left: 0;
+  }
+  .related .archive-entry-small {
+    margin-bottom: 1em;
   }
 }
 .sidebar .widget {
@@ -4833,15 +4839,30 @@ table > tbody > tr:nth-child(odd) > th {
 .featured-widget-slider .left .d {
   font-size: 1.5em;
 }
+.featured-widget-slider .right,
+.featured-widget-slider .full {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+}
 .featured-widget-slider .right {
   float: left;
   padding: .25em 1em;
   width: 69%;
-  height: 100%;
 }
 .featured-widget-slider .full {
   padding: .25em 3em .25em 1em;
-  height: 100%;
 }
 .featured-widget-slider p {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
@@ -5752,7 +5773,7 @@ table > tbody > tr:nth-child(odd) > th {
 .archive-entry-medium .entry-title {
   margin-bottom: .25em;
   text-transform: uppercase;
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 .archive-entry-medium .entry-title a {
   -webkit-transition: color 0.25s;
@@ -5767,6 +5788,11 @@ table > tbody > tr:nth-child(odd) > th {
   line-height: 1.45;
 }
 
+@media (max-width: 768px) {
+  .archive-entry-medium .entry-footer {
+    margin-bottom: 0;
+  }
+}
 .archive-entry-large {
   display: -webkit-box;
   display: -webkit-flex;
@@ -6194,6 +6220,9 @@ table > tbody > tr:nth-child(odd) > th {
   overflow: hidden;
   border: 1px solid #FFFFFF;
   background-color: rgba(37, 37, 37, 0.75);
+  color: inherit;
+  text-decoration: none;
+  pointer-events: none;
 }
 .event-slider-nav .inner i {
   margin-right: .25em;
@@ -6208,6 +6237,7 @@ table > tbody > tr:nth-child(odd) > th {
 .event-slider-nav .slick-current .inner {
   border-color: #fe862c;
   background-color: #FFFFFF;
+  pointer-events: auto;
 }
 .event-slider-nav .slick-current .inner i {
   opacity: 1;
@@ -6674,7 +6704,7 @@ table > tbody > tr:nth-child(odd) > th {
 
 .listing-result {
   display: block;
-  margin-bottom: 2.5em;
+  margin-bottom: 1em;
   color: inherit;
   text-decoration: none;
 }
