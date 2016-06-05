@@ -431,7 +431,7 @@ class HC_Events {
 						echo get_the_post_thumbnail( $post_id, 'slide-thumbnail' );
 						?>
 
-						<div class="inner">
+						<a class="inner" href="<?php echo get_permalink($post_id); ?>">
 							<div class="info">
 								<span class="m"><?php echo date('M', $date['start_date']); ?></span>
 								<span class="d"><?php echo date('j', $date['start_date']); ?></span>
@@ -451,7 +451,7 @@ class HC_Events {
 							if( !empty($term) )
 								echo HC()->utilities->get_category_icon_html( $term );
 							?>
-						</div>
+						</a>
 					</div>
 				</div>
 				<?php
