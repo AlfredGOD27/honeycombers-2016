@@ -11,9 +11,6 @@ class HC_Join_Widget extends WP_Widget {
 
 	public function widget( $args, $instance ) {
 
-		if( is_user_logged_in() )
-			return;
-
 		extract($args);
 
 		echo $before_widget;
