@@ -93,7 +93,7 @@ class HC_Related {
 		}
 
 		?>
-		<div class="block">
+		<div class="block clearfix">
 			<h2>You May Also Like</h2>
 			<?php
 
