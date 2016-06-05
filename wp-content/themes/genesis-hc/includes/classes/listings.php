@@ -345,13 +345,6 @@ class HC_Listings {
 				if( !empty($_POST['location_id']) )
 					$location_id = absint($_POST['location_id']);
 
-				if( empty($location_id) ) {
-					$output['status']  = 'error';
-					$output['message'] = 'You must select a location';
-					echo json_encode($output);
-					wp_die();
-				}
-
 				if(
 					empty($text) &&
 					empty($location_id) &&
@@ -500,7 +493,7 @@ class HC_Listings {
 					<div class="three-fifths first">
 						<div class="one-half first select-container">
 							<label for="directory-location">Location</label>
-							<select id="directory-location" name="location" class="styled" required>
+							<select id="directory-location" name="location" class="styled">
 								<option value="">Location</option>
 								<?php
 								$terms = get_terms( 'locations' );
