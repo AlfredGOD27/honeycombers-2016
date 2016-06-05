@@ -2899,6 +2899,10 @@ input[type='search'] {
   text-transform: none;
 }
 .button-nav .add-new {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   color: #FFFFFF;
   text-align: center;
 }
