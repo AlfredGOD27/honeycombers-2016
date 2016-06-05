@@ -241,6 +241,16 @@ class HC_Listings {
 
 				if( count($lines) > 0 )
 					HC()->formatting->display_data_list($lines);
+
+				$submitter_id = get_post_meta( $post->ID, '_hc_listing_submitter_id', true );
+				if( empty($submitter_id) ) {
+					$claim_page_id = get_option( 'options__hc_claim_listing_page_id' );
+					if( !empty($claim_page_id) ) {
+						?>
+						<a href="<?php echo get_permalink($claim_page_id); ?>" class="btn btn-claim">Own This Business? Claim Your Page.</a>
+						<?php
+					}
+				}
 				?>
 
 				<div class="item-action-row">

@@ -6768,10 +6768,6 @@ table > tbody > tr:nth-child(odd) > th {
   text-decoration: none;
 }
 
-.item-data {
-  padding-bottom: 1.25em;
-  border-bottom: 1px solid #d7d7d7;
-}
 .item-data dt,
 .item-data dd {
   display: inline-block;
@@ -6800,9 +6796,21 @@ table > tbody > tr:nth-child(odd) > th {
     width: 80%;
   }
 }
+.btn-claim {
+  display: block;
+  margin-bottom: 1.316em;
+  padding-top: 1.45em;
+  padding-bottom: 1.45em;
+  border: 2px solid #fe862c;
+  background-color: transparent;
+  color: #fe862c;
+}
+
 .item-action-row {
   margin-bottom: 1.25em;
+  padding-top: 1.25em;
   padding-bottom: 1.25em;
+  border-top: 1px solid #d7d7d7;
   border-bottom: 1px solid #d7d7d7;
   text-align: center;
 }
