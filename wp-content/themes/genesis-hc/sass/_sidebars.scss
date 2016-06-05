@@ -55,16 +55,22 @@
 		}
 	}
 
+	.right,
+	.full {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100%;
+	}
+
 	.right {
 		float: left;
 		padding: .25em 1em;
 		width: 69%;
-		height: 100%;
 	}
 
 	.full {
 		padding: .25em 3em .25em 1em;
-		height: 100%;
 	}
 
 	p {
