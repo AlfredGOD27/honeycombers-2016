@@ -272,6 +272,12 @@
 	}
 }
 
+@include media('<=portrait') {
+	.folders-list {
+		display: none;
+	}
+}
+
 .folder-header {
 	margin-bottom: 2em;
 
