@@ -63,6 +63,7 @@ class HC_Profiles {
 		add_action( 'wp_enqueue_scripts', array($this, 'load_assets') );
 		add_filter( 'body_class', array($this, 'body_classes') );
 		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+		remove_action( 'genesis_before_loop', 'genesis_do_posts_page_heading' );
 		remove_action( 'genesis_loop', 'genesis_do_loop' );
 
 		if( isset($_GET['password_reset']) && $_GET['password_reset'] ) {
