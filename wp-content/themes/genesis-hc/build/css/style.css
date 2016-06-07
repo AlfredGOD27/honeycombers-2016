@@ -5278,12 +5278,16 @@ table > tbody > tr:nth-child(odd) > th {
 .il-load-more {
   clear: both;
   margin-top: 2em;
-  margin-bottom: 4em;
   padding: 0 .25em;
   width: 100%;
+  background-color: transparent;
+  color: #4f4f4f;
+}
+.il-load-more:before {
+  display: block;
   height: 2px;
   background-color: #4f4f4f;
-  color: #4f4f4f;
+  content: '';
 }
 .il-load-more:focus {
   outline: none;
