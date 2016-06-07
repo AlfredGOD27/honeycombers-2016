@@ -186,15 +186,20 @@ class HC_Listings {
 				genesis_entry_header_markup_open();
 					genesis_do_post_title();
 
-					$categories = wp_get_object_terms( $post->ID, 'listing_type' );
-					if( !empty($categories) ) {
-						$category_links = array();
+					$category_links = array();
 
-						foreach( $categories as $category )
-							$category_links[] = '<a href="' . get_term_link($category) . '">' . $category->name . '</a>';
-
-						echo '<p class="entry-meta">' . implode( ', ', $category_links ) . '</p>';
+					$types = wp_get_object_terms( $post->ID, 'listing_type' );
+					foreach( $types as $type ) {
+						if( $type->parent > 0 )
+							$category_links[] = '<a href="' . get_term_link($type) . '">' . $type->name . '</a>';
 					}
+
+					$tags = wp_get_object_terms( $post->ID, 'listing_tag' );
+					foreach( $tags as $tag )
+						$category_links[] = '<a href="' . get_term_link($tag) . '">' . $tag->name . '</a>';
+
+					if( !empty($category_links) )
+						echo '<p class="entry-meta">' . implode( ', ', $category_links ) . '</p>';
 				genesis_entry_header_markup_close();
 
 				HC()->ratings->display( $post->ID );
