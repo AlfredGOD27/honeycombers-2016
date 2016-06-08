@@ -8,6 +8,8 @@ class HC_ACF {
 		add_filter('acf/load_field/name=_hc_category_icon', array($this, 'load_icon_choices') );
 		add_filter('acf/load_field/name=icon', array($this, 'load_icon_choices'));
 
+		add_filter('acf/fields/relationship/query', array($this, 'relationship_args'), 10, 3 );
+
 	}
 
 	public function load_icon_choices( $field ) {
@@ -33,6 +35,15 @@ class HC_ACF {
 			$field['choices'][$animation] = ucfirst($animation);
 
 		return $field;
+
+	}
+
+	public function relationship_args( $args, $field, $post_id ) {
+
+		$args['orderby'] = 'date';
+		$args['order']   = 'desc';
+
+		return $args;
 
 	}
 
