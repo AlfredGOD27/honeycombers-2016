@@ -522,20 +522,6 @@ $slider-height: 25em;
 	margin-bottom: 1.75em;
 	background-color: $black;
 
-	&:hover,
-	&:focus {
-		img {
-			opacity: .75;
-			transform: scale(1.05);
-		}
-
-		h3 {
-			a {
-				color: $orange;
-			}
-		}
-	}
-
 	img {
 		transition: all $transition-time;
 	}
@@ -558,6 +544,24 @@ $slider-height: 25em;
 	}
 }
 
+@include media('>=desktop') {
+	.archive-entry-tiny {
+		&:hover,
+		&:focus {
+			img {
+				opacity: .75;
+				transform: scale(1.05);
+			}
+
+			h3 {
+				a {
+					color: $orange;
+				}
+			}
+		}
+	}
+}
+
 @include media('<=portrait') {
 	.archive-entry-tiny {
 		h3 {
@@ -569,24 +573,6 @@ $slider-height: 25em;
 .archive-entry-small {
 	overflow: hidden;
 	margin-bottom: 2em;
-
-	&:hover,
-	&:focus {
-		img {
-			opacity: .75;
-			transform: scale(1.05);
-		}
-
-		.bottom {
-			&.roll-up {
-				bottom: 0;
-			}
-		}
-
-		h3 {
-			color: $orange;
-		}
-	}
 
 	.top {
 		position: relative;
@@ -628,6 +614,28 @@ $slider-height: 25em;
 	}
 }
 
+@include media('>=desktop') {
+	.archive-entry-small {
+		&:hover,
+		&:focus {
+			img {
+				opacity: .75;
+				transform: scale(1.05);
+			}
+
+			.bottom {
+				&.roll-up {
+					bottom: 0;
+				}
+			}
+
+			h3 {
+				color: $orange;
+			}
+		}
+	}
+}
+
 @include media('<landscape') {
 	.archive-entry-small {
 		.bottom {
@@ -642,20 +650,6 @@ $slider-height: 25em;
 
 .archive-entry-medium {
 	margin-bottom: 1em;
-
-	&:hover,
-	&:focus {
-		img {
-			opacity: .75;
-			transform: scale(1.05);
-		}
-
-		.entry-title {
-			a {
-				color: $orange;
-			}
-		}
-	}
 
 	.top {
 		position: relative;
@@ -686,6 +680,24 @@ $slider-height: 25em;
 		p {
 			font-size: 1em;
 			line-height: 1.45;
+		}
+	}
+}
+
+@include media('>=desktop') {
+	.archive-entry-medium {
+		&:hover,
+		&:focus {
+			img {
+				opacity: .75;
+				transform: scale(1.05);
+			}
+
+			.entry-title {
+				a {
+					color: $orange;
+				}
+			}
 		}
 	}
 }

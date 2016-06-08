@@ -136,24 +136,6 @@
 	margin-bottom: 1.25em;
 	border: 1px solid $orange;
 
-	&:hover,
-	&:focus {
-		.bookmarks-button-container {
-			opacity: 1;
-		}
-
-		.top {
-			img {
-				opacity: .75;
-				transform: scale(1.05);
-			}
-		}
-
-		h3 {
-			color: $orange;
-		}
-	}
-
 	.top {
 		overflow: hidden;
 		background-color: $black;
@@ -221,6 +203,28 @@
 			text-transform: uppercase;
 			font-style: .85em;
 			font-family: $heading;
+		}
+	}
+}
+
+@include media('>=desktop') {
+	.main-pick {
+		&:hover,
+		&:focus {
+			.bookmarks-button-container {
+				opacity: 1;
+			}
+
+			.top {
+				img {
+					opacity: .75;
+					transform: scale(1.05);
+				}
+			}
+
+			h3 {
+				color: $orange;
+			}
 		}
 	}
 }

@@ -353,6 +353,10 @@ class HC_Archives {
 			$has_image  = !empty($image_html);
 		}
 
+		if( $has_image ) {
+			$image_html = '<a href="' . get_permalink($post_id) . '">' . $image_html . '</a>';
+		}
+
 		?>
 		<article class="clearfix archive-entry archive-entry-<?php echo $style; ?> <?php echo $has_image ? 'has-image' : 'no-image'; ?>" itemscope itemtype="http://schema.org/CreativeWork">
 			<?php
