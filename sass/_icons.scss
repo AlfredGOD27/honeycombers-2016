@@ -23,6 +23,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.ico-close:before {
+	content: '\e90f';
+}
+
 .ico-star:before {
 	content: '\53';
 }
@@ -141,8 +145,4 @@
 
 .ico-check:before {
 	content: '\e924';
-}
-
-.ico-close:before {
-	content: '\e920';
 }
