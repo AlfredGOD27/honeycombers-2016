@@ -59,9 +59,12 @@ class HC_Home {
 			$ordered_post_ids[$pos] = $post_id;
 		}
 
+		$count = get_post_meta( $post->ID, '_hc_home_slider_count', true );
+		$count = !empty($count) ? absint($count) : 8;
+
 		$args = array(
 			'post_type'      => 'post',
-			'posts_per_page' => 8,
+			'posts_per_page' => $count,
 			'post__not_in'   => $ordered_post_ids,
 			'fields'         => 'ids',
 		);
