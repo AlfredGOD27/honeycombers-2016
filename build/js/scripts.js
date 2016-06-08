@@ -5491,12 +5491,19 @@ function hc_directory_maps() {
 
 		loaded_initial_location = true;
 
-		if( !navigator.geolocation )
+		if( !navigator.geolocation ) {
+			map.setCenter( map_settings.center );
+			get_from_map();
 			return;
+		}
 
 		navigator.geolocation.getCurrentPosition(
 			function( position ) {
 				map.setCenter( new google.maps.LatLng( position.coords.latitude, position.coords.longitude ) );
+				get_from_map();
+			},
+			function() {
+				map.setCenter( map_settings.center );
 				get_from_map();
 			}
 		);
