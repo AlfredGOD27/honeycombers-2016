@@ -141,6 +141,8 @@
 		background-color: $black;
 
 		img {
+			max-width: none;
+			width: 100%;
 			transition: all $transition-time;
 		}
 	}
