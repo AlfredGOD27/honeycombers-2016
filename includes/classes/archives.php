@@ -381,9 +381,9 @@ class HC_Archives {
 					?>
 					<div class="top">
 						<?php
-						$categories = wp_get_post_terms( $post->ID, 'category' );
-						if( !empty($categories) )
-							echo HC()->utilities->get_category_icon_html( $categories[0] );
+						$term = HC()->utilities->get_primary_term( $post->ID, 'category' );
+						if( !empty($term) )
+							echo HC()->utilities->get_category_icon_html( $term );
 
 						HC()->folders->display_add_button( $post->ID, true, true );
 
