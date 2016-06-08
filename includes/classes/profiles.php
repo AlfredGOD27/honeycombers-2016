@@ -460,13 +460,17 @@ class HC_Profiles {
 
 			<?php
 			if( $is_own_profile && 'base' === $this->endpoint ) {
+				$url = get_bloginfo('url');
+				$url = untrailingslashit($url);
+				$url .= '/how-to-save-articles-videos-and-pretty-much-everything-you-see-on-honeycombers-to-view-later/';
+
 				?>
 				<div class="right one-third">
 					<div class="profile-bookmarks-info">
 						<i class="ico-heart"></i>
 						<p class="orange">Put articles, listings or any editorial content you like in your profile
 by clicking on the heart or save icon</p>
-						<p class="black"><a href="#">Click through to learn more about what you can do with your account</a></p>
+						<p class="black"><a href="<?php echo $url; ?>">Click through to learn more about what you can do with your account</a></p>
 					</div>
 				</div>
 				<?php
