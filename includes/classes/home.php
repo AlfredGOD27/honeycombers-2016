@@ -52,39 +52,24 @@ class HC_Home {
 		);
 		$stickied_post_ids = get_posts( $args );
 
-		$ordered_post_ids = array();
-		foreach( $stickied_post_ids as $post_id ) {
-			$pos                    = get_post_meta( $post_id, '_hc_sticky_position', true );
-			$pos                    = absint($pos);
-			$ordered_post_ids[$pos] = $post_id;
-		}
-
 		$count = get_post_meta( $post->ID, '_hc_home_slider_count', true );
 		$count = !empty($count) ? absint($count) : 8;
 
 		$args = array(
 			'post_type'      => 'post',
 			'posts_per_page' => $count,
-			'post__not_in'   => $ordered_post_ids,
+			'post__not_in'   => $stickied_post_ids,
 			'fields'         => 'ids',
 		);
 		$post_ids = get_posts( $args );
 
-		$total = count( array_merge($post_ids, $stickied_post_ids) );
+		$all_post_ids = array_merge($stickied_post_ids, $post_ids);
 
-		$i = 1;
-		while( $i <= $total ) {
-			if( !isset($ordered_post_ids[$i]) ) {
-				$ordered_post_ids[$i] = array_shift($post_ids);
-			}
-			++$i;
-		}
-
-		ksort($ordered_post_ids);
+		$total = count( $all_post_ids );
 
 		$args = array(
 			'post_type' => 'post',
-			'post__in'  => $ordered_post_ids,
+			'post__in'  => $all_post_ids,
 			'orderby'   => 'post__in',
 			'fields'    => 'ids',
 		);
