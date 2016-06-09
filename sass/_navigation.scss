@@ -9,7 +9,7 @@
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.nav-primary-wrapper {
 		position: fixed;
 		top: 5.5em;
@@ -57,7 +57,7 @@
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.nav-primary {
 		> .wrap {
 			flex-direction: column;
@@ -333,7 +333,7 @@
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.main-menu {
 		position: static;
 		order: 2;
@@ -456,7 +456,7 @@
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.icon-nav {
 		order: 1;
 		float: none;

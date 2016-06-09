@@ -72,7 +72,7 @@
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.entry-title {
 		font-size: 1.25em;
 	}

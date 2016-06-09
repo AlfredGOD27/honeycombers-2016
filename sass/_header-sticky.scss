@@ -233,7 +233,7 @@
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.sticky-header {
 		display: none;
 	}

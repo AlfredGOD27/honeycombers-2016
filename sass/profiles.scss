@@ -136,16 +136,6 @@
 	}
 }
 
-@include media('<=landscape') {
-	.profile-bookmarks-info {
-		.orange {
-			i {
-				font-size: 3em;
-			}
-		}
-	}
-}
-
 @include media('<=portrait') {
 	.profile-bookmarks-info {
 		display: none;

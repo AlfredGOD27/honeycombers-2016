@@ -641,7 +641,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<landscape') {
+@include media('<portrait') {
 	.archive-entry-small {
 		.bottom {
 			position: static;
@@ -771,8 +771,10 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.archive-entry-large {
+		display: block;
+
 		.read-more-share-bar {
 			.bookmarks-button-container,
 			.share-button {
@@ -787,12 +789,6 @@ $slider-height: 25em;
 				margin-left: 0;
 			}
 		}
-	}
-}
-
-@include media('<=portrait') {
-	.archive-entry-large {
-		display: block;
 
 		.first {
 			margin-bottom: .5em;

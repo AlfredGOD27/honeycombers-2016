@@ -52,7 +52,7 @@
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.site-top {
 		display: none;
 	}
@@ -86,7 +86,7 @@
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.site-header {
 		position: fixed;
 		top: 0;
@@ -118,7 +118,7 @@
 	padding-bottom: .5em;
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.title-area {
 		flex-grow: 0;
 		order: 1;
@@ -142,7 +142,7 @@
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.site-logo {
 		img {
 			display: none;
@@ -174,7 +174,7 @@
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.header-widget-area {
 		order: 3;
 		float: none;
@@ -182,6 +182,7 @@
 		padding-bottom: 0;
 
 		.search-form {
+			max-width: 100%;
 			border: none;
 
 			input[type='search'] {
@@ -192,14 +193,6 @@
 			input[type='submit'] {
 				display: none;
 			}
-		}
-	}
-}
-
-@include media('<=portrait') {
-	.header-widget-area {
-		.search-form {
-			max-width: 100%;
 		}
 	}
 }
@@ -232,7 +225,7 @@
 	}
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	.mobile-header-right {
 		display: block;
 	}

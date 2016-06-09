@@ -5578,7 +5578,7 @@ function hc_maybe_load_facebook() {
 		affix_on = true;
 
 		// Turn off is window isn't fullwidth
-		if( im.lessThan('landscape') )
+		if( im.lessThan('portrait') )
 			affix_on = false;
 	}
 
@@ -6402,7 +6402,7 @@ function hc_maybe_load_facebook() {
 	});
 
 	$('.main-menu > .menu-item').on( 'mouseenter', function() {
-		if( !im.lessThan('landscape') )
+		if( !im.lessThan('portrait') )
 			$('body').addClass('main-menu-open');
 	});
 

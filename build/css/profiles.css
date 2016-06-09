@@ -175,11 +175,6 @@ TYPOGRAPHY - http://cssfontstack.com/
   text-decoration: none;
 }
 
-@media (max-width: 1024px) {
-  .profile-bookmarks-info .orange i {
-    font-size: 3em;
-  }
-}
 @media (max-width: 768px) {
   .profile-bookmarks-info {
     display: none;

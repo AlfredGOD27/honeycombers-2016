@@ -1,6 +1,13 @@
 html,
 body {
-	// min-width: $site-width; // Prevents backgrounds on these elements from being truncated on smaller screens on fixed-width sites
+	min-width: $site-width; // Prevents backgrounds on these elements from being truncated on smaller screens on fixed-width sites
+}
+
+@include media('<=portrait') {
+	html,
+	body {
+		min-width: 0;
+	}
 }
 
 body {
@@ -12,9 +19,15 @@ body {
 	font-variant-ligatures: common-ligatures;
 }
 
-@include media('<=landscape') {
+@include media('<=portrait') {
 	body {
 		padding-top: 5.5em;
+	}
+}
+
+@include media('<=phone') {
+	body {
+		padding-top: 7.5em;
 	}
 
 	html[lang='en-US'] {
@@ -23,12 +36,6 @@ body {
 
 	#wpadminbar {
 		display: none !important;
-	}
-}
-
-@include media('<=phone') {
-	body {
-		padding-top: 7.5em;
 	}
 }
 

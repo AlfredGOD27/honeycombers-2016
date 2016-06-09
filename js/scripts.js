@@ -222,7 +222,7 @@
 	});
 
 	$('.main-menu > .menu-item').on( 'mouseenter', function() {
-		if( !im.lessThan('landscape') )
+		if( !im.lessThan('portrait') )
 			$('body').addClass('main-menu-open');
 	});
 
