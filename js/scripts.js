@@ -236,7 +236,7 @@
 		switch(window.orientation) {
 			case -90:
 			case 90:
-				$('meta[name="viewport"]').attr( 'content', 'width=1300, minimum-scale=.25, maximum-scale=1.0' );
+				$('meta[name="viewport"]').attr( 'content', 'width=1300' );
 				break;
 			default:
 				$('meta[name="viewport"]').attr( 'content', 'width=device-width, initial-scale=1' );
