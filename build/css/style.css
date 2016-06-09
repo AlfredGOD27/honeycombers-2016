@@ -7373,7 +7373,7 @@ table > tbody > tr:nth-child(odd) > th {
     height: auto;
   }
   .listing-slider-for img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-top: 1px solid #fe862c;
   }
