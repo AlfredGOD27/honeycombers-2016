@@ -1859,7 +1859,7 @@ body {
 
 @media (max-width: 1024px) {
   body {
-    padding-top: 6em;
+    padding-top: 5.5em;
   }
 
   html[lang='en-US'] {
@@ -3233,7 +3233,6 @@ table > tbody > tr:nth-child(odd) > th {
     top: 0;
     left: 0;
     z-index: 999;
-    margin-bottom: 1.5em;
     width: 100%;
     border-bottom: 1px solid #fe862c;
   }
