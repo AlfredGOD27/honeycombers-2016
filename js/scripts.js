@@ -233,7 +233,7 @@
 	// Viewport
 	function set_viewport() {
 		if( !im.lessThan('portrait') ) {
-			$('meta[name="viewport"]').attr( 'content', 'width=1300, initial-scale=1' );
+			$('meta[name="viewport"]').attr( 'content', 'width=1300' );
 		} else {
 			$('meta[name="viewport"]').attr( 'content', 'width=device-width, initial-scale=1' );
 		}
