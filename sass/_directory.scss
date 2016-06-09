@@ -270,9 +270,17 @@
 
 .listing-result {
 	display: block;
+	float: left;
 	margin-bottom: 1em;
+	margin-left: 2.564102564102564%;
+	width: 48.717948717948715%;
 	color: inherit;
 	text-decoration: none;
+
+	&.first {
+		clear: both;
+		margin-left: 0;
+	}
 
 	.image-container {
 		display: flex;
@@ -296,5 +304,14 @@
 
 	.more-link {
 		font-size: .85em;
+	}
+}
+
+@include media('<=phone') {
+	.listing-result {
+		float: none;
+		clear: both;
+		margin-left: 0;
+		width: 100%;
 	}
 }

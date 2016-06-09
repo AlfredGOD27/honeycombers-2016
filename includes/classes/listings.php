@@ -444,7 +444,7 @@ class HC_Listings {
 			$info_window_html = '<a class="result-title" href="' . $link . '">' . $title . '</a>';
 			$info_window_html .= '<span class="result-category">' . HC()->formatting->build_comma_separated_list( $categories ) . '</span>';
 
-			$result_html = 1 === $i % 2 ? '<a href="' . get_permalink( $listing_id ) . '" class="listing-result one-half first">' : '<a href="' . $link . '" class="listing-result one-half">';
+			$result_html = 1 === $i % 2 ? '<a href="' . get_permalink( $listing_id ) . '" class="listing-result first">' : '<a href="' . $link . '" class="listing-result">';
 				if( has_post_thumbnail($listing_id) )
 					$result_html .= '<div class="image-container">' . get_the_post_thumbnail($listing_id, 'archive-small' ) . '</div>';
 

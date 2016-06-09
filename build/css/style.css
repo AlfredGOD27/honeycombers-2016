@@ -6766,9 +6766,17 @@ table > tbody > tr:nth-child(odd) > th {
 
 .listing-result {
   display: block;
+  float: left;
   margin-bottom: 1em;
+  margin-left: 2.564102564102564%;
+  width: 48.717948717948715%;
   color: inherit;
   text-decoration: none;
+}
+.listing-result.first, .gform_wrapper .ginput_complex .listing-result.ginput_left,
+.gform_wrapper .ginput_complex .listing-result.name_first {
+  clear: both;
+  margin-left: 0;
 }
 .listing-result .image-container {
   display: -webkit-box;
@@ -6797,6 +6805,14 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: .85em;
 }
 
+@media (max-width: 560px) {
+  .listing-result {
+    float: none;
+    clear: both;
+    margin-left: 0;
+    width: 100%;
+  }
+}
 .single-event .nav-primary-wrapper,
 .single-listing .nav-primary-wrapper {
   margin-bottom: 2.5em;
