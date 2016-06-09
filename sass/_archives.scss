@@ -185,7 +185,7 @@ $slider-height: 25em;
 
 	img {
 		max-width: none;
-		width: 100%;
+		height: 100%;
 	}
 
 	.slick-arrow {
@@ -262,6 +262,11 @@ $slider-height: 25em;
 	.slider-for {
 		width: 100%;
 		height: auto;
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
 
 		.slick-arrow {
 			visibility: visible;
