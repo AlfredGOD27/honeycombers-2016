@@ -6425,7 +6425,7 @@ function hc_maybe_load_facebook() {
 						break;
 				}
 			},
-			1000
+			50
 		);
 
 	}
