@@ -6116,7 +6116,7 @@ table > tbody > tr:nth-child(odd) > th {
 
 .event-slider-for {
   overflow: hidden;
-  width: 65.75%;
+  width: 65.95%;
   height: 25em;
 }
 .event-slider-for:hover .slick-arrow, .event-slider-for:focus .slick-arrow {
@@ -6250,6 +6250,7 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .event-slider-nav .outer {
   position: relative;
+  overflow: hidden;
   margin-left: 2em;
   height: 6.25em;
   background-color: #252525;

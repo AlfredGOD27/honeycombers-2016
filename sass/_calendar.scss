@@ -180,7 +180,7 @@
 
 .event-slider-for {
 	overflow: hidden;
-	width: 65.75%;
+	width: 65.95%;
 	height: $slider-height;
 
 	&:hover,
@@ -312,6 +312,7 @@
 
 	.outer {
 		position: relative;
+		overflow: hidden;
 		margin-left: 2em;
 		height: $slider-height / 4;
 		background-color: $black;

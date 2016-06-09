@@ -27,6 +27,7 @@
 		centerPadding: '8px',
 		prevArrow: hc_strings.prev_arrow,
 		nextArrow: hc_strings.next_arrow,
+		variableWidth: true,
 		responsive: [
 			{
 				breakpoint: im.getValue('portrait', true),
