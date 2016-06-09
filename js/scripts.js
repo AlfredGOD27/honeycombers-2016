@@ -236,7 +236,7 @@
 		switch(window.orientation) {
 			case -90:
 			case 90:
-				$('meta[name="viewport"]').attr( 'content', 'width=1300' );
+				$('meta[name="viewport"]').attr( 'content', 'width=1300, minimum-scale=.25, maximum-scale=1.0' );
 				break;
 			default:
 				$('meta[name="viewport"]').attr( 'content', 'width=device-width, initial-scale=1' );
@@ -244,7 +244,7 @@
 		}
 	}
 
-	if( 'undefined' !== screen && screen.width <= 1024 ) {
+	if( 'undefined' !== typeof screen && screen.width <= 1024 ) {
 		window.addEventListener('orientationchange resize', set_viewport);
 		set_viewport();
 	}
