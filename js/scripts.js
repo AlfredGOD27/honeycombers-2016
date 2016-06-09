@@ -233,15 +233,21 @@
 	// Viewport
 	function set_viewport() {
 
-		switch(window.orientation) {
-			case -90:
-			case 90:
-				$('meta[name="viewport"]').attr( 'content', 'width=1300' );
-				break;
-			default:
-				$('meta[name="viewport"]').attr( 'content', 'width=device-width, initial-scale=1' );
-				break;
-		}
+		setTimeout(
+			function() {
+				switch(window.orientation) {
+					case -90:
+					case 90:
+						$('meta[name="viewport"]').attr( 'content', 'width=1300' );
+						break;
+					default:
+						$('meta[name="viewport"]').attr( 'content', 'width=device-width, initial-scale=1' );
+						break;
+				}
+			},
+			1000
+		);
+
 	}
 
 	if( 'undefined' !== typeof screen && screen.width <= 1024 ) {
