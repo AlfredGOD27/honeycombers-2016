@@ -11,9 +11,13 @@
 
 @include media('<=landscape') {
 	.nav-primary-wrapper {
-		position: relative;
+		position: fixed;
+		top: 5.5em;
+		left: 0;
+		z-index: 9999;
 		display: none;
 		margin-bottom: 0;
+		width: 100%;
 
 		.nav-open & {
 			display: block !important;
@@ -37,6 +41,12 @@
 				display: none;
 			}
 		}
+	}
+}
+
+@include media('<=phone') {
+	.nav-primary-wrapper {
+		top: 7.5em;
 	}
 }
 

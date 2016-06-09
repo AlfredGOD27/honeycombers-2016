@@ -88,7 +88,12 @@
 
 @include media('<=landscape') {
 	.site-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 999;
 		margin-bottom: 1.5em;
+		width: 100%;
 		border-bottom: 1px solid $orange;
 
 		> .wrap {
@@ -188,6 +193,14 @@
 			input[type='submit'] {
 				display: none;
 			}
+		}
+	}
+}
+
+@include media('<=portrait') {
+	.header-widget-area {
+		.search-form {
+			max-width: 100%;
 		}
 	}
 }

@@ -1831,7 +1831,7 @@ html {
 }
 .content-sidebar .sidebar-primary {
   float: right;
-  width: 24%;
+  width: 23.75%;
 }
 
 @media (max-width: 768px) {
@@ -1857,6 +1857,24 @@ body {
           font-variant-ligatures: common-ligatures;
 }
 
+@media (max-width: 1024px) {
+  body {
+    padding-top: 6em;
+  }
+
+  html[lang='en-US'] {
+    margin-top: 0 !important;
+  }
+
+  #wpadminbar {
+    display: none !important;
+  }
+}
+@media (max-width: 560px) {
+  body {
+    padding-top: 7.5em;
+  }
+}
 a {
   color: #fe862c;
   text-decoration: underline;
@@ -3211,7 +3229,12 @@ table > tbody > tr:nth-child(odd) > th {
 
 @media (max-width: 1024px) {
   .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
     margin-bottom: 1.5em;
+    width: 100%;
     border-bottom: 1px solid #fe862c;
   }
   .site-header > .wrap {
@@ -3312,6 +3335,11 @@ table > tbody > tr:nth-child(odd) > th {
   }
   .header-widget-area .search-form input[type='submit'] {
     display: none;
+  }
+}
+@media (max-width: 768px) {
+  .header-widget-area .search-form {
+    max-width: 100%;
   }
 }
 .mobile-header-right {
@@ -3646,9 +3674,13 @@ table > tbody > tr:nth-child(odd) > th {
 
 @media (max-width: 1024px) {
   .nav-primary-wrapper {
-    position: relative;
+    position: fixed;
+    top: 5.5em;
+    left: 0;
+    z-index: 9999;
     display: none;
     margin-bottom: 0;
+    width: 100%;
   }
   .nav-open .nav-primary-wrapper {
     display: block !important;
@@ -3668,6 +3700,11 @@ table > tbody > tr:nth-child(odd) > th {
   }
   .nav-primary-wrapper > .wrap > .right {
     display: none;
+  }
+}
+@media (max-width: 560px) {
+  .nav-primary-wrapper {
+    top: 7.5em;
   }
 }
 .nav-primary > .wrap {
@@ -5356,7 +5393,7 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .slider-for img {
   max-width: none;
-  width: 100%;
+  height: 100%;
 }
 .slider-for .slick-arrow {
   visibility: hidden;
@@ -5439,6 +5476,10 @@ table > tbody > tr:nth-child(odd) > th {
 @media (max-width: 768px) {
   .slider-for {
     width: 100%;
+    height: auto;
+  }
+  .slider-for img {
+    max-width: 100%;
     height: auto;
   }
   .slider-for .slick-arrow {

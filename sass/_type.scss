@@ -12,6 +12,26 @@ body {
 	font-variant-ligatures: common-ligatures;
 }
 
+@include media('<=landscape') {
+	body {
+		padding-top: 6em;
+	}
+
+	html[lang='en-US'] {
+		margin-top: 0 !important;
+	}
+
+	#wpadminbar {
+		display: none !important;
+	}
+}
+
+@include media('<=phone') {
+	body {
+		padding-top: 7.5em;
+	}
+}
+
 ::selection {
 	// text-shadow: none;
 }
