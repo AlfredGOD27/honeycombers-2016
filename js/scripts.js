@@ -233,14 +233,18 @@
 	// Viewport
 	function set_viewport() {
 
-		if( screen.width > im.getValue('portrait', true) ) {
-			$('meta[name="viewport"]').attr( 'content', 'width=1300' );
-		} else {
-			$('meta[name="viewport"]').attr( 'content', 'width=device-width, initial-scale=1' );
+		switch(window.orientation) {
+			case -90:
+			case 90:
+				$('meta[name="viewport"]').attr( 'content', 'width=1300' );
+				break;
+			default:
+				$('meta[name="viewport"]').attr( 'content', 'width=device-width, initial-scale=1' );
+				break;
 		}
 	}
 
-	if( 'undefined' !== screen ) {
+	if( 'undefined' !== screen && screen.width <= 1024 ) {
 		window.addEventListener('orientationchange resize', set_viewport);
 		set_viewport();
 	}
