@@ -230,4 +230,16 @@
 		$('body').removeClass('main-menu-open');
 	});
 
+	// Viewport
+	function set_viewport() {
+		if( !im.lessThan('portrait') ) {
+			document.getElementById('viewport').setAttribute('content',"width=1300, initial-scale=1");
+		} else {
+			document.getElementById('viewport').setAttribute('content',"width=device-width, initial-scale=1");
+		}
+	}
+
+	window.addEventListener('orientationchange resize', set_viewport);
+	set_viewport();
+
 })( window.jQuery );

@@ -3405,7 +3405,7 @@ table > tbody > tr:nth-child(odd) > th {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 80em;
   -webkit-transition: -webkit-transform 0.25s;
           transition: transform 0.25s;
   -webkit-transform: translateY(-100%);
