@@ -31,7 +31,18 @@ class HC_Listing_Editor extends HC_Form_Abstract {
 			'type'     => 'text',
 			'table'    => 'posts',
 			'required' => true,
-			'classes'  => array('first', 'one-third'),
+			'classes'  => array('first', 'one-half'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_listing_location',
+			'label'    => 'Locations',
+			'type'     => 'term_list',
+			'table'    => 'postmeta',
+			'taxonomy' => 'locations',
+			'multiple' => true,
+			'required' => false,
+			'classes'  => array('one-half'),
 		);
 
 		$this->fields[] = array(
@@ -43,7 +54,7 @@ class HC_Listing_Editor extends HC_Form_Abstract {
 			'multiple'    => true,
 			'required'    => true,
 			'description' => 'Can\'t find a suitable category or venue type? Keen to take your listing to the next level? Get in touch at <a href="mailto:hello@thehoneycombers.com" target="_blank">hello@thehoneycombers.com</a>.',
-			'classes'     => array('one-third'),
+			'classes'     => array('first', 'one-half'),
 		);
 
 		$this->fields[] = array(
@@ -54,7 +65,7 @@ class HC_Listing_Editor extends HC_Form_Abstract {
 			'taxonomy' => 'listing_tag',
 			'multiple' => true,
 			'required' => false,
-			'classes'  => array('one-third'),
+			'classes'  => array('one-half'),
 		);
 
 		$this->fields[] = array(
@@ -100,6 +111,15 @@ class HC_Listing_Editor extends HC_Form_Abstract {
 			'table'    => 'postmeta',
 			'required' => false,
 			'classes'  => array('one-half'),
+		);
+
+		$this->fields[] = array(
+			'slug'     => '_hc_listing_hours',
+			'label'    => 'Hours',
+			'type'     => 'text',
+			'table'    => 'postmeta',
+			'required' => false,
+			'classes'  => array('one-half', 'first'),
 		);
 
 		$this->fields[] = array(
