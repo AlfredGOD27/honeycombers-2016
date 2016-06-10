@@ -173,7 +173,10 @@ class HC_Entry {
 		?>
 		<div class="featured-image-container">
 			<?php
-			$atts          = genesis_parse_attr( 'entry-image', array('alt' => get_the_title()) );
+			$is_animated = get_post_meta( $post->ID, '_hc_image_is_animated', true );
+			$is_animated = !empty($is_animated) ? 'full' : 'entry-image';
+
+			$atts          = genesis_parse_attr( $is_animated, array('alt' => get_the_title()) );
 			$atts['class'] = 'alignnone';
 
 			echo genesis_get_image(
