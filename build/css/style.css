@@ -7181,7 +7181,7 @@ table > tbody > tr:nth-child(odd) > th {
       -ms-flex-align: center;
           align-items: center;
   padding: .35em .75em;
-  min-height: 9.6em;
+  min-height: 9.35em;
   border-top: 3px solid #fe862c;
   color: inherit;
   text-decoration: none;
@@ -7221,6 +7221,7 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .main-pick .right img {
   margin: 0 auto .5em;
+  max-width: 6.5em;
   border: 3px solid #fe862c;
   border-radius: 50%;
 }

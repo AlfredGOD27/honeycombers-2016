@@ -164,7 +164,7 @@
 		display: flex;
 		align-items: center;
 		padding: .35em .75em;
-		min-height: 9.6em;
+		min-height: 9.35em;
 		border-top: $border-width solid $orange;
 		color: inherit;
 		text-decoration: none;
@@ -196,6 +196,7 @@
 
 		img {
 			margin: 0 auto .5em;
+			max-width: 6.5em;
 			border: $border-width solid $orange;
 			border-radius: 50%;
 		}
