@@ -19,10 +19,15 @@ class HC_Featured_Widget extends WP_Widget {
 		$query_args['post_type']              = $post_type;
 		$query_args['fields']                 = 'ids';
 		$query_args['update_post_meta_cache'] = false;
+		$query_args['orderby']                = 'post__in';
 
 		switch( $post_type ) {
 			case 'event':
-				$post_ids = get_field( '_hc_event_ids', 'widget_' . $widget_id );
+				$home_page_id = get_option( 'page_on_front' );
+				if( empty($home_page_id) )
+					return;
+
+				$post_ids = get_post_meta( $home_page_id, '_hc_home_featured_event_ids', true );
 				if( empty($post_ids) )
 					return;
 
@@ -44,7 +49,14 @@ class HC_Featured_Widget extends WP_Widget {
 				$query_args['post__in'] = array_map( 'absint', $post_ids );
 				break;
 			case 'post':
-				$post_ids = get_field( '_hc_post_ids', 'widget_' . $widget_id );
+				$home_page_id = get_option( 'page_on_front' );
+				if( empty($home_page_id) )
+					return;
+
+				$main_post_id = get_post_meta( $home_page_id, '_hc_home_picks_main_post_id', true );
+				$post_ids     = get_post_meta( $home_page_id, '_hc_home_picks_post_ids', true );
+
+				$post_ids = array_merge( (array) $main_post_id, $post_ids );
 				if( empty($post_ids) )
 					return;
 
