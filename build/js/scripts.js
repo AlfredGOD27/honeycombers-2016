@@ -6418,10 +6418,10 @@ function hc_maybe_load_facebook() {
 				switch(window.orientation) {
 					case -90:
 					case 90:
-						$('meta[name="viewport"]').attr( 'content', 'width=1300' );
+						$('meta[name="viewport"]').attr( 'content', 'width=1300, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' );
 						break;
 					default:
-						$('meta[name="viewport"]').attr( 'content', 'width=device-width, initial-scale=1' );
+						$('meta[name="viewport"]').attr( 'content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' );
 						break;
 				}
 			},

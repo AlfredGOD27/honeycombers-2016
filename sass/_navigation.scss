@@ -11,11 +11,10 @@
 
 @include media('<=portrait') {
 	.nav-primary-wrapper {
-		position: fixed;
-		top: 5.5em;
-		left: 0;
-		z-index: 9999;
 		display: none;
+		flex-grow: 1;
+		flex-shrink: 1;
+		overflow: scroll;
 		margin-bottom: 0;
 		width: 100%;
 
@@ -24,12 +23,7 @@
 		}
 
 		> .wrap {
-			position: absolute;
-			top: 100%;
-			left: 0;
-			z-index: 99;
 			display: block;
-			margin-top: -1.5em;
 			background-color: $black;
 			color: $white;
 
@@ -41,12 +35,6 @@
 				display: none;
 			}
 		}
-	}
-}
-
-@include media('<=phone') {
-	.nav-primary-wrapper {
-		top: 7.5em;
 	}
 }
 

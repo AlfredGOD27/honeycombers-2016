@@ -76,6 +76,19 @@
 	}
 }
 
+@include media('<=portrait') {
+	.header-navigation-container {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 999;
+		display: flex;
+		flex-direction: column;
+		max-height: 100vh;
+		width: 100%;
+	}
+}
+
 .site-header {
 	background-color: $orange;
 
@@ -88,11 +101,8 @@
 
 @include media('<=portrait') {
 	.site-header {
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 999;
-		width: 100%;
+		flex-grow: 0;
+		flex-shrink: 0;
 		border-bottom: 1px solid $orange;
 
 		> .wrap {

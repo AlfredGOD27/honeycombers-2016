@@ -428,3 +428,21 @@ function hc_sticky_header() {
 	<?php
 
 }
+
+add_action( 'genesis_header', 'hc_header_nav_wrap_open', 4 );
+function hc_header_nav_wrap_open() {
+
+	?>
+	<div class="header-navigation-container">
+	<?php
+
+}
+
+add_action( 'genesis_after_header', 'hc_header_nav_wrap_close', 14 );
+function hc_header_nav_wrap_close() {
+
+	?>
+	</div>
+	<?php
+
+}
