@@ -250,7 +250,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('>=desktop') {
+@include media('>=landscape') {
 	.slider-for {
 		.slick-arrow {
 			visibility: visible;
