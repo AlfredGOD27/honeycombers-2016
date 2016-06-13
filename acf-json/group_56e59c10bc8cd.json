@@ -110,7 +110,11 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "default": "Default",
+                "slideshow": "Slideshow",
+                "video": "Video"
+            },
             "other_choice": 0,
             "save_other_choice": 0,
             "default_value": "default",
@@ -191,5 +195,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1465416585
+    "modified": 1465841171
 }
