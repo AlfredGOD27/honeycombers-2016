@@ -64,6 +64,10 @@
 	.subcategory {
 		margin-bottom: 1.5em;
 
+		&.hide {
+			display: none;
+		}
+
 		&:last-child {
 			margin-bottom: 0;
 		}

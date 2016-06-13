@@ -86,6 +86,16 @@
 			return true;
 		});
 
+		$('.events-slider').each( function() {
+			var args = $(this).slick( 'getSlick' );
+
+			if( 0 === args.$slides.length ) {
+				$(this).closest('.subcategory').addClass('hide');
+			} else {
+				$(this).closest('.subcategory').removeClass('hide');
+			}
+		});
+
 	}
 
 	set_filter();
