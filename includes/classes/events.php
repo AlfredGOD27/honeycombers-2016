@@ -462,6 +462,73 @@ class HC_Events {
 
 	}
 
+	private function do_calendar_subcategory( $name, $events, $term = false ) {
+
+		?>
+		<section class="subcategory">
+			<div class="wrap">
+				<div class="subcategory-description">
+					<?php
+					if( false === $term ) {
+						?>
+						<h2 class="archive-title"><?php echo $name; ?></h2>
+						<?php
+					} else {
+						?>
+						<h2 class="archive-title"><a href="<?php echo get_term_link($term); ?>"><?php echo $name; ?></a></h2>
+						<?php
+					}
+					?>
+				</div>
+
+				<div class="events-slider hide-no-js">
+					<?php
+					foreach( $events as $event ) {
+						if( !has_post_thumbnail($event->ID) )
+							continue;
+
+						$text = HC()->entry->get_headline_title($event->ID) . ' ' . $event->post_content;
+						$text = sanitize_text_field($text);
+						$text = strtolower($text);
+
+						$category_ids = array();
+						$categories   = wp_get_object_terms( $event->ID, 'event-category' );
+						foreach( $categories as $category )
+							$category_ids[] = $category->term_id;
+
+						$date = $this->get_event_date_info( $event->ID );
+
+						?>
+						<div class="event-slide" data-text="<?php echo esc_attr($text); ?>" data-category_ids="<?php echo implode( ',', $category_ids ); ?>" data-start_date="<?php echo $date['start_datetime']; ?>" data-end_date="<?php echo $date['end_datetime']; ?>">
+							<a href="<?php echo get_permalink($event->ID); ?>">
+								<?php
+								echo get_the_post_thumbnail($event->ID, 'archive-small' );
+								?>
+
+								<div class="inner">
+									<span class="title"><?php echo HC()->entry->get_headline_title($event->ID); ?></span>
+									<span class="date">
+										<?php
+										if( date( 'Ymd', $date['start_date'] ) !== date( 'Ymd', $date['end_date'] ) ) {
+											echo date( 'M j', $date['start_date'] ) . ' - ' . date( 'M j', $date['end_date'] );
+										} else {
+											echo date( 'M j', $date['start_date'] );
+										}
+										?>
+									</span>
+								</div>
+							</a>
+						</div>
+						<?php
+					}
+					?>
+				</div>
+			</div>
+		</section>
+		<?php
+
+	}
+
 	public function do_calendar() {
 
 		global $post;
@@ -548,6 +615,28 @@ class HC_Events {
 		</section>
 		<?php
 
+		$args = array(
+			'post_type'      => 'event',
+			'orderby'        => 'meta_value_num',
+			'meta_key'       => '_hc_event_start_date',
+			'posts_per_page' => -1,
+			'meta_query'     => array(
+				array(
+					'key'     => '_hc_event_start_date',
+					'value'   => (int) date('N') === 1 ? date('Ymd') : date('Ymd', strtotime('last monday') ),
+					'compare' => '>=',
+				),
+				array(
+					'key'     => '_hc_event_end_date',
+					'value'   => (int) date('N') === 7 ? date('Ymd') : date('Ymd', strtotime('next sunday') ),
+					'compare' => '<=',
+				),
+			),
+		);
+		$events = get_posts( $args );
+		if( !empty($events) )
+			$this->do_calendar_subcategory( 'This Week', $events );
+
 		foreach( $terms as $term ) {
 			$args                   = $this->get_date_query_args();
 			$args['posts_per_page'] = -1;
@@ -562,58 +651,7 @@ class HC_Events {
 			if( empty($events) )
 				continue;
 
-			?>
-			<section class="subcategory">
-				<div class="wrap">
-					<div class="subcategory-description">
-						<h2 class="archive-title"><a href="<?php echo get_term_link($term); ?>"><?php echo $term->name; ?></a></h2>
-					</div>
-
-					<div class="events-slider hide-no-js">
-						<?php
-						foreach( $events as $event ) {
-							if( !has_post_thumbnail($event->ID) )
-								continue;
-
-							$text = HC()->entry->get_headline_title($event->ID) . ' ' . $event->post_content;
-							$text = sanitize_text_field($text);
-							$text = strtolower($text);
-
-							$category_ids = array();
-							$categories   = wp_get_object_terms( $event->ID, 'event-category' );
-							foreach( $categories as $category )
-								$category_ids[] = $category->term_id;
-
-							$date = $this->get_event_date_info( $event->ID );
-
-							?>
-							<div class="event-slide" data-text="<?php echo esc_attr($text); ?>" data-category_ids="<?php echo implode( ',', $category_ids ); ?>" data-start_date="<?php echo $date['start_datetime']; ?>" data-end_date="<?php echo $date['end_datetime']; ?>">
-								<a href="<?php echo get_permalink($event->ID); ?>">
-									<?php
-									echo get_the_post_thumbnail($event->ID, 'archive-small' );
-									?>
-
-									<div class="inner">
-										<span class="title"><?php echo HC()->entry->get_headline_title($event->ID); ?></span>
-										<span class="date">
-											<?php
-											if( date( 'Ymd', $date['start_date'] ) !== date( 'Ymd', $date['end_date'] ) ) {
-												echo date( 'M j', $date['start_date'] ) . ' - ' . date( 'M j', $date['end_date'] );
-											} else {
-												echo date( 'M j', $date['start_date'] );
-											}
-											?>
-										</span>
-									</div>
-								</a>
-							</div>
-							<?php
-						}
-						?>
-					</div>
-				</div>
-			</section>
-			<?php
+			$this->do_calendar_subcategory( $term->name, $events, $term );
 		}
 
 	}
