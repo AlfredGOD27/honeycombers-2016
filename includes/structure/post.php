@@ -68,7 +68,7 @@ function hc_entry_footer() {
 
 	?>
 	<div class="date-share-row clearfix">
-		<?php echo do_shortcode('[post_date]'); ?>
+		<?php echo do_shortcode('[post_date format="l N F, Y"]'); ?>
 
 		<div class="share">
 			<?php HC()->folders->display_add_button( $post->ID ); ?>
