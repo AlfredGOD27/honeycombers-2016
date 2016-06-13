@@ -47,6 +47,8 @@
 
 @include media('<=portrait') {
 	.page-template-page_directory {
+		padding-top: 5.5em;
+
 		.site-header {
 			display: block;
 		}
