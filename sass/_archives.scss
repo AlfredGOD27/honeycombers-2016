@@ -293,14 +293,6 @@ $slider-height: 25em;
 		cursor: pointer;
 	}
 
-	.slick-active {
-		&:last-of-type {
-			.inner {
-				border-bottom: none;
-			}
-		}
-	}
-
 	.outer {
 		position: relative;
 		margin-left: 2em;
@@ -342,8 +334,9 @@ $slider-height: 25em;
 		align-items: center;
 		overflow: hidden;
 		padding: 1.25em;
-		border: 1px solid $white;
-		border-right-color: transparent;
+		border-top: 1px solid $white;
+		border-right: 1px solid transparent;
+		border-left: 1px solid $white;
 		background-color: rgba( $black, .75 );
 		color: inherit;
 		text-decoration: none;
@@ -390,6 +383,7 @@ $slider-height: 25em;
 
 		.inner {
 			border-color: $orange;
+			border-bottom: 1px solid $orange;
 			background-color: $white;
 			pointer-events: auto;
 

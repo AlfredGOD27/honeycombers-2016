@@ -5531,9 +5531,6 @@ table > tbody > tr:nth-child(odd) > th {
 .slider-nav .slick-slide {
   cursor: pointer;
 }
-.slider-nav .slick-active:last-of-type .inner {
-  border-bottom: none;
-}
 .slider-nav .outer {
   position: relative;
   margin-left: 2em;
@@ -5577,8 +5574,9 @@ table > tbody > tr:nth-child(odd) > th {
           align-items: center;
   overflow: hidden;
   padding: 1.25em;
-  border: 1px solid #FFFFFF;
-  border-right-color: transparent;
+  border-top: 1px solid #FFFFFF;
+  border-right: 1px solid transparent;
+  border-left: 1px solid #FFFFFF;
   background-color: rgba(37, 37, 37, 0.75);
   color: inherit;
   text-decoration: none;
@@ -5627,6 +5625,7 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .slider-nav .slick-current .inner {
   border-color: #fe862c;
+  border-bottom: 1px solid #fe862c;
   background-color: #FFFFFF;
   pointer-events: auto;
 }
