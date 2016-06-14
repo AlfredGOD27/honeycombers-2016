@@ -555,9 +555,17 @@ class HC_Events {
 			}
 		}
 
-		$terms = get_terms( 'event-category' );
+		$picks_term = get_term_by( 'slug', 'editors-picks', 'event-category' );
+
+		$args = array(
+			'exclude'  => array($picks_term->term_id),
+			'taxonomy' => 'event-category',
+		);
+		$terms = get_terms( $args );
 		if( empty($terms) )
 			return;
+
+		$terms = array_merge(  array($picks_term), $terms );
 
 		?>
 		<section class="calendar-search-bar">
