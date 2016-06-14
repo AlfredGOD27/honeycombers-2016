@@ -123,12 +123,9 @@ class HC_Archives {
 		$this->mode       = 'sub-sections';
 		$this->post_style = 'half';
 
-		add_action( 'post_class', array($this, 'post_class') );
-		remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
-		add_action( 'genesis_entry_content', array($this, 'do_excerpt') );
 		remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 
-		genesis_standard_loop();
+		$this->archive_loop();
 
 		wp_reset_query();
 

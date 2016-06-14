@@ -4869,6 +4869,10 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: 1em;
 }
 
+.archive-sub-sections .sidebar {
+  padding-top: 5.3em;
+}
+
 .featured-widget-slider {
   border: 1px solid #fe862c;
 }
@@ -6557,7 +6561,7 @@ table > tbody > tr:nth-child(odd) > th {
 
 @media (max-width: 768px) {
   .page-template-page_directory {
-    padding-top: 5.5em;
+    padding-top: 6em;
   }
   .page-template-page_directory .site-header {
     display: block;
@@ -7349,7 +7353,7 @@ table > tbody > tr:nth-child(odd) > th {
 .home-section-featured-video-listings > .wrap > .right {
   float: right;
   padding-left: 1.25em;
-  width: 58%;
+  width: 57.75%;
 }
 .home-section-featured-video-listings img {
   max-height: 18.75em;
