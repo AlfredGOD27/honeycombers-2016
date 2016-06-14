@@ -77,7 +77,7 @@ add_filter( 'pre_get_posts', 'hc_only_search_posts' );
  */
 function hc_only_search_posts( $query ) {
 
-	if( $query->is_search ) {
+	if( $query->is_search && !(defined( 'DOING_AJAX' ) && DOING_AJAX) ) {
 		$query->set( 'post_type', array('post', 'page', 'event', 'listing') );
 	}
 
