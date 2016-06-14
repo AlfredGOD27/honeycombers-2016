@@ -481,6 +481,21 @@ class HC_Events {
 
 				<div class="events-slider hide-no-js">
 					<?php
+					$dates    = array();
+					$one_time = array();
+					$ongoing  = array();
+					foreach( $events as $event ) {
+						$dates[$event->ID] = $this->get_event_date_info( $event->ID );
+
+						if( $dates[$event->ID]['start_date'] === $dates[$event->ID]['end_date'] ) {
+							$one_time[] = $event;
+						} else {
+							$ongoing[] = $event;
+						}
+					}
+
+					$events = array_merge($one_time, $ongoing);
+
 					foreach( $events as $event ) {
 						if( !has_post_thumbnail($event->ID) )
 							continue;
@@ -494,7 +509,7 @@ class HC_Events {
 						foreach( $categories as $category )
 							$category_ids[] = $category->term_id;
 
-						$date = $this->get_event_date_info( $event->ID );
+						$date = $dates[$event->ID];
 
 						?>
 						<div class="event-slide" data-text="<?php echo esc_attr($text); ?>" data-category_ids="<?php echo implode( ',', $category_ids ); ?>" data-start_date="<?php echo $date['start_datetime']; ?>" data-end_date="<?php echo $date['end_datetime']; ?>">
