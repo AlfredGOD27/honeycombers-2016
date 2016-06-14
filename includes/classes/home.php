@@ -68,10 +68,11 @@ class HC_Home {
 		$total = count( $all_post_ids );
 
 		$args = array(
-			'post_type' => 'post',
-			'post__in'  => $all_post_ids,
-			'orderby'   => 'post__in',
-			'fields'    => 'ids',
+			'post_type'      => 'post',
+			'post__in'       => $all_post_ids,
+			'orderby'        => 'post__in',
+			'fields'         => 'ids',
+			'posts_per_page' => -1,
 		);
 
 		HC()->sliders->display( $args );
