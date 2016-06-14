@@ -175,6 +175,7 @@ $slider-height: 25em;
 .slider-for {
 	width: 65.75%;
 	height: 100%;
+	height: calc(100% - 1px);
 
 	&:hover,
 	&:focus {
