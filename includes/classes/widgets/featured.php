@@ -11,6 +11,8 @@ class HC_Featured_Widget extends WP_Widget {
 
 	public function widget( $args, $instance ) {
 
+		global $post;
+
 		extract($args);
 
 		$post_type = get_field( '_hc_post_type', 'widget_' . $widget_id );
@@ -34,10 +36,12 @@ class HC_Featured_Widget extends WP_Widget {
 				$query_args['post__in'] = array_map( 'absint', $post_ids );
 				break;
 			case 'listing':
-				if( !is_archive() )
-					return;
+				if( is_archive() ) {
+					$term = get_queried_object();
+				} elseif( is_singular('post') ) {
+					$term = HC()->utilities->get_primary_term( $post->ID, 'category' );
+				}
 
-				$term = get_queried_object();
 				if( empty($term) )
 					return;
 
