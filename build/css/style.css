@@ -5527,6 +5527,9 @@ table > tbody > tr:nth-child(odd) > th {
 .slider-nav .slick-slide {
   cursor: pointer;
 }
+.slider-nav .slick-active:last-of-type .inner {
+  border-bottom: none;
+}
 .slider-nav .outer {
   position: relative;
   margin-left: 2em;

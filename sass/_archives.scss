@@ -293,6 +293,14 @@ $slider-height: 25em;
 		cursor: pointer;
 	}
 
+	.slick-active {
+		&:last-of-type {
+			.inner {
+				border-bottom: none;
+			}
+		}
+	}
+
 	.outer {
 		position: relative;
 		margin-left: 2em;
