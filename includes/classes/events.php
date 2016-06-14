@@ -227,6 +227,21 @@ class HC_Events {
 
 	}
 
+	public function get_event_image( $post_id, $size ) {
+
+		if( has_post_thumbnail($post_id) ) {
+			$image_id = get_post_thumbnail_id($post_id);
+		} else {
+			$term = HC()->utilities->get_primary_term( $post_id, 'event-category' );
+			if( !empty($term) )
+				$image_id = get_field( '_hc_fallback_image_id', $term );
+		}
+
+		if( !empty($image_id) )
+			echo wp_get_attachment_image( $image_id, $size );
+
+	}
+
 	public function do_single_event() {
 
 		global $post;
@@ -387,7 +402,7 @@ class HC_Events {
 				<div>
 					<?php
 					echo '<a href="' . get_permalink($post_id) . '">';
-						echo get_the_post_thumbnail( $post_id, 'slide' );
+						echo $this->get_event_image( $post_id, 'slide' );
 					echo '</a>';
 					?>
 
@@ -426,7 +441,7 @@ class HC_Events {
 				<div>
 					<div class="outer">
 						<?php
-						echo get_the_post_thumbnail( $post_id, 'slide-thumbnail' );
+						echo $this->get_event_image( $post_id, 'slide-thumbnail' );
 						?>
 
 						<a class="inner" href="<?php echo get_permalink($post_id); ?>">
@@ -497,9 +512,6 @@ class HC_Events {
 					$events = array_merge($one_time, $ongoing);
 
 					foreach( $events as $event ) {
-						if( !has_post_thumbnail($event->ID) )
-							continue;
-
 						$text = HC()->entry->get_headline_title($event->ID) . ' ' . $event->post_content;
 						$text = sanitize_text_field($text);
 						$text = strtolower($text);
@@ -515,7 +527,7 @@ class HC_Events {
 						<div class="event-slide" data-text="<?php echo esc_attr($text); ?>" data-category_ids="<?php echo implode( ',', $category_ids ); ?>" data-start_date="<?php echo $date['start_datetime']; ?>" data-end_date="<?php echo $date['end_datetime']; ?>">
 							<a href="<?php echo get_permalink($event->ID); ?>">
 								<?php
-								echo get_the_post_thumbnail($event->ID, 'archive-small' );
+								echo $this->get_event_image($event->ID, 'archive-small' );
 								?>
 
 								<div class="inner">
