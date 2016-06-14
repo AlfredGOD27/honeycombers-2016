@@ -16,7 +16,7 @@ function hc_404() {
 
 	global $wp_query;
 
-	echo '<article class="entry">';
+	echo '<article class="entry entry123">';
 
 		printf( '<h1 class="entry-title">%s</h1>', __( 'Not found, error 404', CHILD_THEME_TEXT_DOMAIN ) );
 
