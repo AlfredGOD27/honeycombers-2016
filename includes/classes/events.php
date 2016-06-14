@@ -176,7 +176,7 @@ class HC_Events {
 
 		if( !$info['all_day'] ) {
 			$start_time         = get_post_meta( $post_id, '_hc_event_start_time', true );
-			$info['start_time'] = !empty($start_time) ? strtotime($start_time) : false;
+			$info['start_time'] = !empty($start_time) ? $start_time : false;
 		}
 
 		if( !$info['all_day'] && false !== $info['start_time'] ) {
@@ -190,7 +190,7 @@ class HC_Events {
 
 		if( !$info['all_day'] ) {
 			$end_time         = get_post_meta( $post_id, '_hc_event_end_time', true );
-			$info['end_time'] = !empty($end_time) ? strtotime($end_time) : false;
+			$info['end_time'] = !empty($end_time) ? $end_time : false;
 		}
 
 		if( !$info['all_day'] && false !== $info['end_time'] ) {
@@ -268,8 +268,8 @@ class HC_Events {
 				// Time
 				if( !$date['all_day'] ) {
 					if( false !== $date['start_time'] && false !== $date['end_time'] ) {
-						$start_time = date( 'ga', $date['start_time'] );
-						$end_time   = date( 'ga', $date['end_time'] );
+						$start_time = $date['start_time'];
+						$end_time   = $date['end_time'];
 
 						if( $start_time !== $end_time ) {
 							$lines['Time'] = $start_time . ' - ' . $end_time;
@@ -277,11 +277,9 @@ class HC_Events {
 							$lines['Time'] = $start_time;
 						}
 					} elseif( false !== $date['start_time'] ) {
-						$start_time    = date( 'ga', $date['start_time'] );
-						$lines['Time'] = $start_time;
+						$lines['Time'] = $date['start_time'];
 					} elseif( false !== $date['end_time'] ) {
-						$end_time      = date( 'ga', $date['end_time'] );
-						$lines['Time'] = $end_time;
+						$lines['Time'] = $date['end_time'];
 					}
 				}
 				?>
