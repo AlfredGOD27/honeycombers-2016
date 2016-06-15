@@ -156,7 +156,9 @@ class HC_Home {
 						if( has_post_thumbnail($main_post_id) ) {
 							?>
 							<div class="top">
-								<?php echo get_the_post_thumbnail($main_post_id, 'archive-large' ); ?>
+								<a href="<?php echo get_permalink($main_post_id); ?>">
+									<?php echo get_the_post_thumbnail($main_post_id, 'archive-large' ); ?>
+								</a>
 							</div>
 							<?php
 						}
