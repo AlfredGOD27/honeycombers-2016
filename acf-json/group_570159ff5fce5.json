@@ -8,11 +8,8 @@
             "name": "_thumbnail_id",
             "type": "image",
             "instructions": "",
-<<<<<<< HEAD
             "required": 1,
-=======
             "required": 0,
->>>>>>> refs/remotes/origin/cooper
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
