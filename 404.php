@@ -16,11 +16,9 @@ function hc_404() {
 
 	global $wp_query;
 
-<<<<<<< HEAD
-	echo '<article class="entry entry123">';
-=======
+
 	echo '<article class="entry">';
->>>>>>> refs/remotes/origin/cooper
+
 
 		printf( '<h1 class="entry-title">%s</h1>', __( 'Not found, error 404', CHILD_THEME_TEXT_DOMAIN ) );
 
