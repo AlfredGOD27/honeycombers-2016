@@ -7384,6 +7384,7 @@ table > tbody > tr:nth-child(odd) > th {
   position: relative;
   border-top: 1px solid #fe862c;
   border-bottom: 1px solid #fe862c;
+  border-left: 1px solid #fe862c;
 }
 
 @media (max-width: 768px) {

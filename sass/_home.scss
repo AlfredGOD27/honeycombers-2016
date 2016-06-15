@@ -362,6 +362,7 @@ $listing-slider-height: 18.75em;
 	position: relative;
 	border-top: 1px solid $orange;
 	border-bottom: 1px solid $orange;
+	border-left: 1px solid $orange;
 }
 
 @include media('<=portrait') {
