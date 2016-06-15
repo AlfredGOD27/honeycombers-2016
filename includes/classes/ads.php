@@ -55,6 +55,10 @@ class HC_Ads {
 			$ad  = $this->ad_field_to_array( $ads );
 			if( false !== $ad )
 				$this->ads['mpu-1'] = $ad;
+			$ads_2 = get_field( '_hc_search_mpu_2', 'option' );
+			$ad_2  = $this->ad_field_to_array( $ads_2 );
+			if( false !== $ad_2 )
+				$this->ads['mpu-1'] = $ad_2;
 		} elseif( is_author() ) {
 			// Author Ads
 			$ads = get_field( '_hc_author_mpu_1', 'option' );
