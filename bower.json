@@ -18,6 +18,7 @@
     "magnific-popup": "dimsemenov/Magnific-Popup",
     "slick-carousel": "*",
     "pikaday": "dbushell/Pikaday",
-    "moment": "moment/moment"
+    "moment": "moment/moment",
+    "sticky-kit": "leafo/sticky-kit"
   }
 }
