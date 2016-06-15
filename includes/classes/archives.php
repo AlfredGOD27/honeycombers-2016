@@ -63,6 +63,8 @@ class HC_Archives {
 					$this->mode = 'sub-sections';
 				}
 			}
+			
+			add_action( 'genesis_after_header', array($this, 'cat_leaderboard'), 17 );
 		}
 
 		if( false === $this->mode )
@@ -123,9 +125,13 @@ class HC_Archives {
 		$this->mode       = 'sub-sections';
 		$this->post_style = 'half';
 
+		add_action( 'post_class', array($this, 'post_class') );
+		remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
+		add_action( 'genesis_entry_content', array($this, 'do_excerpt') );
+		
 		remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 
-		$this->archive_loop();
+		genesis_standard_loop();
 
 		wp_reset_query();
 
@@ -218,6 +224,27 @@ class HC_Archives {
 
 		HC()->sliders->display( $args );
 
+	}
+	
+	public function cat_leaderboard() {
+		?>
+        	<section id="leaderboard" class="clearfix">
+            	<div class="content-sidebar-wrap">
+					<?php 
+                        // Category level 1
+                        if( have_rows('_hc_leaderboard', 'category_'.$this->term->term_id.'') ):
+                            while ( have_rows('_hc_leaderboard', 'category_'.$this->term->term_id.'') ) : the_row();
+                            echo '<script>';
+                                the_sub_field('head_code');
+                            echo '</script>';
+                                the_sub_field('body_code');
+                            endwhile;
+                        else :
+                        endif;
+                    ?>
+            	</div>
+            </section>
+		<?php
 	}
 
 	public function subcategory_sections() {
