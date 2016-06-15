@@ -6455,10 +6455,6 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .event-slide {
   position: relative;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  -webkit-transition: -webkit-transform 0.25s;
-          transition: transform 0.25s;
 }
 .slick-sliders .event-slide {
   border: 1px solid #FFFFFF;
@@ -6488,10 +6484,37 @@ table > tbody > tr:nth-child(odd) > th {
 }
 
 @media (min-width: 1280px) {
-  .event-slide:hover {
+  .events-slider .slick-track {
+    -webkit-transition: -webkit-transform 0.25s;
+            transition: transform 0.25s;
+  }
+  .events-slider .slick-track:hover {
+    -webkit-transform: translate3d(-111.111px, 0, 0);
+            transform: translate3d(-111.111px, 0, 0);
+  }
+  .events-slider .slick-track:hover .event-slide {
+    opacity: .3;
+  }
+  .events-slider .slick-track:hover .event-slide:hover {
     z-index: 5;
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
+    opacity: 1;
+    -webkit-transform: scale(1.35);
+            transform: scale(1.35);
+  }
+  .events-slider .slick-list {
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+  }
+
+  .event-slide {
+    -webkit-transition: all 0.25s;
+            transition: all 0.25s;
+    -webkit-transform-origin: center left;
+            transform-origin: center left;
+  }
+  .event-slide:hover ~ .event-slide {
+    -webkit-transform: translate3d(111.111px, 0, 0);
+            transform: translate3d(111.111px, 0, 0);
   }
 }
 @media (max-width: 560px) {
