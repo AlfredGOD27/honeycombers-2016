@@ -1,8 +1,12 @@
 (function($) {
 
-	$('.animation').bind("webkitAnimationEnd mozAnimationEnd animationend", function() {
-		$(this).removeClass('run');
-	});
+	$('body').on(
+		'webkitAnimationEnd mozAnimationEnd animationend',
+		'.animation',
+		function() {
+			$(this).removeClass('run');
+		}
+	);
 
 	function reset_animation( el ) {
 
@@ -14,8 +18,9 @@
 	$(window).on(
 		'load',
 		function() {
-			$('.event-slider-nav .slick-slide, .event-slider-for .slide-content, .slider-nav .slick-slide, .subcategory-description, .archive-entry-small, .home-section-trending a, .main-menu .menu-item.has-children').on(
+			$('body').on(
 				'mouseenter',
+				'.event-slider-nav .slick-slide, .event-slider-for .slide-content, .slider-nav .slick-slide, .subcategory-description, .archive-entry-small, .home-section-trending a, .main-menu .menu-item.has-children',
 				function() {
 					reset_animation( $(this).find('.category-icon') );
 				}
