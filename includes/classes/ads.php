@@ -68,7 +68,7 @@ class HC_Ads {
 			$ads_2 = get_field( '_hc_author_mpu_2', 'option' );
 			$ad_2  = $this->ad_field_to_array( $ads_2 );
 			if( false !== $ad_2 )
-				$this->ads['mpu-2'] = $ad;
+				$this->ads['mpu-2'] = $ad_2;
 		} elseif( is_singular('post') ) {
 			// Post Ads
 			$ads = array(
