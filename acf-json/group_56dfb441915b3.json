@@ -290,13 +290,7 @@
             "post_type": [
                 "page"
             ],
-<<<<<<< HEAD
-            "taxonomy": [
-
-            ],
-=======
             "taxonomy": [],
->>>>>>> refs/remotes/origin/cooper
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -318,13 +312,7 @@
             "post_type": [
                 "page"
             ],
-<<<<<<< HEAD
-            "taxonomy": [
-
-            ],
-=======
             "taxonomy": [],
->>>>>>> refs/remotes/origin/cooper
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -346,13 +334,7 @@
             "post_type": [
                 "page"
             ],
-<<<<<<< HEAD
-            "taxonomy": [
-
-            ],
-=======
             "taxonomy": [],
->>>>>>> refs/remotes/origin/cooper
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -374,13 +356,7 @@
             "post_type": [
                 "page"
             ],
-<<<<<<< HEAD
-            "taxonomy": [
-
-            ],
-=======
             "taxonomy": [],
->>>>>>> refs/remotes/origin/cooper
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -444,22 +420,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd522508ca",
-=======
                     "key": "field_5720fe9ad2cb5",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -474,22 +441,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd527508cb",
-=======
                     "key": "field_5720fea1d2cb6",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -504,22 +462,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd52f508cc",
-=======
                     "key": "field_5720feabd2cb7",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -555,22 +504,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd538508cd",
-=======
                     "key": "field_5720fede1809d",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -585,22 +525,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd53d508ce",
-=======
                     "key": "field_5720fede1809e",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -615,22 +546,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd542508cf",
-=======
                     "key": "field_5720fede1809f",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -666,22 +588,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd54f508d0",
-=======
                     "key": "field_5720fee0180a1",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -696,22 +609,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd553508d1",
-=======
                     "key": "field_5720fee0180a2",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -726,22 +630,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd558508d2",
-=======
                     "key": "field_5720fee0180a3",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -777,22 +672,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd568508d3",
-=======
                     "key": "field_5720fee3180a5",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -807,22 +693,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd56e508d4",
-=======
                     "key": "field_5720fee3180a6",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -837,22 +714,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd573508d5",
-=======
                     "key": "field_5720fee3180a7",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -888,22 +756,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd57a508d6",
-=======
                     "key": "field_5720feefa40ce",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -918,22 +777,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd57f508d7",
-=======
                     "key": "field_5720feefa40cf",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -948,22 +798,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd583508d8",
-=======
                     "key": "field_5720feefa40d0",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -999,22 +840,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd589508d9",
-=======
                     "key": "field_5720fef0a40d2",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1029,22 +861,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd58e508da",
-=======
                     "key": "field_5720fef0a40d3",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1059,22 +882,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd592508db",
-=======
                     "key": "field_5720fef0a40d4",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1110,22 +924,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd59a508dc",
-=======
                     "key": "field_5720fef3a40d6",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1140,22 +945,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd59e508dd",
-=======
                     "key": "field_5720fef3a40d7",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1170,22 +966,13 @@
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd5a4508de",
-=======
                     "key": "field_5720fef3a40d8",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-<<<<<<< HEAD
-                    "required": "",
-                    "conditional_logic": "",
-=======
                     "required": 0,
                     "conditional_logic": 0,
->>>>>>> refs/remotes/origin/cooper
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1237,74 +1024,7 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd27d05323",
-                    "label": "Head Code",
-                    "name": "head_code",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": "",
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": "",
-                    "readonly": 0,
-                    "disabled": 0
-                },
-                {
-                    "key": "field_575fd28205324",
-                    "label": "Body Code",
-                    "name": "body_code",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": "",
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": "",
-                    "readonly": 0,
-                    "disabled": 0
-                }
-            ]
-        },
-        {
-            "key": "field_575fd2a905325",
-            "label": "Search MPU #2",
-            "name": "_hc_search_mpu_2",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": "",
-            "max": 1,
-            "layout": "table",
-            "button_label": "Add Row",
-            "sub_fields": [
-                {
-                    "key": "field_575fd2b605326",
-=======
                     "key": "field_573609e0a2711",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Head Code",
                     "name": "head_code",
                     "type": "textarea",
@@ -1319,21 +1039,13 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-<<<<<<< HEAD
-                    "rows": "",
-=======
                     "rows": 4,
->>>>>>> refs/remotes/origin/cooper
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd2d405327",
-=======
                     "key": "field_573609f2a2712",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Body Code",
                     "name": "body_code",
                     "type": "textarea",
@@ -1348,11 +1060,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-<<<<<<< HEAD
-                    "rows": "",
-=======
                     "rows": 4,
->>>>>>> refs/remotes/origin/cooper
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
@@ -1379,74 +1087,7 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd3f02a30a",
-                    "label": "Head Code",
-                    "name": "head_code",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": "",
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": "wpautop",
-                    "readonly": 0,
-                    "disabled": 0
-                },
-                {
-                    "key": "field_575fd3fa2a30b",
-                    "label": "Body Code",
-                    "name": "body_code",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": "",
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": "",
-                    "readonly": 0,
-                    "disabled": 0
-                }
-            ]
-        },
-        {
-            "key": "field_575fd30a05329",
-            "label": "Author MPU #2",
-            "name": "_hc_author_mpu_2",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": "",
-            "max": 1,
-            "layout": "table",
-            "button_label": "Add Row",
-            "sub_fields": [
-                {
-                    "key": "field_575fd31f0532a",
-=======
                     "key": "field_573a159db474d",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Head Code",
                     "name": "head_code",
                     "type": "textarea",
@@ -1461,21 +1102,13 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-<<<<<<< HEAD
-                    "rows": "",
-=======
                     "rows": 4,
->>>>>>> refs/remotes/origin/cooper
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fd3300532b",
-=======
                     "key": "field_573a159db474e",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Body Code",
                     "name": "body_code",
                     "type": "textarea",
@@ -1490,11 +1123,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-<<<<<<< HEAD
-                    "rows": "",
-=======
                     "rows": 4,
->>>>>>> refs/remotes/origin/cooper
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
@@ -1538,8 +1167,6 @@
             "load_terms": 0,
             "return_format": "id",
             "multiple": 0
-<<<<<<< HEAD
-=======
         },
         {
             "key": "field_57545ca133878",
@@ -1640,7 +1267,6 @@
             "new_lines": "",
             "readonly": 0,
             "disabled": 0
->>>>>>> refs/remotes/origin/cooper
         }
     ],
     "location": [
@@ -1660,9 +1286,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-<<<<<<< HEAD
-    "modified": 1465900570
-=======
     "modified": 1465146606
->>>>>>> refs/remotes/origin/cooper
 }

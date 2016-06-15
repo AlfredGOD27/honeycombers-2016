@@ -293,17 +293,6 @@ $slider-height: 25em;
 		cursor: pointer;
 	}
 
-<<<<<<< HEAD
-	.slick-active {
-		&:last-of-type {
-			.inner {
-				border-bottom: none;
-			}
-		}
-	}
-
-=======
->>>>>>> refs/remotes/origin/cooper
 	.outer {
 		position: relative;
 		margin-left: 2em;
@@ -345,14 +334,9 @@ $slider-height: 25em;
 		align-items: center;
 		overflow: hidden;
 		padding: 1.25em;
-<<<<<<< HEAD
-		border: 1px solid $white;
-		border-right-color: transparent;
-=======
 		border-top: 1px solid $white;
 		border-right: 1px solid transparent;
 		border-left: 1px solid $white;
->>>>>>> refs/remotes/origin/cooper
 		background-color: rgba( $black, .75 );
 		color: inherit;
 		text-decoration: none;
@@ -399,10 +383,7 @@ $slider-height: 25em;
 
 		.inner {
 			border-color: $orange;
-<<<<<<< HEAD
-=======
 			border-bottom: 1px solid $orange;
->>>>>>> refs/remotes/origin/cooper
 			background-color: $white;
 			pointer-events: auto;
 

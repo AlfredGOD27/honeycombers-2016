@@ -319,11 +319,7 @@ $listing-slider-height: 18.75em;
 		> .right {
 			float: right;
 			padding-left: 1.25em;
-<<<<<<< HEAD
-			width: 58%;
-=======
 			width: 57.75%;
->>>>>>> refs/remotes/origin/cooper
 		}
 	}
 
@@ -366,10 +362,7 @@ $listing-slider-height: 18.75em;
 	position: relative;
 	border-top: 1px solid $orange;
 	border-bottom: 1px solid $orange;
-<<<<<<< HEAD
-=======
 	border-left: 1px solid $orange;
->>>>>>> refs/remotes/origin/cooper
 }
 
 @include media('<=portrait') {
@@ -424,7 +417,7 @@ $listing-slider-height: 18.75em;
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 48.5%;
+	width: 48.25%;
 	height: $listing-slider-height * .8;
 
 	a {
@@ -559,7 +552,7 @@ $listing-slider-height: 18.75em;
 	right: 0;
 	bottom: 0;
 	padding-left: 1.75em;
-	width: 48.5%;
+	width: 48.25%;
 	height: $listing-slider-height * .2;
 	border-right: 1px solid $orange;
 

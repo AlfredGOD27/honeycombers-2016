@@ -8,11 +8,7 @@
             "name": "_thumbnail_id",
             "type": "image",
             "instructions": "",
-<<<<<<< HEAD
-            "required": 1,
-=======
             "required": 0,
->>>>>>> refs/remotes/origin/cooper
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -78,9 +74,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-<<<<<<< HEAD
-    "modified": 1465575920
-=======
     "modified": 1465930766
->>>>>>> refs/remotes/origin/cooper
 }

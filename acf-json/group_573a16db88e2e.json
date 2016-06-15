@@ -22,11 +22,7 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-<<<<<<< HEAD
-                    "key": "field_575fb4536cab3",
-=======
                     "key": "field_573a16dc45704",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Head Code",
                     "name": "head_code",
                     "type": "textarea",
@@ -41,21 +37,13 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-<<<<<<< HEAD
-                    "rows": "",
-=======
                     "rows": 4,
->>>>>>> refs/remotes/origin/cooper
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fb45f6cab4",
-=======
                     "key": "field_573a16dc45712",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Body Code",
                     "name": "body_code",
                     "type": "textarea",
@@ -70,11 +58,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-<<<<<<< HEAD
-                    "rows": "",
-=======
                     "rows": 4,
->>>>>>> refs/remotes/origin/cooper
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
@@ -101,74 +85,7 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-<<<<<<< HEAD
-                    "key": "field_575fb4346cab1",
-                    "label": "Head Code",
-                    "name": "head_code",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": "",
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": "",
-                    "readonly": 0,
-                    "disabled": 0
-                },
-                {
-                    "key": "field_575fb4436cab2",
-                    "label": "Body Code",
-                    "name": "body_code",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": "",
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": "",
-                    "new_lines": "",
-                    "readonly": 0,
-                    "disabled": 0
-                }
-            ]
-        },
-        {
-            "key": "field_575fb36241f5d",
-            "label": "Leaderboard",
-            "name": "_hc_leaderboard",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": "",
-            "max": 1,
-            "layout": "table",
-            "button_label": "Add Row",
-            "sub_fields": [
-                {
-                    "key": "field_575fb37841f5e",
-=======
                     "key": "field_573a16dc4fc5f",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Head Code",
                     "name": "head_code",
                     "type": "textarea",
@@ -183,21 +100,13 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-<<<<<<< HEAD
-                    "rows": "",
-=======
                     "rows": 4,
->>>>>>> refs/remotes/origin/cooper
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
-<<<<<<< HEAD
-                    "key": "field_575fb38941f5f",
-=======
                     "key": "field_573a16dc4fc6f",
->>>>>>> refs/remotes/origin/cooper
                     "label": "Body Code",
                     "name": "body_code",
                     "type": "textarea",
@@ -212,11 +121,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-<<<<<<< HEAD
-                    "rows": "",
-=======
                     "rows": 4,
->>>>>>> refs/remotes/origin/cooper
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
@@ -248,9 +153,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-<<<<<<< HEAD
-    "modified": 1465902038
-=======
     "modified": 1464395294
->>>>>>> refs/remotes/origin/cooper
 }

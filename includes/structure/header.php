@@ -86,12 +86,6 @@ function hc_load_assets() {
 	$assets_version = !empty($assets_version) ? absint($assets_version) : null;
 
 	$stylesheet_dir = get_stylesheet_directory_uri();
-<<<<<<< HEAD
-	
-	//Stylesheet - Alfred
-	wp_enqueue_style( 'style', get_stylesheet_uri(), false, false );
-=======
->>>>>>> refs/remotes/origin/cooper
 
 	// Main theme stylesheet
 	$src = $use_production_assets ? '/build/css/style.min.css' : '/build/css/style.css';
@@ -290,17 +284,6 @@ add_action( 'genesis_before_header', 'hc_site_top' );
 function hc_site_top() {
 
 	?>
-<<<<<<< HEAD
-    
-    	<?php
-            if ( is_front_page() ) { ?>	
-            	<section id="takeover"></section>
-        <?php    }
-			
-		?>
-    
-=======
->>>>>>> refs/remotes/origin/cooper
 	<section class="site-top">
 		<div class="wrap">
 			<div class="left">
