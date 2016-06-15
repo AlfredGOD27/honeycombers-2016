@@ -176,7 +176,11 @@ class HC_Events {
 
 		if( !$info['all_day'] ) {
 			$start_time         = get_post_meta( $post_id, '_hc_event_start_time', true );
+<<<<<<< HEAD
 			$info['start_time'] = !empty($start_time) ? strtotime($start_time) : false;
+=======
+			$info['start_time'] = !empty($start_time) ? $start_time : false;
+>>>>>>> refs/remotes/origin/cooper
 		}
 
 		if( !$info['all_day'] && false !== $info['start_time'] ) {
@@ -190,7 +194,11 @@ class HC_Events {
 
 		if( !$info['all_day'] ) {
 			$end_time         = get_post_meta( $post_id, '_hc_event_end_time', true );
+<<<<<<< HEAD
 			$info['end_time'] = !empty($end_time) ? strtotime($end_time) : false;
+=======
+			$info['end_time'] = !empty($end_time) ? $end_time : false;
+>>>>>>> refs/remotes/origin/cooper
 		}
 
 		if( !$info['all_day'] && false !== $info['end_time'] ) {
@@ -227,6 +235,24 @@ class HC_Events {
 
 	}
 
+<<<<<<< HEAD
+=======
+	public function get_event_image( $post_id, $size ) {
+
+		if( has_post_thumbnail($post_id) ) {
+			$image_id = get_post_thumbnail_id($post_id);
+		} else {
+			$term = HC()->utilities->get_primary_term( $post_id, 'event-category' );
+			if( !empty($term) )
+				$image_id = get_field( '_hc_fallback_image_id', $term );
+		}
+
+		if( !empty($image_id) )
+			echo wp_get_attachment_image( $image_id, $size );
+
+	}
+
+>>>>>>> refs/remotes/origin/cooper
 	public function do_single_event() {
 
 		global $post;
@@ -268,8 +294,13 @@ class HC_Events {
 				// Time
 				if( !$date['all_day'] ) {
 					if( false !== $date['start_time'] && false !== $date['end_time'] ) {
+<<<<<<< HEAD
 						$start_time = date( 'ga', $date['start_time'] );
 						$end_time   = date( 'ga', $date['end_time'] );
+=======
+						$start_time = $date['start_time'];
+						$end_time   = $date['end_time'];
+>>>>>>> refs/remotes/origin/cooper
 
 						if( $start_time !== $end_time ) {
 							$lines['Time'] = $start_time . ' - ' . $end_time;
@@ -277,11 +308,17 @@ class HC_Events {
 							$lines['Time'] = $start_time;
 						}
 					} elseif( false !== $date['start_time'] ) {
+<<<<<<< HEAD
 						$start_time    = date( 'ga', $date['start_time'] );
 						$lines['Time'] = $start_time;
 					} elseif( false !== $date['end_time'] ) {
 						$end_time      = date( 'ga', $date['end_time'] );
 						$lines['Time'] = $end_time;
+=======
+						$lines['Time'] = $date['start_time'];
+					} elseif( false !== $date['end_time'] ) {
+						$lines['Time'] = $date['end_time'];
+>>>>>>> refs/remotes/origin/cooper
 					}
 				}
 				?>
@@ -389,7 +426,11 @@ class HC_Events {
 				<div>
 					<?php
 					echo '<a href="' . get_permalink($post_id) . '">';
+<<<<<<< HEAD
 						echo get_the_post_thumbnail( $post_id, 'slide' );
+=======
+						echo $this->get_event_image( $post_id, 'slide' );
+>>>>>>> refs/remotes/origin/cooper
 					echo '</a>';
 					?>
 
@@ -428,7 +469,11 @@ class HC_Events {
 				<div>
 					<div class="outer">
 						<?php
+<<<<<<< HEAD
 						echo get_the_post_thumbnail( $post_id, 'slide-thumbnail' );
+=======
+						echo $this->get_event_image( $post_id, 'slide-thumbnail' );
+>>>>>>> refs/remotes/origin/cooper
 						?>
 
 						<a class="inner" href="<?php echo get_permalink($post_id); ?>">
@@ -483,10 +528,29 @@ class HC_Events {
 
 				<div class="events-slider hide-no-js">
 					<?php
+<<<<<<< HEAD
 					foreach( $events as $event ) {
 						if( !has_post_thumbnail($event->ID) )
 							continue;
 
+=======
+					$dates    = array();
+					$one_time = array();
+					$ongoing  = array();
+					foreach( $events as $event ) {
+						$dates[$event->ID] = $this->get_event_date_info( $event->ID );
+
+						if( $dates[$event->ID]['start_date'] === $dates[$event->ID]['end_date'] ) {
+							$one_time[] = $event;
+						} else {
+							$ongoing[] = $event;
+						}
+					}
+
+					$events = array_merge($one_time, $ongoing);
+
+					foreach( $events as $event ) {
+>>>>>>> refs/remotes/origin/cooper
 						$text = HC()->entry->get_headline_title($event->ID) . ' ' . $event->post_content;
 						$text = sanitize_text_field($text);
 						$text = strtolower($text);
@@ -496,13 +560,21 @@ class HC_Events {
 						foreach( $categories as $category )
 							$category_ids[] = $category->term_id;
 
+<<<<<<< HEAD
 						$date = $this->get_event_date_info( $event->ID );
+=======
+						$date = $dates[$event->ID];
+>>>>>>> refs/remotes/origin/cooper
 
 						?>
 						<div class="event-slide" data-text="<?php echo esc_attr($text); ?>" data-category_ids="<?php echo implode( ',', $category_ids ); ?>" data-start_date="<?php echo $date['start_datetime']; ?>" data-end_date="<?php echo $date['end_datetime']; ?>">
 							<a href="<?php echo get_permalink($event->ID); ?>">
 								<?php
+<<<<<<< HEAD
 								echo get_the_post_thumbnail($event->ID, 'archive-small' );
+=======
+								echo $this->get_event_image($event->ID, 'archive-small' );
+>>>>>>> refs/remotes/origin/cooper
 								?>
 
 								<div class="inner">
@@ -557,10 +629,25 @@ class HC_Events {
 			}
 		}
 
+<<<<<<< HEAD
 		$terms = get_terms( 'event-category' );
 		if( empty($terms) )
 			return;
 
+=======
+		$picks_term = get_term_by( 'slug', 'editors-picks', 'event-category' );
+
+		$args = array(
+			'exclude'  => array($picks_term->term_id),
+			'taxonomy' => 'event-category',
+		);
+		$terms = get_terms( $args );
+		if( empty($terms) )
+			return;
+
+		$terms = array_merge(  array($picks_term), $terms );
+
+>>>>>>> refs/remotes/origin/cooper
 		?>
 		<section class="calendar-search-bar">
 			<div class="wrap">

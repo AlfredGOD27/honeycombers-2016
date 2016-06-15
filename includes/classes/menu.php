@@ -223,8 +223,11 @@ class HC_Menu {
 						}
 
 						echo !empty($this->subcategories[$top_item_id]) ? '<li class="menu-item has-children ' . $current . '">' : '<li class="menu-item ' . $current . '">';
+<<<<<<< HEAD
 							$label = sanitize_text_field($top_item['label']);
 
+=======
+>>>>>>> refs/remotes/origin/cooper
 							if( !empty($this->subcategories[$top_item_id]) ) {
 								echo '<a href="' . get_term_link($this->categories[$top_item_id]) . '" class="menu-item-link">' . $this->categories[$top_item_id]->name . '</a>';
 								echo '<button type="button" class="inactive-link"><span>' . $this->categories[$top_item_id]->name . '</span> <i class="ico-arrow-down"></i> <i class="ico-arrow-up"></i></button>';

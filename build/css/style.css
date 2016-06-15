@@ -4869,6 +4869,13 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: 1em;
 }
 
+<<<<<<< HEAD
+=======
+.archive-sub-sections .sidebar {
+  padding-top: 5.3em;
+}
+
+>>>>>>> refs/remotes/origin/cooper
 .featured-widget-slider {
   border: 1px solid #fe862c;
 }
@@ -5527,9 +5534,12 @@ table > tbody > tr:nth-child(odd) > th {
 .slider-nav .slick-slide {
   cursor: pointer;
 }
+<<<<<<< HEAD
 .slider-nav .slick-active:last-of-type .inner {
   border-bottom: none;
 }
+=======
+>>>>>>> refs/remotes/origin/cooper
 .slider-nav .outer {
   position: relative;
   margin-left: 2em;
@@ -5573,8 +5583,14 @@ table > tbody > tr:nth-child(odd) > th {
           align-items: center;
   overflow: hidden;
   padding: 1.25em;
+<<<<<<< HEAD
   border: 1px solid #FFFFFF;
   border-right-color: transparent;
+=======
+  border-top: 1px solid #FFFFFF;
+  border-right: 1px solid transparent;
+  border-left: 1px solid #FFFFFF;
+>>>>>>> refs/remotes/origin/cooper
   background-color: rgba(37, 37, 37, 0.75);
   color: inherit;
   text-decoration: none;
@@ -5623,6 +5639,10 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .slider-nav .slick-current .inner {
   border-color: #fe862c;
+<<<<<<< HEAD
+=======
+  border-bottom: 1px solid #fe862c;
+>>>>>>> refs/remotes/origin/cooper
   background-color: #FFFFFF;
   pointer-events: auto;
 }
@@ -6557,7 +6577,11 @@ table > tbody > tr:nth-child(odd) > th {
 
 @media (max-width: 768px) {
   .page-template-page_directory {
+<<<<<<< HEAD
     padding-top: 5.5em;
+=======
+    padding-top: 6em;
+>>>>>>> refs/remotes/origin/cooper
   }
   .page-template-page_directory .site-header {
     display: block;
@@ -7349,7 +7373,11 @@ table > tbody > tr:nth-child(odd) > th {
 .home-section-featured-video-listings > .wrap > .right {
   float: right;
   padding-left: 1.25em;
+<<<<<<< HEAD
   width: 58%;
+=======
+  width: 57.75%;
+>>>>>>> refs/remotes/origin/cooper
 }
 .home-section-featured-video-listings img {
   max-height: 18.75em;
@@ -7381,6 +7409,10 @@ table > tbody > tr:nth-child(odd) > th {
   position: relative;
   border-top: 1px solid #fe862c;
   border-bottom: 1px solid #fe862c;
+<<<<<<< HEAD
+=======
+  border-left: 1px solid #fe862c;
+>>>>>>> refs/remotes/origin/cooper
 }
 
 @media (max-width: 768px) {

@@ -319,7 +319,11 @@ $listing-slider-height: 18.75em;
 		> .right {
 			float: right;
 			padding-left: 1.25em;
+<<<<<<< HEAD
 			width: 58%;
+=======
+			width: 57.75%;
+>>>>>>> refs/remotes/origin/cooper
 		}
 	}
 
@@ -362,6 +366,10 @@ $listing-slider-height: 18.75em;
 	position: relative;
 	border-top: 1px solid $orange;
 	border-bottom: 1px solid $orange;
+<<<<<<< HEAD
+=======
+	border-left: 1px solid $orange;
+>>>>>>> refs/remotes/origin/cooper
 }
 
 @include media('<=portrait') {
