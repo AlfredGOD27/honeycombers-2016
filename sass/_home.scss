@@ -265,7 +265,13 @@
 	}
 }
 
-
+.home-section-featured-posts {
+	.other-picks {
+		.item {
+			max-height: 250px;
+		}
+	}
+}
 
 @include media('<=portrait') {
 	.home-section-featured-posts {
