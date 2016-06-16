@@ -25,6 +25,7 @@ class HC_Home {
 		add_action( 'genesis_loop', array($this, 'do_mobile_buttons') );
 		add_action( 'genesis_loop', array($this, 'do_featured_posts') );
 		add_action( 'genesis_loop', array($this, 'do_featured_video_and_listings') );
+		add_action( 'genesis_loop', array($this, 'takeover_before_featured_events') );
 		add_action( 'genesis_loop', array($this, 'do_featured_events_and_join') );
 		add_action( 'genesis_loop', array($this, 'do_trending') );
 		add_action( 'genesis_loop', array($this, 'do_latest_posts') );
@@ -360,6 +361,32 @@ class HC_Home {
 			<?php
 		}
 
+	}
+	
+	function takeover_before_featured_events() {
+		if ( is_front_page() ) { ?>
+				<?php 
+					// Takeover Ad
+					if( have_rows('_hc_takeover') ):
+						while ( have_rows('_hc_takeover') ) : the_row();
+						$bg_color = get_sub_field('background_color');
+						$image = get_sub_field('image');
+						$url = get_sub_field('url');
+	
+					if ($image) {
+				?>
+					<section class="home-section home-section-takeover">
+						<div id="takeover-bottom" style="background: <?php echo $bg_color; ?>; text-align: center;"><a href="<?php echo $url ?>"><img src="<?php echo $image['url'] ?>"></a></div>
+					</section>
+				<?php 
+					}
+						endwhile;
+					else :
+					endif;
+				?>
+					
+			<?php
+		}
 	}
 
 	public function do_featured_events_and_join() {
