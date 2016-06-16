@@ -88,8 +88,11 @@ class HC_Featured_Widget extends WP_Widget {
 					?>
 					<div>
 						<?php
-						if( has_post_thumbnail($post_id) )
-							echo get_the_post_thumbnail( $post_id, 'archive-small' );
+						if( has_post_thumbnail($post_id) ) {
+							echo '<a href="' . get_permalink($post_id) . '">';
+								echo get_the_post_thumbnail( $post_id, 'archive-small' );
+							echo '</a>';
+						}
 						?>
 
 						<div class="bottom">
