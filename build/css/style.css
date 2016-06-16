@@ -4884,6 +4884,10 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: 1em;
 }
 
+.archive-sub-sections .sidebar {
+  padding-top: 5.3em;
+}
+
 .featured-widget-slider {
   border: 1px solid #fe862c;
 }

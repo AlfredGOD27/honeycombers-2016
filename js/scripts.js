@@ -255,10 +255,4 @@
 		set_viewport();
 	}
 
-	if( !im.lessThan('portrait') ) {
-		$('.sidebar').stick_in_parent({
-			offset_top: $('.sticky-header').height() + 16
-		});
-	}
-
 })( window.jQuery );
