@@ -7328,7 +7328,7 @@ table > tbody > tr:nth-child(odd) > th {
     display: none;
   }
 }
-.home-section-featured-posts .other-picks .item {
+.home-section-featured-posts .other-picks .archive-entry {
   max-height: 250px;
 }
 
