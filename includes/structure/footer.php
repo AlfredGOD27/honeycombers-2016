@@ -189,8 +189,8 @@ function takeover_after_footer() {
                 <style>
 					@media only screen and (max-width: 789px) {
 					#takeover {
-						margin-top: -21px;
-    					margin-bottom: 24px;
+						margin-top: 0;
+    					margin-bottom: 0
 					}
 				</style>
 			<?php 
