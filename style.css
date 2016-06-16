@@ -19,3 +19,7 @@
 		margin-bottom: 0
 	}
 }
+
+.pull-right.item.item-4 p {
+	display: none;
+}
