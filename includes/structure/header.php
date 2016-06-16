@@ -302,8 +302,8 @@ function hc_site_top() {
                 <style>
 					@media only screen and (max-width: 789px) {
 					#takeover {
-						margin-top: -15px;
-						margin-bottom: 32px;
+						margin-top: -21px;
+    					margin-bottom: 24px;
 					}
 				</style>
 			<?php 
