@@ -299,7 +299,13 @@ function hc_site_top() {
 				if ($image) {
 			?>
 				<div id="takeover" style="background: <?php echo $bg_color; ?>; text-align: center;"><a href="<?php echo $url ?>"><img src="<?php echo $image['url'] ?>"></a></div>
-            
+                <style>
+					@media only screen and (max-width: 789px) {
+					#takeover {
+						margin-top: -15px;
+						margin-bottom: 32px;
+					}
+				</style>
 			<?php 
 				}
 					endwhile;
