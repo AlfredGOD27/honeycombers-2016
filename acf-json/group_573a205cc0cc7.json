@@ -59,6 +59,22 @@
                         "id": ""
                     },
                     "default_value": ""
+                },
+                {
+                    "key": "field_57621fbfb9300",
+                    "label": "URL",
+                    "name": "url",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": "",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
                 }
             ]
         },
@@ -274,5 +290,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1466047740
+    "modified": 1466048500
 }

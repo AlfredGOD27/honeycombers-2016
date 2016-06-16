@@ -297,7 +297,7 @@ function hc_site_top() {
 			
 				if ($image) {
 			?>
-				<div id="takeover" style="background: <?php echo $bg_color; ?>;"><img src="<?php echo $image['sizes']['full'] ?>"></div>
+				<div id="takeover" style="background: <?php echo $bg_color; ?>;"><img src="<?php echo $image['url'] ?>"></div>
             
 			<?php 
 				}
