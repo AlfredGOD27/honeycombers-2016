@@ -20,7 +20,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   display: none !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 776px) {
   .hide-phone {
     display: none;
   }
@@ -29,7 +29,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 776px) {
   .show-phone {
     display: block;
   }
@@ -44,7 +44,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   margin-bottom: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 776px) {
   .profile-bookmarks-info p, .profile-boxes p {
     margin-bottom: 1.5em;
   }
@@ -89,7 +89,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   border-radius: 50%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 776px) {
   .profile-heading {
     display: block;
   }
@@ -119,7 +119,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   text-decoration: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 776px) {
   .profile-welcome h1,
   .profile-welcome h2 {
     font-size: 1.5em;
@@ -175,7 +175,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   text-decoration: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 776px) {
   .profile-bookmarks-info {
     display: none;
   }
@@ -285,7 +285,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   color: #fe862c;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 776px) {
   .folders-list {
     display: none;
   }
