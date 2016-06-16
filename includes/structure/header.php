@@ -88,6 +88,8 @@ function hc_load_assets() {
 	$stylesheet_dir = get_stylesheet_directory_uri();
 
 	// Main theme stylesheet
+	wp_enqueue_style( 'style', get_stylesheet_uri(), false, false );
+	
 	$src = $use_production_assets ? '/build/css/style.min.css' : '/build/css/style.css';
 	wp_enqueue_style( 'hc', $stylesheet_dir . $src, array(), $assets_version );
 
