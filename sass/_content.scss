@@ -105,6 +105,13 @@
 	}
 }
 
+@include media('<portrait') {
+	.featured-image-container {
+		margin-right: -.75em;
+		margin-left: -.75em;
+	}
+}
+
 .header-default {
 	.entry-header {
 		.entry-title {

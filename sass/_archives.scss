@@ -645,15 +645,22 @@ $slider-height: 25em;
 
 @include media('<portrait') {
 	.archive-entry-small {
-		margin-right: -.75em;
-		margin-left: -.75em;
-
 		.bottom {
 			position: static;
 		}
 
 		.author {
 			display: none;
+		}
+	}
+
+	.archive,
+	.search {
+		.content {
+			.archive-entry-small {
+				margin-right: -.75em;
+				margin-left: -.75em;
+			}
 		}
 	}
 }
@@ -714,13 +721,20 @@ $slider-height: 25em;
 
 @include media('<=portrait') {
 	.archive-entry-medium {
-		.top {
-			margin-right: -.75em;
-			margin-left: -.75em;
-		}
-
 		.entry-footer {
 			margin-bottom: 0;
+		}
+	}
+
+	.archive,
+	.search {
+		.content {
+			.archive-entry-medium {
+				.top {
+					margin-right: -.75em;
+					margin-left: -.75em;
+				}
+			}
 		}
 	}
 }

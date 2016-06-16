@@ -4395,6 +4395,12 @@ table > tbody > tr:nth-child(odd) > th {
   width: 100%;
 }
 
+@media (max-width: 775px) {
+  .featured-image-container {
+    margin-right: -.75em;
+    margin-left: -.75em;
+  }
+}
 .header-default .entry-header .entry-title {
   margin-bottom: .75em;
 }
@@ -5828,15 +5834,17 @@ table > tbody > tr:nth-child(odd) > th {
   }
 }
 @media (max-width: 775px) {
-  .archive-entry-small {
-    margin-right: -.75em;
-    margin-left: -.75em;
-  }
   .archive-entry-small .bottom {
     position: static;
   }
   .archive-entry-small .author {
     display: none;
+  }
+
+  .archive .content .archive-entry-small,
+  .search .content .archive-entry-small {
+    margin-right: -.75em;
+    margin-left: -.75em;
   }
 }
 .archive-entry-medium {
@@ -5882,12 +5890,14 @@ table > tbody > tr:nth-child(odd) > th {
   }
 }
 @media (max-width: 776px) {
-  .archive-entry-medium .top {
-    margin-right: -.75em;
-    margin-left: -.75em;
-  }
   .archive-entry-medium .entry-footer {
     margin-bottom: 0;
+  }
+
+  .archive .content .archive-entry-medium .top,
+  .search .content .archive-entry-medium .top {
+    margin-right: -.75em;
+    margin-left: -.75em;
   }
 }
 .archive-entry-large {
@@ -7864,6 +7874,12 @@ table > tbody > tr:nth-child(odd) > th {
   margin-top: 1em;
 }
 
+@media (max-width: 775px) {
+  .home-section-latest-posts .archive-entry-small {
+    margin-right: -.75em;
+    margin-left: -.75em;
+  }
+}
 @media print {
   *,
   *:before,
