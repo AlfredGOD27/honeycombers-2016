@@ -16,6 +16,7 @@ class HC_Archives {
 		add_action( 'wp', array($this, 'init') );
 		add_action( 'wp_ajax_hc_get_next_page_html', array($this, 'get_next_page_html') );
 		add_action( 'wp_ajax_nopriv_hc_get_next_page_html', array($this, 'get_next_page_html') );
+		add_action( 'genesis_after_header', array($this, 'cat_leaderboard'), 18 );
 
 	}
 
@@ -26,15 +27,15 @@ class HC_Archives {
 		$this->post_style = 'half';
 		if( is_search() ) {
 			// If search, set to infinite mode and fix title
-			add_action( 'genesis_after_header', array($this, 'do_search_title'), 14 );
+			add_action( 'genesis_after_header', array($this, 'do_search_title'), 17 );
 			$this->mode = 'infinite';
 		} elseif( is_author() ) {
 			// If search, set to infinite mode and fix title
-			add_action( 'genesis_after_header', array($this, 'do_author_box'), 14 );
+			add_action( 'genesis_after_header', array($this, 'do_author_box'), 17 );
 			$this->mode       = 'infinite';
 			$this->post_style = 'full';
 		} elseif( is_archive() ) {
-			add_action( 'genesis_after_header', array($this, 'do_taxonomy_title_description'), 14 );
+			add_action( 'genesis_after_header', array($this, 'do_taxonomy_title_description'), 17 );
 
 			$this->term = get_queried_object();
 
@@ -52,6 +53,7 @@ class HC_Archives {
 			// If is top level category with subcategories, show sections. Otherwise, show infinite.
 			if( !empty($this->term->parent) ) {
 				$this->mode = 'infinite';
+				add_action( 'genesis_after_header', array($this, 'cat_leaderboard'), 14 );
 			} else {
 				$args = array(
 					'parent' => $this->term->term_id,
@@ -64,7 +66,6 @@ class HC_Archives {
 				}
 			}
 
-			add_action( 'genesis_after_header', array($this, 'cat_leaderboard'), 17 );
 		}
 
 		if( false === $this->mode )
@@ -176,6 +177,30 @@ class HC_Archives {
 		HC()->authors->do_author_box( 'archive' );
 
 	}
+	
+	public function cat_leaderboard() {
+		?>
+        	<section id="leaderboard" class="clearfix">
+            	<div class="content-sidebar-wrap">
+					<?php
+						$term = get_queried_object();
+						
+							if( have_rows('_hc_leaderboard', 'category_' . $term->term_id . '') ):
+								while ( have_rows('_hc_leaderboard', 'category_' . $term->term_id . '') ) : the_row();
+								echo '<script>';
+									the_sub_field('head_code');
+								echo '</script>';
+									the_sub_field('body_code');
+								endwhile;
+							else :
+							endif;
+					?>
+            	</div>
+            </section>
+            
+            
+		<?php
+	}
 
 	public function do_taxonomy_title_description() {
 
@@ -224,27 +249,6 @@ class HC_Archives {
 
 		HC()->sliders->display( $args );
 
-	}
-
-	public function cat_leaderboard() {
-		?>
-        	<section id="leaderboard" class="clearfix">
-            	<div class="content-sidebar-wrap">
-					<?php 
-                        // Category level 1
-                        if( have_rows('_hc_leaderboard', 'category_' . $this->term->term_id . '') ):
-                            while ( have_rows('_hc_leaderboard', 'category_' . $this->term->term_id . '') ) : the_row();
-                            echo '<script>';
-                                the_sub_field('head_code');
-                            echo '</script>';
-                                the_sub_field('body_code');
-                            endwhile;
-                        else :
-                        endif;
-                    ?>
-            	</div>
-            </section>
-		<?php
 	}
 
 	public function subcategory_sections() {
@@ -324,7 +328,7 @@ class HC_Archives {
 
 		<div class="entry-content entry-excerpt" itemprop="description">
 			<?php
-			echo '<p>' . HC()->formatting->get_excerpt( $post, 140 ) . '</p>';
+			echo '<p>' . HC()->formatting->get_excerpt( $post, 170 ) . '</p>';
 			?>
 		</div>
 
