@@ -286,6 +286,12 @@ add_action( 'genesis_before_header', 'hc_site_top' );
 function hc_site_top() {
 
 	?>
+    <?php
+		if ( is_front_page() ) {	 ?>
+        	<div id="takeover"></div>
+    <?php
+		}
+	?>
 	<section class="site-top">
 		<div class="wrap">
 			<div class="left">
