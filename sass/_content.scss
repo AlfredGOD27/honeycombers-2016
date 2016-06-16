@@ -337,6 +337,12 @@
 		margin-bottom: 1.5em;
 	}
 
+	img {
+		margin-right: -.75em;
+		margin-left: -.75em;
+		max-width: calc(100% + 1.5em);
+	}
+
 	h2 {
 		margin-bottom: .2em;
 		color: $orange;

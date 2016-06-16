@@ -4642,6 +4642,11 @@ table > tbody > tr:nth-child(odd) > th {
 .entry .entry-content {
   margin-bottom: 1.5em;
 }
+.entry-content img {
+  margin-right: -.75em;
+  margin-left: -.75em;
+  max-width: calc(100% + 1.5em);
+}
 .entry-content h2 {
   margin-bottom: .2em;
   color: #fe862c;
