@@ -290,7 +290,9 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [],
+            "taxonomy": [
+
+            ],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -312,7 +314,9 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [],
+            "taxonomy": [
+
+            ],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -334,7 +338,9 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [],
+            "taxonomy": [
+
+            ],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -356,7 +362,9 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [],
+            "taxonomy": [
+
+            ],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -420,13 +428,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_5720fe9ad2cb5",
+                    "key": "field_575fd522508ca",
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -441,13 +449,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720fea1d2cb6",
+                    "key": "field_575fd527508cb",
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -462,13 +470,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720feabd2cb7",
+                    "key": "field_575fd52f508cc",
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -504,13 +512,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_5720fede1809d",
+                    "key": "field_575fd538508cd",
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -525,13 +533,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720fede1809e",
+                    "key": "field_575fd53d508ce",
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -546,13 +554,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720fede1809f",
+                    "key": "field_575fd542508cf",
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -588,13 +596,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_5720fee0180a1",
+                    "key": "field_575fd54f508d0",
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -609,13 +617,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720fee0180a2",
+                    "key": "field_575fd553508d1",
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -630,13 +638,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720fee0180a3",
+                    "key": "field_575fd558508d2",
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -672,13 +680,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_5720fee3180a5",
+                    "key": "field_575fd568508d3",
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -693,13 +701,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720fee3180a6",
+                    "key": "field_575fd56e508d4",
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -714,13 +722,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720fee3180a7",
+                    "key": "field_575fd573508d5",
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -756,13 +764,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_5720feefa40ce",
+                    "key": "field_575fd57a508d6",
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -777,13 +785,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720feefa40cf",
+                    "key": "field_575fd57f508d7",
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -798,13 +806,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720feefa40d0",
+                    "key": "field_575fd583508d8",
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -840,13 +848,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_5720fef0a40d2",
+                    "key": "field_575fd589508d9",
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -861,13 +869,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720fef0a40d3",
+                    "key": "field_575fd58e508da",
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -882,13 +890,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720fef0a40d4",
+                    "key": "field_575fd592508db",
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -924,13 +932,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_5720fef3a40d6",
+                    "key": "field_575fd59a508dc",
                     "label": "Morning",
                     "name": "morning",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -945,13 +953,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720fef3a40d7",
+                    "key": "field_575fd59e508dd",
                     "label": "Afternoon",
                     "name": "afternoon",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -966,13 +974,13 @@
                     "disabled": 0
                 },
                 {
-                    "key": "field_5720fef3a40d8",
+                    "key": "field_575fd5a4508de",
                     "label": "Evening",
                     "name": "evening",
                     "type": "text",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -1024,7 +1032,70 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_573609e0a2711",
+                    "key": "field_575fd27d05323",
+                    "label": "Head Code",
+                    "name": "head_code",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": "",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_575fd28205324",
+                    "label": "Body Code",
+                    "name": "body_code",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": "",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_575fd2a905325",
+            "label": "Search MPU #2",
+            "name": "_hc_search_mpu_2",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": "",
+            "max": 1,
+            "layout": "table",
+            "button_label": "Add Row",
+            "sub_fields": [
+                {
+                    "key": "field_575fd2b605326",
                     "label": "Head Code",
                     "name": "head_code",
                     "type": "textarea",
@@ -1039,13 +1110,13 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-                    "rows": 4,
+                    "rows": "",
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
-                    "key": "field_573609f2a2712",
+                    "key": "field_575fd2d405327",
                     "label": "Body Code",
                     "name": "body_code",
                     "type": "textarea",
@@ -1060,7 +1131,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-                    "rows": 4,
+                    "rows": "",
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
@@ -1087,7 +1158,70 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_573a159db474d",
+                    "key": "field_575fd3f02a30a",
+                    "label": "Head Code",
+                    "name": "head_code",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": "",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "wpautop",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_575fd3fa2a30b",
+                    "label": "Body Code",
+                    "name": "body_code",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": "",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_575fd30a05329",
+            "label": "Author MPU #2",
+            "name": "_hc_author_mpu_2",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": "",
+            "max": 1,
+            "layout": "table",
+            "button_label": "Add Row",
+            "sub_fields": [
+                {
+                    "key": "field_575fd31f0532a",
                     "label": "Head Code",
                     "name": "head_code",
                     "type": "textarea",
@@ -1102,13 +1236,13 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-                    "rows": 4,
+                    "rows": "",
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
-                    "key": "field_573a159db474e",
+                    "key": "field_575fd3300532b",
                     "label": "Body Code",
                     "name": "body_code",
                     "type": "textarea",
@@ -1123,7 +1257,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-                    "rows": 4,
+                    "rows": "",
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
@@ -1167,106 +1301,6 @@
             "load_terms": 0,
             "return_format": "id",
             "multiple": 0
-        },
-        {
-            "key": "field_57545ca133878",
-            "label": "Join Widget",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_57545caa33879",
-            "label": "Visitor Title",
-            "name": "_hc_join_visitor_title",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
-            "key": "field_57545cc13387a",
-            "label": "Visitor Text",
-            "name": "_hc_join_visitor_text",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
-            "key": "field_57545cc83387b",
-            "label": "User Title",
-            "name": "_hc_join_user_title",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": "",
-            "readonly": 0,
-            "disabled": 0
-        },
-        {
-            "key": "field_57545cd33387c",
-            "label": "User Text",
-            "name": "_hc_join_user_text",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": "",
-            "readonly": 0,
-            "disabled": 0
         }
     ],
     "location": [
@@ -1286,5 +1320,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1465146606
+    "modified": 1466041521
 }
