@@ -202,4 +202,32 @@ function takeover_after_footer() {
         	
     <?php
 		}
+			if ( is_page('calendar') ) {	 ?>
+					<?php 
+						// Takeover Ad
+						if( have_rows('_hc_events_takeover') ):
+							while ( have_rows('_hc_events_takeover') ) : the_row();
+							$bg_color = get_sub_field('background_color');
+							$image = get_sub_field('image');
+							$url = get_sub_field('url');
+		
+						if ($image) {
+					?>
+						<div id="takeover" style="background: <?php echo $bg_color; ?>; text-align: center;"><a href="<?php echo $url ?>"><img src="<?php echo $image['url'] ?>"></a></div>
+						<style>
+							@media only screen and (max-width: 789px) {
+							#takeover {
+								margin-top: 0;
+								margin-bottom: 0
+							}
+						</style>
+					<?php 
+						}
+							endwhile;
+						else :
+						endif;
+					?>
+					
+			<?php
+		}
 }
