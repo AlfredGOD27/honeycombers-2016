@@ -17,7 +17,7 @@
             },
             "collapsed": "",
             "min": "",
-            "max": "",
+            "max": 1,
             "layout": "table",
             "button_label": "Add Row",
             "sub_fields": [
@@ -274,5 +274,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1466047236
+    "modified": 1466047740
 }
