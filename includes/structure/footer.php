@@ -213,7 +213,7 @@ function takeover_after_footer() {
 		
 						if ($image) {
 					?>
-						<div id="takeover" style="background: <?php echo $bg_color; ?>; text-align: center;"><a href="<?php echo $url ?>"><img src="<?php echo $image['url'] ?>"></a></div>
+						<div id="takeover-bottom" style="background: <?php echo $bg_color; ?>; text-align: center;"><a href="<?php echo $url ?>"><img src="<?php echo $image['url'] ?>"></a></div>
 						<style>
 							@media only screen and (max-width: 789px) {
 							#takeover {
