@@ -3,6 +3,66 @@
     "title": "Home \/\/ Ads",
     "fields": [
         {
+            "key": "field_575f7567f77b3",
+            "label": "Top Takeover",
+            "name": "_hc_takeover",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "Add Row",
+            "sub_fields": [
+                {
+                    "key": "field_57621a0801b46",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": "",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_57621a1301b47",
+                    "label": "Background Color",
+                    "name": "background_color",
+                    "type": "color_picker",
+                    "instructions": "",
+                    "required": "",
+                    "conditional_logic": "",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                }
+            ]
+        },
+        {
             "key": "field_573a205cc6c3e",
             "label": "MPU #1",
             "name": "_hc_home_mpu_1",
@@ -22,13 +82,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_573a205ccef98",
+                    "key": "field_575f7a4065827",
                     "label": "Head Code",
                     "name": "head_code",
                     "type": "textarea",
                     "instructions": "",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -37,19 +97,19 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-                    "rows": 4,
+                    "rows": "",
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
-                    "key": "field_573a205ccefa8",
+                    "key": "field_575f7a5965828",
                     "label": "Body Code",
                     "name": "body_code",
                     "type": "textarea",
                     "instructions": "",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -58,7 +118,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-                    "rows": 4,
+                    "rows": "",
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
@@ -67,7 +127,7 @@
         },
         {
             "key": "field_573a205cc6c4d",
-            "label": "MPU #2 (Desktop)",
+            "label": "MPU #2",
             "name": "_hc_home_mpu_2_desktop",
             "type": "repeater",
             "instructions": "",
@@ -85,13 +145,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_573a205cda273",
+                    "key": "field_575f7ab47983e",
                     "label": "Head Code",
                     "name": "head_code",
                     "type": "textarea",
                     "instructions": "",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -100,19 +160,19 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-                    "rows": 4,
+                    "rows": "",
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
-                    "key": "field_573a205cda280",
+                    "key": "field_575f7aba7983f",
                     "label": "Body Code",
                     "name": "body_code",
                     "type": "textarea",
                     "instructions": "",
                     "required": 1,
-                    "conditional_logic": 0,
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -121,71 +181,8 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-                    "rows": 4,
-                    "new_lines": "",
-                    "readonly": 0,
-                    "disabled": 0
-                }
-            ]
-        },
-        {
-            "key": "field_574c741e3fca6",
-            "label": "MPU #2 (Mobile)",
-            "name": "_hc_home_mpu_2_mobile",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "collapsed": "",
-            "min": "",
-            "max": 1,
-            "layout": "table",
-            "button_label": "Add Row",
-            "sub_fields": [
-                {
-                    "key": "field_574c741e3fca7",
-                    "label": "Head Code",
-                    "name": "head_code",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": 4,
-                    "new_lines": "",
-                    "readonly": 0,
-                    "disabled": 0
-                },
-                {
-                    "key": "field_574c741e3fca8",
-                    "label": "Body Code",
-                    "name": "body_code",
-                    "type": "textarea",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": "",
-                    "maxlength": "",
-                    "rows": 4,
-                    "new_lines": "",
+                    "rows": "",
+                    "new_lines": "wpautop",
                     "readonly": 0,
                     "disabled": 0
                 }
@@ -211,13 +208,13 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_573a20bab09ef",
+                    "key": "field_575f7adab4525",
                     "label": "Head Code",
                     "name": "head_code",
                     "type": "textarea",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": 1,
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -226,19 +223,19 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-                    "rows": 4,
+                    "rows": "",
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 },
                 {
-                    "key": "field_573a20bab09f0",
+                    "key": "field_575f7ae6b4526",
                     "label": "Body Code",
                     "name": "body_code",
                     "type": "textarea",
                     "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
+                    "required": "",
+                    "conditional_logic": "",
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -247,7 +244,7 @@
                     "default_value": "",
                     "placeholder": "",
                     "maxlength": "",
-                    "rows": 4,
+                    "rows": "",
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
@@ -277,5 +274,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1464728069
+    "modified": 1466047236
 }
