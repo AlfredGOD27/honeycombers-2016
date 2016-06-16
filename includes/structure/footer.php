@@ -4,6 +4,7 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 remove_action( 'genesis_footer', 'genesis_do_footer' );
 add_action( 'genesis_footer', 'hc_do_footer' );
+add_action( 'genesis_after_footer', 'takeover_after_footer' );
 function hc_do_footer() {
 
 	?>
@@ -100,36 +101,6 @@ function hc_do_footer() {
 		?>
 		<p>&copy; Honeycombers Pte Ltd <?php echo date('Y'); ?> All Rights Reserved</p>
 	</div>
-    <?php
-		if ( is_front_page() ) {	 ?>
-        	<?php 
-				// Takeover Ad
-				if( have_rows('_hc_takeover') ):
-					while ( have_rows('_hc_takeover') ) : the_row();
-					$bg_color = get_sub_field('background_color');
-					$image = get_sub_field('image');
-					$url = get_sub_field('url');
-
-				if ($image) {
-			?>
-				<div id="takeover" style="background: <?php echo $bg_color; ?>; text-align: center;"><a href="<?php echo $url ?>"><img src="<?php echo $image['url'] ?>"></a></div>
-                <style>
-					@media only screen and (max-width: 789px) {
-					#takeover {
-						margin-top: -21px;
-    					margin-bottom: 24px;
-					}
-				</style>
-			<?php 
-				}
-					endwhile;
-				else :
-				endif;
-			?>
-        	
-    <?php
-		}
-	?>
 	<?php
 
 }
@@ -199,4 +170,36 @@ function hc_ie_font_face_fix() {
 	$output = ob_get_clean();
 	echo preg_replace( '/\s+/', ' ', $output ) . "\n";
 
+}
+
+function takeover_after_footer() {
+
+		if ( is_front_page() ) {	 ?>
+        	<?php 
+				// Takeover Ad
+				if( have_rows('_hc_takeover') ):
+					while ( have_rows('_hc_takeover') ) : the_row();
+					$bg_color = get_sub_field('background_color');
+					$image = get_sub_field('image');
+					$url = get_sub_field('url');
+
+				if ($image) {
+			?>
+				<div id="takeover" style="background: <?php echo $bg_color; ?>; text-align: center;"><a href="<?php echo $url ?>"><img src="<?php echo $image['url'] ?>"></a></div>
+                <style>
+					@media only screen and (max-width: 789px) {
+					#takeover {
+						margin-top: -21px;
+    					margin-bottom: 24px;
+					}
+				</style>
+			<?php 
+				}
+					endwhile;
+				else :
+				endif;
+			?>
+        	
+    <?php
+		}
 }
