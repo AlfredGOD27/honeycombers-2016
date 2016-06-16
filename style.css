@@ -23,3 +23,11 @@
 .pull-right.item.item-4 p {
 	display: none;
 }
+
+.archive-has-slider #leaderboard {
+	margin-bottom: 0;
+}
+
+#leaderboard {
+	margin-bottom: 1.5em;
+}
