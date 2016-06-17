@@ -73,6 +73,7 @@ module.exports = function(grunt) {
 					'bower_components/js-cookie/src/js.cookie.js',
 					'bower_components/magnific-popup/dist/jquery.magnific-popup.js',
 					'bower_components/slick-carousel/slick/slick.js',
+					'js/_affix.js',
 					'js/_analytics-youtube.js',
 					'js/_animations.js',
 					'js/_archives.js',

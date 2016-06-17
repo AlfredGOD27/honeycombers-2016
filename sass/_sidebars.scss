@@ -1,4 +1,10 @@
 .sidebar {
+	position: relative;
+
+	.sidebar-widgets {
+		margin-bottom: 1em;
+	}
+
 	.widget {
 		margin-bottom: 1em;
 
@@ -15,9 +21,42 @@
 	}
 }
 
+@include media('>portrait') {
+	.has-affixed-sidebar {
+		.content-sidebar-wrap {
+			display: flex;
+		}
+	}
+
+	.affix-on-scroll {
+		position: static;
+		background-color: $white;
+
+		&.affix {
+			position: absolute !important;
+			left: 0;
+		}
+
+		&.affix-bottom {
+			position: absolute !important;
+			top: auto !important;
+			bottom: 1em;
+			left: 0;
+		}
+	}
+}
+
 .archive-sub-sections {
 	.sidebar {
-		padding-top: 5.3em;
+		margin-top: 5.3em;
+	}
+}
+
+@include media('<=portrait') {
+	.archive-sub-sections {
+		.sidebar {
+			margin-top: 0;
+		}
 	}
 }
 

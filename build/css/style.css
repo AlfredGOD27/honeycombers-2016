@@ -1831,6 +1831,7 @@ html {
 }
 .content-sidebar .sidebar-primary {
   float: right;
+  margin-left: 4.25%;
   width: 23.75%;
 }
 
@@ -4871,6 +4872,12 @@ table > tbody > tr:nth-child(odd) > th {
     margin-bottom: 1em;
   }
 }
+.sidebar {
+  position: relative;
+}
+.sidebar .sidebar-widgets {
+  margin-bottom: 1em;
+}
 .sidebar .widget {
   margin-bottom: 1em;
 }
@@ -4884,10 +4891,38 @@ table > tbody > tr:nth-child(odd) > th {
   font-size: 1em;
 }
 
+@media (min-width: 777px) {
+  .has-affixed-sidebar .content-sidebar-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .affix-on-scroll {
+    position: static;
+    background-color: #FFFFFF;
+  }
+  .affix-on-scroll.affix {
+    position: absolute !important;
+    left: 0;
+  }
+  .affix-on-scroll.affix-bottom {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 1em;
+    left: 0;
+  }
+}
 .archive-sub-sections .sidebar {
-  padding-top: 5.3em;
+  margin-top: 5.3em;
 }
 
+@media (max-width: 776px) {
+  .archive-sub-sections .sidebar {
+    margin-top: 0;
+  }
+}
 .featured-widget-slider {
   border: 1px solid #fe862c;
 }
