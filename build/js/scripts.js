@@ -4973,7 +4973,7 @@ $.magnificPopup.registerModule(RETINA_NS, {
 			footer_offset = $('.site-footer').offset().top,
 			widget_offset = lastScrollY - $('.sidebar').offset().top + offset_height + 16 - $('.sidebar-widgets').height();
 
-		if( widget_distance < lastScrollY + offset_height ) {
+		if( widget_distance < lastScrollY + offset_height && widget_offset > 0 ) {
 			widget.addClass('affix');
 			widget.css( 'transform', 'translateY(' + widget_offset + 'px)' );
 
