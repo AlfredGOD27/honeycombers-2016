@@ -11,7 +11,8 @@
 		sidebar_width,
 		sidebar_height,
 		lastScrollY = 0,
-		ticking = false;
+		ticking = false,
+		timer;
 
 	function init() {
 
@@ -59,8 +60,16 @@
 		if( ticking )
 			return;
 
-		requestAnimationFrame(update_affix);
+
 		ticking = true;
+
+		clearTimeout(timer);
+		timer = setTimeout(
+			function() {
+				requestAnimationFrame(update_affix);
+			},
+			20
+		);
 	}
 
 	function update_affix() {

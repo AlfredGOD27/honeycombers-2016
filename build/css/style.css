@@ -4874,6 +4874,7 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .sidebar {
   position: relative;
+  overflow: hidden;
 }
 .sidebar .sidebar-widgets {
   margin-bottom: 1em;
@@ -4902,6 +4903,8 @@ table > tbody > tr:nth-child(odd) > th {
   .affix-on-scroll {
     position: static;
     background-color: #FFFFFF;
+    -webkit-transition: -webkit-transform .1s;
+            transition: transform .1s;
   }
   .affix-on-scroll.affix {
     position: absolute !important;
