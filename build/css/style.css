@@ -4300,6 +4300,7 @@ table > tbody > tr:nth-child(odd) > th {
 .breadcrumbs {
   margin-bottom: 1em;
   color: #c7c7c7;
+  line-height: 1;
 }
 .breadcrumbs > span {
   font-size: .75em;
@@ -4905,7 +4906,7 @@ table > tbody > tr:nth-child(odd) > th {
   .affix-on-scroll.affix-bottom {
     position: absolute !important;
     top: auto !important;
-    bottom: 1em;
+    bottom: 2em;
     left: 0;
   }
 }
