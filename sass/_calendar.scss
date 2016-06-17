@@ -589,7 +589,7 @@ $move_left: -$move_right;
 	}
 }
 
-@include media('<=phone') {
+@include media('<=portrait') {
 	.event-slide {
 		img {
 			max-width: none;

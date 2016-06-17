@@ -643,7 +643,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<portrait') {
+@include media('<=portrait') {
 	.archive-entry-small {
 		.bottom {
 			position: static;

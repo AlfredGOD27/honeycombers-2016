@@ -32,7 +32,7 @@
 			affix_on = false;
 		} else {
 			// Turn off is window isn't fullwidth
-			if( im.lessThan('portrait') )
+			if( !im.greaterThan('portrait') )
 				affix_on = false;
 		}
 

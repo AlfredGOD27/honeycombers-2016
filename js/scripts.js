@@ -124,7 +124,7 @@
 		variableWidth: true,
 		responsive: [
 			{
-				breakpoint: im.getValue('phone', true),
+				breakpoint: im.getValue('portrait', true),
 				settings: {
 					variableWidth: false,
 				}
@@ -148,7 +148,7 @@
 	});
 
 	// Events
-	if( !im.lessThan('portrait') ) {
+	if( im.greaterThan('portrait') ) {
 		$('.event-slider-for').slick({
 			adaptiveHeight: true,
 			arrows: true,
@@ -183,7 +183,7 @@
 	}
 
 	// Footer IG images
-	var exclude_mobile_images = im.lessThan('portrait');
+	var exclude_mobile_images = !im.greaterThan('portrait');
 	$('.async-load-image').each( function() {
 		var placeholder = $(this),
 			data,
@@ -222,7 +222,7 @@
 	});
 
 	$('.main-menu > .menu-item').on( 'mouseenter', function() {
-		if( !im.lessThan('portrait') )
+		if( im.greaterThan('portrait') )
 			$('body').addClass('main-menu-open');
 	});
 

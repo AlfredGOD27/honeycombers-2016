@@ -4,7 +4,7 @@
 		$(this).fitVids();
 	});
 
-	if( !im.lessThan('portrait') ) {
+	if( im.greaterThan('portrait') ) {
 		$('.slider-for').slick({
 			adaptiveHeight: true,
 			arrows: true,

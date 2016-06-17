@@ -4927,7 +4927,7 @@ $.magnificPopup.registerModule(RETINA_NS, {
 			affix_on = false;
 		} else {
 			// Turn off is window isn't fullwidth
-			if( im.lessThan('portrait') )
+			if( !im.greaterThan('portrait') )
 				affix_on = false;
 		}
 
@@ -5363,7 +5363,7 @@ function hc_directory_maps() {
 			scrollwheel: false,
 			center: new google.maps.LatLng( hc_directory_coords.lat, hc_directory_coords.lng )
 		},
-		use_map = !im.lessThan('portrait'),
+		use_map = im.greaterThan('portrait'),
 		script_event = true,
 		loaded_initial_location = false,
 		load_more_settings;
@@ -5700,7 +5700,7 @@ function hc_maybe_load_facebook() {
 		affix_on = true;
 
 		// Turn off is window isn't fullwidth
-		if( im.lessThan('portrait') )
+		if( !im.greaterThan('portrait') )
 			affix_on = false;
 	}
 
@@ -5763,7 +5763,7 @@ function hc_maybe_load_facebook() {
 
 	$('.home-section-featured-video-listings iframe').addClass('mute').addClass('autoplay');
 
-	if( !im.lessThan('portrait') ) {
+	if( im.greaterThan('portrait') ) {
 		$('.listing-slider-for').slick({
 			adaptiveHeight: true,
 			arrows: false,
@@ -6005,7 +6005,7 @@ function hc_maybe_load_facebook() {
 		$(this).fitVids();
 	});
 
-	if( !im.lessThan('portrait') ) {
+	if( im.greaterThan('portrait') ) {
 		$('.slider-for').slick({
 			adaptiveHeight: true,
 			arrows: true,
@@ -6426,7 +6426,7 @@ function hc_maybe_load_facebook() {
 		variableWidth: true,
 		responsive: [
 			{
-				breakpoint: im.getValue('phone', true),
+				breakpoint: im.getValue('portrait', true),
 				settings: {
 					variableWidth: false,
 				}
@@ -6450,7 +6450,7 @@ function hc_maybe_load_facebook() {
 	});
 
 	// Events
-	if( !im.lessThan('portrait') ) {
+	if( im.greaterThan('portrait') ) {
 		$('.event-slider-for').slick({
 			adaptiveHeight: true,
 			arrows: true,
@@ -6485,7 +6485,7 @@ function hc_maybe_load_facebook() {
 	}
 
 	// Footer IG images
-	var exclude_mobile_images = im.lessThan('portrait');
+	var exclude_mobile_images = !im.greaterThan('portrait');
 	$('.async-load-image').each( function() {
 		var placeholder = $(this),
 			data,
@@ -6524,7 +6524,7 @@ function hc_maybe_load_facebook() {
 	});
 
 	$('.main-menu > .menu-item').on( 'mouseenter', function() {
-		if( !im.lessThan('portrait') )
+		if( im.greaterThan('portrait') )
 			$('body').addClass('main-menu-open');
 	});
 

@@ -105,7 +105,7 @@
 	}
 }
 
-@include media('<portrait') {
+@include media('<=portrait') {
 	.featured-image-container {
 		margin-right: -.75em;
 		margin-left: -.75em;

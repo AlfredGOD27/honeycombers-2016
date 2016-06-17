@@ -810,7 +810,7 @@ $slider-height: 25em;
 	}
 }
 
-@include media('<portrait') {
+@include media('<=portrait') {
 	.home-section-latest-posts {
 		.archive-entry-small {
 			margin-right: -.75em;
