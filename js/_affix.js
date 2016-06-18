@@ -25,7 +25,7 @@
 		sidebar_height = widget.closest('.sidebar').height();
 
 		// Assume affix is on
-		affix_on = false;
+		affix_on = true;
 
 		if( widget_distance + (widget_height * 2 ) > sidebar_height ) {
 			// Turn off if sidebar isn't tall enough
@@ -102,8 +102,6 @@
 		if( 0 === widgets.length )
 			return;
 
-		widgets.wrapAll('<div class="affix-on-scroll" />');
-		$('.sidebar > .widget').wrapAll('<div class="sidebar-widgets" />');
 		$('body').addClass('has-affixed-sidebar');
 
 		init();
