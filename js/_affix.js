@@ -25,7 +25,7 @@
 		sidebar_height = widget.closest('.sidebar').height();
 
 		// Assume affix is on
-		affix_on = true;
+		affix_on = false;
 
 		if( widget_distance + (widget_height * 2 ) > sidebar_height ) {
 			// Turn off if sidebar isn't tall enough
