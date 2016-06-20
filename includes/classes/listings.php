@@ -527,7 +527,11 @@ class HC_Listings {
 							<select id="directory-category" name="category" class="styled">
 								<option value="">Category</option>
 								<?php
-								$terms = get_terms( 'listing_type' );
+								$args = array(
+									'parent'   => 0,
+									'taxonomy' => 'listing_type',
+								);
+								$terms = get_terms( $args );
 								foreach( $terms as $term ) {
 									?>
 									<option value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
