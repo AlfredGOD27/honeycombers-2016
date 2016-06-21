@@ -267,11 +267,7 @@ class HC_Profiles {
 
 			return $strength['score'] >= 3;
 		} else {
-			$length     = strlen($password);
-			$has_number = preg_match('/\d/', $password) > 0;
-			$has_symbol = preg_match('/\W/', $password) > 0;
-
-			return $length >= 8 && $has_number && $has_symbol;
+			return true;
 		}
 
 	}

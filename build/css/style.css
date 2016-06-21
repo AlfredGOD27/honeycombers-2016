@@ -1209,6 +1209,10 @@ p:last-child, .wp-caption .wp-caption-text:last-child, .slider-pro .sp-caption-c
     margin-bottom: 1.5em;
   }
 }
+:focus {
+  outline: none;
+}
+
 .screen-reader-text,
 .screen-reader-shortcut, .gform_wrapper .gfield_with_placeholder .gfield_label, .register-popup label, .site-title,
 .site-description, .widget_hc_subscribe_widget label, .archive-has-slider .archive-description, .calendar-search-bar label, .directory-search-form label {
@@ -2733,9 +2737,6 @@ input[type='search'] {
   position: relative;
   border: none;
 }
-.slick-slider .slick-slide:focus {
-  outline: none;
-}
 
 .slick-arrow {
   position: absolute;
@@ -2746,9 +2747,6 @@ input[type='search'] {
   background-color: rgba(79, 79, 79, 0.3);
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-}
-.slick-arrow:focus {
-  outline: none;
 }
 .slick-arrow i {
   font-size: 1.5em;
@@ -3829,9 +3827,6 @@ table > tbody > tr:nth-child(odd) > th {
   width: 100%;
   background-color: transparent;
   text-align: left;
-}
-.main-menu .inactive-link:focus {
-  outline: none;
 }
 .main-menu .inactive-link span {
   -webkit-box-flex: 1;
@@ -5399,9 +5394,6 @@ table > tbody > tr:nth-child(odd) > th {
   background-color: #4f4f4f;
   content: '';
 }
-.il-load-more:focus {
-  outline: none;
-}
 .il-load-more span {
   display: inline-block;
   background-color: #FFFFFF;
@@ -6213,6 +6205,7 @@ table > tbody > tr:nth-child(odd) > th {
 }
 .event-slider-for img {
   display: block;
+  min-width: 100%;
   max-width: none;
   height: 100%;
 }

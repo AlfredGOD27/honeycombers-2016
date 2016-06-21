@@ -6449,11 +6449,15 @@ function hc_maybe_load_facebook() {
 
 	// Events
 	if( im.greaterThan('portrait') ) {
-		$('.event-slider-for').slick({
+		var calendar_slider,
+			calendar_nav;
+
+		calendar_slider = $('.event-slider-for').slick({
 			adaptiveHeight: true,
 			arrows: true,
 			asNavFor: '.event-slider-nav',
 			fade: true,
+			focusOnSelect: true,
 			autoplay: true,
 			prevArrow: hc_strings.prev_arrow,
 			nextArrow: hc_strings.next_arrow,
@@ -6462,14 +6466,21 @@ function hc_maybe_load_facebook() {
 			slidesToShow: 1
 		});
 
-		$('.event-slider-nav').slick({
+		calendar_nav = $('.event-slider-nav').slick({
 			arrows: false,
 			asNavFor: '.event-slider-for',
 			focusOnSelect: true,
 			slidesToScroll: 1,
+			infinite: false,
 			slidesToShow: 4,
 			speed: 0,
 			vertical: true,
+		});
+
+		// https://github.com/kenwheeler/slick/issues/1971#issuecomment-165313300
+		calendar_slider.on('afterChange',function(event, slick, currentSlide) {
+			calendar_nav.find('.slick-current').removeClass('slick-current');
+			calendar_nav.find('.slick-slide').eq(currentSlide).addClass('slick-current');
 		});
 	} else {
 		$('.event-slider-for').slick({
