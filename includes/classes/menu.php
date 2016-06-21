@@ -213,7 +213,7 @@ class HC_Menu {
 						}
 
 						$current = '';
-						if( $is_singular ) {
+						if( $is_singular && !empty($primary_term) ) {
 							if( $top_item_id === $primary_term->term_id || $top_item_id === $primary_term->parent )
 								$current = 'current';
 						} elseif( $is_archive ) {
