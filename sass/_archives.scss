@@ -103,10 +103,6 @@ $slider-height: 25em;
 		content: '';
 	}
 
-	&:focus {
-		outline: none;
-	}
-
 	span {
 		display: inline-block;
 		background-color: $white;
