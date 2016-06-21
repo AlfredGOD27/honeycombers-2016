@@ -453,7 +453,7 @@ class HC_Users {
 
 			<h2>Welcome to Honeycombers!</h2>
 
-			<p class="lead">Lorem ipsum...</p>
+			<p class="lead">Discover, save and share interesting stories on Honeycombers.</p>
 
 			<div class="messages"></div>
 
