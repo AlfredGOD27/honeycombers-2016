@@ -27,7 +27,7 @@ class HC_Authors {
 		}
 
 		if( !empty($user) && is_object( $user ) ) {
-			$user_image_id = get_user_meta( $user->ID, '_hc_profile_image_id', true );
+			$user_image_id = get_user_meta( $user->ID, HC()->users->get_ms_user_image_key(), true );
 			if( !empty($user_image_id) ) {
 				$avatar = wp_get_attachment_image(
 					$user_image_id,
