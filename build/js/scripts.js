@@ -6478,9 +6478,9 @@ function hc_maybe_load_facebook() {
 		});
 
 		// https://github.com/kenwheeler/slick/issues/1971#issuecomment-165313300
-		calendar_slider.on('afterChange',function(event, slick, currentSlide) {
+		calendar_slider.on('beforeChange',function(event, slick, currentSlide, nextSlide) {
 			calendar_nav.find('.slick-current').removeClass('slick-current');
-			calendar_nav.find('.slick-slide').eq(currentSlide).addClass('slick-current');
+			calendar_nav.find('.slick-slide').eq(nextSlide).addClass('slick-current');
 		});
 	} else {
 		$('.event-slider-for').slick({
