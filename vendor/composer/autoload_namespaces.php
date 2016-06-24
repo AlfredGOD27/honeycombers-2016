@@ -7,4 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'ZxcvbnPhp' => array($vendorDir . '/bjeavons/zxcvbn-php/src'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log'),
+    'Google_Service_' => array($vendorDir . '/google/apiclient-services'),
+    'Google_' => array($vendorDir . '/google/apiclient/src'),
 );
