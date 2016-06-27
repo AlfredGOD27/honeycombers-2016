@@ -439,6 +439,9 @@ class HC_Home {
 			set_transient( $transient_name, $post_ids, HOUR_IN_SECONDS * 4 );
 		}
 
+		if( empty($post_ids) )
+			$post_ids = get_post_meta( $post->ID, '_hc_home_trending_post_ids', true );
+
 		?>
 		<section class="home-section home-section-trending">
 			<div class="wrap">
