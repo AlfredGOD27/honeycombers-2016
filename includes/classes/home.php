@@ -432,6 +432,13 @@ class HC_Home {
 		if( empty($enable) )
 			return;
 
+		$transient_name = 'hc_home_trending_ids';
+		$post_ids       = get_transient($transient_name);
+		if( false === $post_ids ) {
+			$post_ids = HC()->trending->get_trending();
+			set_transient( $transient_name, $post_ids, HOUR_IN_SECONDS * 4 );
+		}
+
 		?>
 		<section class="home-section home-section-trending">
 			<div class="wrap">
@@ -442,8 +449,7 @@ class HC_Home {
 
 				<div class="clearfix trending-slider hide-no-js">
 					<?php
-					$i        = 1;
-					$post_ids = get_post_meta( $post->ID, '_hc_home_trending_post_ids', true );
+					$i = 1;
 					foreach( $post_ids as $post_id ) {
 						if( !has_post_thumbnail($post_id) )
 							continue;

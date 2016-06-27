@@ -259,6 +259,67 @@
             "disabled": 0
         },
         {
+            "key": "field_5771425645aa5",
+            "label": "Google Analytics Client ID",
+            "name": "_hc_ga_client_id",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_5771426345aa6",
+            "label": "Google Analytics Client Secret",
+            "name": "_hc_ga_client_secret",
+            "type": "password",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_5771427045aa7",
+            "label": "Google Analytics Profile ID",
+            "name": "_hc_ga_profile_id",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
             "key": "field_56fd92a8f599f",
             "label": "Pages",
             "name": "",
@@ -1286,5 +1347,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1465146606
+    "modified": 1467042396
 }
