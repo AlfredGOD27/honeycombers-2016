@@ -393,6 +393,12 @@ abstract class HC_Form_Abstract {
 							}
 						echo '</select>';
 					} else {
+						$args = array(
+							'taxonomy'   => $field['taxonomy'],
+							'hide_empty' => false,
+						);
+						$terms = get_terms( $args );
+
 						echo '<div class="radio-list">';
 							foreach( $terms as $term ) {
 								echo '<label class="radio">';
@@ -439,7 +445,8 @@ abstract class HC_Form_Abstract {
 					// These are empty if they have no content
 					if(
 						!isset($args[ $field['table'] ][ $field['slug'] ]) ||
-						0 === strlen($args[ $field['table'] ][ $field['slug'] ])
+						( !is_array($args[ $field['table'] ][ $field['slug'] ]) && 0 === strlen($args[ $field['table'] ][ $field['slug'] ]) ) ||
+						( is_array($args[ $field['table'] ][ $field['slug'] ]) && 0 === count($args[ $field['table'] ][ $field['slug'] ]) )
 					)
 						$empty_fields[] = $field;
 					break;
