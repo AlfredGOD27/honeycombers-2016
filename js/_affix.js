@@ -4,30 +4,34 @@
 		return;
 
 	// Setup global vars
-	var affix_on = false,
-		widget,
-		widget_height,
-		widget_distance,
+	var window_height,
+
+		sidebar,
 		sidebar_width,
 		sidebar_height,
+
+		container,
+		container_height,
+		container_offset,
+
+		affix_on = false,
 		lastScrollY = 0,
 		ticking = false,
 		timer;
 
 	function init() {
 
-		widget = $('.sidebar .affix-on-scroll');
-
 		// Update measurements
-		widget_height = widget.height();
-		widget_distance = widget.offset().top;
-		sidebar_width = widget.closest('.sidebar').width();
-		sidebar_height = widget.closest('.sidebar').height();
+		container_height = container.height();
+		container_offset = container.offset().top;
+		sidebar_width = sidebar.width();
+		sidebar_height = sidebar.height();
+		window_height = $(window).height();
 
 		// Assume affix is on
 		affix_on = true;
 
-		if( widget_distance + (widget_height * 2 ) > sidebar_height ) {
+		if( container_offset + (container_height * 1.25 ) > sidebar_height ) {
 			// Turn off if sidebar isn't tall enough
 			affix_on = false;
 		} else {
@@ -37,29 +41,31 @@
 		}
 
 		if( affix_on ) {
-			// If so, lock widget width
-			widget.css( 'width', sidebar_width );
+			// If so, lock container width
+			container.css( 'width', sidebar_width );
 		} else {
 			// If off, undo any modifications
-			widget.css( 'width', 'auto' );
-			widget.css( 'top', 'auto' );
-			widget.removeClass('affix');
-			widget.removeClass('affix-bottom');
+			container.css( 'width', 'auto' );
+			container.css( 'bottom', 'auto' );
+			container.removeClass('affix');
+			container.removeClass('affix-bottom');
 		}
 
 	}
 
 	function on_scroll() {
+
 		lastScrollY = window.scrollY;
 
 		if( affix_on )
 			request_tick();
+
 	}
 
 	function request_tick() {
+
 		if( ticking )
 			return;
-
 
 		ticking = true;
 
@@ -70,38 +76,43 @@
 			},
 			20
 		);
+
 	}
 
 	function update_affix() {
+
 		var header_height = $('.site-top').outerHeight() + $('.header-navigation-container').outerHeight(),
-			offset_height = $('.sticky-header').outerHeight() + $('#wpadminbar').outerHeight(),
+			viewport_offset_height = $('.sticky-header').outerHeight() + $('#wpadminbar').outerHeight(),
 			footer_offset = $('.site-footer').offset().top,
-			widget_offset = lastScrollY - $('.sidebar').offset().top + offset_height + 16 - $('.sidebar-widgets').height();
+			container_distance = lastScrollY - container_offset + window_height - container_height - 16;
 
-		if( widget_distance < lastScrollY + offset_height && widget_offset > 0 ) {
-			widget.addClass('affix');
-			widget.css( 'transform', 'translateY(' + widget_offset + 'px)' );
+		if( container_offset + container_height < lastScrollY + viewport_offset_height + window_height && container_distance > 0 ) {
+			container.css( 'transform', 'translateY(' + container_distance + 'px)' );
+			container.addClass('affix');
 
-			if( lastScrollY + widget_height + header_height > footer_offset ) {
-				widget.addClass('affix-bottom');
-				widget.css( 'transform', 'translateY(0)' );
+			if( lastScrollY + window_height > footer_offset - 16 ) {
+				container.removeClass('affix');
+				container.addClass('affix-bottom');
+				container.css( 'transform', 'translateY(0)' );
 			} else {
-				widget.removeClass('affix-bottom');
+				container.removeClass('affix-bottom');
 			}
 		} else {
-			widget.removeClass('affix');
-			widget.css( 'transform', 'translateY(0)' );
+			container.removeClass('affix');
+			container.css( 'transform', 'translateY(0)' );
 		}
 
 		ticking = false;
+
 	}
 
 	$(window).on( 'load', function() {
-		var widgets = $('.sidebar').find('.widget_hc_follow_widget, .widget_hc_subscribe_widget');
 
-		if( 0 === widgets.length )
+		container = $('.sidebar .affix-on-scroll');
+		if( 0 === container.length )
 			return;
 
+		sidebar = container.closest('.sidebar');
 		$('body').addClass('has-affixed-sidebar');
 
 		init();
@@ -109,6 +120,7 @@
 
 		window.addEventListener('scroll', on_scroll, false);
 		$(window).on( 'resize', init );
+
 	});
 
 })( window.jQuery );

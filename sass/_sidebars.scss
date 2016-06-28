@@ -2,10 +2,6 @@
 	position: relative;
 	overflow: hidden;
 
-	.sidebar-widgets {
-		margin-bottom: 1em;
-	}
-
 	.widget {
 		margin-bottom: 1em;
 
@@ -30,18 +26,16 @@
 	}
 
 	.affix-on-scroll {
-		position: static;
 		background-color: $white;
-		transition: transform .1s;
 
 		&.affix {
-			position: absolute !important;
+			position: absolute;
 			left: 0;
+			transition: transform .1s;
 		}
 
 		&.affix-bottom {
-			position: absolute !important;
-			top: auto !important;
+			position: absolute;
 			bottom: 2em;
 			left: 0;
 		}

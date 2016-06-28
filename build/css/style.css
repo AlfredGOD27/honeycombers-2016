@@ -4866,9 +4866,6 @@ table > tbody > tr:nth-child(odd) > th {
   position: relative;
   overflow: hidden;
 }
-.sidebar .sidebar-widgets {
-  margin-bottom: 1em;
-}
 .sidebar .widget {
   margin-bottom: 1em;
 }
@@ -4891,18 +4888,16 @@ table > tbody > tr:nth-child(odd) > th {
   }
 
   .affix-on-scroll {
-    position: static;
     background-color: #FFFFFF;
+  }
+  .affix-on-scroll.affix {
+    position: absolute;
+    left: 0;
     -webkit-transition: -webkit-transform .1s;
             transition: transform .1s;
   }
-  .affix-on-scroll.affix {
-    position: absolute !important;
-    left: 0;
-  }
   .affix-on-scroll.affix-bottom {
-    position: absolute !important;
-    top: auto !important;
+    position: absolute;
     bottom: 2em;
     left: 0;
   }

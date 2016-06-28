@@ -42,13 +42,8 @@ remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 add_action( 'genesis_sidebar', 'hc_do_sidebar' );
 function hc_do_sidebar() {
 
-	ob_start();
-	dynamic_sidebar( 'sidebar' );
-	$html = ob_get_clean();
-
-	$html = '<div class="sidebar-widgets">' . $html . '</div>';
-	$html = str_replace( '<section id="hc_follow_widget', '</div><div class="affix-on-scroll"><section id="hc_follow_widget', $html );
-
-	echo $html;
+	echo '<div class="affix-on-scroll">';
+		dynamic_sidebar( 'sidebar' );
+	echo '</div>';
 
 }
