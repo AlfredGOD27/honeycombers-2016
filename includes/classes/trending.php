@@ -88,7 +88,7 @@ class HC_Trending {
 			$client->setApplicationName('Honeycombers');
 			$client->setClientId($id);
 			$client->setClientSecret($secret);
-			$client->refreshToken($token['refresh_token']);
+			$client->setAccessToken($token);
 
 			$analytics = new Google_Service_Analytics($client);
 			$results   = $analytics->data_ga->get(

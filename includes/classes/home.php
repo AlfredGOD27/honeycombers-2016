@@ -440,7 +440,7 @@ class HC_Home {
 		}
 
 		if( empty($post_ids) )
-			$post_ids = get_post_meta( $post->ID, '_hc_home_trending_post_ids', true );
+			return;
 
 		?>
 		<section class="home-section home-section-trending">
