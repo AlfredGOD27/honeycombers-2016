@@ -1990,7 +1990,7 @@ img.alignright,
 }
 .wp-caption img {
   display: block;
-  margin-bottom: .5em;
+  margin: 0 auto .5em;
 }
 .wp-caption .wp-caption-text {
   color: #919191;
@@ -4639,11 +4639,6 @@ table > tbody > tr:nth-child(odd) > th {
 .entry .entry-content {
   margin-bottom: 1.5em;
 }
-.entry-content img {
-  margin-right: -.75em;
-  margin-left: -.75em;
-  max-width: calc(100% + 1.5em);
-}
 .entry-content h2 {
   margin-bottom: .2em;
   color: #fe862c;
@@ -4685,6 +4680,13 @@ table > tbody > tr:nth-child(odd) > th {
   margin-bottom: 1.5em;
 }
 
+@media (max-width: 776px) {
+  .entry-content img {
+    margin-right: -.75em;
+    margin-left: -.75em;
+    max-width: calc(100% + 1.5em);
+  }
+}
 .more-link {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
