@@ -9,6 +9,20 @@ class HC_Trending {
 
 	}
 
+	public function get_token() {
+
+		if( is_multisite() ) {
+			switch_to_blog(2);
+			$token = get_option( '_hc_google_token' );
+			restore_current_blog();
+		} else {
+			$token = get_option( '_hc_google_token' );
+		}
+
+		return $token;
+
+	}
+
 	public function manage_token() {
 
 		// Google API
@@ -22,7 +36,7 @@ class HC_Trending {
 			include_once 'Google/Service/Analytics.php';
 		}
 
-		$token = get_option( '_hc_google_token' );
+		$token = $this->get_token();
 		if( !empty($token) )
 			return;
 
@@ -71,7 +85,7 @@ class HC_Trending {
 			include_once 'Google/Service/Analytics.php';
 		}
 
-		$token      = get_option('_hc_google_token');
+		$token      = $this->get_token();
 		$profile_id = get_option('options__hc_ga_profile_id');
 		if( empty($token) || empty($profile_id) )
 			return;
