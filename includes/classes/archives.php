@@ -383,7 +383,6 @@ class HC_Archives {
 			switch( $style ) {
 				case 'tiny':
 					// Home 'other' posts
-					echo HC()->utilities->get_category_icon_html( $terms[0] );
 					HC()->folders->display_add_button( $post_id, true, true );
 
 					if( $has_image ) {
