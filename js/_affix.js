@@ -23,7 +23,7 @@
 
 		// Update measurements
 		container_height = container.height();
-		container_offset = container.offset().top;
+		container_offset = sidebar.offset().top;
 		sidebar_width = sidebar.width();
 		sidebar_height = sidebar.height();
 		window_height = $(window).height();
@@ -85,6 +85,8 @@
 			viewport_offset_height = $('.sticky-header').outerHeight() + $('#wpadminbar').outerHeight(),
 			footer_offset = $('.site-footer').offset().top,
 			container_distance = lastScrollY - container_offset + window_height - container_height - 16;
+
+		container_offset = sidebar.offset().top;
 
 		if( container_offset + container_height < lastScrollY + viewport_offset_height + window_height && container_distance > 0 ) {
 			container.css( 'transform', 'translateY(' + container_distance + 'px)' );
