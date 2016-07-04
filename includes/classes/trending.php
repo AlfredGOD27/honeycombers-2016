@@ -57,6 +57,7 @@ class HC_Trending {
 		$client->setClientSecret($secret);
 		$client->setRedirectUri( get_bloginfo('url') );
 		$client->setAccessType('offline');
+		$client->setApprovalPrompt('force');
 		$client->setScopes(array('https://www.googleapis.com/auth/analytics.readonly'));
 
 		if( !isset($_GET['code']) ) {
