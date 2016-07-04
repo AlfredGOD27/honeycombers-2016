@@ -6581,6 +6581,12 @@ table > tbody > tr:nth-child(odd) > th {
           flex-direction: column;
   height: 100vh;
 }
+.page-template-page_directory .header-navigation-container {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
 .page-template-page_directory .site-top,
 .page-template-page_directory .site-header,
 .page-template-page_directory .nav-primary-wrapper {
