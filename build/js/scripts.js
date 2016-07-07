@@ -6059,7 +6059,7 @@ function hc_maybe_load_facebook() {
 
 			var player = YT.get( $(this).attr('id') );
 
-			if( 'undefined' !== typeof player )
+			if( 'undefined' !== typeof player && 'function' === typeof player.stopVideo )
 				player.stopVideo();
 		});
 	});
