@@ -557,7 +557,7 @@ $listing-slider-height: 18.75em;
 .listings-more {
 	position: absolute;
 	right: 0;
-	bottom: 0;
+	bottom: .25px;
 	padding-left: 1.75em;
 	width: 48.25%;
 	height: $listing-slider-height * .2;

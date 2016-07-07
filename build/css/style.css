@@ -7668,7 +7668,7 @@ table > tbody > tr:nth-child(odd) > th {
 .listings-more {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: .25px;
   padding-left: 1.75em;
   width: 48.25%;
   height: 3.75em;
