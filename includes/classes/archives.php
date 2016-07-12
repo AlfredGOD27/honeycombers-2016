@@ -211,7 +211,7 @@ class HC_Archives {
 				$args['orderby']  = 'post__in';
 				break;
 			case 'recent':
-				$post_count             = get_field( '_hc_category_slider_post_count', $this->term );
+				$post_count             = get_field( '_hc_category_post_count', $this->term );
 				$args['posts_per_page'] = absint($post_count);
 				break;
 			default:
