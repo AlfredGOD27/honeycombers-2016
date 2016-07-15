@@ -5806,7 +5806,6 @@ function hc_maybe_load_facebook() {
 		);
 	} else {
 		$('.listing-slider-for').slick({
-			adaptiveHeight: true,
 			arrows: true,
 			slidesToScroll: 1,
 			slidesToShow: 1,
@@ -6043,7 +6042,6 @@ function hc_maybe_load_facebook() {
 		});
 	} else {
 		$('.slider-for').slick({
-			adaptiveHeight: true,
 			arrows: true,
 			slidesToScroll: 1,
 			slidesToShow: 1,
@@ -6498,7 +6496,6 @@ function hc_maybe_load_facebook() {
 		});
 	} else {
 		$('.event-slider-for').slick({
-			adaptiveHeight: true,
 			arrows: true,
 			slidesToScroll: 1,
 			slidesToShow: 1,

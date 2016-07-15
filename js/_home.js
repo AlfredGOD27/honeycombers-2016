@@ -36,7 +36,6 @@
 		);
 	} else {
 		$('.listing-slider-for').slick({
-			adaptiveHeight: true,
 			arrows: true,
 			slidesToScroll: 1,
 			slidesToShow: 1,
