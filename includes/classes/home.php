@@ -486,14 +486,25 @@ class HC_Home {
 		$enable = get_post_meta( $post->ID, '_hc_home_enable_trending', true );
 		if( empty($enable) )
 			return;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/cooper_2
 		$transient_name = 'hc_home_trending_ids';
 		$post_ids       = get_transient($transient_name);
 		if( false === $post_ids ) {
 			$post_ids = HC()->trending->get_trending();
 			set_transient( $transient_name, $post_ids, HOUR_IN_SECONDS * 4 );
 		}
+<<<<<<< HEAD
 		if( empty($post_ids) )
 			return;
+=======
+
+		if( empty($post_ids) )
+			return;
+
+>>>>>>> origin/cooper_2
 		?>
 		<section class="home-section home-section-trending">
 			<div class="wrap">

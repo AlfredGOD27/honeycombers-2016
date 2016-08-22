@@ -4687,7 +4687,10 @@ table > tbody > tr:nth-child(odd) > th {
     max-width: calc(100% + 1.5em);
   }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/cooper_2
 .more-link {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
@@ -4895,12 +4898,21 @@ table > tbody > tr:nth-child(odd) > th {
   }
   .affix-on-scroll.affix {
     position: absolute;
+<<<<<<< HEAD
      left: 0;
     -webkit-transition: -webkit-transform .1s;
     transition: transform .1s;
   }
   .affix-on-scroll.affix-bottom {
 	position: absolute;
+=======
+    left: 0;
+    -webkit-transition: -webkit-transform .1s;
+            transition: transform .1s;
+  }
+  .affix-on-scroll.affix-bottom {
+    position: absolute;
+>>>>>>> origin/cooper_2
     bottom: 2em;
     left: 0;
   }
@@ -6586,10 +6598,17 @@ table > tbody > tr:nth-child(odd) > th {
   height: 100vh;
 }
 .page-template-page_directory .header-navigation-container {
+<<<<<<< HEAD
 	-webkit-box-flex: 0;
 	-webkit-flex: 0 0 auto;
 	-ms-flex: 0 0 auto;
 	flex: 0 0 auto;
+=======
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+>>>>>>> origin/cooper_2
 }
 .page-template-page_directory .site-top,
 .page-template-page_directory .site-header,
@@ -7423,7 +7442,11 @@ table > tbody > tr:nth-child(odd) > th {
     -webkit-order: 3;
         -ms-flex-order: 3;
             order: 3;
+<<<<<<< HEAD
     margin:0 auto 1.5em auto;
+=======
+    margin: 0 auto;
+>>>>>>> origin/cooper_2
     padding: 1em .5em;
     border: 1px solid #fe862c;
     text-align: center;
