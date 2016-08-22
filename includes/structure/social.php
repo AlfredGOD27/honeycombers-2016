@@ -4,9 +4,6 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function hc_do_social() {
 
-	if( !function_exists('get_field') )
-		return;
-
 	$sites = array(
 		'facebook'  => 'Facebook',
 		'youtube'   => 'YouTube',
