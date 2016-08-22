@@ -4934,10 +4934,6 @@ $.magnificPopup.registerModule(RETINA_NS, {
 			if( !im.greaterThan('portrait') )
 				affix_on = false;
 		}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/cooper_2
 
 		if( affix_on ) {
 			// If so, lock container width
@@ -4954,27 +4950,6 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 	function on_scroll() {
 
-<<<<<<< HEAD
-=======
-
-		if( affix_on ) {
-			// If so, lock container width
-			container.css( 'width', sidebar_width );
-		} else {
-			// If off, undo any modifications
-			container.css( 'width', 'auto' );
-			container.css( 'bottom', 'auto' );
-			container.removeClass('affix');
-			container.removeClass('affix-bottom');
-		}
-
-	}
-
-	function on_scroll() {
-
->>>>>>> 1d5f7085710ab1a738ce1b4d8f7f8e5e00e27890
-=======
->>>>>>> origin/cooper_2
 		lastScrollY = window.scrollY;
 
 		if( affix_on )
@@ -5830,6 +5805,7 @@ function hc_maybe_load_facebook() {
 		);
 	} else {
 		$('.listing-slider-for').slick({
+			adaptiveHeight: true,
 			arrows: true,
 			slidesToScroll: 1,
 			slidesToShow: 1,
@@ -6065,6 +6041,7 @@ function hc_maybe_load_facebook() {
 		});
 	} else {
 		$('.slider-for').slick({
+			adaptiveHeight: true,
 			arrows: true,
 			slidesToScroll: 1,
 			slidesToShow: 1,
@@ -6497,10 +6474,6 @@ function hc_maybe_load_facebook() {
 			calendar_nav;
 
 		calendar_slider = $('.event-slider-for').slick({
-<<<<<<< HEAD
-=======
-			adaptiveHeight: true,
->>>>>>> origin/cooper_2
 			arrows: true,
 			asNavFor: '.event-slider-nav',
 			fade: true,
