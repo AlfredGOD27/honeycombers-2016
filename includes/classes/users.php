@@ -11,6 +11,9 @@ class HC_Users {
 		add_action( 'wp_ajax_nopriv_hc_ajax_facebook_register_or_login', array($this, 'ajax_facebook') );
 		add_action( 'wp_footer', array($this, 'display_modal') );
 
+		add_filter('acf/update_value/name=_hc_profile_image_id', array($this, 'save_ms_user_image'), 99, 3);
+		add_filter('acf/load_field/name=_hc_profile_image_id', array($this, 'load_ms_user_image_name'));
+
 	}
 
 	private function die_with_error( $message ) {
@@ -453,7 +456,7 @@ class HC_Users {
 
 			<h2>Welcome to Honeycombers!</h2>
 
-			<p class="lead">Lorem ipsum...</p>
+			<p class="lead">Discover, save and share interesting stories on Honeycombers.</p>
 
 			<div class="messages"></div>
 
@@ -469,6 +472,39 @@ class HC_Users {
 			<p class="join">Already have an account? <a href="#login-popup" class="open-popup-link" rel="nofollow">Sign in here</a></p>
 		</aside>
 		<?php
+	}
+
+	public function get_ms_user_image_key() {
+
+		$key = '_hc_profile_image_id';
+		if( is_multisite() ) {
+			$site_id = get_current_blog_id();
+			if( 2 !== absint($site_id) )
+				$key .= '_' . get_current_blog_id();
+		}
+
+		return $key;
+
+	}
+
+	public function save_ms_user_image( $value, $post_id, $field  ) {
+
+		if( is_multisite() )
+			update_user_meta( $post_id, $this->get_ms_user_image_key(), $value );
+
+		return $value;
+
+	}
+
+	public function load_ms_user_image_name( $field ) {
+
+		if( is_multisite() ) {
+			$field['name']  = $this->get_ms_user_image_key();
+			$field['_name'] = $this->get_ms_user_image_key();
+		}
+
+		return $field;
+
 	}
 
 }

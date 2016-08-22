@@ -149,10 +149,6 @@
 		background-color: transparent;
 		text-align: left;
 
-		&:focus {
-			outline: none;
-		}
-
 		span {
 			flex-grow: 1;
 			flex-shrink: 0;

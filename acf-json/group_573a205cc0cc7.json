@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_575f7567f77b3",
-            "label": "Top Takeover",
+            "label": "Takeover",
             "name": "_hc_takeover",
             "type": "repeater",
             "instructions": "",
@@ -143,7 +143,7 @@
         },
         {
             "key": "field_573a205cc6c4d",
-            "label": "MPU #2",
+            "label": "MPU #2 Desktop",
             "name": "_hc_home_mpu_2_desktop",
             "type": "repeater",
             "instructions": "",
@@ -199,6 +199,69 @@
                     "maxlength": "",
                     "rows": "",
                     "new_lines": "wpautop",
+                    "readonly": 0,
+                    "disabled": 0
+                }
+            ]
+        },
+        {
+            "key": "field_57884f99ea182",
+            "label": "MPU #2 Mobile",
+            "name": "_hc_home_mpu_2_mobile",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": "",
+            "max": 1,
+            "layout": "table",
+            "button_label": "Add Row",
+            "sub_fields": [
+                {
+                    "key": "field_5788502c03f43",
+                    "label": "Head Code",
+                    "name": "head_code",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "",
+                    "readonly": 0,
+                    "disabled": 0
+                },
+                {
+                    "key": "field_5788503503f44",
+                    "label": "Body Code",
+                    "name": "body_code",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": "",
+                    "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
                 }
@@ -290,5 +353,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1466048500
+    "modified": 1468551391
 }

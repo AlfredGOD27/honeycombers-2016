@@ -10,6 +10,7 @@
         }
     ],
     "require": {
-		"bjeavons/zxcvbn-php": "*"
+		"bjeavons/zxcvbn-php": "*",
+        "google/apiclient": "^2.0"
     }
 }

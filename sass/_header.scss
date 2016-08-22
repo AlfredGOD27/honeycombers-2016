@@ -107,15 +107,8 @@
 
 		> .wrap {
 			flex-wrap: wrap;
-			padding-left: 0;
-		}
-	}
-}
-
-@include media('<=phone') {
-	.site-header {
-		> .wrap {
 			padding-right: 0;
+			padding-left: 0;
 		}
 	}
 }
@@ -190,6 +183,7 @@
 		float: none;
 		padding-top: 0;
 		padding-bottom: 0;
+		width: 100%;
 
 		.search-form {
 			max-width: 100%;

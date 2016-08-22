@@ -165,7 +165,7 @@ class HC_Entry {
 		<?php
 
 	}
-
+	
 	public function display_image() {
 
 		global $post;
@@ -188,11 +188,13 @@ class HC_Entry {
 			);
 
 			$sponsored = get_post_meta( $post->ID, '_hc_post_is_sponsored', true );
+			/* Hidden at the moment
 			if( !empty($sponsored) ) {
 				?>
 				<span class="spon-tag">Sponsored</span>
 				<?php
 			}
+			*/
 			?>
 		</div>
 		<?php

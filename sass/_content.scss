@@ -1,6 +1,7 @@
 .breadcrumbs {
 	margin-bottom: 1em;
 	color: $grey-lighter;
+	line-height: 1;
 
 	> span {
 		font-size: .75em;
@@ -102,6 +103,13 @@
 	img {
 		max-width: none;
 		width: 100%;
+	}
+}
+
+@include media('<=portrait') {
+	.featured-image-container {
+		margin-right: -.75em;
+		margin-left: -.75em;
 	}
 }
 
@@ -279,6 +287,7 @@
 				margin-bottom: 0;
 
 				&:before {
+
 					@include meta-font;
 					margin-right: .25em;
 					color: $text;
@@ -388,6 +397,16 @@
 
 	table {
 		margin-bottom: 1.5em;
+	}
+}
+
+@include media('<=portrait') {
+	.entry-content {
+		img {
+			margin-right: -.75em;
+			margin-left: -.75em;
+			max-width: calc(100% + 1.5em);
+		}
 	}
 }
 

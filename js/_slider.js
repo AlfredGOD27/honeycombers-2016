@@ -4,7 +4,7 @@
 		$(this).fitVids();
 	});
 
-	if( !im.lessThan('portrait') ) {
+	if( im.greaterThan('portrait') ) {
 		$('.slider-for').slick({
 			adaptiveHeight: true,
 			arrows: true,
@@ -30,7 +30,6 @@
 		});
 	} else {
 		$('.slider-for').slick({
-			adaptiveHeight: true,
 			arrows: true,
 			slidesToScroll: 1,
 			slidesToShow: 1,
@@ -46,7 +45,7 @@
 
 			var player = YT.get( $(this).attr('id') );
 
-			if( 'undefined' !== typeof player )
+			if( 'undefined' !== typeof player && 'function' === typeof player.stopVideo )
 				player.stopVideo();
 		});
 	});

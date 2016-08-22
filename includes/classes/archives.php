@@ -16,7 +16,6 @@ class HC_Archives {
 		add_action( 'wp', array($this, 'init') );
 		add_action( 'wp_ajax_hc_get_next_page_html', array($this, 'get_next_page_html') );
 		add_action( 'wp_ajax_nopriv_hc_get_next_page_html', array($this, 'get_next_page_html') );
-		add_action( 'genesis_after_header', array($this, 'cat_leaderboard'), 18 );
 
 	}
 
@@ -27,15 +26,15 @@ class HC_Archives {
 		$this->post_style = 'half';
 		if( is_search() ) {
 			// If search, set to infinite mode and fix title
-			add_action( 'genesis_after_header', array($this, 'do_search_title'), 17 );
+			add_action( 'genesis_after_header', array($this, 'do_search_title'), 14 );
 			$this->mode = 'infinite';
 		} elseif( is_author() ) {
 			// If search, set to infinite mode and fix title
-			add_action( 'genesis_after_header', array($this, 'do_author_box'), 17 );
+			add_action( 'genesis_after_header', array($this, 'do_author_box'), 14 );
 			$this->mode       = 'infinite';
 			$this->post_style = 'full';
 		} elseif( is_archive() ) {
-			add_action( 'genesis_after_header', array($this, 'do_taxonomy_title_description'), 17 );
+			add_action( 'genesis_after_header', array($this, 'do_taxonomy_title_description'), 14 );
 
 			$this->term = get_queried_object();
 
@@ -53,7 +52,7 @@ class HC_Archives {
 			// If is top level category with subcategories, show sections. Otherwise, show infinite.
 			if( !empty($this->term->parent) ) {
 				$this->mode = 'infinite';
-				add_action( 'genesis_after_header', array($this, 'cat_leaderboard'), 14 );
+				add_action( 'genesis_after_header', array($this, 'cat_leaderboard'), 13 );
 			} else {
 				$args = array(
 					'parent' => $this->term->term_id,
@@ -66,6 +65,7 @@ class HC_Archives {
 				}
 			}
 
+			add_action( 'genesis_after_header', array($this, 'cat_leaderboard'), 17 );
 		}
 
 		if( false === $this->mode )
@@ -126,13 +126,9 @@ class HC_Archives {
 		$this->mode       = 'sub-sections';
 		$this->post_style = 'half';
 
-		add_action( 'post_class', array($this, 'post_class') );
-		remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
-		add_action( 'genesis_entry_content', array($this, 'do_excerpt') );
-
 		remove_action( 'genesis_after_endwhile', 'genesis_posts_nav' );
 
-		genesis_standard_loop();
+		$this->archive_loop();
 
 		wp_reset_query();
 
@@ -177,30 +173,6 @@ class HC_Archives {
 		HC()->authors->do_author_box( 'archive' );
 
 	}
-	
-	public function cat_leaderboard() {
-		?>
-        	<section id="leaderboard" class="clearfix">
-            	<div class="content-sidebar-wrap">
-					<?php
-						$term = get_queried_object();
-						
-							if( have_rows('_hc_leaderboard', 'category_' . $term->term_id . '') ):
-								while ( have_rows('_hc_leaderboard', 'category_' . $term->term_id . '') ) : the_row();
-								echo '<script>';
-									the_sub_field('head_code');
-								echo '</script>';
-									the_sub_field('body_code');
-								endwhile;
-							else :
-							endif;
-					?>
-            	</div>
-            </section>
-            
-            
-		<?php
-	}
 
 	public function do_taxonomy_title_description() {
 
@@ -240,7 +212,7 @@ class HC_Archives {
 				$args['orderby']  = 'post__in';
 				break;
 			case 'recent':
-				$post_count             = get_field( '_hc_category_slider_post_count', $this->term );
+				$post_count             = get_field( '_hc_category_post_count', $this->term );
 				$args['posts_per_page'] = absint($post_count);
 				break;
 			default:
@@ -249,6 +221,39 @@ class HC_Archives {
 
 		HC()->sliders->display( $args );
 
+	}
+
+	public function cat_leaderboard() {
+		?>
+        	<section id="leaderboard" class="clearfix cat_leaderboard">
+            	<div class="content-sidebar-wrap">
+					<?php
+						if ($this->term->parent == 0) {
+							$cat_term = $this->term->term_id;
+						} elseif ($this->term->term_id == 6363) {
+							$cat_term = $this->term->term_id;
+						} else {
+							$cat_term = $this->term->category_parent;
+						}
+                        // Category level 1
+                        if( have_rows('_hc_leaderboard', 'category_' . $cat_term . '') ):
+                            while ( have_rows('_hc_leaderboard', 'category_' . $cat_term . '') ) : the_row();
+								$head = get_sub_field('head_code');
+								$body = get_sub_field('body_code');
+								
+								if (!empty($head) && !empty($body)) {
+									echo '<script>'.$head.'</script><br>'.$body.'';
+								} else {	
+									 echo '<div style="display:none" id="testing"><script>'.$head.'</script><br>'.$body.'</div>';
+									 
+								}
+                            endwhile;
+                        else :
+                        endif;
+                    ?>
+            	</div>
+            </section>
+		<?php
 	}
 
 	public function subcategory_sections() {
@@ -328,7 +333,7 @@ class HC_Archives {
 
 		<div class="entry-content entry-excerpt" itemprop="description">
 			<?php
-			echo '<p>' . HC()->formatting->get_excerpt( $post, 170 ) . '</p>';
+			echo '<p>' . HC()->formatting->get_excerpt( $post, 140 ) . '</p>';
 			?>
 		</div>
 
@@ -391,7 +396,6 @@ class HC_Archives {
 			switch( $style ) {
 				case 'tiny':
 					// Home 'other' posts
-					echo HC()->utilities->get_category_icon_html( $terms[0] );
 					HC()->folders->display_add_button( $post_id, true, true );
 
 					if( $has_image ) {

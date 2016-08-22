@@ -209,3 +209,11 @@ function hc_remove_files_on_upgrade() {
 		unlink(ABSPATH . 'wp-login.php');
 
 }
+
+// Add blog ID to body class
+add_filter( 'body_class', 'network_blog_id_class_name' );
+function network_blog_id_class_name( $classes ) {
+        global $blog_id;
+		$classes[] = 'body-blog-'.$blog_id;
+	return $classes;
+}

@@ -641,43 +641,7 @@
             "readonly": 0,
             "disabled": 0
         },
-        {
-            "key": "field_5702f63caa6de",
-            "label": "Posts",
-            "name": "_hc_home_trending_post_ids",
-            "type": "relationship",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_57051bf8118bb",
-                        "operator": "==",
-                        "value": "1"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "post"
-            ],
-            "taxonomy": [],
-            "filters": [
-                "search",
-                "taxonomy"
-            ],
-            "elements": [
-                "featured_image"
-            ],
-            "min": "",
-            "max": "",
-            "return_format": "id"
-        },
-        {
+        { 
             "key": "field_5702f657aa6df",
             "label": "Latest Posts",
             "name": "latest_posts",
@@ -758,5 +722,5 @@
     ],
     "active": 1,
     "description": "",
-    "modified": 1465406023
+    "modified": 1467040229
 }

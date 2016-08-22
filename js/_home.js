@@ -5,7 +5,7 @@
 
 	$('.home-section-featured-video-listings iframe').addClass('mute').addClass('autoplay');
 
-	if( !im.lessThan('portrait') ) {
+	if( im.greaterThan('portrait') ) {
 		$('.listing-slider-for').slick({
 			adaptiveHeight: true,
 			arrows: false,
@@ -36,7 +36,6 @@
 		);
 	} else {
 		$('.listing-slider-for').slick({
-			adaptiveHeight: true,
 			arrows: true,
 			slidesToScroll: 1,
 			slidesToShow: 1,

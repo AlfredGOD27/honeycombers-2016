@@ -31,6 +31,7 @@ final class HC {
 		'share',
 		'sliders',
 		'subscriptions',
+		'trending',
 		'users',
 		'utilities',
 		'videos',

@@ -44,9 +44,19 @@ class HC_Ads {
 						if( false !== $result )
 							$this->ads[$position] = $result;
 					}
+						
 					break;
 				case 'page_templates/page_calendar.php':
 					// Calendar Ads
+					$ads = array(
+						'leaderboard-1' => '_hc_events_leaderboard',
+					);
+					foreach( $ads as $position => $key ) {
+						$ads    = get_field( $key );
+						$result = $this->ad_field_to_array( $ads );
+						if( false !== $result )
+							$this->ads[$position] = $result;
+					}
 					break;
 			}
 		} elseif( is_search() ) {
@@ -55,8 +65,8 @@ class HC_Ads {
 			$ad  = $this->ad_field_to_array( $ads );
 			if( false !== $ad )
 				$this->ads['mpu-1'] = $ad;
-			$ads_2               = get_field( '_hc_search_mpu_2', 'option' );
-			$ad_2                = $this->ad_field_to_array( $ads_2 );
+			$ads_2 = get_field( '_hc_search_mpu_2', 'option' );
+			$ad_2  = $this->ad_field_to_array( $ads_2 );
 			if( false !== $ad_2 )
 				$this->ads['mpu-2'] = $ad_2;
 		} elseif( is_author() ) {
@@ -65,8 +75,8 @@ class HC_Ads {
 			$ad  = $this->ad_field_to_array( $ads );
 			if( false !== $ad )
 				$this->ads['mpu-1'] = $ad;
-			$ads_2               = get_field( '_hc_author_mpu_2', 'option' );
-			$ad_2                = $this->ad_field_to_array( $ads_2 );
+			$ads_2 = get_field( '_hc_author_mpu_2', 'option' );
+			$ad_2  = $this->ad_field_to_array( $ads_2 );
 			if( false !== $ad_2 )
 				$this->ads['mpu-2'] = $ad_2;
 		} elseif( is_singular('post') ) {

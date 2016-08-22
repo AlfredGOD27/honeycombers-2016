@@ -358,7 +358,7 @@ class HC_Migration {
 
 		// Update user keys
 		$keys = array(
-			'wp_user_avatar' => '_hc_profile_image_id',
+			'wp_user_avatar' => HC()->users->get_ms_user_image_key(),
 		);
 
 		foreach( $keys as $from => $to ) {

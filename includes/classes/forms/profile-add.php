@@ -55,7 +55,7 @@ class HC_Profile_Add_Form extends HC_Form_Abstract {
 			'table'       => 'users',
 			'required'    => true,
 			'classes'     => array('first', 'one-half'),
-			'description' => 'Password must be at least 8 characters, and contain at least one number and one symbol.',
+			'description' => 'We recommend that you create a password of at least 8 characters, and contain at least one number and one symbol.',
 		);
 		$this->fields[] = array(
 			'slug'     => 'user_pass_2',

@@ -2,9 +2,9 @@
 
 if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+
 remove_action( 'genesis_footer', 'genesis_do_footer' );
 add_action( 'genesis_footer', 'hc_do_footer' );
-add_action( 'genesis_after_footer', 'takeover_after_footer' );
 function hc_do_footer() {
 
 	?>
@@ -105,6 +105,7 @@ function hc_do_footer() {
 
 }
 
+
 // add_action( 'wp_footer', 'hc_disable_pointer_events_on_scroll', 99 );
 /**
  * Disable pointer events when scrolling. Be careful using this with CSS :hover-enabled menus.
@@ -172,26 +173,4 @@ function hc_ie_font_face_fix() {
 
 }
 
-function takeover_after_footer() {
-			if ( is_page('calendar') ) {	 ?>
-					<?php 
-						// Takeover Ad
-						if( have_rows('_hc_events_takeover') ):
-							while ( have_rows('_hc_events_takeover') ) : the_row();
-							$bg_color = get_sub_field('background_color');
-							$image = get_sub_field('image');
-							$url = get_sub_field('url');
-		
-						if ($image) {
-					?>
-						<div id="takeover-bottom" style="background: <?php echo $bg_color; ?>; text-align: center;"><a href="<?php echo $url ?>"><img src="<?php echo $image['url'] ?>"></a></div>
-					<?php 
-						}
-							endwhile;
-						else :
-						endif;
-					?>
-					
-			<?php
-		}
-}
+

@@ -2,10 +2,6 @@
 	.slick-slide {
 		position: relative;
 		border: none;
-
-		&:focus {
-			outline: none;
-		}
 	}
 }
 
@@ -17,10 +13,6 @@
 	background-color: $grey-dark;
 	background-color: rgba( $grey-dark, .3 );
 	transform: translateY(-50%);
-
-	&:focus {
-		outline: none;
-	}
 
 	i {
 		font-size: 1.5em;

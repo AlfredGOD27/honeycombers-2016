@@ -61,6 +61,37 @@
             "default_value": 0
         },
         {
+            "key": "field_5746160dfdedb",
+            "label": "Sticky Position",
+            "name": "_hc_sticky_position",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_574615f9fdeda",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": "",
+            "step": 1,
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
             "key": "field_56e59c149fb8d",
             "label": "Sponsored?",
             "name": "_hc_post_is_sponsored",
@@ -75,6 +106,62 @@
             },
             "message": "",
             "default_value": 0
+        },
+        {
+            "key": "field_576b462a69b87",
+            "label": "MPU Image",
+            "name": "_hc_mpu_image",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_56e59c149fb8d",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_576b465169b88",
+            "label": "MPU URL",
+            "name": "_hc_mpu_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_56e59c149fb8d",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": 50,
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_57475fb98762f",
@@ -118,7 +205,8 @@
             "other_choice": 0,
             "save_other_choice": 0,
             "default_value": "default",
-            "layout": "horizontal"
+            "layout": "horizontal",
+            "allow_null": 0
         },
         {
             "key": "field_56e81bd0c7274",
@@ -175,7 +263,8 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "insert": "append"
         }
     ],
     "location": [
@@ -195,5 +284,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1465841171
+    "modified": 1466648290
 }

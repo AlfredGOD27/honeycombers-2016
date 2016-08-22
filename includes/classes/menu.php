@@ -213,7 +213,7 @@ class HC_Menu {
 						}
 
 						$current = '';
-						if( $is_singular ) {
+						if( $is_singular && !empty($primary_term) ) {
 							if( $top_item_id === $primary_term->term_id || $top_item_id === $primary_term->parent )
 								$current = 'current';
 						} elseif( $is_archive ) {
@@ -254,6 +254,16 @@ class HC_Menu {
 				</div>
 			</div>
 		</nav>
+        <nav class="mobile-site-nav">
+            <?php
+            wp_nav_menu(
+                array(
+                    'theme_location' => 'top',
+                    'depth'          => 1,
+                )
+            );
+            ?>
+        </nav>
 		<?php
 
 	}

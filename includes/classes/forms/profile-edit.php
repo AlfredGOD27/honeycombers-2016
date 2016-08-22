@@ -67,7 +67,7 @@ class HC_Profile_Edit_Form extends HC_Form_Abstract {
 			'classes'     => array('one-third'),
 		);
 		$this->fields[] = array(
-			'slug'               => '_hc_profile_image_id',
+			'slug'               => HC()->users->get_ms_user_image_key(),
 			'label'              => 'Profile Image (<1MB)',
 			'type'               => 'file',
 			'table'              => 'usermeta',

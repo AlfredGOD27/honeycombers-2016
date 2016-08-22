@@ -17,6 +17,7 @@ class HC_Home {
 		if( 'page_templates/page_home.php' !== get_page_template_slug() )
 			return;
 
+		//add_action( 'genesis_before', array($this, 'takeover') );
 		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 		remove_action( 'genesis_before_loop', 'hc_do_breadcrumbs' );
 
@@ -25,7 +26,8 @@ class HC_Home {
 		add_action( 'genesis_loop', array($this, 'do_mobile_buttons') );
 		add_action( 'genesis_loop', array($this, 'do_featured_posts') );
 		add_action( 'genesis_loop', array($this, 'do_featured_video_and_listings') );
-		add_action( 'genesis_loop', array($this, 'takeover_before_featured_events') );
+		//add_action( 'genesis_loop', array($this, 'takeover') );
+		add_action( 'genesis_loop', array($this, 'hc_site_takeover_bottom') );
 		add_action( 'genesis_loop', array($this, 'do_featured_events_and_join') );
 		add_action( 'genesis_loop', array($this, 'do_trending') );
 		add_action( 'genesis_loop', array($this, 'do_latest_posts') );
@@ -362,33 +364,46 @@ class HC_Home {
 		}
 
 	}
-	
-	function takeover_before_featured_events() {
-		if ( is_front_page() ) { ?>
-				<?php 
+	function takeover() {
 					// Takeover Ad
 					if( have_rows('_hc_takeover') ):
 						while ( have_rows('_hc_takeover') ) : the_row();
 						$bg_color = get_sub_field('background_color');
 						$image = get_sub_field('image');
 						$url = get_sub_field('url');
-	
 					if ($image) {
 				?>
 					<section class="home-section home-section-takeover">
-						<div id="takeover-bottom" style="background: <?php echo $bg_color; ?>; text-align: center;"><a href="<?php echo $url ?>"><img src="<?php echo $image['url'] ?>"></a></div>
+						<div class="takeover" style="background: <?php echo $bg_color; ?> ;"><a href="<?php echo $url ?>" target="blank" class="takeover-link"><img src="<?php echo $image['url'] ?>"></a></div>
 					</section>
-				<?php 
+				<?php
 					}
 						endwhile;
 					else :
 					endif;
 				?>
-					
-			<?php
-		}
-	}
 
+			<?php
+	}
+	function hc_site_takeover_bottom() {
+		// Takeover Ad
+		if( have_rows('_hc_site_takeover_bottom','option') ):
+			while ( have_rows('_hc_site_takeover_bottom','option') ) : the_row();
+			$bg_color = get_sub_field('background_color');
+			$head = get_sub_field('head_code');
+			$body = get_sub_field('body_code');
+				?>
+				<section class="bottom-takeover">
+					<div class="takeover" style="background-color: <?php echo $bg_color; ?>;">
+						<?php echo $head; ?>
+						<?php echo $body; ?>
+					</div>
+				</section>
+				<?php
+			endwhile;
+		else :
+		endif;
+	}
 	public function do_featured_events_and_join() {
 
 		global $post;
@@ -452,13 +467,18 @@ class HC_Home {
 	}
 
 	public function do_trending() {
-
 		global $post;
-
 		$enable = get_post_meta( $post->ID, '_hc_home_enable_trending', true );
 		if( empty($enable) )
 			return;
-
+		$transient_name = 'hc_home_trending_ids';
+		$post_ids       = get_transient($transient_name);
+		if( false === $post_ids ) {
+			$post_ids = HC()->trending->get_trending();
+			set_transient( $transient_name, $post_ids, HOUR_IN_SECONDS * 4 );
+		}
+		if( empty($post_ids) )
+			return;
 		?>
 		<section class="home-section home-section-trending">
 			<div class="wrap">
@@ -469,8 +489,7 @@ class HC_Home {
 
 				<div class="clearfix trending-slider hide-no-js">
 					<?php
-					$i        = 1;
-					$post_ids = get_post_meta( $post->ID, '_hc_home_trending_post_ids', true );
+					$i = 1;
 					foreach( $post_ids as $post_id ) {
 						if( !has_post_thumbnail($post_id) )
 							continue;
