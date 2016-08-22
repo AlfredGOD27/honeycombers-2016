@@ -153,10 +153,6 @@
 			calendar_nav;
 
 		calendar_slider = $('.event-slider-for').slick({
-<<<<<<< HEAD
-=======
-			adaptiveHeight: true,
->>>>>>> origin/cooper_2
 			arrows: true,
 			asNavFor: '.event-slider-nav',
 			fade: true,
