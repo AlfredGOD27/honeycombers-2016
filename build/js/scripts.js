@@ -4934,6 +4934,7 @@ $.magnificPopup.registerModule(RETINA_NS, {
 			if( !im.greaterThan('portrait') )
 				affix_on = false;
 		}
+<<<<<<< HEAD
 
 		if( affix_on ) {
 			// If so, lock container width
@@ -4950,6 +4951,24 @@ $.magnificPopup.registerModule(RETINA_NS, {
 
 	function on_scroll() {
 
+=======
+
+		if( affix_on ) {
+			// If so, lock container width
+			container.css( 'width', sidebar_width );
+		} else {
+			// If off, undo any modifications
+			container.css( 'width', 'auto' );
+			container.css( 'bottom', 'auto' );
+			container.removeClass('affix');
+			container.removeClass('affix-bottom');
+		}
+
+	}
+
+	function on_scroll() {
+
+>>>>>>> 1d5f7085710ab1a738ce1b4d8f7f8e5e00e27890
 		lastScrollY = window.scrollY;
 
 		if( affix_on )

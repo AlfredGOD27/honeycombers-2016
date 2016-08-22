@@ -12,7 +12,31 @@ class HC_Events {
 		add_action( 'admin_notices', array($this, 'maybe_display_invalid_dates_warning') );
 		add_action( 'wp', array($this, 'init') );
 		add_action( 'pre_get_posts', array($this, 'filter_events_query') );
+		add_action( 'genesis_before', array($this, 'takeover') );
+		add_action( 'genesis_after', array($this, 'takeover') );
 
+	}
+	
+	function takeover() { 
+					// Takeover Ad
+					if( have_rows('_hc_events_takeover') ):
+						while ( have_rows('_hc_events_takeover') ) : the_row();
+						$bg_color = get_sub_field('background_color');
+						$image = get_sub_field('image');
+						$url = get_sub_field('url');
+					if ($image) {
+				?>
+					<section class="home-section home-section-takeover">
+						<div class="takeover" style="background: <?php echo $bg_color; ?> ;"><a href="<?php echo $url ?>"><img src="<?php echo $image['url'] ?>"></a></div>
+					</section>
+				<?php 
+					}
+						endwhile;
+					else :
+					endif;
+				?>
+					
+			<?php
 	}
 
 	public function register() {

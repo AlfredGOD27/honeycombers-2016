@@ -172,5 +172,8 @@ function hc_ie_font_face_fix() {
 	echo preg_replace( '/\s+/', ' ', $output ) . "\n";
 
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 1d5f7085710ab1a738ce1b4d8f7f8e5e00e27890

@@ -8087,6 +8087,7 @@ html.lt-ie9 {
 	display:none;
 }
 
+<<<<<<< HEAD
 .takeover {
 	height: 370px;
 	overflow: hidden;
@@ -8096,6 +8097,8 @@ html.lt-ie9 {
 	margin-top: -200px;
 }
 
+=======
+>>>>>>> 1d5f7085710ab1a738ce1b4d8f7f8e5e00e27890
 @media (max-width:776px){
 
 	.mobile-site-nav {

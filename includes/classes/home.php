@@ -17,7 +17,11 @@ class HC_Home {
 		if( 'page_templates/page_home.php' !== get_page_template_slug() )
 			return;
 
+<<<<<<< HEAD
 		//add_action( 'genesis_before', array($this, 'takeover') );
+=======
+		add_action( 'genesis_before', array($this, 'takeover') );
+>>>>>>> 1d5f7085710ab1a738ce1b4d8f7f8e5e00e27890
 		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 		remove_action( 'genesis_before_loop', 'hc_do_breadcrumbs' );
 
@@ -26,8 +30,12 @@ class HC_Home {
 		add_action( 'genesis_loop', array($this, 'do_mobile_buttons') );
 		add_action( 'genesis_loop', array($this, 'do_featured_posts') );
 		add_action( 'genesis_loop', array($this, 'do_featured_video_and_listings') );
+<<<<<<< HEAD
 		//add_action( 'genesis_loop', array($this, 'takeover') );
 		add_action( 'genesis_loop', array($this, 'hc_site_takeover_bottom') );
+=======
+		add_action( 'genesis_loop', array($this, 'takeover') );
+>>>>>>> 1d5f7085710ab1a738ce1b4d8f7f8e5e00e27890
 		add_action( 'genesis_loop', array($this, 'do_featured_events_and_join') );
 		add_action( 'genesis_loop', array($this, 'do_trending') );
 		add_action( 'genesis_loop', array($this, 'do_latest_posts') );
@@ -374,7 +382,11 @@ class HC_Home {
 					if ($image) {
 				?>
 					<section class="home-section home-section-takeover">
+<<<<<<< HEAD
 						<div class="takeover" style="background: <?php echo $bg_color; ?> ;"><a href="<?php echo $url ?>" target="blank" class="takeover-link"><img src="<?php echo $image['url'] ?>"></a></div>
+=======
+						<div class="takeover" style="background: <?php echo $bg_color; ?> ;"><a href="<?php echo $url ?>"><img src="<?php echo $image['url'] ?>"></a></div>
+>>>>>>> 1d5f7085710ab1a738ce1b4d8f7f8e5e00e27890
 					</section>
 				<?php
 					}
@@ -385,6 +397,7 @@ class HC_Home {
 
 			<?php
 	}
+<<<<<<< HEAD
 	function hc_site_takeover_bottom() {
 		// Takeover Ad
 		if( have_rows('_hc_site_takeover_bottom','option') ):
@@ -404,6 +417,8 @@ class HC_Home {
 		else :
 		endif;
 	}
+=======
+>>>>>>> 1d5f7085710ab1a738ce1b4d8f7f8e5e00e27890
 	public function do_featured_events_and_join() {
 
 		global $post;
