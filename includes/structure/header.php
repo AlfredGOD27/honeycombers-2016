@@ -283,7 +283,6 @@ function hc_load_favicons() {
 add_action( 'genesis_before_header', 'hc_ga_content_grouping' );
 function hc_ga_content_grouping() { 
 	?>
-<<<<<<< HEAD
 	<?php
 	function gtm_posttype() {
 		global $wp_query;
@@ -381,9 +380,6 @@ function hc_site_top() {
 	?>
 </script>
 <section class="site-top">
-=======
-	<section class="site-top">
->>>>>>> 1d5f7085710ab1a738ce1b4d8f7f8e5e00e27890
 		<div class="wrap">
 			<div class="left">
 				<?php
