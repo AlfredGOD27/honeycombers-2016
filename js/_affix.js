@@ -125,8 +125,4 @@
 
 	});
 
-<<<<<<< HEAD
 })( window.jQuery );
-=======
-})( window.jQuery );
->>>>>>> origin/cooper_2
