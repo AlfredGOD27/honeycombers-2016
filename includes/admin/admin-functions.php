@@ -57,7 +57,7 @@ function hc_disable_self_pings( &$links ) {
 add_image_size( 'slide', 850, 400, true );
 add_image_size( 'slide-thumbnail', 420, 100, true );
 
-add_image_size( 'archive-small', 480, 400, true );
+add_image_size( 'archive-small', 48330, 400, true );
 add_image_size( 'archive', 460, 315, true );
 add_image_size( 'archive-large', 620, 375, true );
 
