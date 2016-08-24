@@ -25,6 +25,7 @@ class HC_Home {
 		add_action( 'genesis_loop', array($this, 'do_mobile_buttons') );
 		add_action( 'genesis_loop', array($this, 'do_featured_posts') );
 		add_action( 'genesis_loop', array($this, 'do_featured_video_and_listings') );
+		add_action( 'genesis_loop', array($this, 'do_takeover_bottom') );
 		add_action( 'genesis_loop', array($this, 'do_featured_events_and_join') );
 		add_action( 'genesis_loop', array($this, 'do_trending') );
 		add_action( 'genesis_loop', array($this, 'do_latest_posts') );
@@ -359,6 +360,28 @@ class HC_Home {
 			</div>
 			<?php
 		}
+
+	}
+
+	public function do_takeover_bottom() {
+
+		if( have_rows('_hc_site_takeover_bottom', 'option') ):
+			while( have_rows('_hc_site_takeover_bottom', 'option') ) :
+				the_row();
+
+				$bg_color = get_sub_field('background_color');
+				$head     = get_sub_field('head_code');
+				$body     = get_sub_field('body_code');
+				?>
+				<section class="bottom-takeover">
+					<div class="takeover" style="background-color: <?php echo $bg_color; ?>;">
+						<?php echo $head; ?>
+						<?php echo $body; ?>
+					</div>
+				</section>
+				<?php
+			endwhile;
+		endif;
 
 	}
 

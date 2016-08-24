@@ -268,7 +268,8 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "insert": "append"
         }
     ],
     "location": [
@@ -288,5 +289,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1464724200
+    "modified": 1472075669
 }

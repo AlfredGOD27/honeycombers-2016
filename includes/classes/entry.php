@@ -186,13 +186,6 @@ class HC_Entry {
 					'attr'   => $atts,
 				)
 			);
-
-			$sponsored = get_post_meta( $post->ID, '_hc_post_is_sponsored', true );
-			if( !empty($sponsored) ) {
-				?>
-				<span class="spon-tag">Sponsored</span>
-				<?php
-			}
 			?>
 		</div>
 		<?php

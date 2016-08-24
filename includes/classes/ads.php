@@ -47,6 +47,15 @@ class HC_Ads {
 					break;
 				case 'page_templates/page_calendar.php':
 					// Calendar Ads
+					$ads = array(
+						'leaderboard-1' => '_hc_events_leaderboard',
+					);
+					foreach( $ads as $position => $key ) {
+						$ads    = get_field( $key );
+						$result = $this->ad_field_to_array( $ads );
+						if( false !== $result )
+							$this->ads[$position] = $result;
+					}
 					break;
 			}
 		} elseif( is_search() ) {

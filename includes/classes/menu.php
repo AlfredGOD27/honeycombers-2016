@@ -254,6 +254,17 @@ class HC_Menu {
 				</div>
 			</div>
 		</nav>
+
+        <nav class="mobile-site-nav">
+            <?php
+            wp_nav_menu(
+                array(
+                    'theme_location' => 'top',
+                    'depth'          => 1,
+                )
+            );
+            ?>
+        </nav>
 		<?php
 
 	}

@@ -11,9 +11,19 @@ class HC_Ad_Widget extends WP_Widget {
 
 	public function widget( $args, $instance ) {
 
+		global $post;
+
 		extract($args);
 
-		$position = get_field( '_hc_ad_position', 'widget_' . $widget_id );
+		if( is_single() ) {
+			$sponsored = get_post_meta( $post->ID, '_hc_post_is_sponsored', true );
+			if( empty($sponsored) ) {
+				$position = get_field( '_hc_ad_position', 'widget_' . $widget_id );
+			}
+		} else {
+			$position = get_field( '_hc_ad_position', 'widget_' . $widget_id );
+		}
+
 		if( empty($position) )
 			return;
 
