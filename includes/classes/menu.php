@@ -254,6 +254,7 @@ class HC_Menu {
 				</div>
 			</div>
 		</nav>
+
         <nav class="mobile-site-nav">
             <?php
             wp_nav_menu(

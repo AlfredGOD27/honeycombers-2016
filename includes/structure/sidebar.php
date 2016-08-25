@@ -41,13 +41,14 @@ function hc_remove_recent_comments_widget_styles() {
 remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
 add_action( 'genesis_sidebar', 'hc_do_sidebar' );
 function hc_do_sidebar() {
-	
+
 	global $post;
-	$sponsored_ad_image = get_field('_hc_mpu_image',$post->ID);
-	$sponsored_ad_url = get_field('_hc_mpu_url',$post->ID);
-	
-	if (!empty($sponsored_ad_image))  {
-		echo '<section class="widget widget_hc_ad_widget"><div class="widget-wrap"><a href="'.$sponsored_ad_url.'" target="_blank"><img src="'.$sponsored_ad_image['url'].'"></a></div></section>';
+
+	$sponsored_ad_image = get_field('_hc_mpu_image', $post->ID);
+	$sponsored_ad_url   = get_field('_hc_mpu_url', $post->ID);
+
+	if( !empty($sponsored_ad_image) )  {
+		echo '<section class="widget widget_hc_ad_widget"><div class="widget-wrap"><a href="' . $sponsored_ad_url . '" target="_blank"><img src="' . $sponsored_ad_image['url'] . '"></a></div></section>';
 	}
 
 	echo '<div class="affix-on-scroll">';

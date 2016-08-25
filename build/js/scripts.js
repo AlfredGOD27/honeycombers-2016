@@ -5777,6 +5777,7 @@ function hc_maybe_load_facebook() {
 
 	if( im.greaterThan('portrait') ) {
 		$('.listing-slider-for').slick({
+			adaptiveHeight: true,
 			arrows: false,
 			asNavFor: '.listing-slider-nav',
 			fade: true,
@@ -5805,7 +5806,6 @@ function hc_maybe_load_facebook() {
 		);
 	} else {
 		$('.listing-slider-for').slick({
-			adaptiveHeight: true,
 			arrows: true,
 			slidesToScroll: 1,
 			slidesToShow: 1,
@@ -6018,6 +6018,7 @@ function hc_maybe_load_facebook() {
 
 	if( im.greaterThan('portrait') ) {
 		$('.slider-for').slick({
+			adaptiveHeight: true,
 			arrows: true,
 			asNavFor: '.slider-nav',
 			fade: true,
@@ -6041,7 +6042,6 @@ function hc_maybe_load_facebook() {
 		});
 	} else {
 		$('.slider-for').slick({
-			adaptiveHeight: true,
 			arrows: true,
 			slidesToScroll: 1,
 			slidesToShow: 1,
@@ -6249,15 +6249,6 @@ function hc_maybe_load_facebook() {
 	});
 
 	$('.btn-facebook').on( 'click', function(e) {
-		
-		(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/en_US/sdk.js";
-		fjs.parentNode.insertBefore(js, fjs);
-	  }(document, 'script', 'facebook-jssdk'));
-		
 		e.preventDefault();
 
 		var self = $(this);
@@ -6583,25 +6574,6 @@ function hc_maybe_load_facebook() {
 	if( 'undefined' !== typeof screen && screen.width <= 1024 ) {
 		window.addEventListener('orientationchange resize', set_viewport);
 		set_viewport();
-	}	
-	$( ".share-button" ).click(function() {
-	  $(this).next( ".pw-widget" ).slideToggle( "fast", function() {
-		// Animation complete.
-	  });
-	});
+	}
 
 })( window.jQuery );
-
-// Takeover Expand
-$( ".takeover" ).click(function() {
-    if ( $(this).height() == 370) {
-          $( this ).animate({ height: 860 }, 300 );
-		  $( this ).find('a').removeClass('takeover-link');
-		  $( this ).find('img').addClass('takeover-img-full',300);
-	} else {
-          $( this ).animate({ height: 370 }, 300 );
-		  $( this ).find('a').addClass('takeover-link');
-		  $( this ).find('img').removeClass('takeover-img-full',300);
-	}
-		  
-});

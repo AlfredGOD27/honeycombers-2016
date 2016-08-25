@@ -479,19 +479,18 @@ class HC_Events {
 
 		?>
         <section class="events_leaderboard">
-        	<div>
-            <?php
-			$ad = HC()->ads->get_ad_container( 'leaderboard-1' );
-			if( !empty($ad) )
-				echo '<div class="banner">' . $ad . '</div>';
-			?>
-            </div>
+			<div>
+				<?php
+				$ad = HC()->ads->get_ad_container( 'leaderboard-1' );
+				if( !empty($ad) )
+					echo '<div class="banner">' . $ad . '</div>';
+				?>
+			</div>
         </section>
-        
-        
+
+
 		<section class="subcategory">
 			<div class="wrap">
-            
 				<div class="subcategory-description">
 					<?php
 					if( false === $term ) {
@@ -656,8 +655,6 @@ class HC_Events {
 						?>
 					</div>
 				</form>
-
-                
 			</div>
 		</section>
 		<?php

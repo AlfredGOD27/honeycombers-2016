@@ -224,36 +224,36 @@ class HC_Archives {
 	}
 
 	public function cat_leaderboard() {
+
 		?>
-        	<section id="leaderboard" class="clearfix cat_leaderboard">
-            	<div class="content-sidebar-wrap">
-					<?php
-						if ($this->term->parent == 0) {
-							$cat_term = $this->term->term_id;
-						} elseif ($this->term->term_id == 6363) {
-							$cat_term = $this->term->term_id;
-						} else {
-							$cat_term = $this->term->category_parent;
-						}
-                        // Category level 1
-                        if( have_rows('_hc_leaderboard', 'category_' . $cat_term . '') ):
-                            while ( have_rows('_hc_leaderboard', 'category_' . $cat_term . '') ) : the_row();
-								$head = get_sub_field('head_code');
-								$body = get_sub_field('body_code');
-								
-								if (!empty($head) && !empty($body)) {
-									echo '<script>'.$head.'</script><br>'.$body.'';
-								} else {	
-									 echo '<div style="display:none" id="testing"><script>'.$head.'</script><br>'.$body.'</div>';
-									 
-								}
-                            endwhile;
-                        else :
-                        endif;
-                    ?>
-            	</div>
-            </section>
+		<section id="leaderboard" class="clearfix cat_leaderboard">
+			<div class="content-sidebar-wrap">
+				<?php
+				if ($this->term->parent === 0) {
+					$cat_term = $this->term->term_id;
+				} elseif ($this->term->term_id === 6363) {
+					$cat_term = $this->term->term_id;
+				} else {
+					$cat_term = $this->term->category_parent;
+				}
+
+				// Category level 1
+				if( have_rows('_hc_leaderboard', 'category_' . $cat_term . '') ):
+					while ( have_rows('_hc_leaderboard', 'category_' . $cat_term . '') ) :
+						the_row();
+
+						$head = get_sub_field('head_code');
+						$body = get_sub_field('body_code');
+
+						if( !empty($head) && !empty($body) )
+							echo '<script>' . $head . '</script><br>' . $body . '';
+					endwhile;
+				endif;
+			?>
+			</div>
+		</section>
 		<?php
+
 	}
 
 	public function subcategory_sections() {

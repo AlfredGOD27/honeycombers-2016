@@ -351,9 +351,7 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [
-
-            ],
+            "taxonomy": [],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -375,9 +373,7 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [
-
-            ],
+            "taxonomy": [],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -399,9 +395,7 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [
-
-            ],
+            "taxonomy": [],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -423,9 +417,7 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [
-
-            ],
+            "taxonomy": [],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
