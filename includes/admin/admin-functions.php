@@ -65,6 +65,13 @@ add_image_size( 'featured', 930, 550, true );
 
 add_image_size( 'avatar', 120, 120, true );
 
+add_filter( 'jpeg_quality', 'hc_jpeg_quality' );
+function hc_jpeg_quality() {
+
+	return 90;
+
+}
+
 // add_filter( 'image_size_names_choose', 'hc_image_size_names_choose' );
 /**
  * Add new image sizes to media size selection menu.
