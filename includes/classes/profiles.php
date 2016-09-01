@@ -42,6 +42,20 @@ class HC_Profiles {
 
 	}
 
+	public function display_contact_popup() {
+
+		$form_id = get_option( 'options__hc_contact_popup_form_id' );
+		if( empty($form_id) )
+			return;
+
+		?>
+		<div id="contact-popup" class="white-popup mfp-hide contact-popup">
+			<?php gravity_form( absint($form_id), false, false ); ?>
+		</div>
+		<?php
+
+	}
+
 	public function init() {
 
 		global $wp_query;
@@ -95,11 +109,15 @@ class HC_Profiles {
 			$this->user    = get_user_by( 'id', $this->user_id );
 		}
 
-		if( isset($_GET['event_added']) )
+		if( isset($_GET['event_added']) ) {
 			HC()->messages->add( 'success', 'Your event has been submitted and is pending review.' );
+			add_action( 'wp_footer', array($this, 'display_contact_popup') );
+		}
 
-		if( isset($_GET['listing_added']) )
+		if( isset($_GET['listing_added']) ) {
 			HC()->messages->add( 'success', 'Your listing has been submitted and is pending review.' );
+			add_action( 'wp_footer', array($this, 'display_contact_popup') );
+		}
 
 		if( isset($_GET['deleted']) )
 			HC()->messages->add( 'success', 'Item deleted.' );

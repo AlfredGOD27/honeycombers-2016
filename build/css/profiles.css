@@ -316,3 +316,54 @@ TYPOGRAPHY - http://cssfontstack.com/
   font-style: italic;
   text-decoration: none;
 }
+
+.contact-popup {
+  padding: 2em 1em;
+  max-width: 50em;
+  text-align: left;
+}
+.contact-popup .gform_wrapper,
+.contact-popup form {
+  max-width: 100%;
+}
+.contact-popup .gfield_required {
+  display: none;
+}
+.contact-popup .gfield_description {
+  margin-bottom: 1em;
+  font-size: .9em;
+}
+.contact-popup .gfield_radio {
+  -webkit-columns: 3;
+     -moz-columns: 3;
+          columns: 3;
+}
+.contact-popup .gfield_radio > li {
+  -webkit-column-break-inside: avoid;
+     page-break-inside: avoid;
+          break-inside: avoid-column;
+}
+.contact-popup input[type='submit'] {
+  width: auto;
+  border: 1px solid #fe862c;
+  background-color: transparent;
+  color: #fe862c;
+}
+
+@media (max-width: 1024px) {
+  .contact-popup {
+    padding: 2em;
+  }
+  .contact-popup .gfield_radio {
+    -webkit-columns: 2;
+       -moz-columns: 2;
+            columns: 2;
+  }
+}
+@media (max-width: 776px) {
+  .contact-popup .gfield_radio {
+    -webkit-columns: 1;
+       -moz-columns: 1;
+            columns: 1;
+  }
+}

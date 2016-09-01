@@ -5196,4 +5196,13 @@
 		}
 	});
 
+	if( $('#contact-popup').length > 0 ) {
+		$.magnificPopup.open({
+			items: {
+				src: '#contact-popup'
+			},
+			type: 'inline'
+		});
+	}
+
 })( window.jQuery );

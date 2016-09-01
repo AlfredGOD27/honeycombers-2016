@@ -295,3 +295,56 @@
 	@include meta-font;
 	text-decoration: none;
 }
+
+.contact-popup {
+	padding: 2em 1em;
+	max-width: 50em;
+	text-align: left;
+
+	.gform_wrapper,
+	form {
+		max-width: 100%;
+	}
+
+	.gfield_required {
+		display: none;
+	}
+
+	.gfield_description {
+		margin-bottom: 1em;
+		font-size: .9em;
+	}
+
+	.gfield_radio {
+		columns: 3;
+
+		> li {
+			break-inside: avoid-column;
+		}
+	}
+
+	input[type='submit'] {
+		width: auto;
+		border: 1px solid $orange;
+		background-color: transparent;
+		color: $orange;
+	}
+}
+
+@include media('<=landscape') {
+	.contact-popup {
+		padding: 2em;
+
+		.gfield_radio {
+			columns: 2;
+		}
+	}
+}
+
+@include media('<=portrait') {
+	.contact-popup {
+		.gfield_radio {
+			columns: 1;
+		}
+	}
+}
