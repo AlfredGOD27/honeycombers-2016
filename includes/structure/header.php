@@ -296,10 +296,8 @@ function hc_ga_content_grouping() {
 	 
 		if ( is_page('calendar') ) {
 			$cat = 'Calendar';
-		} elseif ( $wp_query->is_home || $wp_query->is_front_page ) {
+		} elseif ( is_home() || is_front_page() ) {
 			$cat = 'Home Page';
-		} elseif ( $wp_query->is_page('calendar') ) {
-			$cat = 'Calendar';
 		} elseif ( $wp_query->is_singular('post') ) {
 			$primary_cat = new WPSEO_Primary_Term('category', $post->ID);
 			$primary_cat_id = $primary_cat->get_primary_term();
