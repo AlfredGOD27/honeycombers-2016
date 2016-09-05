@@ -74,6 +74,7 @@ class HC_Event_Editor extends HC_Form_Abstract {
 			'type'        => 'textarea',
 			'table'       => 'posts',
 			'word_limit'  => $description_word_limit,
+			'maxlength'   => 3000,
 			'required'    => true,
 			'description' => 'Word limit: ' . $description_word_limit,
 			'classes'     => array('first', 'one-half'),
