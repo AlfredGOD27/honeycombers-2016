@@ -365,7 +365,9 @@ class HC_Events {
 				</div>
 
 				<?php printf( '<div %s>', genesis_attr( 'entry-content' ) ); ?>
-					<?php the_content(); ?>
+					<?php if (have_posts()) : while (have_posts()) : the_post();
+						the_content();
+					endwhile; endif; ?>
 				</div>
 			</div>
 
