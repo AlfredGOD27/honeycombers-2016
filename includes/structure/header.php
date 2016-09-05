@@ -358,27 +358,28 @@ function hc_ga_content_grouping() {
 	
 <?php }
 
-
-
 add_action( 'genesis_before_header', 'hc_site_takeover_top' );
 function hc_site_takeover_top() {
-	// Takeover Ad
-	if( have_rows('_hc_site_takeover_top','option') ):
-		while ( have_rows('_hc_site_takeover_top','option') ) : the_row();
-		$bg_color = get_sub_field('background_color');
-		$head = get_sub_field('head_code');
-		$body = get_sub_field('body_code');
-			?>
-			<section class="top-takeover">
-				<div class="takeover" style="background-color: <?php echo $bg_color; ?>;">
-					<?php echo $head; ?>
-					<?php echo $body; ?>
-				</div>
-			</section>
-			<?php
-		endwhile;
-	else :
-	endif;
+	require('wp-blog-header.php');
+
+if (function_exists('have_rows')) {	
+		if( have_rows('_hc_site_takeover_top','option') ):
+			while ( have_rows('_hc_site_takeover_top','option') ) : the_row();
+			$bg_color = get_sub_field('background_color');
+			$head = get_sub_field('head_code');
+			$body = get_sub_field('body_code');
+				?>
+				<section class="top-takeover" >
+					<div class="takeover" style="background-color: <?php echo $bg_color; ?>;">
+						<?php echo $head; ?>
+						<?php echo $body; ?>
+					</div>
+				</section>
+				<?php
+			endwhile;
+		else :
+		endif;
+	}
 }
 
 add_action( 'genesis_after', 'hc_site_takeover_bottom' );

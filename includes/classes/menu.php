@@ -184,8 +184,10 @@ class HC_Menu {
 		global $post;
 
 		printf( '<h2 class="screen-reader-text">%s</h2>', __( 'Main navigation', 'genesis' ) );
-
-		$menu = get_field( '_hc_main_menu_category_ids', 'option' );
+		
+		if (function_exists('get_field')) {
+			$menu = get_field( '_hc_main_menu_category_ids', 'option' );
+		}
 		if( empty($menu) )
 			return;
 
