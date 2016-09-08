@@ -360,7 +360,6 @@ function hc_ga_content_grouping() {
 
 add_action( 'genesis_before_header', 'hc_site_takeover_top' );
 function hc_site_takeover_top() {
-	require('wp-blog-header.php');
 
 if (function_exists('have_rows')) {	
 		if( have_rows('_hc_site_takeover_top','option') ):
@@ -368,9 +367,10 @@ if (function_exists('have_rows')) {
 			$bg_color = get_sub_field('background_color');
 			$head = get_sub_field('head_code');
 			$body = get_sub_field('body_code');
+			$hide = get_sub_field('hide');
 				?>
 				<section class="top-takeover" >
-					<div class="takeover" style="background-color: <?php echo $bg_color; ?>;">
+					<div class="takeover" style="background-color: <?php echo $bg_color; ?>; display: <?php echo $hide; ?>;">
 						<?php echo $head; ?>
 						<?php echo $body; ?>
 					</div>
@@ -392,9 +392,10 @@ function hc_site_takeover_bottom() {
 			$bg_color = get_sub_field('background_color');
 			$head = get_sub_field('head_code');
 			$body = get_sub_field('body_code');
+			$hide = get_sub_field('hide');
 				?>
 				<section class="bottom-takeover">
-					<div class="takeover" style="background-color: <?php echo $bg_color; ?>;">
+					<div class="takeover" style="background-color: <?php echo $bg_color; ?>; display: <?php echo $hide; ?>;">
 						<?php echo $head; ?>
 						<?php echo $body; ?>
 					</div>

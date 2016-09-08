@@ -351,7 +351,9 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [],
+            "taxonomy": [
+
+            ],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -373,7 +375,9 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [],
+            "taxonomy": [
+
+            ],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -395,7 +399,9 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [],
+            "taxonomy": [
+
+            ],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -417,7 +423,9 @@
             "post_type": [
                 "page"
             ],
-            "taxonomy": [],
+            "taxonomy": [
+
+            ],
             "allow_null": 0,
             "multiple": 0,
             "return_format": "id",
@@ -444,29 +452,6 @@
             "load_terms": 0,
             "return_format": "id",
             "multiple": 0
-        },
-        {
-            "key": "field_57c86ca678d0d",
-            "label": "Contact Popup Form ID",
-            "name": "_hc_contact_popup_form_id",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "min": 0,
-            "max": "",
-            "step": 1,
-            "readonly": 0,
-            "disabled": 0
         },
         {
             "key": "field_5720fe7dd2cb3",
@@ -1163,6 +1148,29 @@
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
+                },
+                {
+                    "key": "field_57d0c46b31582",
+                    "label": "Hide?",
+                    "name": "hide",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "none": "Yes",
+                        "block": "No"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": "",
+                    "layout": "vertical"
                 }
             ]
         },
@@ -1241,6 +1249,29 @@
                     "new_lines": "",
                     "readonly": 0,
                     "disabled": 0
+                },
+                {
+                    "key": "field_57d0c4d131583",
+                    "label": "Hide?",
+                    "name": "hide",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "none": "Yes",
+                        "block": "No"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "save_other_choice": 0,
+                    "default_value": "",
+                    "layout": "vertical"
                 }
             ]
         },
@@ -1633,6 +1664,40 @@
             "new_lines": "wpautop",
             "readonly": 0,
             "disabled": 0
+        },
+        {
+            "key": "field_57ce93c0bd56c",
+            "label": "Events",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_57ce93debd56d",
+            "label": "Event submission recipient",
+            "name": "_hc_event_submission_recipient",
+            "type": "email",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -1652,5 +1717,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1472752835
+    "modified": 1473299984
 }

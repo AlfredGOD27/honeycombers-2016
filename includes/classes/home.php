@@ -372,9 +372,10 @@ class HC_Home {
 				$bg_color = get_sub_field('background_color');
 				$head     = get_sub_field('head_code');
 				$body     = get_sub_field('body_code');
+				$hide     = get_sub_field('hide');
 				?>
 				<section class="bottom-takeover">
-					<div class="takeover" style="background-color: <?php echo $bg_color; ?>;">
+					<div class="takeover" style="background-color: <?php echo $bg_color; ?>; display: <?php echo $hide; ?>;">
 						<?php echo $head; ?>
 						<?php echo $body; ?>
 					</div>
