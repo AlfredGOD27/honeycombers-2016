@@ -301,7 +301,15 @@ function hc_ga_content_grouping() {
 		} elseif ( $wp_query->is_singular('post') ) {
 			$primary_cat = new WPSEO_Primary_Term('category', $post->ID);
 			$primary_cat_id = $primary_cat->get_primary_term();
-			$cat = get_cat_name($primary_cat_id);
+			if (!empty($primary_cat_id)) {
+				$cat = get_cat_name($primary_cat_id);
+			} else {
+				$cat = get_the_category($post->ID);
+				$cat_parent = $cat[0]->category_parent;
+				if($cat_parent) { $cat = get_category($cat_parent);
+				$cat = $cat->name; }
+				else { $cat = $cat[0]->name; }
+			}			
 		} elseif ( $wp_query->is_singular('event') ) {
 			$cat = 'Events';
 		} elseif ( $wp_query->is_singular('listing') ) {
