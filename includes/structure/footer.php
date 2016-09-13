@@ -10,7 +10,22 @@ function hc_do_footer() {
 	<div class="footer-social-row clearfix">
 		<div class="left">
 			<i class="ico-instagram-logo"></i>
-			<a href="https://www.instagram.com/honeycombers/" class="instagram-link">@honeycombers</a>
+            <?php 
+				$ig_url = get_field( '_hc_instagram_url', 'option' ); 
+				$blog_id = get_current_blog_id();
+			?>
+            
+			<a href="<?php echo $ig_url; ?>" class="instagram-link">
+            	
+                <?php if ($blog_id == 2) {
+						echo '@honeycombers';
+					} elseif ($blog_id == 4) {
+						echo '@honeycombersbali';
+					} elseif ($blog_id == 3) {
+						echo '@honeycombersjakarta';
+					}
+				?>
+            </a>
 
 			<h4>Connect With Us</h4>
 			<?php hc_do_social(); ?>
