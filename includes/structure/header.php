@@ -366,6 +366,24 @@ function hc_ga_content_grouping() {
 	
 <?php }
 
+add_action( 'genesis_before_header', 'hc_boomtrain' );
+function hc_boomtrain() { 
+	?>
+	
+	<!-- Boomtrain Code -->
+	<script src="https://d3r7h55ola878c.cloudfront.net/btn/1.0.3/btn.js"></script>
+    <script>
+            //setup BTN Library
+            _btn.setDebugMode(true); BOOMTRAIN_API_KEY_1 = 'a86800cea7d25b2c2c5befab94925e33'; BOOMTRAIN_API_KEY_2 = 'fd0669de88391ecb4af6602b64f803a7';
+            _btn.setAPIKeys(BOOMTRAIN_API_KEY_1,BOOMTRAIN_API_KEY_2);
+            _btn.initialize();
+            _btn.identify('<?php $current_user = get_currentuserinfo(); echo $current_user->user_email; ?>');
+    </script>
+    <!-- Boomtrain Code -->
+
+<?php
+	}
+
 add_action( 'genesis_before_header', 'hc_site_takeover_top' );
 function hc_site_takeover_top() {
 
