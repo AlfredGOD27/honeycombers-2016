@@ -6582,7 +6582,7 @@ function hc_maybe_load_facebook() {
 $(".share-button").click(function(){$(this).next(".pw-widget").slideToggle("fast");});
 
 //Boomtrain Signup
-$('.form-footer .btn').on('click', function (e) {
+$('.hc-form.entry-content').on('click', function (e) {
 		var signup_email = $('#field-user_email').val();
 		_btn.trackAccountSignup(signup_email,{
 		'newsletter_singapore':'TRUE', //ADD IN ADDITIONAL PROPERTIES HERE
@@ -6592,11 +6592,12 @@ $('.form-footer .btn').on('click', function (e) {
 		'last_name':$('#field-last_name').val(),
 	});
 });	
-$('.subscribe-form .btn').on('click', function (e) {
-		var signup_email = $('#subscribe-email-widget-hc_subscribe_widget-2').val();
+$( ".subscribe-form" ).submit(function( event ) {
+  var signup_email = $('#subscribe-email-widget-hc_subscribe_widget-2').val();
 		_btn.trackAccountSignup(signup_email,{
 		'newsletter_singapore':'TRUE', //ADD IN ADDITIONAL PROPERTIES HERE
 		'newsletter_bali':'TRUE',
 		'newsletter_jakarta':'TRUE',
 	});
-});	
+  event.preventDefault();
+});
