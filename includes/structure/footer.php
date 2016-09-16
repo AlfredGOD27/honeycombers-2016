@@ -22,7 +22,7 @@ function hc_do_footer() {
 					} elseif ($blog_id == 4) {
 						echo '@honeycombersbali';
 					} elseif ($blog_id == 3) {
-						echo '@honeycombersjakarta';
+						echo '@honeycombersjkt';
 					}
 				?>
             </a>
