@@ -216,3 +216,8 @@ function hc_remove_files_on_upgrade() {
 		unlink(ABSPATH . 'wp-login.php');
 
 }
+
+add_filter('oembed_result', 'modify_YT_embed_url');
+function modify_YT_embed_url($html) {
+    return str_replace("?enablejsapi=1", "?enablejsapi=1&rel=0", $html);
+}
