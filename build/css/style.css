@@ -8089,7 +8089,7 @@ html.lt-ie9 {
 .event-category-field .radio-list label:nth-child(2) {
     display: none;
 }
-.featured-image-container .wp-caption-text {
+.basic-slider .wp-caption-text, .featured-image-container .wp-caption-text {
     color: #919191;
     text-align: center;
     font-weight: 600;
