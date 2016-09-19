@@ -187,6 +187,9 @@ class HC_Entry {
 				)
 			);
 			?>
+            <?php if ( $caption = get_post( get_post_thumbnail_id() )->post_excerpt ) : ?>
+                <figcaption class="wp-caption-text"><?php echo $caption; ?></figcaption>
+            <?php endif; ?>
 		</div>
 		<?php
 
