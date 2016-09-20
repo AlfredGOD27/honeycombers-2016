@@ -34,7 +34,7 @@ class HC_Archives {
 			$this->mode       = 'infinite';
 			$this->post_style = 'full';
 		} elseif( is_archive() ) {
-			add_action( 'genesis_after_header', array($this, 'do_taxonomy_title_description'), 14 );
+			add_action( 'genesis_after_header', array($this, 'do_taxonomy_title_description'), 15 );
 
 			$this->term = get_queried_object();
 
@@ -52,7 +52,7 @@ class HC_Archives {
 			// If is top level category with subcategories, show sections. Otherwise, show infinite.
 			if( !empty($this->term->parent) ) {
 				$this->mode = 'infinite';
-				add_action( 'genesis_after_header', array($this, 'cat_leaderboard'), 13 );
+				add_action( 'genesis_after_header', array($this, 'cat_leaderboard'), 14 );
 			} else {
 				$args = array(
 					'parent' => $this->term->term_id,
@@ -246,7 +246,7 @@ class HC_Archives {
 						$body = get_sub_field('body_code');
 
 						if( !empty($head) && !empty($body) )
-							echo '<script>' . $head . '</script><br>' . $body . '';
+							echo '<script>' . $head . '</script>' . $body . '';
 					endwhile;
 				endif;
 			?>

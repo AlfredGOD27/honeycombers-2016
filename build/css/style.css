@@ -8097,3 +8097,14 @@ html.lt-ie9 {
     letter-spacing: .01rem;
     margin-top: .5em;
 }
+
+.cat_leaderboard iframe {
+	margin-bottom: 20px;
+}
+
+@media (max-width: 776px) {
+	.cat_leaderboard div {
+		margin: 0 auto;
+		text-align: center;
+	}
+}
