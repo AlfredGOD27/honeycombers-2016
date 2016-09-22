@@ -91,10 +91,10 @@ class HC_Utilities {
 					<div>
 						<?php
 						echo wp_get_attachment_image( $image_id, 'featured' );
-						$thumb_img = get_post( $image_id );
+						$thumb_img     = get_post( $image_id );
 						$thumb_caption = $thumb_img->post_excerpt;
 						if( !empty($thumb_caption) ) {
-							echo '<figcaption class="wp-caption-text">' .sanitize_text_field($thumb_caption). '</figcaption>';
+							echo '<figcaption class="wp-caption-text">' . sanitize_text_field($thumb_caption) . '</figcaption>';
 						}
 						?>
 					</div>

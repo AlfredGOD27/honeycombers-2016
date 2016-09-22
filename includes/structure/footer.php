@@ -11,17 +11,17 @@ function hc_do_footer() {
 		<div class="left">
 			<i class="ico-instagram-logo"></i>
             <?php 
-				$ig_url = get_field( '_hc_instagram_url', 'option' ); 
+				$ig_url  = get_field( '_hc_instagram_url', 'option' );
 				$blog_id = get_current_blog_id();
 			?>
             
 			<a href="<?php echo $ig_url; ?>" class="instagram-link">
             	
-                <?php if ($blog_id == 2) {
+                <?php if ($blog_id === 2) {
 						echo '@honeycombers';
-					} elseif ($blog_id == 4) {
+					} elseif ($blog_id === 4) {
 						echo '@honeycombersbali';
-					} elseif ($blog_id == 3) {
+					} elseif ($blog_id === 3) {
 						echo '@honeycombersjkt';
 					}
 				?>

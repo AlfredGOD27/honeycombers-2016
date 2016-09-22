@@ -265,7 +265,6 @@ function hc_load_favicons() {
 
 }
 
-
 /*
  * Remove the header
  *
@@ -281,9 +280,9 @@ function hc_load_favicons() {
 // remove_action( 'genesis_site_title', 'genesis_seo_site_title' );
 // remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
 add_action( 'genesis_before_header', 'hc_custom_cursor' );
-function hc_custom_cursor() { 
-	if (function_exists('get_field')) {	
-		$cursor = get_field('_hc_cursor','option');
+function hc_custom_cursor() {
+	if (function_exists('get_field')) {
+		$cursor = get_field('_hc_cursor', 'option');
 			if (!empty($cursor)) {
 ?>
 	<style>
@@ -293,41 +292,41 @@ function hc_custom_cursor() {
 	</style>
 <?php
 			}
- 	} 
+ 	}
 }
 ?>
 
 <?php
 add_action( 'genesis_before_header', 'hc_ga_content_grouping' );
-function hc_ga_content_grouping() { 
+function hc_ga_content_grouping() {
 	?>
 	<?php
-	$primary_cat = new WPSEO_Primary_Term('category', get_the_ID());
-	$primary_cat_id = $primary_cat->get_primary_term();
+	$primary_cat      = new WPSEO_Primary_Term('category', get_the_ID());
+	$primary_cat_id   = $primary_cat->get_primary_term();
 	$primary_cat_name = get_cat_name( $primary_cat_id );
-	
+
 	function gtm_posttype() {
 		global $wp_query;
 		global $post;
-		$term =	$wp_query->queried_object;
-		$cat = '(not set)';
-	 
+		$term = $wp_query->queried_object;
+		$cat  = '(not set)';
+
 		if ( is_page('calendar') ) {
 			$cat = 'Calendar';
 		} elseif ( is_home() || is_front_page() ) {
 			$cat = 'Home Page';
 		} elseif ( $wp_query->is_singular('post') ) {
-			$primary_cat = new WPSEO_Primary_Term('category', $post->ID);
+			$primary_cat    = new WPSEO_Primary_Term('category', $post->ID);
 			$primary_cat_id = $primary_cat->get_primary_term();
 			if (!empty($primary_cat_id)) {
 				$cat = get_cat_name($primary_cat_id);
 			} else {
-				$cat = get_the_category($post->ID);
-				$cat_parent = $cat[0]->category_parent;
+				$cat                   = get_the_category($post->ID);
+				$cat_parent            = $cat[0]->category_parent;
 				if($cat_parent) { $cat = get_category($cat_parent);
-				$cat = $cat->name; }
-				else { $cat = $cat[0]->name; }
-			}			
+				$cat                   = $cat->name; }
+				else { $cat            = $cat[0]->name; }
+			}
 		} elseif ( $wp_query->is_singular('event') ) {
 			$cat = 'Events';
 		} elseif ( $wp_query->is_singular('listing') ) {
@@ -344,13 +343,13 @@ function hc_ga_content_grouping() {
 			$cat = 'Directory Page';
 		} elseif ( $wp_query->is_category ) {
 			if ($term->parent > 0) {
-				$cat = get_cat_name($term->parent);
+				$cat    = get_cat_name($term->parent);
 				$subcat = $term->name;
 			} else {
 				$cat = $term->name;
 			}
 		} elseif ( $wp_query->is_tag ) {
-			$cat = single_tag_title("", false);
+			$cat = single_tag_title('', false);
 		} elseif ( $wp_query->is_tax ) {
 			$cat = $term->name;
 		} elseif ( $wp_query->is_archive ) {
@@ -360,10 +359,10 @@ function hc_ga_content_grouping() {
 		} elseif ( $wp_query->is_404 ) {
 			$cat = '404 Page';
 		}
-		return '"Category": "'.$cat.'", "SubCategory": "'.$subcat.'"';
+
+		return '"Category": "' . $cat . '", "SubCategory": "' . $subcat . '"';
 	}
-	
-	
+
 	?>
     
     <script>
@@ -385,7 +384,7 @@ function hc_ga_content_grouping() {
 <?php }
 
 add_action( 'genesis_before_header', 'hc_boomtrain' );
-function hc_boomtrain() { 
+function hc_boomtrain() {
 	?>
 	
 	<!-- Boomtrain Code -->
@@ -405,13 +404,13 @@ function hc_boomtrain() {
 add_action( 'genesis_before_header', 'hc_site_takeover_top' );
 function hc_site_takeover_top() {
 
-if (function_exists('have_rows')) {	
-		if( have_rows('_hc_site_takeover_top','option') ):
-			while ( have_rows('_hc_site_takeover_top','option') ) : the_row();
+if (function_exists('have_rows')) {
+		if( have_rows('_hc_site_takeover_top', 'option') ):
+			while ( have_rows('_hc_site_takeover_top', 'option') ) : the_row();
 			$bg_color = get_sub_field('background_color');
-			$head = get_sub_field('head_code');
-			$body = get_sub_field('body_code');
-			$hide = get_sub_field('hide');
+			$head     = get_sub_field('head_code');
+			$body     = get_sub_field('body_code');
+			$hide     = get_sub_field('hide');
 				?>
 				<section class="top-takeover" >
 					<div class="takeover" style="background-color: <?php echo $bg_color; ?>; display: <?php echo $hide; ?>;">
@@ -431,12 +430,12 @@ add_action( 'genesis_after', 'hc_site_takeover_bottom' );
 function hc_site_takeover_bottom() {
 	// Takeover Ad
 	if ( !is_front_page() ) {
-		if( have_rows('_hc_site_takeover_bottom','option') ):
-			while ( have_rows('_hc_site_takeover_bottom','option') ) : the_row();
+		if( have_rows('_hc_site_takeover_bottom', 'option') ):
+			while ( have_rows('_hc_site_takeover_bottom', 'option') ) : the_row();
 			$bg_color = get_sub_field('background_color');
-			$head = get_sub_field('head_code');
-			$body = get_sub_field('body_code');
-			$hide = get_sub_field('hide');
+			$head     = get_sub_field('head_code');
+			$body     = get_sub_field('body_code');
+			$hide     = get_sub_field('hide');
 				?>
 				<section class="bottom-takeover">
 					<div class="takeover" style="background-color: <?php echo $bg_color; ?>; display: <?php echo $hide; ?>;">

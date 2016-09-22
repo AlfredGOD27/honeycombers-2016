@@ -26,8 +26,8 @@ function hc_search_text() {
 	} elseif( $h >= 18 || $h < 6 ) {
 		$cycle = 'evening';
 	}
-	
-	if (function_exists('get_field')) {	
+
+	if (function_exists('get_field')) {
 		$placeholders = get_field( '_hc_placeholders_' . $d, 'option' );
 	}
 
