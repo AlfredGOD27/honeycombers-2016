@@ -308,8 +308,9 @@ function hc_ga_content_grouping() {
 	function gtm_posttype() {
 		global $wp_query;
 		global $post;
-		$term = $wp_query->queried_object;
-		$cat  = '(not set)';
+		$term   = $wp_query->queried_object;
+		$cat    = '(not set)';
+		$subcat = '(not set)';
 
 		if ( is_page('calendar') ) {
 			$cat = 'Calendar';
