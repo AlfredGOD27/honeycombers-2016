@@ -6300,6 +6300,8 @@ function hc_maybe_load_facebook() {
 	$('.featured-widget-slider').slick({
 		arrows: true,
 		slidesToScroll: 1,
+		autoplay:true,
+		autoplaySpeed:3000,
 		slidesToShow: 1,
 		adaptiveHeight: true,
 		speed: 0,
