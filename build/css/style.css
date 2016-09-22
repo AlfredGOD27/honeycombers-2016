@@ -6127,6 +6127,10 @@ table > tbody > tr:nth-child(odd) > th {
     display: -ms-flexbox;
     display: flex;
   }
+  .event-slider-for .slide-content .title {
+    overflow: hidden;
+    height: 2.5em;
+  }
 }
 .event-slider-nav {
   position: absolute;

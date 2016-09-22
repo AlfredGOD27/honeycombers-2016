@@ -172,7 +172,7 @@ class HC_Listing_Editor extends HC_Form_Abstract {
 		// Save level
 		update_post_meta( $this->post_id, '_hc_' . $this->post_type . '_level', $this->level );
 
-		update_post_meta( $this->post_id, '_hc_event_submitter_id', get_current_user_id() );
+		update_post_meta( $this->post_id, '_hc_listing_submitter_id', get_current_user_id() );
 
 		// Remove point
 		// $this->subtract_point();
