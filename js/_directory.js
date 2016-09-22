@@ -11,7 +11,7 @@ function hc_directory_maps() {
 		markers = [],
 		open_info_window = false,
 		map_settings = {
-			zoom: 14,
+			zoom: 13,
 			zoomControl: true,
 			disableDefaultUI: true,
 			scrollwheel: false,
