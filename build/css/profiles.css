@@ -312,28 +312,50 @@ TYPOGRAPHY - http://cssfontstack.com/
   max-width: 50em;
   text-align: left;
 }
-.contact-popup .gform_wrapper,
-.contact-popup form {
-  max-width: 100%;
+.contact-popup h2 {
+  display: block;
+  margin-bottom: .5em;
+  color: #5e5e5e;
+  text-transform: uppercase;
+  font-size: .9em;
+  font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
 }
-.contact-popup .gfield_required {
-  display: none;
-}
-.contact-popup .gfield_description {
+.contact-popup p {
   margin-bottom: 1em;
   font-size: .9em;
 }
-.contact-popup .gfield_radio {
+.contact-popup ul {
+  margin-bottom: 1.5em;
   -webkit-columns: 3;
      -moz-columns: 3;
           columns: 3;
 }
-.contact-popup .gfield_radio > li {
+.contact-popup li {
+  margin-bottom: .25em;
   -webkit-column-break-inside: avoid;
      page-break-inside: avoid;
           break-inside: avoid-column;
 }
-.contact-popup input[type='submit'] {
+.contact-popup li:before {
+  display: inline-block;
+  margin-right: .5em;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #fe862c;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  content: '';
+  vertical-align: middle;
+}
+.contact-popup span {
+  font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  display: inline-block;
+  color: #5e5e5e;
+  vertical-align: middle;
+  font-size: .9em;
+}
+.contact-popup .btn {
   width: auto;
   border: 1px solid #fe862c;
   background-color: transparent;
@@ -344,14 +366,14 @@ TYPOGRAPHY - http://cssfontstack.com/
   .contact-popup {
     padding: 2em;
   }
-  .contact-popup .gfield_radio {
+  .contact-popup ul {
     -webkit-columns: 2;
        -moz-columns: 2;
             columns: 2;
   }
 }
 @media (max-width: 776px) {
-  .contact-popup .gfield_radio {
+  .contact-popup ul {
     -webkit-columns: 1;
        -moz-columns: 1;
             columns: 1;

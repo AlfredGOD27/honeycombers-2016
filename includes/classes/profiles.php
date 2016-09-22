@@ -44,13 +44,29 @@ class HC_Profiles {
 
 	public function display_contact_popup() {
 
-		$form_id = get_option( 'options__hc_contact_popup_form_id' );
-		if( empty($form_id) )
-			return;
-
 		?>
 		<div id="contact-popup" class="white-popup mfp-hide contact-popup">
-			<?php gravity_form( absint($form_id), false, false ); ?>
+			<h2>Thank You</h2>
+
+			<p>Your listing has been submitted and is pending review. An Editor will check and publish it on the site for you within two working days.</p>
+
+			<ul>
+				<li><span>Hero event feature</span></li>
+				<li><span>Newsletter inclusion</span></li>
+				<li><span>Dedicated EDM</span></li>
+				<li><span>Homepage & sidebar inclusions</span></li>
+				<li><span>Dedicated advertorial</span></li>
+				<li><span>Social shout outs</span></li>
+			</ul>
+
+			<?php
+			$page_id = get_option( 'options__hc_contact_page_id' );
+			if( !empty($page_id) ) {
+				?>
+				<a href="<?php echo get_permalink($page_id); ?>" class="btn">Speak To Our Lovely Team</a>
+				<?php
+			}
+			?>
 		</div>
 		<?php
 
