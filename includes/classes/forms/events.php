@@ -69,14 +69,14 @@ class HC_Event_Editor extends HC_Form_Abstract {
 		}
 
 		$this->fields[] = array(
-			'slug'        => 'post_content',
-			'label'       => 'Event Description',
-			'type'        => 'textarea',
-			'table'       => 'posts',
-			'maxlength'   => 3000,
+			'slug'         => 'post_content',
+			'label'        => 'Event Description',
+			'type'         => 'textarea',
+			'table'        => 'posts',
+			'maxlength'    => 3000,
  			'required'    => true,
  			'description' => 'Word limit: ' . $description_word_limit,
-			'classes'     => array('first', 'one-half'),
+			'classes'      => array('first', 'one-half'),
 		);
 
 		$this->fields[] = array(
@@ -302,44 +302,44 @@ class HC_Event_Editor extends HC_Form_Abstract {
 			),
 			HC()->profiles->get_url()
 		);
-		
+
 		$user = get_currentuserinfo();
-		
+
 		$headers[] = 'Content-Type: text/html; charset=UTF-8';
-		
-		$to = get_field('_hc_event_submission_recipient','option');
-		$subj = 'Event submission from '.$user->user_firstname.' '.$user->user_lastname .'';
-    	
-		$title = get_the_title($this->post_id);
-		$alt_title = get_post_meta($this->post_id, '_hc_headline_title', true);
-		$content = get_post_field('post_content', $this->post_id);
-		$start_date = get_post_meta($this->post_id, '_hc_event_start_date', true);
-		$new_format_start = date('F j, Y',strtotime($start_date));
-		$start_time = get_post_meta($this->post_id, '_hc_event_start_time', true);
-		$end_date = get_post_meta($this->post_id, '_hc_event_end_date', true);
-		$new_format_end = date('F j, Y',strtotime($end_date));
-		$end_time = get_post_meta($this->post_id, '_hc_event_end_time', true);
-		$ongoing = get_post_meta($this->post_id, '_hc_event_all_day', true);
-		$venue = get_post_meta($this->post_id, '_hc_event_venue', true);
-		$price = get_post_meta($this->post_id, '_hc_event_price', true);
-		$contact_email = get_post_meta($this->post_id, '_hc_event_contact', true);
-		$website = get_post_meta($this->post_id, '_hc_event_website', true);
-		
-		$body.= '<table cellpadding="10" border="1">';
-		$body.= "<tr><td><b>Title:</b></td><td> $title </td></tr>";
-		$body.= "<tr><td><b>Alternative Title:</b></td><td> $alt_title </td></tr>";
-		$body.= "<tr><td><b>Event Description:</b></td><td> $content </td></tr>";
-		$body.= "<tr><td><b>Start Date:</b></td><td> $new_format_start </td></tr>";
-		$body.= "<tr><td><b>Start Time:</b></td><td> $start_time </td></tr>";
-		$body.= "<tr><td><b>End Date:</b></td><td> $new_format_end </td></tr>";
-		$body.= "<tr><td><b>End Time:</b></td><td> $end_time </td></tr>";
-		$body.= "<tr><td><b>Ongoing:</b></td><td> $ongoing </td></tr>";
-		$body.= "<tr><td><b>Location:</b></td><td> $venue </td></tr>";
-		$body.= "<tr><td><b>Price:</b></td><td> $price </td></tr>";
-		$body.= "<tr><td><b>Contact Email:</b></td><td> $contact_email </td></tr>";
-		$body.= "<tr><td><b>Website:</b></td><td> $website \r\n";
-		$body.= '</table>';
-		
+
+		$to   = get_field('_hc_event_submission_recipient', 'option');
+		$subj = 'Event submission from ' . $user->user_firstname . ' ' . $user->user_lastname . '';
+
+		$title            = get_the_title($this->post_id);
+		$alt_title        = get_post_meta($this->post_id, '_hc_headline_title', true);
+		$content          = get_post_field('post_content', $this->post_id);
+		$start_date       = get_post_meta($this->post_id, '_hc_event_start_date', true);
+		$new_format_start = date('F j, Y', strtotime($start_date));
+		$start_time       = get_post_meta($this->post_id, '_hc_event_start_time', true);
+		$end_date         = get_post_meta($this->post_id, '_hc_event_end_date', true);
+		$new_format_end   = date('F j, Y', strtotime($end_date));
+		$end_time         = get_post_meta($this->post_id, '_hc_event_end_time', true);
+		$ongoing          = get_post_meta($this->post_id, '_hc_event_all_day', true);
+		$venue            = get_post_meta($this->post_id, '_hc_event_venue', true);
+		$price            = get_post_meta($this->post_id, '_hc_event_price', true);
+		$contact_email    = get_post_meta($this->post_id, '_hc_event_contact', true);
+		$website          = get_post_meta($this->post_id, '_hc_event_website', true);
+
+		$body .= '<table cellpadding="10" border="1">';
+		$body .= "<tr><td><b>Title:</b></td><td> $title </td></tr>";
+		$body .= "<tr><td><b>Alternative Title:</b></td><td> $alt_title </td></tr>";
+		$body .= "<tr><td><b>Event Description:</b></td><td> $content </td></tr>";
+		$body .= "<tr><td><b>Start Date:</b></td><td> $new_format_start </td></tr>";
+		$body .= "<tr><td><b>Start Time:</b></td><td> $start_time </td></tr>";
+		$body .= "<tr><td><b>End Date:</b></td><td> $new_format_end </td></tr>";
+		$body .= "<tr><td><b>End Time:</b></td><td> $end_time </td></tr>";
+		$body .= "<tr><td><b>Ongoing:</b></td><td> $ongoing </td></tr>";
+		$body .= "<tr><td><b>Location:</b></td><td> $venue </td></tr>";
+		$body .= "<tr><td><b>Price:</b></td><td> $price </td></tr>";
+		$body .= "<tr><td><b>Contact Email:</b></td><td> $contact_email </td></tr>";
+		$body .= "<tr><td><b>Website:</b></td><td> $website \r\n";
+		$body .= '</table>';
+
 		wp_mail( $to, $subj, $body, $headers, $attachments );
 
 		wp_redirect( $url );

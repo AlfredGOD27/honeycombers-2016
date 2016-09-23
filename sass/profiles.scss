@@ -301,29 +301,51 @@
 	max-width: 50em;
 	text-align: left;
 
-	.gform_wrapper,
-	form {
-		max-width: 100%;
+	h2 {
+		display: block;
+		margin-bottom: .5em;
+		color: #5e5e5e;
+		text-transform: uppercase;
+		font-size: .9em;
+		font-family: $heading;
 	}
 
-	.gfield_required {
-		display: none;
-	}
-
-	.gfield_description {
+	p {
 		margin-bottom: 1em;
 		font-size: .9em;
 	}
 
-	.gfield_radio {
+	ul {
+		margin-bottom: 1.5em;
 		columns: 3;
+	}
 
-		> li {
-			break-inside: avoid-column;
+	li {
+		margin-bottom: .25em;
+		break-inside: avoid-column;
+
+		&:before {
+			display: inline-block;
+			margin-right: .5em;
+			width: 1em;
+			height: 1em;
+			border: 1px solid $orange;
+			border-radius: 50%;
+			background-color: $white;
+			content: '';
+			vertical-align: middle;
 		}
 	}
 
-	input[type='submit'] {
+	span {
+		@include meta-font;
+		display: inline-block;
+		color: #5e5e5e;
+		vertical-align: middle;
+		font-size: .9em;
+	}
+
+	.btn {
 		width: auto;
 		border: 1px solid $orange;
 		background-color: transparent;
@@ -335,7 +357,7 @@
 	.contact-popup {
 		padding: 2em;
 
-		.gfield_radio {
+		ul {
 			columns: 2;
 		}
 	}
@@ -343,7 +365,7 @@
 
 @include media('<=portrait') {
 	.contact-popup {
-		.gfield_radio {
+		ul {
 			columns: 1;
 		}
 	}

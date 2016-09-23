@@ -401,12 +401,14 @@ class HC_Listings {
 					'key'     => '_hc_listing_lat',
 					'value'   => array($coords['se'][0], $coords['ne'][0]),
 					'compare' => 'BETWEEN',
+					'type'    => 'DECIMAL(10,5)',
 				);
 
 				$args['meta_query'][] = array(
 					'key'     => '_hc_listing_lng',
 					'value'   => array($coords['nw'][1], $coords['ne'][1]),
 					'compare' => 'BETWEEN',
+					'type'    => 'DECIMAL(10,5)',
 				);
 
 				break;

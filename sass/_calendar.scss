@@ -297,6 +297,11 @@
 
 		.slide-content {
 			display: flex;
+
+			.title {
+				overflow: hidden;
+				height: 2.5em;
+			}
 		}
 	}
 }
