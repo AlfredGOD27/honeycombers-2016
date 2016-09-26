@@ -298,7 +298,7 @@ function hc_custom_cursor() {
 ?>
 
 <?php
-add_action( 'genesis_before_header', 'hc_ga_content_grouping' );
+add_action( 'wp_head', 'hc_ga_content_grouping' );
 function hc_ga_content_grouping() { 
 	?>
 	<?php
@@ -375,7 +375,23 @@ function hc_ga_content_grouping() {
 	  ga('create', 'UA-38721717-1', 'auto');
 	  ga('require', 'linkid', 'linkid.js');
 	  ga('require', 'displayfeatures');
-	  setTimeout("ga('send','event','Profitable Engagement','time on page more than 2 minutes')",120000);
+	  setTimeout("ga('send','event','profitable engagement','time on page more than 2 minutes',{nonInteraction: false})",120000);
+	  
+	  if (document.referrer.match(/google\.com/gi) && document.referrer.match(/cd/gi)) {
+		  var myString = document.referrer;
+		  var r        = myString.match(/cd=(.*?)&/);
+		  var rank     = parseInt(r[1]);
+		  var kw       = myString.match(/q=(.*?)&/);
+		  
+		  if (kw[1].length > 0) {
+			var keyWord  = decodeURI(kw[1]);
+		  } else {
+			keyWord = "(not provided)";
+		  }
+		
+		  var p        = document.location.pathname;
+		  _gaq.push(['_trackEvent', 'RankTracker', keyWord, p, rank, true]);
+		}
 	  //ga('send', 'pageview');
 	 
 	</script>
