@@ -4275,7 +4275,7 @@ table > tbody > tr:nth-child(odd) > th {
 
 .featured-image-container {
   position: relative;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 .featured-image-container img {
   max-width: none;
