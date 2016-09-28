@@ -265,3 +265,27 @@
 	}
 
 })( window.jQuery );
+
+//Post It share buttons
+$(".share-button").click(function(){$(this).next(".pw-widget").slideToggle("fast");});
+
+//Boomtrain Signup
+$('.hc-form.entry-content').on('click', function (e) {
+		var signup_email = $('#field-user_email').val();
+		_btn.trackAccountSignup(signup_email,{
+		'newsletter_singapore':'TRUE', //ADD IN ADDITIONAL PROPERTIES HERE
+		'newsletter_bali':'TRUE',
+		'newsletter_jakarta':'TRUE',
+		'first_name':$('#field-first_name').val(),
+		'last_name':$('#field-last_name').val(),
+	});
+});	
+$( ".subscribe-form" ).submit(function( event ) {
+  var signup_email = $('#subscribe-email-widget-hc_subscribe_widget-2').val();
+		_btn.trackAccountSignup(signup_email,{
+		'newsletter_singapore':'TRUE', //ADD IN ADDITIONAL PROPERTIES HERE
+		'newsletter_bali':'TRUE',
+		'newsletter_jakarta':'TRUE',
+	});
+  event.preventDefault();
+});
