@@ -2722,6 +2722,20 @@ input[type='search'] {
   font-weight: bold;
 }
 
+.email_error {
+  font-size: 0.85em;
+  color: red;
+  margin-bottom: 1em;
+  display: none;
+}
+
+.successMessageFoot {
+  color: green;
+  font-size: 0.85em;
+  margin-bottom: 10px;
+  display: none;
+}
+
 .slick-slider .slick-slide {
   position: relative;
   border: none;

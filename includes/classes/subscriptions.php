@@ -114,6 +114,7 @@ class HC_Subscriptions {
 	public function display_form( $location ) {
 
 		?>
+        <?php /*
 		<form class="subscribe-form">
 			<label for="subscribe-email-<?php echo $location; ?>">Email</label>
 			<div class="email-container">
@@ -122,6 +123,13 @@ class HC_Subscriptions {
 
 			<button type="submit" class="btn">Sign Me Up!</button>
 		</form>
+		*/ ?>
+        <div id="subscribeFormFoot">
+            <input id="txt-email-foot" maxlength="50" name="email" type="email" required placeholder="Enter your email here" class="focus"/>
+            <div align="center" class="email_error" >Please enter a VALID email address</div>
+            <input id="submitButtonFoot" value="Sign Me Up!" class="btn" />	
+        </div>
+        <div class="successMessageFoot">Thanks for Subscribing! Keep an eye out for your first newsletter.</div>
 		<?php
 
 	}
