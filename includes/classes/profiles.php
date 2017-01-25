@@ -589,10 +589,17 @@ by clicking on the heart or save icon</p>
 						if(
 							isset($box['id']) &&
 							HC()->folders->is_public( $box['id'] )
-						) {
-							HC()->share->display( $box['id'] );
-						}
+						) { ?>
+							<button class="share-button btn btn-icon" id="postshare"><i class="ico-share"></i><span>Share</span></button>
+                            <div class="share-icons profile-icons">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $box['url']; ?>" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                                <a href="https://twitter.com/home?status=<?php echo $box['url']; ?>" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                                <a href="https://pinterest.com/pin/create/button/?url=&media=<?php echo $box['url']; ?>&description="><i class="fa fa-pinterest-square" aria-hidden="true"></i></a>
+                                <a href="mailto:?&body=<?php echo $box['url']; ?>"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
+                            </div>
+						<?php }
 						?>
+                        
 					</div>
 					<?php
 				echo '</div>';
