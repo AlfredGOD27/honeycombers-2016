@@ -26,9 +26,10 @@ function hc_do_footer() {
 					}
 				?>
             </a>
-
-			<h4>Connect With Us</h4>
-			<?php hc_do_social(); ?>
+			<div class="show-phone">
+                <h4>Connect With Us</h4>
+                <?php hc_do_social(); ?>
+            </div>
 		</div>
 
 		<div class="right hide-no-js clearfix">
@@ -97,24 +98,30 @@ function hc_do_footer() {
 		</div>
 	</div>
 
-	<div class="favicon-row">
-		<i class="ico-favicon"></i>
-	</div>
-
-	<div class="footer-bottom">
-		<?php
-
-		wp_nav_menu(
-			array(
-				'menu_class'     => 'footer-menu',
-				'theme_location' => 'footer',
-				'depth'          => 1,
-			)
-		);
-
-		?>
-		<p>&copy; Honeycombers Pte Ltd <?php echo date('Y'); ?> All Rights Reserved</p>
-	</div>
+	<div class="footer-bottom-row">
+    	<div class="left">
+            <div class="favicon-row">
+                <i class="ico-favicon"></i>
+            </div>
+        </div>
+        
+    	<div class="right">
+            <div class="footer-bottom">
+                <?php
+        
+                wp_nav_menu(
+                    array(
+                        'menu_class'     => 'footer-menu',
+                        'theme_location' => 'footer',
+                        'depth'          => 1,
+                    )
+                );
+        
+                ?>
+                <p>&copy; Honeycombers Pte Ltd <?php echo date('Y'); ?> All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
 	<?php
 
 }
