@@ -30,9 +30,12 @@ class HC_Join_Widget extends WP_Widget {
 
 				echo !empty($title) ? '<h3>' . $title . '</h3>' : '';
 				?>
-				<button class="btn open-popup-link" data-mfp-src="#login-popup">Sign Up <i class="ico-exit"></i></button>
+				
 				<?php
 				echo !empty($text) ? wpautop($text) : '';
+				?>
+                <button class="btn open-popup-link" data-mfp-src="#login-popup"><i class="ico-exit"></i></button>
+                <?php
 			}
 		echo $after_widget;
 
