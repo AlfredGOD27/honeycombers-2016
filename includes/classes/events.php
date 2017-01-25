@@ -410,9 +410,37 @@ class HC_Events {
 
 					<div class="slide-content show-phone">
 						<div class="info">
-							<span class="m"><?php echo date('M', $date['start_date']); ?></span>
-							<span class="d"><?php echo date('j', $date['start_date']); ?></span>
-						</div>
+                            	<?php 
+									$startDate = date($date['start_date']); 
+									$endDate = date($date['end_date']); 
+								?>
+                                <?php 
+									if ($startDate==$endDate) { 
+								?>
+									<span class="m"><?php echo date('M', $date['start_date']); ?></span>
+                                    <span class="m"><?php echo date('j', $date['start_date']); ?></span>
+								<?php 
+									} else {
+										
+										if ( date('M', $date['start_date']) == date('M', $date['end_date'])) {
+								?>
+                                	
+                                            <span class="m"><?php echo date('M', $date['start_date']); ?></span>
+                                            
+                                            <span class="m"><?php echo date('d', $date['start_date']); ?> - <?php echo date('j', $date['end_date']); ?></span>
+                                		<?php } else { ?>
+                                    
+                                            <span class="m"><?php echo date('M', $date['start_date']); ?> <?php echo date('j', $date['start_date']); ?></span>
+                                            
+                                            -
+                                            <span class="m"><?php echo date('M', $date['end_date']); ?> <?php echo date('j', $date['end_date']); ?></span>
+                                            
+                                <?php 
+										}
+									
+									} 
+								?>
+							</div>
 
 						<div class="name">
 							<?php
@@ -448,8 +476,36 @@ class HC_Events {
 
 						<a class="inner" href="<?php echo get_permalink($post_id); ?>">
 							<div class="info">
-								<span class="m"><?php echo date('M', $date['start_date']); ?></span>
-								<span class="d"><?php echo date('j', $date['start_date']); ?></span>
+                            	<?php 
+									$startDate = date($date['start_date']); 
+									$endDate = date($date['end_date']); 
+								?>
+                                <?php 
+									if ($startDate==$endDate) { 
+								?>
+									<span class="m"><?php echo date('M', $date['start_date']); ?></span>
+                                    <span class="m"><?php echo date('j', $date['start_date']); ?></span>
+								<?php 
+									} else {
+										
+										if ( date('M', $date['start_date']) == date('M', $date['end_date'])) {
+								?>
+                                	
+                                            <span class="m"><?php echo date('M', $date['start_date']); ?></span>
+                                            
+                                            <span class="m"><?php echo date('d', $date['start_date']); ?> - <?php echo date('j', $date['end_date']); ?></span>
+                                		<?php } else { ?>
+                                    
+                                            <span class="m"><?php echo date('M', $date['start_date']); ?> <?php echo date('j', $date['start_date']); ?></span>
+                                            
+                                            -
+                                            <span class="m"><?php echo date('M', $date['end_date']); ?> <?php echo date('j', $date['end_date']); ?></span>
+                                            
+                                <?php 
+										}
+									
+									} 
+								?>
 							</div>
 
 							<div class="name">
