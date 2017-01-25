@@ -4,7 +4,8 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class HC_Sliders {
 	private function display_post_content( $post_id, $max_chars = false ) {
-
+		
+		/*
 		$term = false;
 		switch( get_post_type($post_id) ) {
 			case 'post':
@@ -27,6 +28,7 @@ class HC_Sliders {
 				echo HC()->utilities->get_category_icon_html( $term, 'small', 'orange' );
 			echo '</div>';
 		}
+		*/
 
 		if( false === $max_chars ) {
 			echo '<span>' . HC()->entry->get_headline_title( $post_id ) . '</span>';
