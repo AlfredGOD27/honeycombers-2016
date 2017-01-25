@@ -295,9 +295,43 @@ function hc_custom_cursor() {
 			}
  	} 
 }
+
+add_action( 'genesis_before_header', 'hc_custom_header' );
+function hc_custom_header() { 
+	if (function_exists('get_field')) {	
+		$bg_color = get_field('_hc_headerbackground_color','option');
+		$bg_img = get_field('_hc_header_background_image','option');
+			if (!empty($bg_color) || !empty($bg_img)) {
+?>
+	<style>
+		.site-header {
+			background-color: <?php echo $bg_color; ?>;
+			background-image: url(<?php echo $bg_img; ?>);
+			background-position: 50% 15%;
+		}
+		@media (max-width: 776px) {
+			.title-area {
+				padding-left: 10px;
+				padding-right: 0;
+			}
+			.site-logo .custom_mobile_logo { 
+				display: block;
+				width: 150px;
+			}
+			.site-header {
+				background-color: none;
+				background-image: none;
+			}
+		}
+	</style>
+<?php
+			}
+ 	} 
+}
 ?>
 
 <?php
+/*
 add_action( 'wp_head', 'hc_ga_content_grouping' );
 function hc_ga_content_grouping() { 
 	?>
@@ -375,23 +409,8 @@ function hc_ga_content_grouping() {
 	  ga('create', 'UA-38721717-1', 'auto');
 	  ga('require', 'linkid', 'linkid.js');
 	  ga('require', 'displayfeatures');
-	  setTimeout("ga('send','event','profitable engagement','time on page more than 2 minutes',{nonInteraction: false})",120000);
-	  
-	  if (document.referrer.match(/google\.com/gi) && document.referrer.match(/cd/gi)) {
-		  var myString = document.referrer;
-		  var r        = myString.match(/cd=(.*?)&/);
-		  var rank     = parseInt(r[1]);
-		  var kw       = myString.match(/q=(.*?)&/);
-		  
-		  if (kw[1].length > 0) {
-			var keyWord  = decodeURI(kw[1]);
-		  } else {
-			keyWord = "(not provided)";
-		  }
-		
-		  var p        = document.location.pathname;
-		  _gaq.push(['_trackEvent', 'RankTracker', keyWord, p, rank, true]);
-		}
+	  var p = document.location.pathname;
+	  setTimeout("ga('send','event','reading','time on page more than 2 minutes',p)",120000);
 	  //ga('send', 'pageview');
 	 
 	</script>
@@ -401,7 +420,7 @@ function hc_ga_content_grouping() {
     	dataLayer.push({<?php echo gtm_posttype(); ?>})
 	</script>
 	
-<?php }
+<?php } 
 
 add_action( 'wp_head', 'hc_boomtrain' );
 function hc_boomtrain() { 
@@ -429,9 +448,35 @@ function hc_boomtrain() {
     <!-- Boomtrain Code -->
 
 <?php
+	} 
+	
+add_action( 'genesis_before_header', 'hc_floodlight' );
+
+function hc_floodlight() { 
+if (is_single(111512)) {
+	?>
+	<!--
+    Start of DoubleClick Floodlight Tag: Please do not remove
+    Activity name of this tag: Honeycombers Landing Page_UNQ
+    URL of the webpage where the tag is expected to be placed: http://honeycombers.com
+    This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+    Creation Date: 10/07/2016
+    -->
+    <script type="text/javascript">
+    var axel = Math.random() + "";
+    var a = axel * 10000000000000;
+    document.write('<iframe src="https://1501466.fls.doubleclick.net/activityi;src=1501466;type=2016a0;cat=honey0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1;num=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+    </script>
+    <noscript>
+    <iframe src="https://1501466.fls.doubleclick.net/activityi;src=1501466;type=2016a0;cat=honey0;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;ord=1;num=1?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+    </noscript>
+    <!-- End of DoubleClick Floodlight Tag: Please do not remove -->
+				<?php
 	}
+} */
 
 add_action( 'genesis_before_header', 'hc_site_takeover_top' );
+
 function hc_site_takeover_top() {
 
 if (function_exists('have_rows')) {	
@@ -521,8 +566,15 @@ function hc_site_top() {
 
 add_action( 'genesis_site_title', 'hc_site_logo' );
 function hc_site_logo() {
-
-	echo '<a href="' . trailingslashit( home_url() ) . '" title="' . get_bloginfo( 'name' ) . '" class="site-logo"><img src="' . get_stylesheet_directory_uri() . '/build/images/logo.svg" alt="' . get_bloginfo( 'name' ) . '" width="319" height="57"><i class="ico-favicon"></i></a>';
+	if (function_exists('get_field')) {	
+		$custom_logo = get_field('_hc_header_custom_logo','option');
+		$custom_logo_mobile = get_field('_hc_header_custom_logo_mobile','option');
+	}
+	if (!empty($custom_logo) && !empty($custom_logo_mobile)) {
+		echo '<a href="' . trailingslashit( home_url() ) . '" title="' . get_bloginfo( 'name' ) . '" class="site-logo"><img src="' . $custom_logo . '" alt="' . get_bloginfo( 'name' ) . '"><img src="' . $custom_logo_mobile . '" alt="' . get_bloginfo( 'name' ) . '" class="custom_mobile_logo show-phone"></a>';
+	} else {
+	echo '<a href="' . trailingslashit( home_url() ) . '" title="' . get_bloginfo( 'name' ) . '" class="site-logo"><img src="' . get_stylesheet_directory_uri() . '/build/images/login-logo.svg" alt="' . get_bloginfo( 'name' ) . '" width="319" height="57"><i class="ico-favicon"></i></a>';
+	}
 
 }
 
