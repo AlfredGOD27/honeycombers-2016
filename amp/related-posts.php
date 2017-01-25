@@ -57,26 +57,26 @@ if ( $tax_term_ids ) {
 		<div class="amp-wp-meta amp-wp-tax-tag amp-related-posts">
 			<h3>You May Also Like</h3>
 			<ul>
-			<?php foreach( $related as $post) {
-				setup_postdata( $post );
-				?>
-				<li>
-                	<?php 
-						$thumb_id = get_post_thumbnail_id( get_the_id() );
-						$img = wp_get_attachment_image_src( $thumb_id, 'thumbnail' );
-						$img_src = $img[0];
-						if (!empty($img_src)) {
-							$img_src = $img[0];
-						} else {
-							$img_src = 'http://d2q2f0pfv13tpb.cloudfront.net/wp-content/uploads/2016/10/HK-Editorial-byline.png';
-						}
-					 ?>
-                    	<a href="<?php echo esc_url( amp_get_permalink( get_the_id() ) ); ?>" title="<?php the_title_attribute(); ?>">
-                        	<amp-img src="<?php echo $img_src ?>" width="80" height="80" layout="responsive"></amp-img>
-                        </a>
-                	<p><a href="<?php echo esc_url( amp_get_permalink( get_the_id() ) ); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
-                </li>
-			<?php } ?>
+				<?php foreach( $related as $post) {
+                    setup_postdata( $post );
+                    ?>
+                    <li>
+                        <?php 
+                            $thumb_id = get_post_thumbnail_id( get_the_id() );
+                            $img = wp_get_attachment_image_src( $thumb_id, 'thumbnail' );
+                            $img_src = $img[0];
+                            if (!empty($img_src)) {
+                                $img_src = $img[0];
+                            } else {
+                                $img_src = 'http://d2q2f0pfv13tpb.cloudfront.net/wp-content/uploads/2016/10/HK-Editorial-byline.png';
+                            }
+                         ?>
+                            <a href="<?php echo esc_url( amp_get_permalink( get_the_id() ) ); ?>" title="<?php the_title_attribute(); ?>">
+                                <amp-img src="<?php echo $img_src ?>" width="80" height="80" layout="responsive"></amp-img>
+                            </a>
+                        <p><a href="<?php echo esc_url( amp_get_permalink( get_the_id() ) ); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></p>
+                    </li>
+                <?php } ?>
 			</ul>
 		</div>
 	<?php
