@@ -372,7 +372,7 @@ class HC_Archives {
 			switch( $style ) {
 				case 'tiny':
 				case 'small':
-					$image_size = 'archive-small';
+					$image_size = 'archive';
 					break;
 				case 'medium':
 					$image_size = 'archive';
@@ -417,9 +417,11 @@ class HC_Archives {
 					?>
 					<div class="top">
 						<?php
+						/*
 						$term = HC()->utilities->get_primary_term( $post->ID, 'category' );
 						if( !empty($term) )
 							echo HC()->utilities->get_category_icon_html( $term );
+						*/
 
 						HC()->folders->display_add_button( $post->ID, true, true );
 
@@ -431,7 +433,7 @@ class HC_Archives {
 						?>
 					</div>
 
-					<div class="bottom <?php echo 'post' === $post->post_type && $show_byline ? 'roll-up' : ''; ?>">
+					<div class="bottom <?php // echo 'post' === $post->post_type && $show_byline ? 'roll-up' : ''; ?>">
 						<h3 itemprop="headline">
 							<a href="<?php echo get_permalink( $post->ID ); ?>" rel="bookmark">
 								<?php echo HC()->entry->get_headline_title( $post->ID ); ?>
@@ -439,6 +441,7 @@ class HC_Archives {
 						</h3>
 
 						<?php
+						/*
 						if( 'post' === $post->post_type && $show_byline ) {
 							?>
 							<span class="author">
@@ -450,6 +453,7 @@ class HC_Archives {
 							</span>
 							<?php
 						}
+						*/
 						?>
 					</div>
 					<?php
