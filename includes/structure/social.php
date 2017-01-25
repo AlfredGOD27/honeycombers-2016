@@ -9,8 +9,8 @@ function hc_do_social() {
 
 	$sites = array(
 		'facebook'  => 'Facebook',
-		'youtube'   => 'YouTube',
 		'instagram' => 'Instagram',
+		'youtube'   => 'YouTube',
 	);
 	?>
 
@@ -22,7 +22,7 @@ function hc_do_social() {
 				continue;
 
 			?>
-			<a href="<?php echo esc_url($url); ?>" title="<?php echo $name; ?>"><i class="ico-<?php echo $slug; ?>"></i></a>
+			<a href="<?php echo esc_url($url); ?>" title="<?php echo $name; ?>"><i class="fa fa-<?php echo $slug; ?>" aria-hidden="true"></i></a>
 			<?php
 		}
 		?>
