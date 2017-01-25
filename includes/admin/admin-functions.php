@@ -222,3 +222,197 @@ add_filter('oembed_result', 'modify_YT_embed_url');
 function modify_YT_embed_url($html) {
     return str_replace('?enablejsapi=1', '?enablejsapi=1&rel=0', $html);
 }
+
+//Add body class Advertorial or Editorial
+add_filter( 'body_class', function( $classes ) {
+	global $post;
+	$article_type = get_field('_hc_post_is_sponsored',$post->ID);
+	if (is_single()) {
+		if( get_field('_hc_post_is_sponsored',$post->ID) )
+			{
+				$article = 'article-advertorial';
+			}
+			else
+			{
+				$article = 'article-editorial';
+			}
+	}
+    return array_merge( $classes, array( $article ) );
+} );
+
+add_action( 'amp_post_template_head', 'custom_fonts' );
+
+function custom_fonts( $amp_template ) {
+    $post_id = $amp_template->get( 'post_id' );
+    ?>
+    <link rel="canonical" href="<?php echo get_permalink($post_id); ?>" />
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Suranna" rel="stylesheet">
+    <?php
+}
+
+//Add font awesome
+function prefix_add_footer_styles() {
+    wp_enqueue_style( 'fa', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
+};
+add_action( 'get_footer', 'prefix_add_footer_styles' );
+
+//AMP styling
+add_action( 'amp_post_template_css', 'ad_amp_styles' );
+
+function ad_amp_styles( $amp_template ) {
+    // only CSS here please...
+    ?>
+    html {
+    	background: none;
+    }
+    .amp-wp-title {
+    	font-family: 'Suranna', serif;
+    }
+    body p, body ul {
+    	font-family: 'PT Serif', serif;
+    }
+    .amp-wp-header > div, .amp-wp-header {
+    	background: #F79433;
+    }
+    .amp-wp-header > div > a {
+    	color: #fff;
+    }
+    a {
+    	color: #F79433;
+    }
+    .amp-wp-byline amp-img {
+    	display: none;
+    }
+    .amp-wp-header > div > a {
+		background-image: url(<?php echo get_stylesheet_directory_uri() . '/build/images/logo.svg'; ?>);
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: block;
+        text-indent: -9999px;
+    }
+    .amp-wp-article-footer {
+    	margin-top: 2em;
+    }
+    .amp-wp-footer > div > h2, .amp-wp-footer > div > p {
+    	display: none;
+    }
+    .amp-related-posts ul {
+    	margin-left: 0;
+        list-style: none;
+    }
+    .amp-related-posts ul li {
+    	width: 49%;
+        display: inline-block;
+        text-align: center;
+    }
+    .amp-related-posts ul li a {
+    	text-decoration: none;
+        margin-top: 10px;
+    }
+    .amp-related-posts ul li p {
+    	height: 35px;
+        min-height: 35px;
+        overflow: hidden;
+        padding-left: 10px;
+    	padding-right: 10px;
+    }
+    .wp-caption .wp-caption-text, .amp-wp-meta {
+    	font-size: 11px;
+    }
+    figure {
+		width: calc(100% + 30px);
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    .amp-wp-article-featured-image {
+    	width: calc(100% + 30px);
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    <?php
+}
+
+add_filter( 'amp_post_template_file', 'xyz_amp_set_custom_tax_meta_template', 10, 3 );
+
+function xyz_amp_set_custom_tax_meta_template( $file, $type, $post ) {
+    if ( 'meta-taxonomy' === $type ) {
+        $file = dirname( __FILE__ ) . '/t/meta-custom-tax.php';
+    }
+    return $file;
+}
+
+/**
+ * Add related posts to AMP amp_post_article_footer_meta
+ */
+function my_amp_post_article_footer_meta( $parts ) {
+
+	$index = 1;
+	
+	array_splice( $parts, $index, 0, array( 'my-related-posts' ) );
+
+	return $parts;
+}
+add_filter( 'amp_post_article_footer_meta', 'my_amp_post_article_footer_meta' );
+
+/**
+ * Designate the template file for related posts
+ */
+function my_amp_related_posts_path( $file, $template_type, $post ) {
+
+	if ( 'my-related-posts' === $template_type ) {
+		$file = get_stylesheet_directory() . '/amp/related-posts.php';
+	}
+	return $file;
+}
+add_filter( 'amp_post_template_file', 'my_amp_related_posts_path', 10, 3 );
+
+add_filter( 'amp_post_template_analytics', 'xyz_amp_add_custom_analytics' );
+function xyz_amp_add_custom_analytics( $analytics ) {
+    if ( ! is_array( $analytics ) ) {
+        $analytics = array();
+    }
+
+    // https://developers.google.com/analytics/devguides/collection/amp-analytics/
+    $analytics['xyz-googleanalytics'] = array(
+        'type' => 'googleanalytics',
+        'attributes' => array(
+			'config' => 'https://www.googletagmanager.com/amp.json?id=GTM-TLR97FQ&gtm.url=SOURCE_URL',
+            'data-credentials' => 'include',
+        ),
+        'config_data' => array(
+            'vars' => array(
+                'gaTrackingId' => "UA-38721717-4",
+				'gtm_css_2_0' => 'a:not([href*=\"thehoneycombers.com\"]), a:not([href*=\"thehoneycombers.com\"]) *',
+            ),
+            'triggers' => array(
+                'trackPageview' => array(
+                    'on' => 'visible',
+                    'request' => 'pageview',
+                ),
+				"11" => array (
+					"request" => "2",
+					"selector" => ":not(*)${gtm_css_2_0}",
+					"vars" => array(
+						"gtm.event" => "gtm.click"
+					),
+					"on" => "click"
+				),
+				"3" => array(
+					"request" => "2",
+					"scrollSpec" => array(
+						"verticalBoundaries" => [25, 50, 75, 100],
+						"horizontalBoundaries" => [100]
+					),
+					"vars" => array(
+						"gtm.event" => "gtm.scroll"
+					),
+					"on" => "scroll"
+				)
+            ),
+        ),
+    );
+
+    return $analytics;
+}
+
