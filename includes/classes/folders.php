@@ -55,7 +55,7 @@ class HC_Folders {
 				$label = 'Save Venue';
 				break;
 			default:
-				$label = 'Save Article';
+				$label = '';
 				break;
 		}
 
