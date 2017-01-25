@@ -16,6 +16,11 @@ SOCIAL COLORS - http://designpieces.com/2012/12/social-media-colours-hex-and-rgb
 /*********************
 TYPOGRAPHY - http://cssfontstack.com/
 *********************/
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
+@import url("https://fonts.googleapis.com/css?family=Suranna");
+@import url("https://fonts.googleapis.com/css?family=PT+Serif");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 .no-js .hide-no-js {
   display: none !important;
 }
@@ -79,7 +84,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   -ms-flex-negative: 0;
       flex-shrink: 0;
   margin-right: 1em;
-  border: 3px solid #fe862c;
+  border: 3px solid #f68b1f;
   border-radius: 50%;
 }
 
@@ -98,7 +103,7 @@ TYPOGRAPHY - http://cssfontstack.com/
 .profile-welcome span {
   display: block;
   margin-bottom: .25em;
-  color: #fe862c;
+  color: #f68b1f;
 }
 .profile-welcome h1,
 .profile-welcome h2 {
@@ -138,7 +143,7 @@ TYPOGRAPHY - http://cssfontstack.com/
 
 .profile-bookmarks-info {
   padding: .75em 1em;
-  border: 1px solid #fe862c;
+  border: 1px solid #f68b1f;
   background-color: #f7f8f9;
   text-align: center;
 }
@@ -150,17 +155,17 @@ TYPOGRAPHY - http://cssfontstack.com/
   margin-right: auto;
   margin-bottom: .25em;
   margin-left: auto;
-  color: #fe862c;
+  color: #f68b1f;
   font-size: 1.5em;
 }
 .profile-bookmarks-info .orange {
   font-family: "Noto Serif", Georgia, Times, "Times New Roman", serif;
   font-style: italic;
   margin-bottom: .5em;
-  color: #fe862c;
+  color: #f68b1f;
 }
 .profile-bookmarks-info .black {
-  font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 .profile-bookmarks-info a {
   color: inherit;
@@ -174,10 +179,10 @@ TYPOGRAPHY - http://cssfontstack.com/
 }
 .profile-boxes .box {
   margin-bottom: 1.75em;
-  border: 1px solid #fe862c;
+  border: 1px solid #f68b1f;
 }
 .profile-boxes .box.invert-colors .placeholder {
-  background-color: #fe862c;
+  background-color: #f68b1f;
 }
 .profile-boxes .box.invert-colors i {
   color: #FFFFFF;
@@ -189,7 +194,7 @@ TYPOGRAPHY - http://cssfontstack.com/
 .profile-boxes .top {
   position: relative;
   display: block;
-  border-bottom: 3px solid #fe862c;
+  border-bottom: 3px solid #f68b1f;
   color: inherit;
   text-align: center;
 }
@@ -208,7 +213,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   top: 50%;
   left: 50%;
   display: block;
-  color: #fe862c;
+  color: #f68b1f;
   font-size: 4.5em;
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
@@ -272,7 +277,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   text-decoration: none;
 }
 .folders-list a.current {
-  color: #fe862c;
+  color: #f68b1f;
 }
 
 @media (max-width: 776px) {
@@ -318,7 +323,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   color: #5e5e5e;
   text-transform: uppercase;
   font-size: .9em;
-  font-family: "Montserrat", Tahoma, Verdana, Segoe, sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 .contact-popup p {
   margin-bottom: 1em;
@@ -341,7 +346,7 @@ TYPOGRAPHY - http://cssfontstack.com/
   margin-right: .5em;
   width: 1em;
   height: 1em;
-  border: 1px solid #fe862c;
+  border: 1px solid #f68b1f;
   border-radius: 50%;
   background-color: #FFFFFF;
   content: '';
@@ -357,9 +362,9 @@ TYPOGRAPHY - http://cssfontstack.com/
 }
 .contact-popup .btn {
   width: auto;
-  border: 1px solid #fe862c;
+  border: 1px solid #f68b1f;
   background-color: transparent;
-  color: #fe862c;
+  color: #f68b1f;
 }
 
 @media (max-width: 1024px) {

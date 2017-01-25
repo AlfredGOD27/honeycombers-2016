@@ -1,6 +1,7 @@
 .breadcrumbs {
 	margin-bottom: 1em;
 	color: $grey-lighter;
+	font-family: $heading;
 	line-height: 1;
 
 	> span {
@@ -77,6 +78,11 @@
 	.entry-title {
 		font-size: 1.25em;
 	}
+	.header-default {
+		.entry-title {
+			font-size: 2.25em;
+		}
+	}
 }
 
 .entry-time {
@@ -85,13 +91,13 @@
 }
 
 .entry-author {
-	color: $orange;
-	text-transform: uppercase;
+	color: $black;
+	text-transform: none;
 	font-style: normal;
-	font-family: $heading;
+	font-family: $titles;
 
 	a {
-		color: inherit;
+		color: $black;
 		text-decoration: none;
 	}
 }
@@ -116,11 +122,15 @@
 .header-default {
 	.entry-header {
 		.entry-title {
-			margin-bottom: .75em;
+			margin-bottom: 0.1em;
+			font-family: $titles;
+			text-transform: none;
+			font-size: 3em;
+    		line-height: 1em;
 		}
 
 		.entry-meta {
-			margin-bottom: .75em;
+			margin-bottom: .25em;
 		}
 
 		.author-share-row {
@@ -134,7 +144,7 @@
 			float: left;
 
 			> p {
-				@include meta-font;
+				font-family: $titles;
 				font-size: .9em;
 			}
 		}
@@ -150,10 +160,42 @@
 				display: inline-block;
 				margin-left: 1em;
 				vertical-align: middle;
+				.ico-heart, .ico-heart-filled {
+					background: $black;
+					border-radius: 50%;
+					font-size: 0.8em;
+					padding: 7px;
+				}
+				span {
+					display: none;
+				}
+				span.name, span.count {
+					display: block;
+				}
 
 				&:first-child {
 					margin-left: 0;
 				}
+			}
+			
+			.share-icons {
+				margin-bottom: 7px;
+				.fa {
+					width: 25px;
+					height: 25px;
+					border-radius: 50%;
+					text-align: center;
+					line-height: 25px;
+					vertical-align: middle;
+					padding: 0;
+					font-size: .7em;
+					color: $white;
+					background-color: $black;
+				}
+			}
+			
+			.button-nav {
+				margin-top: 15px;
 			}
 		}
 	}
@@ -222,9 +264,9 @@
 			display: block;
 			margin-bottom: .5em;
 			color: $orange;
-			text-transform: uppercase;
+			text-transform: none;
 			font-size: .9em;
-			font-family: $heading;
+			font-family: $titles;
 		}
 
 		p {
@@ -317,13 +359,14 @@
 }
 
 .entry-excerpt {
-	@include meta-font;
+	/* @include meta-font; */
+	font-family: $heading;
 	margin-bottom: 1.25em;
-	color: $grey-light;
+	color: $grey-lighter;
 
 	p {
-		font-size: 1em;
-		line-height: 1.625;
+		font-size: 1.5em;
+		line-height: 1.5em!important;
 	}
 }
 
@@ -352,8 +395,10 @@
 	}
 
 	h3 {
-		font-size: .9em;
-		line-height: 1.75;
+		font-size: 1.5em;
+		line-height: 1.25em;
+		margin-bottom: 0.5em;
+		font-family: $titles;
 
 		a {
 			text-decoration: none;
@@ -396,6 +441,9 @@
 
 	table {
 		margin-bottom: 1.5em;
+	}
+	a {
+		text-decoration: none;
 	}
 }
 
@@ -443,9 +491,9 @@
 		flex-shrink: 1;
 		float: left;
 		margin-bottom: 1em;
-		color: $orange;
+		color: $black;
 		font-size: .9em;
-		font-family: $heading;
+		font-family: $body;
 	}
 
 	.share {
@@ -459,10 +507,41 @@
 			display: inline-block;
 			margin-left: 2em;
 			vertical-align: middle;
+			.ico-heart, .ico-heart-filled {
+				background: $black;
+				border-radius: 50%;
+				font-size: 0.8em;
+				padding: 7px;
+			}
+			span {
+				display: none;
+			}
+			span.name, span.count {
+				display: block;
+			}
 
 			&:first-child {
 				margin-left: 2em;
 			}
+		}
+		.share-icons {
+			margin-bottom: 7px;
+			.fa {
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				text-align: center;
+				line-height: 25px;
+				vertical-align: middle;
+				padding: 0;
+				font-size: .7em;
+				color: $white;
+				background-color: $black;
+			}
+		}
+		
+		.button-nav {
+			margin-top: 15px;
 		}
 	}
 }
@@ -492,11 +571,12 @@
 
 		span {
 			margin-right: .5em;
-			color: $orange;
-			text-transform: uppercase;
+			color: $black;
+			text-transform: none;
 			font-style: normal;
+			font-weight: bold;
 			font-size: 1.1em;
-			font-family: $heading;
+			font-family: $body;
 		}
 	}
 
@@ -512,8 +592,8 @@
 	}
 
 	.read-more {
-		@include meta-font;
-		color: $grey-lighter;
+		font-family: $body;
+		color: $black;
 		font-size: .95em;
 	}
 }
@@ -585,10 +665,14 @@
         padding-right: 10px;
     }
     #menu-blog_navigation-1 li a {
-        color: #fff;
+        color: $black;
         text-decoration: none;
         text-transform: uppercase;
+		font-size: 0.8em;
     }
+	#menu-blog_navigation-1 li a:hover {
+		color: $orange;
+	}
 }
 .widecolumn {
     min-height: 350px;
@@ -606,10 +690,16 @@
     font-size: .75em;
     letter-spacing: .01rem;
     margin-top: .5em;
+	font-style: italic;
 }
 
 .cat_leaderboard iframe {
 	margin-bottom: 20px;
+}
+
+.events_leaderboard div {
+	margin: 0 auto 20px auto;
+	text-align: center;
 }
 
 @media (max-width: 776px) {
@@ -621,4 +711,98 @@
 
 .home-mobile-promo div {
   margin: 0 auto;
+}
+
+.slider-row td {
+	background-color:transparent!important;
+}
+
+.email_error {
+	color:red;
+}
+
+.success-generic {
+	color:green;
+}
+
+.email_error,.success-generic {
+	display:none;
+}
+
+.boomtrain-generic-signup {
+	margin-top:1.5em;
+}
+
+.boomtrain-checks {
+	margin-bottom:1.5em;
+}
+
+.share-icons {
+	display: inline-block;
+	margin-left: 2px;
+}
+.share-icons .fa {
+	margin: 0 0 0 2px;
+	font-size: 30px;
+}
+.share-icons .fa-facebook-square {
+	color: #395A97;
+}
+.share-icons .fa-twitter-square {
+	color: #55AEEB;
+}
+.share-icons .fa-pinterest-square {
+	color: #BA0420;
+}
+.share-icons .fa-envelope-square {
+	color: #36AEC0;
+}
+.share-icons .fa-whatsapp {
+	color: #128c7e;
+}
+.share-icons .whatsapp-share {
+	display: none;
+}
+.bookmarks-button-container, .share-button, .calendar-button  {
+	margin-top: 0px;
+}
+.logged-in.single-post .bookmarks-button-container, .logged-in.single-post .share-button, .logged-in.single-post .calendar-button  {
+	margin-top: -15px;
+}
+.bookmarks-button-container.icon-only {
+	margin-top: 0;
+}
+.profile-icons {
+	display: block;
+    margin-top: 8px;
+}
+
+@media only screen and (max-width:640px){
+	.share-button {
+		display: none!important;
+	}
+	.entry-meta {
+		margin-bottom: .75em!important;
+	}
+	.single .bookmarks-button span {
+		display: none;
+	}
+}
+@media (max-width: 776px) {
+	.share-icons .whatsapp-share {
+		display: inline-block;
+	}
+}
+.home .join-inner input[type="email"] {
+    border: solid 2px #fe862c;
+	margin-bottom: 20px;
+}
+.home .join-inner > form {
+	margin-top: 200px;
+}
+@media (max-width: 640px) {
+	.top-takeover {
+		margin-top: -26px;
+		padding-bottom: 24px;
+	}
 }

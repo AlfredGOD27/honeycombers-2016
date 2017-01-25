@@ -26,6 +26,27 @@
 	}
 }
 
+.footer-bottom-row {
+	.left {
+		flex-grow: 0;
+		flex-shrink: 0;
+		float: left;
+		padding-right: .75em;
+		width: (100% / 8);
+		width: ($site-width / 8);
+		margin-top: 1.8em;
+	}
+	.right {
+		display: flex;
+		flex-grow: 1;
+		flex-shrink: 1;
+		float: right;
+		padding-left: .75em;
+		width: (100% / 8 * 7);
+		text-align: left;
+	}
+}
+
 .footer-social-row {
 	display: flex;
 	margin-bottom: 2.5em;
@@ -37,12 +58,18 @@
 		padding-right: .75em;
 		width: (100% / 8);
 		width: ($site-width / 8);
+		.social {
+			.fa {
+				color: $black;
+			}
+		}
 	}
 
 	.ico-instagram-logo {
 		display: block;
 		margin-bottom: .1em;
 		font-size: 2em;
+		margin-top: 1.5em;
 	}
 
 	.instagram-link {
@@ -85,6 +112,22 @@
 }
 
 @include media('<=portrait') {
+	.footer-bottom-row {
+		.left {
+			width: 100%;
+			padding-right: 0;
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+		.right {
+			width: 100%;
+			text-align: center;
+			padding-left: 0;
+			.footer-bottom {
+				width: 100%;
+			}
+		}
+	}
 	.footer-social-row {
 		flex-direction: column-reverse;
 		align-items: center;
@@ -98,6 +141,7 @@
 		.ico-instagram-logo {
 			margin-bottom: 0;
 			font-size: 1.5em;
+			margin-top: 0.5em;
 		}
 
 		.instagram-link {
@@ -121,7 +165,7 @@
 .favicon-row {
 	margin-bottom: 2em;
 	height: 1px;
-	background-color: $white;
+	/* background-color: $white; */
 
 	i {
 		display: inline-block;
@@ -145,7 +189,7 @@
 }
 
 .footer-menu {
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 	font-family: $heading;
 
 	li {

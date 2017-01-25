@@ -20,7 +20,7 @@ figure {
 }
 
 img {
-	width: auto; // IE8 image height correct, so that img max-width: 100% doesn't produce disproportionate images
+	width: auto; // IE8 image height correct, so that img max-width: 100% doesnt produce disproportionate images
 	height: auto;
 }
 
@@ -66,6 +66,7 @@ img.alignright,
 		text-align: center;
 		font-weight: 600;
 		font-size: .85em;
+		font-style: italic;
 
 		&:last-child {
 			margin-bottom: $spacer;

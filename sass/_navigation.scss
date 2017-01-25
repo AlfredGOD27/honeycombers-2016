@@ -24,8 +24,10 @@
 
 		> .wrap {
 			display: block;
-			background-color: $black;
-			color: $white;
+			background-color: $white;
+			color: $black;
+			padding-left: 0;
+			padding-right: 0;
 
 			> .left {
 				float: none;
@@ -287,17 +289,20 @@
 		}
 
 		span {
-			@include meta-font;
+			font-family: $heading;
 			margin-bottom: .5em;
 			color: $grey-dark;
-			font-size: .95em;
+			font-size: 14px;
+			text-transform: uppercase;
 		}
 
 		a {
 			display: block;
 			text-decoration: none;
-			text-transform: uppercase;
-			font-size: 1.1em;
+			text-transform: none;
+			font-size: 24px;
+			font-family: $titles;
+			line-height: 1em;
 		}
 
 		.right {
@@ -323,6 +328,9 @@
 		order: 2;
 		margin-left: 0;
 		width: 100%;
+		padding-left: 0.75em;
+		padding-right: 0.75em;
+		border-top: solid 1px $orange;
 
 		.menu-item {
 			display: block;
@@ -391,12 +399,21 @@
 		.menu-col-links {
 			padding-top: 0;
 			width: 100%;
+			.left {
+				width: 5em;
+				i {
+					opacity: 0;
+				}
+			}
 		}
 
 		.subcategory-list {
 			> li {
 				padding-right: 0;
 				border-right: none;
+				a {
+					color: #aeaeae;
+				}
 			}
 		}
 
@@ -432,6 +449,7 @@
 
 		i {
 			font-size: 1.1em;
+			color: $orange;
 		}
 
 		span {
@@ -458,11 +476,11 @@
 			}
 
 			i {
-				color: $white;
+				color: $orange;
 			}
 
 			span {
-				color: $white;
+				color: $black;
 			}
 		}
 	}
@@ -473,7 +491,9 @@
 	padding-bottom: 1em;
 	width: 100%;
 	text-align: center;
-	font-family: $heading;
+	font-family: $titles;
+	border-top: solid 2px $orange;
+	padding-top: 1.25em;
 
 	> span {
 		position: relative;
@@ -506,6 +526,40 @@
 	a {
 		color: inherit;
 		font-size: 2em;
+	}
+	.left {
+		width: 53%;
+		float: left;
+		text-align: left;
+		padding-left: 0.75em;
+		padding-right: 0.75em;
+		h2 {
+			font-family: $titles;
+			color: $black;
+		}
+		p {
+			color: $orange;
+			font-family: $body;
+		}
+	}
+	.right {
+		width: 47%;
+		float: right;
+		text-align: center;
+		padding-left: 0.75em;
+		padding-right: 0.75em;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		.social {
+			margin-top: -15px;
+			.fa {
+				background-color: #aeaeae;
+				color: $white;
+				height: 35px;
+				width: 35px;
+				line-height: 34px;
+			}
+		}
 	}
 }
 

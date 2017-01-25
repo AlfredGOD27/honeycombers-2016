@@ -211,11 +211,13 @@
 	.submit-form {
 		flex-grow: 1;
 		flex-shrink: 1;
+		border: solid 2px $white;
 	}
 
 	.submit-listing {
 		flex-grow: 0;
 		flex-shrink: 0;
+		border: solid 2px $white;
 		margin-left: (.75em / .9);
 	}
 }

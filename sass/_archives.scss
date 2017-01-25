@@ -125,6 +125,14 @@ $slider-height: 25em;
 	}
 }
 
+@include media('<=portrait') {
+	.il-load-more {
+		span {
+			background-color: $white;
+		}
+	}
+}
+
 .archive-description {
 	> .wrap {
 		@extend %wrap;
@@ -311,12 +319,12 @@ $slider-height: 25em;
 		}
 
 		&:before {
-			border-right-color: $orange;
+			border-right-color: $white;
 		}
 
 		&:after {
 			margin-right: -1px;
-			border-right-color: $white;
+			border-right-color: $black;
 		}
 	}
 
@@ -360,13 +368,15 @@ $slider-height: 25em;
 		span {
 			display: block;
 			width: 100%;
-			text-transform: uppercase;
-			font-family: $heading;
+			text-transform: none;
+			font-family: $titles;
+			font-size: 1.5em;
+    		line-height: 1em;
 		}
 	}
 
 	.slick-current {
-		border-color: $orange;
+		border-color: $white;
 
 		.outer {
 			margin-left: 1em;
@@ -378,15 +388,15 @@ $slider-height: 25em;
 		}
 
 		.inner {
-			border-color: $orange;
-			border-bottom: 1px solid $orange;
-			background-color: $white;
+			border-color: $white;
+			border-bottom: 1px solid $white;
+			background-color: $black;
 			pointer-events: auto;
 
 			&:hover,
 			&:focus {
 				span {
-					color: $orange;
+					color: $white;
 				}
 			}
 
@@ -399,11 +409,11 @@ $slider-height: 25em;
 			}
 
 			i {
-				color: $orange;
+				color: $white;
 			}
 
 			span {
-				color: $text;
+				color: $white;
 			}
 		}
 	}
@@ -527,6 +537,7 @@ $slider-height: 25em;
 
 	img {
 		transition: all $transition-time;
+		min-width: auto;
 	}
 
 	h3 {
@@ -535,14 +546,15 @@ $slider-height: 25em;
 		bottom: .5em;
 		left: .5em;
 		padding: .25em .5em;
-		background-color: $white;
-		background-color: rgba($white, .9);
+		background-color: $black;
 		text-align: center;
-		text-transform: uppercase;
+		text-transform: none;
 		font-size: 1em;
+		font-family: $titles;
 
 		a {
 			transition: color $transition-time;
+			color: $white;
 		}
 	}
 }
@@ -558,7 +570,7 @@ $slider-height: 25em;
 
 			h3 {
 				a {
-					color: $orange;
+					color: $white;
 				}
 			}
 		}
@@ -569,6 +581,9 @@ $slider-height: 25em;
 	.archive-entry-tiny {
 		h3 {
 			font-size: .9em;
+		}
+		img {
+			height: auto;
 		}
 	}
 }
@@ -593,8 +608,8 @@ $slider-height: 25em;
 		left: 0;
 		padding-top: .5em;
 		width: 100%;
-		border-top: $border-width solid $orange;
-		background-color: $white;
+		/* border-top: $border-width solid $orange; */
+		background-color: #ededed;
 
 		&.roll-up {
 			bottom: -1em;
@@ -604,8 +619,9 @@ $slider-height: 25em;
 
 	h3 {
 		text-align: center;
-		text-transform: uppercase;
-		font-size: 1em;
+		text-transform: none;
+		font-family: $titles;
+		font-size: 1.25em;
 		transition: color $transition-time;
 	}
 
@@ -678,8 +694,9 @@ $slider-height: 25em;
 
 	.entry-title {
 		margin-bottom: .25em;
-		text-transform: uppercase;
-		font-size: 1.25em;
+		text-transform: none;
+		font-size: 1.5em;
+		font-family: $titles;
 
 		a {
 			transition: color $transition-time;
@@ -689,9 +706,10 @@ $slider-height: 25em;
 	.entry-excerpt {
 		margin-bottom: 1em;
 		color: $grey-dark;
+		font-family: $body;
 
 		p {
-			font-size: 1em;
+			font-size: 0.8em;
 			line-height: 1.45;
 		}
 	}

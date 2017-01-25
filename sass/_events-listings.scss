@@ -91,6 +91,32 @@
 		&:first-child {
 			margin-left: 0;
 		}
+		i {
+			background: $black;
+			border-radius: 50%;
+			font-size: 0.75em;
+			padding: 8px;
+		}
+		button {
+			> span {
+
+			}
+		}
+	}
+	.share-icons {
+		margin-bottom: 7px;
+		.fa {
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 25px;
+			vertical-align: middle;
+			padding: 0;
+			font-size: .7em;
+			color: $white;
+			background-color: $black;
+		}
 	}
 }
 

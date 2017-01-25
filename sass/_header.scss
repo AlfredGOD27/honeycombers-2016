@@ -47,7 +47,7 @@
 		text-decoration: none;
 		text-transform: uppercase;
 		font-size: .8em;
-		font-family: $heading;
+		font-family: $links;
 		line-height: 1;
 	}
 }
@@ -90,7 +90,7 @@
 }
 
 .site-header {
-	background-color: $orange;
+	background-color: $white;
 
 	> .wrap {
 		@extend %wrap;
@@ -140,7 +140,7 @@
 
 	i {
 		display: none;
-		color: $white;
+		color: $orange;
 		font-size: 3em;
 	}
 }
@@ -161,13 +161,13 @@
 	flex-grow: 1;
 	flex-shrink: 0;
 	float: right;
-	padding-top: 1.5em;
-	padding-bottom: 1.5em;
+	padding-top: 1.4em;
+	padding-bottom: 1.4em;
 
 	.search-form {
 		margin-left: auto;
-		border-color: $white;
-		font-size: .9em;
+		border-color: $orange;
+		font-size: .95em;
 
 		input[type='search'] {
 			padding-top: .6em;
@@ -184,6 +184,7 @@
 		padding-top: 0;
 		padding-bottom: 0;
 		width: 100%;
+		border-top: solid 2px $orange;
 
 		.search-form {
 			max-width: 100%;
@@ -215,6 +216,9 @@
 		padding-top: .45em;
 		padding-bottom: .45em;
 		vertical-align: middle;
+		border: solid 2px $orange;
+		background-color: transparent;
+		color: $orange;
 	}
 
 	.toggle-nav {
@@ -222,6 +226,8 @@
 		padding: 0;
 		width: 1em;
 		font-size: 1.75em;
+		color: $orange;
+		border: none;
 
 		.ico-close {
 			display: none;

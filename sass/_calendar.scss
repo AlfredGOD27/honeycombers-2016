@@ -120,15 +120,16 @@
 		padding: .75em 1.5em;
 		min-width: 6em;
 		height: 100%;
-		background-color: #686868;
+		background-color: $black;
 		color: $white;
 		text-align: center;
+		min-width: 6.5em;
 	}
 
 	.m,
 	.d {
 		display: block;
-		font-family: $heading;
+		font-family: $titles;
 		line-height: 1;
 	}
 
@@ -147,7 +148,7 @@
 		flex-grow: 1;
 		flex-shrink: 1;
 		padding: .25em .5em;
-		opacity: .7;
+		opacity: 1;
 	}
 
 	.cat,
@@ -157,15 +158,17 @@
 	}
 
 	.cat {
-		@include meta-font;
+		/* @include meta-font; */
 		margin-bottom: .25em;
 		font-size: .95em;
+		font-family: $heading;
+		text-transform: uppercase;
 	}
 
 	.title {
-		text-transform: uppercase;
+		text-transform: none;
 		font-size: 1.1em;
-		font-family: $heading;
+		font-family: $titles;
 		line-height: 1.2;
 	}
 
@@ -222,7 +225,7 @@
 			height: auto;
 			background-color: $orange;
 
-			&:before {
+			/*&:before {
 				position: absolute;
 				bottom: 100%;
 				bottom: 100%;
@@ -236,10 +239,11 @@
 				content: '';
 				transform: translateX(-50%);
 			}
+			*/
 		}
 
 		.m {
-			font-size: .75em;
+			font-size: 1.25em;
 		}
 
 		.d {
@@ -250,15 +254,16 @@
 			flex-grow: 1;
 			flex-shrink: 1;
 			opacity: 1;
+			background-color: $black;
 		}
 
 		.cat {
-			color: $orange;
+			color: $white;
 			font-size: .75em;
 		}
 
 		.title {
-			color: inherit;
+			color: $white;
 		}
 
 		i {
@@ -324,7 +329,7 @@
 		overflow: hidden;
 		margin-left: 2em;
 		height: $slider-height / 4;
-		background-color: $black;
+		/* background-color: $black; */
 	}
 
 	img {
@@ -355,15 +360,15 @@
 	}
 
 	.slick-current {
-		border-color: $orange;
+		border-color: $white;
 
 		.outer {
-			margin-left: 1em;
+			/* margin-left: 1em; */
 		}
 
 		.inner {
-			border-color: $orange;
-			background-color: $white;
+			border-color: $white;
+			background-color: $black;
 			pointer-events: auto;
 
 			i {
@@ -372,15 +377,20 @@
 		}
 
 		.info {
-			background-color: $orange;
+			background-color: $black;
+			.m, .d {
+				color: $orange;
+			}
 		}
 
 		.cat {
-			color: $orange;
+			color: $white;
+			font-family: $heading;
 		}
 
 		.title {
-			color: $black;
+			color: $white;
+			font-family: $titles;
 		}
 	}
 }
@@ -448,6 +458,9 @@
 
 		.post {
 			width: 20.75%;
+			.btn {
+				border: solid 2px $white;
+			}
 		}
 
 		.ico-arrow-down {
@@ -540,20 +553,24 @@ $move_left: -$move_right;
 		bottom: 1.5em;
 		left: .5em;
 		padding: .5em;
-		background-color: $white;
-		background-color: rgba( $white, .9 );
+		background-color: $black; 
+		/* background-color: rgba( $white, .9 ); */
+		color: $white;
 		text-align: center;
 	}
 
 	.title,
 	.date {
 		display: block;
-		font-size: .85em;
+		font-size: .75em;
+		font-family: $heading;
 	}
 
 	.title {
-		text-transform: uppercase;
-		font-family: $heading;
+		text-transform: none;
+		font-family: $titles;
+		font-size: 1em;
+    	line-height: 1.25em;
 	}
 }
 

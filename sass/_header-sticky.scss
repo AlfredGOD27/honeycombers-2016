@@ -1,7 +1,8 @@
 .sticky-header {
 	position: relative;
 	z-index: 99;
-	background-color: $orange;
+	background-color: $white;
+	border-bottom: solid 2px $orange;
 
 	&.use-sticky {
 		position: fixed;
@@ -27,7 +28,7 @@
 	}
 
 	a {
-		color: inherit;
+		color: $black;
 		text-decoration: none;
 	}
 
@@ -42,6 +43,7 @@
 		i {
 			display: block;
 			font-size: 4.5em;
+			color: $orange;
 		}
 	}
 
@@ -62,7 +64,7 @@
 		flex-grow: 1;
 		flex-shrink: 1;
 		margin-bottom: 0;
-		border-color: $white;
+		border-color: $orange;
 
 		input[type='search'] {
 			padding-left: 2.5em;
@@ -92,8 +94,10 @@
 		.btn {
 			padding: .55em 1em;
 			min-width: 8em;
-			border: 1px solid $white;
+			border: 1px solid $orange;
 			font-size: .85em;
+			color: $white;
+			background-color: $orange;
 
 			span,
 			i {
@@ -131,7 +135,7 @@
 		a {
 			position: relative;
 			padding: .5em;
-			color: $text;
+			color: $black;
 			text-transform: uppercase;
 			font-size: .85em;
 			font-family: $heading;
@@ -144,6 +148,10 @@
 		flex-shrink: 0;
 		margin-left: 2em;
 		text-align: right;
+		.fa {
+			color: $white;
+			background: $orange;
+		}
 	}
 
 	.user-menu {
@@ -153,13 +161,13 @@
 
 		.btn {
 			padding: .55em 1em;
-			border: 1px solid $white;
-			background-color: $white;
+			border: 1px solid $orange;
+			background-color: $orange;
 			font-size: .85em;
 
 			span,
 			i {
-				color: $orange;
+				color: $white;
 				font-size: 1em;
 			}
 
@@ -177,7 +185,7 @@
 			font-size: .85em;
 
 			i {
-				color: $white;
+				color: $orange;
 				font-size: 1em;
 			}
 		}
@@ -195,7 +203,7 @@
 		.main-menu {
 			.menu-item {
 				> a {
-					color: $white;
+					color: $black;
 				}
 			}
 
@@ -208,13 +216,14 @@
 
 			.sub-menu {
 				top: 100%;
+				margin-top: 2px;
 			}
 		}
 
 		.icon-nav {
 			.btn-icon {
 				padding: .55em 1em;
-				border-left: 1px solid $white;
+				border-left: 1px solid $orange;
 				font-size: .85em;
 
 				&:first-child {
@@ -222,11 +231,11 @@
 				}
 
 				i {
-					color: $white;
+					color: $orange;
 				}
 
 				span {
-					color: $white;
+					color: $black;
 					font-size: 1em;
 				}
 			}

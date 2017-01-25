@@ -17,13 +17,13 @@ COLORS
 $black: #252525;
 $text: #3a3a3a;
 $grey-border: #d7d7d7;
-$grey-light: #919191;
-$grey-lighter: #c7c7c7;
+$grey-light: #a9a9a9;
+$grey-lighter: #b3b3b3;
 $grey: #999;
 $grey-dark: #4f4f4f;
-$orange: #fe862c;
-$orange-light: #fad9bd;
-$orange-dark: #fa7d1f;
+$orange: #f68b1f;
+$orange-light: #f68b1f;
+$orange-dark: #f68b1f;
 
 /*********************
 ALERTS
@@ -52,6 +52,16 @@ $rss: #f60;
 TYPOGRAPHY - http://cssfontstack.com/
 *********************/
 // https://medium.com/@mwichary/system-shock-6b1dc6d6596f
-$heading: 'Montserrat', Tahoma, Verdana, Segoe, sans-serif;
-$body: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+//google fonts
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Suranna');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+$heading: 'Oswald', sans-serif;
+$links: 'Roboto Condensed', sans-serif;
+$titles: 'Suranna', serif;
+$body: 'PT Serif', serif;
 $meta: 'Noto Serif', Georgia, Times, 'Times New Roman', serif;
