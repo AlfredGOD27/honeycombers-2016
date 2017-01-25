@@ -251,8 +251,13 @@ class HC_Menu {
 				</div>
 
 				<div class="show-phone mobile-social-nav">
-					<span><span>Follow Us</span></span>
-					<?php hc_do_social(); ?>
+					<div class="left">
+                    	<h2>Follow Us</h2>
+                        <p>Follow us on Social Media</p>
+                    </div>
+                    <div class="right">
+						<?php hc_do_social(); ?>
+                    </div>
 				</div>
 			</div>
 		</nav>
