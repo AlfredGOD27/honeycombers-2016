@@ -60,7 +60,24 @@ class HC_Subscriptions {
 
 		// Build query
 		$url = $this->api_url . '/lists/' . $this->list_id . '/members/' . md5( strtolower($email) );
+		
+		$blog_id = get_current_blog_id();
 
+        switch( $blog_id ) {
+	        case 2:
+		        $interestID = 'e5ca956346';
+	        	break;
+	        case 3:
+		        $interestID = '267a9a0f54';
+	        	break;
+	        case 4:
+		        $interestID = '8b5717e47d';
+	        	break;
+        }
+
+        if( empty($blog_id) )
+        	return;
+		
 		$args = array(
 			'method'  => 'PUT',
 			'headers' => array(
@@ -69,7 +86,7 @@ class HC_Subscriptions {
 			'body' => array(
 				'status'        => 'subscribed',
 				'email_address' => $email,
-				'interests'     => $interests,
+				'interests'     => [$interestID => true]
 			),
 		);
 
@@ -114,22 +131,24 @@ class HC_Subscriptions {
 	public function display_form( $location ) {
 
 		?>
-        <?php /*
+        
 		<form class="subscribe-form">
-			<label for="subscribe-email-<?php echo $location; ?>">Email</label>
+			<?php /* <label for="subscribe-email-<?php echo $location; ?>">Email</label>  */ ?>
 			<div class="email-container">
-				<input id="subscribe-email-<?php echo $location; ?>" type="email" required placeholder="Enter your email here">
+				<input id="subscribe-email-<?php echo $location; ?>" type="email" name="email" required placeholder="Enter your email here">
 			</div>
 
 			<button type="submit" class="btn">Sign Me Up!</button>
 		</form>
-		*/ ?>
+		
+        <?php /*
         <div id="subscribeFormFoot">
             <input id="txt-email-foot" maxlength="50" name="email" type="email" required placeholder="Enter your email here" class="focus"/>
             <div align="center" class="email_error" >Please enter a VALID email address</div>
             <input id="submitButtonFoot" value="Sign Me Up!" class="btn" />	
         </div>
         <div class="successMessageFoot">Thanks for Subscribing! Keep an eye out for your first newsletter.</div>
+		*/ ?>
 		<?php
 
 	}
