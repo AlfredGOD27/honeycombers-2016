@@ -145,7 +145,7 @@ class HC_Home {
 			<div class="wrap">
 				<?php
 				$heading = get_post_meta( $post->ID, '_hc_home_picks_heading', true );
-				echo '<h2>' . sanitize_text_field($heading) . '</h2>';
+				echo '<h2><span>' . sanitize_text_field($heading) . '</span></h2>';
 
 				$main_post = get_post( $main_post_id );
 				?>
@@ -171,11 +171,19 @@ class HC_Home {
 
 								<?php
 								echo '<p>' . HC()->formatting->get_excerpt($main_post) . '</p>';
+								
+								$user = get_user_by( 'id', $main_post->post_author );
 								?>
+                                <div class="left">
+                                	<?php echo '<p>By <span>' . $user->display_name . '</span></p>'; ?>
+                                </div>
+                                <div class="right">
+                                	<?php // echo get_the_date('j F Y',$main_post_id); ?>
+                                </div>
 							</div>
 
 							<div class="right">
-								<?php echo get_avatar( $main_post->post_author, 90 ); ?>
+								<?php echo get_avatar( $main_post->post_author, 70 ); ?>
 
 								<?php
 								$user = get_user_by( 'id', $main_post->post_author );
@@ -216,16 +224,20 @@ class HC_Home {
 					<div class="left">
 						<?php
 						$heading = get_post_meta( $post->ID, '_hc_home_watch_this_heading', true );
-						echo '<h2><a href="' . $video_page_link . '">' . sanitize_text_field($heading) . '</a></h2>';
+						echo '<h2><a href="' . $video_page_link . '">' . sanitize_text_field($heading) . '<i class="fa fa-angle-right" aria-hidden="true"></i></a></h2>';
 
 						$src = get_post_meta( $post->ID, '_hc_home_watch_this_video_url', true );
 						$src = esc_url($src);
 						echo wp_oembed_get($src);
 						?>
-
+						
+                        <?php
+						/*
 						<div class="mobile-bar show-phone">
 							<a href="<?php echo $video_page_link; ?>" class="btn btn-icon"><span>More Videos</span> <i class="ico-arrow-right"></i></a>
 						</div>
+						*/
+						?>
 					</div>
 					<?php
 				}
@@ -240,7 +252,7 @@ class HC_Home {
 					<div class="right hide-no-js">
 						<?php
 						$heading = get_post_meta( $post->ID, '_hc_home_tables_heading', true );
-						echo '<h2><a href="' . $directory_page_link . '">' . sanitize_text_field($heading) . '</a></h2>';
+						echo '<h2><a href="' . $directory_page_link . '">' . sanitize_text_field($heading) . '<i class="fa fa-angle-right" aria-hidden="true"></i></a></h2>';
 						?>
 
 						<?php
@@ -270,6 +282,7 @@ class HC_Home {
 										<div class="slide-content show-phone">
 											<h3><?php echo HC()->entry->get_headline_title( $post_id ); ?></h3>
 										</div>
+
 									</div>
 									<?php
 								}
@@ -339,9 +352,13 @@ class HC_Home {
 							</div>
 						</div>
 
+						<?php
+						/*
 						<div class="mobile-bar show-phone">
 							<a href="<?php echo $directory_page_link; ?>" class="btn btn-icon"><span>More Restaurants</span> <i class="ico-arrow-right"></i></a>
 						</div>
+						*/
+						?>
 					</div>
 					<?php
 				}
@@ -404,25 +421,60 @@ class HC_Home {
 			<div class="wrap">
 				<?php
 				$heading = get_post_meta( $post->ID, '_hc_home_featured_events_heading', true );
-				echo '<h2><a href="' . $events_page_link . '">' . sanitize_text_field($heading) . '</a></h2>';
+				echo '<h2><span><a href="' . $events_page_link . '">' . sanitize_text_field($heading) . '</span><i class="fa fa-angle-right" aria-hidden="true"></i></a></h2>';
+				
+				if( !empty($events) ) {
+				$args = array(
+					'post_type'      => 'event',
+					'post__in'       => $events,
+					'orderby'        => 'post__in',
+					'posts_per_page' => -1,
+					'fields'         => 'ids',
+					/*
+					'meta_query' 	 => array(
+										array(
+											'key'			=> '_hc_event_end_date',
+											'compare'		=> '>=',
+											'value'			=> date("Ymd"),
+											'type'			=> 'DATE'
+										)
+									),
+									'order'				=> 'ASC',
+									'orderby'			=> 'meta_value',
+									'meta_key'			=> '_hc_event_start_date',
+									'meta_type'			=> 'DATE'
+				
+					*/		
+				);
+	
+				$events = get_posts( $args );
+				if( !empty($events) ) {
 				?>
 
 				<div class="three-fourths first left hide-no-js">
 					<?php
 					HC()->events->display_slider($events);
 					?>
-
+					
+                    <?php /*
 					<div class="mobile-bar show-phone">
 						<?php  ?>
-						<a href="<?php echo $events_page_link; ?>" class="btn btn-icon"><span>More Events</span> <i class="ico-arrow-right"></i></a>
+						<a href="<?php echo $events_page_link; ?>" class="btn btn-icon"><span>More Events</span><i class="ico-arrow-right"></i></a>
 					</div>
+					*/ ?>
 				</div>
+                
+                <?php
+					}
+				}
+				?>
 
-				<div class="one-fourth right join">
+				<div class="one-fourth right join" >
 					<div class="join-inner">
 						<i class="ico-heart"></i>
 
 						<?php
+						
 						if( is_user_logged_in() ) {
 							$title = get_option( 'options__hc_join_user_title' );
 							$text  = get_option( 'options__hc_join_user_text' );
@@ -435,10 +487,18 @@ class HC_Home {
 
 							echo !empty($title) ? '<h3>' . $title . '</h3>' : '';
 							?>
-							<button class="btn open-popup-link" data-mfp-src="#login-popup">Sign Up <i class="ico-exit"></i></button>
+							
 							<?php
 							echo !empty($text) ? wpautop($text) : '';
+						
+						?>
+                        	<button class="btn open-popup-link" data-mfp-src="#login-popup"><i class="ico-exit"></i></button>
+                        <?php
 						}
+						
+						// HC()->subscriptions->ajax_subscribe();
+						
+						// HC()->subscriptions->display_form( 'widget-' . $widget_id );
 						?>
 					</div>
 				</div>
@@ -489,8 +549,8 @@ class HC_Home {
 								echo get_the_post_thumbnail( $post_id, 'archive-small' );
 								?>
 
-								<i class="ico-hexagon"></i>
-								<span><?php echo $i; ?></span>
+								<?php /* <i class="ico-hexagon"></i>
+								<span><?php echo $i; ?></span> */ ?>
 
 								<div class="overlay">
 									<div>
@@ -499,13 +559,13 @@ class HC_Home {
 											?>
 											<div class="hide-phone">
 												<?php
-												echo HC()->utilities->get_category_icon_html( $term, 'large', 'white' );
+												echo HC()->utilities->get_category_icon_html( $term, 'large', 'orange' );
 												?>
 											</div>
 
 											<div class="show-phone">
 												<?php
-												echo HC()->utilities->get_category_icon_html( $term, 'small', 'white' );
+												echo HC()->utilities->get_category_icon_html( $term, 'small', 'orange' );
 												?>
 											</div>
 											<?php
@@ -572,13 +632,19 @@ class HC_Home {
 			return;
 
 		?>
-		<section class="home-section home-section-latest-posts">
+        
+        <section class="home-section ">
 			<div class="wrap">
 				<?php
-				$ad = HC()->ads->get_ad_container( 'leaderboard-1' );
-				if( !empty($ad) )
-					echo '<div class="banner">' . $ad . '</div>';
-				?>
+                $ad = HC()->ads->get_ad_container( 'leaderboard-1' );
+                if( !empty($ad) )
+                    echo '<div class="banner">' . $ad . '</div>';
+                ?>
+            </div>
+        </section>
+        
+		<section class="home-section home-section-latest-posts">
+			<div class="wrap">
 
 				<h2>
 					<?php
