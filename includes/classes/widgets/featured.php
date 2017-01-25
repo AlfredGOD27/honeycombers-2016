@@ -34,6 +34,13 @@ class HC_Featured_Widget extends WP_Widget {
 					return;
 
 				$query_args['post__in'] = array_map( 'absint', $post_ids );
+				$query_args['meta_query'] = array(
+					array(
+						'key'     => '_hc_event_end_date',
+						'value'   => (date('Ymd') - 1),
+						'compare' => '>=',
+					),
+				);
 				break;
 			case 'listing':
 				if( is_archive() ) {
@@ -82,7 +89,7 @@ class HC_Featured_Widget extends WP_Widget {
 			?>
 			<div class="featured-widget-slider hide-no-js">
 				<?php
-				foreach( $post_ids as $post_id ) {
+				foreach( $posts as $post_id ) {
 					$date = HC()->events->get_event_date_info( $post_id );
 
 					?>
@@ -124,18 +131,24 @@ class HC_Featured_Widget extends WP_Widget {
 									$taxonomy = 'listing' === $post_type ? 'listing_type' : 'category';
 
 									?>
-									<div class="full">
-										<?php
-										$term = HC()->utilities->get_primary_term( $post_id, $taxonomy );
-										if( !empty($term) ) {
-											?>
-											<p><?php echo $term->name; ?></p>
-											<?php
-										}
-										?>
-
-										<h5><a href="<?php echo get_permalink($post_id); ?>"><?php echo HC()->entry->get_headline_title($post_id); ?></a></h5>
+                                    <div class="left">
+										<span class="m"><?php echo get_the_date('M',$post_id); ?></span>
+										<span class="d"><?php echo get_the_date('j',$post_id); ?></span>
 									</div>
+                                    <div class="right clearfix">
+                                        <div class="full">
+                                            <?php
+                                            $term = HC()->utilities->get_primary_term( $post_id, $taxonomy );
+                                            if( !empty($term) ) {
+                                                ?>
+                                                <p><?php echo $term->name; ?></p>
+                                                <?php
+                                            }
+                                            ?>
+    
+                                            <h5><a href="<?php echo get_permalink($post_id); ?>"><?php echo HC()->entry->get_headline_title($post_id); ?></a></h5>
+                                        </div>
+                                    </div>
 									<?php
 									break;
 							}
