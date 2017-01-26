@@ -7625,7 +7625,7 @@ table > tbody > tr:nth-child(odd) > th {
     padding-left: 0;
   }
   .home-section-featured-posts .pull-right img {
-    height: auto;
+    height: 150px;
     width: auto;
   }
 }
