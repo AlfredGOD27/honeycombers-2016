@@ -4366,8 +4366,8 @@ table > tbody > tr:nth-child(odd) > th {
     font-size: 1.25em;
   }
 
-  .header-default .entry-title {
-    font-size: 2.25em;
+  .header-default .entry-header .entry-title {
+    font-size: 2em !important;
   }
 }
 .entry-time {
@@ -4402,7 +4402,7 @@ table > tbody > tr:nth-child(odd) > th {
   }
 }
 .header-default .entry-header .entry-title {
-  margin-bottom: 0.1em;
+  margin-bottom: 0.3em;
   font-family: "Suranna", serif;
   text-transform: none;
   font-size: 3em;
