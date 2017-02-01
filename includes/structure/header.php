@@ -307,7 +307,7 @@ function hc_custom_header() {
 		.site-header {
 			background-color: <?php echo $bg_color; ?>;
 			background-image: url(<?php echo $bg_img; ?>);
-			background-position: 50% 15%;
+			background-position: top center;
 		}
 		@media (max-width: 776px) {
 			.title-area {
