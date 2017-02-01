@@ -430,7 +430,6 @@ class HC_Home {
 					'orderby'        => 'post__in',
 					'posts_per_page' => -1,
 					'fields'         => 'ids',
-					/*
 					'meta_query' 	 => array(
 										array(
 											'key'			=> '_hc_event_end_date',
@@ -444,7 +443,7 @@ class HC_Home {
 									'meta_key'			=> '_hc_event_start_date',
 									'meta_type'			=> 'DATE'
 				
-					*/		
+							
 				);
 	
 				$events = get_posts( $args );
