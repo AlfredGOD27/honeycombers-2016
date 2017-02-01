@@ -5890,8 +5890,9 @@ table > tbody > tr:nth-child(odd) > th {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
-  text-transform: uppercase;
-  font-family: "Oswald", sans-serif;
+  font-size: 1.5em;
+  line-height: 1.25em;
+  font-family: "Suranna", serif;
 }
 
 @media (min-width: 1024px) {
